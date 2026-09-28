@@ -179,6 +179,11 @@ $\omega_{\mathrm{SF}}=\omega_{\mathrm{IR}}+\omega_{\mathrm{vis}}$，只有非中
 
 \begin{figure}[tbp]
 \centering
+% 【overfull 修正】该图用 x=1mm，最大坐标到 166.4 mm，已超出单栏版心 165 mm；
+% 再加右侧「出射光」注记外扩，整图约 178 mm —— 正是实测的 35.96 pt。
+% 用 \resizebox 等比压到版心内（缩放约 0.93，图内 8.5 pt 文字变为约 7.9 pt，
+% 在允许字体随内容调整的范围内）。
+\resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[x=1mm,y=1mm,>=stealth,
   beam/.style={thinline,->},
   weakbeam/.style={thinline,->,draw=black!55},
@@ -227,7 +232,7 @@ $\omega_{\mathrm{SF}}=\omega_{\mathrm{IR}}+\omega_{\mathrm{vis}}$，只有非中
 \node[anchor=west] at (166.4,22) {出射光};
 \node[anchor=north] at (140,9.4) {全反射晶体（$n_{1}>n_{2}$）};
 \node[anchor=north] at (142,5) {（c）ATR：光在晶体中多次全反射};
-\end{tikzpicture}
+\end{tikzpicture}}
 \caption{三种常用模式中光与样品的相互作用方式对比。读者应看三处：\textbf{光在样品中走的
 路径}（穿过体相／在颗粒间多次散射后返回／在晶体内部多次全反射）、\textbf{作用体积}
 （体相、表层粉末、表面亚微米层）、以及由此决定的\textbf{样品形态与含水量要求}——透射要求

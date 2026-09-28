@@ -297,9 +297,13 @@ $E_{\mathrm{a}}$ \src{S1 §3.3，书内 p.180--181 / PDF p.199--200}。两种方
     +0.22/(1+((\x-503)*(\x-503)/169)*((\x-503)*(\x-503)/169));
 }}
 \begin{groupplot}[
+  % 【overfull 修正】原为 width=48mm + horizontal sep=8mm：
+  % 3×48 + 2×8 = 160 mm，再加 ylabels at=edge left 的左侧轴标签与刻度约 15 mm
+  % 共约 175 mm，超出单栏版心 165 mm 约 10 mm ——正是实测的 29.82 pt。
+  % 改为 3×45 + 2×6 = 147 mm，含左侧标签约 162 mm，留 3 mm 余量。
   group style={group size=3 by 1, yticklabels at=edge left, ylabels at=edge left,
-               xlabels at=edge bottom, horizontal sep=8mm},
-  width=48mm, height=38mm,
+               xlabels at=edge bottom, horizontal sep=6mm},
+  width=45mm, height=38mm,
   xmin=40, xmax=620,
   xtick={100,300,500}, minor xtick={200,400,600},
   xlabel={温度 $T$ / $\degC$},
