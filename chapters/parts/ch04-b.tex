@@ -137,12 +137,21 @@ PL=\frac{1+\cos^{2}2\theta}{4\sin^{2}\theta\cos\theta}.
 本节按“与原书数值刻度一致”的取法给出，常数归属待核。}
 
 \begin{equation}
-D=\exp\!\left(-\frac{B\sin^{2}\theta}{\lambda^{2}}\right),\qquad B=8\pi^{2}\langle u^{2}\rangle ,
+D=\exp\!\left(-\frac{2B\sin^{2}\theta}{\lambda^{2}}\right),\qquad B=8\pi^{2}\langle u^{2}\rangle ,
 \label{eq:ch04b-DW}
 \end{equation}
 式中 $u$ 为原子位移参数，$\langle u^{2}\rangle$ 是位移振幅的均方值，$B$ 为温度因子。
-\tocheck{未对照原页面图像：指数中的系数是 $B$ 还是 $2B$、以及原书对 $u$ 的定义（$u=\langle u^{2}\rangle$
-还是 $u=\sqrt{\langle u^{2}\rangle}$）需核对；这直接影响由强度反算出的 $B$ 的数值。}
+\textbf{$D$ 是强度层面的因子，指数中的系数必须是 $2B$}：温度因子首先作用在\textbf{原子散射
+振幅}上（第 $j$ 个原子的振幅乘 $\exp[-B_{j}\sin^{2}\theta/\lambda^{2}]$），而
+式~\eqref{eq:ch04b-intensity} 用的是 $\left|F_{hkl}\right|^{2}$，振幅因子须平方后才进入强度。
+只有各原子的 $B$ 相同时才能像本式这样把它提到 $\left|F\right|^{2}$ 之外作统一乘子；若各原子
+$B_{j}$ 不同，必须逐个原子写在 $F_{hkl}$ 内部再平方，不能共用一个 $D$。
+\tocheck{未对照原页面图像：原书此处指数系数写的是 $B$ 还是 $2B$、以及 $u$ 的定义
+（$u=\langle u^{2}\rangle$ 还是 $u=\sqrt{\langle u^{2}\rangle}$，$\langle u^{2}\rangle$ 取沿
+衍射矢量方向的分量还是三维均方值——两者相差因子 $3$）均未核对（OCR 残缺）。本节按强度层面的
+标准惯例给出 $2B$：$B=8\pi^{2}\langle u^{2}\rangle$ 时原子振幅因子为
+$\exp(-B\sin^{2}\theta/\lambda^{2})$、强度因子是其平方；若原书在振幅层面定义 $D$，则两者相差
+一个平方而不是互相矛盾。}
 
 \begin{keycond}
 \textbf{为什么每一项修正都不能省}：\\
@@ -213,13 +222,13 @@ $I_{002}/I_{100}$：(a) 为 $12.5$，(b) 为 $1.8$。两种制样下全部峰的
   \begin{tikzpicture}
     \tikzset{declare function={
         PLf(\x) = (1+cos(\x)^2)/(4*sin(\x/2)^2*cos(\x/2));
-        DWf(\x,\B) = exp(-\B*sin(\x/2)^2/2.3734);
+        DWf(\x,\B) = exp(-2*\B*sin(\x/2)^2/2.3734);
       }}
     \begin{axis}[
         width=\onecolwidth, height=64mm,
         xlabel={$2\theta$ / (°)},
         ylabel={相对因子（对数纵轴）},
-        xmin=10, xmax=160, ymin=0.02, ymax=1.7,
+        xmin=10, xmax=160, ymin=0.01, ymax=1.7,
         ymode=log,
         xtick={10,30,50,70,90,110,130,150},
         ytick={0.02,0.05,0.1,0.2,0.5,1},
@@ -247,8 +256,8 @@ $I_{002}/I_{100}$：(a) 为 $12.5$，(b) 为 $1.8$。两种制样下全部峰的
     与式~\equref{eq:ch04b-DW}，Cu $K\alpha$，$\lambda=1.5406$ Å）。\textbf{看什么}：$PL$ 因子
     在低角极大、随角度迅速跌落（$2\theta=10°$ 处约 65，$2\theta=160°$ 处约 2.8，正好落在原书
     PL 因子图纵轴 0—80 的量程内，可作为公式重建的旁证）；温度因子在低角几乎为 1，在高角明显
-    衰减，$B$ 越大衰减越强（$2\theta=160°$ 时 $B=1$ Å$^2$ 降到约 $0.55$，$B=3$ Å$^2$ 降到约
-    $0.29$）。\textbf{结论}：把两条曲线相乘后，强度的角度依赖比任何单项都剧烈，因此低角与高角
+    衰减，$B$ 越大衰减越强（$2\theta=160°$ 时 $B=1$ Å$^2$ 降到约 $0.44$，$B=3$ Å$^2$ 降到约
+    $0.086$）。\textbf{结论}：把两条曲线相乘后，强度的角度依赖比任何单项都剧烈，因此低角与高角
     的实测强度不能直接互比，必须先做 $PL$ 与 $D$ 修正。\textbf{局限}：纵轴为对数，曲线是相对值；
     $B$ 的取值是示意（无机晶体常 $B<1$ Å$^2$，含 C、H、O、N 的有机物可到 $2$—$5$ Å$^2$）。
     \figsrc{模型计算图，非原书插图；$PL$ 的形式与原书第 246 页 PL 因子图一致。}}
@@ -775,20 +784,28 @@ $a=\lambda\sqrt{N}/(2\sin\theta)$ 逐线计算，八条线一致给出 $a=4.078$
 
 \begin{principle}
 Hesse--Lipson 法适用于四方、六方与正交晶系，思路仍是利用晶体周期性结构决定的衍射峰之间的
-变化关系。以正交晶系（三个待定参数）为例，把布拉格方程代入 $Q$ 表达式，
+变化关系。以正交晶系（三个待定参数）为例，把布拉格方程代入 $\sin^{2}\theta$ 得
 \begin{equation}
-Q_{hkl}=\frac{1}{d_{hkl}^{2}}=\frac{h^{2}}{a^{2}}+\frac{k^{2}}{b^{2}}+\frac{l^{2}}{c^{2}}
+q_{hkl}\equiv\sin^{2}\theta_{hkl}
+=\frac{\lambda^{2}}{4}\left(\frac{h^{2}}{a^{2}}+\frac{k^{2}}{b^{2}}+\frac{l^{2}}{c^{2}}\right)
 =A h^{2}+B k^{2}+C l^{2},\qquad
 A=\frac{\lambda^{2}}{4a^{2}},\;B=\frac{\lambda^{2}}{4b^{2}},\;C=\frac{\lambda^{2}}{4c^{2}} .
 \label{eq:ch04b-HL}
 \end{equation}
+这里的待定量是 $q=\sin^{2}\theta$，\textbf{不是}倒易量 $Q=1/d^{2}$，两者只差一个常数因子
+$q=(\lambda^{2}/4)Q$：相减与相除时该因子都会约去，所以下面的差值关系对二者同样成立，但
+$A,B,C$ 的数值必须与反算公式配套——本节取 $A=\lambda^{2}/(4a^{2})$，反算用
+$a=\lambda/(2\sqrt{A})$、$b=\lambda/(2\sqrt{B})$、$c=\lambda/(2\sqrt{C})$（若改按
+$Q=1/d^{2}$ 记账，系数就是 $1/a^{2}$、反算 $a=1/\sqrt{A}$，两套不能混用）。
 于是“有关联但指标不同”的 $q$ 值之间存在严格的加和与倍数关系，例如
 $q_{hkl}=q_{h00}+q_{0k0}+q_{00l}$，$q_{200}=4q_{100}$，$q_{300}=9q_{100}$，
 $q_{hk0}=q_{h00}+q_{0k0}$ 等。\textbf{这些关系就是该方法的全部依据}：只要能从实测数据中识别出
-哪些差值对应轴面衍射，三个参数就被确定。
+哪些差值对应轴面衍射，三个参数就被确定（正交晶系要三条互不成比例的线才能定出 $A,B,C$
+三个独立系数）。
 \tocheck{未对照原页面图像：原书此节以 $q_{hkl}=\sin^{2}\theta_{hkl}=\lambda^{2}/4\cdot(\cdots)$
-的形式给出 $A,B,C$，OCR 中公式符号残缺；式~\equref{eq:ch04b-HL} 按标准形式重建，需核对
-$A=\lambda^{2}/4a^{2}$ 的定义是否与原书一致。}
+的形式给出 $A,B,C$（OCR 中公式符号残缺）；本式按该形式重建，并写明 $q=\sin^{2}\theta$ 与
+$Q=1/d^{2}$ 的区别——若把 $q$ 误标成 $1/d^{2}$，$A=\lambda^{2}/4a^{2}$ 就与定义相差
+$\lambda^{2}/4$。原书对 $q$ 所用的符号、是否另定义 $Q$ 未核对。}
 \end{principle}
 
 \begin{measure}
@@ -859,17 +876,21 @@ $Q_{20}$ 为止所得出的不同 $Q$ 值的个数；$\overline{\left|\Delta Q\r
 “计算出的线条中有多少能在实验中被看到”。$M_{20}$ 越大越好。\\
 $F_{N}$ 定义为两项的乘积，前一项与准确性有关、后一项与数据完备性有关：
 \begin{equation}
-F_{N}=\frac{1}{\overline{\left|\Delta2\theta\right|}}\cdot\frac{N_{\mathrm{poss}}}{N_{\mathrm{obs}}} ,
+F_{N}=\frac{1}{\overline{\left|\Delta2\theta\right|}}\cdot\frac{N_{\mathrm{obs}}}{N_{\mathrm{poss}}} ,
 \label{eq:ch04b-FN}
 \end{equation}
-式中 $N_{\mathrm{poss}}$ 为到第 $N$ 条观察衍射线为止可能出现的衍射线数目（由所得晶胞与消光
-规律推算），$N_{\mathrm{obs}}$ 为观察到的衍射线数目，$\overline{\left|\Delta2\theta\right|}$
-为计算值与观察值之间偏差绝对值的平均。Smith 建议 $N$ 取 $30$；若衍射线不够 $30$ 条，则取
-全部衍射线数目。$F_{N}$ 值越大，结果越可靠。
+式中 $N_{\mathrm{obs}}$ 为观察到的衍射线数目，$N_{\mathrm{poss}}$ 为到第 $N$ 条观察衍射线为止
+按所得晶胞与消光规律推算出的\textbf{可能}衍射线数目，$\overline{\left|\Delta2\theta\right|}$
+为计算值与观察值之间偏差绝对值的平均（单位与 $2\theta$ 一致，通常取度）。Smith 建议 $N$ 取
+$30$；若衍射线不够 $30$ 条，则取全部衍射线数目。$F_{N}$ 值越大，结果越可靠。
+\textbf{比值的方向不能写反}：$N_{\mathrm{obs}}\le N_{\mathrm{poss}}$，完备性因子不大于 $1$；
+同一个晶胞若额外预言出一批实验上并未出现的线，$N_{\mathrm{poss}}$ 增大而 $F_{N}$ 必须
+\textbf{下降}。若把比值写成 $N_{\mathrm{poss}}/N_{\mathrm{obs}}$，就变成奖励「多预言、不被
+观测」的晶胞，正好与指标化的目标相反。
 \tocheck{未对照原页面图像：$M_{20}$ 的分母是 $2\overline{|\Delta Q|}N_{20}$ 还是
 $2\overline{|\Delta Q|}\cdot N_{20}$ 的等价写法、以及 $N_{20}$ 的定义措辞（"不同 $Q$ 值的
 个数"）需逐字核对；$F_{N}$ 中 $N_{\mathrm{poss}}$ 是"到第 N 条观察线为止的可能线条数"还是
-"全部可能线条数"亦需核对。}
+"全部可能线条数"亦需核对（本节按前者，比值取 $N_{\mathrm{obs}}/N_{\mathrm{poss}}$）。}
 \end{principle}
 
 \begin{table}[tbp]
@@ -884,7 +905,7 @@ $2\overline{|\Delta Q|}\cdot N_{20}$ 的等价写法、以及 $N_{20}$ 的定义
     $M_{20}$ & 第 20 条线的 $Q$ 值与平均偏差、计算线条数之比；综合反映偏差大小与“计算线是否
     都能被观察到” & 不能指标化的线条少于 $2$ 条且 $M_{20}>10$ 时结果基本正确；
     $M_{20}<6$ 时值得怀疑；$M_{20}<3$ 时几乎没有意义 \\
-    $F_{N}$ & 平均 $2\theta$ 偏差的倒数（准确性）与“可能线数／观察线数”（完备性）的乘积 &
+    $F_{N}$ & 平均 $2\theta$ 偏差的倒数（准确性）与“观察线数／可能线数”（完备性）的乘积 &
     越大越可靠；多数正确解 $F_{N}>10$，但很难说某个具体数值就一定对应正确解 \\
     \bottomrule
   \end{tabular}

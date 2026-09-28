@@ -151,22 +151,26 @@ I\;&\propto\;U\,\rho_{\mathrm{s}}(0,E_{\mathrm{F}})\,\mathrm{e}^{-2\kappa W}\\
 \label{eq:tunneling}
 \end{equation}
 
-其中 $\rho_{\mathrm{s}}(0,E_{\mathrm{F}})$ 为费米能级附近的表面局域态密度。指数的数值
-系数是 $\kappa$ 的实用单位定值：取 $m=\qty{9.109e-31}{kg}$、
-$\hbar=\qty{1.055e-34}{J.s}$，以 \unit{eV} 表示 $\Phi$、以 \unit{\angstrom} 表示 $W$，
-则 $\kappa\approx\qty{1.025}{\per\angstrom}\times\sqrt{\Phi/\unit{eV}}$。\tocheck{未对照
-原页面图像：书内该步写作「$1.0252\sqrt{\Phi}\,W$」，系数末位的 2 是否为排版原样、以及
-书中 $\kappa$ 定值所用的常数取值，均未核对；本稿按标准常数取值给出 1.025。}
+其中 $\rho_{\mathrm{s}}(0,E_{\mathrm{F}})$ 为费米能级附近的表面局域态密度。注意
+式~\eqref{eq:tunneling} 的指数上是 $2\kappa W$，故有实用单位定值的是 $2\kappa$ 而不是
+$\kappa$：取 $m=\qty{9.109e-31}{kg}$、$\hbar=\qty{1.055e-34}{J.s}$，以 \unit{eV} 表示
+$\Phi$、以 \unit{\angstrom} 表示 $W$，则
+$2\kappa\approx\qty{1.025}{\per\angstrom}\times\sqrt{\Phi/\unit{eV}}$，即
+$\kappa\approx\qty{0.512}{\per\angstrom}\times\sqrt{\Phi/\unit{eV}}$。\tocheck{未对照
+原页面图像：书内该步写作「$1.0252\sqrt{\Phi}\,W$」，该系数末位与本节按所列常数算得的
+$1.024$ 之差是否属常数取值或排版原样未核对；此系数按定义属于 $2\kappa$（对应 $\kappa$
+的系数为 $0.512$），本节据此归属。}
 \end{principle}
 
 式~\eqref{eq:tunneling} 给出两个必须分开记住的结论。
 
 \textbf{（1）电流对间距指数敏感，带来原子级垂直分辨。} 取 $\Phi=\qty{4}{eV}$，由
-式~\eqref{eq:kappa} 得 $\kappa\approx\qty{1.03}{\per\angstrom}$，即指数上的
+式~\eqref{eq:kappa} 得 $\kappa\approx\qty{1.02}{\per\angstrom}$，即指数上的
 $2\kappa\approx\qty{2.05}{\per\angstrom}$。这就是本书所说的\textbf{针尖与样品间距每增加
 \qty{1}{\angstrom}，隧穿电流约衰减至 $\mathrm{e}^{-2}$（约 $1/7.4$）}；反过来，间距变化
 \qty{0.1}{\angstrom} 对应约 23\% 的电流变化。若电流测量精度为 1\%，对应间距变化
-$\Delta d=\ln(1.01)/2\kappa\approx\qty{5}{pm}$，这正是 STM 纵向灵敏度可达皮米量级的原因。
+$\Delta d=\ln(1.01)/(2\kappa)\approx0.0049$ \AA$\,=\qty{0.49}{pm}$，这正是 STM 纵向
+灵敏度可达皮米量级的原因。
 但\textbf{灵敏度不等于图像的实际纵向分辨率}：后者还受反馈环带宽、压电陶瓷迟滞与蠕变、
 电子学噪声限制，恒流模式 $z$ 通道的实用分辨率通常在 \qtyrange{0.01}{0.1}{\angstrom} 量级。
 

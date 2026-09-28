@@ -54,8 +54,8 @@ file=C:\Users\53150\Documents\deepseek-harness\default-workspace\build\main.pdf 
   p.  5  chars= 1276  ink=  8.8%  导读与方法总览
   p.  6  chars= 1011  ink=  5.5%  现代催化研究方法精要
   p.  7  chars= 1377  ink=  9.8%  第1 章物理吸附和催化剂的宏观物性测定
-  p.  8  chars=  899  ink=  5.9%  现代催化研究方法精要
-  p.  9  chars= 1665  ink=  9.7%  第1 章物理吸附和催化剂的宏观物性测定
+  p.  8  chars=  897  ink=  5.8%  现代催化研究方法精要
+  p.  9  chars= 1663  ink=  9.7%  第1 章物理吸附和催化剂的宏观物性测定
   p. 10  chars= 2095  ink= 12.9%  现代催化研究方法精要
   p. 11  chars= 2108  ink= 12.5%  第1 章物理吸附和催化剂的宏观物性测定
   p. 12  chars= 2183  ink= 12.6%  现代催化研究方法精要
@@ -65,20 +65,20 @@ file=C:\Users\53150\Documents\deepseek-harness\default-workspace\build\main.pdf 
   p. 16  chars= 1368  ink=  9.6%  现代催化研究方法精要
   p. 17  chars= 1511  ink=  9.4%  第2 章透射电子显微镜
   p. 18  chars= 1873  ink= 11.4%  现代催化研究方法精要
-  p. 19  chars= 1718  ink= 11.2%  第2 章透射电子显微镜
-  p. 20  chars= 1409  ink=  9.2%  现代催化研究方法精要
-  p. 21  chars= 2155  ink= 12.9%  第2 章透射电子显微镜
-  p. 22  chars= 2088  ink= 12.7%  现代催化研究方法精要
-  p. 23  chars= 2182  ink= 14.1%  第2 章透射电子显微镜
-  p. 24  chars= 2058  ink= 13.6%  现代催化研究方法精要
-  p. 25  chars= 2166  ink= 14.7%  第2 章透射电子显微镜
-  p. 26  chars= 2188  ink= 14.1%  现代催化研究方法精要
-  p. 27  chars= 1946  ink= 13.4%  第2 章透射电子显微镜
-  p. 28  chars= 2307  ink= 15.3%  现代催化研究方法精要
-  p. 29  chars= 2072  ink= 12.4%  第2 章透射电子显微镜
-  p. 30  chars= 1727  ink= 11.8%  现代催化研究方法精要
-  p. 31  chars= 1932  ink= 13.3%  第2 章透射电子显微镜
-  p. 32  chars= 1796  ink= 11.7%  现代催化研究方法精要
+  p. 19  chars= 1622  ink= 10.3%  第2 章透射电子显微镜
+  p. 20  chars= 1419  ink=  9.3%  现代催化研究方法精要
+  p. 21  chars= 2128  ink= 12.9%  第2 章透射电子显微镜
+  p. 22  chars= 2156  ink= 13.0%  现代催化研究方法精要
+  p. 23  chars= 2154  ink= 13.9%  第2 章透射电子显微镜
+  p. 24  chars= 2054  ink= 13.7%  现代催化研究方法精要
+  p. 25  chars= 2140  ink= 14.4%  第2 章透射电子显微镜
+  p. 26  chars= 2164  ink= 13.8%  现代催化研究方法精要
+  p. 27  chars= 2007  ink= 13.9%  第2 章透射电子显微镜
+  p. 28  chars= 2277  ink= 15.1%  现代催化研究方法精要
+  p. 29  chars= 2119  ink= 12.7%  第2 章透射电子显微镜
+  p. 30  chars= 1733  ink= 11.9%  现代催化研究方法精要
+  p. 31  chars= 1928  ink= 13.3%  第2 章透射电子显微镜
+  p. 32  chars= 1843  ink= 12.0%  现代催化研究方法精要
   p. 33  chars= 2141  ink= 15.1%  第2 章透射电子显微镜
   p. 34  chars=  637  ink=  4.2%  现代催化研究方法精要
   p. 35  chars=  718  ink=  4.8%  第3 章热分析方法
@@ -94,11 +94,11 @@ file=C:\Users\53150\Documents\deepseek-harness\default-workspace\build\main.pdf 
   p. 45  chars= 1860  ink= 12.5%  第3 章热分析方法
   p. 46  chars= 1918  ink= 12.5%  现代催化研究方法精要
   p. 47  chars= 2132  ink= 13.0%  第4 章多晶X 射线衍射分析
-  p. 48  chars= 1832  ink= 11.4%  现代催化研究方法精要
-  p. 49  chars= 2054  ink= 12.4%  第4 章多晶X 射线衍射分析
-  p. 50  chars= 1780  ink= 10.9%  现代催化研究方法精要
+  p. 48  chars= 1789  ink= 11.2%  现代催化研究方法精要
+  p. 49  chars= 2007  ink= 12.2%  第4 章多晶X 射线衍射分析
+  p. 50  chars= 1870  ink= 11.2%  现代催化研究方法精要
   p. 51  chars= 1554  ink=  8.3%  第4 章多晶X 射线衍射分析
-  p. 52  chars= 1911  ink= 10.0%  现代催化研究方法精要
+  p. 52  chars= 1912  ink= 10.1%  现代催化研究方法精要
   p. 53  chars= 1701  ink= 10.7%  第4 章多晶X 射线衍射分析
   p. 54  chars= 1982  ink= 11.0%  现代催化研究方法精要
   p. 55  chars= 1678  ink=  9.5%  第4 章多晶X 射线衍射分析
@@ -144,7 +144,7 @@ file=C:\Users\53150\Documents\deepseek-harness\default-workspace\build\main.pdf 
   p. 95  chars= 2364  ink= 12.9%  第8 章核磁共振方法
   p. 96  chars= 2002  ink= 13.2%  现代催化研究方法精要
   p. 97  chars= 1816  ink= 10.6%  第8 章核磁共振方法
-  p. 98  chars=  537  ink=  2.4%  现代催化研究方法精要
+  p. 98  chars=  786  ink=  3.6%  现代催化研究方法精要
   p. 99  chars= 2387  ink= 15.1%  第8 章核磁共振方法
   p.100  chars= 2215  ink= 13.1%  现代催化研究方法精要
   p.101  chars= 2663  ink= 15.6%  第8 章核磁共振方法
@@ -166,7 +166,7 @@ file=C:\Users\53150\Documents\deepseek-harness\default-workspace\build\main.pdf 
   p.117  chars= 1663  ink= 11.4%  第9 章表面分析技术基础
   p.118  chars= 1897  ink= 11.1%  现代催化研究方法精要
   p.119  chars= 1792  ink= 11.9%  第9 章表面分析技术基础
-  p.120  chars= 2024  ink= 11.9%  现代催化研究方法精要
+  p.120  chars= 2021  ink= 11.9%  现代催化研究方法精要
   p.121  chars= 2047  ink= 12.0%  第9 章表面分析技术基础
   p.122  chars= 2110  ink= 13.0%  现代催化研究方法精要
   p.123  chars= 1918  ink= 11.2%  第9 章表面分析技术基础
@@ -214,5 +214,5 @@ file=C:\Users\53150\Documents\deepseek-harness\default-workspace\build\main.pdf 
   p.165  chars=  810  ink=  5.9%  第12 章扫描探针显微镜与纳米光谱技术
   p.166  chars= 2337  ink=  8.0%  现代催化研究方法精要
   p.167  chars= 1177  ink=  6.6%  第12 章扫描探针显微镜与纳米光谱技术
-  p.168  chars=  754  ink=  4.7%  现代催化研究方法精要
+  p.168  chars=  760  ink=  4.8%  现代催化研究方法精要
   p.169  chars=  404  ink=  2.9%  第12 章扫描探针显微镜与纳米光谱技术

@@ -234,13 +234,15 @@ i&=i_{\mathrm{f}}-i_{\mathrm{b}}
 直接决定自由能，因此改变电势就改变了活化能。
 
 \paragraph{Butler--Volmer 模型} 电势变化改变了电子的相对能量，因而改变氧化与还原的
-活化自由能垒。以平衡电势 $E_{\mathrm{eq}}$ 为参考点，设电势正移到 $E$，电子能量下降
-$F\eta$（$\eta=E-E_{\mathrm{eq}}$），则
+活化自由能垒。\textbf{先把参考电势说清楚}：标准速率常数 $k^0$ 定义在标准（形式）电势
+$E^{0'}$ 处，因此下面先用 $E-E^{0'}$ 写标准速率常数形式，再用 Nernst 关系换算成以过电位
+$\eta=E-E_{\mathrm{eq}}$ 表示的形式。设电势正移到 $E$，电子能量下降
+$F(E-E^{0'})$，则
 
 \begin{equation}
-\Delta G_{\mathrm{a}}^\ddagger=\Delta G_{\mathrm{a}}^{0\ddagger}-(1-\alpha)F\eta,
+\Delta G_{\mathrm{a}}^\ddagger=\Delta G_{\mathrm{a}}^{0\ddagger}-(1-\alpha)F(E-E^{0'}),
 \qquad
-\Delta G_{\mathrm{c}}^\ddagger=\Delta G_{\mathrm{c}}^{0\ddagger}+\alpha F\eta
+\Delta G_{\mathrm{c}}^\ddagger=\Delta G_{\mathrm{c}}^{0\ddagger}+\alpha F(E-E^{0'})
 \label{eq:dg-eta}
 \end{equation}
 
@@ -249,14 +251,14 @@ $F\eta$（$\eta=E-E_{\mathrm{eq}}$），则
 其物理含义是：电势变化对阳极和阴极活化能垒的削弱/增强\textbf{按 $\alpha$ 与
 $1-\alpha$ 分配}，$\alpha$ 因此直接决定 Tafel 斜率。
 
-把 \equref{eq:dg-eta} 代回 Arrhenius 式，并以平衡态（$C_{\mathrm{O}}=C_{\mathrm{R}}$、
-$\eta=0$、$k_{\mathrm{f}}=k_{\mathrm{b}}=k^0$，$k^0$ 为标准速率常数）为基准归一化，
-得
+把 \equref{eq:dg-eta} 代回 Arrhenius 式，并以标准电势处
+（$E=E^{0'}$，该处 $C_{\mathrm{O}}=C_{\mathrm{R}}$、$k_{\mathrm{f}}=k_{\mathrm{b}}=k^0$，
+$k^0$ 为标准速率常数）为基准归一化，得
 
 \begin{equation}
-k_{\mathrm{f}}=k^0\exp\!\left(-\frac{\alpha F\eta}{RT}\right),
+k_{\mathrm{f}}=k^0\exp\!\left(-\frac{\alpha F(E-E^{0'})}{RT}\right),
 \qquad
-k_{\mathrm{b}}=k^0\exp\!\left(\frac{(1-\alpha)F\eta}{RT}\right)
+k_{\mathrm{b}}=k^0\exp\!\left(\frac{(1-\alpha)F(E-E^{0'})}{RT}\right)
 \label{eq:k-eta}
 \end{equation}
 
@@ -264,16 +266,27 @@ k_{\mathrm{b}}=k^0\exp\!\left(\frac{(1-\alpha)F\eta}{RT}\right)
 电流--电势特征关系式
 
 \begin{equation}
-i=FAk^0\left[C_{\mathrm{O}}\exp\!\left(-\frac{\alpha F\eta}{RT}\right)
--C_{\mathrm{R}}\exp\!\left(\frac{(1-\alpha)F\eta}{RT}\right)\right]
+i=FAk^0\left[C_{\mathrm{O}}\exp\!\left(-\frac{\alpha F(E-E^{0'})}{RT}\right)
+-C_{\mathrm{R}}\exp\!\left(\frac{(1-\alpha)F(E-E^{0'})}{RT}\right)\right]
 \label{eq:bv-first}
 \end{equation}
 
 \src{式 11-22，书内 p.816 / PDF p.304}。这是 Butler--Volmer 动力学表达式的一种形式，
-是处理电极电流与电势关系的基本手段。
+是处理电极电流与电势关系的基本手段。\textbf{参考点不能混用}：式~\eqref{eq:bv-first}
+用 $E-E^{0'}$ 才与 $k^0$ 匹配；若把它写成 $E-E_{\mathrm{eq}}$，则在
+$C_{\mathrm{O}}^*\neq C_{\mathrm{R}}^*$ 时 $\eta=0$（平衡态）会给出非零电流。
+\tocheck{未对照原页面图像：原书式（11-17）把 $E-E^{0}$ 与 $\eta$ 写在同一组式子里
+（正文只写「采用平衡电势作为电势参考点」，OCR 中该参考电势的符号不可辨），而式
+（11-20）—（11-24）使用的 $k^0$ 定义在标准电势处，二者只在
+$C_{\mathrm{O}}^*=C_{\mathrm{R}}^*$ 时相等；本稿按可自洽的 $E-E^{0'}$ 写出标准速率常数
+形式，下文再用 Nernst 关系换算为 $\eta$ 与 $i_0$ 的形式。原书该参考电势的写法未对照
+原页面图像。}
 
 \paragraph{交换电流密度与传递系数} 平衡时净电流为零、表面浓度等于本体浓度
-$C_{\mathrm{O}}^*$、$C_{\mathrm{R}}^*$，此时正逆两个方向的电流\textbf{大小相等方向
+$C_{\mathrm{O}}^*$、$C_{\mathrm{R}}^*$。把 $E=E_{\mathrm{eq}}$ 代入
+\equref{eq:bv-first}，括号为零即得本体浓度下的 Nernst 关系
+$\exp\!\left[F(E_{\mathrm{eq}}-E^{0'})/RT\right]=C_{\mathrm{O}}^*/C_{\mathrm{R}}^*$
+（单电子，即原书式 11-23）。此时正逆两个方向的电流\textbf{大小相等方向
 相反}，其值定义为交换电流 $i_0$：
 
 \begin{equation}
@@ -287,7 +300,10 @@ j_0=\frac{i_0}{A}
 量纲检查：$[FAk^0C]=(\mathrm{C.mol^{-1}})\mathrm{cm^2}(\mathrm{cm.s^{-1}})
 (\mathrm{mol.cm^{-3}})=\mathrm{A}$，成立。$i_0$ 表征催化反应过程中活化能垒的大小：
 $j_0$ 越大，同一过电位下净电流越大，\textbf{在同样的传质条件下}表现出的活性越高。
-用 $i_0$ 替代 $FAk^0$ 项后得到更常用的 Butler--Volmer 方程：
+把上述 Nernst 关系写成
+$E-E^{0'}=\eta+\dfrac{RT}{F}\ln\dfrac{C_{\mathrm{O}}^*}{C_{\mathrm{R}}^*}$ 后代入
+\equref{eq:bv-first}，并用 \equref{eq:i0} 消去 $FAk^0$，即得一般浓度比下
+\textbf{代数等价}的常用形式：
 
 \begin{equation}
 i=i_0\left[\frac{C_{\mathrm{O}}}{C_{\mathrm{O}}^*}
@@ -297,13 +313,23 @@ i=i_0\left[\frac{C_{\mathrm{O}}}{C_{\mathrm{O}}^*}
 \label{eq:bv}
 \end{equation}
 
-\src{式 11-26，书内 p.817 / PDF p.305}。
+\src{式 11-26，书内 p.817 / PDF p.305}。这一步是\textbf{经 Nernst 关系代入化简}，不是
+简单「把 $FAk^0$ 换成 $i_0$」：$i_0$ 中含 $C_{\mathrm{O}}^{*\,(1-\alpha)}
+C_{\mathrm{R}}^{*\,\alpha}$，只有代入 Nernst 关系才能把参考电势 $E^{0'}$ 换成
+$\eta=E-E_{\mathrm{eq}}$ 而保持等价；当 $C_{\mathrm{O}}^*=C_{\mathrm{R}}^*$ 时
+$E_{\mathrm{eq}}=E^{0'}$，两式逐项相同。自检：$\eta=0$ 时 \equref{eq:bv} 的括号恒为
+零，故任意本体浓度比下都有 $i=0$。
 
 \begin{keycond}
-\equref{eq:bv} 的成立条件有三条：\textbf{（i）单步骤、单电子（或写成 $n$ 电子一步）的
-基元反应}；\textbf{（ii）$C_{\mathrm{O}}^*=C_{\mathrm{R}}^*$ 且 $\eta=0$ 时正逆速率相等
-（用于定义 $k^0$ 与 $i_0$）}；\textbf{（iii）浓度项取电极表面浓度 $C_{\mathrm{O}}$、
-$C_{\mathrm{R}}$，不是本体浓度}。量纲检查：$[i]=[i_0]=\mathrm{A}$（或两侧同除 $A$
+\equref{eq:bv} 的成立条件有三条：\textbf{（i）单步骤、单电子的基元反应}——本段式
+\equref{eq:dg-eta}—\equref{eq:bv-first} 按单电子写出（$F$ 不乘 $n$，与原书式
+11-17—11-30 一致，式~\eqref{eq:current-basic} 中的 $n$ 在此取 $1$）；若推广到 $n$ 电子
+一步基元反应，各式中的 $F$ 须\textbf{同步}换成 $nF$，包括 Tafel 斜率
+$RT/(\alpha nF)$（后文传质部分的式~\eqref{eq:diff-layer} 起即按 $nF$ 写出）；
+\textbf{（ii）$k^0$ 定义在 $E=E^{0'}$ 处（该处 $C_{\mathrm{O}}=C_{\mathrm{R}}$），
+$i_0$ 定义在平衡态 $\eta=0$（任意本体浓度比，由 Nernst 关系确定 $E_{\mathrm{eq}}$）}；
+\textbf{（iii）浓度项取电极表面浓度 $C_{\mathrm{O}}$、$C_{\mathrm{R}}$，不是本体浓度}。
+量纲检查：$[i]=[i_0]=\mathrm{A}$（或两侧同除 $A$
 写成电流密度）。第三条最容易被忽略：一旦把表面浓度换成本体浓度，方程就默认了
 「传质无穷快」，此时得到的 $j_0$ 是表观值而非本征值。
 \end{keycond}
@@ -405,14 +431,21 @@ N_{\mathrm{O}}=-D_{\mathrm{O}}\left(\frac{\partial C_{\mathrm{O}}}{\partial x}\r
 
 \src{式 11-31，书内 p.818 / PDF p.306}。式中 $N_{\mathrm{O}}$ 为距电极表面 $x$ 处物质
 $\mathrm{O}$ 的流量（$\mathrm{mol.s^{-1}.cm^{-2}}$），$D_{\mathrm{O}}$ 为扩散系数
-（$\mathrm{cm^2.s^{-1}}$）。
+（$\mathrm{cm^2.s^{-1}}$）。\textbf{符号约定（本节与式~\eqref{eq:current-basic} 统一）}：
+坐标 $x$ 由电极表面指向溶液本体，$N_{\mathrm{O}}$ 为沿 $+x$ 方向的流量；电流取
+\textbf{「还原为正」}，即 $i=i_{\mathrm{f}}-i_{\mathrm{b}}$，故
+$i=-nFA\,N_{\mathrm{O}}|_{x\to0}$——还原时物质向 $-x$（朝电极）输运，$N_{\mathrm{O}}<0$，
+电流为正。
 
 \paragraph{Nernst 扩散层与极限电流} 假设电极表面存在厚度为 $\delta_{\mathrm{O}}$ 的
 静止层，$x=\delta_{\mathrm{O}}$ 以外浓度均为本体浓度 $C_{\mathrm{O}}^*$，传递到电极表面
-的物质被完全消耗，则由 Faraday 定律
+的物质被完全消耗。静止层内浓度线性上升，
+$\partial C_{\mathrm{O}}/\partial x\approx
+(C_{\mathrm{O}}^*-C_{\mathrm{O}})/\delta_{\mathrm{O}}>0$，由式~\eqref{eq:fick1} 与上述
+$i=-nFA\,N_{\mathrm{O}}$（Faraday 定律）得
 
 \begin{equation}
-\frac{i}{nFA}=-D_{\mathrm{O}}
+\frac{i}{nFA}=D_{\mathrm{O}}
 \frac{C_{\mathrm{O}}^*-C_{\mathrm{O}}}{\delta_{\mathrm{O}}}
 \label{eq:diff-layer}
 \end{equation}
@@ -421,15 +454,25 @@ $\mathrm{O}$ 的流量（$\mathrm{mol.s^{-1}.cm^{-2}}$），$D_{\mathrm{O}}$ 为
 $i_{\mathrm{t}}$：
 
 \begin{equation}
-\frac{i_{\mathrm{t}}}{nFA}=-D_{\mathrm{O}}
+\frac{i_{\mathrm{t}}}{nFA}=D_{\mathrm{O}}
 \frac{C_{\mathrm{O}}^*}{\delta_{\mathrm{O}}}
 \label{eq:il}
 \end{equation}
 
-\src{式 11-32、11-33，书内 p.819 / PDF p.307}。$i_{\mathrm{t}}$ 只表征电极表面的传质
-情况，\textbf{不含任何动力学信息}——这一点在后面每一种方法里都会再出现。
+\src{式 11-32、11-33，书内 p.819 / PDF p.307}。还原时 $C_{\mathrm{O}}^*>C_{\mathrm{O}}$，
+故 $i>0$、$i_{\mathrm{t}}>0$，与动力学式~\eqref{eq:current-basic}（$i_{\mathrm{f}}>0$ 为
+还原）以及后面的 Cottrell 式~\eqref{eq:cottrell} 同号，同时也与
+\equref{eq:tafel} 成立条件中的 $i\ll i_{\mathrm{t}}$ 自洽。若讨论的是反向的氧化过程，
+把浓度差换成 $C_{\mathrm{R}}-C_{\mathrm{R}}^*$，电流随之变号。$i_{\mathrm{t}}$ 只表征
+电极表面的传质情况，\textbf{不含任何动力学信息}——这一点在后面每一种方法里都会再出现。
 量纲检查：$[nFAD C^*/\delta]=(\mathrm{C.mol^{-1}})\mathrm{cm^2}
 (\mathrm{cm^2.s^{-1}})(\mathrm{mol.cm^{-3}})/\mathrm{cm}=\mathrm{C.s^{-1}}=\mathrm{A}$。
+\tocheck{未对照原页面图像：原书式（11-32）（11-33）写作
+$i/nFA=-D_{\mathrm{O}}(C_{\mathrm{O}}^*-C_{\mathrm{O}})/\delta_{\mathrm{O}}$
+（OCR 中负号可辨），即扩散部分取「还原为负」的取向，与式（11-16）的「还原为正」
+相反；本稿统一为还原为正，并写明 $x$ 的取向与 $i=-nFA N_{\mathrm{O}}$。其后式
+（11-36）—（11-40）只含比值 $i_{\mathrm{t}}/(i_{\mathrm{t}}-i)$，在两套取向下的数值完全
+相同，故未改动；原页面图像未对照。}
 
 \paragraph{浓差过电位的分解} 表面浓度对电极电势的影响可拆成热力学与动力学两部分。
 由 Nernst 方程，本体浓度与表面浓度对应的电势差为

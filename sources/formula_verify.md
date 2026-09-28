@@ -131,11 +131,22 @@ $10^{-3}$ 原子单层（p.586）、真空区划 $10^{-1}\ldots10^{-10}$ Pa（p.
 
 | 册 PDF 页序 | 公式 | 存疑点 |
 |---|---|---|
-| p.377 / 书内 p.891 | $I\propto U\rho_s e^{-2\kappa W}\approx U\rho_s e^{-1.0252\sqrt{\Phi}W}$ | **系数末位**：作者按标准常数算得 1.025，书中作 1.0252 |
+| p.377 / 书内 p.891 | $I\propto U\rho_s e^{-2\kappa W}\approx U\rho_s e^{-1.0252\sqrt{\Phi}W}$ | **系数归属**：书内指数上是 $2\kappa W$，故系数 1.0252 属于 $2\kappa$ 而非 $\kappa$。按标准常数算得 $2\kappa\approx1.024\sqrt{\Phi/\mathrm{eV}}\ \mathrm{Å^{-1}}$、$\kappa\approx0.512\sqrt{\Phi/\mathrm{eV}}\ \mathrm{Å^{-1}}$，与书内系数差在末位 |
 | p.378 / 书内 p.892 | WKB 积分式与 $dI/dV\propto\rho_s T$ | 积分限、正负偏压下能量宗量 $\pm eU\mp E$ 的 OCR 失真；「归一化微分电导」是否含 $I/V$ 归一化不明 |
 
-作者同时**独立复核通过**（非存疑项）：$\Phi=\qty{4}{eV}$ → $\kappa\approx\qty{1.03}{Angstrom^{-1}}$，
-间距每增 1 Å 电流降 $e^{-2}\approx1/7.4$；1% 电流精度对应 $\Delta d\approx\qty{5}{pm}$。
+**已独立复算并修正的条目**（2026-09-28，对应评审 C12-01 / C12-02）：
+
+- $\Phi=\qty{4}{eV}$ 时 $\kappa=\sqrt{2m\Phi}/\hbar\approx\qty{1.024}{Angstrom^{-1}}$，
+  故 **$2\kappa\approx\qty{2.048}{Angstrom^{-1}}$**；一般式为
+  $\kappa\approx0.512\sqrt{\Phi/\mathrm{eV}}$、$2\kappa\approx1.024\sqrt{\Phi/\mathrm{eV}}$。
+- 间距每增 1 Å 电流降 $e^{-2}\approx1/7.4$。
+- 1% 电流精度对应 $\Delta d=\ln(1.01)/(2\kappa)\approx0.0049\ \mathrm{Å}=\qty{0.49}{pm}$。
+
+> **勘误记录**：本表原先把「1% 电流 → $\Delta d\approx\qty{5}{pm}$」与
+> 「$\kappa\approx\qty{1.03}{Angstrom^{-1}}$」列为「作者独立复核通过（非存疑项）」。
+> 前者**大了十倍**（正确 0.49 pm），后者**把 $2\kappa$ 的系数记到了 $\kappa$ 头上**。
+> 2026-09-28 已按评审 C12-01 / C12-02 修正正文，并同步本表。
+> 教训：**「复核通过」一旦写进台账就成了别人的依据，正文改了台账必须同步，否则台账本身变成错误源。**
 
 ### Lead 侧图像核对尝试记录（含失败，如实记录）
 
