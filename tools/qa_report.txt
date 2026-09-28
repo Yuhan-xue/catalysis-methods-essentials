@@ -1,28 +1,27 @@
-file=build/ch06-c-check.pdf  pages=10
+file=C:\Users\53150\Documents\deepseek-harness\default-workspace\build\chk_ch11-b.pdf  pages=11
 
---- bookmarks (4) ---
-  [1] 0.1 拉曼光谱在金属氧化物催化剂中的应用  -> p.1
-  [1] 0.2 拉曼光谱在负载型催化剂中的应用  -> p.2
-  [1] 0.3 拉曼光谱在分子筛与表面吸附研究中的应用  -> p.4
-  [1] 0.4 原位拉曼反应研究  -> p.8
+--- bookmarks (2) ---
+  [1] 0.1 控制电流与整体电解研究方法  -> p.1
+  [1] 0.2 流体动力学方法  -> p.6
 
 --- fonts (7) ---
-  EMBEDDED     Type0      BGIIXC+FandolHei-Regular-Identity-H
-  EMBEDDED     Type0      BOGMOW+FandolSong-Bold-Identity-H
-  EMBEDDED     Type0      FNCLQT+FandolSong-Regular-Identity-H
-  EMBEDDED     Type0      JNTWJV+TeXGyreTermes-Regular-Identity-H
-  EMBEDDED     Type0      LHUTLF+TeXGyreTermes-Italic-Identity-H
-  EMBEDDED     Type0      XDNJCB+TeXGyreTermes-Bold-Identity-H
-  EMBEDDED     Type0      YMFWGK+TeXGyreTermesMath-Regular-Identity-H
+  EMBEDDED     Type0      CRFMSN+FandolSong-Regular-Identity-H
+  EMBEDDED     Type0      KLDALW+TeXGyreTermes-Bold-Identity-H
+  EMBEDDED     Type0      LDWEGP+TeXGyreTermesMath-Regular-Identity-H
+  EMBEDDED     Type0      QINSXA+FandolSong-Bold-Identity-H
+  EMBEDDED     Type0      RPFMNP+TeXGyreTermes-Regular-Identity-H
+  EMBEDDED     Type0      TFOCKM+FandolHei-Regular-Identity-H
+  EMBEDDED     Type0      VLABHM+FandolKai-Regular-Identity-H
 
 --- per page: chars, ink%, first line ---
-  p.  1  chars= 2226  ink= 13.9%  0.1 拉曼光谱在金属氧化物催化剂中的应用
-  p.  2  chars= 2118  ink= 14.1%  现代催化研究方法精要
-  p.  3  chars= 1912  ink= 11.8%  谢有畅等曾报道氧化物和盐类在载体表面自发分散的现象：当分散物与载体混合后，在低于其
-  p.  4  chars= 2280  ink= 15.0%  现代催化研究方法精要
-  p.  5  chars= 1970  ink= 12.0%  p.364 / PDF p.383］。表0-1 给出一些常规分子筛的𝜈s(T—O—T) 振动
-  p.  6  chars= 2572  ink= 15.1%  现代催化研究方法精要
-  p.  7  chars= 2232  ink= 14.3%  程。在低波数区，可观察到归属为硅铝骨架的一个宽谱峰（≈460 cm−1），这是典型的无定形或
-  p.  8  chars= 1993  ink= 11.2%  现代催化研究方法精要
-  p.  9  chars= 1817  ink= 12.1%  的谱峰移动且变宽、强度下降；他们认为谱峰的宽化和强度下降是由高温条件下无序度的增加和BaO2
-  p. 10  chars= 2104  ink=  9.1%  现代催化研究方法精要
+  p.  1  chars= 1759  ink=  9.3%  0.1 控制电流与整体电解研究方法
+  p.  2  chars= 2057  ink= 10.5%  现代催化研究方法精要
+  p.  3  chars= 1979  ink= 11.9%  表0-1
+  p.  4  chars= 2464  ink= 15.6%  现代催化研究方法精要
+  p.  5  chars= 2198  ink= 13.4%  条件（搅拌速度、𝑡d、温度）必须在样品与标准物之间严格一致［书内p.844 / PDF p.
+  p.  6  chars= 1643  ink= 10.5%  现代催化研究方法精要
+  p.  7  chars= 2205  ink= 12.7%  ［式11-85、11-86，书内p.848 / PDF p.336］。当对流不存在时（右端第
+  p.  8  chars= 2219  ink= 12.2%  现代催化研究方法精要
+  p.  9  chars= 1920  ink=  9.7%  0
+  p. 10  chars= 2001  ink= 12.4%  现代催化研究方法精要
+  p. 11  chars= 1611  ink=  9.9%  0.2.3 超微电极
