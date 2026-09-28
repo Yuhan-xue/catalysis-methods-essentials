@@ -1,0 +1,20 @@
+# 统一换行符处理，避免 Windows/Linux 之间反复出现「LF 将被替换为 CRLF」的噪声。
+# LaTeX 与 Python 对两种换行都能正确解析，这里只要求「入库一律 LF、检出按平台」。
+* text=auto eol=lf
+
+# 二进制文件不做任何转换
+*.pdf  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.otf  binary
+*.ttf  binary
+
+# Gitea / GitHub 语言统计：把 .tex 认成 TeX 而不是被当成纯文本
+*.tex  text diff=tex
+*.cls  text diff=tex
+*.sty  text diff=tex
+*.ps1  text
+*.py   text
+*.md   text
+*.csv  text
