@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np, pymupdf, os, json
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 PDF = r"C:\Users\53150\.dsh\attachments\v1\files\a1\a1b8bc6b3dc73c6fdec8445f6d111b9113f551727f34eb01b16150141558f62c\现代催化研究方法新编(下册) (辛勤, 罗孟飞, 徐杰) (z-library.sk, 1lib.sk, z-lib.sk).pdf"
 doc = pymupdf.open(PDF)
 out = []

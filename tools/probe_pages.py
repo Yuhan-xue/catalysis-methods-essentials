@@ -2,9 +2,8 @@
 """Probe page structure of both volumes -> UTF-8 report file."""
 import os
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
-
-
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 def load(path):
     t = open(path, encoding="utf-8").read()
     pgs = t.split("\f")

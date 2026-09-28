@@ -8,7 +8,8 @@ Also moves the existing monolithic ch01 into parts/ch01-a.tex (once).
 """
 import os, shutil
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 CH = os.path.join(ROOT, "chapters")
 PARTS = os.path.join(CH, "parts")
 os.makedirs(PARTS, exist_ok=True)

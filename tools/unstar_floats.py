@@ -8,7 +8,8 @@ Also rewrites the float-placement hint, since wide floats no longer need `t` onl
 """
 import io, os, glob, re
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 FILES = sorted(glob.glob(os.path.join(ROOT, "chapters", "**", "*.tex"), recursive=True))
 
 log = []

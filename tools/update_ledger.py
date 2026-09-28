@@ -7,7 +7,8 @@ so "done" always means "a file exists", never "someone said so".
 """
 import os, re
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 LEDGER = os.path.join(ROOT, "sources", "assignments.md")
 PARTS = os.path.join(ROOT, "chapters", "parts")
 

@@ -306,7 +306,9 @@ S2 §8.3.3，书内 p.543—544 / PDF p.35—36 的化学位移区间设定。}}
 \centering
 \footnotesize
 \setlength{\tabcolsep}{1.5pt}
-\begin{tabular}{@{}p{12mm}p{8mm}p{19mm}p{22mm}p{19mm}@{}}
+% 原五列合计仅 80 mm（版心 165 mm），最窄列装不下内容，单元格溢出 9.05 pt。
+% 版心宽度富余，加宽各列；加宽后合计约 108 mm，含列间距仍远小于版心。
+\begin{tabular}{@{}p{16mm}p{10mm}p{26mm}p{30mm}p{26mm}@{}}
 \toprule
 探针分子 & 核种 & 测什么 & $\delta$ 区间 / ppm & 定量前提与主要干扰 \\
 \midrule

@@ -2,8 +2,8 @@
 """Generate a controlled pure-text density test and report chars/page."""
 import os, re
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
-
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 SENT = ("催化剂的比表面积与孔结构决定其活性位的可接近程度，程序的升温速率与载气流速"
         "共同决定脱附峰的形状与位置，因此定量解释之前必须确认传质与再吸附是否可忽略。")
 

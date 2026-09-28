@@ -10,7 +10,8 @@ Outputs (UTF-8):
 import os, re, csv, sys, json
 import pymupdf
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, "tools", "out")
 os.makedirs(OUT, exist_ok=True)
 PDF = {

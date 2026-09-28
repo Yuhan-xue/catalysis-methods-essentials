@@ -6,7 +6,8 @@ unbreakable inline-math runs.
 """
 import re, sys, os
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 FS = re.compile(r"\\fontsize\{([0-9.]+)\}\{([0-9.]+)\}")
 
 targets = sys.argv[1:] or [os.path.join(ROOT, "chapters", "parts", "ch02-a.tex")]

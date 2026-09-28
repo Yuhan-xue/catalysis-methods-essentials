@@ -7,7 +7,8 @@ line usually contains prose between two math spans.
 """
 import re, glob, os
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 FILES = sorted(glob.glob(os.path.join(ROOT, "chapters", "parts", "*.tex"))) + \
         sorted(glob.glob(os.path.join(ROOT, "chapters", "*.tex")))
 

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import csv
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 rows = list(csv.DictReader(open(ROOT + r"\tools\out\folio_read.csv", encoding="utf-8")))
 out = []
 for r in rows:

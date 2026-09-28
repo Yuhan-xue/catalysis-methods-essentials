@@ -72,7 +72,9 @@ $\qty{1}{mm^3}$ 晶体中约有 $10^{19}$ 个这样的重复单元。这个数�
 \caption{七个晶系、布拉维点阵型式与特征对称元素（压缩表）}
 \label{tab:crystal-systems}
 {\srcsize
-\begin{tabularx}{\columnwidth}{@{}lXX@{}}
+% 原为 @{}lXX@{}：首列 l 吃掉自然宽度，两个 X 列被挤到低于最小内容宽度（36.0 pt overfull）。
+% 改为定宽 p{24mm}，首列可折行，宽度留给 X 列。
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}p{24mm}XX@{}}
 \toprule
 晶系 & 晶胞参数与点阵型式 & 特征对称元素（点群） \\
 \midrule
@@ -389,7 +391,7 @@ $\boldsymbol{s}$。晶体在倒易格点 $\boldsymbol{H}_{hkl}$ 处产生衍射�
 
 \begin{equation}
 2d_{hkl}\sin\theta=n\lambda \qquad (n=1,2,3,\dots)
-\label{eq:bragg}
+\label{eq:bragg-ch04}
 \end{equation}
 \begin{keycond}
 \textbf{Bragg 方程的成立条件}：（1）\textbf{弹性相干散射}——散射前后波长不变，散射体
@@ -409,7 +411,7 @@ d_{hkl}=\frac{a}{\sqrt{h^{2}+k^{2}+l^{2}}}.
 \label{eq:cubic-d}
 \end{equation}
 式~\eqref{eq:cubic-d} 的成立条件是晶胞为\textbf{立方}（$a=b=c$，$\alpha=\beta=
-\gamma=90^{\circ}$）。把式~\eqref{eq:cubic-d} 代入式~\eqref{eq:bragg} 得到最常用的工作
+\gamma=90^{\circ}$）。把式~\eqref{eq:cubic-d} 代入式~\eqref{eq:bragg-ch04} 得到最常用的工作
 公式
 \begin{equation}
 \sin^{2}\theta=\frac{\lambda^{2}}{4a^{2}}\,(h^{2}+k^{2}+l^{2}).
@@ -580,7 +582,7 @@ $F(hkl)\equiv0$ 时}，其后果是\textbf{系统性缺失}（整族反射全无
 \begin{table}[htbp]
 \centering
 \caption{常见点阵与基元的系统消光条件（$n$ 为整数）}
-\label{tab:extinction}
+\label{tab:extinction-ch04}
 {\srcsize
 \begin{tabularx}{\columnwidth}{@{}lXX@{}}
 \toprule
@@ -596,7 +598,7 @@ NaCl 型（$cF$ $+$ 双原子基元） & $h,k,l$ 全奇或全偶 & $h,k,l$ 奇�
 \end{table}
 
 \begin{pitfall}
-表~\ref{tab:extinction} 第 3 行与第 4、5 行是同一 $cF$ 点阵下的不同基元，消光规律却
+表~\ref{tab:extinction-ch04} 第 3 行与第 4、5 行是同一 $cF$ 点阵下的不同基元，消光规律却
 不同：\textbf{把「$cF$ 就一定全奇全偶」当成本质规律，会误判金刚石型与 NaCl 型结构}。
 同理，$cI$ 点阵的 $h+k+l$ 奇数缺失只说明「点阵带心」，要确定空间群还必须把滑移面
 （$a$、$b$、$c$、$n$、$d$、$e$）与螺旋轴引起的\textbf{条件消光}一并列出——只知道「有

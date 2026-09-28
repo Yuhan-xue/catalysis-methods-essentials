@@ -4,7 +4,8 @@ title, against the mapped book page.  Also compare covers numerically."""
 import re, csv, glob
 import numpy as np, pymupdf
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 PDF_UP = glob.glob(r"C:\Users\53150\.dsh\attachments\v1\files\9f\*\*.pdf")[0]
 PDF_DN = glob.glob(r"C:\Users\53150\.dsh\attachments\v1\files\a1\*\*.pdf")[0]
 

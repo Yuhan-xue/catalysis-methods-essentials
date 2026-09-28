@@ -2,7 +2,8 @@
 """How densely is the UP offset actually sampled?  Largest gap between independent
 observations (bitmap folio reads + TOC section anchors)."""
 import csv
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 reads = set()
 for r in csv.DictReader(open(ROOT + r"\tools\out\folio_read.csv", encoding="utf-8")):
     if r["vol"] == "up":

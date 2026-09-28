@@ -220,7 +220,7 @@ $10^{6}$ 以上；而分辨率由加速电压（电子波长）与物镜球差$C
 加强形成衍射波。三维晶体对电子的散射能力用\textbf{结构因子}
 $F(hkl)$ 描述，它等于单胞中所有原子散射因子乘以相位因子之和；
 衍射强度正比于结构因子模的平方：$I(hkl)\propto|F(hkl)|^{2}$。只有 $F(hkl)\neq 0$ 的
-晶面才可能给出衍射束，这直接引出\textbf{消光规律}（表~\ref{tab:extinction}）。
+晶面才可能给出衍射束，这直接引出\textbf{消光规律}（表~\ref{tab:extinction-ch02}）。
 \src{S1 §2.2.2，书内 p.96、p.99 / PDF p.115、p.118}
 
 \paragraph{Bragg 方程}
@@ -228,13 +228,13 @@ $F(hkl)$ 描述，它等于单胞中所有原子散射因子乘以相位因子�
 晶面族上，入射角与反射角相等且入射线、反射线、晶面法线共面时，各晶面的散射波
 相干加强：
 
-\begin{equation}\label{eq:bragg}
+\begin{equation}\label{eq:bragg-ch02}
 n\lambda=2\,d_{hkl}\sin\theta_{hkl}
 \end{equation}
 
 其中 $n$ 为衍射级数（衍射指数），$\theta_{hkl}$ 为该晶面族的 Bragg 角，即衍射方向。
 \begin{keycond}
-式~\eqref{eq:bragg} 的成立条件：\textbf{（i）}样品在照射体积内具有长程有序的
+式~\eqref{eq:bragg-ch02} 的成立条件：\textbf{（i）}样品在照射体积内具有长程有序的
 周期结构（单晶或足够大的晶粒）；\textbf{（ii）}晶面取向与入射束恰好满足该角度关系；
 \textbf{（iii）}散射为弹性（相干）散射，波长在散射前后不变。原子呈无序排列时
 散射不遵从 Bragg 条件，出现弥散散射（非 Bragg 散射）；样品变厚时出现动力学效应，
@@ -282,7 +282,7 @@ $\Rightarrow$ 球面在倒易原点附近\textbf{近似为平面}。因此单张
 \begin{table}[htbp]
 \centering
 \caption{几种常见晶体结构的消光规律（$F$ 为结构因子，$n$ 为整数）}
-\label{tab:extinction}
+\label{tab:extinction-ch02}
 {\srcsize
 \begin{tabularx}{\columnwidth}{@{}lXl@{}}
 \toprule
@@ -340,7 +340,11 @@ $L\lambda$ 必须用\textbf{已知结构的标准样品}实测标定，不能直
 \caption{衍射花样的形态与可读出的样品信息}
 \label{tab:pattern-read}
 {\srcsize
-\begin{tabularx}{\columnwidth}{@{}lXX@{}}
+% 原为 @{}lXX@{}：首列 l 吃掉自然宽度，两个 X 列被挤到低于最小内容宽度（29.8 pt overfull）。
+% 改为定宽 p{24mm}，首列可折行，宽度留给 X 列。
+% tabularx 无法把 X 列压到其最小内容宽度以下；实测该表最小宽度超版心 29.8 pt。
+% 改为显式 p{} 列：24+36+88 = 148 mm，加列间距约 156 mm，小于版心 165 mm。
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{24mm}>{\raggedright\arraybackslash}p{36mm}>{\raggedright\arraybackslash}p{88mm}@{}}
 \toprule
 花样形态 & 对应的样品状态 & 可读出 / 不可读出 \\
 \midrule
@@ -355,7 +359,7 @@ $L\lambda$ 必须用\textbf{已知结构的标准样品}实测标定，不能直
 斑点形状偏离圆点 & 形貌三维受限（片状试样平行入射束、一维纳米结构） & 提示存在形状效应；
 分析纳米材料时须纳入考虑 \\
 \bottomrule
-\end{tabularx}}
+\end{tabular}}
 \end{table}
 
 \begin{measure}

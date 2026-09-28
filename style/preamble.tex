@@ -116,14 +116,15 @@
 % \@float 覆盖 figure/table，\@dblfloat 覆盖 figure*/table*。
 \usepackage{etoolbox}
 \makeatletter
-\pretocmd{\@float}{\sloppy}{}{\PackageWarning{dsh}{could not patch \string\@float}}
-\pretocmd{\@dblfloat}{\sloppy}{}{\PackageWarning{dsh}{could not patch \string\@dblfloat}}
+% 【注意】\sloppy 会把 \emergencystretch 重置为 3em，比导言区全局设的 5em 还小，
+% 于是「加 \sloppy 反而更容易 overfull」。所以每次 \sloppy 之后都要重设回来。
+\pretocmd{\@float}{\sloppy\emergencystretch=10em}{}{\PackageWarning{dsh}{could not patch \string\@float}}
+\pretocmd{\@dblfloat}{\sloppy\emergencystretch=10em}{}{\PackageWarning{dsh}{could not patch \string\@dblfloat}}
 \makeatother
 % 表格单元同样需要：窄列里含较长行内公式或西文串时，单元格内容会顶出列宽。
-% 实测 ch02-a / ch04-a / ch08-b 三处 overfull（9—36 pt）都在表格段落里。
-\AtBeginEnvironment{tabular}{\sloppy}
-\AtBeginEnvironment{tabularx}{\sloppy}
-\AtBeginEnvironment{xltabular}{\sloppy}
+\AtBeginEnvironment{tabular}{\sloppy\emergencystretch=10em}
+\AtBeginEnvironment{tabularx}{\sloppy\emergencystretch=10em}
+\AtBeginEnvironment{xltabular}{\sloppy\emergencystretch=10em}
 \captionsetup[sub]{font=small,labelfont=bf,labelsep=quad}
 
 % 跨栏浮动体位置修正（twocolumn 下双栏浮动默认只能置顶）

@@ -11,7 +11,8 @@ Matching is longest-form-first so that e.g. "比表面积" does not also count a
 import re, glob, os, io, sys
 from collections import defaultdict
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 # 控制台是 GBK：中文 print 出来会被就地转码成乱码，再用 Out-File 存成 UTF-8 就永久损坏。
 # 因此本脚本自己写 UTF-8 报告文件，stdout 只输出 ASCII 统计。
 OUT = os.path.join(ROOT, "tools", "term_audit.txt")

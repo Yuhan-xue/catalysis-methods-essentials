@@ -7,7 +7,8 @@ and cannot silently drift.  Mapping comes from tools/pagemap_lib.py
 """
 import os, sys
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 import pagemap_lib as pm
 

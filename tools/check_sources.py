@@ -9,7 +9,8 @@ Checks:
 """
 import re, glob, os, sys
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 FILES = sorted(glob.glob(os.path.join(ROOT, "chapters", "parts", "*.tex"))) + [
     os.path.join(ROOT, "chapters", n) for n in
     ("ch00-intro.tex", "ch13-synthesis.tex", "ch90-backmatter.tex")

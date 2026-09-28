@@ -10,7 +10,8 @@ if you need the Chinese notes.
 """
 import csv, os, sys
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 FILES = {"up": "sources/page_map_up.csv", "down": "sources/page_map_down.csv"}
 
 

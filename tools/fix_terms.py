@@ -11,8 +11,8 @@ Replacements use a negative lookahead so that e.g. 比表面 does not match insi
 """
 import re, io, os, glob
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
-
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 RULES = [
     # (file glob, regex, replacement, canonical form)
     ("chapters/parts/ch04-a.tex", r"X射线", "X 射线", "X 射线（与 CJK 间加空格，与全书一致）"),

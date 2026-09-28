@@ -14,7 +14,8 @@ Page-mapping basis (verified by chapter page-count arithmetic, see sources/page_
 """
 import os, re
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 TXT = os.path.join(ROOT, "sources", "text")
 
 UP_RANGES = {1: (20, 103), 2: (104, 187), 3: (188, 237), 4: (238, 319),

@@ -12,7 +12,8 @@ it loud.
 """
 import os, re, sys
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 PARTS = os.path.join(ROOT, "chapters", "parts")
 
 EXPECT = {

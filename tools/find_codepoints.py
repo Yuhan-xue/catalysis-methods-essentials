@@ -2,7 +2,8 @@
 """Locate exact code points that the build reports as missing glyphs."""
 import glob, os
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 TARGETS = {
     0x00B5: "MICRO SIGN (safe, Termes has it)",
     0x03BC: "GREEK SMALL LETTER MU",

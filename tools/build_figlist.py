@@ -19,7 +19,8 @@ Output: sources/figure_table_list.csv  (+ a Markdown summary)
 """
 import os, re, glob, csv
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 PARTS = os.path.join(ROOT, "chapters", "parts")
 
 FILES = sorted(glob.glob(os.path.join(PARTS, "*.tex"))) + [

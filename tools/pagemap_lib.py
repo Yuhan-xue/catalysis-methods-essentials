@@ -12,8 +12,8 @@ Fallback only where the CSVs carry no numeric entry:
 """
 import csv, os
 
-ROOT = r"C:\Users\53150\Documents\deepseek-harness\default-workspace"
-
+import os as _os
+ROOT = _os.path.dirname(_os.path.dirname(_os.path.abspath(__file__)))
 DN_SEG = [(18, 507), (19, 508), (60, 509), (225, 510),
           (226, 511), (297, 512), (372, 513), (373, 514)]
 UP_OFF = 19
