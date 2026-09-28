@@ -1,0 +1,833 @@
+% ================================================================
+%  chapters/parts/ch10-a.tex
+%  第 10 章  多相催化反应动力学（分片 a）
+%  源：S2（下册）第 10 章，书内 p.735—768 / PDF p.225—257
+%  覆盖：10.1 一般动力学概念；10.2 吸附和多相催化反应速率方程
+%  未覆盖：10.3 及以后（模型建立与检验、回归实例、非均匀表面）→ 分片 b/c
+% ================================================================
+
+\chapterstart{多相催化反应动力学}%
+{本章导读：多相催化动力学最终要交付一个能用的速率方程，而方程的形式只由两件事决定——
+哪一步最慢（速率控制步骤，RDS），以及吸附平衡如何把表面覆盖度换算成流体相浓度。分片 a
+先建立可测的宏观量（化学计量数、反应度、速率、转换频率、理想反应器积分式），再引入吸附
+等温方程与 RDS，推出双曲线式与幂式两类速率方程，并说明表观活化能为何不等于真实活化能。
+模型检验、传递过程与测定方法见后续分片。}
+\label{ch:10}
+
+\subsection{一般动力学概念}
+
+\begin{probout}
+化学动力学研究一个化学物种转化为另一物种的\textbf{速率}与\textbf{机理}。在多相催化中，
+「速率」指单位时间、单位反应空间（含催化剂量）内某反应物的消耗量或某产物的生成量；
+「机理」指达成该反应的全部基元步骤序列——不仅包括表面上的化学变化，还包括吸附、脱附
+和相间／粒内传递。因此多相催化速率方程比匀相多两层结构：\textbf{传递是否限制}，以及
+\textbf{表面覆盖度如何随流体相组成变化}。本分片要回答三个问题：速率的可测定义是什么、
+RDS 假设如何把覆盖度翻译成浓度依赖、以及为什么同一套数据能被几个机理同时拟合。
+\end{probout}
+
+对一个化学物种，从流体到产物要经历「相间扩散 → 粒内扩散 → 吸附 → 表面反应 → 脱附 →
+粒内扩散 → 相间扩散」。把其中的\textbf{化学变化基元步骤序列}称为历程，把\textbf{含吸附、
+脱附与传递过程的完整序列}称为机理。传递过程是否构成阻力，由后续分片讨论；本分片只在
+「表面过程为唯一阻力」的假设下展开。\src{S2 第 10 章引言，书内 p.737 / PDF p.226}
+
+从动力学角度，有工业意义的多相催化反应可分为消除反应（脱氢、脱水、裂化等）、双组元加成
+反应（加氢、氧化、歧化、烃化等）和多组元加成反应（氨氧化、氧氯化、羰基合成等）三类；
+它们本身是简单反应，但在同一催化剂上常以不同程度同时或相继进行，构成\textbf{连串}、
+\textbf{平行}或\textbf{连串-平行}的复杂反应网络。组分越多，动力学解析越难；而任意简化
+又会使模型面目全非——这是本章始终要权衡的一对矛盾。\src{S2 §10 引言，书内 p.737—739 /
+PDF p.226—228}
+
+\subsubsection{化学计量方程、基元反应与反应途径}
+
+任何化学反应（总包反应或基元步骤）都可写成
+\begin{equation}
+\nu_1\mathrm{B}_1+\nu_2\mathrm{B}_2+\cdots \rightleftharpoons
+\nu_3\mathrm{B}_3+\nu_4\mathrm{B}_4+\cdots
+\quad\text{或}\quad \sum_i \nu_i\mathrm{B}_i=0
+\label{eq:stoi}
+\end{equation}
+式中 $\nu_i$ 为组分 $\mathrm{B}_i$ 的化学计量数：$\nu_i>0$ 为产物，$\nu_i<0$ 为反应物。
+\src{S2 §10.1.1，书内 p.739 / PDF p.228，式(10-1)}
+
+\textbf{化学计量方程本身不能说明分子水平上发生了什么，除非它写的是基元步骤。}对基元
+反应，计量数固定且必须按分子水平实际发生的过程书写。例如氧分子在活性位上的解离吸附：
+
+\begin{equation}
+\mathrm{O_2}+2* \rightleftharpoons 2\,\mathrm{O}{*}
+\qquad\text{不能写作}\qquad
+\tfrac{1}{2}\mathrm{O_2}+2* \rightleftharpoons \mathrm{O}{*}
+\label{eq:elem}
+\end{equation}
+式中 $*$ 为表面活性位。后一种写法在计量上等价，但从机理上无意义——它把一个双位解离
+过程写成了单位过程。\src{S2 §10.1.2，书内 p.739 / PDF p.228}
+
+催化剂通过一组基元反应把反应物转化为产物、自身又回到初始状态，这一闭合循环称为
+\textbf{催化循环}；循环中各基元步骤加和而成的总反应称为\textbf{总包反应}；基元步骤的
+顺序称为\textbf{反应途径}（反应序列）。三者的可测性不同：\textbf{总包反应的反应物与产物
+都在流体中，是可测的；基元步骤与中间物种通常不可直接测}，只能靠动力学与谱学证据推断。
+
+\subsubsection{反应度、反应速率与速率方程}
+
+对式~\eqref{eq:stoi}，组分 $\mathrm{B}_i$ 的反应度定义为
+
+\begin{equation}
+\dd\xi_i=\nu_i^{-1}\dd n_i
+\qquad\Longrightarrow\qquad
+\frac{\dd\xi_i}{\dd t}=\nu_i^{-1}\frac{\dd n_i}{\dd t}
+\label{eq:xi}
+\end{equation}
+式中 $n_i$ 为 $\mathrm{B}_i$ 的物质的量；$\dd\xi_i$ 可正可负，视 $\nu_i$ 的正负而定。
+反应速率 $r_i$ 定义为反应度对时间的导数除以反应空间：
+
+\begin{equation}
+r_i=\frac{1}{Q}\frac{\dd\xi_i}{\dd t}
+=f(k,T,c_i)=f(k,T,p_i)
+\label{eq:rate-def}
+\end{equation}
+式中 $Q$ 为催化剂的质量、体积或比表面积；相应地 $r_i$ 是单位质量、单位体积或单位比表面积
+上的\textbf{比速率}。$Q$ 的选择决定了 $r$ 的数值与量纲，也决定了速率常数 $k$ 的量纲——
+\textbf{不同 $Q$ 基准下的 $k$ 不可直接比较}。式~\eqref{eq:rate-def} 表达了速率与温度、
+浓度的函数关系，称为\textbf{速率方程}（微分表达式）；若表达的是接触时间、温度与转化率、
+生成率之间的关系，则称为\textbf{积分表达式}。\src{S2 §10.1.3，书内 p.739—740 /
+PDF p.228—229，式(10-2)—(10-5)}
+
+对封闭系统的均相反应，$Q$ 即反应体积 $V$，速率是浓度的幂函数：
+\begin{equation}
+r_i=\frac{1}{\nu_i}\frac{\dd c_i}{\dd t}=k\prod_i c_i^{m_i}
+\label{eq:power}
+\end{equation}
+式中 $k$ 只是温度的函数，与浓度无关；$m_i$ 为对组分 $\mathrm{B}_i$ 的\textbf{反应级数}，
+可为整数或分数、正数或负数，也可为零。式~\eqref{eq:power} 形式的速率方程称为
+\textbf{幂式速率方程}。\src{S2 §10.1.3，书内 p.740 / PDF p.229，式(10-6)、式(10-7)}
+
+\begin{keycond}
+式~\eqref{eq:rate-def} 的用法有两条硬约束。（1）\textbf{必须声明 $Q$ 基准}：单位质量、
+单位体积还是单位比表面积；否则「速率」数值无意义。（2）\textbf{必须声明反应度或转化率的
+测量点}：多相催化中速率随转化率变化，同一个催化剂在不同转化率下给出不同的 $r$。只有在
+转化率足够小（近似初始速率）时，$r$ 才近似为组成的单一函数。
+\end{keycond}
+
+\subsubsection{Arrhenius 定律、活化能与表观活化能}
+
+\begin{principle}
+\textbf{Arrhenius 定律。}单一基元反应的速率常数服从
+\begin{equation}
+k=A_0\exp\!\left(-\frac{E}{RT}\right)
+\label{eq:arrh}
+\end{equation}
+式中 $A_0$ 为频率因子（指前因子），$E$ 为活化能。\textbf{成立条件}：$E$ 在所考察温度区间
+内近似为常数，且反应按同一基元步骤进行。\textbf{量纲检查}：$\exp(-E/RT)$ 无量纲，故 $A_0$
+与 $k$ 同量纲；$k$ 的量纲由速率方程形式与 $Q$ 基准共同决定（例如一级反应取 $Q=V$ 时
+$k$ 为 $\mathrm{s^{-1}}$；取 $Q=$ 催化剂质量时为 $\mathrm{m^3{\cdot}g^{-1}{\cdot}s^{-1}}$）。
+\textbf{因此比较活化能时必须先统一速率方程形式与 $Q$ 基准}，否则比的是两个不同的量。
+\end{principle}
+
+对由一系列基元步骤构成的多相催化反应，\textbf{整个反应的速率常数仍符合 Arrhenius 定律}，
+但此时 $A_0$ 称为指前因子、$E$ 称为\textbf{表观活化能}。动力学参数一般指速率常数、反应
+级数、指前因子和活化能（表观活化能）。\src{S2 §10.1.3，书内 p.740 / PDF p.229，式(10-8)}
+
+最稳妥的表观活化能定义是 Arrhenius 图的\textbf{局部斜率}：
+\begin{equation}
+E_{\mathrm{app}}\equiv -R\,\frac{\partial \ln r}{\partial (1/T)}\Bigg|_{c_i\ \text{恒定}}
+\label{eq:eapp-def}
+\end{equation}
+把 $E_{\mathrm{app}}$ 写成式~\eqref{eq:arrh} 那样的单一常数，本身就是一个假设。它何时成立、
+何时失效，见 §\ref{sssec:eapp}。
+
+\subsubsection{转换数与转换频率（TOF）}
+
+\begin{principle}
+\textbf{转换数（turnover number，TON）}：通过催化循环发生的总包反应次数，
+\begin{equation}
+\mathrm{TON}=\xi N_{\mathrm A}
+\label{eq:ton}
+\end{equation}
+式中 $\xi$ 为在催化剂上转化的物质的量，$N_{\mathrm A}$ 为阿伏伽德罗常量。于是反应速率可写作
+$v=\dd(\mathrm{TON})/\dd t$。\textbf{转换频率（turnover frequency，TOF）}：在给定温度、
+压力、反应物比率及一定反应度下，单位时间内单位活性位上发生的转换数，
+\begin{equation}
+\mathrm{TOF}=\frac{1}{S}\frac{\dd(\mathrm{TON})}{\dd t},
+\qquad S=[L]\,A
+\label{eq:tof}
+\end{equation}
+式中 $S$ 为实验中起作用的活性位数，$[L]$ 为活性位密度（单位面积上的活性位数），$A$ 为
+催化剂的总活性表面积。\textbf{量纲检查}：$\mathrm{TON}$ 若以分子数计，$S$ 也须以活性位
+个数计，$\mathrm{TOF}$ 的量纲为 $\mathrm{s^{-1}}$；若两者都改用 mol 基准，比值不变，仍为
+$\mathrm{s^{-1}}$。但\textbf{不可一个用 mol、一个用个数}，那样会差 $N_{\mathrm A}$ 倍。
+\end{principle}
+
+TOF 的优点是其量纲为时间的倒数，便于不同研究者的结果互相比较。\textbf{但可比性有前提，
+缺一条就不能比。}
+
+\begin{measure}
+\textbf{TOF 的测量与报告条件。}（1）\textbf{活性位数 $S$ 必须由化学吸附滴定测定}
+（\ce{H2}、\ce{O2}、\ce{CO} 脉冲吸附或选择性化学吸附），且滴定本身要独立证明化学计量比
+（H/M、O/M、CO/M）；用 BET 面积或总表面积推算 $S$，等于把「几何面积」当作「活性位数」，
+TOF 随之失去意义。（2）\textbf{必须声明全部反应条件}——温度、压力、反应物比率、反应度或
+转化率；TOF 是速率而不是速率常数。（3）\textbf{必须取微分（低转化率）条件}：若存在内、外
+扩散限制或转化率过高，测到的是被传递过程和产物抑制修饰过的表观速率，TOF 被系统性压低。
+（4）\textbf{活性位的定义在样品间要一致}：不同晶面、不同尺寸的活性位本征 TOF 不同，实测值
+是\textbf{平均值}。活性位的计数方法与化学吸附滴定的实验细节见\chapref{ch:05}；本分片只
+使用其结果，不重复推导。\src{S2 §10.1.4，书内 p.740—741 / PDF p.229—230，式(10-9)—(10-12)}
+\end{measure}
+
+\begin{pitfall}
+\textbf{把 TOF 当作速率常数用。}TOF 是速率，随压力、组成和覆盖度变化。文献中「催化剂 A 的
+TOF 是 B 的 5 倍」这类比较，只有在同温度、同分压、同转化率、同活性位计数方法下才成立。
+另一常见误用是把 TOF 与转换率（conversion）混为一谈：前者是单位活性位的速率，后者是
+反应物的转化分数，两者量纲与含义都不同。
+\end{pitfall}
+
+\subsubsection{碰撞理论与过渡态理论}
+
+两个理论都想为式~\eqref{eq:arrh} 中的 $A_0$ 与 $E$ 找理论根据，但适用范围都很有限。
+
+\textbf{碰撞理论}（20 世纪 20 年代末，Lewis、Polanyi 等）把分子视为刚性圆球。$\mathrm{B}_1$
+与 $\mathrm{B}_2$ 的碰撞次数为
+\begin{equation}
+Z=c_1c_2\sigma_{12}^{2}
+\left(\frac{8\pi RT\,(M_1+M_2)}{M_1M_2}\right)^{1/2}
+\label{eq:coll}
+\end{equation}
+式中 $c_i$ 为单位体积中 $\mathrm{B}_i$ 的分子数，$M_i$ 为相对分子质量，$\sigma_{12}$ 为碰撞中
+两分子的有效直径。速率等于碰撞数乘以能量在 $E$ 以上的分子比例
+$f_{\mathrm c}=\exp(-E/RT)$，与 $r=kc_1c_2$ 对比即得 $A_0$。\textbf{量纲检查}：$c$ 为
+$\mathrm{m^{-3}}$、$\sigma$ 为 $\mathrm{m}$、$(M_1+M_2)/(M_1M_2)$ 为
+$\mathrm{mol{\cdot}kg^{-1}}$，与 $RT$ 相乘开方后为 $\mathrm{m{\cdot}s^{-1}}$，故 $Z$ 的量纲
+为 $\mathrm{m^{-3}{\cdot}s^{-1}}$，自洽。该理论对少数双分子气体反应成功，但对很多反应预测
+的 $A_0$ 比实测值高几个数量级。\src{S2 §10.1.5，书内 p.741—742 / PDF p.230—231，
+式(10-13)—(10-17)}\tocheck{未对照原页面图像：式~\eqref{eq:coll} 的 OCR 作 $\sigma_{12}$
+而非 $\sigma_{12}^{2}$；按量纲与标准形式应为 $\sigma_{12}^{2}$，此处按标准形式重建。}
+
+\textbf{过渡态理论}（20 世纪 30 年代末）认为反应经碰撞生成过渡态
+$(\mathrm{B}_1\mathrm{B}_2)^{*}$，它与反应物处于热力学平衡，其分解为控速步骤，分解频率
+$f_{\mathrm t}=k_{\mathrm B}T/h$，故 $r=(k_{\mathrm B}T/h)[\mathrm{B}_1\mathrm{B}_2]^{*}$。
+把过渡态浓度按平衡式代入并与式~\eqref{eq:arrh} 对比，可得频率因子的理论表达式：
+\begin{equation}
+A_0=\frac{k_{\mathrm B}T}{h}\exp\!\left(1-\Delta n+\frac{\Delta S^{*}}{R}\right)
+\label{eq:tst}
+\end{equation}
+式中 $k_{\mathrm B}$ 为玻尔兹曼常量，$h$ 为普朗克常量，$\Delta S^{*}$ 为过渡络合物与反应物
+之间的熵差，$\Delta n$ 反映活化过程中分子数的变化。
+\tocheck{未对照原页面图像：式~\eqref{eq:tst} 中 $(1-\Delta n)$ 一项的符号与 $\Delta n$ 的
+基准（原书正文写作「与反应物和产物的分子数之差」，与式(10-20) 中
+$\Delta H^{*}=E-RT+\Delta nRT$ 的活化过程基准不一致）无法从 OCR 确认，此处按
+「$\Delta n=$ 过渡态分子数 $-$ 反应物分子数」重建。}\textbf{理论上可由过渡态构型计算
+$\Delta H^{*}$ 与 $\Delta S^{*}$ 从而得到 $A_0$ 与 $E$，但仅对简单分子可行}；对结构复杂的
+反应尚受很大限制，对多相催化反应更只能给出定性理解。\src{S2 §10.1.5，书内 p.742—743 /
+PDF p.231—232，式(10-18)—(10-21)}
+
+\subsubsection{理想反应器中的反应速率}
+
+反应器中各点的反应速率并不相同，可观测的总包速率是各点速率（point rate）的集合，因此
+\textbf{动力学方程与反应器类型绑定}。化学工程学按停留时间分布建立两类理想反应器模型：
+连续搅拌釜式反应器（CSTR）与活塞流反应器（PFR）。\src{S2 §10.1.6，书内 p.743 /
+PDF p.232}
+
+\textbf{CSTR} 的基本假设是：反应器内流体粒子理想混合，浓度与温度均匀；出口流体参数与
+器内物料完全相同。故定态下反应速率处处相等，
+\begin{equation}
+r=\frac{n_0-n_{\mathrm f}}{V/F}=\frac{n_0-n_{\mathrm f}}{\tau}
+\label{eq:cstr}
+\end{equation}
+式中 $n_0$、$n_{\mathrm f}$ 为单位质量进、出反应器物流中关键组分的摩尔数，$F$ 为单位时间
+进料质量，$V$ 为反应器容量，$\tau$ 为空时。这是\textbf{代数方程，不存在积分问题}——这是
+CSTR 在动力学测定中最大的优点。
+
+\textbf{PFR} 的基本假设是：流体微元以相同线速度沿轴向运动、停留时间相同、流动方向上无
+混合，同一横截面上参数相等。对体积元 $\dd V$ 作物料衡算得 $r\,\dd V=F\,\dd x$，即
+\begin{equation}
+r=\frac{\dd x}{\dd(V/F)},
+\qquad
+\frac{V}{F}=\int_0^{x}\frac{\dd x}{r}
+\label{eq:pfr}
+\end{equation}
+式中 $x$ 为单位进料质量的 $\mathrm{B}$ 转化摩尔数。催化反应器更多用催化剂重量微元
+$\dd W$，相应有 $r\,\dd W=F\,\dd x$ 与 $W/F=\int_0^x\dd x/r$。
+\src{S2 §10.1.6，书内 p.743—744 / PDF p.232—233，式(10-22)—(10-27)}
+
+\begin{keycond}
+理想反应器模型的三条边界。（1）\textbf{等温}：非等温床层中 $T$ 沿轴向变化，$k$ 随之变化，
+式~\eqref{eq:pfr} 必须与能量衡算联立。（2）\textbf{无返混、无沟流}：固定床在管径／粒径比
+过小或存在壁效应时偏离活塞流假设。（3）\textbf{无内外扩散限制}：否则测得的不是表面反应
+速率，式~\eqref{eq:pfr} 积分得到的是表观参数。传递过程的多相催化动力学见后续分片。
+\end{keycond}
+
+\subsubsection{活塞流管式反应器中简单反应的积分式速率方程}
+
+工业上大多数多相催化过程在活塞流管式反应器中进行，故式~\eqref{eq:pfr} 的积分式是本章最
+常用的工具。对一级不可逆单组元反应 $r_1=kp_1$，按理想气体处理有 $p_1=(n_1/n_{\mathrm t})p$；
+若反应中摩尔数显著改变，则 $n_{\mathrm t}=n_{\mathrm t0}(1+\omega x)$、$n_1=n_{10}-x$，其中
+$\delta$ 为每转化一摩尔所增加的摩尔数、$\omega=\delta/n_{\mathrm t0}$。代入积分得
+
+\begin{equation}
+\frac{p}{n_{\mathrm t0}}\frac{V}{F}\,k
+=(1+\lambda)\ln\frac{1}{1-X}-\lambda X,
+\qquad \lambda=\omega n_{10},\quad X=\frac{x}{n_{\mathrm t0}}
+\label{eq:pfr-int}
+\end{equation}
+若摩尔数无显著改变（定容，$\omega=0$），式~\eqref{eq:pfr-int} 退化为
+\begin{equation}
+k\,\frac{pV}{n_{\mathrm t0}F}=\ln\frac{1}{1-X}
+\qquad\text{或写作}\qquad
+k\tau=\ln\frac{1}{1-X}
+\label{eq:pfr-int1}
+\end{equation}
+式中 $\tau$ 为接触时间（可用空时 $V/F$ 换算）。在催化反应中 $V$ 可用催化剂质量 $W$、
+表面积 $A$ 或床层长度 $z$ 代替，\textbf{$k$ 的量纲随之改变}。
+\src{S2 §10.1.7，书内 p.744—745 / PDF p.233—234，式(10-28)—(10-36)}
+
+\begin{principle}
+\textbf{量纲与参数的归属。}式~\eqref{eq:pfr-int} 中的 $k$（以分压为浓度基准、以催化床体积
+为反应空间基准时）量纲为 $\mathrm{mol{\cdot}atm^{-1}{\cdot}(床体积)^{-1}{\cdot}时间^{-1}}$；
+写成式~\eqref{eq:pfr-int1} 右端的 $k\tau$ 形式时，$k$ 的量纲为 $\mathrm{时间^{-1}}$。
+\tocheck{未对照原页面图像：原书把后者标注为「式(10-35) 中的 $k$」，但式(10-35) 是变容式的
+定容特例（$k$ 的量纲应与式(10-34) 相同），按上下文应指 $k\tau=\ln[1/(1-X)]$ 的式(10-36)，
+此处按后者理解。}\textbf{结论不变}：报告 $k$ 必须同时报告速率方程形式与 $Q$ 基准，否则
+不同文献的 $k$ 无法比较。
+\end{principle}
+
+\begin{example}[由积分式求接触时间]
+教学设定：某一级不可逆反应在定容条件下进行，以接触时间为基准的速率常数
+$k=\qty{1.5}{h^{-1}}$。按式~\eqref{eq:pfr-int1}，
+$X=0.95$ 时 $\tau=\ln 20/1.5=\qty{2.00}{h}$；$X=0.99$ 时
+$\tau=\ln 100/1.5=\qty{3.07}{h}$。\textbf{要点}：一级反应要把转化率从 $95\%$ 提到 $99\%$，
+接触时间需再增加约 $50\%$，而转化率的绝对增量只有 $4$ 个百分点。若反应摩尔数显著增加
+（$\lambda>0$），同样的转化率需要更长的接触时间，按式~\eqref{eq:pfr-int} 计算。
+\pedset{数值为教学设定，非原书实验数据。}
+\end{example}
+
+\begin{dataflow}
+\textbf{从活塞流积分数据到速率常数。}（1）确认反应器等温、无返混、无内外扩散限制（否则下面
+各步得到的是表观参数）。（2）判断反应摩尔数是否显著改变，决定用变容式~\eqref{eq:pfr-int}
+还是定容式~\eqref{eq:pfr-int1}。（3）以 $\ln[1/(1-X)]$ 对 $W/F$（或 $V/F$）作图：过原点的
+直线支持一级不可逆；明显弯曲或不过原点，则改试幂式的积分形式
+（式(10-39)、式(10-41)）或 L-H 型的积分形式~\eqref{eq:lh-int}。（4）在若干温度下重复第
+(3) 步，由 $\ln k$ 对 $1/T$ 作 Arrhenius 图求 $E_{\mathrm{app}}$，并\textbf{检查该图是否
+弯曲}——弯曲往往意味着覆盖度变化或 RDS 转移（§\ref{sssec:eapp}）。（5）报告时给出速率
+方程形式、$Q$ 基准、温度与转化率区间。
+\end{dataflow}
+
+对不可逆非一级反应，$r=k(n_1p/n_{\mathrm t})^{m}$，积分得形如
+$(V/F)(\cdots)=\int_0^X[(1+\lambda X)/(1-X)]^{m}\dd X$ 的式子；双组元不可逆反应在某一组元
+过量（或惰性稀释）且总摩尔数近似不变时，可化为含 $(1-X)^{m_1}(m_0-X)^{m_2}$ 的积分
+（$m_0=v_{20}/v_2$）。\textbf{这类积分一般无解析解，需数值积分并配合非线性回归求
+$k'$、$m_1$、$m_2$。}\src{S2 §10.1.7，书内 p.746 / PDF p.235，式(10-38)—(10-41)}
+
+\subsubsection{复杂反应的速率方程及其解析}
+
+\textbf{（1）可逆反应。}以 $\mathrm{B_1\rightleftharpoons B_2}$ 的一级可逆反应为例，微分
+表达式为 $r=k_1p_1-k_{-1}p_2=k_1(p_1-p_2/K_{\mathrm{eq}})$，代入活塞流积分式可得含
+$K_{\mathrm{eq}}$ 的对数式积分表达式。\textbf{关键点}：推动力项写成
+$(p_1-p_2/K_{\mathrm{eq}})$ 的形式，使 $r=0$ 自动回到化学平衡——这是速率方程必须满足的
+\textbf{热力学一致性}条件，也是对任何机理模型的硬约束。
+\src{S2 §10.1.8，书内 p.746 / PDF p.235，式(10-42)、式(10-43)}
+
+\textbf{（2）连串反应与平行反应。}对最简单的连串反应
+$\mathrm{B_1\xrightarrow{k_1}B_2\xrightarrow{k_2}B_3}$，中间产物 $\mathrm{B_2}$ 的浓度先
+上升较快、达最高点后下降，最终产物 $\mathrm{B_3}$ 起始上升很慢；平行反应的两个产物浓度
+起始上升都快，随后趋于各自的渐进线。
+
+\begin{obs}
+由浓度-时间曲线可读出：$\mathrm{B}_2$ 的曲线有无极大值、各产物在 $t\to0$ 处的斜率是否
+为零。\end{obs}
+\begin{infer}
+$t\to0$ 斜率近于零的生成物应为\textbf{次级产物}，斜率明显不为零的为\textbf{初级产物}；
+据此可确定各产物在反应网络中的位置，再对一级网络估算速率常数。\end{infer}
+
+连串反应可积为 $c_1/c_{10}=\mathrm{e}^{-k_1t}$、
+$c_2/c_{20}=[k_1/(k_2-k_1)](\mathrm{e}^{-k_1t}-\mathrm{e}^{-k_2t})$；由 $c_2$ 的极大值
+$c_{2\mathrm m}$ 与对应时间 $t_{\mathrm m}=\ln(k_2/k_1)/(k_2-k_1)$ 可图解求 $k_2/k_1$。
+该方法方便，但\textbf{过分依赖单个实验点}。
+\src{S2 §10.1.8，书内 p.747—748 / PDF p.236—237，式(10-44)—(10-48)}
+
+\begin{pitfall}
+\textbf{「出现浓度极大值」不等于「连串历程」。}含可逆步骤的连串历程，中间产物可能不出现
+极大值而渐近于一稳定值；反之，某些可逆的平行历程中最终产物却可出现极大值。较可靠的判据
+是各产物生成率对接触时间作图后取 $t\to0$ 的斜率，而不是曲线有无极值。
+\src{S2 §10.1.8，书内 p.749 / PDF p.238}
+\end{pitfall}
+
+\textbf{（3）连串-平行反应}是最常见的工业情形。对
+$\mathrm{B_1}\to\mathrm{B_2}$、$\mathrm{B_1}\to\mathrm{B_3}$、
+$\mathrm{B_2}\to\mathrm{B_3}$ 组成的最简网络，三个微分方程可积为
+$c_1=c_{10}\mathrm{e}^{-(k_1+k_3)t}$ 等解析式，再由 $c_{2\mathrm m}/c_{1\mathrm m}$ 求
+$k_1/k_2$、由对数化后的直线求 $k_1+k_3$。\textbf{注意该方法要求 $c_{2\mathrm m}$ 与
+$c_{1\mathrm m}$ 测得相当精确。}\src{S2 §10.1.8，书内 p.748—749 / PDF p.237—238，
+式(10-49)—(10-52)}
+
+\textbf{（4）近似处理方法。}由复杂历程推导动力学方程时，稳态近似与平衡态近似是两种基本
+手段。\textbf{稳态近似}假设中间产物非常活泼、浓度近似与时间无关，如对上述连串反应令
+$\dd c_2/\dd t=k_1c_1-k_{-1}c_2-k_2c_2=0$，得 $c_2=k_1c_1/(k_{-1}+k_2)$，进而
+$\dd c_3/\dd t=k_1k_2c_1/(k_{-1}+k_2)$。\textbf{平衡态近似}则假设历程中存在速率控制步骤：
+当 $k_{-1}\gg k_2$ 时 $c_2\approx(k_1/k_{-1})c_1=Kc_1$，总包速率
+$r=k_2Kc_1$。\src{S2 §10.1.8，书内 p.750—751 / PDF p.239—240，式(10-53)—(10-57)}
+
+\begin{principle}
+\textbf{平衡态近似（RDS 近似）的操作规则}：若历程中有一个基元步骤为速率控制步骤，则
+\textbf{只需写出该步的速率表达式，其中出现的中间产物浓度由与之相关的其他基元步骤的平衡
+关系给出}。这条规则是本分片后半部分（§\ref{sssec:rds} 起）全部推导的骨架。
+\end{principle}
+
+两种近似的取舍：稳态近似能给出参数更多的动力学方程，从而可能从实验中获得更多参数值，
+但一般只适用于只含一两种中间产物的简单历程；平衡态近似只考虑速率控制步骤一步的行为，
+对多步骤的复杂多相催化反应更常被采用。\src{S2 §10.1.8，书内 p.751 / PDF p.240}
+
+\textbf{（5）解析方法。}复杂反应动力学没有通用解法，常用的三种是：\textbf{同时求解法}
+（对微分方程组求解析解或数值解；待定参数越多，参数可靠性越差，故常忽略次要反应、把复杂
+网络拆成若干简单反应逐步求解）；\textbf{时间消去法}（消去时间变量后求解，所得速率常数是
+相对值，代表方法是 Wei-Prater 特征向量法，也有用拉普拉斯变换的）；\textbf{分离法}（先分
+别测定各单一反应的速率方程或参数，再放回总网络考察；参数较可靠但实验工作量很大）。
+\src{S2 §10.1.8，书内 p.751—752 / PDF p.240—241}
+
+\subsection{吸附和多相催化反应速率方程}
+
+多相催化与一般化学反应的不同之处在于需要一个固态且不消耗的催化剂，而使多相催化得以
+发生的第一步是至少一种反应物吸附在表面上，这一吸附过程一般认为是化学吸附。由于实验室
+测定反应速率时通常把吸附与反应合并考虑，而吸附对反应又有很大影响，\textbf{讨论多相催化
+速率就必须把吸附过程写进速率方程}。\src{S2 §10.2，书内 p.752 / PDF p.241}
+
+\subsubsection{吸附与吸附等温方程}
+
+分子的化学吸附可以是解离的，也可以是非解离的。在吸附位数目恒定、能量均一的表面上，
+理想气体的非解离吸附遵循 Langmuir 吸附等温方程
+
+\begin{equation}
+\mathrm{B}+\mathrm{L}\rightleftharpoons \mathrm{B{\cdot}L},
+\qquad
+\theta=\frac{Kp}{1+Kp}
+\label{eq:langmuir}
+\end{equation}
+式中 $\theta$ 为表面覆盖度（全部吸附位中被 $\mathrm{B}$ 占据的分数），$K$ 为吸附平衡常数，
+$p$ 为压力。两种物质在同一吸附位上竞争吸附时，
+$\theta_1=K_1p_1/(1+K_1p_1+K_2p_2)$。
+\textbf{Langmuir 方程的推导与三条基本假定（吸附位数目一定、各位置吸附能力相同即吸附热
+相等、被吸附分子间无相互作用）已在\chapref{ch:01}给出，此处不再重推}，只取其结论使用。
+\src{S2 §10.2.1，书内 p.752 / PDF p.241，式(10-58)、式(10-60)}
+
+若 $\mathrm{B}_2$ 在相邻两位上解离吸附，$\mathrm{B_2}+2\mathrm{L}\rightleftharpoons 2\mathrm{B{\cdot}L}$，
+则
+\begin{equation}
+\theta=\frac{(Kp)^{1/2}}{1+(Kp)^{1/2}}
+\label{eq:langmuir-diss}
+\end{equation}
+\tocheck{未对照原页面图像：原书式(10-59) 的 OCR 与式(10-58) 完全相同（均为 $Kp/(1+Kp)$），
+而按「每个吸附位只吸附一个原子、解离吸附需两个相邻位」的标准推导应含平方根，此处按标准
+形式重建。}
+
+\begin{keycond}
+Langmuir 方程的适用边界：$\theta$ 的定义必须是\textbf{吸附位占据分数}而非吸附量比；吸附焓
+必须是 $\theta$ 的函数以外（即吸附热与覆盖度无关）。若吸附焓与 $\ln\theta$ 成正比（表面本征
+或诱导的非均匀性），适用的是 Freundlich 方程 $\theta=bp^{1/q}$（$q>1$，也适用于解离吸附）；
+若吸附焓与 $\theta$ 成线性关系，则适用 Temkin 方程 $\theta=q\ln(bp)$。三者最初都是在一定
+分压范围内由实验数据证实的经验方程，再按各自对吸附焓与 $\theta$ 关系的设定从理论导出；
+一般认为 Freundlich 方程经适当简化可还原为 Langmuir 或 Temkin 方程。
+\src{S2 §10.2.1，书内 p.753 / PDF p.242，式(10-61)、式(10-62)}
+\end{keycond}
+
+尽管 Langmuir 方程理论上只适用于均匀表面，而催化表面一般被认为是不均匀的，多相催化
+动力学中仍有相当多的人采用它；这既有历史原因，也因为它把覆盖度与流体相组成的联系写成
+了最简单可用的形式。本分片后半部分的推导全部以式~\eqref{eq:langmuir} 为基础。
+
+\subsubsection{速率控制步骤：全章的枢纽}
+\label{sssec:rds}
+
+催化反应一般由多个基元步骤顺序相连。就每一步而言，在反应物充分存在时其速率可以相差几个
+数量级；当它们逐一衔接进行时，\textbf{稳态或准稳态下各基元步骤只能以同一速率进行，而这
+一速率取决于隔离状态下最慢的那一步}，即\textbf{速率控制步骤（RDS）}。当整个反应在偏离
+化学平衡点的稳态下进行时，\textbf{所有非控速步骤若为可逆反应，都应处于化学的或吸附的
+平衡状态}——这正是 §\ref{sssec:rds} 之后所有推导得以成立的原因。
+\src{S2 §10.2.2，书内 p.753 / PDF p.242}
+
+一般多相催化动力学总设定所包含的基元步骤序列中只有一个 RDS。但\textbf{这一设定有两个
+明确边界}：可能存在不止一个 RDS；温度、压力改变时 RDS 会由一个步骤转移到另一个步骤，
+在某一中间温度、压力下还可能出现两个步骤同时成为 RDS 的过渡状态。RDS 的转移是 Arrhenius
+图弯曲、动力学参数失去表观常数含义的主要来源之一（见 §\ref{sssec:eapp}）。
+
+在多相催化的化学基元步骤序列中，RDS 可以是\textbf{吸附}、\textbf{表面反应}或\textbf{脱附}。
+\textbf{RDS 不同，速率方程形式有很大不同}（图~\ref{fig:rds-chain}）——这是读速率方程时
+首先要认出的信息。
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  box/.style={draw, align=left, text width=76mm, inner sep=2.5pt,
+              font=\fontsize{8.5}{10.5}\selectfont},
+  ar/.style={-{Stealth[length=1.6mm]}, line width=0.6pt}
+]
+\node[box] (seq) {\textbf{五步基元序列}（以
+$\mathrm{B_1+B_2\rightleftharpoons B_3+B_4}$ 为例）：(1)、(2) 反应物吸附；
+(3) 相邻吸附物种的表面反应；(4)、(5) 产物脱附。稳态下各步净速率相等，
+\textbf{最慢的一步即 RDS}，其余各步处于吸附平衡或化学平衡};
+\node[box, below=2.2mm of seq] (ads) {\textbf{① 吸附为 RDS}：速率 $\propto$ 该组分的
+吸附速率；分母中\textbf{缺少该组分的吸附项}（它尚未建立平衡），其余物种的覆盖度仍由
+各自的 $K_ic_i$ 给出};
+\node[box, below=2.2mm of ads] (srf) {\textbf{② 表面反应为 RDS}：速率
+$\propto k_3S_0^2\theta_1\theta_2$；分母是\textbf{全部物种吸附项的完整多项式}，指数的
+大小由「两物种是否竞争同一种吸附位」决定——同一吸附位取平方，两套独立吸附位则取两个
+一次因子之积};
+\node[box, below=2.2mm of srf] (des) {\textbf{③ 脱附为 RDS}：速率 $\propto$ 产物脱附
+速率；分母中\textbf{缺少该产物的吸附项}，而\textbf{产物在表面上的覆盖度由前置平衡
+（表面反应）决定}，因此方程中出现的是产物与反应物的分压比};
+\node[box, below=2.2mm of des] (chk) {\textbf{判别线索}：①与③形式相近而分子推动力项
+不同；②的分母最"完整"。三种形式在数学上互相接近，\textbf{因此只靠一组速率数据往往
+无法唯一确定 RDS}——需借助初速度法、温度依赖性检验与独立吸附数据交叉判别};
+\draw[ar] (seq)--(ads);
+\draw[ar] (ads)--(srf);
+\draw[ar] (srf)--(des);
+\draw[ar] (des)--(chk);
+\end{tikzpicture}
+\caption{速率控制步骤（RDS）判别逻辑链：吸附、表面反应、脱附分别为 RDS 时速率方程形式的
+差异。读者应看三处分母：缺少哪一项、多项式是否完整、指数的来源是什么。本图只给出形式
+差异的定性骨架，不定量；三种形式在有限精度数据上可能互相近似，RDS 的最终判定需要
+温度依赖性与独立吸附数据（见 §\ref{sssec:power-vs-hyp}）。
+\schemamark\figsrc{据 S2（下册）§10.2.2—§10.2.3，书内 p.753—756 / PDF p.242—245 的
+式(10-63)、式(10-67)、式(10-68) 讨论绘制；非原书插图（原书图 10-1 为反应器示意）。}}
+\label{fig:rds-chain}
+\end{figure}
+
+\paragraph{替代思路：最丰富反应中间物（MARI）。}「只有一个 RDS」是一个很强的假设。当几个
+步骤的速率相当时，可以采用另一个视角：设表面上\textbf{最丰富反应中间物（most abundant
+reaction intermediate，MARI）}占据几乎全部活性位，其余物种的覆盖度由与 MARI 之间的平衡
+关系给出，于是表面上复杂的多步序列可被简化或等效为\textbf{两步反应}，仍能推出可用形式
+的动力学方程，只是其中参数的物理意义已不同于均匀表面模型下的同名参数。
+\src{S2 §10.3.5，书内 p.768 / PDF p.257} RDS 假设与 MARI 假设给出的方程形式常相同或相近，
+两者真正的差别在于\textbf{哪一个覆盖度被当作由平衡决定}；这一路线的完整形式与模型判别
+准则见后续分片。
+
+\sloppy
+\subsubsection{双曲线式速率方程（L-H 型）}
+
+以理想表面为基础的动力学方程，要点是用表面覆盖度 $\theta$ 表达反应速率，再用 Langmuir
+方程把 $\theta$ 与流体相浓度关联。这一表达方式由 Hinshelwood 提出，称 Langmuir-Hinshelwood
+方法；Hougen 与 Watson 又引入空吸附位的概念，故也称 Hougen-Watson 方法；因形式无实质
+改变，常合称 L-H 或 L-H-W 方法。\src{S2 §10.2.3，书内 p.754 / PDF p.243}
+
+\begin{principle}
+\textbf{从吸附平衡推出双曲线式速率方程——推导主线。}设总包反应
+$\mathrm{B_1+B_2\rightleftharpoons B_3+B_4}$ 的基元序列为（$\mathrm{L}$ 为吸附位）：
+(1) $\mathrm{B_1+L\rightleftharpoons B_1{\cdot}L}$；(2)
+$\mathrm{B_2+L\rightleftharpoons B_2{\cdot}L}$；(3)
+$\mathrm{B_1{\cdot}L+B_2{\cdot}L\rightleftharpoons B_3{\cdot}L+B_4{\cdot}L}$；
+(4) $\mathrm{B_3{\cdot}L\rightleftharpoons B_3+L}$；(5)
+$\mathrm{B_4{\cdot}L\rightleftharpoons B_4+L}$。设第 (3) 步为 RDS，其余四步处于吸附平衡。
+
+\textbf{第一步：位平衡记账。}令 $S_0$ 为活性位密度，$\theta_i$ 与 $\theta_{\mathrm v}$ 为
+吸附物种与空位的覆盖度。每个处于平衡的吸附步给出 $\theta_i=K_ic_i\theta_{\mathrm v}$，
+代入 $\sum_i\theta_i+\theta_{\mathrm v}=1$ 得
+\begin{equation}
+\theta_{\mathrm v}=\frac{1}{D},
+\qquad D=1+K_1c_1+K_2c_2+K_4c_3+K_5c_4
+\label{eq:lh-D}
+\end{equation}
+
+\textbf{第二步：只写 RDS 的速率}（两个相邻吸附物种的表面反应，正逆各一项）：
+\begin{equation}
+r=k_3S_0^2\,\theta_1\theta_2-k_{-3}S_0^2\,\theta_3\theta_4
+\label{eq:lh-rds}
+\end{equation}
+
+\textbf{第三步：把 $\theta$ 换成 $c$}（把 $\theta_i=K_ic_i\theta_{\mathrm v}$ 代入并合并）：
+\begin{equation}
+\begin{split}
+r&=\frac{k_3K_1K_2S_0^2\left(c_1c_2-c_3c_4/K_0\right)}{D^2},\\
+K_0&=\frac{k_3K_1K_2}{k_{-3}K_4K_5}=K_{\mathrm{eq}}
+\end{split}
+\label{eq:lh}
+\end{equation}
+式中 $k_3$ 为第 (3) 步的正向速率常数，$K_i$ 为第 $i$ 步的吸附平衡常数，$c_i$ 为气相浓度
+（或分压），$K_{\mathrm{eq}}$ 为总包反应的化学平衡常数。\textbf{自检}：令 $r=0$，式
+~\eqref{eq:lh} 自动回到总包反应的平衡式，这就是\textbf{热力学一致性}——任何按此路线推得
+的速率方程都必须通过这一自检。
+\end{principle}
+
+\tocheck{未对照原页面图像：原书式(10-63) 后给出的 $K_0$ 定义（OCR 作
+$K_{\mathrm{eq}}(K_1/K_2)K_4K_5$）与上述自洽推导得到的 $K_0=K_{\mathrm{eq}}$ 不一致；
+此处按「$r=0$ 必须给出总包平衡式」这一硬约束重建。}
+
+\textbf{量纲检查。}若 $c$ 取 $\mathrm{mol{\cdot}m^{-3}}$、$S_0$ 取
+$\mathrm{mol{\cdot}m^{-2}}$、$\theta$ 无量纲，则 $K_i$ 为 $\mathrm{m^3{\cdot}mol^{-1}}$，
+$k_3$ 为 $\mathrm{m^{2}{\cdot}mol^{-1}{\cdot}s^{-1}}$，$r$ 为
+$\mathrm{mol{\cdot}m^{-2}{\cdot}s^{-1}}$（以单位活性面积为基准）。换成「以分压为浓度基准、
+以催化剂质量为反应空间基准」时，$k_3$ 与 $S_0$ 会以不同方式并入表观常数，\textbf{这正是
+同一条机理在不同文献中 $k$ 数值与量纲不同的原因}。
+
+\textbf{通式与特例。}式~\eqref{eq:lh} 对以两种吸附反应物起表面反应为 RDS 的体系是通式，
+几种重要特例列于下（均设不可逆或逆项可忽略）：
+\begin{itemize}
+\item 各组分均弱吸附（$K_ic_i\ll1$，$D\approx1$）：
+$r\approx k(c_1c_2-c_3c_4/K_0)$，形式回到幂式（总级数 2）；若为单分子不可逆反应，
+则退化为一级式 $r=kc_1$。
+\item 产物 $\mathrm{B_3}$ 强吸附而反应物弱吸附（$K_4c_3\gg1\gg K_1c_1,K_2c_2$）：
+$r\approx k\,c_1c_2/c_3$；单组分时 $r\approx k\,c_1/c_3$，即\textbf{产物抑制}型。
+\item 反应物强吸附而产物弱吸附：$D\approx K_1c_1$，$r\approx k$，
+即\textbf{零级反应}——这是「表面已被饱和」的动力学签名。
+\end{itemize}
+\src{S2 §10.2.3，书内 p.754—755 / PDF p.243—244，式(10-64)—(10-66)}
+
+\textbf{分母指数从何而来。}式~\eqref{eq:lh} 分母的指数为 2，只适用于两种吸附物在
+\textbf{同一种}吸附位上竞争吸附的情形；若 $\mathrm{B_1}$ 与 $\mathrm{B_2}$ 独立地分别吸附
+在两种吸附位上，分母中相应的吸附项应改为 $(1+K_1c_1)(1+K_2c_2)$。此外，若机理设定为
+\textbf{一个气相分子与一个吸附物种直接反应}（Rideal-Eley 机理），仍以 Langmuir 方程为
+基础，所得速率方程形式相似，但分母上吸附项的指数为 1。
+\src{S2 §10.2.3，书内 p.755 / PDF p.244}
+
+\textbf{氧化-还原（Mars-van Krevelen）机理。}Rideal-Eley 机理有一个变体，由 Mars 与
+van Krevelen 提出，用于烃类氧化反应：气相烃分子与催化剂表面晶格氧（或吸附氧）反应，
+产物脱附，被还原的活性位再由气相氧重新氧化。按 Bodenstein 稳态原则
+（$\dd[\mathrm{B_2{\cdot}L}]/\dd t=\dd[\mathrm{B_3{\cdot}L}]/\dd t=0$）并令各表面浓度分数
+之和为 1，可得速率方程；若除产物脱附外其余各步不可逆，则化为
+\begin{equation}
+r=\frac{k_1k_2k_3c_1c_2}{k_1k_3c_1c_2+\nu_0k_2k_3c_2+k_1k_2c_1+k_1k_{-2}c_1c_3}
+\label{eq:mvk}
+\end{equation}
+式中 $\nu_0$ 为计量数（烃分子常需数个晶格氧与之作用）。\textbf{注意分母的结构与
+式~\eqref{eq:lh} 完全不同}：它不是覆盖度多项式，而是\textbf{各步速率常数之积的和}。
+式~\eqref{eq:lh}、式~\eqref{eq:mvk} 一类方程都属\textbf{双曲线式}，其中包含多个参数，
+适应性很广——\textbf{也正因为参数多，同一组动力学数据用不同机理（不同 RDS）的速率方程
+拟合都可能得到满意结果}。\src{S2 §10.2.3，书内 p.755—756 / PDF p.244—245，
+式(10-69)—(10-71)}
+
+\begin{pitfall}
+\textbf{「拟合得好」不是机理证据。}双曲线式方程参数多、形式灵活，一组数据（例如
+$\mathrm{B_1+B_2\rightleftharpoons B_3+B_4}$ 的可逆反应）在吸附控速、表面反应控速、脱附控速
+三种假设下都可能拟合得不错。要区分它们，至少需要：不同温度下的参数温度系数是否合理
+（速率常数为正温度系数、吸附平衡常数为负温度系数）、由吸附平衡常数经 van't Hoff 关系
+求得的吸附焓是否为负、以及独立测得的吸附数据是否支持所设的覆盖度范围。判据与模型检验
+流程见后续分片。
+\end{pitfall}
+
+\textbf{积分表达式。}式~\eqref{eq:lh} 等均为微分表达式，把它与连续性方程结合积分即得积分
+表达式，表达空时与转化率（或生成率）的关系。以单组元不可逆表面反应控速为例
+（$\mathrm{B_1}\to\mathrm{B_2}$，$r=kS_0K_1p_1/(1+K_1p_1)$），代入活塞流积分式后可得
+\begin{equation}
+\frac{W}{F}\cdot\frac{S_0K_1p}{n_{\mathrm t0}}\,k
+=\ln\frac{1}{1-X}+K_1pX
+\label{eq:lh-int}
+\end{equation}
+\tocheck{未对照原页面图像：式~\eqref{eq:lh-int} 中 $n_{\mathrm t0}$ 因子与 $p$ 的定义
+（总压还是 $\mathrm{B_1}$ 起始分压）无法从 OCR 确认；本式按「定容、$p_1=p(1-X)$、
+$r=kS_0K_1p_1/(1+K_1p_1)$」自洽推导给出，与 OCR 相差可能只是一个常数因子。
+}\textbf{式~\eqref{eq:lh-int} 与一级反应的式~\eqref{eq:pfr-int1} 的差别本身就是判据}：把
+实验数据按 $\ln[1/(1-X)]$ 对 $W/F$ 作图，若得到通过原点的直线则与一级幂式一致；若需
+附加 $K_1pX$ 项才成直线，则支持表面反应控速的 L-H 形式。更复杂的微分表达式一般无解析
+积分，只能数值积分。\src{S2 §10.2.3，书内 p.756—757 / PDF p.245—246，式(10-72)、式(10-73)}
+
+\subsubsection{表观活化能为何不等于真实活化能}
+\label{sssec:eapp}
+
+\begin{principle}
+\textbf{表观活化能的分解。}双曲线式速率方程中的表观速率常数是「真实速率常数」与若干
+吸附平衡常数的乘积或商。按 van't Hoff 关系 $K_i=K_i^{0}\exp(-\Delta H_{\mathrm{ads},i}/RT)$
+（吸附放热，$\Delta H_{\mathrm{ads},i}<0$），由式~\eqref{eq:eapp-def} 可得
+\begin{equation}
+E_{\mathrm{app}}=E_{\text{真实}}+\sum_i \nu_i\,\Delta H_{\mathrm{ads},i}
+\label{eq:eapp}
+\end{equation}
+式中 $\nu_i$ 为 RDS 速率表达式中组分 $i$ 的吸附平衡常数所带的指数（含正负号：在分子中取
+正、在分母中取负）。\textbf{因此在一般情况下 $E_{\mathrm{app}}\neq E_{\text{真实}}$，
+表观值中混入了吸附热的贡献}，且因为吸附是放热的，$\Delta H_{\mathrm{ads}}<0$。
+\end{principle}
+
+由式~\eqref{eq:lh} 的三种特例可以具体看出这一点（以表面反应为 RDS）：
+
+\begin{itemize}
+\item \textbf{低覆盖度}（$D\approx1$，$r\approx k_3K_1K_2S_0^2c_1c_2$）：
+$E_{\mathrm{app}}=E_3+\Delta H_{\mathrm{ads},1}+\Delta H_{\mathrm{ads},2}$，
+两种反应物的吸附热都进入表观值。
+\item \textbf{$\mathrm{B_1}$ 强吸附}（$D\approx K_1c_1$，
+$r\approx k_3K_2S_0^2c_2/(K_1c_1)$）：
+$E_{\mathrm{app}}=E_3+\Delta H_{\mathrm{ads},2}-\Delta H_{\mathrm{ads},1}$，
+强吸附组分的吸附热以\textbf{负}号进入。
+\item \textbf{产物强吸附}（$D\approx K_4c_3$）：
+$E_{\mathrm{app}}=E_3+\Delta H_{\mathrm{ads},1}+\Delta H_{\mathrm{ads},2}-2\Delta H_{\mathrm{ads},4}$，
+产物吸附热以两倍权重被扣除。
+\end{itemize}
+
+\textbf{覆盖度变化使表观活化能本身成为温度的函数。}覆盖度 $\theta$ 由温度和各分压共同
+决定：升温会降低 $K_i$（放热吸附），从而改变 $D$ 中哪一项占优，于是式~\eqref{eq:eapp}
+中的有效 $\nu_i$ 组合在升温过程中发生切换。此时 Arrhenius 图不再是直线，而是\textbf{在
+不同温度区间呈现不同斜率的弯曲曲线}（图~\ref{fig:arrh-bend}），而按式~\eqref{eq:eapp-def}
+测得的只是该区间的局部斜率。
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\tikzset{declare function={syn(\x)=ln(exp(20-10*\x)+exp(12-4*\x));
+  lowE(\x)=20-10*\x; highE(\x)=12-4*\x;}}
+\begin{axis}[
+  width=\onecolwidth, height=44mm,
+  xmin=1.0, xmax=2.2, ymin=2, ymax=11,
+  xtick={1.0,1.4,1.8,2.2}, ytick={2,4,6,8,10},
+  xlabel={$10^{3}/T$}, ylabel={$\ln k$}]
+\addplot[domain=1.0:2.2,samples=160,mainline,black]{syn(x)};
+\addplot[domain=1.0:1.8,samples=2,thinline,black,dashed]{lowE(x)};
+\addplot[domain=1.0:2.2,samples=2,thinline,black,densely dotted]{highE(x)};
+\end{axis}
+\end{tikzpicture}
+\caption{表观活化能随温度区间变化的模型 Arrhenius 图。读者应看两处：曲线在中段发生弯曲，
+两侧渐近于两条不同斜率的直线（虚线、点线，斜率对应模型设定的 $E/R=10^{4}$ K 与
+$4\times10^{3}$ K）；因此「表观活化能」只在单一渐近区才有确定数值。局限：本曲线由
+$k=k_1+k_2$ 的两个并联通道合成，是覆盖度或控制步骤随温度切换的最小模型，不代表任何具体
+反应，也不给出真实活化能的数值。\modelmark\figsrc{模型计算，依据 S2（下册）§10.2.3 与
+§10.3.4 关于参数温度系数、Arrhenius 图不呈直线的讨论，书内 p.754—756、p.766—767 /
+PDF p.243—245、p.255—256。}}
+\label{fig:arrh-bend}
+\end{figure}
+
+\begin{keycond}
+\textbf{读表观活化能时的四条边界。}（1）\textbf{RDS 随温度转移}同样造成弯曲：低温下表面
+反应可能最慢，升温后吸附或脱附成为最慢步，Arrhenius 图出现折点。因此「Arrhenius 图不呈
+直线」本身就是机理可能切换的证据，不应一律当作实验误差。（2）\textbf{接近化学平衡}时，
+净速率中的推动力项 $(1-\beta)$（$\beta$ 为反应商与平衡常数之比）也带温度依赖并含总包
+反应热，使净速率的表观活化能进一步偏离正向步骤的真实活化能；故动力学参数应在\textbf{远离
+平衡}的转化率区间测定，或明确说明距平衡多远。（3）某些吸附是\textbf{吸热}的（例如 NO 在
+催化剂上的吸附），此时吸附平衡常数具有正的温度系数、吸附焓为正值，式~\eqref{eq:eapp} 的
+符号讨论要相应调整——「吸附必放热」是经验倾向而不是定律。（4）由 $K_i$ 经 van't Hoff
+关系求得的吸附焓与吸附熵都应为负值；这是模型参数能否成立的物理判据，但\emph{其置信区间
+常很宽，单点估值为负不足以立刻否定一个模型}——用线性回归得到负值、用非线性回归却得到
+正值的例子并不罕见。判据的完整清单、回归方法与模型判别流程见后续分片。
+\src{S2 §10.3.4，书内 p.766—767 / PDF p.255—256}
+\end{keycond}
+
+\subsubsection{幂式速率方程及其适用边界}
+\label{sssec:power-vs-hyp}
+
+幂式速率方程在多相催化动力学中同样经常被使用。对可逆反应，其通式为
+\begin{equation}
+r=k_1\prod_i c_i^{m_i}-k_{-1}\prod_i c_i^{n_i}
+\label{eq:power-rev}
+\end{equation}
+式中 $m_i$、$n_i$ 可为正数或负数，也可为整数或分数。
+\src{S2 §10.2.4，书内 p.757 / PDF p.246，式(10-74)}
+
+\textbf{氨合成是最著名的例子。}其普适动力学速率方程写作
+\begin{equation}
+r=k_1\,p_{\mathrm{N_2}}p_{\mathrm{H_2}}^{3\alpha}p_{\mathrm{NH_3}}^{-2\alpha}
+-k_{-1}\,p_{\mathrm{NH_3}}^{2(1-\alpha)}p_{\mathrm{H_2}}^{-3(1-\alpha)}
+\label{eq:ammonia}
+\end{equation}
+式中 $k_1$、$k_{-1}$ 为与解离吸附、脱附相联系的速率常数，$\alpha$ 为 Temkin 常数，取值在
+$0$ 与 $1$ 之间、通常为 $0.5$。该式可由 $\mathrm{N_2}$ 解离吸附控速机理出发、以 Temkin
+吸附等温方程为基础导出；实验数据符合式~\eqref{eq:ammonia}，说明该反应属于
+$\mathrm{N_2}$ 解离吸附控速的机理。\src{S2 §10.2.4，书内 p.757 / PDF p.246，式(10-75)}
+
+\begin{principle}
+\textbf{幂式方程的热力学一致性自检。}令式~\eqref{eq:ammonia} 的 $r=0$，得
+\begin{equation}
+\frac{p_{\mathrm{N_2}}p_{\mathrm{H_2}}^{3}}{p_{\mathrm{NH_3}}^{2}}
+=\frac{k_{-1}}{k_1}=\frac{1}{K_{\mathrm{eq}}}
+\label{eq:ammonia-eq}
+\end{equation}
+即速率方程在 $r=0$ 时自动还原为化学平衡式。\textbf{任何幂式方程都必须通过这一自检}，
+否则它连平衡位置都算不对，不能用于接近平衡的过程模拟。
+\tocheck{未对照原页面图像：OCR 把该平衡关系写作 $=k_1/k_{-1}=1/K$，与令 $r=0$ 的自洽结果
+（式~\eqref{eq:ammonia-eq}）互为倒数，此处按自洽结果给出。}
+\end{principle}
+
+\textbf{幂式方程并不只是经验拟合，它也能从机理推出。}两条路线都成立，且都赋予级数物理
+含义。
+
+\textbf{路线一（非均匀表面，基于 Freundlich 方程）。}推导分三步：写出 RDS 的速率式（其中
+$\theta$ 以幂次出现）；用 Freundlich 方程把 $\theta$ 换成该物种的「有效分压」
+$p_{i\mathrm e}$；再用表面的化学平衡关系把 $p_{i\mathrm e}$ 换成气相分压。以单分子反应
+$\mathrm{B_1}\to\mathrm{B_2}$（$\mathrm{B_1}$ 吸附强于 $\mathrm{B_2}$）为例，若
+\textbf{表面反应为 RDS}，则 $\theta_1=(p_{1\mathrm e}/p_{1\mathrm s})^{1/n_1}$，
+$r=k_2\theta_1^{m_1}=k_2(p_{1\mathrm e}/p_{1\mathrm s})^{m_1/n_1}=k'p_1^{m_2}$，其中
+$m_2=m_1/n_1$——形式仍是幂式，但级数由吸附等温线的指数 $n_1$ 与反应级数 $m_1$ 共同决定。
+吸附为 RDS 或脱附为 RDS 时同法可得形式上仍是幂式、但级数组合与相应平衡关系挂钩的方程。
+\tocheck{未对照原页面图像：式(10-78)—(10-81) 中「吸附控速」与「脱附控速」两式的级数组合
+（OCR 作 $r=kp_1/p_2^{m_2}$ 一类）无法确认，此处只保留可由 $r=k_2\theta_1^{m_1}$ 自检的
+表面反应控速一式，其余只给推导路线。}以 Freundlich 方程为基础，可以推出与一定 RDS 相应的
+氨合成、氨分解、正仲氢转换、一氧化碳氧化及乙烷氢解等反应的幂式速率方程；Kwan 系统讨论了
+以 Freundlich 方程为基础、不同控速步骤得出的不同动力学方程，并指出很多化学吸附系统的
+吸附-脱附速率在较宽压力范围内既可用幂式方程也可用 Freundlich 方程表达。
+\src{S2 §10.2.4，书内 p.757—758 / PDF p.246—247}
+
+\textbf{路线二（理想均匀表面，基于 Langmuir 方程）。}设双组元反应
+$\mathrm{B_1+B_2}\to\mathrm{B_3}$ 通过中间表面络合物 $\mathrm{B_1{\cdot}L}$ 的生成与分解
+进行，$\mathrm{B_1}$ 的覆盖度按 Langmuir 方程为
+$\theta_1=K_1p_1/(K_1p_1+K_2p_2)$，则速率方程为 $r=kp_1^{m_1}p_2^{m_2}$，其中
+
+\begin{equation}
+\begin{split}
+m_1&=\frac{K_2p_2}{K_1p_1+K_2p_2}=1-\theta_1,\\
+m_2&=\frac{K_1p_1}{K_1p_1+K_2p_2}=\theta_1,
+\qquad m_1+m_2=1
+\end{split}
+\label{eq:golodets}
+\end{equation}
+这解释了幂式方程中\textbf{级数为什么常是分数、为什么随分压漂移}：级数本身就是覆盖度的
+函数，不是本征常数。该解析被用于化合物氧化反应，论证了水中毒（水蒸气中毒）效应、
+$m_1+m_2$ 常为 $1$、以及级数与氧化物催化剂的氧键能、活化能和补偿效应之间的关联。
+\src{S2 §10.2.4，书内 p.758—759 / PDF p.247—248，式(10-82)}
+
+\begin{table}[htbp]
+\centering
+\caption{幂式与双曲线式速率方程的对照。读者应看两处：参数的含义（$m_i$ 是覆盖度的函数，
+$K_i$ 有热力学约束）与外推风险的方向性差别。两者都能拟合同一套数据，选择依据应是外推
+需求与参数的物理可解释性，而不是拟合残差的大小。}
+\label{tab:power-vs-hyp}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}lXX@{}}
+\toprule
+项目 & 幂式速率方程 & 双曲线式速率方程（L-H 型） \\
+\midrule
+吸附模型基础 & Freundlich（吸附焓 $\propto\ln\theta$，非均匀表面）& Langmuir（吸附焓与
+$\theta$ 无关，均匀表面）\\
+\addlinespace
+一般形式 & $r=k\prod_i c_i^{m_i}$ & $r=k\times$（推动力项）$/$（吸附项多项式）\\
+\addlinespace
+参数含义 & $k$ 为表观速率常数；$m_i$ 为表观级数，可正可负、可整数可分数，且\textbf{本身
+是温度和覆盖度的函数} & $k$ 含真实速率常数与吸附平衡常数之积；$K_i$ 有明确热力学约束
+（放热、$\Delta S_{\mathrm{ads}}<0$）\\
+\addlinespace
+适用场景 & 分压范围宽、覆盖度变化大；产物分压不过低；工程关联与放大初算 & 需要机理含义、
+需要向其他温度或组成外推；有独立吸附数据可支持所设的覆盖度范围\\
+\addlinespace
+外推风险 & \textbf{高}：级数非本征量，跨温度区间外推时级数会漂移；含负级数的项在相应
+分压趋于零时发散 & \textbf{中}：形式可外推，但参数多、相关性强，同一数据常有多套参数
+给出同样好的拟合\\
+\addlinespace
+与机理的关系 & 可由 Freundlich／Temkin 或 Langmuir 基础推出，也可纯经验拟合 & 有明确
+机理假设；但吸附控速、表面反应控速、脱附控速三种假设常都能拟合同一数据\\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\begin{pitfall}
+\textbf{幂式方程的外推是本章最容易出事的一步。}（1）把 $m_i$ 当作与温度无关的常数、跨
+温度区间外推没有根据：由式~\eqref{eq:golodets}，$m_i$ 是覆盖度的函数，而覆盖度随温度
+变化；幂式回归所得级数随温度「有相当变迁」、因而求不出稳定的表观活化能，正是这一原因。
+（2）含\textbf{负级数}的项（如式~\eqref{eq:ammonia} 中的 $p_{\mathrm{NH_3}}^{-2\alpha}$）
+在相应分压趋于零时发散，\textbf{不可外推到该组分分压很低的区间}。（3）幂式方程形式单一、
+数学处理一般只有唯一解，容易让人误以为「参数唯一就代表机理唯一」；实际上幂式方程同样可被
+多个机理导出，参数的正负与整分性只是线索，不是证明。（4）幂式方程的积分表达式一般比双
+曲线式的更难有解析解：简单情形可化为式(10-39)、式(10-41) 的形式，复杂时只能数值积分，
+此时参数误差与数值积分误差会叠加。\src{S2 §10.2.4，书内 p.757 / PDF p.246}
+\end{pitfall}
+
+\begin{crosscheck}
+\textbf{与本章其他分片及其他章的回查关系。}（1）本分片两次用到吸附等温方程
+（式~\eqref{eq:langmuir}、式~\eqref{eq:langmuir-diss} 以及 Freundlich／Temkin 方程）：
+\textbf{Langmuir 方程的推导、三条基本假定及其适用窗口已在\chapref{ch:01}给出，此处直接
+引用}；当数据明显偏离 Langmuir（吸附焓随覆盖度变化）时，应回到\chapref{ch:01}核对模型
+选择，而不是强行用双曲线式拟合。（2）TOF 的分母——活性位数 $S$——来自化学吸附滴定，其
+测量方法与化学计量比的验证见\chapref{ch:05}；\textbf{没有独立的活性位计数，任何 TOF 数值
+都只是「每克催化剂的速率」的另一种写法}。（3）速率方程中的吸附平衡常数若要独立验证，
+需要变温吸附或程序升温脱附数据；只有动力学数据本身时，$K_i$ 与其置信区间必须一并报告。
+（4）模型检验、微分／积分数据处理、线性与非线性回归、判别准则与非均匀表面动力学属于
+后续分片；本分片给出的每一类方程都是它们的数据来源形式。
+\end{crosscheck}
+
+\begin{methodsum}
+\textbf{本分片建立的流程（四步）。}（1）\textbf{确定可测定义}：化学计量方程式~\eqref{eq:stoi}
+$\to$ 反应度式~\eqref{eq:xi} $\to$ 速率式~\eqref{eq:rate-def}，同时声明 $Q$ 基准与转化率
+测量点。（2）\textbf{选反应器模型}：微分数据用 CSTR 的代数式~\eqref{eq:cstr}；积分数据用
+PFR 的式~\eqref{eq:pfr} 及其积分式~\eqref{eq:pfr-int1}，并核对等温、无返混、无传递限制
+三条边界。（3）\textbf{设 RDS 并写速率方程}：按「只写 RDS 速率 $+$ 其余步骤取平衡」的规则
+推出双曲线式式~\eqref{eq:lh}；若表面非均匀或需宽分压范围关联，则用幂式
+式~\eqref{eq:power-rev}。（4）\textbf{做三项自检}：$r=0$ 是否回到平衡式（热力学一致性）；
+参数的温度系数与符号是否合理；表观活化能是否因覆盖度或 RDS 转移而弯曲（§\ref{sssec:eapp}）。
+报告时至少给出：速率方程形式、$Q$ 基准、温度区间、转化率区间、参数值与置信区间。
+\end{methodsum}

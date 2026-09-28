@@ -1,0 +1,360 @@
+% ================================================================
+%  chapters/parts/ch05-a.tex
+%  第 5 章  化学吸附和程序升温技术（分片 a：5.1—5.3）
+%  源：S1（上册）第 5 章，书内 p.301—319 / PDF p.320—338
+%  分片 b 覆盖 5.4—5.7（应用）
+% ================================================================
+
+\chapterstart{化学吸附和程序升温技术}%
+{本章回答：怎样用化学吸附量得到活性位与金属分散度，三种吸附等温式各自假定了什么样的
+表面，以及如何把一条程序升温脱附（TPD）谱线翻译成吸附量、脱附活化能和活性位数目。
+导读按「原理—模型—动态方法」推进：5.1 给出化学吸附的热力学与速率基础，5.2 说明
+Langmuir／Freundlich／Temkin 的适用边界，5.3 建立 TPD、TPR、TPO 的谱图判读规则。}
+\label{ch:05}
+
+\subsection{化学吸附的基本原理}
+
+\begin{probout}
+化学吸附测量的是\textbf{气体分子在固体表面以化学键形式发生的单层、选择性富集}，它给出的
+不是几何信息，而是\textbf{活性位的种类、强度与数量}。本节建立三件事：吸附为什么自发、
+吸附与脱附各以多快速率进行、以及这两者与催化活性的经验关系。
+\end{probout}
+
+\subsubsection{化学吸附过程的热力学讨论}
+
+吸附是自发过程，$\Delta G_{\text{吸}}<0$；被吸附物失去全部或部分平动自由度，熵也降低，
+故 $\Delta S_{\text{吸}}<0$。由 $\Delta G_{\text{吸}}=\Delta H_{\text{吸}}-T\Delta
+S_{\text{吸}}$ 必有 $\Delta H_{\text{吸}}<0$：\textbf{吸附一律放热}，每个吸附过程有其特有
+的吸附热 $q=-\Delta H_{\text{吸}}>0$\textsuperscript{\src{S1 §5.1.1，书内 p.304 /
+PDF p.323}}。吸附可写为 $\ce{A + S <=> AS}$（$\ce{S}$ 为表面吸附位），其平衡常数与覆盖度
+的关系即 5.2 节三种等温式的共同出发点。
+\tocheck{未对照原页面图像：$\Delta G/\Delta H/\Delta S$ 与吸附热 $q$ 的符号约定系按热力学
+常规还原，原书是否另用 $Q$ 或 $q_{\text{ad}}$ 未确认。}
+
+化学吸附的判据性特征是\textbf{由化学键引起、有电子转移或共享、吸附热大
+（约 \qtyrange{50}{960}{kJ.mol^{-1}}，物理吸附仅 \qtyrange{10}{30}{kJ.mol^{-1}}）、
+有选择性、单层、需同时加热与抽真空才能脱除}；物理吸附则由范德华力引起、无选择性、可多层、
+抽真空即可除去。原书特别提醒\textbf{两者界线在许多情况下并不明显}，判据必须合并使用，
+不能只看吸附量大小。
+
+\subsubsection{化学吸附与催化活性的两条经验规则}
+
+多相催化循环包括扩散、化学吸附、表面反应、脱附和反向扩散五个步骤，化学吸附是其中唯一
+同时决定「活化什么」和「活化多少」的步骤。长期研究归纳出两条经验规则
+\textsuperscript{\src{S1 §5.1.1，书内 p.303—304 / PDF p.322—323}}：
+
+\paragraph{规则一（必要条件）}至少有一种反应物在催化剂表面上发生化学吸附，是产生催化活性
+的必要条件；若对任何反应物都无化学吸附能力，就不可能催化该反应。
+
+\paragraph{规则二（适度原则）}表面对反应物的吸附必须\textbf{适当}：多相催化需要的是较弱并且
+快速的化学吸附，单位表面反应速率在相同覆盖度下与吸附强度成反比。
+
+\begin{pitfall}
+规则二常被误读成「吸附越强越好」。吸附太强会使表面被稳定中间体覆盖而无法脱附，活性反而
+下降——即 Volcano 曲线的下降支。测到很大的吸附热只说明该位点可能难以周转，并不意味着
+好催化剂。
+\end{pitfall}
+
+\subsubsection{吸附与脱附速率}
+
+吸附速率由碰撞频率、吸附概率与空位分数共同决定，$r_{\text{ad}} = k_a\,C\,(1-\theta)$；
+脱附速率为 $r_{\text{de}} = k_d\,\theta^{\,n}$（$\theta$ 为覆盖度，$n$ 为脱附级数），
+速率常数按 Arrhenius 形式随温度变化：
+\begin{equation}
+k_d = A\exp\!\left(-\frac{E_d}{RT}\right)
+\label{eq:ch05-kd}
+\end{equation}
+$E_d$ 为脱附活化能，是覆盖度 $\theta$ 的函数，$A$ 为脱附频率因子。平衡时令两速率相等即得
+吸附等温式的一般形式。注意 $E_d$ 依赖 $\theta$ 这一点：\textbf{表面不均匀或存在横向相互
+作用时，脱附活化能会随覆盖度漂移}，这正是 Temkin 型行为的物理来源。
+
+\subsection{三种模型的吸附等温式}
+
+\chapref{ch:01} 已从动力学与多层吸附假设分别推导了 Langmuir 与 BET 等温式，本节不再重复
+推导，只回答一个操作性问题：\textbf{每一种等温式隐含了什么样的表面假设，以及在什么条件下
+必须放弃 Langmuir 而改用 Freundlich 或 Temkin。}
+
+\begin{principle}
+\textbf{Langmuir}：$\theta = \dfrac{Kp}{1+Kp}$。假设表面\textbf{均匀}（各位点吸附热相同）、
+\textbf{单层}吸附、被吸附分子之间\textbf{无相互作用}、吸附与脱附处于\textbf{动态平衡}；
+推论是 $p/V$–$p$ 为直线，且饱和吸附量 $V_m$ 可达平台。
+
+\textbf{Freundlich}：$V = K_F\,p^{1/n}$（$n>1$）。等价于假设表面具有\textbf{指数分布的
+非均匀吸附热}；$\ln V$–$\ln p$ 为直线。它是纯经验式，\textbf{不给出饱和吸附量}，因此不能
+用于测定金属分散度。
+
+\textbf{Temkin}：$\theta = \dfrac{RT}{\alpha}\ln(K_0 p)$。假设吸附热随覆盖度\textbf{线性下降}
+（$\Delta H_{\text{吸}} = \Delta H_0 - \alpha\theta$），即表面不均匀但下降方式规则；适用区间
+为中等覆盖度（约 $0.2<\theta<0.8$），$\theta$–$\ln p$ 为直线。
+\end{principle}
+
+\begin{dataflow}
+选模型的判据不是「哪个拟合更好」，而是\textbf{残差形状}与\textbf{覆盖度区间}：
+（1）先看 $V$–$p$ 曲线有无平台——有平台才谈得上 $V_m$；（2）再在双对数坐标（Freundlich）
+与 $V$–$\ln p$ 坐标（Temkin）中段看是否直线；（3）比较三种线性化的残差：Langmuir 常在低压
+段偏高、Temkin 中段最好、Freundlich 全程都可能「看起来不错」，但其常数没有位点数目含义；
+（4）凡要报\textbf{位点数目或分散度}，只能用给出 $V_m$ 的形式（Langmuir 或 BET），并用
+5.3 节的脉冲饱和法交叉验证。
+\end{dataflow}
+
+\begin{pitfall}
+\textbf{在真实催化剂上直接用 Langmuir 是常见错误。} 负载型金属催化剂至少在三个层面违反其
+假设：多种晶面与配位不饱和位（吸附热不同）、吸附质之间的横向排斥、强吸附物种阻塞邻近位点；
+表现为 $p/V$–$p$ 图弯曲、不同温度下求得的 $V_m$ 不一致。\textbf{另一类错误是把中毒当作
+非均匀性}：硫中毒或不可逆强吸附同样让吸附量随压力呈幂律上升，看起来「很 Freundlich」，
+但机制与吸附热分布无关——中毒型数据重新抽真空/升温后不可逆，真实非均匀吸附则可逆。
+\end{pitfall}
+
+\begin{crosscheck}
+等温式给出的 $V_m$ 只说明「有多少可吸附位」，不说明「这些位是否具有催化活性」，必须与
+5.3 节的 TPD（位点强度分布）和反应动力学测试（转换频率）互补回查：若 TPD 显示吸附全部
+集中在过高温度，则 $V_m$ 表征的是强吸附位而非参与反应的活性位。
+\tocheck{未对照原页面图像：本节三种等温式的符号约定（$K_F$、$n$、$\alpha$、$K_0$）按标准
+形式还原，原书取值与编号未逐页核对。}
+\end{crosscheck}
+
+\subsection{动态分析方法理论}
+
+\subsubsection{程序升温脱附（TPD）基本原理}
+
+\chapref{ch:01} 的容量法与脉冲法都在恒温下测吸附量，TPD 则把\textbf{温度作为扫描变量}。
+样品预吸附气体并吹扫掉物理吸附层，再在惰性载气（\ce{He}、\ce{Ar} 或 \ce{N2}）中以恒定
+速率升温，下游用热导检测器或质谱监测脱附产物浓度，得到脱附速率对温度的曲线即 TPD 谱。
+脱附速率同时依赖温度与覆盖度：升温开始时 $\theta$ 大，速率急剧上升，主要受温度控制；随
+吸附分子脱出 $\theta$ 下降，速率转而由 $\theta$ 决定并开始减小；$\theta=0$ 时速率归零。
+这一「先指数上升、后衰减」的竞争正是谱峰存在的原因。
+
+\begin{principle}
+\textbf{峰面积给出吸附量，峰温度给出吸附强度，峰数目给出位点种类数}——这是 TPD 判读的
+全部基础。原书列出的定量信息为：吸附类型（活性位）数目、各类型的强度、每个类型中质点
+的数目（活性位密度）、脱附反应级数、表面能量分布；优点是设备简单、几乎覆盖所有实用
+催化剂、可原位考察吸附分子与表面的反应
+\textsuperscript{\src{S1 §5.3.1，书内 p.311—312 / PDF p.330—331}}。
+\end{principle}
+
+\begin{table}[htbp]
+\centering
+\caption{TPD 谱能给出什么、不能给出什么}
+\label{tab:ch05-tpd}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}lXX@{}}
+\toprule
+信息维度 & 能给出（有前提） & 不能给出（或需外部证据） \\
+\midrule
+峰数目 & 不同吸附强度物种的\textbf{下限}个数 & 每个峰的化学身份；重叠峰会被读成一个位点 \\
+峰面积 & 脱附物种的相对数量；标定后为绝对吸附量 & 未经标定的绝对量；脉冲法标定是前提 \\
+峰温度 & 同一系列样品间相对吸附强度的排序 & 直接读出的 $E_d$；须满足 Redhead 前提 \\
+峰形/半宽 & 脱附级数线索（一级不对称、二级近对称） & 唯一的级数值；扩散与再吸附同样改变峰形 \\
+覆盖度依赖 & 随初始 $\theta$ 的峰温漂移 → 表面非均匀性 & 能量分布的定量形式；需多种 $\theta$ 序列 \\
+反应性 & 脱附产物分布（质谱）→ 表面反应路径 & 稳态反应速率；TPD 在无反应物分压条件下进行 \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\subsubsection{实验装置、条件与谱图定性分析}
+
+装置由三个单元组成：气体净化与切换、反应与控温、分析测量。典型流程用两个六通阀：预处理
+气体经阀 6 通过样品，达规定温度与时间后切换阀 6 使载气流经样品，再由阀 7 脉冲进样；第一个
+脉冲出峰面积最小（甚至不出峰），随脉冲次数增加峰面积增大，直至不变，即认为表面已被吸附质
+饱和。以饱和峰面积为标定峰 $A_0$、每次脉冲进气量（标准状态）为 $V_0$，吸附量按下式计算
+\textsuperscript{\src{S1 §5.3.2，书内 p.313 / PDF p.332}}：
+\begin{equation}
+V_{\text{吸}} = V_0\left[\sum_i (A_0 - A_i) + (A_0 - A_j)\right]
+\label{eq:ch05-pulse}
+\end{equation}
+\tocheck{未对照原页面图像：式~\eqref{eq:ch05-pulse} 的括号结构与下标（OCR 作
+「$V_0[(A_0-A_i)+(A_0-A_j)]$」）严重失真，此处按脉冲饱和法的标准累加形式重建；原书是否
+对 $i$ 求和、末项下标记号均未确认。}
+
+饱和后继续用载气吹扫至热导基线平衡以脱除物理吸附，再进行程序升温。定性判读三条：
+\textbf{峰数目}表征不同吸附强度的物种数目，\textbf{峰面积}表征脱附物种的相对数量，
+\textbf{峰温}表征脱附物种在表面的吸附强度。若吸附物与表面发生反应或吸附分子解离，脱附产物
+不是单一原始吸附质，此时必须用质谱而非热导检测。
+
+\begin{measure}
+为保证 TPD 曲线重复可靠，原书给出的条件区间为：载气流速一般 \qtyrange{30}{50}{mL.min^{-1}}；
+装填量一般 \qtyrange{50}{200}{mg}，粒度 \qtyrange{40}{80}{目}；升温速率一般
+\qtyrange{10}{20}{K.min^{-1}}，且应有较好的升温线性关系。升温速率过大时峰容易重叠、
+造成信息损失；过小时信号减弱且实验时间延长。\textbf{升温线性度是必须记录并报告的量}：
+所有基于峰温的动力学计算都假定 $\beta$ 恒定。
+\end{measure}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{groupplot}[
+  group style={group size=2 by 1, horizontal sep=8mm},
+  width=39mm, height=38mm,
+  xmin=400, xmax=750, ymin=0, ymax=0.118,
+  xtick={400,500,600,700}, ytick=\empty,
+  xlabel={$T$ / K}, ylabel={脱附速率},
+  tick label style={font=\srcsize}, label style={font=\srcsize},
+  title style={font=\srcsize},
+  legend style={font=\srcsize, draw=none, fill=none, at={(0.5,-0.42)},
+                anchor=north, legend columns=1, nodes={inner sep=1pt}},
+  every axis plot/.append style={thick},
+]
+\nextgroupplot[title={(a) 升温速率（一级）}]
+\addplot[blue, domain=400:750, samples=100]
+  {0.025/(1+((x-550)/21.4)^4)};
+\addlegendentry{$\beta=5$}
+\addplot[red, domain=400:750, samples=100]
+  {0.050/(1+((x-566)/22.6)^4)};
+\addlegendentry{$\beta=10$}
+\addplot[black, domain=400:750, samples=100]
+  {0.100/(1+((x-583)/24.0)^4)};
+\addlegendentry{$\beta=20$}
+\nextgroupplot[title={(b) 脱附级数（$\beta=10$）}]
+\addplot[red, domain=400:750, samples=100]
+  {0.050/(1+((x-566)/22.6)^4)};
+\addlegendentry{$n=1$，拖尾}
+\addplot[black, dashed, domain=400:750, samples=100]
+  {0.055/(1+((x-572)/26.8)^4)};
+\addlegendentry{$n=2$，对称}
+\end{groupplot}
+\end{tikzpicture}
+\caption{模型计算的 TPD 谱：(a) 中升温速率由 5 增到 \qty{20}{K.min^{-1}}，峰温右移约
+\qty{33}{K}，而三条曲线下的\textbf{峰面积严格按 $1:2:4$ 增长}（脱附总量随 $\beta$ 同比放大）；
+(b) 固定 $\beta$ 改变脱附级数，\textbf{峰面积不变}而峰形由一级的明显拖尾转为二级的近对称。
+两点合起来说明：\textbf{峰面积标定吸附量，峰位标定动力学}。局限：曲线按一级/二级脱附速率
+方程与 Redhead 峰温关系参数化生成（$E_d=\qty{120}{kJ.mol^{-1}}$，$A$ 取使 $T_m$ 落在图示
+位置的值），未含再吸附、扩散与检测器响应，不可用于直接读数值。\modelmark
+\figsrc{据 S1 §5.3.1—5.3.3 原理自绘，书内 p.311—315 / PDF p.330—334}}
+\end{figure}
+
+\begin{pitfall}
+\textbf{峰重叠。} 相邻位点的峰在半宽可比于峰间距时合并为一个宽峰，被读成「单一均匀位点」。
+识别办法是改变升温速率或初始覆盖度：真实两峰的条件响应不同，单峰只整体平移。
+
+\textbf{再吸附抬高峰温。} 载气流速过低、床层过厚或样品量过大时，脱附分子在床层内被重新
+吸附，表现为峰温偏高、峰形拖尾，由峰温算得的 $E_d$ 系统性偏大。判据是把载气流速提高一档
+重测：真实峰位基本不动，再吸附控制的峰位明显左移。
+
+\textbf{载气流速与升温速率耦合。} 两者共同决定脱附物在检测器处的驻留时间与峰宽，单独优化
+其一会得到假的最优条件；报告时必须同时给出 $\beta$、流速、装量和粒度。
+
+\textbf{定量必须标定。} 热导或质谱信号是浓度而非摩尔量，峰面积只有经已知体积脉冲标定
+（式~\eqref{eq:ch05-pulse}）后才能换算为吸附量；未标定就比较不同批次样品的峰面积，在
+检测器灵敏度漂移时会得出错误的位点数目结论。
+\end{pitfall}
+
+\subsubsection{TPD 动力学参数的确定}
+
+Cvetanović 和 Amenorinya 为简化理论处理提出四条假设：\textbf{不发生再吸附}、\textbf{脱附为
+一级过程}、\textbf{表面均匀}、\textbf{不存在扩散}。此时脱附速率
+$N = -\mathrm{d}\theta/\mathrm{d}t = k_d\,\theta^{\,n}$，$k_d$ 取式~\eqref{eq:ch05-kd}；
+设线性升温 $T=T_0+\beta t$，峰顶处 $\mathrm{d}^2\theta/\mathrm{d}T^2=0$，解得峰温条件
+\begin{equation}
+\frac{E_d}{R\,T_m^{2}} = \frac{A}{\beta}\; n\,\theta_m^{\,n-1}
+\exp\!\left(-\frac{E_d}{R\,T_m}\right)
+\label{eq:ch05-peak}
+\end{equation}
+式中下标 $m$ 表示峰最高点处的量，其来源是 $\mathrm{d}\theta/\mathrm{d}T =
+-(A/\beta)\,\theta^{\,n}\exp(-E_d/RT)$ 在峰顶处满足 $\mathrm{d}^2\theta/\mathrm{d}T^2=0$。
+对一级脱附（$n=1$）$\theta_m$ 项消失，即得 Redhead 方程
+\begin{equation}
+\frac{E_d}{R\,T_m^{2}} = \frac{A}{\beta}\exp\!\left(-\frac{E_d}{R\,T_m}\right)
+\label{eq:ch05-redhead}
+\end{equation}
+\tocheck{未对照原页面图像：式~\eqref{eq:ch05-peak}—\eqref{eq:ch05-redhead} 系按标准
+Cvetanović–Amenomiya 推导还原；原书 p.334 的公式区几乎不可读，是否保留
+$n\theta_m^{\,n-1}$ 因子、以及一级式整理后含常数项的代数形式（文献中有 3.64 等不同版本）
+均未确认。}
+
+式~\eqref{eq:ch05-redhead} 是把\textbf{峰温}翻译成\textbf{脱附活化能}的唯一桥梁，它无解析
+解、实用中按假定的 $A$ 值迭代求解；其可换算性完全取决于表~\ref{tab:ch05-redhead} 的四个前提。
+
+\begin{table}[htbp]
+\centering
+\caption{由峰温换算脱附活化能的四个前提}
+\label{tab:ch05-redhead}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}lXX@{}}
+\toprule
+前提 & 要求 & 被违反时的表现 \\
+\midrule
+一级脱附 & $n=1$，$\theta_m$ 项消失 & 二级脱附下 $E_d$ 随初始覆盖度变化 \\
+指前因子已知 & 需假定 $A$（常见 $10^{13}\,\si{s^{-1}}$ 量级） & $E_d$ 与 $\ln A$ 强耦合，$A$ 差 2 个量级 $E_d$ 约差 10\% \\
+无再吸附 & 载气流速足够高、床层足够薄 & 峰温偏高、拖尾，$E_d$ 系统性偏大 \\
+升温速率已知且恒定 & $\beta$ 线性、并在报告中给出 & 峰位漂移，变升温速率法斜率失效 \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\begin{measure}
+\textbf{变升温速率法（不假定 $A$）。} 若不作 $A$ 的假设，可由式~\eqref{eq:ch05-redhead}
+整理出：以 $2\ln T_m - \ln\beta$ 对 $1/T_m$ 作图，斜率为 $E_d/R$，由此得到脱附活化能。
+实验上需在多个 $\beta$ 下各测一条 TPD 曲线、读出各自的 $T_m$ 后作图。原书给出烯烃在
+氧化铝中心上脱附的实例（\ce{C2H4}、\ce{C3H6}、\ce{C4H8}），所得 $E_d$ 与 $A$ 列于其表 5-3；
+作者同时指出该法实验工作量较大，并提到用谱线重叠法从单条 TPD 谱线求 $E_d$ 与 $A$ 的
+替代途径\textsuperscript{\src{S1 §5.3.3，书内 p.315—316 / PDF p.334—335}}。
+\tocheck{未对照原页面图像：$2\ln T_m-\ln\beta$ 对 $1/T_m$ 的斜率关系（原书式 5-55）与
+表 5-3 中 $A$ 的数值（OCR 为 $1.6\times10^{5}$、$6.8\times10^5$、$1.2\times10^4$ 量级）
+均未逐字核对；这三组 $A$ 值远低于常用的 $10^{13}\,\si{s^{-1}}$，若确如此，说明该体系
+不满足 Redhead 的 $A$ 假定，直接套用会给出发散的 $E_d$。}
+\end{measure}
+
+\subsubsection{程序升温还原（TPR）原理}
+
+等温条件下的还原过程一般用成核模型和球收缩模型解释。以球形金属氧化物与 \ce{H2} 反应生成
+金属和 \ce{H2O} 为例：\textbf{成核模型}认为反应从成核开始，随核长大与新核形成，金属核与
+氧化物之间的反应界面增加、速率加快；核相互接触后界面变小、速率减慢，故 $\alpha$–$t$ 曲线
+呈 S 形、$\mathrm{d}\alpha/\mathrm{d}t$ 先增后减。\textbf{球收缩模型}认为迅速成核形成很薄的
+金属层后界面不断缩小、速率单调下降；两者区别在于成核速度。
+
+程序升温条件下还原写作 $\ce{G + S -> P}$（\ce{G} 为 \ce{H2}，\ce{S} 为氧化物，\ce{P} 为
+产物），速率与 Arrhenius 温度依赖、线性升温的关系为
+\begin{equation}
+r = \frac{\mathrm{d}\alpha}{\mathrm{d}t} = k\,f(\alpha),\qquad
+k = A\exp\!\left(-\frac{E_a}{RT}\right),\qquad
+\beta = \frac{\mathrm{d}T}{\mathrm{d}t}
+\label{eq:ch05-tpr}
+\end{equation}
+式中 $\alpha$ 为还原分数。因 $\mathrm{d}/\mathrm{d}t = \beta\,\mathrm{d}/\mathrm{d}T$，
+反应与气体浓度无关时有
+$\mathrm{d}\alpha/\mathrm{d}T = (A/\beta)(1-\alpha)^{q}\exp(-E_a/RT)$。峰顶处
+$\mathrm{d}[G]/\mathrm{d}T = 0$，整理、取对数并假定固体反应级数 $q=1$，得
+\begin{equation}
+2\ln T_m - \ln\beta + p\ln[G]_M = \frac{E_a}{R\,T_m} + \text{常数}
+\label{eq:ch05-tpr-peak}
+\end{equation}
+$p$、$q$ 分别为气体与固体的反应级数，$[G]_M$ 为峰顶处还原气浓度。已知 $p$、$q$ 时以式
+~\eqref{eq:ch05-tpr-peak} 左边对 $1/T_m$ 作图，斜率即 $E_a/R$。
+\tocheck{未对照原页面图像：式~\eqref{eq:ch05-tpr}—\eqref{eq:ch05-tpr-peak} 系按
+Cvetanović 型峰顶条件还原；原书先给含 $p$、$q$ 的通用式（式 5-72）再令 $q=1$ 化简，
+其积分近似段（式 5-62—5-64）在 OCR 中基本损毁，合并形式与常数项组成未逐字核对。}
+
+原书指出该法有两个实务限制。其一，\textbf{它并不实用}：实验拿到的 TPR 信息大多是还原气
+（如 \ce{H2}）浓度与温度的关系、谱图由几个峰组成，而非 $\alpha$–$T$ 曲线本身；对流动体系
+还原过程表现为 $\Delta[G] = [G]_{\text{进}} - [G]_{\text{出}}$，假定活塞流时低转化率下可由
+$r = f\,[G]x$ 描述。其二，\textbf{氢溢流}：在某一物质表面形成的活性物种转移到在相同条件下
+自身不能吸附或不能形成活性物种的另一物质表面。多组分催化剂中易还原的氧化物先在较低温度
+还原成金属，若该金属能解离活化 \ce{H2}，原子氢便经金属—氧化物界面溢流到氧化物表面使之
+还原；原子氢还原性强于分子氢，故存在氢溢流时氧化物还原温度明显降低。\ce{Pt}、\ce{Pd}、
+\ce{Ag}、\ce{Cu}、\ce{Ni} 等均有此功能，贵金属作用尤其突出。
+
+\begin{crosscheck}
+氢溢流使 TPR 图谱难以按单一还原步骤归属：一个低温峰可能不代表该物种本身易还原，而代表
+邻近金属提供了溢流通道。因此\textbf{TPR 的峰归属必须与 XRD、\ce{H2} 消耗量（定量）以及
+\ce{CO}-TPR 回查}。原书明确指出，为消除氢溢流影响可选用溢流作用较小的 \ce{CO} 替代
+\ce{H2} 作还原气，即 \ce{CO}-TPR\textsuperscript{\src{S1 §5.3.4，书内 p.316—319 /
+PDF p.335—338}}。
+\end{crosscheck}
+
+\subsubsection{程序升温氧化（TPO）原理}
+
+程序升温氧化的原理与 TPR 基本类似，是在一定升温速率下用氧化性气体（如 \ce{O2}）对催化剂
+及其表面物种进行氧化的过程，主要用于研究催化剂表面积炭物种的生成机理。
+
+\begin{principle}
+与 TPD 的对应关系可以直接迁移：TPO 谱的峰面积对应\textbf{可氧化物种（积炭）的总量}，
+峰温对应\textbf{该物种被氧化的难易程度}（积炭越石墨化、越难氧化，峰温越高），
+峰数目对应\textbf{积炭物种的类别数}。因此 TPO 与 TPD 的全部定量前提——标定、载气流速、
+升温速率、峰重叠——同样适用，且因为反应产物是 \ce{CO2}/\ce{CO}，需用质谱同时监测
+两个通道以避免把部分氧化产物计漏。
+\end{principle}
+
+\srcnote{本节（5.1—5.3）据 S1 上册第 5 章，书内 p.301—319 / PDF p.320—338。化学吸附应用、
+活性位与分散度测定、TPD/TPR/TPO 在具体体系中的应用见本章后续分片。原文中的
+图 5-2—5-7 为原书谱图与装置流程图，因无图像核对能力未裁图，本分片仅以
+\modelmark 模型计算图替代。}

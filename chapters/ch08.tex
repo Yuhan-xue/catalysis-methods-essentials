@@ -1,0 +1,9 @@
+% chapters/ch08.tex —— 第 8 章 核磁共振方法
+% 装配层：只负责按顺序引入各分片。分片缺失时跳过，便于增量成书。
+% 分片文件：chapters/parts/ch08-{a..e}.tex
+
+\IfFileExists{chapters/parts/ch08-a.tex}{\input{chapters/parts/ch08-a}}{}
+\IfFileExists{chapters/parts/ch08-b.tex}{\input{chapters/parts/ch08-b}}{}
+\IfFileExists{chapters/parts/ch08-c.tex}{\input{chapters/parts/ch08-c}}{}
+\IfFileExists{chapters/parts/ch08-d.tex}{\input{chapters/parts/ch08-d}}{}
+\IfFileExists{chapters/parts/ch08-e.tex}{\input{chapters/parts/ch08-e}}{}

@@ -1,0 +1,9 @@
+% chapters/ch03.tex —— 第 3 章 热分析方法
+% 装配层：只负责按顺序引入各分片。分片缺失时跳过，便于增量成书。
+% 分片文件：chapters/parts/ch03-{a..e}.tex
+
+\IfFileExists{chapters/parts/ch03-a.tex}{\input{chapters/parts/ch03-a}}{}
+\IfFileExists{chapters/parts/ch03-b.tex}{\input{chapters/parts/ch03-b}}{}
+\IfFileExists{chapters/parts/ch03-c.tex}{\input{chapters/parts/ch03-c}}{}
+\IfFileExists{chapters/parts/ch03-d.tex}{\input{chapters/parts/ch03-d}}{}
+\IfFileExists{chapters/parts/ch03-e.tex}{\input{chapters/parts/ch03-e}}{}

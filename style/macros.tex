@@ -1,0 +1,118 @@
+% ================================================================
+%  style/macros.tex
+%  语义宏：统一管理「方法单元」「关键条件」「误判提示」「来源短注」
+%  （企划 §4.2、§6.4、§7）
+%
+%  【设计约束】
+%   * 一律使用「行内黑体标目 + 悬挂缩进」，不做带边框卡片、不做彩底，
+%     既满足企划 §6.3「避免将每个段落都包装成带边框卡片」，也保证可跨栏断页。
+%   * 所有块环境均可在双栏内自由断页/断栏。
+% ================================================================
+
+\newlength{\rblblw}
+
+% ---- 通用行内标目块 --------------------------------------------------
+\newenvironment{runinblk}[1]{%
+  \par\addvspace{3pt}%
+  \settowidth{\rblblw}{{\heiti #1}}%
+  \begin{list}{}{%
+    \setlength{\labelwidth}{\rblblw}%
+    \setlength{\labelsep}{0.6em}%
+    \setlength{\leftmargin}{\rblblw}%
+    \addtolength{\leftmargin}{0.6em}%
+    \setlength{\topsep}{0pt}%
+    \setlength{\parsep}{1.5pt}%
+    \setlength{\partopsep}{0pt}%
+    \setlength{\itemsep}{1.5pt}%
+    \renewcommand{\makelabel}[1]{{\heiti ##1}\hfill}%
+  }%
+  \item[#1]\ignorespaces
+}{%
+  \end{list}\addvspace{2pt}%
+}
+
+% ---- 企划 §4.2 统一方法单元的六个环节 --------------------------------
+\newenvironment{probout}{\begin{runinblk}{问题与输出}}{\end{runinblk}}
+\newenvironment{principle}{\begin{runinblk}{原理与公式}}{\end{runinblk}}
+\newenvironment{measure}{\begin{runinblk}{测量与条件}}{\end{runinblk}}
+\newenvironment{dataflow}{\begin{runinblk}{数据到结论}}{\end{runinblk}}
+\newenvironment{pitfall}{\begin{runinblk}{误判与边界}}{\end{runinblk}}
+% 注意：不能命名为 complement —— amssymb 已把 \complement 定义为数学符号 ∁。
+\newenvironment{crosscheck}{\begin{runinblk}{互补与回查}}{\end{runinblk}}
+
+% ---- 其他语义块 ------------------------------------------------------
+\newenvironment{keycond}{\begin{runinblk}{关键条件}}{\end{runinblk}}
+\newenvironment{methodsum}{\begin{runinblk}{方法摘要}}{\end{runinblk}}
+% 把「观察到的现象」与「解释性推断」分开陈述（企划 §4.2）
+\newenvironment{obs}{\begin{runinblk}{观察}}{\end{runinblk}}
+\newenvironment{infer}{\begin{runinblk}{推断}}{\end{runinblk}}
+
+% ---- 例题：按章编号，形如 例题 1-2 -----------------------------------
+\newcounter{exa}[section]
+\renewcommand{\theexa}{\thesection-\arabic{exa}}
+\newenvironment{example}[1][]{%
+  \refstepcounter{exa}%
+  \begin{runinblk}{例题\,\theexa}%
+  \ifx\relax#1\relax\else{\heiti #1}。\hspace{0.3em}\fi
+  \ignorespaces
+}{%
+  \end{runinblk}%
+}
+
+% ---- 来源与核验状态（企划 §7.1）-------------------------------------
+\newcommand{\srcsize}{\fontsize{8}{9.6}\selectfont}
+% 块级来源短注（章末或节末）
+\newcommand{\srcnote}[1]{%
+  \par\addvspace{2pt}%
+  \noindent{\srcsize #1\par}%
+  \addvspace{2pt}%
+}
+% 行内来源标记，如 \src{S1 §1.1.2，书内 p.12 / PDF p.34}
+\newcommand{\src}[1]{{\srcsize ［#1］}}
+% 图表来源脚注（写入 \caption 之后）
+\newcommand{\figsrc}[1]{\\{\srcsize #1}}
+% 尚未核对的数值 / 条件
+\newcommand{\tocheck}[1]{{\srcsize\textbf{［待核对］}#1}}
+
+% ---- 内容性质标记（企划 §4.3、§5.2）---------------------------------
+% 教学设定数值：不存在原始数值时使用，不得伪装成原书实验结果
+\newcommand{\pedset}[1]{{\srcsize\textbf{［教学设定］}#1}}
+% 补充：原书之外的后续发展，须独立来源与日期
+\newcommand{\supp}[1]{{\srcsize\textbf{［补充］}#1}}
+% 模型计算 / 示意（图题中标注）
+\newcommand{\modelmark}{{\srcsize ［模型计算］}}
+\newcommand{\schemamark}{{\srcsize ［示意］}}
+\newcommand{\redrawmark}{{\srcsize ［据原书改绘］}}
+
+% ---- 术语首现（企划 §4.3）-------------------------------------------
+% \term{缩写}{英文全称}{中文名}  ->  中文名（英文全称，缩写）
+\newcommand{\term}[3]{#3（#2，#1）}
+% 已定义过、后文只出现缩写时使用
+\newcommand{\abbr}[1]{\textsc{#1}}
+
+% ---- 常用排版助手 ----------------------------------------------------
+% 微分号：正体 d。章作者常用 \dd（来自 physics/commath 包，本项目不加载），此处提供。
+\newcommand{\dd}{\mathrm{d}}
+% 长表页：原先用于「从双栏切到单栏整页」。单栏后整幅就是通栏，本宏退化为只分页，
+% 保留它是为了不改动已写好分片里的 2 处调用（ch90-backmatter）。
+\newcommand{\widepageson}{\clearpage}
+\newcommand{\widepagesoff}{\clearpage}
+% 单位：优先 \qty{}{}（siunitx，见 preamble）
+\newcommand{\pct}{\%}
+% 吸附量、比表面积等惯用符号
+\newcommand{\SBET}{S_{\mathrm{BET}}}
+\newcommand{\Vmono}{V_{\mathrm{m}}}
+\newcommand{\ppzero}{p/p_{0}}
+% 温度
+% 注意三件事，都是实测踩出来的：
+%  1) 不要写 ^{\circ}\mathrm{C} —— \circ 在 unicode-math 下映射到 U+2218 ∘，
+%     而 TeX Gyre Termes 与 Fandol 都**没有**该字形，会静默丢字。
+%  2) 也不要写 \celsius —— siunitx v3 里它只在 \qty{}{\celsius} 的参数内有效，
+%     作为独立命令会展开成 \ERROR（undefined control sequence）。
+%  3) 用 U+00B0 度数符号（Termes 有），\mbox 使它在文本与数学模式下都可用。
+\newcommand{\degC}{\mbox{°C}}
+\newcommand{\Kelvin}{\mathrm{K}}
+% 表格内换行小字
+\newcommand{\tcell}[1]{\makecell{#1}}
+% 表头单位行
+\newcommand{\tunit}[1]{{\srcsize #1}}

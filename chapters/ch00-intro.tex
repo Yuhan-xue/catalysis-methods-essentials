@@ -1,0 +1,176 @@
+% ================================================================
+%  chapters/ch00-intro.tex
+%  导读与方法总览（不编号）
+%  作用：全书的方法选择层。回答「我该用哪个方法」而不是「这个方法怎么做」。
+% ================================================================
+
+\chapterheadstar{导读与方法总览}%
+{全书由 12 章方法正文、这一篇跨章导航、以及符号与索引组成。本篇给出研究问题到方法的
+选择路径、12 章之间的互补关系、术语与来源约定。方法本身的原理、公式与读图逻辑在各章。}
+
+\subsection{这本书怎么用}
+
+本书不按原书顺序讲仪器，而按\textbf{你要回答的问题}组织。每个方法都按同一套结构展开，
+所以你可以只读其中一节，也可以拿两个方法对照着读：
+
+\begin{center}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}lX@{}}
+\toprule
+环节 & 它回答什么 \\
+\midrule
+问题与输出 & 这个方法实际测量什么，能据此推断什么 \\
+原理与公式 & 核心关系式及其\textbf{成立条件} \\
+测量与条件 & 样品、模式、预处理、校准中哪些决定结果 \\
+数据到结论 & 从原始信号到结论的处理顺序与读图步骤 \\
+误判与边界 & 干扰、模型不唯一性、不能独立支持的结论 \\
+互补与回查 & 该与哪个方法联用，原书精确定位在哪 \\
+\bottomrule
+\end{tabularx}}
+\end{center}
+
+读任何一节时，请至少读完「误判与边界」。绝大多数错误结论不是因为不会测量，
+而是因为忽略了成立条件。
+
+\subsection{五个问题}
+
+本书的目标是让读者能回答企划约定的五个问题：
+
+\begin{enumerate}
+\item 这个方法实际测量什么，可据此推断什么？（读每节的「问题与输出」）
+\item 核心原理、公式及其成立条件是什么？（「原理与公式」，条件写在公式旁）
+\item 实验数据、谱图或图像应当怎样分析？（「数据到结论」）
+\item 结论可能受哪些假设、干扰或处理步骤影响？（「误判与边界」）
+\item 需要哪一种互补方法进一步验证？（「互补与回查」与下节的矩阵）
+\end{enumerate}
+
+\subsection{方法选择矩阵}
+
+\begin{table}[tbp]
+\centering
+\caption{研究问题到方法的选择矩阵。「首选」是能独立支撑结论的方法，「互补」用于交叉验证或补足首选方法的盲区。
+引用的是本书章号，不是原书章号}\label{tab:selector}
+{\srcsize
+% 【列宽修正】原为 {p{46mm}p{30mm}p{42mm}X}：前三列定宽合计 118 mm，X 列只剩余量。
+% 单栏改版后 \twocolwidth 由 176 mm 收到 158 mm，X 列被压到 40 mm，多个单元格内容
+% 超出其定宽而溢出（实测 p.5 出现 XPS 与 NMR 两串字符叠印）。
+% 改为四个等宽 X 列，由 tabularx 自动分配，任何版心宽度下都不会溢出。
+\begin{tabularx}{\twocolwidth}{@{}>{\raggedright\arraybackslash}X
+                                  >{\raggedright\arraybackslash}X
+                                  >{\raggedright\arraybackslash}X
+                                  >{\raggedright\arraybackslash}X@{}}
+\toprule
+要回答的问题 & 首选方法 & 互补方法 & 为什么需要互补 \\
+\midrule
+体相是什么物相、晶胞参数多少 & 多晶 XRD（\chapref{ch:04}） & 中子衍射、\ce{Raman}（\chapref{ch:06}） & XRD 对轻元素与无序结构不敏感 \\
+比表面积、孔容与孔径分布 & 低温氮吸附（\chapref{ch:01}） & 压汞法、电子显微统计（\chapref{ch:02}） & 吸附法给等效孔宽，显微给真实形貌 \\
+表面有哪些元素、什么化学态 & XPS（\chapref{ch:09}） & AES、UPS、ISS（\chapref{ch:09}） & XPS 定量为半定量，深度不均匀会失真 \\
+活性位的数量与强度 & 化学吸附 + TPD（\chapref{ch:05}） & 红外探针分子（\chapref{ch:07}）、\ce{1H} MAS NMR（\chapref{ch:08}） & 吸附法不分位点种类，探针分子可分辨 Br\o nsted/Lewis \\
+局域配位与短程有序 & 固体 MAS NMR（\chapref{ch:08}） & XAFS、\ce{Raman}（\chapref{ch:06}） & NMR 只对特定核灵敏，需元素互补 \\
+颗粒尺寸与形貌 & 透射电子显微（\chapref{ch:02}） & XRD 峰宽（\chapref{ch:04}）、STM/AFM（\chapref{ch:12}） & 显微统计量小，衍射给的是体积平均 \\
+表面吸附物种与反应中间物 & 原位红外（\chapref{ch:07}） & 原位 Raman（\chapref{ch:06}）、原位 NMR（\chapref{ch:08}） & 各方法窗口不同：红外怕水、Raman 怕荧光、NMR 怕顺磁 \\
+反应速率、机理与动力学参数 & 动力学测定（\chapref{ch:10}） & SSITKA、TAP（\chapref{ch:10}） & 稳态动力学对机理是间接的，需非稳态方法证中间物 \\
+电催化活性与稳定性 & 电化学方法（\chapref{ch:11}） & 原位红外/Raman/质谱（\chapref{ch:11}） & 电化学只给总电流，需谱学识别中间物 \\
+原子尺度表面结构与成键 & STM/AFM（\chapref{ch:12}） & TERS、Nano-FTIR（\chapref{ch:12}） & 显微给几何，近场光谱给化学识别 \\
+热稳定性、积炭与失活 & TG/DTA/DSC（\chapref{ch:03}） & TPO（\chapref{ch:05}）、\ce{13C} NMR（\chapref{ch:08}） & 热分析给总量与温度，不给积炭类型 \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\begin{crosscheck}
+上表的「首选」不是「最好」，而是\textbf{在该问题下最能独立支撑结论}。任何单一方法都
+只能给出一个侧面的证据；凡是把「拟合较好」「单个峰归属」「多方法间相关」直接当作唯一
+证明的写法，本书一律不采用。判断方法之间是否真的互补，标准是它们的\textbf{物理量不同}，
+而不是仪器不同——两台都给元素组成的仪器不构成互补。
+\end{crosscheck}
+
+\subsection{选择路径}
+
+不知道从哪开始，按图~\ref{fig:chooseroute} 的顺序问三个问题。
+
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}[
+  node distance=6mm,
+  box/.style={draw=accent,line width=0.5pt,rounded corners=1pt,align=center,
+              inner sep=1.8mm,font=\fontsize{8.5}{10.5}\selectfont,text width=24mm},
+  dec/.style={draw=accent,line width=0.5pt,align=center,inner sep=1.5mm,
+              font=\fontsize{8.5}{10.5}\selectfont,text width=22mm,
+              shape=diamond,aspect=1.9},
+  ans/.style={align=center,font=\fontsize{8.5}{10.5}\selectfont,text width=24mm},
+  ar/.style={-{Stealth[length=2mm]},line width=0.6pt,draw=accent}
+]
+\node[dec] (q1) {要问的是\\体相还是表面？};
+% 【重叠修正】原来两支的叶子节点在中间几乎完全重叠：
+% q2 的右子 nmr 占 x≈-16.9…13.1 mm，q3 的左子 xps 占 x≈-13.1…16.9 mm，
+% 而两者 y 区间完全相同 —— 结果「MAS NMR / XAFS」与「XPS/AES」叠印（实测 p.5）。
+% 根因是 q2 与 q3 的间距只有约 53 mm，而每个叶子宽 30 mm，中间必然相撞。
+% 修法：把两支各向外移 13 mm，使中间让出约 79 mm；两叶子不再相交。
+\begin{scope}[xshift=-13mm]
+  \node[box,below left=8mm and 2mm of q1] (bulk) {体相结构\\晶相、晶胞、价态};
+  \node[dec,below=9mm of bulk] (q2) {有序还是\\无定形/短程？};
+  \node[box,below left=7mm and 0mm of q2] (xrd) {多晶 XRD\\\chapref{ch:04}};
+  \node[box,below right=7mm and 0mm of q2] (nmr) {MAS NMR\\XAFS\\\chapref{ch:08}};
+\end{scope}
+\begin{scope}[xshift=13mm]
+  \node[box,below right=8mm and 2mm of q1] (surf) {表面与界面\\组成、位点、吸附态};
+  \node[dec,below=9mm of surf] (q3) {元素、位点\\还是吸附态？};
+  \node[box,below left=7mm and 0mm of q3] (xps) {XPS/AES\\\chapref{ch:09}};
+  \node[box,below=7mm of q3] (ads) {化学吸附/TPD\\\chapref{ch:05}};
+  \node[box,below right=7mm and 0mm of q3] (insitu) {原位 IR/Raman\\原位 NMR\\\chapref{ch:07}\chapref{ch:06}};
+\end{scope}
+
+\draw[ar] (q1) -- (bulk);
+\draw[ar] (q1) -- (surf);
+\draw[ar] (bulk) -- (q2);
+\draw[ar] (q2) -- (xrd);
+\draw[ar] (q2) -- (nmr);
+\draw[ar] (surf) -- (q3);
+\draw[ar] (q3) -- (xps);
+\draw[ar] (q3) -- (ads);
+\draw[ar] (q3) -- (insitu);
+
+\node[ans,below=3mm of xrd] {峰位→物相\\峰宽→尺寸};
+\node[ans,below=3mm of nmr] {配位\\短程有序};
+\node[ans,below=3mm of xps] {元素\\化学态};
+\node[ans,below=3mm of ads] {位点数量\\强度};
+\node[ans,below=3mm of insitu] {中间物\\反应路径};
+\end{tikzpicture}
+\caption{方法选择路径。读者应看的是\textbf{分叉的依据}：先分体相/表面，再分「有序程度」或
+「要元素、位点还是吸附态」。图中只给最常用的入口，边界情况见正文各章的「互补与回查」
+与表~\ref{tab:selector}。\schemamark}
+\label{fig:chooseroute}
+\end{figure}
+
+\subsection{术语、符号与来源约定}
+
+\begin{itemize}
+\item \textbf{缩写}：首次出现给出中文名、英文全称与缩写，后文统一用缩写，保留英文检索入口。
+完整缩写表见书末「符号与缩写」。
+\item \textbf{符号}：同一符号在不同章可能含义不同（例如 $C$ 在吸附章是 BET 常数、
+在动力学章可能指浓度），各章在局部重新定义，不跨章沿用。
+\item \textbf{来源标记}：正文用 8\,pt 的方括号短标，形如
+\src{S1 §1.1.2，书内 p.17 / PDF p.36，式(1-13)}。
+其中 \textbf{S1 = 上册}，\textbf{S2 = 下册}；同时给出书内页码与 PDF 页序，
+因为全书页码映射分段，不能套用固定偏移。
+\item \textbf{内容性质}：凡不是原书实验结果的数值，一律标 \pedset{教学设定}；
+凡原书之外的后续发展，标 \supp{补充} 并给独立来源与日期；
+凡尚未对照原页面图像核对的公式，标 \tocheck{待核对}。
+\item \textbf{图源四类}分别标注：原书实测图（注明册别、书内页码、PDF 页序、原图号）、
+\redrawmark（据原书改绘）、\modelmark（模型计算）、\schemamark（示意）。
+\end{itemize}
+
+\begin{pitfall}
+不要用本书的「来源标记」当作二次文献引用。本书的来源指向原书章节与页码，
+用于回查；若你要在论文中引用原始工作，请循原书参考文献找到原始文献并自行核对。
+本书不做转引背书。
+\end{pitfall}
+
+\subsection{三条阅读路线}
+
+\begin{description}[leftmargin=0pt,style=nextline,font=\heiti]
+\item[快速查阅] 用表~\ref{tab:selector} 定位方法，读该章「问题与输出」「误判与边界」两节。
+\item[系统学习] 按章顺序读；跨章重复的原理只在主定义处展开，其余以提醒与交叉引用带过。
+\item[方案设计] 先读本篇与第 10 章（动力学）确立「要测什么量」，
+再按测得量的物理性质选择表征手段，最后用「互补与回查」搭出证据链。
+\end{description}

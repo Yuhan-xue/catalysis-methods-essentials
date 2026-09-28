@@ -1,0 +1,37 @@
+files scanned: 18
+issues: 34
+
+[FONT<8pt] chapters\parts\ch01-b.tex:380  7.5pt  legend style={font=\fontsize{7.5}{9}\selectfont, at={(0.98,0.97)},
+[FONT<8pt] chapters\parts\ch01-b.tex:392  7.5pt  \node[anchor=south west,font=\fontsize{7.5}{9}\selectfont,color=accent,
+[疑似手写表号（应用 \tabref）] chapters\parts\ch01-b.tex:529  归纳，均非原书图表。压力--孔宽对照表与 HK／SF 法所用的吸附剂、吸附质参数见原书表 1-7
+[疑似手写表号（应用 \tabref）] chapters\parts\ch01-b.tex:530  至表 1-9，本分片未逐值转录。}
+[疑似手写图号（应用 \figref）] chapters\parts\ch02-a.tex:716  书中图 2-1、2-4、2-5、2-6、2-10 为示意图，本分片按其内容重绘为
+[疑似手写图号（应用 \figref）] chapters\parts\ch02-a.tex:718  图 2-11、2-13、2-15、2-16 为实验照片或计算模拟像，未复制。
+[疑似手写图号（应用 \figref）] chapters\parts\ch03-a.tex:355  PDF p.194）与图 3-7（书内 p.179 / PDF p.198）自绘。}}
+[疑似手写表号（应用 \tabref）] chapters\parts\ch04-a.tex:717  PDF p.238—262。原书 4.1.2 中宏观对称要素表（表 4-1）、螺旋轴与滑移面表（表 4-3、
+[疑似手写表号（应用 \tabref）] chapters\parts\ch04-a.tex:718  表 4-4）、空间群国际记号三个位方向（表 4-5）与 $P2_1/c$ 等效点系（表 4-6）属群论
+[疑似手写表号（应用 \tabref）] chapters\parts\ch05-a.tex:288  氧化铝中心上脱附的实例（\ce{C2H4}、\ce{C3H6}、\ce{C4H8}），所得 $E_d$ 与 $A$ 列于其表 5-3；
+[疑似手写表号（应用 \tabref）] chapters\parts\ch05-a.tex:292  表 5-3 中 $A$ 的数值（OCR 为 $1.6\times10^{5}$、$6.8\times10^5$、$1.2\times10^4$ 量级）
+[疑似手写图号（应用 \figref）] chapters\parts\ch05-a.tex:359  图 5-2—5-7 为原书谱图与装置流程图，因无图像核对能力未裁图，本分片仅以
+[疑似手写图号（应用 \figref）] chapters\parts\ch07-a.tex:513  图 7-10、7-14、7-16 改绘的示意光路，非原图描摹。§7.2 及以后的探针分子与反应机理内容
+[FONT<8pt] chapters\parts\ch08-a.tex:162  7.5pt  node[right,text width=19mm,align=left,font=\fontsize{7.5}{9}\selectfont]{$B_0$：外磁场方向};
+[FONT<8pt] chapters\parts\ch08-a.tex:168  7.5pt  node[above right,text width=17mm,align=left,font=\fontsize{7.5}{9}\selectfont]{转子轴（样品管）};
+[FONT<8pt] chapters\parts\ch08-a.tex:170  7.5pt  \node[anchor=west,font=\fontsize{7.5}{9}\selectfont] at (7.4,13.6) {$54.736^\circ$};
+[FONT<8pt] chapters\parts\ch08-a.tex:171  7.5pt  \node[anchor=north west,text width=36mm,align=left,font=\fontsize{7.5}{9}\selectfont]
+[FONT<8pt] chapters\parts\ch08-a.tex:386  7.0pt  \node[anchor=west,text width=15mm,align=left,font=\fontsize{7}{8}\selectfont]
+[FONT<8pt] chapters\parts\ch08-a.tex:389  7.0pt  \node[anchor=west,text width=15mm,align=left,font=\fontsize{7}{8}\selectfont]
+[FONT<8pt] chapters\parts\ch08-a.tex:392  7.0pt  \node[anchor=west,text width=15mm,align=left,font=\fontsize{7}{8}\selectfont]
+[疑似手写表号（应用 \tabref）] chapters\parts\ch09-a.tex:69  表 9-2 的区划重建，需与书内 p.570—571 原页核对。}
+[疑似手写图号（应用 \figref）] chapters\parts\ch09-a.tex:211  物理学奖。仪器型号与人物沿革不再展开，需要时可回查原书图 9-2—图 9-8。
+[疑似手写图号（应用 \figref）] chapters\parts\ch09-a.tex:239  （导电样品，原书图 9-11）；绝缘样品做不到这一点，谱线会整体漂移（原书图 9-12）；② $h\nu$ 为
+[疑似手写图号（应用 \figref）] chapters\parts\ch09-a.tex:265  以 X 射线光子把能量转移给芯能级电子为例（原书图 9-15）：（a）从 $n$ 电子初态发生光电发射，
+[疑似手写图号（应用 \figref）] chapters\parts\ch09-b.tex:69  \item 位移与宏观热化学参数有一定联系（原书图 9-59 给出 C 1s 实测值与热力学估算能量的关系）。
+[疑似手写图号（应用 \figref）] chapters\parts\ch09-b.tex:212  原书本节所配的实测谱图（图 9-58、9-60—9-68）与震激峰实例均为实验谱，
+[疑似手写图号（应用 \figref）] chapters\parts\ch09-c.tex:235  原书表格（惰性气体光子能量表 9-23、He 辐射线型表 9-24、AES 灵敏度因子图 9-136、
+[疑似手写表号（应用 \tabref）] chapters\parts\ch09-c.tex:235  原书表格（惰性气体光子能量表 9-23、He 辐射线型表 9-24、AES 灵敏度因子图 9-136、
+[疑似手写图号（应用 \figref）] chapters\parts\ch09-c.tex:236  Cr--Cu 俄歇跃迁谱图 9-137 等）未逐表转录，
+[疑似手写图号（应用 \figref）] chapters\parts\ch10-a.tex:485  式(10-63)、式(10-67)、式(10-68) 讨论绘制；非原书插图（原书图 10-1 为反应器示意）。}}
+[疑似手写图号（应用 \figref）] chapters\parts\ch11-a.tex:519  （下册）§11.1.5 与图 11-2 改绘；书内 p.817—819，PDF p.305—307。}}
+[FONT<8pt] chapters\parts\ch12-a.tex:50  7.2pt  ann/.style={font=\fontsize{7.2}{8.6}\selectfont, align=center},
+[疑似手写图号（应用 \figref）] chapters\parts\ch12-a.tex:104  与图 12-2，书内 p.888—890 / PDF p.374—376 改绘。}}
+[FONT<8pt] chapters\parts\ch12-a.tex:211  6.6pt  ann/.style={font=\fontsize{6.6}{8}\selectfont, align=center},

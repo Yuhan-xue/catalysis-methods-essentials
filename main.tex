@@ -1,0 +1,71 @@
+% ================================================================
+%  main.tex
+%  《现代催化研究方法精要：原理、读图与方法选择》
+%  构建：latexmk -xelatex -outdir=build main.tex
+%  引擎：XeLaTeX（必须）
+% ================================================================
+\documentclass[UTF8,10pt,a4paper,twoside,fontset=fandol]{ctexart}
+
+\input{style/preamble}
+\input{style/macros}
+
+\begin{document}
+
+% ---------------- 封面（至多 1 页，不设装饰扉页）----------------
+\thispagestyle{empty}
+\vspace*{52mm}
+\begin{center}
+  {\heiti\fontsize{24}{30}\selectfont 现代催化研究方法精要}\\[6mm]
+  {\heiti\fontsize{14}{20}\selectfont 原理、读图与方法选择}\\[14mm]
+  {\fontsize{11}{16}\selectfont 据《现代催化研究方法新编》（上、下册）\\[1mm]
+   辛勤\ 罗孟飞\ 徐杰\ 主编，科学出版社）浓缩编写}\\[16mm]
+  {\fontsize{10}{15}\selectfont \today}
+\end{center}
+\clearpage
+
+% ---------------- 目录 ----------------
+\chapterheadstar{目录}{全书结构：导读与方法总览、12 章方法正文、跨方法综合应用、符号与索引。}
+\vspace{-4pt}
+{\small
+\makeatletter
+\@starttoc{toc}
+\makeatother
+}
+\clearpage
+
+% ---------------- 正文 ----------------
+% 不编号区块（导读、综合应用、后置材料）：
+%   secnumdepth=0 让小标题不带编号（否则会继承 \thesection=0，出现 0.1 / 0.2 这类假编号）；
+%   同时手动加一条 section 级目录/书签，使这些小标题挂在它下面，而不是散在根层。
+\setcounter{secnumdepth}{0}
+\IfFileExists{chapters/ch00-intro.tex}{%
+  \phantomsection\addcontentsline{toc}{section}{导读与方法总览}%
+  \input{chapters/ch00-intro.tex}}{}
+\setcounter{secnumdepth}{3}
+
+\IfFileExists{chapters/ch01.tex}{\input{chapters/ch01.tex}}{}
+\IfFileExists{chapters/ch02.tex}{\input{chapters/ch02.tex}}{}
+\IfFileExists{chapters/ch03.tex}{\input{chapters/ch03.tex}}{}
+\IfFileExists{chapters/ch04.tex}{\input{chapters/ch04.tex}}{}
+\IfFileExists{chapters/ch05.tex}{\input{chapters/ch05.tex}}{}
+\IfFileExists{chapters/ch06.tex}{\input{chapters/ch06.tex}}{}
+\IfFileExists{chapters/ch07.tex}{\input{chapters/ch07.tex}}{}
+\IfFileExists{chapters/ch08.tex}{\input{chapters/ch08.tex}}{}
+\IfFileExists{chapters/ch09.tex}{\input{chapters/ch09.tex}}{}
+\IfFileExists{chapters/ch10.tex}{\input{chapters/ch10.tex}}{}
+\IfFileExists{chapters/ch11.tex}{\input{chapters/ch11.tex}}{}
+\IfFileExists{chapters/ch12.tex}{\input{chapters/ch12.tex}}{}
+
+% ---------------- 跨方法综合应用（不编号）----------------
+\setcounter{secnumdepth}{0}
+\IfFileExists{chapters/ch13-synthesis.tex}{%
+  \phantomsection\addcontentsline{toc}{section}{跨方法综合应用}%
+  \input{chapters/ch13-synthesis.tex}}{}
+
+% ---------------- 后置：符号、缩写与索引（不编号）----------------
+\IfFileExists{chapters/ch90-backmatter.tex}{%
+  \phantomsection\addcontentsline{toc}{section}{符号、缩写与索引}%
+  \input{chapters/ch90-backmatter.tex}}{}
+\setcounter{secnumdepth}{3}
+
+\end{document}

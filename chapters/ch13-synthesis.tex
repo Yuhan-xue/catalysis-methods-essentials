@@ -1,0 +1,183 @@
+% ================================================================
+%  chapters/ch13-synthesis.tex
+%  跨方法综合应用（不编号）
+%  作用：把「结构 — 表面位点 — 反应过程 — 性能」四类信息组织成可检查的证据链。
+%  不重复各章原理，只讲证据如何互相约束。
+% ================================================================
+
+\chapterheadstar{跨方法综合应用}%
+{前面 12 章各自讲一个方法能测什么。这一章讲\textbf{把多个方法的结论放在一起时，
+什么算互相支持、什么只是互相不矛盾}，以及如何把「结构—表面位点—反应过程—性能」
+串成一条能被别人检查的证据链。}
+
+\subsection{证据链的基本结构}
+
+催化研究要回答的问题几乎都可以归到四个环节上，每个环节各有自己的一类测量量：
+
+\begin{center}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}lXl@{}}
+\toprule
+环节 & 测量量 & 主要方法 \\
+\midrule
+结构 & 物相、晶胞、孔结构、形貌、局域配位 & \chapref{ch:01}、\chapref{ch:02}、\chapref{ch:04}、\chapref{ch:08}、\chapref{ch:12} \\
+表面位点 & 元素与化学态、位点种类与数量 & \chapref{ch:05}、\chapref{ch:07}、\chapref{ch:09} \\
+反应过程 & 吸附物种、中间物、速率与动力学参数 & \chapref{ch:06}、\chapref{ch:07}、\chapref{ch:10}、\chapref{ch:11} \\
+性能与稳定性 & 转化率、选择性、失活、积炭、热稳定性 & \chapref{ch:03}、\chapref{ch:10}、\chapref{ch:11} \\
+\bottomrule
+\end{tabularx}}
+\end{center}
+
+一条完整的证据链要求\textbf{相邻环节之间都有独立测量}。常见的断裂是：只用结构数据
+推测活性位，或只用性能数据推测机理——两者都跳过了中间环节。
+
+\begin{methodsum}
+判断一组表征是否构成证据链，问三个问题：
+（1）每一步推断的\textbf{物理量是否真的不同}？两台都给元素组成的仪器不构成互补。
+（2）有没有\textbf{独立方法}给出同一个中间量？（同一方法的两种数据处理不算独立。）
+（3）结论被推翻时，哪一步的测量会先出现异常？答不出来说明这条链无法证伪。
+\end{methodsum}
+
+\subsection{证据强度分级}
+
+不同的证据组合，支撑力差别很大。表~\ref{tab:evidence-level} 给出本书采用的分级，
+写作与审稿时都按这个尺度衡量。
+
+\begin{table}[htbp]
+\centering
+\caption{证据强度分级：不同组合能支撑到什么程度}
+\label{tab:evidence-level}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}lXX@{}}
+\toprule
+级别 & 证据形态 & 可以写的结论 / 不可写的结论 \\
+\midrule
+弱 & 单一方法、单一数据 & 可写「与……一致」；\textbf{不可}写「证明了……」「说明存在……」 \\
+中 & 两方法给出不同物理量、互相约束 & 可写「支持……的归属」；\textbf{不可}写唯一机理 \\
+强 & 因果链闭合：结构→位点→中间物→速率均有独立测量 & 可写「机理为……」并给出可证伪的预测 \\
+自洽 & 多方法彼此不矛盾 & \textbf{只说明没被推翻}，不构成支持；多数「多方法验证」其实停在这一级 \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\begin{pitfall}
+最常见的三种过度断言：
+\textbf{（1）把自洽当支持。}XRD 说物相是 A，XPS 说表面有 A 的元素，这只是不矛盾——
+如果样品是 A 与 B 的混合物，这两条同样成立。
+\textbf{（2）把拟合优度当机理论证。}动力学模型 $R^2$ 高、XPS 分峰残差小，都只说明
+\textbf{所选模型能描述数据}，不说明模型唯一。必须给出竞争模型的比较与判别准则。
+\textbf{（3）把相关性当因果。}「比表面积大的样品活性高」在系列样品里几乎总能成立，
+但它不排除活性位密度、孔扩散或杂质同时变化。
+\end{pitfall}
+
+\subsection{验证矩阵：什么方法能约束什么}
+
+表~\ref{tab:matrix} 把常用判断与能约束它的方法对应起来。用它的方式是\textbf{从结论倒推}：
+先写下你想要的结论，再看它需要哪一列的证据，然后检查你手上有没有那一列。
+
+\begin{table}[tbp]
+\centering
+\caption{判断—方法约束矩阵。同一行里至少要有两个\textbf{物理量不同}的方法，结论才站得住}
+\label{tab:matrix}
+{\srcsize
+\begin{tabularx}{\twocolwidth}{@{}p{40mm}p{30mm}p{30mm}X@{}}
+\toprule
+想得到的判断 & 直接证据 & 排他证据 & 必须排除的替代解释 \\
+\midrule
+某元素处于特定化学态 & XPS 化学位移（\chapref{ch:09}） & Mössbauer／XAFS／原位红外探针（\chapref{ch:07}） & 荷电漂移、X 射线还原、表面污染碳 \\
+某物相是活性相 & 原位 XRD 随气氛变化（\chapref{ch:04}） & 原位 Raman／XAS（\chapref{ch:06}） & 体相物相与表面物种不一致；非晶活性相无衍射峰 \\
+活性位数与其密度 & 化学吸附滴定（\chapref{ch:05}） & 探针分子红外定量（\chapref{ch:07}）、\ce{1H} NMR（\chapref{ch:08}） & 吸附化学计量比假设错误；多位点竞争吸附 \\
+反应中间物存在 & 原位红外／Raman 谱带（\chapref{ch:06}、\chapref{ch:07}） & 同位素标记、SSITKA（\chapref{ch:10}） & 谱带归属错误；观测条件下的物种未必是催化循环内的 \\
+速率控制步骤 & 动力学级数与活化能（\chapref{ch:10}） & 非稳态响应、TAP（\chapref{ch:10}） & 传质/传热干扰未排除；表观量与真值混淆 \\
+积炭导致失活 & TG 失重 + TPO（\chapref{ch:03}、\chapref{ch:05}） & \ce{13C} NMR 定积炭类型（\chapref{ch:08}） & 失活也可能来自烧结或活性相转变；失重含其他组分 \\
+电催化活性来源 & 动力学电流与 Tafel 斜率（\chapref{ch:11}） & 原位红外/Raman/质谱（\chapref{ch:11}） & 双电层与传质未校正；参比电极漂移 \\
+原子尺度成键 & STM/AFM 成像（\chapref{ch:12}） & TERS／Nano-FTIR 化学识别（\chapref{ch:12}） & 针尖卷积与成像假象；探针本身扰动表面 \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\subsection{综合案例一：负载型金属催化剂的分散度与活性位}
+
+\textbf{问题}：\ce{Pt/Al2O3} 上 Pt 的分散度是多少？活性位是哪些 Pt 原子？
+\textbf{性能数据}：某反应的转化频率随 Pt 负载量升高而下降。
+
+\begin{obs}
+XRD 在低负载量样品上只见载体 $\gamma$-\ce{Al2O3} 的峰，高负载量样品出现 Pt 金属峰，
+由 Scherrer 式估算晶粒约 \qtyrange{8}{20}{nm}；TEM 统计给出粒径分布；
+\ce{H2} 化学吸附给出化学吸附量；XPS 给出 Pt 4f 的化学位移。
+\end{obs}
+
+\begin{infer}
+低负载量下 Pt 高度分散，XRD 无峰是「尺寸低于相干衍射极限」而非「没有 Pt」；
+结合 XRD 峰宽与 TEM 统计，可给出粒径的数量级一致区间；
+由化学吸附量按 \ce{H/Pt_s} 计量比换算表面 Pt 原子数，得到分散度。
+\end{infer}
+
+\begin{pitfall}
+这条链有三处容易断。
+\textbf{（1）化学吸附的计量比是假设。}\ce{H/Pt_s}=1 只在特定温度与压力区间成立，
+且载体可能溢流储氢——必须用同批样品的 XRD/TEM 交叉检查分散度是否落在同一区间。
+\textbf{（2）XRD 无峰不等于高分散。}低于约 \qtyrange{3}{4}{nm} 时衍射峰宽到不可分辨，
+此时「无峰」只说明\textbf{相干长度小}，不能定量给出分散度。
+\textbf{（3）TOF 随负载量下降有多种解释。}活性位密度变化、载体界面位比例变化、
+传质限制、以及大颗粒上本征活性不同，都能给出同样趋势。要区分它们，
+需要把 TOF 对\textbf{表面 Pt 原子数}（而非总 Pt 量）归一化，并检查是否已排除内扩散。
+\end{pitfall}
+
+\begin{crosscheck}
+这条证据链的补强办法：用原位红外 \ce{CO} 吸附（\chapref{ch:07}）区分顶位／桥位，
+用 STEM 直接数原子簇（\chapref{ch:02}）核对分散度，用动力学实验
+（\chapref{ch:10}）检验是否处于本征动力学区。三者中任何一个给出不一致，
+应先怀疑吸附计量比，而不是先怀疑显微结果。
+\end{crosscheck}
+
+\subsection{综合案例二：分子筛的酸性、积炭与失活}
+
+\textbf{问题}：某 H-ZSM-5 在甲醇转化中失活，是酸位被覆盖，还是孔道被堵塞？
+
+\begin{obs}
+\ce{NH3}-TPD 给出两个脱附峰；吡啶吸附红外给出 Br\o nsted 与 Lewis 酸位比例；
+\ce{27Al} MAS NMR 显示四配位与六配位铝的相对量随焙烧条件变化；
+\ce{13C} MAS NMR 给出积炭物种类型；TG 与 TPO 给出积炭总量与燃烧温度；
+反应数据给出转化率随时间的下降曲线。
+\end{obs}
+
+\begin{infer}
+若 \ce{NH3}-TPD 的强酸位峰面积下降、同时 \ce{13C} NMR 出现多环芳烃、
+且 TPO 的高温燃烧峰增大，则失活与\textbf{孔道内积炭覆盖酸位}一致；
+若酸位总量基本不变而转化率仍下降、且微孔孔容显著减少，则更可能是\textbf{孔口堵塞}。
+\end{infer}
+
+\begin{pitfall}
+\textbf{（1）\ce{NH3}-TPD 的峰面积不等于酸量。}再吸附与扩散限制会改变峰形，
+两条峰未必对应两种酸位；必须与红外探针分子的定量结果互校。
+\textbf{（2）\ce{27Al} NMR 的六配位铝不一定是「非骨架铝」。}部分六配位铝来自骨架铝的
+局部畸变，且 NMR 对顺磁杂质与四极效应敏感，定量需要谨慎。
+\textbf{（3）TG 失重不等于积炭量。}脱附水、残留模板剂、载体本身分解都会贡献失重，
+必须用空白对照与 TPO 的 \ce{CO2} 定量闭合。
+\end{pitfall}
+
+\begin{crosscheck}
+区分「覆盖酸位」与「堵塞孔口」的关键，是同时测\textbf{酸位数量}与\textbf{可及孔容}：
+前者用探针分子红外或 \ce{1H} NMR（\chapref{ch:07}、\chapref{ch:08}），
+后者用氮吸附（\chapref{ch:01}）。两者同时下降指向覆盖；
+只有可及性下降而酸位总量不变，指向堵塞。
+\end{crosscheck}
+
+\subsection{写结论时的三条硬规则}
+
+\begin{enumerate}
+\item \textbf{把三类陈述分开写}：观察到的现象、数据处理的结果、结构或机理解释。
+本书在正文里分别用「观察」「推断」标出，写论文时也应保持同样的分离。
+\item \textbf{每个定量结论都要给出前提}。表面积要给出取样窗口与 $C$ 值；
+TPD 定量要给出标定方式；动力学参数要给出温度区间与是否排除传递影响。
+缺前提的数值无法复核，也就无法被引用。
+\item \textbf{给出可证伪的预测}。如果你的机理是对的，改变某个条件（温度、覆盖度、
+同位素、空速）时应该观察到什么？说不出预测的机理陈述，通常只是对数据的重新描述。
+\end{enumerate}
+
+\begin{crosscheck}
+本章不引入新的测量方法。若发现某一环节缺少独立测量，回到表~\ref{tab:selector}
+（方法选择矩阵）与表~\ref{tab:matrix}（判断—方法约束矩阵），
+先补齐证据，再写结论。方法本身怎么做，见各章正文。
+\end{crosscheck}

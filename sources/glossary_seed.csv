@@ -1,0 +1,36 @@
+﻿abbr,en,zh,first_chapter,note
+NMR,Nuclear Magnetic Resonance,核磁共振,8,"置信度高：第8章标题及 8.1—8.6 多处直接使用缩写，中文名""核磁共振""见于目录"
+MAS,Magic Angle Spinning,魔角旋转,8,置信度高：8.1.2 目录给出中文全称（魔角旋转固体核磁共振技术）
+MAS NMR,Magic Angle Spinning Nuclear Magnetic Resonance,魔角旋转固体核磁共振,8,置信度高：8.1.2 目录中英文对照
+CP/MAS NMR,Cross Polarization / Magic Angle Spinning Nuclear Magnetic Resonance,交叉极化/魔角旋转固体核磁共振,8,置信度高：8.1.3 目录中英文对照
+XPS,X-ray Photoelectron Spectroscopy,X射线光电子能谱,9,置信度高：9.2 目录中英文对照；9.8 亦用于 近常压XPS / 脉冲XPS
+UPS,Ultraviolet Photoelectron Spectroscopy,紫外光电子能谱,9,置信度高：9.3 目录中英文对照
+AES,Auger Electron Spectroscopy,俄歇电子能谱,9,置信度高：9.4 目录中英文对照
+ISS,Ion Scattering Spectroscopy,离子散射谱,9,置信度高：9.5 目录中英文对照（目录未给出英文全称，英文展开按通用写法）
+SSITKA,Steady-State Isotopic Transient Kinetic Analysis,稳态同位素瞬变动力学分析,10,置信度中：10.6.3 目录仅出现缩写，中文释义与英文展开待正文核对
+TAP,Temporal Analysis of Products,产物瞬时分析（时间分辨产物分析）,10,置信度中：10.6.4 目录仅出现缩写，中文译名待正文核对
+STM,Scanning Tunneling Microscope / Microscopy,扫描隧道显微镜,12,置信度高：12.1 目录中英文对照；12.2 亦用 近常压STM
+AFM,Atomic Force Microscope / Microscopy,原子力显微镜,12,置信度高：12.3 目录中英文对照
+TERS,Tip-Enhanced Raman Spectroscopy,针尖增强拉曼光谱,12,置信度高：12.6.2 目录中英文对照
+Nano-FTIR,nanoscale Fourier Transform Infrared spectroscopy,纳米傅里叶变换红外光谱,12,置信度高：12.6.3 目录中英文对照
+XRD,X-ray Diffraction,X射线衍射,3,置信度高：缩写首见于 3.5.5（XRD-DSC）；第4章为多晶X射线衍射专章
+XAFS,X-ray Absorption Fine Structure (spectroscopy),X射线吸收精细结构谱,3,置信度高：3.5.4（XAFS-DSC）目录中英文对照；英文展开按通用写法
+DSC,Differential Scanning Calorimetry,差示扫描量热法,3,置信度高：3.2.3 中文全称 + 3.6.5（DSC基线）+ 3.5.4/3.5.5
+TG,Thermogravimetry,热重法,3,置信度高：3.2.1 中文名 + 3.5.1—3.5.3（TG-IR / TG-MS 联用）
+IR,Infrared (spectroscopy),红外（光谱）,3,置信度高：3.5.1（TG-IR）、3.5.3（TG-IR-MS）
+FTIR,Fourier Transform Infrared (spectroscopy),傅里叶变换红外光谱,3,"置信度高：目录 3.5.1 原文OCR作""FnR""，而正文标题直接作""热重分析与FTIR光谱仪联用《TG一IR）技术""，可确认缩写为 FTIR"
+MS,Mass Spectrometry,质谱,3,"置信度高：3.5.2（TG一Ms → TG-MS）；中文名""质谱仪""见目录"
+TPD,Temperature-Programmed Desorption,程序升温脱附,5,"置信度高：5.4 标题直接出现 TPD；5.3.1 中文名""程序升温脱附""；5.3.2/5.3.3 目录作 仰D/什D，已按正文标题修复"
+TPR,Temperature-Programmed Reduction,程序升温还原,5,"置信度高：5.5 标题直接出现 TPR；5.3.4 中文名""还原过程""；5.5.6 已修复为 H2-TPR"
+TPO,Temperature-Programmed Oxidation,程序升温氧化,5,"置信度高：5.5 标题直接出现 TPO；5.3.5 中文名""程序升温氧化原理"""
+TPSR,Temperature-Programmed Surface Reaction,程序升温表面反应,5,置信度高：5.3.6 中文名；5.6 目录作 即SR、7.6.2 作 冲SR，均据正文标题 TPSR技术… 修复
+HDS,Hydrodesulfurization,加氢脱硫,7,置信度高：7.5.4 目录中英文对照（原文作 HDs，已修复）
+DRIFT,Diffuse Reflectance Infrared Fourier Transform (spectroscopy),漫反射红外傅里叶变换光谱,7,置信度高：7.6.2 目录作 D班FT，正文标题同，而正文图题直接作 ＤＲＩＦＴ谱图，可确认书用 DRIFT（非 DRIFTS）；对应 7.1.2 漫反射红外光谱
+operando,operando spectroscopy（working-state in situ measurement）,原位/工作状态下（光谱）技术,7,置信度高：7.1.8 原文作 叩erando，正文标题作 operando
+Scherrer,Scherrer equation,谢乐方程（衍射峰宽化与晶粒尺寸）,4,置信度高：4.7 标题及 4.7.1 / 4.7.2 目录中英文混排
+Rietveld,Rietveld method (full-pattern profile refinement),里特维尔德法（全谱拟合结构精修）,4,置信度高：4.8 标题；4.8.1 目录/正文作 形etVeld（Ri 误识），已修复
+Debye,Debye method (Debye scattering equation),德拜法（德拜散射方程）,4,置信度高：4.10 目录中英文混排
+Hesse-Lipson,Hesse-Lipson method,赫斯-李普森解析法（衍射图指标化）,4,置信度高：4.6.2；目录原文作 Hesse一LIPson，正文标题作 Hesse-Lipson
+Langmuir,Langmuir adsorption isotherm,朗缪尔吸附等温式,5,置信度高：5.2.1 目录中英文混排（三种模型吸附等温式之一）
+Freundlich,Freundlich adsorption isotherm,弗罗因德利希吸附等温式,5,置信度中高：5.2.2 目录作 Freundiich、正文作 Freun(llich，按人名 Freundlich 修复；中文译名待正文核对
+Temkin,Temkin adsorption isotherm,捷姆金吸附等温式（译名不一）,5,置信度中高：5.2.3 目录作 Te住正in、正文作 Tcmkin，按人名 Temkin 修复；中文译名待正文核对

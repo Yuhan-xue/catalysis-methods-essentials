@@ -1,0 +1,126 @@
+file=C:\Users\53150\Documents\deepseek-harness\default-workspace\build\main.pdf  pages=78
+
+--- bookmarks (78) ---
+  [1] 导读与方法总览  -> p.3
+    [2] 这本书怎么用  -> p.3
+    [2] 五个问题  -> p.3
+    [2] 方法选择矩阵  -> p.3
+    [2] 选择路径  -> p.3
+    [2] 术语、符号与来源约定  -> p.3
+    [2] 三条阅读路线  -> p.3
+  [1] 1 物理吸附和催化剂的宏观物性测定  -> p.3
+    [2] 1.1 这个方法测量什么  -> p.3
+    [2] 1.2 吸附等温线：唯一的核心数据  -> p.5
+    [2] 1.3 核心公式及其成立条件  -> p.5
+    [2] 1.4 数据到结论：比表面积的求算流程  -> p.6
+    [2] 1.5 误判与边界  -> p.6
+    [2] 1.6 孔容和孔尺寸分布  -> p.7
+  [1] 2 透射电子显微镜  -> p.12
+    [2] 2.1 透射电子显微镜简介  -> p.12
+    [2] 2.2 电子衍射和成像  -> p.13
+  [1] 3 热分析方法  -> p.18
+    [2] 3.1 这个方法测量什么  -> p.18
+    [2] 3.2 核心原理与公式  -> p.18
+    [2] 3.3 测量与条件  -> p.20
+    [2] 3.4 数据到结论  -> p.20
+    [2] 3.5 误判与边界  -> p.21
+    [2] 3.6 互补与回查  -> p.22
+  [1] 4 多晶X 射线衍射分析  -> p.22
+    [2] 4.1 晶体学基础：周期性与对称性  -> p.22
+    [2] 4.2 X 射线的性质及其与物质的作用  -> p.23
+    [2] 4.3 衍射的几何原理：倒易空间与衍射方法  -> p.24
+  [1] 5 化学吸附和程序升温技术  -> p.27
+    [2] 5.1 化学吸附的基本原理  -> p.27
+
+--- fonts (11) ---
+  EMBEDDED     Type0      GSXJFF+FandolHei-Bold-Identity-H
+  EMBEDDED     Type0      IHDCWL+TeXGyreCursor-Regular-Identity-H
+  EMBEDDED     Type0      JGUKHG+FandolSong-Regular-Identity-H
+  EMBEDDED     Type0      JHLEDX+FandolSong-Bold-Identity-H
+  EMBEDDED     Type0      JRYMRO+FandolHei-Regular-Identity-H
+  EMBEDDED     Type0      NGTUOI+TeXGyreTermes-Regular-Identity-H
+  EMBEDDED     Type0      REENYM+TeXGyreTermesMath-Regular-Identity-H
+  EMBEDDED     Type0      RQXYOW+TeXGyreTermes-Italic-Identity-H
+  EMBEDDED     Type0      SHLWCH+TeXGyreTermes-Bold-Identity-H
+  EMBEDDED     Type0      VEQQKW+FandolKai-Regular-Identity-H
+  EMBEDDED     Type0      YBQRHU+LatinModernMath-Regular-Identity-H
+
+--- per page: chars, ink%, first line ---
+  p.  1  chars=   69  ink=  1.0%  现代催化研究方法精要
+  p.  2  chars= 2209  ink=  6.1%  现代催化研究方法精要
+  p.  3  chars= 1535  ink= 10.8%  导读与方法总览
+  p.  4  chars= 1011  ink=  5.6%  现代催化研究方法精要
+  p.  5  chars= 2045  ink= 12.3%  有一条曲线：恒温下的吸附量𝑉对相对压
+  p.  6  chars= 1497  ink=  9.4%  现代催化研究方法精要
+  p.  7  chars= 2414  ink= 14.9%  1.6 孔容和孔尺寸分布
+  p.  8  chars= 2613  ink= 15.4%  现代催化研究方法精要
+  p.  9  chars= 2577  ink= 14.9%  与弯曲位置读出表面积与孔容；判读规则三者通用——过
+  p. 10  chars= 1998  ink= 12.3%  现代催化研究方法精要
+  p. 11  chars= 2390  ink= 15.7%  分析结果的真实性；IUPAC 建议改用惰性的
+  p. 12  chars= 1835  ink= 12.1%  现代催化研究方法精要
+  p. 13  chars= 1637  ink= 10.0%  表2-1
+  p. 14  chars= 2425  ink= 14.9%  现代催化研究方法精要
+  p. 15  chars= 1807  ink= 10.6%  表2-3
+  p. 16  chars= 2532  ink= 15.7%  现代催化研究方法精要
+  p. 17  chars= 2413  ink= 14.7%  阑的半角；光学显微镜的分辨极限约0.2 µm。提高分辨率
+  p. 18  chars= 2308  ink= 13.7%  现代催化研究方法精要
+  p. 19  chars= 2545  ink= 15.8%  表3-1
+  p. 20  chars= 2476  ink= 14.8%  现代催化研究方法精要
+  p. 21  chars= 2221  ink= 13.4%  100
+  p. 22  chars= 2019  ink= 13.2%  现代催化研究方法精要
+  p. 23  chars= 2639  ink= 15.4%  第4 章多晶X 射线衍射分析
+  p. 24  chars= 2348  ink= 13.9%  现代催化研究方法精要
+  p. 25  chars= 2550  ink= 13.8%  第4 章多晶X 射线衍射分析
+  p. 26  chars= 2312  ink= 13.2%  现代催化研究方法精要
+  p. 27  chars= 2117  ink= 12.8%  第5 章化学吸附和程序升温技术
+  p. 28  chars= 2405  ink= 15.3%  现代催化研究方法精要
+  p. 29  chars= 2271  ink= 13.7%  第5 章化学吸附和程序升温技术
+  p. 30  chars= 2119  ink= 13.2%  现代催化研究方法精要
+  p. 31  chars= 2341  ink= 14.2%  第6 章催化过程的拉曼光谱方法
+  p. 32  chars= 2313  ink= 14.8%  现代催化研究方法精要
+  p. 33  chars= 2350  ink= 14.1%  第6 章催化过程的拉曼光谱方法
+  p. 34  chars= 2099  ink= 13.8%  现代催化研究方法精要
+  p. 35  chars= 2655  ink= 16.3%  第6 章催化过程的拉曼光谱方法
+  p. 36  chars= 1722  ink=  9.3%  现代催化研究方法精要
+  p. 37  chars= 2766  ink= 16.5%  第6 章催化过程的拉曼光谱方法
+  p. 38  chars= 2360  ink= 15.9%  现代催化研究方法精要
+  p. 39  chars= 2259  ink= 13.5%  第6 章催化过程的拉曼光谱方法
+  p. 40  chars= 2417  ink= 13.2%  现代催化研究方法精要
+  p. 41  chars= 2698  ink= 15.2%  第6 章催化过程的拉曼光谱方法
+  p. 42  chars= 2044  ink= 11.0%  现代催化研究方法精要
+  p. 43  chars= 2618  ink= 14.9%  第6 章催化过程的拉曼光谱方法
+  p. 44  chars= 2803  ink= 16.0%  现代催化研究方法精要
+  p. 45  chars= 2643  ink= 15.1%  第6 章催化过程的拉曼光谱方法
+  p. 46  chars= 2824  ink= 16.9%  现代催化研究方法精要
+  p. 47  chars= 1613  ink=  7.8%  第6 章催化过程的拉曼光谱方法
+  p. 48  chars= 2824  ink= 17.8%  现代催化研究方法精要
+  p. 49  chars= 2209  ink= 15.2%  第6 章催化过程的拉曼光谱方法
+  p. 50  chars= 2442  ink= 15.7%  现代催化研究方法精要
+  p. 51  chars= 2206  ink= 13.5%  第6 章催化过程的拉曼光谱方法
+  p. 52  chars= 2188  ink= 14.3%  现代催化研究方法精要
+  p. 53  chars= 2166  ink= 12.5%  第6 章催化过程的拉曼光谱方法
+  p. 54  chars= 2494  ink= 14.1%  现代催化研究方法精要
+  p. 55  chars= 2804  ink= 14.8%  第6 章催化过程的拉曼光谱方法
+  p. 56  chars= 2771  ink= 17.1%  现代催化研究方法精要
+  p. 57  chars= 2664  ink= 14.1%  第6 章催化过程的拉曼光谱方法
+  p. 58  chars= 2455  ink= 13.7%  现代催化研究方法精要
+  p. 59  chars= 2344  ink= 13.6%  第11 章电化学催化研究方法
+  p. 60  chars= 2181  ink= 15.4%  现代催化研究方法精要
+  p. 61  chars= 2377  ink= 13.4%  第11 章电化学催化研究方法
+  p. 62  chars= 2275  ink= 11.9%  现代催化研究方法精要
+  p. 63  chars= 1756  ink=  9.2%  第11 章电化学催化研究方法
+  p. 64  chars= 2499  ink= 14.1%  现代催化研究方法精要
+  p. 65  chars= 2681  ink= 15.3%  第11 章电化学催化研究方法
+  p. 66  chars= 2771  ink= 17.9%  现代催化研究方法精要
+  p. 67  chars= 2198  ink= 15.3%  第11 章电化学催化研究方法
+  p. 68  chars= 1608  ink=  9.1%  现代催化研究方法精要
+  p. 69  chars= 2325  ink= 14.8%  第11 章电化学催化研究方法
+  p. 70  chars= 3155  ink= 18.4%  现代催化研究方法精要
+  p. 71  chars= 2884  ink= 17.6%  第11 章电化学催化研究方法
+  p. 72  chars= 1490  ink= 10.1%  现代催化研究方法精要
+  p. 73  chars= 2242  ink= 15.7%  第11 章电化学催化研究方法
+  p. 74  chars= 1125  ink=  6.8%  现代催化研究方法精要
+  p. 75  chars= 2374  ink=  8.0%  第11 章电化学催化研究方法
+  p. 76  chars= 1205  ink=  6.8%  现代催化研究方法精要
+  p. 77  chars=  684  ink=  4.3%  第11 章电化学催化研究方法
+  p. 78  chars=  395  ink=  2.8%  现代催化研究方法精要

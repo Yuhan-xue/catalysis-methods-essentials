@@ -1,0 +1,945 @@
+% ================================================================
+%  chapters/parts/ch11-a.tex
+%  第 11 章  电化学催化研究方法（分片 a）
+%  源：S2（下册）第 11 章 11.1—11.2.3，书内 p.807—832 / PDF p.296—321
+%  范围：11.1 电化学基本原理；11.2 控制电势的研究方法（至 11.2.3）
+%  不含：11.3 及以后（控制电流、整体电解、流体动力学、阻抗、现场谱学）
+% ================================================================
+
+\chapterstart{电化学催化研究方法}%
+{本章回答：怎样用电势和电流这两个可观测量，把电极反应的本征活性从传质、双电层、
+溶液电阻等非本征因素中剥离出来。导读主线只有一条——\textbf{电极反应的总速率由传质与
+电荷转移两步串联决定}，11.1 建立描述这两步的方程，11.2 的每一种控制电势方法，本质上
+都是在实验上设法单独固定其中一步、观测另一步。全章按「基本原理（11.1）→ 控制电势的
+研究方法（11.2）→ 控制电流、整体电解与流体动力学方法（11.3 起）」展开。}
+\label{ch:11}
+
+\subsection{电化学基本原理}
+
+\subsubsection{电化学与催化过程关系}
+
+电化学以化学反应中的电子转移以及外加电场中的化学反应为研究对象\src{S2 §11.1.1，
+书内 p.809 / PDF p.297}。它与催化化学的交集就是\textbf{电催化}：既是用催化剂提升反应
+速率的电化学过程，又是以电能为能量形式的催化过程。二者其实可以统一——电极本身就是
+催化剂，改变电极种类或电极表面修饰状态，就能改变反应的速率、选择性和方向性；只有
+这类「通过改变电极材料或表面状态来调控反应」的电极，才被称为电催化剂。
+
+两个学科的关注点不同，落到数据分析上会得到不同的结论：催化视角看的是电催化剂如何
+降低活化能垒、如何催化能量转化过程；电化学视角看的是界面电场、电解质组成、以及参与
+反应的分子或离子被活化后反应速率如何提升。同一个活性数字，两个视角的解释并不相同，
+这一点在读到「本征活性」类结论时必须追问研究者用的是哪一套语言。
+
+\begin{probout}
+电化学催化实验的可观测量只有两个：\textbf{流过工作电极的电流或电量}，以及\textbf{工作
+电极相对参比电极的电势}。所有动力学参数都必须从这两个量的关系中反推。反推的前提是：
+电流里不混入非法拉第过程，电势里不混入未补偿的溶液电阻降，传质速率已知或已被排除，
+并且电势的参照点（参比电极）和面积基准（几何面积还是真实面积）都被明确交代过。
+这四条前提缺任何一条，得到的速率常数和 Tafel 斜率都不可比。
+\end{probout}
+
+\subsubsection{电化学涉及的基本概念}
+
+这组概念的用处是给后面的公式划定符号与判据的边界，其中最容易混淆的是\textbf{电势}
+类的三个词：平衡电势、过电位、开路电势。
+
+\paragraph{导体、半导体与绝缘体} 按电阻率 $\rho$ 划分：$\rho<\qty{1}{\milli\ohm\centi\meter}$ 为
+导体（金、银、铜、铝、铁、电解液、石墨），$\rho>\qty{1}{\giga\ohm\centi\meter}$ 为绝缘体（云母、
+橡胶、石英、陶瓷），介于两者之间为半导体（硅、锗、\ce{TiO2}、\ce{GaN}）
+\src{书内 p.810 / PDF p.298}。对催化实验的直接含义是：电解液必须导电，但催化剂载体
+（如氧化物、碳）可以处于半导体区，其导电性会随电势变化，这会带来额外的、与催化
+无关的电流--电势非线性。
+
+\paragraph{电解质与电解液} 电解质是在水溶液中或熔融态能导电的化合物，其导电来自荷电
+溶剂化离子在电场下的定向迁移；电解质本身不一定导电，按是否完全电离分为强、弱电解质，
+而溶解度大小与强弱无关。电解质并非都是液体：聚合物锂离子电池和质子交换膜燃料电池
+使用的就是固体有机电解质。
+
+\paragraph{电极} 按材料分为金属电极、氧化物电极、固体难溶盐电极等；按功能分为工作
+电极、对电极、参比电极、离子选择电极。电极的作用是连接电解液与外电路，并在其表面或
+近表面界面发生电化学反应。催化研究关心的是工作电极，但\textbf{没有对电极和参比电极的
+明确交代，工作电极上的数据无法解释}。
+
+\paragraph{活度、离子氛与电迁移} 溶液中的离子与其周围离子形成相对规律的离子排布区，
+称为离子氛。离子到达电极表面发生反应前需从离子氛中剥离，要耗费能量，因此溶液中离子的
+自由能与反应活性都略低于自由离子。为描述实际溶液与理想溶液的偏离引入\textbf{活度}：
+它是离子相对理想溶液浓度的有效值。离子氛随浓度增大而变大，故活度随浓度增大而减小；
+无限稀溶液中离子可近似为自由离子。电解质本体中离子在电场下的定向移动称为\textbf{电迁移}；
+电极表面液层中则因部分离子持续反应造成浓度差，驱动离子\textbf{扩散}。扩散和电迁移
+共同完成电活性物质的传递，对应电流也分为扩散电流与迁移电流。电极近表面电活性物质的
+流量决定反应速率，从而控制外电路电流。
+
+\paragraph{电势的三种含义} 这三个词在催化文献里最常被混用，必须分清：
+
+\begin{itemize}
+\item \textbf{平衡电势} $E_{\mathrm{eq}}$：给定温度、压力和\textbf{全部组分活度}下，
+  电极上氧化与还原两个方向速率相等、净电流为零时的电势。它是一个由热力学确定的量
+  （Nernst 方程给出），与电极材料无关，只与电对和活度有关。
+\item \textbf{过电位（超电势）} $\eta=E-E_{\mathrm{eq}}$：实际电极电势偏离平衡电势的
+  量，是驱动净反应的「额外推动力」，符号与大小同时编码了动力学信息。$\eta$ 只对确定的
+  $E_{\mathrm{eq}}$ 才有定义；讨论 $\eta$ 前必须先说明用什么电对、什么活度算出的
+  $E_{\mathrm{eq}}$。
+\item \textbf{开路电势} OCP：外电路断开（无净电流）时测得的工作电极电势。它\textbf{等于}
+  平衡电势只在电极表面处于热力学平衡时成立；催化研究中电极表面常被吸附物、氧化物层
+  或混合电位占据，此条件下 OCP 是一个\textbf{混合电位}，与任何单一电对的
+  $E_{\mathrm{eq}}$ 都不相等，因而不能用来计算 $\eta$。
+\end{itemize}
+
+\begin{pitfall}
+把 OCP 当平衡电势、直接用它算过电位，是电催化文献里最高频的错误之一。判据很简单：
+若在该 OCP 处体系的净电流为零是因为\textbf{正逆两个方向的同一反应}速率相等，OCP 才是
+平衡电势；若净电流为零是\textbf{两个不同反应}（如氧还原与铂氧化）各自贡献正负电流相消，
+那它是混合电位。区分办法是在 OCP 附近做微扰，看响应是容性还是可通过极化曲线外推。
+\end{pitfall}
+
+\subsubsection{电势和电池热力学}
+
+电势差推动电子在电路中定向移动；恒温恒压下，若系统的非膨胀功只有电功，则
+
+\begin{equation}
+(\Delta_{\mathrm{r}}G)_{T,p}=-nEF
+\label{eq:gibbs-emf}
+\end{equation}
+
+式中 $n$ 为反应输出电荷的物质的量，$E$ 为可逆电池的电动势，$F$ 为法拉第常量
+\src{式 11-3，书内 p.812 / PDF p.300}。这是联系热力学与电化学的主要桥梁：测量电势
+（可观测）即可解决催化过程中的热力学问题。
+
+\begin{keycond}
+\equref{eq:gibbs-emf} 的成立条件是\textbf{可逆电池、恒温恒压、非膨胀功只有电功}。
+量纲检查：$[-nEF]=1\times\mathrm{C.mol^{-1}}\times\mathrm{V}
+=\mathrm{J.mol^{-1}}$，与 $\Delta_{\mathrm{r}}G$ 一致。
+\end{keycond}
+
+\paragraph{可逆电池} 化学上可逆指仅改变电流方向即可让反应反向，不产生新反应。热力学
+可逆则进一步要求充放电电流无限小、电池在平衡态附近工作。实际过程总以一定速率进行，
+不具有严格的热力学可逆性；但外接足够大的电阻使反应足够慢、且反应程度足够小（各组分
+活度基本不变）时，在要求精度内热力学公式仍然适用，此时电池对外做最大电功 $|\Delta G|$。
+
+由 $\Delta G$ 与温度的关系可得电池反应的熵变与温度系数：
+
+\begin{equation}
+\Delta S=-\left(\frac{\partial \Delta G}{\partial T}\right)_{p},
+\qquad
+\Delta S=nF\left(\frac{\partial E}{\partial T}\right)_{p}
+\label{eq:entropy-emf}
+\end{equation}
+
+\src{式 11-5、11-6，书内 p.813 / PDF p.301}。这样无法直接观测的热力学量就转化为电势
+等可观测量——其中一个实用推论是：$\partial E/\partial T$ 给出熵变，因此\textbf{参比
+电极的温度系数不被补偿时会直接污染 $\Delta S$ 的数值}。
+
+\paragraph{半反应、参比电极与标准电极电势} 单个电极的绝对电势无法精确测量，因此用
+标准参比电极建立统一标度。按惯例采用常规氢电极（NHE，亦称标准氢电极 SHE）：
+
+\begin{equation}
+\ce{Pt | H2}(p^\ominus)\,|\,\ce{H+}(a=1)
+\label{eq:she}
+\end{equation}
+
+其电势在所有温度下被定义为零。电极与 NHE 构成可逆电池，测出的电池电势即为该电极的
+半电池电势。例如 $E(\ce{Cl-}|\ce{AgCl}|\ce{Ag})=+\qty{0.22}{V}$（对 NHE），
+$E(\ce{Zn^{2+}}|\ce{Zn})=-\qty{0.76}{V}$，故 $\ce{Zn|AgCl}$ 电池的
+$E=0.22-(-0.76)=\qty{0.98}{V}$ \src{式 11-7、11-8，书内 p.813 / PDF p.301}。
+通常把半反应写成还原形式，所得电极电势即相对 NHE 的还原电势。
+
+\begin{pitfall}
+「电势是 $-0.2\ \mathrm{V}$」这句话在电催化里是不完整的信息。一个可用的电势数字至少
+需要四项交代：\textbf{参比电极种类}（NHE/SHE、Ag/AgCl 及其 \ce{KCl} 浓度、饱和甘汞
+SCE、\ce{Hg/HgO}、\ce{Hg/Hg2SO4} 等）、\textbf{温度}、\textbf{是否做过 iR 补偿及其
+补偿比例}、\textbf{换算到 RHE 或 NHE 时用的 pH}。参比电极还会随时间漂移、被 \ce{Cl-}
+污染、液接界电势随溶液组成改变；长期实验必须定期用标准液标定。缺任何一项的 Tafel
+斜率都不能与文献数值直接比较。
+\end{pitfall}
+
+\begin{principle}
+整章的方法都服务于同一个速率模型。电极反应的总速率（即电流密度 $j$）由两个\textbf{串联}
+的环节决定：\textbf{（i）反应物从本体输运到电极表面}，速率由传质系数 $m$ 表征；
+\textbf{（ii）反应物在表面完成电荷转移}，速率由动力学参数 $k^0$、$\alpha$（等价地
+$j_0$、$\alpha$）表征。串联意味着
+
+\begin{equation}
+\frac{1}{j_{\text{总}}}=\frac{1}{j_{\text{传质}}}+\frac{1}{j_{\text{电荷转移}}}
+\label{eq:series-rate}
+\end{equation}
+
+因此实测电流永远只报告\textbf{较慢一步}的信息：传质快于电荷转移时电流反映本征动力学
+（此时才能读 Tafel 斜率与 $j_0$）；电荷转移快于传质时电流被钉在扩散极限上，反映的是
+$D$、$\delta$ 与 $C^*$，与本征活性无关。\equref{eq:series-rate} 的成立条件是两步彼此
+独立、无耦合的中间步骤，且电极表面不积累中间体；量纲检查：各项均为
+$\mathrm{A.cm^{-2}}$，成立。本章后面每一种方法，本质上都是在实验上设法\textbf{固定其中
+一步、观测另一步}：传质系数由扩散层厚度与扩散系数按方法设定，电荷转移速率由电势按
+Butler--Volmer 关系设定。
+\end{principle}
+
+\paragraph{Nernst 方程} 当各组分不处于标准状态时，对总反应
+$\upsilon_{\mathrm{O}}\mathrm{O}+\upsilon_{\mathrm{H_2}}\mathrm{H_2}
+\rightleftharpoons \upsilon_{\mathrm{R}}\mathrm{R}+\upsilon_{\mathrm{H^+}}\mathrm{H^+}$，
+由化学反应等温式与 \equref{eq:gibbs-emf} 得
+
+\begin{equation}
+E=E^\ominus-\frac{RT}{nF}\ln\frac{a_{\mathrm{R}}^{\upsilon_{\mathrm{R}}}
+a_{\mathrm{H^+}}^{\upsilon_{\mathrm{H^+}}}}
+{a_{\mathrm{O}}^{\upsilon_{\mathrm{O}}}a_{\mathrm{H_2}}^{\upsilon_{\mathrm{H_2}}}}
+\label{eq:nernst}
+\end{equation}
+
+\src{式 11-11，书内 p.814 / PDF p.302}。式中 $E^\ominus$ 为所有参加反应的组分都处于
+标准状态时的电动势；活度约定为：纯液体或固态纯物质 $a=1$；气态物质
+$a_i=\gamma_i(p_i/p^\ominus)$；溶质 $a_i=\gamma_i(C_i/C^\ominus)$，$C^\ominus$ 通常取
+\qty{1}{mol.L^{-1}}。书中给出的常数为 $R=\qty{8.31441}{J.mol^{-1}.K^{-1}}$、
+$F=\qty{96486.7}{C.mol^{-1}}$ \src{书内 p.811—812 / PDF p.299—300}。
+
+\begin{keycond}
+\equref{eq:nernst} 要求\textbf{电化学平衡、可逆条件、各组分活度已知且界面处与本体一致}。
+量纲检查：$[RT/(nF)]=\mathrm{J.mol^{-1}}/\mathrm{C.mol^{-1}}=\mathrm{V}$，与 $E$ 一致。
+两个常见误用：把本体浓度直接代入活度（高离子强度下 $a$ 可比 $C$ 低很多）；在有大电流
+通过时用电势反解表面活度（此时表面活度已被传质改写，需换用 \equref{eq:eta-conc}）。
+\tocheck{未对照原页面图像：书中 $F$ 取 96486.7 C/mol，是较老取值（现用 96485.33 C/mol），
+本分片按原书照录；若全书统一约定用新值需在此处改写。}
+\end{keycond}
+
+Nernst 方程也是离子选择性电极的本质思想：若保持 $\alpha$ 相中物质 $i$ 的活度不变，
+测得膜电势 $E_{\mathrm{m}}=-\dfrac{RT}{nF}\ln\dfrac{a_i^\alpha}{a_i^\beta}$ 即可得到
+$\beta$ 相中 $i$ 的活度，常用 pH 计的玻璃电极即属此类
+\src{式 11-12，书内 p.814 / PDF p.302}。
+
+\subsubsection{电极反应动力学}
+
+可逆电极电势是在电流无限小时得到的。有电流通过时电极电势偏离可逆值，这一现象称为
+\textbf{电极极化}。催化关心的正是偏离的大小与方式。
+
+\paragraph{电极电流} 电极过程同时进行氧化与还原两个相反过程，二者速率相同时电极处于
+平衡态、外电路无电流。对
+
+\begin{equation}
+\ce{O + $n$e- <=>[k_{\mathrm{f}}][k_{\mathrm{b}}] R}
+\label{eq:redox}
+\end{equation}
+
+还原与氧化速率按 Arrhenius 形式写出，正比于各自反应物的表面浓度，比例常数为速率常数
+\src{式 11-13—11-16，书内 p.815 / PDF p.303}：
+
+\begin{align}
+i_{\mathrm{f}}&=nFAk_{\mathrm{f}}C_{\mathrm{O}},\qquad
+i_{\mathrm{b}}=nFAk_{\mathrm{b}}C_{\mathrm{R}}\notag\\[2pt]
+i&=i_{\mathrm{f}}-i_{\mathrm{b}}
+=nFA\left(k_{\mathrm{f}}C_{\mathrm{O}}-k_{\mathrm{b}}C_{\mathrm{R}}\right)
+\label{eq:current-basic}
+\end{align}
+
+式中 $A$ 为电极面积，$C_{\mathrm{O}}$、$C_{\mathrm{R}}$ 为\textbf{电极表面}浓度。
+量纲检查：$[nFAkC]=\mathrm{C.mol^{-1}}\times\mathrm{cm^2}\times\mathrm{cm.s^{-1}}
+\times\mathrm{mol.cm^{-3}}=\mathrm{C.s^{-1}}=\mathrm{A}$，自洽。
+\equref{eq:current-basic} 把电极电流与活化能联系起来——而由热力学部分已知电极电势
+直接决定自由能，因此改变电势就改变了活化能。
+
+\paragraph{Butler--Volmer 模型} 电势变化改变了电子的相对能量，因而改变氧化与还原的
+活化自由能垒。以平衡电势 $E_{\mathrm{eq}}$ 为参考点，设电势正移到 $E$，电子能量下降
+$F\eta$（$\eta=E-E_{\mathrm{eq}}$），则
+
+\begin{equation}
+\Delta G_{\mathrm{a}}^\ddagger=\Delta G_{\mathrm{a}}^{0\ddagger}-(1-\alpha)F\eta,
+\qquad
+\Delta G_{\mathrm{c}}^\ddagger=\Delta G_{\mathrm{c}}^{0\ddagger}+\alpha F\eta
+\label{eq:dg-eta}
+\end{equation}
+
+\src{式 11-17，书内 p.816 / PDF p.304}。式中 $\alpha$ 为\textbf{传递系数}，取值与
+活化能垒交叉区域形状有关，范围在 0～1 之间；$\eta=E-E_{\mathrm{eq}}$ 为过电位。
+其物理含义是：电势变化对阳极和阴极活化能垒的削弱/增强\textbf{按 $\alpha$ 与
+$1-\alpha$ 分配}，$\alpha$ 因此直接决定 Tafel 斜率。
+
+把 \equref{eq:dg-eta} 代回 Arrhenius 式，并以平衡态（$C_{\mathrm{O}}=C_{\mathrm{R}}$、
+$\eta=0$、$k_{\mathrm{f}}=k_{\mathrm{b}}=k^0$，$k^0$ 为标准速率常数）为基准归一化，
+得
+
+\begin{equation}
+k_{\mathrm{f}}=k^0\exp\!\left(-\frac{\alpha F\eta}{RT}\right),
+\qquad
+k_{\mathrm{b}}=k^0\exp\!\left(\frac{(1-\alpha)F\eta}{RT}\right)
+\label{eq:k-eta}
+\end{equation}
+
+\src{式 11-20、11-21，书内 p.816 / PDF p.304}。代入 \equref{eq:current-basic} 得
+电流--电势特征关系式
+
+\begin{equation}
+i=FAk^0\left[C_{\mathrm{O}}\exp\!\left(-\frac{\alpha F\eta}{RT}\right)
+-C_{\mathrm{R}}\exp\!\left(\frac{(1-\alpha)F\eta}{RT}\right)\right]
+\label{eq:bv-first}
+\end{equation}
+
+\src{式 11-22，书内 p.816 / PDF p.304}。这是 Butler--Volmer 动力学表达式的一种形式，
+是处理电极电流与电势关系的基本手段。
+
+\paragraph{交换电流密度与传递系数} 平衡时净电流为零、表面浓度等于本体浓度
+$C_{\mathrm{O}}^*$、$C_{\mathrm{R}}^*$，此时正逆两个方向的电流\textbf{大小相等方向
+相反}，其值定义为交换电流 $i_0$：
+
+\begin{equation}
+i_0=FAk^0C_{\mathrm{O}}^{*\,(1-\alpha)}C_{\mathrm{R}}^{*\,\alpha},
+\qquad
+j_0=\frac{i_0}{A}
+\label{eq:i0}
+\end{equation}
+
+\src{式 11-24、11-25，书内 p.817 / PDF p.305}。$j_0$ 的单位是 $\mathrm{A.cm^{-2}}$，
+量纲检查：$[FAk^0C]=(\mathrm{C.mol^{-1}})\mathrm{cm^2}(\mathrm{cm.s^{-1}})
+(\mathrm{mol.cm^{-3}})=\mathrm{A}$，成立。$i_0$ 表征催化反应过程中活化能垒的大小：
+$j_0$ 越大，同一过电位下净电流越大，\textbf{在同样的传质条件下}表现出的活性越高。
+用 $i_0$ 替代 $FAk^0$ 项后得到更常用的 Butler--Volmer 方程：
+
+\begin{equation}
+i=i_0\left[\frac{C_{\mathrm{O}}}{C_{\mathrm{O}}^*}
+\exp\!\left(-\frac{\alpha F\eta}{RT}\right)
+-\frac{C_{\mathrm{R}}}{C_{\mathrm{R}}^*}
+\exp\!\left(\frac{(1-\alpha)F\eta}{RT}\right)\right]
+\label{eq:bv}
+\end{equation}
+
+\src{式 11-26，书内 p.817 / PDF p.305}。
+
+\begin{keycond}
+\equref{eq:bv} 的成立条件有三条：\textbf{（i）单步骤、单电子（或写成 $n$ 电子一步）的
+基元反应}；\textbf{（ii）$C_{\mathrm{O}}^*=C_{\mathrm{R}}^*$ 且 $\eta=0$ 时正逆速率相等
+（用于定义 $k^0$ 与 $i_0$）}；\textbf{（iii）浓度项取电极表面浓度 $C_{\mathrm{O}}$、
+$C_{\mathrm{R}}$，不是本体浓度}。量纲检查：$[i]=[i_0]=\mathrm{A}$（或两侧同除 $A$
+写成电流密度）。第三条最容易被忽略：一旦把表面浓度换成本体浓度，方程就默认了
+「传质无穷快」，此时得到的 $j_0$ 是表观值而非本征值。
+\end{keycond}
+
+\paragraph{Butler--Volmer 方程的两个极限} 不考虑传质影响时：
+\textbf{（1）小过电位}，由泰勒展开 $e^x\approx1+x$，\equref{eq:bv} 化为
+
+\begin{equation}
+i=-i_0\frac{F\eta}{RT}
+\qquad\text{或}\qquad
+j=-\frac{F}{RT}j_0\,\eta
+\label{eq:bv-linear}
+\end{equation}
+
+电流与过电位呈线性关系，斜率即\textbf{电荷转移电阻}的倒数。这是电化学阻抗谱测 $j_0$ 的
+理论基础，也是「低过电位区不能读 Tafel 斜率」的原因。\textbf{（2）大过电位}，括号中
+一项可忽略，以较大负过电位（阴极）为例：
+
+\begin{equation}
+i=i_0\exp\!\left(-\frac{\alpha F\eta}{RT}\right)
+\label{eq:bv-cathodic}
+\end{equation}
+
+重排为
+
+\begin{align}
+\eta&=\frac{RT}{\alpha F}\ln i_0-\frac{RT}{\alpha F}\ln i
+\label{eq:tafel}\\[2pt]
+\eta&=a+b\ln i,\qquad
+a=\frac{RT}{\alpha F}\ln i_0,\qquad b=-\frac{RT}{\alpha F}\notag
+\end{align}
+
+\src{式 11-27—11-30，书内 p.817—818 / PDF p.305—306}。\equref{eq:tafel} 即 Tafel 经验
+公式 $\eta=a+b\ln i$ 的具体形式；若改用常用对数（文献多如此），则
+$b=-2.303RT/(\alpha F)$，\qty{25}{\celsius} 下 $|b|=\qty{59}{\mV.dec^{-1}}/\alpha$。
+
+\begin{keycond}
+\equref{eq:tafel} 的成立条件是\textbf{高过电位极限}（通常 $|\eta|>\qty{50}{mV}$ 以上，
+视体系而定）且\textbf{传质不构成限制}（$i\ll i_{\mathrm{t}}$，一般取 $i<0.1i_{\mathrm{t}}$）。
+量纲检查：$[RT/(\alpha F)]=\mathrm{V}$，$[\ln i]$ 无量纲，故 $b$ 为 V（或 mV/dec）。
+三条推论必须记住：$\alpha$ 只由斜率给出，$j_0$ 必须由\textbf{截距}给出，故
+\textbf{斜率错一点、截距就错一个数量级}；$\alpha$ 与 $j_0$ 通过 \equref{eq:i0} 耦合，
+只有当 $C_{\mathrm{O}}^*=C_{\mathrm{R}}^*$ 时 $j_0=FAk^0C^*$ 才是干净的本征量；
+由阴极支和阳极支分别外推得到的截距应给出同一个 $j_0$，不重合说明有附加过程。
+\tocheck{未对照原页面图像：书中式（11-30）写作 $b=-RT/(\alpha F)$（自然对数形式），
+本分片按原书保留自然对数并补注了常用对数的换算；若本章他处统一采用 $\lg$，需改符号。}
+\end{keycond}
+
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=\dimexpr\twocolwidth-2mm\relax, height=58mm,
+  xlabel={过电位 $\eta$ / V}, ylabel={$\ln(|j|\,/\,\mathrm{A.cm^{-2}})$},
+  xmin=-0.30, xmax=0.30, ymin=-10, ymax=1,
+  xtick={-0.3,-0.2,-0.1,0,0.1,0.2,0.3},
+  ytick={-8,-6,-4,-2,0},
+  legend style={at={(0.02,0.98)},anchor=north west,legend columns=1},
+  clip=false
+]
+% alpha = 0.5, f = F/RT ≈ 38.92 V^-1 at 298 K ; log10 scale factor ln -> use natural log
+% ln|j| = ln j0 - alpha*f*eta   (cathodic, eta<0 gives increase), anodic mirrored
+\addplot[mainline,black,domain=-0.30:0,samples=80]{ln(1e-6) - 0.5*38.92*x};
+\addplot[mainline,black,domain=0:0.30,samples=80]{ln(1e-6) + 0.5*38.92*x};
+\addlegendentry{$\alpha=0.5$, $j_0=\qty{e-6}{\A\per\square\cm}$}
+\addplot[mainline,black,dashed,domain=-0.30:0,samples=80]{ln(1e-8) - 0.5*38.92*x};
+\addplot[mainline,black,dashed,domain=0:0.30,samples=80]{ln(1e-8) + 0.5*38.92*x};
+\addlegendentry{$\alpha=0.5$, $j_0=\qty{e-8}{\A\per\square\cm}$}
+\addplot[mainline,black,dashdotted,domain=-0.30:0,samples=80]{ln(1e-6) - 0.25*38.92*x};
+\addplot[mainline,black,dashdotted,domain=0:0.30,samples=80]{ln(1e-6) + 0.75*38.92*x};
+\addlegendentry{$\alpha=0.25$, $j_0=\qty{e-6}{\A\per\square\cm}$}
+\addplot[thinline,black,dotted,domain=-0.30:0.30,samples=2]{ln(1e-6)};
+\node[anchor=west,font={\fontsize{8}{9.5}\selectfont}] at (axis cs:0.02,-9.4)
+  {实线/虚线：斜率相同、截距不同 $\Rightarrow$ 只差 $j_0$};
+\end{axis}
+\end{tikzpicture}
+\caption{Butler--Volmer 方程在高过电位极限下的 Tafel 图（模型计算，$\qty{298}{K}$）。
+读者应看两件事：\textbf{同一斜率、不同截距}只反映 $j_0$ 的差别（实线对虚线，差两个
+数量级）；\textbf{斜率改变}反映传递系数 $\alpha$ 的差别（点划线，阴极支 $\alpha=0.25$，
+$\alpha$ 越小斜率越陡）。值得注意的局限：真实体系的 Tafel 图常在中段出现折点，
+说明速率控制步骤随过电位切换，此时用一条直线拟合全区间会同时给出错误的 $\alpha$ 与
+$j_0$；低过电位区（$|\eta|<\qty{50}{mV}$）应改用 \equref{eq:bv-linear} 的线性关系。
+\modelmark}
+\label{fig:tafel}
+\end{figure}
+
+\subsubsection{静态电极过程中的物质传递影响}
+
+前面所有含有电极表面浓度 $C_{\mathrm{O}}$ 的式子都留了一个未定的量。除平衡态等特殊
+情形外，本体浓度 $C^*$ 与表面浓度 $C$ 并不相等，因此\textbf{表面浓度信息是理解浓差
+极化行为的关键}。溶液中物质传递有迁移、扩散、对流三种形式；对\textbf{静态电极}，
+对流可忽略；若溶液中有\textbf{过量支持电解质}，电迁移也可不考虑。此时电极周围传质由
+扩散控制，符合 Fick 扩散定律，速率与浓度梯度成正比：
+
+\begin{equation}
+N_{\mathrm{O}}=-D_{\mathrm{O}}\left(\frac{\partial C_{\mathrm{O}}}{\partial x}\right)
+\label{eq:fick1}
+\end{equation}
+
+\src{式 11-31，书内 p.818 / PDF p.306}。式中 $N_{\mathrm{O}}$ 为距电极表面 $x$ 处物质
+$\mathrm{O}$ 的流量（$\mathrm{mol.s^{-1}.cm^{-2}}$），$D_{\mathrm{O}}$ 为扩散系数
+（$\mathrm{cm^2.s^{-1}}$）。
+
+\paragraph{Nernst 扩散层与极限电流} 假设电极表面存在厚度为 $\delta_{\mathrm{O}}$ 的
+静止层，$x=\delta_{\mathrm{O}}$ 以外浓度均为本体浓度 $C_{\mathrm{O}}^*$，传递到电极表面
+的物质被完全消耗，则由 Faraday 定律
+
+\begin{equation}
+\frac{i}{nFA}=-D_{\mathrm{O}}
+\frac{C_{\mathrm{O}}^*-C_{\mathrm{O}}}{\delta_{\mathrm{O}}}
+\label{eq:diff-layer}
+\end{equation}
+
+当表面浓度 $C_{\mathrm{O}}=0$ 时传递速率达到最大，电流达到平台值，称为\textbf{极限电流}
+$i_{\mathrm{t}}$：
+
+\begin{equation}
+\frac{i_{\mathrm{t}}}{nFA}=-D_{\mathrm{O}}
+\frac{C_{\mathrm{O}}^*}{\delta_{\mathrm{O}}}
+\label{eq:il}
+\end{equation}
+
+\src{式 11-32、11-33，书内 p.819 / PDF p.307}。$i_{\mathrm{t}}$ 只表征电极表面的传质
+情况，\textbf{不含任何动力学信息}——这一点在后面每一种方法里都会再出现。
+量纲检查：$[nFAD C^*/\delta]=(\mathrm{C.mol^{-1}})\mathrm{cm^2}
+(\mathrm{cm^2.s^{-1}})(\mathrm{mol.cm^{-3}})/\mathrm{cm}=\mathrm{C.s^{-1}}=\mathrm{A}$。
+
+\paragraph{浓差过电位的分解} 表面浓度对电极电势的影响可拆成热力学与动力学两部分。
+由 Nernst 方程，本体浓度与表面浓度对应的电势差为
+$\eta_1=\dfrac{RT}{nF}\ln\dfrac{C_{\mathrm{O}}}{C_{\mathrm{O}}^*}$
+\src{式 11-34、11-35，书内 p.819 / PDF p.307}；把 \equref{eq:diff-layer} 与
+\equref{eq:il} 代入，得
+
+\begin{equation}
+\eta_1=-\frac{RT}{nF}\ln\!\left(\frac{i_{\mathrm{t}}}{i_{\mathrm{t}}-i}\right)
+\label{eq:eta1}
+\end{equation}
+
+再按 Butler--Volmer 方程在高电流密度区略去第二项，得到
+$i=i_0\dfrac{C_{\mathrm{O}}}{C_{\mathrm{O}}^*}
+\exp\!\left(-\dfrac{\alpha nF\eta}{RT}\right)$ 及其重排
+$\eta=-\dfrac{RT}{\alpha nF}\left(\ln\dfrac{i}{i_0}
++\ln\dfrac{C_{\mathrm{O}}^*}{C_{\mathrm{O}}}\right)$
+\src{式 11-37、11-38，书内 p.819 / PDF p.307}。只保留浓度项即
+
+\begin{equation}
+\eta_2=-\frac{RT}{\alpha nF}\ln\frac{C_{\mathrm{O}}^*}{C_{\mathrm{O}}}
+=-\frac{RT}{\alpha nF}\ln\!\left(\frac{i_{\mathrm{t}}}{i_{\mathrm{t}}-i}\right)
+\label{eq:eta2}
+\end{equation}
+
+两部分之和给出电极表面浓度造成的总电势损失：
+
+\begin{equation}
+\eta_{\mathrm{conc}}=\eta_1+\eta_2
+=-\frac{RT}{nF}\left(1+\frac{1}{\alpha}\right)
+\ln\!\left(\frac{i_{\mathrm{t}}}{i_{\mathrm{t}}-i}\right)
+\label{eq:eta-conc}
+\end{equation}
+
+\begin{keycond}
+\equref{eq:eta1}—\equref{eq:eta-conc} 的成立条件是\textbf{静态电极 + 过量支持电解质 +
+Nernst 扩散层模型 + 高过电位下略去 Butler--Volmer 的阳极项}。量纲检查：
+$[RT/(\alpha nF)]=\mathrm{V}$，$[\ln(\cdot)]$ 无量纲，成立。两个极限行为要记牢：
+$i\to 0$ 时 $\eta_{\mathrm{conc}}\to 0$（传质不构成限制）；$i\to i_{\mathrm{t}}$ 时
+$\eta_{\mathrm{conc}}\to\infty$（浓差极化发散，电流被钉在平台值上）。
+\tocheck{未对照原页面图像：书中式（11-40）OCR 为
+$\eta_{\mathrm{conc}}=\eta_1+\eta_2=-\frac{RT}{nF}(1+\frac{1}{\alpha})(\frac{i_{\mathrm{t}}}{i_{\mathrm{t}}-i})$，
+疑漏对数号（否则量纲为 V 而右端无量纲），本分片按 \equref{eq:eta1}、\equref{eq:eta2}
+的标准形式补回 $\ln$，系数 $(1+1/\alpha)$ 沿用原书。}
+\end{keycond}
+
+图~\ref{fig:series} 把本节与上一节的关系画成一张图：电荷转移与传质是\textbf{串联}的
+两步，二者共用同一个电流，因此\textbf{总速率由较慢的一步决定}。
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=1mm,y=1mm,>=Stealth,scale=0.95,transform shape]% width=\onecolwidth
+% --- electrode (left) ---
+\fill[black!12] (-2,0) rectangle (0,30);
+\draw[axisline] (0,0) -- (0,30);
+\node[rotate=90,anchor=south,font={\fontsize{8}{9.5}\selectfont}] at (-1.0,15) {电极（电子导体）};
+% --- x axis ---
+\draw[axisline,->] (0,-3) -- (70,-3) node[anchor=west,font={\fontsize{8}{9.5}\selectfont}]{本体溶液 $x$};
+% --- IHP/OHP ---
+\draw[accentsoft,dashed,line width=0.6pt] (4,0) -- (4,30);
+\draw[accentsoft,dashed,line width=0.6pt] (8,0) -- (8,30);
+\node[anchor=south,font={\fontsize{8}{9.5}\selectfont}] at (6,30) {IHP/OHP};
+% --- double layer charges ---
+\foreach \y in {4,9,14,19,24}{\node[font={\fontsize{8}{9.5}\selectfont}] at (2,\y) {$-$};}
+\foreach \y in {5,10,15,20,25}{\node[font={\fontsize{8}{9.5}\selectfont}] at (6,\y) {$+$};}
+% --- diffusion layer span ---
+\draw[<->,thinline] (0,33) -- (38,33)
+  node[midway,above,font={\fontsize{8}{9.5}\selectfont}]{扩散层 $\delta_{\mathrm{O}}$（Nernst 静止层）};
+\draw[accentsoft,dotted,line width=0.6pt] (38,0) -- (38,30);
+% --- concentration profile ---
+\draw[mainline] (0,1) .. controls (11,1) and (25,20) .. (38,24) -- (68,24);
+\node[anchor=west,font={\fontsize{8}{9.5}\selectfont}] at (40,28) {$C_{\mathrm{O}}(x)$};
+\node[anchor=west,font={\fontsize{8}{9.5}\selectfont}] at (40,21) {$C_{\mathrm{O}}^*$（本体浓度）};
+% --- arrows ---
+\draw[->,mainline] (58,10) -- (42,10);
+\node[anchor=west,font={\fontsize{8}{9.5}\selectfont}] at (59,10) {扩散};
+\draw[->,mainline] (13,17) -- (2,17);
+\node[anchor=west,font={\fontsize{8}{9.5}\selectfont},text width=26mm] at (15,18)
+  {电荷转移\\ $k_{\mathrm{f}},k_{\mathrm{b}}$};
+\end{tikzpicture}
+\caption{静态电极界面的双电层与扩散层示意，以及传质与电荷转移的串联位置（示意）。
+读者应看三处：紧贴电极的 \textbf{IHP/OHP} 与电荷符号代表双电层，其充放电构成
+\textbf{非法拉第电流}；向右延伸的 $\delta_{\mathrm{O}}$ 是\textbf{扩散层}，其中的浓度
+梯度决定传质速率；电流必须依次通过这两步，故总速率由较慢者决定。局限：本图为
+Nernst 静止层的简化图像，真实扩散层没有明确边界，仅在无对流且有支持电解质时近似
+成立；双电层被简化为单层符号，未画出溶剂化与特性吸附。\schemamark\figsrc{据 S2
+（下册）§11.1.5 与图 11-2 改绘；书内 p.817—819，PDF p.305—307。}}
+\label{fig:series}
+\end{figure}
+
+\begin{crosscheck}
+\textbf{怎么判断自己测的是传质还是电荷转移？} 三个互不依赖的检验：（i）
+\emph{改变传质速率}——提高搅拌或旋转速率，若电流随之增大，说明传质仍在限制；
+（ii）\emph{改变浓度}——若电流正比于 $C^*$（扩散控制）而不随催化剂本征性质变化，
+说明读到的是极限电流；（iii）\emph{改变电极面积}——真实面积加倍而电流不成比例增加，
+说明电流被溶液侧传质「钉住」。三条中只要有一条指向传质，就不能把该电流当作本征活性。
+与流体动力学方法（11.3 起）的 Levich 关系互为回查：若 $j^{-1}$ 对 $\omega^{-1/2}$ 作图
+得直线，其截距才对应本征动力学。
+\end{crosscheck}
+
+\subsection{控制电势的研究方法}
+
+\subsubsection{实验装置与共同假定}
+
+本节的方法都靠\textbf{已知的程序强制电极电势按预定函数变化}，同时测定电流随时间或
+电势变化的特征曲线\src{S2 §11.2，书内 p.819 / PDF p.307}。装置包含函数发生器、恒电势仪
+（potentiostat）与电解池：函数发生器设定电势程序，恒电势仪通过高阻抗反馈回路测量工作
+电极与参比电极间的电势差，并\textbf{随时注入电流}以保证该电势差与程序一致
+\src{图 11-3，书内 p.820 / PDF p.308}。对电极承担全部电流，参比电极因接在高阻抗回路上
+而基本不取电流——这是「测量不扰动体系」的前提。
+
+\begin{keycond}
+本节所有方法都假定\textbf{面积体积比 $A/V$ 很小}，以保证测试过程中电活性物质的
+\emph{本体}浓度不因电解而显著变化。实现方式是选用\textbf{微电极}（microelectrode）
+并在足够大体积的溶液中做短时间实验。若违反此假定，$C^*$ 会随实验进程下降，
+所有基于恒定 $C^*$ 的方程（Cottrell、Levich、Tafel 截距）都会随时间漂移，
+表现为「同一电极重复扫描，峰高逐圈下降」。
+\end{keycond}
+
+\begin{measure}
+\textbf{报告任何一条电势--电流曲线之前，这五项必须实测并记录。}
+\textbf{（1）参比电极}：种类、内充液浓度、\qty{25}{\celsius} 下的标定值、实验前后漂移
+（用饱和 \ce{KCl} 或标准缓冲液标定，漂移超过约 \qty{1}{mV} 的数据应作废）；
+\textbf{（2）温度}：溶液温度及其稳定性，因为 $RT/F$ 直接进入所有斜率与截距；
+\textbf{（3）未补偿电阻 $R_{\mathrm{u}}$}：由高频阻抗外推或电流中断法测出，记录
+\textbf{补偿比例}（如 85\% 补偿）与残余 $iR_{\mathrm{u}}$ 降；\textbf{（4）双电层电容
+$C_{\mathrm{d}}$ 与时间常数 $\tau=R_{\mathrm{u}}C_{\mathrm{d}}$}：决定哪些时间窗的数据
+可用；\textbf{（5）面积基准}：几何面积 $A_{\mathrm{g}}$ 与真实面积 $A_{\mathrm{m}}$ 及其
+定标方法（氢吸附电量或 $C_{\mathrm{d}}$）。这五项缺任何一项，Tafel 斜率与 $j_0$ 都
+不可与文献直接比较。
+\end{measure}
+
+\subsubsection{电势阶跃法}
+
+\paragraph{计时电流法} 给体系一个电势阶跃，测定电流随时间的变化
+（chronoamperometry）\src{图 11-4，书内 p.820 / PDF p.308}。典型设置是：反应物
+$\mathrm{O}$ 在初始电势 $E_1$ 不反应，阶跃到 $E_2$ 后以扩散极限速度被还原。
+相关的两类变体用于获得更多信息：
+
+\begin{itemize}
+\item \textbf{取样电流伏安法}（sampled-current voltammetry）：做一系列电势阶跃，
+  在初始条件相同的前提下分别测 $i$--$t$ 曲线，再用阶跃后某一固定时刻的电流对阶跃
+  电势作图，得到「伏安图」\src{图 11-5，书内 p.821 / PDF p.309}。
+\item \textbf{双电势阶跃计时电流法}（double potential step chronoamperometry）：
+  先阶跃再跃回初始值，是反向技术，用于研究较复杂的电极反应，特别是中间产物的去向
+  \src{图 11-6，书内 p.821 / PDF p.309}。
+\end{itemize}
+
+记录电流对时间的\textbf{积分}即通过的电量，相应方法统称库仑方法，最基本的是计时库仑法
+与双电势阶跃计时库仑法，它们就是上述计时电流法的积分量
+\src{图 11-7，书内 p.822 / PDF p.310}。
+
+\paragraph{扩散控制的电势阶跃：Cottrell 方程} 指瞬间施加一个大电势阶跃，使电极表面
+物质浓度为零；此后继续加大电势不再改变 $i$--$t$ 曲线，电流主要受溶液传质速率控制。
+对平板电极，解线性扩散方程（Fick 第二定律）
+
+\begin{equation}
+\frac{\partial C_{\mathrm{O}}(x,t)}{\partial t}
+=D_{\mathrm{O}}\frac{\partial^2 C_{\mathrm{O}}(x,t)}{\partial x^2}
+\label{eq:fick2}
+\end{equation}
+
+边界条件为：初始 $C_{\mathrm{O}}(x,0)=C_{\mathrm{O}}^*$；
+$\lim_{x\to\infty}C_{\mathrm{O}}(x,t)=C_{\mathrm{O}}^*$；阶跃后表面
+$C_{\mathrm{O}}(0,t)=0\ (t>0)$ \src{式 11-41—11-44，书内 p.822 / PDF p.310}。解得
+\textbf{Cottrell 方程}
+
+\begin{equation}
+i(t)=i_{\mathrm{d}}(t)=\frac{nFAD_{\mathrm{O}}^{1/2}C_{\mathrm{O}}^*}{(\pi t)^{1/2}}
+\label{eq:cottrell}
+\end{equation}
+
+\src{式 11-45，书内 p.822 / PDF p.310}。表面附近电活性物质的贫化效应造成电流与
+$t^{1/2}$ 呈\textbf{倒数}关系，这正是电解速度受扩散控制的标志。
+
+\begin{keycond}
+\eqref{eq:cottrell} 的成立条件：\textbf{（i）平板电极、半无限线性扩散}；
+\textbf{（ii）阶跃足够大，使表面浓度瞬间降为零（极限扩散）}；\textbf{（iii）无对流、
+有惰性支持电解质（电迁移被抑制）}；\textbf{（iv）$C^*$ 在实验期间不变（$A/V$ 小）}。
+量纲检查：$[nFAD^{1/2}C^*/(\pi t)^{1/2}]
+=(\mathrm{C.mol^{-1}})(\mathrm{cm^2})(\mathrm{cm.s^{-1/2}})(\mathrm{mol.cm^{-3}})
+/(\mathrm{s^{1/2}})=\mathrm{C.s^{-1}}=\mathrm{A}$，成立。
+\textbf{实操上必须扣除两个非理想项}：电流起始段受恒电势仪输出能力限制；阶跃瞬间还有
+非法拉第的\textbf{双电层充电电流}，它按电解池时间常数 $\tau=R_{\mathrm{u}}C_{\mathrm{d}}$
+（$R_{\mathrm{u}}$ 为未补偿电阻，$C_{\mathrm{d}}$ 为双电层电容）指数衰减，即使经过
+$5\tau$ 后对总电流仍有可观贡献，从中很难精确分离法拉第电流。此外长时间实验中浓度梯度
+与振动会造成对流扰动，表现为\textbf{电流大于} Cottrell 计算值。
+\end{keycond}
+
+相应的浓度分布为
+
+\begin{equation}
+C_{\mathrm{O}}(x,t)=C_{\mathrm{O}}^*\left[1-\mathrm{erfc}
+\left(\frac{x}{2(D_{\mathrm{O}}t)^{1/2}}\right)\right]
+=C_{\mathrm{O}}^*\,\mathrm{erf}\!\left(\frac{x}{2(D_{\mathrm{O}}t)^{1/2}}\right)
+\label{eq:conc-profile}
+\end{equation}
+
+\src{式 11-46、11-47，书内 p.823 / PDF p.311}。不同时刻的浓度分布显示电极附近的氧化态
+被耗尽，且\textbf{表面浓度梯度随时间变小}——这正是电流随时间衰减的几何原因。
+
+\paragraph{球形扩散与超微电极} 对球形扩散（如悬汞电极）需用球坐标下的扩散方程
+
+\begin{equation}
+\frac{\partial C_{\mathrm{O}}(r,t)}{\partial t}
+=D_{\mathrm{O}}\left[\frac{\partial^2 C_{\mathrm{O}}(r,t)}{\partial r^2}
++\frac{2}{r}\frac{\partial C_{\mathrm{O}}(r,t)}{\partial r}\right]
+\label{eq:fick2-sph}
+\end{equation}
+
+$r$ 为距球心的径向距离，电极半径 $r_0$，边界条件为
+$C_{\mathrm{O}}(r,0)=C_{\mathrm{O}}^*(r>r_0)$、
+$\lim_{r\to\infty}C_{\mathrm{O}}(r,t)=C_{\mathrm{O}}^*$、
+$C_{\mathrm{O}}(r_0,t)=0\,(t>0)$ \src{式 11-48—11-51，书内 p.824 / PDF p.312}。解得
+
+\begin{equation}
+i_{\mathrm{d}}(t)=nFAD_{\mathrm{O}}C_{\mathrm{O}}^*
+\left[\frac{1}{(\pi D_{\mathrm{O}}t)^{1/2}}+\frac{1}{r_0}\right]
+=i_{\mathrm{d}}(\text{线性})+\frac{nFAD_{\mathrm{O}}C_{\mathrm{O}}^*}{r_0}
+\label{eq:spherical}
+\end{equation}
+
+\src{式 11-52、11-53，书内 p.824 / PDF p.312}。量纲检查：第二项
+$[nFADC^*/r_0]=(\mathrm{C.mol^{-1}})(\mathrm{cm^2})(\mathrm{cm^2.s^{-1}})
+(\mathrm{mol.cm^{-3}})/\mathrm{cm}=\mathrm{A}$，与第一项同量纲。
+关键结论是：\textbf{球形扩散多出一个与时间无关的项}，这使电流在长时间区趋向稳态，
+而不是像平板电极那样衰减到零。浓度分布的形式与线性情形非常相似，只差一个
+$r_0/r$ 系数；若扩散层远薄于电极半径，球形电极的行为与平面电极无异。
+
+\paragraph{粗糙度与超微电极} 实际电极表面总不像理想条件那样平滑洁净，故引入粗糙度
+$\rho=A_{\mathrm{m}}/A_{\mathrm{g}}$：$A_{\mathrm{m}}$ 为微观（真实）面积，可由测双电层
+电容或测电极表面形成单分子层所需电量来测定；$A_{\mathrm{g}}$ 为几何面积，即电极表面
+正投影所得的面积 \src{书内 p.824 / PDF p.312}。\textbf{所有电流密度都必须说明用的是
+哪个面积。} 超微电极因尺寸小而使实验结果与理论计算相近，故被广泛使用；本书界定其
+临界尺寸小于 \qty{10}{nm}。短时间区扩散层厚度小于临界尺寸，可用 Cottrell 方程
+（半无限线性扩散）计算电流；长时间区扩散层厚度较大，电流趋于稳态或准稳态
+
+\begin{equation}
+i_{\mathrm{ss}}=nFAm_0C_{\mathrm{O}}^*
+\label{eq:iss}
+\end{equation}
+
+\src{式 11-55，书内 p.825 / PDF p.313}。\tocheck{未对照原页面图像：式中 $m_0$ 在原书
+未在前文定义，按上下文应为传质系数（$\mathrm{cm.s^{-1}}$），其与 $D_{\mathrm{O}}$ 及
+电极几何的关系（半球形 $m_0=2D/r_0$、球形 $4D/r_0$、嵌盘 $4D/(\pi r_0)$ 等）书中未给，
+本分片不代为指定。}
+
+\paragraph{取样电流伏安法的响应与信息边界} 对可逆电极反应，平板电极（满足半无限线性
+扩散）对\textbf{任意}单电势阶跃的电流响应为
+
+\begin{equation}
+i(t)=\frac{nFAD_{\mathrm{O}}^{1/2}C_{\mathrm{O}}^*}
+{\pi^{1/2}t^{1/2}\,(1+\theta)}
+\label{eq:sampled-rev}
+\end{equation}
+
+它是可逆体系对电势阶跃的一般响应式，极限扩散（$\theta\to0$）时即还原为 Cottrell 方程
+\src{式 11-56，书内 p.825 / PDF p.313}。此外，\textbf{电极形状并不是关键}，只要满足
+「扩散层厚度小于电极曲率半径」即可。超微球形电极上述模型的稳态区响应为
+$i=\dfrac{nFAD_{\mathrm{O}}C_{\mathrm{O}}^*}{(1+\xi_2\theta)r_0}$
+\src{式 11-57，书内 p.825 / PDF p.313}。
+\tocheck{未对照原页面图像：式（11-56）（11-57）中的符号 $\theta$、$\xi_2$ 在原书未在
+本分片可见范围内定义，OCR 亦可能把 $\theta$/$\vartheta$ 或下标记错。本分片保留原符号
+并只使用其定性结论（$\theta\to0$ 退化为 Cottrell），未据此做数值计算。}
+
+可逆体系下取样电流伏安法能给出与不能给出的信息很不相同：
+
+\begin{itemize}
+\item \textbf{能}：由波高测浓度，用于校正或测量标准添加物的浓度；可逆波的形状与位置
+  反映电极反应的能量依赖性，由此可得\textbf{标准电势、自由能、平衡常数}；半波电势接近
+  形式电势，故可用于估算尚未定性的化学体系的电势。
+\item \textbf{不能}：\textbf{不能得到动力学信息}。可逆波只报告热力学，因为传质已经完全
+  接管了电流的大小。
+\end{itemize}
+
+对准可逆与不可逆反应，平板电极的响应形如
+$i=FA\left(k_{\mathrm{f}}C_{\mathrm{O}}^*-k_{\mathrm{b}}C_{\mathrm{R}}^*\right)
+\exp(H^2t)\,\mathrm{erfc}(Ht^{1/2})$，球形电极的稳态响应另含
+$D_{\mathrm{O}}$、$r_0$ 与速率常数之比 \src{式 11-58、11-59，书内 p.825 / PDF p.313}。
+\tocheck{未对照原页面图像：式（11-58）中 $H$ 的定义、式（11-59）中括号内的
+$(\delta+1)$ 结构均无法从 OCR 复原，本分片只用其定性形式与下述结论，未代入数值。}
+其信息边界为：准可逆与不可逆波的\textbf{极限电流平台仍完全受扩散控制}，故仍可用于求
+$C^*$、$n$、$A$、$D$、$r_0$ 等任何对 $i_{\mathrm{d}}$ 有贡献的参数；准可逆波有时可
+给出形式电势的近似值，而不可逆波因半波电势偏离形式电势\textbf{无法求得热力学信息}；
+但完全不可逆波的波形与位置可以提供\textbf{动力学}信息。
+
+\paragraph{计时电量法} 计时电量法记录电量与时间的关系 $Q(t)$，常用于代替计时电流法，
+有三个优势：信号随时间增长，暂态后期受阶跃瞬间非理想电势变化的影响较轻微，信噪比好；
+暂态电流中的随机噪声因积分而平滑；\textbf{可以区分双电层充电、吸附物质的电极反应与
+扩散反应物法拉第反应对电量的贡献}，因而便于研究表面过程。对 Cottrell 公式积分得
+
+\begin{equation}
+Q_{\mathrm{d}}=\frac{2nFAD_{\mathrm{O}}^{1/2}C_{\mathrm{O}}^*t^{1/2}}{\pi^{1/2}}
+\label{eq:chronocoul}
+\end{equation}
+
+但实际电量还含双电层充电与还原吸附的某种氧化态所贡献的部分，$Q$ 对 $t^{1/2}$ 的直线
+一般不通过原点。这些电量只在瞬间出现、不随时间累积，故作为两个与时间无关的附加项写出：
+
+\begin{equation}
+Q=\frac{2nFAD_{\mathrm{O}}^{1/2}C_{\mathrm{O}}^*t^{1/2}}{\pi^{1/2}}
++Q_{\mathrm{dl}}+nFA\Gamma_{\mathrm{O}}
+\label{eq:chronocoul-full}
+\end{equation}
+
+式中 $Q_{\mathrm{dl}}$ 为电容电量，$nFA\Gamma_{\mathrm{O}}$ 为表面吸附的
+$\mathrm{O}$ 还原的法拉第分量 \src{式 11-60、11-61，书内 p.826 / PDF p.314}。
+量纲检查：$[nFAD^{1/2}C^*t^{1/2}/\pi^{1/2}]=(\mathrm{C.mol^{-1}})(\mathrm{cm^2})
+(\mathrm{cm.s^{-1/2}})(\mathrm{mol.cm^{-3}})(\mathrm{s^{1/2}})=\mathrm{C}$，成立；
+$[nFA\Gamma]=\mathrm{C.mol^{-1}}\cdot\mathrm{cm^2}\cdot\mathrm{mol.cm^{-2}}=\mathrm{C}$，
+同量纲。\textbf{这条式子的实践价值在于把「非法拉第背景」变成了可读出的截距}：
+用不同电势阶跃做 $Q$--$t^{1/2}$ 图，截距对电势作图为直线，斜率即 $C_{\mathrm{d}}$，
+由此可测真实面积；剩余截距来自吸附物种。这一方法常用于测定电活性物质的表面余量，
+但需要再做反向实验。
+
+\begin{dataflow}
+\textbf{从一条 $i$--$t$ 曲线到结论，只能走这五步。} （1）确认阶跃电势足够大，
+表面浓度确实为零（否则 \equref{eq:cottrell} 不适用）。（2）判断时间窗：
+$t<5\tau$（$\tau=R_{\mathrm{u}}C_{\mathrm{d}}$）的数据必须丢弃，双电层充电尚未衰减；
+长时间区要检查 $i\,t^{1/2}$ 是否仍为常数。（3）作 $i$--$t^{-1/2}$ 图，直线斜率给出
+$nFAD^{1/2}C^*/\pi^{1/2}$；斜率过原点才说明纯扩散控制。（4）由斜率反解 $D$ 或 $C^*$
+时，必须固定另一个量；用\emph{同一个}面积定义（$A_{\mathrm{m}}$ 或 $A_{\mathrm{g}}$）。
+（5）只有在确认 $i$--$t^{-1/2}$ 直线的截距为零之后，才能说「本体系在此时标下是纯扩散
+控制」；截距非零通常意味着还有电荷转移阻力或吸附贡献。需要本征动力学时，改做取样电流
+伏安法并处理 \equref{eq:sampled-rev} 形式的响应。
+\end{dataflow}
+
+\subsubsection{电势扫描法}
+
+电势扫描法随时间扫描电势并记录电流--电势曲线，以获得体系完整的电化学行为。主要分为
+\textbf{线性扫描伏安法}（linear sweep voltammetry，LSV）与\textbf{循环伏安法}
+（cyclic voltammetry，CV）\src{S2 §11.2.2、图 11-9，书内 p.826—827 / PDF p.314—315}。
+
+\paragraph{从一条 CV 读出什么：\ce{Pt} 单晶在 \ce{H2SO4} 中的例子} 以 \ce{Pt} 在
+\qty{0.5}{mol.L^{-1}} \ce{H2SO4} 中的 CV（\qty{50}{mV.s^{-1}}）为例
+\src{图 11-10，书内 p.827 / PDF p.315}。测量前先把单晶表面在氢氧火焰中退火：一是完全
+除去表面吸附的杂质，二是使原子完全按规则排列。退火过程中 \ce{Pt} 表面会吸附氧形成氧
+吸附层。扫描从\textbf{开路电势 OCP} 出发往低电势方向进行。
+
+读图顺序与每个峰的归属：先出现的峰来自表面已吸附的氧随电势降低被电还原；第二个过程是
+溶液中 \ce{H+} 得电子还原为氢原子并吸附在 \ce{Pt} 表面，而正向扫描时对应的是吸附氢的
+电氧化，即该反应的逆反应。其他单晶上这些氧峰与氢峰同样存在，但\textbf{峰的形状和位置
+不同}，因为表面 \ce{Pt} 原子的排列方式不同——因此峰形特征可用来辨别晶面是 (100)、
+(110) 还是 (111)。
+
+\paragraph{氢吸附电量与真实面积} 对氢吸附峰积分，所得面积即为氢吸附产生的电量
+（电流$\times$时间 = 电量）。由电量可算出吸附氢原子的数目；不同晶面 $Q_{\mathrm{H}}$
+不同。再由晶面上原子的排列方式与原子直径可算出单位面积的 \ce{Pt} 原子数，两者比较
+发现数值很接近，说明\textbf{一个 \ce{Pt} 原子吸附一个 H}。由于电活性物质（H 和 O）反复
+氧化还原吸脱附，表面会逐渐粗糙，单晶表面最终变成多晶表面；多晶表面由若干小单晶面
+组成，反映的是这些单晶的平均行为 \src{图 11-11，书内 p.828 / PDF p.316}。
+
+多晶 \ce{Pt}（\ce{Pt} 丝、纳米 \ce{Pt} 黑）的 CV 分三个区域：左侧峰对应氢的吸附与脱附，
+不同峰来自氢在不同晶面上的吸附；右侧峰是氧的吸附与脱附，即 \ce{Pt} 表面的氧化与还原，
+不同峰代表不同氧化态（可能有 \ce{Pt-OH}、\ce{PtO_x} 等，更详细的归属仍未知）；中间区域
+是\textbf{双电层区}，该区电流由双电层充放电引起、没有氧化还原反应。对该区积分可求得
+双电层电量。由于一个 \ce{Pt} 原子只吸附一个氢原子，\textbf{$Q_{\mathrm{H}}/Q$ 即 \ce{Pt}
+的真实表面积}——这就是用 H 的吸脱附测定 \ce{Pt} 真实表面积的方法
+\src{书内 p.829 / PDF p.317}。
+
+\begin{dataflow}
+\textbf{为什么必须用真实面积。} 实验能测的是整个电极面积上产生的电流，面积越大电流
+越大。因此\textbf{忽略电极面积、直接用电流大小表示反应速率的快慢，既不科学也不准确}。
+规范做法是用\textbf{电流密度}（单位电极面积上的电流）表示反应速率，而这个面积必须是
+\textbf{真实（电化学活性）面积}，即由氢吸附电量 $Q_{\mathrm{H}}$ 或双电层电容定标得到的
+面积，而不是电极的几何尺寸。报告数据时必须同时给出：面积基准、定标方法、以及
+$\rho=A_{\mathrm{m}}/A_{\mathrm{g}}$ 的数值或范围。
+\end{dataflow}
+
+\paragraph{可逆性判据} 由 CV 的形状可以判断电极反应属于可逆、准可逆还是不可逆，其判据
+与「能得到什么信息」直接对应：
+
+\begin{keycond}
+\textbf{可逆（Nernst 型）}：峰电流 $i_{\mathrm{p}}$ 正比于 $v^{1/2}$；峰电位差
+$\Delta E_{\mathrm{p}}=|E_{\mathrm{pa}}-E_{\mathrm{pc}}|\approx 2.303RT/(nF)$，即
+\qty{25}{\celsius} 下约 $59/n$ mV，且\textbf{不随扫描速率变化}；$i_{\mathrm{pa}}/i_{\mathrm{pc}}
+\approx1$；$E_{\mathrm{p}}$ 与 $v$ 无关。\textbf{准可逆}：$\Delta E_{\mathrm{p}}$ 随 $v$
+增大而增大，峰仍然成对。\textbf{不可逆}：只出现单向峰，$E_{\mathrm{p}}$ 随 $v$ 增大而
+向更负（阴极）或更正（阳极）方向移动，约每十倍 $v$ 移动 $30/(\alpha n)$ mV。
+\textbf{判据的成立条件是反应物与产物都溶于溶液且无后续化学反应}；若产物发生吸附或
+偶联化学反应，$i_{\mathrm{pa}}/i_{\mathrm{pc}}$ 会显著偏离 1，此时不能直接判为不可逆。
+\tocheck{未对照原页面图像：分片 a 的源文本（图 11-9、11-10 说明）未展开 CV 的定量判据
+公式，本节判据按电化学标准形式重建；若本书 11.2.2 后有专门的判据小节，应由后一分片
+或统一核验时对齐符号（是否用 $D^{1/2}$、是否含 $n^{3/2}$、是否讨论 $\Delta E_{\mathrm{p}}$
+的严格表值）。}
+\end{keycond}
+
+\begin{pitfall}
+\textbf{控制电势实验的五类系统性误判，按出现频率排序。}
+\textbf{（1）未做 iR 补偿导致 Tafel 斜率失真。} 实测电势含 $iR_{\mathrm{u}}$ 降：
+$E_{\text{实测}}=E_{\text{真}}+iR_{\mathrm{u}}$，故按 $\eta$--$\lg i$ 作图得到的表观斜率
+为 $b_{\text{表观}}=b+2.303R_{\mathrm{u}}A$（以电流作图时）或 $b+2.303R_{\mathrm{u}}j$
+（以电流密度作图时）。这意味着\textbf{高电流段被系统性抬高}，Tafel 图向上弯折、斜率变大；
+电流越大失真越重。识别办法：改变电极与参比电极的距离或溶液电导率，若斜率随之变化，
+则斜率是 $R_{\mathrm{u}}$ 的产物而非 $\alpha$ 的产物。
+\textbf{（2）传质未排除时把「扩散极限」当本征活性。} 若 Tafel 区取在
+$i\gtrsim0.1i_{\mathrm{t}}$ 的区间，测到的实际上是浓差极化（\equref{eq:eta-conc}），
+其斜率依赖 $i_{\mathrm{t}}$ 而与 $\alpha$ 无关。判据：$i$--$t^{-1/2}$ 直线不通过原点，
+或提高搅拌后电流增大。
+\textbf{（3）参比漂移。} 漂移直接叠加到所有 $\eta$ 上，表现为整条曲线平移——斜率不动而
+$j_0$ 整体错一个数量级。
+\textbf{（4）双电层充电电流被计入法拉第电流。} $\tau=R_{\mathrm{u}}C_{\mathrm{d}}$ 内的
+电流以非法拉第成分为主；把它当作法拉第电流会使低过电位区（恰是 $j_0$ 的取值区）的
+电流全部偏高，从而\textbf{系统性高估 $j_0$}。排除办法：同一电势程序下做空白电解液
+对照，或在 $5\tau$ 之后取样（计时电量法用 $Q$--$t^{1/2}$ 截距分离）。
+\textbf{（5）几何面积与电化学活性面积混用。} $j$ 的分母用 $A_{\mathrm{g}}$ 还是
+$A_{\mathrm{m}}$ 可使数值相差数倍到数十倍；纳米催化剂的 $A_{\mathrm{m}}$ 尤其依赖定标
+方法。跨文献比较 $j_0$ 或质量活性时，必须先核对面积基准是否一致。
+\end{pitfall}
+
+\paragraph{线性扫描与循环扫描的分工} LSV 只扫一个方向，得到的是一条单向的 $i$--$E$
+曲线，适合测起始电势、半波电势，也是极化曲线（Tafel 图）的常规来源；CV 扫过去再扫回来，
+额外给出\textbf{逆反应的响应}，因而能识别中间产物、判断可逆性、测表面吸脱附电量。
+二者的共同弱点是：\textbf{扫描过程中表面状态与扩散层都在变}，所以从 CV 直接读出的
+「活性」是扫描速率、传质与动力学三者耦合的结果。
+
+\subsubsection{极谱法和脉冲伏安法}
+
+\paragraph{极谱法与滴汞电极} 极谱法由海洛夫斯基使用滴汞电极（dropping mercury
+electrode，DME）创建。使用时 \ce{Hg} 从毛细管流出，在管口逐渐长成直径约 \qty{1}{mm}
+的汞滴，重力超过表面张力后落下 \src{S2 §11.2.3、图 11-12，书内 p.829 / PDF p.317}。
+汞滴长大期间若有电解反应，就有随时间变化的电流通过，$i$--$t$ 曲线同时反映电极长大与
+电解贫化两种效应。汞滴落下时能在一定程度上混合溶液，\textbf{极大减弱贫化效应}；因为
+每一滴都在新鲜溶液中产生，若在汞滴寿命（2～6 s）期间维持电极电势不变，则每个汞滴的
+生长过程都可以当成一次电势阶跃实验。
+
+经典 DME 有两个主要缺点：\textbf{（i）汞滴面积不断变化}，使扩散处理复杂，双电层充电
+还产生不断变化的背景电流；\textbf{（ii）时间尺度受汞滴寿命限制}，一般在 0.5～10 s 之间，
+在此范围外工作很难。静态滴汞电极（static mercury drop electrode，SMDE）通过电控阀门
+控制汞滴生长时间以保证每次落下的汞滴大小相同，既保留 DME 的优点，面积又不变，简化了
+扩散处理并降低了背景噪声 \src{图 11-13，书内 p.830 / PDF p.318}。
+
+\paragraph{脉冲伏安法的五类} 脉冲伏安法起源于经典极谱技术，最初目的是抑制 DME 中汞滴
+连续扩张引起的充电电流；自 SMDE 发明后逐渐向静态电极靠近。脉冲伏安法主要分五种：
+断续极谱法/阶梯伏安法、常规脉冲伏安法、反向脉冲伏安法、示差脉冲伏安法、方波伏安法。
+
+\textbf{（1）断续极谱法/阶梯伏安法}：在汞滴寿命期间，法拉第电流不断上升而充电电流逐渐
+下降 \src{图 11-14，书内 p.831 / PDF p.319}。为得到最佳的法拉第电流与充电电流之比以
+提高灵敏度，应\textbf{刚好在汞滴下落前采样} \src{图 11-15，书内 p.831 / PDF p.319}。
+断续极谱法每一滴汞对应一个循环，适用于各种可周期更新的电极，但对静止电极（如悬汞电极）
+不适用，此时需用阶梯伏安法。阶梯伏安法与断续极谱法类似，只是不需要电极更新，与电势
+扫描方法类似，可替代线性扫描并能抑制充电电流，但其\textbf{低信噪比以及速度与分辨率
+不能同时满足}的缺陷限制了使用。
+
+\textbf{（2）常规脉冲伏安法}：断续极谱法只在很短时间内采集电流，其余时间的电流没有
+用途，而采样前的电流会使待测物质贫化、降低灵敏度。为禁止这种无用的电解，此法仅在
+\textbf{采样前的一小段时间}才施加脉冲电势 \src{图 11-16，书内 p.832 / PDF p.320}，
+从而大大减小等待期间的电解对测量精度的影响。
+
+\textbf{（3）反向脉冲伏安法}：与常规脉冲伏安法类似，但脉冲电势逐渐变至电化学物质不电解
+的电势，属反向技术，常用于测定前一步初始电解产物的行为。
+
+\textbf{（4）示差脉冲伏安法}：与常规脉冲伏安法类似，但 $E_{\mathrm{b}}$ 在每个循环中都有
+所提升，实验记录结果是\textbf{两个采样电流之差}。其法拉第电流不会超过常规脉冲伏安法
+测得的电流，因此\textbf{高灵敏度不是来自增强法拉第响应，而是来自降低背景噪声}
+\src{书内 p.832 / PDF p.320}。
+
+\begin{pitfall}
+脉冲类方法最容易被误用的一点：把灵敏度提高当成活性提高。示差脉冲伏安法给出的电流是
+\textbf{差分信号}，其数值与常规脉冲伏安法的电流不可直接比较，更不能跨方法比较
+$j_0$。跨方法比较电流或电流密度之前，必须确认采样时刻、脉冲宽度/振幅、扫描速率与
+面积基准都一致。
+\end{pitfall}
+
+\paragraph{四类方法的测量对象与信息边界} 表~\ref{tab:methods} 把本节四种控制电势方法
+按「测量什么、能得到什么、不能得到什么、关键条件」并列，便于在拿到一条曲线时先确定
+它属于哪一格。
+
+\begin{table}[htbp]
+\centering
+\caption{四类控制电势方法的测量对象与信息边界}
+\label{tab:methods}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}lXX@{}}
+\toprule
+方法 & 测量对象 & 能得到 / 不能得到 \\
+\midrule
+电势阶跃（计时电流 / 计时电量） &
+$i$--$t$ 或 $Q$--$t$，表面浓度被强制为零 &
+\textbf{能}：$D$、$C^*$、$n$、面积；由 $Q$--$t^{1/2}$ 截距分离 $C_{\mathrm{d}}$ 与吸附量。
+\textbf{不能}：单次阶跃给不出 $j_0$ 与 $\alpha$（电势未作自变量） \\
+\addlinespace
+取样电流伏安 / 双电势阶跃 &
+系列阶跃后固定时刻的电流；反向阶跃的电流 &
+\textbf{能}：可逆波给 $E^{\ominus\prime}$、$\Delta G$、平衡常数；准可逆/不可逆波给
+$k^0$、$\alpha$ 等动力学信息，极限平台仍给 $C^*$、$n$、$A$、$D$、$r_0$。
+\textbf{不能}：可逆波不给动力学；不可逆波不给热力学 \\
+\addlinespace
+线性扫描 / 循环伏安 &
+$i$--$E$ 曲线（CV 含回扫） &
+\textbf{能}：峰电位定性与可逆性判据；峰电流随 $v^{1/2}$ 的依赖；氢/氧吸脱附电量定标
+真实面积；极化曲线给 Tafel 斜率与 $j_0$。
+\textbf{不能}：扫描中表面与扩散层同时在变，直接读出的活性是三者耦合结果；双电层充电
+电流混在总电流中 \\
+\addlinespace
+脉冲伏安（NPV/DPV/SWV 等） &
+脉冲前后电流之差或采样电流 &
+\textbf{能}：抑制充电电流、提高信噪比；DPV 以差分降背景；反向脉冲测初始电解产物。
+\textbf{不能}：差分电流与常规电流不可直接比较；速度与分辨率不能同时满足；断续极谱法
+不适用于静止电极 \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\begin{crosscheck}
+\textbf{本节方法的互补关系。} 电势阶跃确定传质参数与面积基准，取样电流伏安把电势作为
+自变量分离出动力学，电势扫描给出可逆性与表面吸脱附信息，脉冲方法在低浓度/弱信号
+条件下压低背景。因此一个完整的电催化动力学结论通常需要\textbf{至少两类方法互证}：
+例如 CV 给出的 Tafel 斜率，必须用某一种「传质已知」的方法（旋转圆盘或取样电流伏安）
+确认斜率确实出现在 $i\ll i_{\mathrm{t}}$ 的区间内，否则该斜率可能只是浓差极化的表观
+结果。反过来，若某方法给出的 $j_0$ 与另一方法相差超过一个数量级，先查\textbf{面积基准
+与 iR 补偿}，再查参比电极标定，最后才怀疑模型。
+\end{crosscheck}

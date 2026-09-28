@@ -1,0 +1,328 @@
+% ================================================================
+%  style/preamble.tex
+%  《现代催化研究方法精要：原理、读图与方法选择》
+%  版式与宏包统一配置 —— 依据企划 v0.1 §6
+%  引擎：XeLaTeX      构建：latexmk -xelatex -outdir=build
+%
+%  【修改纪律】本文件是全书的版式契约。任何改动都会影响 12 章。
+%  改动后必须：(1) 重编译样章；(2) 在 sources/qa_layout.md 记录。
+% ================================================================
+
+% ---------------------------------------------------------------
+% 1  页面几何
+%    【2026-09-28 改版】按用户指示放弃双栏，改为单栏。
+%    理由：双栏每栏仅 88.5 mm，大量原理图与对照表挤在窄栏里，
+%    出现多幅图元素重叠、长表超版心（实测最大 89.7 pt）。
+%    单栏后版心宽度不变（183 mm），但图与表第一次真正获得整幅宽度。
+%    单栏下行长变长，故把左右边距加大到 25/20 mm，使版心收窄到 165 mm
+%    （10 pt 中文约 47 字/行），避免行长过长影响阅读。
+%    用户同时指示「字体大小可随内容调整」，故不再强制 10 pt 正文与 8 pt 图内文字下限，
+%    允许为消除重叠而按需微调；但仍不得小到影响可读性（正文 ≥9 pt、图内 ≥7 pt）。
+% ---------------------------------------------------------------
+\usepackage{geometry}
+\geometry{
+  a4paper,
+  inner=25mm, outer=20mm, top=18mm, bottom=18mm,
+  includeheadfoot,
+  headheight=11pt, headsep=4mm, footskip=6mm
+}
+
+% ---------------------------------------------------------------
+% 2  字体（企划 §6.1）
+%    中文：Fandol（随 TeX Live 分发，可复现；正文宋、标题黑）
+%    西文与数学：TeX Gyre Termes 及其相容数学字体（Times 风格，单一符号外观）
+% ---------------------------------------------------------------
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{TeX Gyre Cursor}[Scale=0.94]
+\usepackage{unicode-math}
+\setmathfont{TeX Gyre Termes Math}
+
+% 10 pt 正文 / 12.5 pt 基线距。ctex 默认 15.6 pt（stretch 1.3）过松，
+% 按企划 §6.1 收紧；12 pt x 1.0417 = 12.5 pt。
+\linespread{1.0417}
+
+% ---------------------------------------------------------------
+% 2b 静默丢字防治（重要）
+%    xeCJK 默认把 Ⅰ—ⅿ（罗马数字）与 ①—⓿（带圈字母数字）判为 Latin 类，
+%    于是它们落到 TeX Gyre Termes —— 而 Termes 没有这些字形。
+%    后果是**静默丢字**：不报错、不中断，只在 log 里留一行 Missing character，
+%    PDF 上那个字符直接不见了。中文 Fandol 四种字体都有这些字，因此改判为 CJK 类。
+%    注：U+2218 ∘ 连 Fandol 也没有，故不在此列；摄氏度改用 siunitx 的 \celsius。
+% ---------------------------------------------------------------
+\xeCJKDeclareCharClass{CJK}{"2160 -> "217F}   % Ⅰ—ⅿ 罗马数字
+\xeCJKDeclareCharClass{CJK}{"2460 -> "24FF}   % ①—⓿ 带圈字母数字
+
+% 数学模式里的中文：默认会被送进数学字体（TeXGyreTermesMath），该字体没有汉字，
+% 于是静默丢字（实测丢过 体/床/时/积/间）。CJKmath 让数学模式中的汉字改用中文字体。
+\xeCJKsetup{CJKmath=true}
+
+% 度数符号：\circ 在 unicode-math 下映射到 U+2218，Termes 与 Fandol 都没有这个字形。
+% **不要**renewcommand{\circ} —— 那会破坏 siunitx 的单位解析（实测 24 处
+% "Missing { inserted"）。正确做法是给 U+2218 单独指定一个含该字形的数学字体。
+\setmathfont{Latin Modern Math}[range={"2218}, Scale=MatchLowercase]
+
+% ---------------------------------------------------------------
+% 3  数学、量纲与化学式（企划 §6.4）
+% ---------------------------------------------------------------
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{siunitx}
+% siunitx 2/3 兼容：两套命令名都可用，章作者不必关心版本
+\providecommand{\qty}{\SI}
+\providecommand{\unit}{\si}
+\sisetup{
+  detect-all,
+  per-mode=symbol,
+  range-phrase=--,
+  list-units=single,
+  output-product=\cdot,
+  group-separator={\,},
+  group-minimum-digits=5,
+  % 微米符号：不要用 U+1D707（数学斜体 μ），Termes 无此字形，会静默丢字。
+  % 改用直立的 U+00B5（注意 \textmu 在本环境未定义，必须用字面字符）。
+  math-micro=µ,
+  text-micro=µ
+}
+\usepackage[version=4]{mhchem}
+
+% ---------------------------------------------------------------
+% 4  图表（企划 §6.4）
+% ---------------------------------------------------------------
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{needspace}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{xltabular}   % 跨页长表
+\usepackage{threeparttable}
+\usepackage{subcaption}
+\captionsetup{
+  font=small,                 % 9 pt（企划 §6.1：图表文字 8.5—9 pt）
+  labelfont=bf,
+  labelsep=quad,
+  skip=3pt,
+  justification=raggedright,
+  singlelinecheck=false
+}
+% 题注断行兜底：题注里常有长的行内公式串，中文又缺连字点，实测会顶出版心
+% （ch02-a / ch04-a / ch06-a 都出现过，最大 66 pt）。
+% 注意：\captionsetup{font={small,\sloppy}} 不行 —— caption 包会校验 font 列表，
+% 报 “Package caption Error: \sloppy undefined”。改为在浮动体入口处放宽。
+% \@float 覆盖 figure/table，\@dblfloat 覆盖 figure*/table*。
+\usepackage{etoolbox}
+\makeatletter
+\pretocmd{\@float}{\sloppy}{}{\PackageWarning{dsh}{could not patch \string\@float}}
+\pretocmd{\@dblfloat}{\sloppy}{}{\PackageWarning{dsh}{could not patch \string\@dblfloat}}
+\makeatother
+% 表格单元同样需要：窄列里含较长行内公式或西文串时，单元格内容会顶出列宽。
+% 实测 ch02-a / ch04-a / ch08-b 三处 overfull（9—36 pt）都在表格段落里。
+\AtBeginEnvironment{tabular}{\sloppy}
+\AtBeginEnvironment{tabularx}{\sloppy}
+\AtBeginEnvironment{xltabular}{\sloppy}
+\captionsetup[sub]{font=small,labelfont=bf,labelsep=quad}
+
+% 跨栏浮动体位置修正（twocolumn 下双栏浮动默认只能置顶）
+% 注意：stfloats 与 dblfloatfix 会争抢 \c@dblbotnumber，二者只能取一。
+\usepackage{dblfloatfix}
+\usepackage{placeins}       % \FloatBarrier：把浮动体限制在本节内
+\usepackage{flafter}        % 浮动体不得出现在其引用之前
+
+% 图形宽度约定
+% 【2026-09-28 改版】双栏 → 单栏后，图不再被挤在 88.5 mm 的窄栏里，
+% 因此把 \onecolwidth 放宽到版心的约 0.8 倍（132 mm），这正是消除「图元素重叠」的主因：
+% 原来标 84 mm 的图现在有 132 mm 可用，图例、轴标签、注释文字不再互相压叠。
+% \twocolwidth 保留为版心满宽，供个别需要更大画幅的图使用。
+% 【注意】pgfplots 的 width= 只约束坐标轴盒，轴标签、图例、长分式仍会额外外扩
+% （实测过 260.2 pt > 当时栏宽 251.8 pt）。故这里仍留余量，不要直接写 \textwidth。
+\newcommand{\onecolwidth}{0.80\textwidth}   % ≈132 mm
+\newcommand{\twocolwidth}{0.96\textwidth}   % ≈158 mm
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18, width=\onecolwidth}
+\usetikzlibrary{arrows.meta,positioning,calc,patterns,decorations.pathreplacing,shapes.geometric,fit,backgrounds,plotmarks}
+\usepgfplotslibrary{fillbetween,groupplots,colormaps}
+% 图内统一字体与线宽（企划 §5.3）——灰度打印可分辨
+\pgfplotsset{
+  every axis/.append style={
+    font=\fontsize{8.5}{10}\selectfont,
+    line width=0.6pt,
+    tick align=outside,
+    label style={font=\fontsize{8.5}{10}\selectfont},
+    tick label style={font=\fontsize{8}{9.5}\selectfont},
+    legend style={font=\fontsize{8}{9.5}\selectfont, draw=none, fill=none},
+    grid=none
+  }
+}
+\tikzset{
+  every node/.style={font=\fontsize{8.5}{10}\selectfont},
+  thinline/.style={line width=0.5pt},
+  mainline/.style={line width=0.9pt},
+  axisline/.style={line width=0.7pt}
+}
+% 灰度安全的色彩：同时用线型/符号编码，不单靠颜色
+\definecolor{accent}{gray}{0.35}
+\definecolor{accentsoft}{gray}{0.68}
+
+% 全宽（跨栏）非浮动区块：用于章首标题、宽推导、长表
+% 【2026-09-28 改版】原用 cuted 的 strip 环境在双栏里做一个跨栏的章标题带。
+% 单栏后整幅本来就是通栏，strip 不但无意义，在单栏下还会出错。
+% 因此 fullwidth 退化为恒等环境；\chapterstart / \chapterheadstar 无需改动。
+\newenvironment{fullwidth}{}{}
+
+% ---------------------------------------------------------------
+% 5  标题层级（企划 §6.1）
+%    章 14 pt 黑体；一级小标题 11 pt 黑体；二级小标题 10 pt 黑体
+%    最多三级；标题前 6—8 pt、后 3—4 pt；章标题不独占页
+% ---------------------------------------------------------------
+\usepackage{titlesec}
+\titleformat{\section}[hang]
+  {\heiti\fontsize{14}{17}\selectfont}
+  {第\,\thesection\,章}{0.55em}{}
+\titlespacing*{\section}{0pt}{7pt}{4pt}
+
+\titleformat{\subsection}[hang]
+  {\heiti\fontsize{11}{13.5}\selectfont}
+  {\thesubsection}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{7pt}{3pt}
+
+\titleformat{\subsubsection}[hang]
+  {\heiti\fontsize{10}{12.5}\selectfont}
+  {\thesubsubsection}{0.5em}{}
+\titlespacing*{\subsubsection}{0pt}{6pt}{2pt}
+
+% 第四层只作行内粗标，不编号、不进目录
+\titleformat{\paragraph}[runin]
+  {\heiti\normalsize}{}{0pt}{}[\,]
+\titlespacing*{\paragraph}{0pt}{4pt}{0.5em}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+
+% 章不强制起新页（企划 §6.1「连续排版，不强制奇数页起章，不插空白页」）
+% 章标题行：见下方 \chapterstar / \chapterstart / \chapterheadstar
+
+% 不编号的章级标题（导读、综合应用、索引等）
+\newcommand{\chapterheadstar}[2]{%
+  \needspace{14\baselineskip}%
+  \begin{fullwidth}%
+    \vspace{2pt}%
+    \noindent{\heiti\fontsize{14}{17}\selectfont #1}%
+    \par\vspace{2.5pt}%
+    \noindent{\color{accent}\rule{\linewidth}{0.8pt}}%
+    \par\vspace{3pt}%
+    \noindent{\fontsize{9}{11.5}\selectfont #2}%
+    \par\vspace{4pt}%
+  \end{fullwidth}%
+  \noindent\ignorespaces
+}
+
+% ---------------------------------------------------------------
+% 5b  章起始（章作者唯一入口）
+%   用法：  \chapterstart{章标题}{导读与导航}
+%           \label{ch:NN}
+%   一次完成：编号 + 目录条目 + 页眉标记 + 全宽章标题
+%   注意：章作者不要再直接使用 \section
+% ---------------------------------------------------------------
+\newcommand{\chapterstart}[2]{%
+  \refstepcounter{section}%
+  \sectionmark{#1}%
+  \phantomsection
+  \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
+  \needspace{12\baselineskip}%
+  \begin{fullwidth}%
+    \vspace{2pt}%
+    \noindent{\heiti\fontsize{14}{17}\selectfont 第\,\thesection\,章\hspace{0.55em}#1}%
+    \par\vspace{2.5pt}%
+    \noindent{\color{accent}\rule{\linewidth}{0.8pt}}%
+    \par\vspace{3pt}%
+    \noindent{\fontsize{9}{11.5}\selectfont #2}%
+    \par\vspace{4pt}%
+  \end{fullwidth}%
+  \noindent\ignorespaces
+}
+
+% ---------------------------------------------------------------
+% 6  页眉页脚（企划 §6.1）
+%    页眉：章名或方法名；页脚：页码；不放装饰图案
+% ---------------------------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[LE]{\fontsize{8.5}{10}\selectfont 现代催化研究方法精要}
+\fancyhead[RO]{\fontsize{8.5}{10}\selectfont\leftmark}
+\fancyfoot[LE,RO]{\fontsize{9}{10}\selectfont\thepage}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \renewcommand{\headrulewidth}{0.4pt}%
+  \fancyhead[LE]{\fontsize{8.5}{10}\selectfont 现代催化研究方法精要}%
+  \fancyhead[RO]{\fontsize{8.5}{10}\selectfont\leftmark}%
+  \fancyfoot[LE,RO]{\fontsize{9}{10}\selectfont\thepage}%
+}
+% 章名写入页眉
+\renewcommand{\sectionmark}[1]{\markboth{第\thesection 章\ #1}{}}
+
+% ---------------------------------------------------------------
+% 7  编号：公式、图、表按章编号（企划 §6.4）
+%     形如 式(4-7)、图 4-3、表 4-2
+% ---------------------------------------------------------------
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{\thesection-\arabic{equation}}
+\numberwithin{figure}{section}
+\renewcommand{\thefigure}{\thesection-\arabic{figure}}
+\numberwithin{table}{section}
+\renewcommand{\thetable}{\thesection-\arabic{table}}
+
+% ---------------------------------------------------------------
+% 8  列表与间距（企划 §6.1：首行缩进 2 字，段间距 0—2 pt）
+% ---------------------------------------------------------------
+\usepackage{enumitem}
+\setlist{topsep=2pt,itemsep=1pt,parsep=0pt,partopsep=0pt,leftmargin=1.8em}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+% 中文断行缺少可行的连字点，易产生 overfull \hbox。给 5em 应急伸缩量，
+% 并放宽 tolerance：题注里常有长的行内公式串，无法断开时会顶出版心。
+\setlength{\emergencystretch}{5em}
+\tolerance=3000
+\hbadness=10000
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\setlength{\abovedisplayshortskip}{3pt}
+\setlength{\belowdisplayshortskip}{3pt}
+\setlength{\jot}{2pt}
+
+% ---------------------------------------------------------------
+% 9  链接、书签与交叉引用（企划 §6.4）
+% ---------------------------------------------------------------
+\usepackage{hyperref}
+\hypersetup{
+  unicode=true,
+  bookmarksnumbered=true,
+  bookmarksopen=false,
+  colorlinks=false,
+  pdfborder={0 0 0},
+  breaklinks=true,
+  pdftitle={现代催化研究方法精要：原理、读图与方法选择},
+  pdfsubject={催化研究方法},
+  pdfkeywords={催化；表征；谱学；动力学；方法选择}
+}
+\usepackage{bookmark}
+\usepackage{cleveref}
+\crefname{section}{章}{章}
+\crefname{equation}{式}{式}
+\crefname{figure}{图}{图}
+\crefname{table}{表}{表}
+\crefname{subsection}{节}{节}
+\creflabelformat{equation}{(#2#1#3)}
+
+% 供正文使用的章引用（避免 cleveref 在中文里的空格问题）
+\newcommand{\chapref}[1]{第\,\ref{#1}\,章}
+\newcommand{\equref}[1]{式\,\eqref{#1}}
+\newcommand{\figref}[1]{图\,\ref{#1}}
+\newcommand{\tabref}[1]{表\,\ref{#1}}

@@ -1,0 +1,9 @@
+% chapters/ch02.tex —— 第 2 章 透射电子显微镜
+% 装配层：只负责按顺序引入各分片。分片缺失时跳过，便于增量成书。
+% 分片文件：chapters/parts/ch02-{a..e}.tex
+
+\IfFileExists{chapters/parts/ch02-a.tex}{\input{chapters/parts/ch02-a}}{}
+\IfFileExists{chapters/parts/ch02-b.tex}{\input{chapters/parts/ch02-b}}{}
+\IfFileExists{chapters/parts/ch02-c.tex}{\input{chapters/parts/ch02-c}}{}
+\IfFileExists{chapters/parts/ch02-d.tex}{\input{chapters/parts/ch02-d}}{}
+\IfFileExists{chapters/parts/ch02-e.tex}{\input{chapters/parts/ch02-e}}{}

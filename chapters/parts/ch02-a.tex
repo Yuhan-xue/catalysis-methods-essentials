@@ -1,0 +1,723 @@
+% ================================================================
+%  chapters/parts/ch02-a.tex
+%  第 2 章  透射电子显微镜（分片 a）
+%  源：S1（上册）第 2 章，书内 p.85—109 / PDF p.104—128
+%  覆盖：2.1 透射电子显微镜简介；2.2 电子衍射和成像
+% ================================================================
+
+\chapterstart{透射电子显微镜}%
+{本章导读：催化剂表征关心的是纳米乃至原子尺度的形貌、相组成与局域结构，而这些正是
+透射电子显微镜（TEM）的长项。本章回答四个问题：电子束与薄样品作用后产生哪些可用的
+信号、这些信号各自携带什么信息；衍射花样如何反推晶面间距与晶体取向；明场、暗场与
+高分辨像的衬度分别由什么机制产生；以及一台电镜「看得到」和「看不到」的边界在哪里。
+2.1 节简述仪器构成，2.2 节展开电子衍射与成像原理。}
+
+\label{ch:02}
+
+\subsection{透射电子显微镜简介}
+
+\subsubsection{一台电镜做什么：三步信号转换}
+
+\begin{probout}
+透射电子显微镜的\textbf{输入}是一束能量为几十到几百千电子伏特的高能电子，
+\textbf{输出}是两类图像化的数据：\textbf{电子显微像}（实空间强度分布）与
+\textbf{电子衍射花样}（倒空间强度分布）。二者出自同一个物理过程——电子穿过薄样品时
+被原子核与核外电子散射；差别只在于\textbf{把物镜后焦面还是把物镜像平面投影到荧光屏上}。
+因此一台电镜的基本操作不是「拍照片」，而是\textbf{在两套坐标系之间切换}：像给出
+形貌与尺寸，衍射给出晶体学与相。
+\end{probout}
+
+整台仪器可归为三个串联的环节：\textbf{电子源与照明系统}负责产生并调制一束方向与
+束斑可控的电子；\textbf{成像系统（物镜—中间镜—投影镜）}负责把样品出射的电子波
+按需要重新组合成像或衍射花样；\textbf{记录系统}把电子强度转成可定量处理的数字图像。
+图~\ref{fig:tem-col} 给出这条信号链的骨架。
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  font=\fontsize{8}{9.5}\selectfont,
+  box/.style={draw, rounded corners=1pt, minimum height=5.4mm, inner xsep=2.4mm,
+              align=center, fill=black!4},
+  lens/.style={draw, fill=black!10, minimum width=15mm, minimum height=2.6mm},
+  ar/.style={-{Latex[length=1.6mm]}, thick},
+  thin/.style={-{Latex[length=1.4mm]}, semithick, dashed}
+]
+% ---- 照明系统 ----
+\node[box] (gun) at (0,0) {电子枪（W / LaB$_6$ / 场发射）};
+\node[lens] (c1) at (0,-0.75) {};
+\node[font=\fontsize{8}{9.6}\selectfont, right=0.8mm of c1] {第一聚光镜 C1};
+\node[lens] (c2) at (0,-1.45) {};
+\node[font=\fontsize{8}{9.6}\selectfont, right=0.8mm of c2] {第二聚光镜 C2 + 光阑};
+\node[box, minimum width=26mm] (spec) at (0,-2.35) {样品（薄区，物平面）};
+% ---- 成像系统 ----
+\node[lens, minimum width=20mm] (obj) at (0,-3.15) {};
+\node[font=\fontsize{8}{9.6}\selectfont, right=0.8mm of obj] {物镜（强磁透镜）};
+\node[box, minimum width=30mm, fill=black!8] (bfo) at (0,-3.95)
+      {后焦面：衍射花样（$1/d$ 坐标）};
+\node[box, minimum width=30mm] (ipo) at (0,-4.75)
+      {像平面：样品的放大像（实空间）};
+\node[lens, minimum width=20mm] (int) at (0,-5.55) {};
+\node[font=\fontsize{8}{9.6}\selectfont, right=0.8mm of int] {中间镜 + 选区光阑};
+\node[lens, minimum width=20mm] (prj) at (0,-6.25) {};
+\node[font=\fontsize{8}{9.6}\selectfont, right=0.8mm of prj] {投影镜};
+\node[box] (scr) at (0,-7.0) {荧光屏 / CCD 相机};
+% ---- 光路 ----
+\draw[ar] (gun) -- (c1);
+\draw[ar] (c1) -- (c2);
+\draw[ar] (c2) -- (spec);
+\draw[ar] (spec) -- (obj);
+\draw[ar] (obj) -- (bfo);
+\draw[thin] (bfo) -- node[right=0.6mm, font=\fontsize{8}{9.6}\selectfont]{\;衍射模式} (int);
+\draw[thin] (ipo) -- (int);
+\draw[ar] (int) -- (prj);
+\draw[ar] (prj) -- (scr);
+% ---- 右侧注记 ----
+% 【重叠修正】原注记放在 x=1.35（=13.5 mm），而：镜筒节点的右挂标签从约 8.3 mm 起、
+% 延伸到约 26 mm（如「第二聚光镜 C2 + 光阑」）；后焦面/像平面两个箱体 minimum width=30 mm，
+% 占 ±15 mm。三处注记因此分别压在标签与箱体上（实测 p.15 出现「面/像」「实/式」「像/射」
+% 「大/衍」四对字符重叠）。右移到 x=3.6（=36 mm）后全部让开。
+\node[font=\fontsize{8}{9.6}\selectfont, align=left, anchor=west] at (3.6,-0.75)
+  {照明模式\\（平行束 / 会聚束）};
+\node[font=\fontsize{8}{9.6}\selectfont, align=left, anchor=west] at (3.6,-2.35)
+  {像的衬度在此定局：\\散射角分布 $\to$ 光阑选择};
+\node[font=\fontsize{8}{9.6}\selectfont, align=left, anchor=west] at (3.6,-4.35)
+  {放大倍数 $=M_{\text{物}}\!\times\!M_{\text{中}}\!\times\!M_{\text{投}}$};
+\draw[decorate, decoration={brace, amplitude=2pt, mirror}, semithick]
+  (-0.85,-0.45) -- (-0.85,-2.0);
+\draw[decorate, decoration={brace, amplitude=2pt, mirror}, semithick]
+  (-0.85,-2.75) -- (-0.85,-6.5);
+\node[font=\fontsize{8}{9.6}\selectfont, rotate=90, anchor=south] at (-1.18,-1.2) {照明系统};
+\node[font=\fontsize{8}{9.6}\selectfont, rotate=90, anchor=south] at (-1.18,-4.6) {成像系统};
+\end{tikzpicture}
+\caption{透射电子显微镜电子光学系统的信号链。读者应看两处：一是\textbf{后焦面与像平面
+是两个并存的中间产物}，中间镜的物平面选谁，荧光屏上就得到衍射花样还是显微像；
+二是\textbf{物镜光阑插在后焦面上}，它决定哪些散射电子能参与成像，因而决定了明场/暗场
+衬度。图中高度为示意，不代表真实镜筒比例。\schemamark\figsrc{据 S1（上册）图 2-1、2-4、2-5，
+书内 p.88、p.91—92 / PDF p.107、p.110—111 改绘。}}
+\label{fig:tem-col}
+\end{figure}
+
+\subsubsection{部件—作用—对成像的影响}
+
+2.1 节的逐部件叙述属可压缩内容。下表把六个部件的作用与其\textbf{对最终数据的
+影响}并列，便于倒查误差来源：当一幅像出现异常时，先按「影响列」定位是哪个环节
+被调错。\src{S1 §2.1.1—2.1.5，书内 p.89—93 / PDF p.108—112}
+
+\begin{table}[htbp]
+\centering
+\caption{透射电镜主要部件的作用与对成像/衍射的影响}
+\label{tab:tem-parts}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}lXX@{}}
+\toprule
+部件 & 作用 & 对成像/衍射的影响（异常时的表现） \\
+\midrule
+电子枪 & 产生电子束，并由偏压或抽出电压调制 & 决定\textbf{相干性}：热灯丝能量分布宽、发射区大，时间与空间相干性有限；
+场发射枪相干性高，信息极限高；灯丝饱和值不对则束流漂移、亮度不均 \\
+照明系统（C1/C2 + 光阑） & 把电子源成像为平行束或会聚束，改变束斑大小与会聚角 & 直接改变\textbf{照射剂量}与\textbf{相干性}：缩小 C2 光阑可提高相干性
+但降低剂量；会聚束/微区分析需直接调 C1 取得纳米级束斑 \\
+物镜 & 在\textbf{后焦面}形成衍射花样、在\textbf{像平面}形成样品像 & 其球差系数 $C_{\mathrm{s}}$ 是点分辨率的决定因素之一；
+物镜光阑决定衬度类型与最大散射角，并影响像差大小 \\
+中间镜（1—2 个）+ 选区光阑 & 选择以物镜后焦面或以物镜像平面为物，从而切换衍射/成像模式 & 决定\textbf{得到的是像还是衍射}；选区光阑只在成像模式下对应确定样品区域，
+光阑过小时选区与衍射实际来源区会有偏差 \\
+投影镜 & 把中间镜的像/衍射进一步放大投影到屏上 & 决定最终放大倍数与视场；与中间镜一起给出总放大倍数（各透镜放大率之积） \\
+记录系统（CCD 等） & 把电子强度转为数字图像 & 决定\textbf{可定量程度}：数字图像可做在线傅里叶变换、测晶格参数、监视像散；
+动态范围与噪声决定了弱衬度细节能否被记录 \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\begin{principle}
+磁透镜的聚焦原理：中空磁性材料极靴与其外线圈形成圆柱对称、沿轴不均匀的磁场，
+运动的电子束通过时被会聚到一点。改变线圈激磁电流即改变磁场强度，从而改变
+\textbf{焦距、放大倍数与聚焦状态}——电镜里没有「移动镜头」这个动作，一切调节都是
+改变电流。\src{S1 §2.1，书内 p.89 / PDF p.108}
+\end{principle}
+
+\begin{pitfall}
+\textbf{「放大倍数高」不等于「分辨率高」。}放大倍数是各透镜放大率之积，可以做到
+$10^{6}$ 以上；而分辨率由加速电压（电子波长）与物镜球差$C_{\mathrm{s}}$ 决定，是仪器的
+物理上限。把一幅低分辨率图像放大，只会把模糊一并放大。同理，换用场发射枪能提高
+\textbf{信息极限}（使面间距小于点分辨率的晶格也能成像），但\textbf{不能提高点分辨率}。
+\src{S1 §2.2.3，书内 p.105—108 / PDF p.124—127}
+\end{pitfall}
+
+\subsection{电子衍射和成像}
+
+\subsubsection{电子与物质的相互作用：信号有哪几种，各来自多深}
+
+高能电子进入固体后与原子核及核外电子发生库仑作用。按\textbf{是否损失能量}可分两类：
+经过原子核静电场时只改变方向、不损失能量的称\textbf{弹性散射}；与原子电子碰撞并
+把部分能量转移给它的称\textbf{非弹性散射}。二者的发生概率由各自的散射截面决定。
+弹性散射截面正比于原子序数的平方，这一条是扫描透射电镜中 $Z$ 衬度像的基础。
+\src{S1 §2.2.1，书内 p.94—95 / PDF p.113—114}
+
+图~\ref{fig:tem-signals} 汇总薄样品被高能电子照射后产生的信号及其\textbf{逸出深度}。
+这张图的价值在于：它同时说明了为什么 TEM 必须用薄样品（只有透射电子能穿出），
+也说明了为什么同一台仪器加装谱仪后可以同时做成分分析（$X$ 射线、俄歇电子由
+非弹性散射产生）。
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{8}{9.6}\selectfont]
+% 样品（薄区）
+\fill[black!10] (0,0) rectangle (4.8,0.8);
+\draw (0,0) rectangle (4.8,0.8);
+\node[anchor=west] at (0.12,0.40) {薄样品（几十 nm）};
+% 入射束
+\draw[-{Latex[length=1.7mm]}, very thick] (1.30,1.75) -- (1.70,0.82);
+\node[anchor=south east, align=right, font=\fontsize{8}{9.6}\selectfont]
+  at (1.31,1.78) {入射高能电子\\$100$—$400$\,keV};
+% 背向信号：来自表面与近表面
+\draw[-{Latex[length=1.5mm]}, thick] (0.95,0.82) -- (0.55,1.50);
+\draw[-{Latex[length=1.5mm]}, thick, dashed] (1.35,0.82) -- (0.95,1.50);
+\draw[-{Latex[length=1.5mm]}, thick] (1.75,0.82) -- (1.35,1.50);
+\node[anchor=north west, align=left, font=\fontsize{8}{9.6}\selectfont]
+  at (1.85,1.62) {背散射电子、二次电子（$<50$\,eV）、俄歇电子\\
+特征 $X$ 射线、连续 $X$ 射线、可见光/荧光};
+% 透射信号：穿过整个样品厚度
+\draw[-{Latex[length=1.7mm]}, very thick] (0.70,0) -- (0.70,-1.30);
+\draw[-{Latex[length=1.5mm]}, thick] (2.35,0) -- (2.95,-1.30);
+\draw[-{Latex[length=1.5mm]}, thick] (2.95,0) -- (3.85,-1.30);
+\draw[-{Latex[length=1.2mm]}, thick, dotted] (3.55,0) -- (4.50,-1.05);
+\node[anchor=north west, align=left, font=\fontsize{8}{9.6}\selectfont]
+  at (0.15,-1.42) {未偏转透射电子（无能量/动量改变）\\与衍射电子（相干弹性散射）：};
+\node[anchor=north west, align=left, font=\fontsize{8}{9.6}\selectfont]
+  at (0.15,-2.05) {\textbf{晶体结构}与相的主要来源，也是高分辨像的成像\\电子。大角非相干弹性散射电子给出 $Z$ 衬度像；非弹\\性散射电子给出 EELS 信号};
+% 逸出深度轴
+\draw[-{Latex[length=1.3mm]}] (-0.42,0.90) -- (-0.42,-1.35);
+\node[rotate=90, anchor=south, font=\fontsize{8}{9.6}\selectfont] at (-0.62,-0.30) {逸出深度（示意）};
+\draw[dashed, black!45] (0,0.90) -- (4.8,0.90);
+\node[anchor=south west, font=\fontsize{8}{9.6}\selectfont] at (3.2,0.92) {样品表面};
+\end{tikzpicture}
+\caption{高能电子与薄样品相互作用产生的信号及其来源深度。读者应看\textbf{箭头的方向}：
+向上（背向）的信号只能来自表面或近表面，携带表面成分信息；向下（透射）的信号穿过
+整个样品厚度，是\textbf{体相结构与晶体学}信息的载体，也是 TEM 成像与衍射实际使用的
+电子。图中深度为定性示意，不代表具体数值。\schemamark\figsrc{据 S1（上册）图 2-6，
+书内 p.95 / PDF p.114 改绘。}}
+\label{fig:tem-signals}
+\end{figure}
+
+\begin{keycond}
+\textbf{弹性散射是相干散射，非弹性散射是非相干散射}——除大角卢瑟福散射这一例外。
+相干散射的电子保持原波长，因此可以相互干涉形成衍射花样与相位衬度像；
+非弹性散射改变波长，只能贡献弥散背景。这条区分是理解「为什么衍射斑点能给出
+晶体学信息」的前提。\src{S1 §2.2.1，书内 p.94 / PDF p.113}
+\end{keycond}
+
+\begin{pitfall}
+电子对样品的\textbf{辐照损伤远大于 $X$ 射线}，原因是电子的原子散射因子比 $X$ 射线大
+若干数量级。但反过来说，$X$ 射线谱仪为取得足够计数需要长得多的采集时间。因此
+「电子束损伤小」和「采集快」是一对\textbf{需要权衡}的量，对电子束敏感的样品
+（有机物、部分分子筛）必须靠降低剂量、减少曝光时间来解决，而不能靠提高加速电压
+一概而论。\src{S1 §2.2.1，书内 p.95 / PDF p.114}
+\end{pitfall}
+
+\subsubsection{电子衍射：从衍射花样到晶体学结论}
+
+\paragraph{衍射的几何条件}
+电子波在晶体中周期排布的散射中心上发生相位相干的散射，在某些晶体学方向上相互
+加强形成衍射波。三维晶体对电子的散射能力用\textbf{结构因子}
+$F(hkl)$ 描述，它等于单胞中所有原子散射因子乘以相位因子之和；
+衍射强度正比于结构因子模的平方：$I(hkl)\propto|F(hkl)|^{2}$。只有 $F(hkl)\neq 0$ 的
+晶面才可能给出衍射束，这直接引出\textbf{消光规律}（表~\ref{tab:extinction}）。
+\src{S1 §2.2.2，书内 p.96、p.99 / PDF p.115、p.118}
+
+\paragraph{Bragg 方程}
+衍射方向由 Bragg 条件给出。波长为 $\lambda$ 的电子波入射到晶面间距为 $d_{hkl}$ 的
+晶面族上，入射角与反射角相等且入射线、反射线、晶面法线共面时，各晶面的散射波
+相干加强：
+
+\begin{equation}\label{eq:bragg}
+n\lambda=2\,d_{hkl}\sin\theta_{hkl}
+\end{equation}
+
+其中 $n$ 为衍射级数（衍射指数），$\theta_{hkl}$ 为该晶面族的 Bragg 角，即衍射方向。
+\begin{keycond}
+式~\eqref{eq:bragg} 的成立条件：\textbf{（i）}样品在照射体积内具有长程有序的
+周期结构（单晶或足够大的晶粒）；\textbf{（ii）}晶面取向与入射束恰好满足该角度关系；
+\textbf{（iii）}散射为弹性（相干）散射，波长在散射前后不变。原子呈无序排列时
+散射不遵从 Bragg 条件，出现弥散散射（非 Bragg 散射）；样品变厚时出现动力学效应，
+斑点亮暗不均，更厚时出现菊池线。\src{S1 §2.2.2，书内 p.97 / PDF p.116}
+\end{keycond}
+
+\textbf{量纲检查}：$n$ 无量纲，$d_{hkl}$ 与 $\lambda$ 同为长度量纲，$\sin\theta$ 无量纲，
+两端量纲一致。数量级的合理性可由一个常用极限看出：电子波长极小（$100$\,kV 下
+$\lambda=\qty{0.0037}{nm}$），故 $\sin\theta=\lambda/(2d)\ll1$，$\theta$ 只有
+零点几度——\textbf{电子衍射斑点只出现在极其接近平行于入射束的方向上}，这正是电子
+衍射花样可近似用「零层倒易面」直接解读的原因。
+
+对立方晶体，晶面间距与晶胞参数 $a$ 的关系为
+
+\begin{equation}\label{eq:d-cubic}
+\frac{1}{d_{hkl}}=\frac{\sqrt{h^{2}+k^{2}+l^{2}}}{a}
+\end{equation}
+
+\begin{keycond}
+式~\eqref{eq:d-cubic} 仅适用于\textbf{立方}晶系。其他晶系必须用各自的晶面间距公式，
+不能直接把 $\sqrt{h^{2}+k^{2}+l^{2}}$ 当作通用因子。
+\tocheck{未对照原页面图像：式（2-7）的 OCR 形式被严重破坏，此处按立方晶系标准形式重建；
+需核对原书是否对非立方晶系也给出了对应表达式。}
+\end{keycond}
+
+\paragraph{倒易空间与 Ewald 球}
+把 Bragg 条件写成 $\sin\theta=(1/d)\big/(2/\lambda)$，其几何意义是：一个直角三角形的
+对边为 $1/d$、斜边为 $2/\lambda$。对应的作图法是：\textbf{以入射波矢的起点为球心}
+（该点在倒易原点 $O$ 沿入射反方向、距离 $1/\lambda$ 处），以 $1/\lambda$ 为半径作球，
+\textbf{球面必过倒易原点 $O$}。凡落在球面上的倒易格点 $G$（$|G|=1/d$）都满足衍射条件，
+由球心指向该格点的方向即衍射方向。这个球称为 \textbf{Ewald 反射球}。
+注意「以倒易原点为球心」是错的：若球心在原点，球面就不可能过原点，
+而衍射条件恰恰要求球面经过原点。
+\tocheck{原书此处散文表述含混；本节按标准 Ewald 作图法改写，未对照原页面图像}
+\src{S1 §2.2.2，书内 p.97—98 / PDF p.116—117}
+
+\begin{principle}
+Ewald 球作图法的实用推论：电子波长极短 $\Rightarrow$ 反射球半径 $1/\lambda$ 极大
+$\Rightarrow$ 球面在倒易原点附近\textbf{近似为平面}。因此单张电子衍射花样近似等于
+倒易空间中过原点的一个\textbf{零层倒易面}，斑点排布直接反映该带轴的二维周期。
+换一个晶带轴就要倾转样品——倾转范围受物镜极靴尺寸限制。
+\src{S1 §2.2.2，书内 p.98 / PDF p.117}
+\end{principle}
+
+\begin{table}[htbp]
+\centering
+\caption{几种常见晶体结构的消光规律（$F$ 为结构因子，$n$ 为整数）}
+\label{tab:extinction}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}lXl@{}}
+\toprule
+晶体类型 & 出现衍射的条件（选择关系） & 单胞格点数 \\
+\midrule
+简单（单斜，所有 $h,k,l$） & 无消光，任意 $h,k,l$ 均可 & 1 \\
+体心立方 & $h+k+l=2n$（偶数） & 2 \\
+面心立方 & $h,k,l$ 全为奇数或全为偶数 & 4 \\
+密排六方 & $h+2k=3n$ 时 $l$ 必须为\textbf{偶数}；$h+2k=3n\pm1$ 时 $l$ 任意 & 2 \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+消光规律与晶体学中由点阵类型导出的系统消光完全一致，因此\textbf{衍射斑点的有无本身
+就是一条结构信息}：它是判断点阵类型（如区分面心立方与体心立方）的第一手依据。
+自检方法：把选择关系代入几个具体指数做断言检验，例如密排六方的 $(0001)$
+（$h=k=0\Rightarrow h+2k=0=3n$，而 $l=1$ 为奇数）\textbf{必须不出现}；
+若某条规则允许它出现，该规则写错了。
+
+\paragraph{另一条约束：晶带定律}
+斑点的出现受结构因子控制，但斑点的\textbf{指数}还必须满足晶带定律：属于同一晶带轴
+$[uvw]$ 的所有晶面 $(hkl)$ 满足正交关系
+
+\begin{equation}\label{eq:zone-law}
+uh+vk+wl=0
+\end{equation}
+
+\begin{keycond}
+式~\eqref{eq:zone-law} 描述的是「同时被激发的衍射束所对应的晶面法线都垂直于
+同一带轴」。它是索引衍射花样的判据：若某个斑点的指数不满足该式，说明它不属于
+当前带轴，索引有误。\src{S1 §2.2.2，书内 p.99 / PDF p.118}
+\end{keycond}
+
+\paragraph{从衍射花样读晶面间距：相机常数}
+得到衍射斑点或衍射环后，用下式把斑点到透射斑的距离换算为晶面间距：
+
+\begin{equation}\label{eq:camlen}
+r\,d=L\,\lambda \qquad\Longleftrightarrow\qquad r=\frac{L\lambda}{d}
+\end{equation}
+
+其中 $L$ 为相机长度，$r$ 为衍射点到透射斑点的距离，与 $1/d$ 成正比。对给定相机
+长度，$L\lambda$ 为常数，称为\textbf{相机常数}。
+\begin{keycond}
+$L\lambda$ 必须用\textbf{已知结构的标准样品}实测标定，不能直接采用仪器标称值——
+这一条是定量索引衍射花样的前提。另外，仅靠一两个 $d$ 值往往不能唯一确定结构：
+很多金属体系的晶格常数非常接近（差别小于电镜的测量误差），此时\textbf{测量两个衍射
+点之间的夹角}是重要的补充判据。\src{S1 §2.2.2，书内 p.101 / PDF p.120}
+\end{keycond}
+
+\textbf{量纲检查}：$r$（长度）$\times d$（长度）$=$ $L$（长度）$\times\lambda$（长度），
+两端均为面积量纲，一致。
+
+\begin{table}[htbp]
+\centering
+\caption{衍射花样的形态与可读出的样品信息}
+\label{tab:pattern-read}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}lXX@{}}
+\toprule
+花样形态 & 对应的样品状态 & 可读出 / 不可读出 \\
+\midrule
+清晰规则的斑点阵列 & 单晶或单个大晶粒 & 可读出带轴、$d$ 值、点阵类型（由消光）；
+单张花样只是倒易空间的一个截面，确定单胞需多个带轴 \\
+连续同心圆环 & 大量随机取向的小晶粒（多晶） & 各环半径给出全部可激发晶面的 $d$ 值；
+环的\textbf{宽度}反映晶粒尺寸（纳米颗粒环变宽） \\
+不连续/部分弧状环 & 晶粒数有限或存在择优取向（织构） & 择优取向对应的斑点特别亮；
+可判断织构方向 \\
+弥散晕环 & 非晶（玻璃、液体） & 环径对应原子平均间距，只反映\textbf{近程有序}；
+不能给出指数与晶胞参数 \\
+斑点形状偏离圆点 & 形貌三维受限（片状试样平行入射束、一维纳米结构） & 提示存在形状效应；
+分析纳米材料时须纳入考虑 \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\begin{measure}
+\textbf{衍射花样的两条常规检查}：\textbf{（i）} 先核对 $L\lambda$ 标定是否在有效期内、
+是否用与本次相同的相机长度；\textbf{（ii）} 索引后的斑点集合必须整体满足晶带定律
+\eqref{eq:zone-law} 与对应晶系的消光规律，\textbf{不允许逐点凑指数}。若只挑出少数
+斑点匹配而其余斑点无法解释，正确的做法是承认该花样对应多套衍射的叠加（多相共存），
+而不是继续调整指数。
+\end{measure}
+
+\subsubsection{成像：三种衬度来源}
+
+把物镜像平面投影到荧光屏上即得放大像。人眼看到的是强度分布，而不同区域或细节的
+强度差异称为\textbf{像衬度}。电子波穿过样品后振幅与相位都可能改变，两类变化都能
+产生衬度，据此分为\textbf{振幅衬度}（含质厚衬度与衍射衬度）和\textbf{相位衬度}。
+一张照片中两种衬度可能同时存在，但总有一种占主导。表~\ref{tab:contrast} 对比三者。
+\src{S1 §2.2.3，书内 p.101—106 / PDF p.120—125}
+
+\begin{table}[htbp]
+\centering
+\caption{质厚衬度、衍射衬度与相位衬度的来源与适用条件}
+\label{tab:contrast}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}p{0.105\columnwidth}XXX@{}}
+\toprule
+ & 质厚衬度 & 衍射衬度 & 相位衬度（高分辨） \\
+\midrule
+物理来源 & 非相干卢瑟福散射；散射截面正比于样品有效质量（密度 $\times$ 厚度） &
+透射束与衍射束的强度分配随晶体取向变化 & 电子波穿过晶体电势场后的相位改变，
+经物镜传递函数调制后干涉成像 \\
+光阑设置 & 物镜光阑居中，只让透射束通过（\textbf{明场}） &
+明场：光阑居中挡掉衍射束；暗场：用衍射束成像（可偏入射束使其沿光轴通过） &
+通常需两束或多束电子波相干，物镜光阑须让相应衍射束通过 \\
+衬度与什么对应 & 亮 $=$ 轻元素或薄区；暗 $=$ 重元素或厚区 &
+明场中满足 Bragg 条件的区域\textbf{暗}；暗场中该区域\textbf{亮} &
+在弱相位近似与 Scherzer 欠焦下，衬度正比于晶体电势场的投影（暗区对应较重的原子柱） \\
+最佳实验条件 & 插入物镜光阑限制散射角可提高明晰度；非晶样品唯一可用的衬度 &
+需倾转样品至\textbf{双光束条件}（一个强透射束 $+$ 一个强衍射束）；
+多相共存时选特定衍射束成像可分离相 & 样品必须极薄（弱相位体）、接近 Scherzer 欠焦、
+厚度与取向高度敏感 \\
+不适用/失效情形 & 不给出晶体学信息；不能区分同密度同厚度的不同相 &
+完整等厚无缺陷晶体不产生衬度（等厚条纹、等倾轮廓线来自厚度或弯曲变化）；
+纳米粒子太小、衍射束太弱，难以得到高质量暗场像 & 像衬度随欠焦量与厚度强烈变化，
+不能直接一对一解释结构，须与计算模拟像比对 \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\begin{dataflow}
+\textbf{一个读图实例——从衍射花样判断催化剂中的相。} 设某负载型金属催化剂的高分辨
+样品给出图~\ref{fig:read-pattern} 所示的选区电子衍射花样。按下面的顺序读：
+先看花样的\textbf{整体形态}，再量\textbf{环半径}，再查\textbf{消光}，最后做\textbf{交叉验证}。
+\end{dataflow}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\fontsize{8}{9.6}\selectfont]
+\begin{axis}[
+  width=0.86\columnwidth, height=0.62\columnwidth,
+  axis equal image, scale only axis,
+  xmin=-1.35, xmax=1.35, ymin=-1.35, ymax=1.35,
+  axis lines=none, clip=false,
+  xtick=\empty, ytick=\empty
+]
+% 最强环（示意）：用参数曲线画圆
+\addplot[thick, domain=0:360, samples=200, black] ({0.42*cos(x)},{0.42*sin(x)});
+\addplot[thick, domain=0:360, samples=200, black] ({0.60*cos(x)},{0.60*sin(x)});
+\addplot[thick, domain=0:360, samples=200, black] ({0.85*cos(x)},{0.85*sin(x)});
+\addplot[thick, domain=0:360, samples=200, black] ({1.05*cos(x)},{1.05*sin(x)});
+% 透射斑与少数取向偏离的强斑点（织构/大晶粒）
+\addplot[only marks, mark=*, mark size=2.1pt, black] coordinates {(0,0)};
+\addplot[only marks, mark=*, mark size=1.5pt, black]
+  coordinates {(0.42,0) (-0.42,0) (0,0.42) (0,-0.42)
+               (0.60,0) (0,0.60) (-0.60,0) (0,-0.60)
+               (0.85,0) (-0.85,0) (0,0.85) (0,-0.85)};
+% 标尺
+\draw[<->, thick] (-0.42,-1.22) -- (0,-1.22);
+\node[anchor=north, font=\fontsize{8}{9.6}\selectfont] at (-0.21,-1.24) {$r_{1}$};
+\node[anchor=west, font=\fontsize{8}{9.6}\selectfont, align=left] at (1.30,0.9)
+  {环 1\ \ $r_{1}$\\环 2\ \ $r_{2}$\\环 3\ \ $r_{3}$\\环 4\ \ $r_{4}$};
+\end{axis}
+\end{tikzpicture}
+\caption{一个用于读图练习的多晶电子衍射花样示意（含少量异常明亮的斑点）。
+读者应看三处：\textbf{（i）}环是连续还是断续——连续环对应随机取向的众多晶粒，
+若个别斑点显著偏亮则提示存在择优取向；\textbf{（ii）}各环半径 $r_{i}$ 的比例关系，
+按式~\eqref{eq:camlen} 换算成 $d$ 值之比；\textbf{（iii）}中心透射斑的位置，
+它是所有 $r$ 的起点，位置没找准后面全错。本图是按衍射几何绘制的示意花样，
+不是实验照片，环的强度分布不代表任何具体样品。\schemamark}
+\label{fig:read-pattern}
+\end{figure}
+
+按「观察」与「推断」严格分开，读出过程如下。
+
+\begin{obs}
+\textbf{(1)} 花样由若干\textbf{连续同心环}构成，中心有一个最强斑，另有一组位于
+正交点阵位置上的斑点与环重合，其亮度明显高于同半径处环的平均亮度。
+\textbf{(2)} 用标定的相机常数按式~\eqref{eq:camlen} 量得前四个环的 $d$ 值，
+其比例与 $1:\;0.71:\;0.61:\;0.50$ 相近。
+\textbf{(3)} 前四个环之外还有若干可测环，但按 $1/d$ 排序后，前四环的\textbf{相对}
+位置是确定的；本练习只对前四环做比对。
+\textbf{(4)} 各环有可测宽度，且宽度随 $r$ 增大而略增。
+\textbf{(5)} 该花样对应的选区（选区光阑所限区域）内，明场像中未见大块晶体，
+多为 $5$—$20$\,nm 的暗色颗粒。
+\end{obs}
+
+\begin{infer}
+\textbf{由 (1)}：连续环 $+$ 少量异常亮斑点 $\Rightarrow$ 样品以\textbf{随机取向的多晶}
+为主，同时存在\textbf{择优取向}（或少量较大晶粒）。注意这是两个独立判断：
+环的连续性说明取向随机，斑点的异常亮度说明取向分布不均匀。
+\textbf{由 (2)}：把测得的 $d$ 值之比与两种立方点阵的\textbf{允许反射序列}比对
+（表~\ref{tab:ring-index}）。这是读环花样的标准第一步，也是最容易出错的一步：
+必须比\textbf{序列}而不只是比某一个数。
+
+\begin{table}[htbp]
+\centering
+\caption{多晶环花样的指认对照（$d$ 值按第一环归一）}
+\label{tab:ring-index}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}llXX@{}}
+\toprule
+点阵 & 反射次序 & 允许反射的 $d$ 值比序列 & 与前四环 $1:0.71:0.61:0.50$ 的比对 \\
+\midrule
+面心立方 & 第 1—6 & $1\,(111)$、$0.87\,(200)$、$0.61\,(220)$、%
+$0.52\,(311)$、$0.50\,(222)$、$0.43\,(400)$ &
+第 1、3、5 项吻合，第 2、4 项不吻合 \\
+体心立方 & 第 1—6 & $1\,(110)$、$0.71\,(200)$、$0.58\,(211)$、%
+$0.50\,(220)$、$0.45\,(310)$、$0.41\,(222)$ &
+第 1、2、4 项吻合，第 3 项差 $0.03$ \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\textbf{由表~\ref{tab:ring-index} 得出的关键判断}：观测序列 $1:0.71:0.61:0.50$
+\textbf{与两种点阵都不完全吻合}——与面心立方差在第 2、4 项，与体心立方只差第 3 项
+（$0.61$ 对 $0.58$，偏差约 $5\%$）。体心立方的吻合程度\textbf{明显更好}，
+但偏差已接近小晶粒环宽带来的测距误差量级，因此\textbf{不能仅凭这四个数定案}。
+\textbf{由 (3)}：在体心立方指认（$110$/$200$/$211$/$220$）下，$h+k+l$ 为奇数、
+本应系统消光的反射（如 $111$、$311$）确实未出现在前四环中，这与体心立方相容；
+但同样的相容性在面心立方指认下也成立，故 (3) 只有\textbf{排除性}价值而无\textbf{确证}价值。
+\textbf{由 (4)}：环宽随 $r$ 增大提示晶粒尺寸在纳米量级并存在尺寸分布；
+环宽同时是 $d$ 值测量误差的主要来源，这正是上面第 3 项 $5\%$ 偏差不能作为定案依据的原因。
+\textbf{由 (5)}：样品为纳米颗粒集合体，其衍射来自大量小晶粒的叠加；
+颗粒数足够多，说明「多晶」这一判断本身是稳的。
+\textbf{结论（限定表述）}：该选区内存在一种\textbf{纳米晶相}，其前四环与\textbf{体心立方}
+点阵的相容性优于面心立方，但两者均未被排除；$d$ 值本身\textbf{不足以}指认具体物相。
+下一步必须补做：(a) 用\eqref{eq:zone-law} 晶带定律校验更完整的环序列；
+(b) 多带轴单晶花样或高分辨像上量晶格条纹间距；(c) 成分分析把候选相收缩到唯一。
+\end{infer}
+
+\begin{crosscheck}
+\textbf{本图的结论需要哪些外部数据回查。}
+\textbf{（i）成分}：衍射只给晶体学，不给元素。与上面前四环相容的立方相候选很多
+（体心立方与面心立方金属及其氧化物中都有 $d$ 值落在这个区间的相），
+必须用 $X$ 射线能谱或电子能量损失谱\textbf{限定元素}，才能把「相容于某点阵」
+收缩为「某个相」。
+\textbf{（ii）标定}：$L\lambda$ 若未用标准样品标定，第 (2) 步的全部数值都不成立；
+本例中第 3 环约 $5\%$ 的偏差恰好与标定不准确引起的系统误差同量级，
+必须先排除这一项再谈点阵类型。
+\textbf{（iii）选区代表性}：选区光阑越小，选区与衍射斑点真正形成的区域之间偏差越大；
+选区内的颗粒数若只有几个，则「多晶」的判断本身就不稳。
+\textbf{（iv）与高分辨像互证}：若能在高分辨像上量得一组晶格条纹间距并与某个环的 $d$
+对应，且条纹方向与暗场像中该衍射束点亮的区域一致，则相归属的可信度显著提高。
+\textbf{（v）厚度效应}：样品较厚时动力学效应会使相对强度偏离 $|F|^{2}$，
+按强度比去区分相近相的做法在该厚度下不可靠。
+\textbf{（vi）环宽的双重角色}：环宽既是晶粒尺寸的证据，也是 $d$ 值测量误差的来源；
+用环宽论证「晶粒为纳米级」时，必须同时承认它限制了点阵判定的精度。
+\end{crosscheck}
+
+\subsubsection{高分辨相位衬度：能给出什么，什么时候不能信}
+
+高分辨电子显微学（HRTEM）自 20 世纪 70 年代发展起来，如今商用仪器的点分辨率
+普遍达到 $0.2$\,nm 或更好。它利用\textbf{相位衬度}给出点阵条纹或原子结构像——
+这与低/中放大倍数下用质厚衬度和衍射衬度成像有本质区别。更准确地说，看到的高分辨像
+是\textbf{电子束波相干条纹的二维投影}，像的强度是电子波干涉强度的分布，
+因此不能用样品的密度或厚度直接解释，必须借助波动光学。
+\src{S1 §2.2.3，书内 p.104—105 / PDF p.123—124}
+
+\textbf{弱相位近似。} 电子穿过电势为 $V(x,y)$ 的薄样品时透射波函数为
+$\psi(x,y)=\exp[\mathrm{i}\sigma V(x,y)]$，其中 $V(x,y)$ 是晶体电势场沿电子入射方向的
+投影，$\sigma=\pi/(\lambda E)$ 为相互作用常数。对足够薄的样品，振幅不变而相位变化很小
+（$\sigma V\ll1$，这样的样品称弱相位体），上式展开为
+
+\begin{equation}\label{eq:weak-phase}
+\psi(x,y)\approx 1+\mathrm{i}\sigma V(x,y)
+\end{equation}
+
+物镜传递函数 $A(u,v)=\exp\{2\pi\mathrm{i}\chi(u,v)\}B(u,v)D(u,v)$ 对电子波进行调制，
+其中 $B$ 为束发散度引起的衰减包络函数（反映空间相干性），$D$ 为色差引起的衰减包络
+函数（反映时间相干性），而 $\chi(u,v)$ 为物镜的波像差：
+
+\begin{equation}\label{eq:chi}
+\chi(u,v)=\frac{\pi}{2}C_{\mathrm{s}}\lambda^{3}(u^{2}+v^{2})^{2}
++\pi\Delta f\,\lambda(u^{2}+v^{2})
+\end{equation}
+
+其中 $C_{\mathrm{s}}$ 为物镜球差系数，$\Delta f$ 为散焦量，$u,v$ 为空间频率。
+
+\textbf{符号约定（最容易出错的地方）}：本式取标准约定，$\Delta f<0$ 表示\textbf{欠焦}。
+此时二次项为负、四次项为正：低空间频率处 $\chi<0$，高空间频率处四次项占优使 $\chi$
+转正，两者之间因此出现一段 $\sin\chi\approx-1$ 的\textbf{宽频带}——这正是 Scherzer
+欠焦的用处所在。若把二次项写成 $-\pi\Delta f\lambda(u^{2}+v^{2})$，则与
+$(\Delta f)_{\mathrm{Sch}}=-1.2(C_{\mathrm{s}}\lambda)^{1/2}$（负值）联立会得到两项同号、
+$\chi$ 单调递增的结果，\textbf{根本不会出现}式~\eqref{eq:hrtem-contrast} 所需的宽频带。
+遇到这种情况说明符号约定自相矛盾，应先统一约定再讨论成像，而不是直接引用结论。
+\tocheck{原书 $\chi$ 两项的符号约定无法从 OCR 文本确定；本节按可自洽的标准约定改写}
+把式~\eqref{eq:weak-phase} 代入并做逆傅里叶变换，可得像衬度
+
+\begin{equation}\label{eq:hrtem-contrast}
+C(x,y)=I(x,y)-1\approx-2\sigma V(x,y)\cdot\mathrm{FT}\{\sin\chi(u,v)\}
+\end{equation}
+
+\textbf{量纲检查}：$\chi$ 是相位，无量纲；$C_{\mathrm{s}}\lambda^{3}(u^{2}+v^{2})^{2}$
+中 $C_{\mathrm{s}}$ 为长度、$\lambda$ 为长度、$u$ 为长度的倒数，故
+长度$^{4}\times$长度$^{-4}$ 无量纲，与 $\Delta f\lambda(u^{2}+v^{2})$ 一致，
+两项量纲相符。
+
+\begin{keycond}
+式~\eqref{eq:hrtem-contrast} 说明高分辨像衬度受\textbf{球差、光源相干性与散焦}
+三者共同控制，故高分辨像\textbf{不是}结构的直接投影。只有在
+$\sin\chi=-1$ 时才有 $C(x,y)=2\sigma V(x,y)$——衬度正比于晶体势函数的投影，
+像才反映真实结构。实际做法是对固定的 $C_{\mathrm{s}}$，取 Scherzer 最佳欠焦
+$(\Delta f)_{\mathrm{Sch}}=-1.2\,(C_{\mathrm{s}}\lambda)^{1/2}$，使 $\sin\chi$ 在
+很宽的空间频率范围内接近 $-1$。此时较暗的区域对应较重的原子柱。
+\src{S1 §2.2.3，书内 p.105 / PDF p.124}
+\end{keycond}
+
+\begin{pitfall}
+\textbf{晶格条纹不等于结构像。} 在远离 Scherzer 欠焦的条件下成像，即使样品非常均匀
+且很薄，晶条纹像也不是晶体结构像或其二维投影。样品厚度很小的变化、样品取向的微小
+改变都会强烈改变高分辨像的衬度，金属氧化物等复杂结构尤为敏感——同一晶体在不同
+欠焦量与厚度下可以给出看起来完全不同的像。因此\textbf{正确解释高分辨像的唯一方法是
+用已知结构计算模拟像并与实验像比对}（或系统变焦拍一系列欠焦量的图做计算处理）；
+直接把晶格条纹与晶格结构对应的尝试可能导致错误结论。
+\src{S1 §2.2.3，书内 p.108 / PDF p.127}
+\end{pitfall}
+
+\subsubsection{分辨率：三个不同的定义}
+
+先看波动光学给出的分辨率定义：$R=0.61\lambda/(n_{\mathrm{r}}\sin\alpha)$，其中
+$n_{\mathrm{r}}$ 为物与透镜之间介质的折射系数，$\alpha$ 为光束相对于光阑的半角；
+光学显微镜的分辨极限约 $0.2$\,\textmu m。提高分辨率的手段是减小波长或增大介质折射率。
+电镜中高能电子的波长远小于可见光，这是分辨率大幅提高的根本原因。
+\src{S1 §2.2.3，书内 p.106 / PDF p.125}
+
+\paragraph{电子波长与加速电压}
+不计相对论效应时，电子被电势差 $U$ 加速后得到的德布罗意波长为
+
+\begin{equation}\label{eq:lambda-nonrel}
+\lambda=\frac{h}{p}=\frac{h}{\sqrt{2m_{0}eU}}
+\end{equation}
+
+加速电压 $100$\,kV 时，式~\eqref{eq:lambda-nonrel} 给出
+$\lambda=\qty{0.00388}{nm}$。这里有一处\textbf{原书的不自洽需要指出}：
+原书正文在该处取 $\lambda=\qty{0.0037}{nm}$，而 $0.0037$\,nm 只有\textbf{计入相对论修正}
+才能得到——按式~\eqref{eq:lambda-rel} 算得 $\lambda=\qty{0.00370}{nm}$。
+也就是说，原书所列的是非相对论公式，但其数值取自相对论结果。
+本书\textbf{保留原式并写明该差异}，不作静默改动；使用时请以相对论值为准。
+\tocheck{该差异由公式与数值的自洽性核算得出，未对照原页面图像}
+但电子的加速电压已达几百千伏，速度接近光速，必须做\textbf{相对论修正}：
+
+\begin{equation}\label{eq:lambda-rel}
+\lambda=\frac{h}{\sqrt{2m_{0}eU\left(1+\dfrac{eU}{2m_{0}c^{2}}\right)}}
+=\frac{h}{\sqrt{2m_{0}eU}}\left(1+\frac{eU}{2m_{0}c^{2}}\right)^{-1/2}
+\end{equation}
+
+\begin{keycond}
+式~\eqref{eq:lambda-rel} 的成立条件与适用范围：适用于自由电子在真空中的加速；
+$U$ 就是\textbf{加速电压（电势差）本身}，不是「修正后的电压」——相对论效应全部
+体现在括号内的修正项中，不要把修正再算进 $U$。
+括号内 $eU/(2m_{0}c^{2})$ 为相对论修正项：$U=100$\,kV 时 $eU\approx\qty{1e5}{eV}$、
+$m_{0}c^{2}\approx\qty{511}{keV}$，修正项约 $0.098$，即约 $10\%$——在此电压下
+\textbf{不可忽略}；电压越高，修正项越大。
+\textbf{量纲检查}：$eU$ 为能量量纲，$m_{0}c^{2}$ 亦为能量量纲，比值无量纲；
+根号内两项同为能量与质量之积的量纲，取根后与动量同量纲，$h/p$ 给出长度。一致。
+\src{S1 §2.2.3，书内 p.106—107 / PDF p.125—126}
+\end{keycond}
+
+\begin{pitfall}
+\textbf{电镜中用到的「分辨率」是三个不同的量，不能混用。}
+\textbf{（i）点分辨率}在 TEM 中的定义与瑞利判据不同：它是物镜取 Scherzer 欠焦时，
+衬度传递函数从负值变为正值的\textbf{第一个交点}所对应的最高空间频率——低于该频率的
+空间频率通过光学系统时具有相同相位。它由加速电压与物镜 $C_{\mathrm{s}}$ 决定，
+\textbf{换场发射枪不会改变它}。
+\textbf{（ii）线分辨率}只反映电镜的\textbf{稳定性}，与衬度传递函数没有直接关系；
+它由位于一条直线上的两个或多个衍射束相干得到的条纹像测定，数值通常\textbf{优于}
+点分辨率。
+\textbf{（iii）信息极限}是衬度传递函数因包络函数衰减而趋于零的最大截断频率；
+它由时间相干性（高压不稳、物镜电流变动、电子束能量分布）与空间相干性共同决定，
+\textbf{场发射枪正是通过提高相干性来提高信息极限}，使面间距小于点分辨率的晶格也能
+成像。把这三个数中的任意一个当作「这台电镜的分辨率」而不注明是哪一个，是文献中
+常见的误读来源。\src{S1 §2.2.3，书内 p.107—108 / PDF p.126—127}
+\end{pitfall}
+
+点分辨率的计算式为
+
+\begin{equation}\label{eq:point-res}
+\delta=0.66\,C_{\mathrm{s}}^{1/4}\lambda^{3/4}
+\end{equation}
+
+\begin{keycond}
+式~\eqref{eq:point-res} 的成立条件是\textbf{物镜取 Scherzer 最佳欠焦}，
+$C_{\mathrm{s}}$ 为该物镜的球差系数，$\lambda$ 为该加速电压下的电子波长
+（应取相对论修正值）。该式给出的是\textbf{相位衬度成像}下的点分辨率，
+不是瑞利判据意义上的两点最小可分辨距离。
+\textbf{量纲检查}：$C_{\mathrm{s}}^{1/4}\lambda^{3/4}$ 的量纲为
+长度$^{1/4}\times$长度$^{3/4}=$长度，与 $\delta$ 一致。
+\src{S1 §2.2.3，书内 p.107 / PDF p.126}
+\tocheck{未对照原页面图像：式（2-24）的 OCR 形式仅残留「$0.66$」与前导系数片段，
+数值系数 $0.66$ 与前缀写法需核对原页；该式在文献中亦有写作 $0.65\,C_{\mathrm{s}}^{1/4}\lambda^{3/4}$
+或 $0.91\,C_{\mathrm{s}}^{1/4}\lambda^{3/4}$（后者对应不同判据），本处按书内残留数值保留 $0.66$。}
+\end{keycond}
+
+书内举例：普通 Tecnai 20 STwin 电镜的 $C_{\mathrm{s}}=\qty{1.2}{mm}$，
+点分辨率为 $\qty{0.24}{nm}$。用式~\eqref{eq:point-res} 在 $200$\,kV
+（$\lambda\approx\qty{0.00251}{nm}$，相对论修正后）下可核验该数量级。
+\tocheck{未对照原页面图像：书内给出的 $C_{\mathrm{s}}$ 与点分辨率数值行的 OCR 有缺失
+（电压与型号参数需核对），本处只引用了可辨认的 $C_{\mathrm{s}}=\qty{1.2}{mm}$ 与
+$0.24$\,nm 两项。}
+
+\subsubsection{边界：TEM 看得到什么、看不到什么}
+
+\begin{pitfall}
+\textbf{TEM 的三条固有限制，任何结论都必须在这三条约束下表述。}
+\textbf{（i）电子束损伤。} 电子的原子散射因子远大于 $X$ 射线，电子对样品的辐照损伤
+也远大于 $X$ 射线。对电子束敏感的样品（有机物、部分分子筛、含水或易还原的氧化物），
+观察行为本身可能改变被观察对象——这时的像是「电子束作用后的样品」的像。
+\textbf{（ii）投影效应。} 一张显微像是三维样品沿电子入射方向的\textbf{二维投影}，
+深度方向的信息被叠加压平。因此像上「颗粒互相重叠」「载体把粒子盖住」是常态，
+不能由一张像直接判断颗粒在载体上的空间分布或是否被包埋。
+\textbf{（iii）统计代表性差。} TEM 视场只有微米乃至纳米量级，能观察到的颗粒数是
+几个到几百个，与 $X$ 射线衍射等给出「万到亿万个纳米粒子平均值」的方法形成互补。
+由少数几个视场量出的粒径分布，其代表性受视场选择影响极大；\textbf{必须声明共统计了
+多少个颗粒、来自几个视场}，否则粒径分布这类结论不可比。
+\src{S1 第 2 章引言、§2.2.1，书内 p.87、p.95 / PDF p.106、p.114}
+\end{pitfall}
+
+\begin{methodsum}
+\textbf{本节方法摘要。}
+\textbf{输入：}薄样品（电子可穿透区，通常几十纳米厚）$+$ 选定加速电压 $+$ 标定过的
+相机常数。
+\textbf{三档输出及其判据：}衍射花样（$d$ 值、带轴、消光 $\to$ 晶体学与相）；
+低中放大像（质厚衬度与衍射衬度 $\to$ 形貌、粒径、相分离）；
+高分辨像（相位衬度 $\to$ 原子柱投影，须有 Scherzer 欠焦 $+$ 计算模拟像支撑）。
+\textbf{一轮完整表征的最小配置：}一张衍射花样（定相与取向）$+$ 一张同区域明场像
+（定形貌与位置）$+$ 一张暗场像或高分辨像（把衍射结论落到具体颗粒上）$+$ 一个成分
+通道（能谱或损失谱，把晶体学结论收缩到确定相）。
+\textbf{不可省的两项检查：}$L\lambda$ 标定状态；统计颗粒数与视场数。
+\end{methodsum}
+
+\begin{crosscheck}
+\textbf{与全书其他章节的接口。}$X$ 射线衍射给出的是大量晶粒的\textbf{平均}结构与
+平均晶粒尺寸，TEM 给出的是\textbf{局域}结构与单颗粒尺寸——两者不一致时，
+往往本身就是结果（如存在少量大晶粒或非晶相）。孔结构与比表面积由物理吸附给出
+（\chapref{ch:01}），TEM 只能给出投影形貌，不能替代孔容测量。粒径分布的统计问题
+应回到统计口径统一后再比较。
+\end{crosscheck}
+
+\srcnote{S1（上册）第 2 章 2.1—2.2，书内 p.85—109 / PDF p.104—128。
+2.1 节按「部件—作用—对成像的影响」压缩为表~\ref{tab:tem-parts} 与少量说明；
+2.2 节按原书顺序展开电子—物质相互作用、电子衍射（Bragg 条件、倒易空间与 Ewald 球、
+衍射斑点分析、相机常数）与成像（质厚/衍射/相位衬度、分辨率三个定义）。
+书中图 2-1、2-4、2-5、2-6、2-10 为示意图，本分片按其内容重绘为
+图~\ref{fig:tem-col}、图~\ref{fig:tem-signals}、图~\ref{fig:read-pattern}；
+图 2-11、2-13、2-15、2-16 为实验照片或计算模拟像，未复制。
+2.3 节及以后不在本分片范围内。}

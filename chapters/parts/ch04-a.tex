@@ -1,0 +1,720 @@
+% ================================================================
+%  chapters/parts/ch04-a.tex
+%  第 4 章  多晶 X 射线衍射分析（分片 a）
+%  源：S1（上册）第 4 章，书内 p.219—243 / PDF p.238—262
+%  覆盖：4.1 晶体学基础：周期性与对称性
+%        4.2 X 射线的性质及其与物质的作用
+%        4.3 衍射的几何原理：倒易空间与衍射方法
+%  状态：分片 a（4.4 及以后由分片 b/c 续写）
+% ================================================================
+
+\chapterstart{多晶X 射线衍射分析}%
+{本章回答：一张多晶衍射图上的\textbf{峰位、峰强、峰形}各自编码了晶体结构的哪一部分信息，
+它们分别需要什么条件才能被可靠读出，以及哪些结论单靠衍射数据无法支撑。分片 a 建立三块
+共用基础：晶体学的周期性与对称性（4.1）、X 射线的产生及其与物质的相互作用（4.2）、
+以倒易格子和 Ewald 球表述的衍射几何（4.3）。后续分片在此基础上讨论物相鉴定、定量、
+指标化与 Rietveld 精修。}
+\label{ch:04}
+
+\subsection{晶体学基础：周期性与对称性}
+
+\begin{probout}
+多晶衍射测量的对象是\textbf{大量无规取向微晶的集合}。与单晶衍射相比，它把三维倒易空间
+的数据压缩成以晶面间距 $d$ 为变量的一维数据：$d$ 值相同的衍射完全重合，$d$ 值相近的
+衍射相互重叠。因此一张多晶图上可\textbf{直接}读出的只有三件事——\textbf{峰位}、
+\textbf{峰强}和\textbf{峰形}；其余信息（物相、晶胞参数、晶粒尺寸、微应变、甚至原子坐标）
+都是在这三个量上做反演得到的，反演的可靠性取决于对晶体学与衍射几何的掌握程度。
+\end{probout}
+
+这一节只讲三件与衍射直接挂钩的事：\textbf{周期性}（决定衍射是否出现）、
+\textbf{对称性}（决定衍射如何系统性缺席）、\textbf{晶面与衍射指标}（决定如何给一个峰
+命名）。纯群论内容在此压缩为一张表，把篇幅让给后面的主线。
+
+\subsubsection{晶体的空间点阵与周期性}
+
+晶体的定义性特征是\textbf{结构基元在三维空间中周期性重复}。把每个重复单元抽象成一个
+几何点，这些点构成的无限周期排列即\textbf{空间点阵}；点阵中任意两点之差都属于平移群
+\begin{equation}
+T=m\boldsymbol{a}+n\boldsymbol{b}+p\boldsymbol{c},
+\qquad m,\,n,\,p=0,\pm1,\pm2,\dots
+\label{eq:transgroup}
+\end{equation}
+其中 $\boldsymbol{a},\boldsymbol{b},\boldsymbol{c}$ 是三个互不平行的基矢。式~\eqref{eq:transgroup}
+的成立条件是\textbf{结构严格周期}且\textbf{忽略表面与缺陷}：真实晶体尺寸远大于重复周期，
+故可近似视为向三维无限延伸。量纲检查：$m,n,p$ 为纯数，$\boldsymbol{a},\boldsymbol{b},
+\boldsymbol{c}$ 为长度，故 $T$ 为长度向量，与「平移」的物理含义一致。
+
+\begin{example}[萤石晶胞的重复单元数]
+\ce{CaF2} 属立方晶系，晶胞参数 $a=\qty{5.462}{\angstrom}$，每个晶胞含 4 个 \ce{Ca^2+}
+和 8 个 \ce{F^-}。由 $V=a^{3}\approx\qty{1.63e-1}{nm^3}$，可估算
+$\qty{1}{mm^3}$ 晶体中约有 $10^{19}$ 个这样的重复单元。这个数量级说明：多晶样品中
+「参与衍射的晶胞数极大」，这正是后文把干涉近似处理为\textbf{严格满足条件才出峰}、
+否则完全相消的根据。
+\end{example}
+
+\subsubsection{对称性：从对称要素到点群与空间群（压缩表）}
+
+\textbf{对称操作}是能使物体复原的动作，其所凭借的几何元素（点、线、面）称\textbf{对称要素}；
+全部对称操作的集合构成\textbf{对称操作群}，群中操作的数目称\textbf{阶次}。晶体中可能的
+对称操作包括旋转（$L$）、反映（$m$）、倒反（$i$）、旋转倒反（反轴）及其联合操作。
+受点阵平移性质的限制，\textbf{晶体中只存在 1、2、3、4、6 五次轴}，不存在五次轴与高于
+六次的轴；宏观对称要素的组合必交于一点。由第一类操作（旋转）构成的点群 11 个，与第二类
+操作组合后共得 \textbf{32 种点群}；加入平移型要素（螺旋轴、滑移面）后得
+\textbf{230 种空间群}。X 射线衍射中，在反常散射不严重时衍射数据自带对称中心，故由衍射
+数据构建的点阵中只有 \textbf{11 种 Laue 群}。
+
+表~\ref{tab:crystal-systems} 把七个晶系、14 种布拉维点阵型式、点群与特征对称元素压缩在
+一张表内\src{S1 §4.1.2，书内 p.225—228 / PDF p.244—247}。使用这张表时有两个方向性区别
+必须记牢。
+
+\begin{table}[htbp]
+\centering
+\caption{七个晶系、布拉维点阵型式与特征对称元素（压缩表）}
+\label{tab:crystal-systems}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}lXX@{}}
+\toprule
+晶系 & 晶胞参数与点阵型式 & 特征对称元素（点群） \\
+\midrule
+三斜 & $a\neq b\neq c$，$\alpha\neq\beta\neq\gamma$；$aP$ & 无（$C_1$，$C_i$） \\
+单斜 & $a\neq b\neq c$，$\alpha=\gamma=90^{\circ}\neq\beta$；$mP$、$mC$ & 1 个对称面或 1 个二次轴（$C_2$，$C_s$，$C_{2h}$） \\
+正交 & $a\neq b\neq c$，$\alpha=\beta=\gamma=90^{\circ}$；$oP$、$oI$、$oC$、$oF$ & 2 个互相垂直的对称面或 3 个互相垂直的二次轴（$D_2$，$C_{2v}$，$D_{2h}$） \\
+四方 & $a=b\neq c$，$\alpha=\beta=\gamma=90^{\circ}$；$tP$、$tI$ & 1 个四重轴（旋转、反轴或螺旋轴）（$C_4$ 系列，$D_{4h}$ 最高） \\
+六方 & $a=b\neq c$，$\alpha=\beta=90^{\circ}$，$\gamma=120^{\circ}$；$hP$ & 1 个六重轴（旋转、反轴或螺旋轴）（$C_6$ 系列，$D_{6h}$ 最高） \\
+三方 & 菱面体：$a=b=c$，$\alpha=\beta=\gamma\neq90^{\circ}$，$R$ 格子；或按六方轴取 $hR$ & 1 个三重轴（$C_3$ 系列，$D_{3d}$ 最高） \\
+立方 & $a=b=c$，$\alpha=\beta=\gamma=90^{\circ}$；$cP$（1 点）、$cI$（2 点）、$cF$（4 点） & 沿立方体体对角线方向有 4 个三重轴（$T$，$O$，$T_d$，$O_h$ 等） \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\begin{pitfall}
+两个方向性陷阱。（1）\textbf{晶胞参数符合表中数值，并不必然属于该晶系}：对称性决定
+晶胞参数，反过来不成立。指标化得到「近立方」的晶胞参数后，仍须回到对称要素去确认，不能
+直接按立方晶系做结构分析。（2）\textbf{晶系与点阵型式不是同一回事}。布拉维格子只有 14 种，
+说的是「点阵点如何排布」；而结构因子与系统消光由\textbf{基元的种类与位置}决定。同为
+$cF$ 点阵，NaCl 与金刚石的衍射图中系统消光的规律并不相同（见 4.3 讨论）。
+\end{pitfall}
+
+\subsubsection{晶面符号、晶面指标与衍射指标}
+
+晶面必然平行于某一族平面点阵，故标记晶面就是标记这族平面。判据是 18 世纪末 Hausy
+（浩羽）提出的\textbf{有理指数定律}：晶体中可以找到一套坐标轴系，使每个晶面在三轴上的
+\textbf{倒易截数}成简单的互质整数比 $h:k:l$。$(hkl)$ 即\textbf{晶面符号}，也称为
+\textbf{密勒指数}（Miller index）。三条实用规则：晶面平行于某轴时截数为无穷大、对应指数
+为 0（平行于 $b$ 轴记 $(h0l)$，同时平行于 $a$、$b$ 轴记 $(001)$）；$(hkl)$ 与
+$(\bar{h}\bar{k}\bar{l})$ 标记原点两侧互相平行的两个晶面；由对称操作联系的等同晶面用花
+括号合并，如立方体的六个面$\{100\}$。
+
+密勒指数越简单，对应的平面点阵族间距越大、面网上点阵点密度越高，该晶面在生长中越容易
+发育——这是晶面指数可用于判断晶体生长习性的原因。
+
+\begin{keycond}
+\textbf{晶面指数（互质）与衍射指标（可含公因子）必须分开}。多晶衍射图上常见 200、220、
+242 等指标，它们不是新的晶面，而是 $(100)$、$(110)$、$(121)$ 晶面的\textbf{衍射指标}
+$(nh\;nk\;nl)$，$n$ 为衍射级数。把 200 当作「另一个晶面」去和 PDF 卡片比对，是最常见的
+低级错误之一。\src{S1 §4.1.3，书内 p.232—234 / PDF p.251—253}
+\end{keycond}
+
+\begin{crosscheck}
+衍射只对\textbf{长程有序}敏感。当晶粒小到几个纳米、或存在严重堆垛层错时，峰会宽化甚至
+消失（非晶无峰），此时需要电子衍射、EXAFS、PDF（对分布函数）分析等\textbf{局部结构}
+手段回查。另外，X 射线与物质作用的主体是电子，\textbf{轻元素（H、Li、C、O）散射能力很
+弱}，仅凭 XRD 无法可靠定位氢原子；这一点在后续精修分片中会反复出现。
+\end{crosscheck}
+
+\subsection{X 射线的性质及其与物质的作用}
+
+\begin{principle}
+晶体结构研究用的 X 射线由高速电子轰击金属靶产生，其谱由两部分叠加：
+\textbf{连续谱}源于电子减速时能量的连续损失，存在短波限；\textbf{特征谱}源于高速电子
+击出靶原子内层（如 K 层）电子后，外层电子跃迁填充空位所放出的光子，波长由靶元素的能级差
+决定、与加速电压无关。多晶衍射\textbf{只用特征谱}，最常用的是铜靶的 K$\alpha$ 线。
+\end{principle}
+
+\subsubsection{连续谱、特征谱与 K$\alpha$ 双线}
+
+K 系特征线的产生路径是：电子打出 K 层电子 $\rightarrow$ 外层电子（L、M、N）跳入 K 层并
+放出光子。L$\rightarrow$K 记为 K$\alpha$，M$\rightarrow$K 记为 K$\beta$，能量依次增大、
+波长依次变短。量子力学计算与实验都表明 L$\rightarrow$K 的跃迁概率远大于 M$\rightarrow$K，
+实验给出 $I(\mathrm{K}\alpha):I(\mathrm{K}\beta)=5.4:1$ 的强度比\src{S1 §4.2.1，书内
+p.234 / PDF p.253}，故研究中多选 K$\alpha$。
+
+K$\alpha$ 本身是\textbf{双线}。由于选择定则限制，$s\rightarrow s$ 跃迁禁阻，只有 $2p$
+亚层电子可跳入 $1s$ 能级；$p$ 轨道的角动量与自旋（量子数 $1/2$）耦合给出两个总能级
+$J=3/2$ 与 $J=1/2$。二者有微小能级差，因此跃迁放出的能量不同，形成 K$\alpha_1$ 与
+K$\alpha_2$ 双线，且 $\lambda(\mathrm{K}\alpha_1)<\lambda(\mathrm{K}\alpha_2)$。
+K$\alpha$ 波长通常取二者的加权平均值，权重由强度比决定，近似为
+\begin{equation}
+\lambda(\mathrm{K}\alpha)=\tfrac{2}{3}\lambda(\mathrm{K}\alpha_1)
++\tfrac{1}{3}\lambda(\mathrm{K}\alpha_2).
+\label{eq:ka-weight}
+\end{equation}
+\src{S1 §4.2.1，书内 p.234 / PDF p.253}\tocheck{未对照原页面图像：式~\eqref{eq:ka-weight}
+的加权系数与强度比 $I(\mathrm{K}\alpha_2)/I(\mathrm{K}\alpha_1)=1/2$ 均为按 OCR 正文
+「$=2/3\lambda(\text{凡}1)+1/3\lambda(\dots)$」重建；请核对原页面的系数写法。}
+
+\begin{measure}
+铜靶 K$\alpha$ 的常用波长：$\lambda(\mathrm{K}\alpha_1)=\qty{1.5406}{\angstrom}$，
+$\lambda(\mathrm{K}\alpha_2)=\qty{1.5444}{\angstrom}$，加权平均
+$\lambda(\mathrm{K}\alpha)=\qty{1.5418}{\angstrom}$；K$\beta$ 约为
+$\qty{1.39}{\angstrom}$。\textbf{这三件事必须一起记住，因为它们决定了实测峰位的精度上限}：
+（1）K$\alpha_1$ 与 K$\alpha_2$ 的波长差约 $\qty{0.0038}{\angstrom}$，在高角区
+（$\theta$ 大）二者的峰完全分开，低角区则并成一个不对称的宽峰；
+（2）因此\textbf{不加单色器时，低角峰位的重心、高角峰位的分峰方式，都会改变你报告的 $d$
+值}；（3）只有在明确说明「K$\alpha_1$ 单色」时，$\qty{1.5406}{\angstrom}$ 才是可用的波长。
+\end{measure}
+
+\begin{dataflow}
+给定靶材与滤波/单色条件，$\lambda$ 即固定；由实测 $2\theta$ 经 Bragg 方程得到 $d$，
+再由指标化与晶胞参数关系得到 $a$。这条链条上\textbf{每一个环节都把误差传给下一个环节}，
+所以「峰位准不准」最终由波长取值、双线处理方式与仪器系统误差共同决定，而不是只由测角仪
+的分辨率决定。
+\end{dataflow}
+
+\subsubsection{X 射线与物质的相互作用：吸收与质量吸收系数}
+
+X 射线是电磁波，与物质作用主要发生在电子上，效应包括吸收、透过、散射、击出电子等。
+与晶体学相关的主要是\textbf{吸收}与\textbf{散射}。一束强度为 $I_0$ 的 X 射线穿过厚度为
+$x$ 的均匀物质后，透射强度为
+\begin{equation}
+I=I_0\,\mathrm{e}^{-\mu x},
+\label{eq:lambert}
+\end{equation}
+其中 $\mu$ 为\textbf{线吸收系数}，与波长、物质种类和状态有关（式~\eqref{eq:lambert} 即
+朗伯--比尔定律）。代入密度 $\rho$ 后可改写成与状态无关的形式
+\begin{equation}
+I=I_0\,\mathrm{e}^{-(\mu/\rho)\,\rho x},
+\qquad \mu_{\mathrm{m}}=\mu/\rho ,
+\label{eq:massabs}
+\end{equation}
+$\mu_{\mathrm{m}}$ 称\textbf{质量吸收系数}，单位 $\unit{cm^2.g^{-1}}$。量纲检查：
+式~\eqref{eq:lambert} 中 $\mu x$ 必须无量纲，故 $\mu$ 的单位是 $\unit{cm^{-1}}$；
+式~\eqref{eq:massabs} 中 $(\mu/\rho)\rho x=(\unit{cm^2.g^{-1}})(\unit{g.cm^{-3}})
+(\unit{cm})$，确为纯数。
+
+质量吸收系数有两条实用性质。\textbf{（1）随原子序数增大而增大，但受吸收边调制出现锯齿状
+波动。}（2）\textbf{具有加和性}：无论化合物、固溶体还是混合物，无论固、液、气态，体系的
+总质量吸收系数等于各元素按质量分数 $w_i$ 的加权和
+\begin{equation}
+\mu_{\mathrm{m}}=\sum_i w_i\,\mu_{\mathrm{m},i}.
+\label{eq:massadd}
+\end{equation}
+式~\eqref{eq:massadd} 的成立条件是\textbf{体系内各元素独立贡献、不发生协同效应}；在吸收边
+附近，只要各元素的吸收边位置不同，加和仍成立。\src{S1 §4.2.2，书内 p.235—236 /
+PDF p.254—255}
+
+\begin{example}[CuO 对 Cu K$\alpha$ 的质量吸收系数]
+已知 Cu K$\alpha$ 下 $\mu_{\mathrm{m}}(\mathrm{Cu})=\qty{52.0}{cm^2.g^{-1}}$（OCR 作
+「5$\dots$」，取标准表值），$\mu_{\mathrm{m}}(\mathrm{O})=\qty{11.5}{cm^2.g^{-1}}$；
+CuO 摩尔质量 $\qty{79.6}{g.mol^{-1}}$，其中 O 的质量分数约 $0.20$。按
+式~\eqref{eq:massadd}：$\mu_{\mathrm{m}}(\mathrm{CuO})=52.0\times0.80
++11.5\times0.20\approx\qty{43.9}{cm^2.g^{-1}}$。
+\tocheck{未对照原页面图像：OCR 中 Cu 的 $\mu_{\mathrm{m}}$ 数值残缺（「$\mu_m(\mathrm{Cu})=5\dots$」），
+本例的 $52.0$ 为标准表值而非原书取值，原书结果亦作 $\approx\qty{43.7}{cm^2.g^{-1}}$，
+与本文重算的 $43.9$ 差在四舍五入；报告数据时请以原书或《国际晶体学表》C 卷为准。}
+\end{example}
+
+\subsubsection{K吸收、二次荧光与X 射线的单色化}
+
+\textbf{K 吸收}：当 X 射线光子的能量与被照物质的 K 电子能量相当或略大时，光子几乎全部
+用于击出 K 电子，吸收显著增强；对应的波长称 \textbf{K 吸收边}。本书给出
+Mn 的吸收边为 $\qty{1.90}{\angstrom}$、Ni 为 $\qty{1.49}{\angstrom}$。K 电子被击出后，
+外层电子跳入 K 层填充空位，放出\textbf{次生 X 射线}；该荧光波长 $\lambda_{\text{次}}>
+\lambda_{\text{入射}}$，且与入射 X 射线\textbf{不相干}，只会抬高衍射背底而不产生衍射峰。
+
+\begin{pitfall}
+\textbf{二次荧光的判据是原子序数差，不是「样品里有没有重金属」。}当样品元素的原子序数
+大于靶元素、或远小于靶元素时，不会产生 K 吸收；但当样品元素原子序数比靶元素\textbf{小
+2—3} 时，会发生 K 吸收并产生较强的二次荧光。更隐蔽的一种情形是：原子序数增大到一定
+程度可能触发 \textbf{L 吸收}——例如 Ba、La 等元素对 Cu K$\alpha$ 有较强吸收。因此用
+Cu K$\alpha$ 作光源时，含 Co、Mn、Ba、Cu 等元素的样品会出现\textbf{背底抬高、衍射峰
+强度变弱}；而 Pb、Ba 这类重元素还有一个后果常被忽略：\textbf{样品的总吸收增大，会使
+「无限厚样品」的假设在浅层就失效}，从而进一步降低有效衍射体积。
+\end{pitfall}
+
+\textbf{单色化}有两条路。其一是\textbf{滤波片}：选比靶元素原子序数小 1—2 的元素作滤波片，
+使其 K 吸收边恰好落在 K$\alpha$ 与 K$\beta$ 之间，于是 K$\beta$ 被强烈吸收而 K$\alpha$
+大部分透过。例如 Ni 的 K 吸收边为 $\qty{1.49}{\angstrom}$，介于 Cu K$\alpha$
+（$\qty{1.54}{\angstrom}$）与 K$\beta$（$\qty{1.39}{\angstrom}$）之间，故用 Ni 滤片
+滤 Cu 靶。滤波片厚度的确定方法是：\textbf{使 X 射线透过滤波片后 K$\alpha$ 减弱约一半}，
+此时绝大部分 K$\beta$ 已被吸收，得到基本单色化的 K$\alpha$ 线（图~\ref{fig:mono}）。
+滤波片的代价是强度损失，而且\textbf{它不改变 K$\alpha$ 的双线结构}。
+
+其二是\textbf{晶体单色器}：对给定晶面与衍射级数，Bragg 方程 $2d\sin\theta=n\lambda$
+给出「不同波长对应不同衍射角」，因此在特定角度接收即可得到单色 X 射线。目前衍射仪普遍
+使用\textbf{石墨晶体单色器}（利用其 $002$ 衍射），并把晶体制成弯曲形状使单色光聚焦以提高
+强度；高分辨衍射仪中也有用 Ge 单色器分离出纯 K$\alpha_1$ 的做法
+\src{S1 §4.2.3，书内 p.236—238 / PDF p.255—257}。
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+% 左：K 吸收边的锯齿（示意）
+\begin{scope}
+\draw[axisline,->] (-0.10,0) -- (3.35,0) node[below,font=\fontsize{8}{9.5}\selectfont]{$\lambda$};
+\draw[axisline,->] (-0.10,0) -- (-0.10,2.30) node[left,font=\fontsize{8}{9.5}\selectfont]{$\mu_{\mathrm{m}}$};
+% 阀前曲线（长波侧，吸收大）
+\draw[mainline] (0.30,1.95) .. controls (0.62,1.30) and (0.86,1.02) .. (1.06,0.86);
+% 吸收边：向上突跃
+\draw[mainline] (1.06,0.86) -- (1.06,1.62);
+% 阀后曲线（短波侧，吸收小）
+\draw[mainline] (1.06,1.62) .. controls (1.60,0.98) and (2.40,0.62) .. (3.10,0.46);
+\draw[thinline,dashed] (1.06,0) -- (1.06,1.62);
+\node[below,font=\fontsize{8}{9.5}\selectfont] at (1.10,-0.02) {$\lambda_K$};
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=west] at (1.30,1.90) {K 吸收边};
+% 入射波长位置
+\draw[thinline,dotted] (1.72,0) -- (1.72,1.10);
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=south] at (1.74,1.06) {$\lambda$ 入射};
+\node[font=\fontsize{8}{9.5}\selectfont] at (1.75,-0.52) {(a) K 吸收边};
+\end{scope}
+% 右：滤波前 / 滤波后的谱（示意）
+\begin{scope}[xshift=4.25cm]
+\draw[axisline,->] (-0.10,0) -- (3.35,0) node[below,font=\fontsize{8}{9.5}\selectfont]{$\lambda$};
+\draw[axisline,->] (-0.10,0) -- (-0.10,2.30) node[left,font=\fontsize{8}{9.5}\selectfont]{$I$};
+% 连续谱包络
+\draw[thinline,dashed] (0.20,1.45) .. controls (1.00,1.05) and (2.10,0.72) .. (3.10,0.52);
+% K_beta 峰（未滤）
+\draw[mainline] (0.94,0.80) -- (1.00,1.72) -- (1.06,0.80);
+% K_alpha 双线
+\draw[mainline] (1.62,0.72) -- (1.68,1.86) -- (1.74,0.72);
+\draw[mainline] (1.80,0.70) -- (1.86,1.42) -- (1.92,0.70);
+% 滤波后残留
+\draw[thinline,dotted] (0.94,0.78) -- (1.00,0.98) -- (1.06,0.78);
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=south] at (1.00,1.74) {K$\beta$};
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=south] at (1.79,1.88) {K$\alpha_1$ K$\alpha_2$};
+\node[font=\fontsize{8}{9.5}\selectfont] at (1.75,-0.52) {(b) 滤波片的作用};
+\end{scope}
+\end{tikzpicture}
+\caption{（a）质量吸收系数随波长的变化与 K 吸收边：波长变短吸收总体下降，但在
+$\lambda_K$ 处出现向上突跃。读者应看「突跃的位置」而非曲线高度，因为滤波片的选择完全
+由这个位置决定。（b）滤波片的作用：滤波片的吸收边落在 K$\beta$ 与 K$\alpha$ 之间，
+故 K$\beta$ 被强烈吸收（虚线为滤波后残留），而 K$\alpha_1$、K$\alpha_2$ 双线结构
+\textbf{原样保留}。两图纵轴均为任意单位，曲线为示意形状，不代表任何具体测量
+值。\schemamark\figsrc{据 S1（上册）图 4-7、图 4-8，书内 p.236—237 / PDF p.255—256 改绘。}}
+\label{fig:mono}
+\end{figure}
+
+\subsection{衍射的几何原理：倒易空间与衍射方法}
+
+\begin{principle}
+衍射几何可以用两种等价语言表述。\textbf{Bragg 语言}只含一个角度参数，便于实测：
+$2d\sin\theta=n\lambda$。\textbf{倒易空间语言}把「衍射是否发生」化为「倒易格点是否落在
+Ewald 球面上」，便于理解衍射图的整体形状、仪器设计与极限球。倒易格子是正格子的一种
+数学变换，二者一一对应；在多晶衍射中，Bragg 方程中的 $d$ 与 $\sin\theta$ 正是倒易关系。
+\end{principle}
+
+\subsubsection{倒易格子与正格子的关系}
+
+设正格子由规定素单位的三个向量 $\boldsymbol{a},\boldsymbol{b},\boldsymbol{c}$ 描述，
+定义三个新向量 $\boldsymbol{a}^{*},\boldsymbol{b}^{*},\boldsymbol{c}^{*}$ 使
+\begin{equation}
+\boldsymbol{a}^{*}\cdot\boldsymbol{a}=1,\quad
+\boldsymbol{a}^{*}\cdot\boldsymbol{b}=0,\quad
+\boldsymbol{a}^{*}\cdot\boldsymbol{c}=0,
+\label{eq:recipdef}
+\end{equation}
+其余两式按 $\boldsymbol{a}\rightarrow\boldsymbol{b}\rightarrow\boldsymbol{c}$ 循环。
+由式~\eqref{eq:recipdef} 与晶胞体积 $V=\boldsymbol{a}\cdot(\boldsymbol{b}\times
+\boldsymbol{c})$ 可得显式表达式
+\begin{equation}
+\boldsymbol{a}^{*}=\frac{\boldsymbol{b}\times\boldsymbol{c}}{V},\qquad
+\boldsymbol{b}^{*}=\frac{\boldsymbol{c}\times\boldsymbol{a}}{V},\qquad
+\boldsymbol{c}^{*}=\frac{\boldsymbol{a}\times\boldsymbol{b}}{V}.
+\label{eq:recipvec}
+\end{equation}
+量纲检查：分子是长度平方（叉积），分母是长度立方，故 $\boldsymbol{a}^{*}$ 的单位为
+$\unit{\angstrom^{-1}}$，与式~\eqref{eq:recipdef} 点积后为纯数一致。式~\eqref{eq:recipvec}
+的成立条件是\textbf{$\boldsymbol{a},\boldsymbol{b},\boldsymbol{c}$ 线性无关}（$V\neq0$）。
+
+倒易格子有四条对衍射直接有用的性质：\textbf{（1）}它本身也是点阵，具有点阵的全部性质；
+由原点指向任意格点的矢量 $\boldsymbol{H}=h\boldsymbol{a}^{*}+k\boldsymbol{b}^{*}
++l\boldsymbol{c}^{*}$ \textbf{垂直于}正格子中的平面族 $(h'k'l')$，其中
+$h=nh'$、$k=nk'$、$l=nl'$，$n$ 为衍射级数。\textbf{（2）}倒易矢量长度与晶面间距成反比，
+$|\boldsymbol{H}_{hkl}|=1/d_{hkl}$。\textbf{（3）}它是一种虚格子，来自正格子的数学变换，
+但与正空间存在确定对应：素格子的倒易格子仍是素格子，体心格子的倒易格子是面心格子，
+面心格子的倒易格子是体心格子，底心格子的倒易格子仍是底心格子。\textbf{（4）}由正格子可
+唯一确定倒易格子的三个基矢长度与夹角，反之亦然。
+
+各晶系可把参数代入式~\eqref{eq:recipvec} 简化，常用的结果列于表~\ref{tab:recip-simple}
+\src{S1 §4.3.1，书内 p.238—239 / PDF p.257—258}。
+
+\begin{table}[htbp]
+\centering
+\caption{几种晶系的正--倒格子参数对应（素格子）}
+\label{tab:recip-simple}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}lXX@{}}
+\toprule
+晶系 & 倒格子基矢长度 & 倒格子夹角 \\
+\midrule
+简单立方 & $a^{*}=1/a$ & 均为 $90^{\circ}$ \\
+简单四方 & $a^{*}=b^{*}=1/a$，$c^{*}=1/c$ & 均为 $90^{\circ}$ \\
+六方与简单三方 & $a^{*}=b^{*}=1/(a\sin120^{\circ})$，$c^{*}=1/c$ & 均为 $90^{\circ}$ \\
+简单正交 & $a^{*}=1/a$，$b^{*}=1/b$，$c^{*}=1/c$ & 均为 $90^{\circ}$ \\
+简单单斜 & 以 $b$ 为唯性轴，$a^{*}=1/(a\sin\beta)$，$b^{*}=1/b$，$c^{*}=1/(c\sin\beta)$ & $\alpha^{*}=\gamma^{*}=90^{\circ}$，$\beta^{*}=180^{\circ}-\beta$ \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\begin{keycond}
+表~\ref{tab:recip-simple} 只对\textbf{素格子}成立。复格子（$I$、$F$、$C$、$R$）的倒易
+格子转换更复杂，需要借助素格子与复格子之间的相互转换或几何作图实现。实际处理中更常用的
+做法是\textbf{不换格子，而在结构因子里体现带心平移}，从而把「复格子的倒易格子」化为
+「素格子的倒易格子 $+$ 系统消光条件」——这正是 4.3 节后半段的思路。
+\end{keycond}
+
+\subsubsection{倒易点阵的应用：Ewald 球、极限球与多晶德拜环}
+
+\begin{principle}
+\textbf{衍射条件。}设入射线与衍射线的单位矢量分别为 $\boldsymbol{s}_0$ 与
+$\boldsymbol{s}$。晶体在倒易格点 $\boldsymbol{H}_{hkl}$ 处产生衍射的条件是
+\begin{equation}
+\frac{\boldsymbol{s}-\boldsymbol{s}_0}{\lambda}=\boldsymbol{H}_{hkl}
+=h\boldsymbol{a}^{*}+k\boldsymbol{b}^{*}+l\boldsymbol{c}^{*}.
+\label{eq:laue-vec}
+\end{equation}
+式~\eqref{eq:laue-vec} 左、右两侧的单位均为 $\unit{\angstrom^{-1}}$。把正空间三个基矢
+分别与式~\eqref{eq:laue-vec} 点乘，用式~\eqref{eq:recipdef} 即得
+\textbf{Laue 方程}
+\begin{equation}
+\boldsymbol{a}\cdot\Delta\boldsymbol{s}=h\lambda,\qquad
+\boldsymbol{b}\cdot\Delta\boldsymbol{s}=k\lambda,\qquad
+\boldsymbol{c}\cdot\Delta\boldsymbol{s}=l\lambda .
+\label{eq:laue}
+\end{equation}
+其中 $\Delta\boldsymbol{s}\equiv\boldsymbol{s}-\boldsymbol{s}_0$ 为衍射前后单位矢
+之差。Laue 方程与 Bragg 方程\textbf{完全等价}，但它涉及三个方程与更多参数；只含一个
+角度参数的 Bragg 方程在实测中更常用。\src{S1 §4.3.2，书内 p.239—241 / PDF p.258—260}
+\end{principle}
+
+\begin{equation}
+2d_{hkl}\sin\theta=n\lambda \qquad (n=1,2,3,\dots)
+\label{eq:bragg}
+\end{equation}
+\begin{keycond}
+\textbf{Bragg 方程的成立条件}：（1）\textbf{弹性相干散射}——散射前后波长不变，散射体
+之间有确定的相位关系（这正是「晶体」而非「非晶」的前提）；（2）\textbf{入射与衍射束
+共面并对称分布在晶面法线两侧}，$\theta$ 是掠射角而非入射束与法线的夹角；
+（3）$d_{hkl}$ 是\textbf{互质指数} $(hkl)$ 的面间距，级数 $n$ 单独列出；若把 $n$ 并入
+指数（写成 $nh\;nk\;nl$），则须取 $n=1$ 并使用对应的 $d_{nh,nk,nl}=d_{hkl}/n$，两种
+写法不可混用（见式~\eqref{eq:cubic-d} 的说明）。量纲检查：$d$ 与 $\lambda$ 同为长度，
+$\sin\theta$ 为纯数，量纲自洽。
+\end{keycond}
+
+对立方晶系，晶面间距与晶胞参数的关系为
+\begin{equation}
+\frac{1}{d_{hkl}^{2}}=\frac{h^{2}+k^{2}+l^{2}}{a^{2}}
+\quad\Longrightarrow\quad
+d_{hkl}=\frac{a}{\sqrt{h^{2}+k^{2}+l^{2}}}.
+\label{eq:cubic-d}
+\end{equation}
+式~\eqref{eq:cubic-d} 的成立条件是晶胞为\textbf{立方}（$a=b=c$，$\alpha=\beta=
+\gamma=90^{\circ}$）。把式~\eqref{eq:cubic-d} 代入式~\eqref{eq:bragg} 得到最常用的工作
+公式
+\begin{equation}
+\sin^{2}\theta=\frac{\lambda^{2}}{4a^{2}}\,(h^{2}+k^{2}+l^{2}).
+\label{eq:cubic-sin2}
+\end{equation}
+式~\eqref{eq:cubic-sin2} 是立方晶系指标化与晶胞参数精修的出发点：$\sin^{2}\theta$ 与
+$(h^{2}+k^{2}+l^{2})$ 成正比，比例系数含 $a$。
+\tocheck{未对照原页面图像：式~\eqref{eq:cubic-d} 与式~\eqref{eq:cubic-sin2} 系按学科标准
+形式重建。分片 a 的 OCR 文本中未出现这两个式子（它们应出现于指标化/晶胞参数部分，可能在
+4.4 及以后，或原书以文字表述），请核对本书是否采用 $1/d^{2}$ 的写法以及是否把衍射级数
+$n$ 并入指数。}
+
+\textbf{Ewald 反射球}（图~\ref{fig:bragg-ewald}a、b）。以晶体所在点 $A$ 为球心、
+$1/\lambda$ 为半径作球。$O$ 为倒易格子原点，$\overrightarrow{AO}$ 即入射方向
+$\boldsymbol{s}_0/\lambda$。若倒易格点 $B$ 落在球面上，则
+$\overrightarrow{AB}=\boldsymbol{s}/\lambda$ 给出衍射方向，而
+$\overrightarrow{OB}=\boldsymbol{s}/\lambda-\boldsymbol{s}_0/\lambda
+=\boldsymbol{H}_{hkl}$。由图中的几何关系
+\begin{equation}
+OB=2\!\left(\frac{1}{\lambda}\right)\sin\theta
+\quad\Longleftrightarrow\quad
+OB=\frac{1}{d_{hkl}}=\left|\boldsymbol{H}_{hkl}\right| .
+\label{eq:ewald-geom}
+\end{equation}
+式中左端由三角形的几何关系得出，中间的等价关系则由
+$2d_{hkl}\sin\theta=n\lambda$ 直接给出。结论是：\textbf{倒易格子中凡落在反射球面上的点都产生衍射，衍射方向就是球心与该格点的
+连线方向}。
+
+\textbf{多晶为什么给出环，粉末衍射仪上又为什么变成峰。}对单晶，给定波长时必须不断改变
+晶体取向才能让倒易格子与反射球相交。对多晶样品，\textbf{大量微晶无规取向}，同一个
+$(hkl)$ 的倒易点在空间中绕原点扫出一个半径 $1/d_{hkl}$ 的\textbf{球面}；该倒易球面与
+Ewald 反射球（半径 $1/\lambda$，球心在 $A$）相交成一个\textbf{圆}。衍射方向沿
+$\overrightarrow{AB}$ 扫出以入射方向为轴、半顶角 $2\theta$ 的圆锥面——在平板探测器或
+德拜相机上就是一条\textbf{德拜环}。粉末衍射仪中，探测器只在与入射束共面、且满足
+$FS=SD$ 的聚焦几何方向上接收（见 4.3.3），只切到这个圆锥的一条母线，于是环被「读成」
+一个\textbf{峰}，横轴为 $2\theta$。这就是「同一份数据，照相法看到环、衍射仪看到峰」的
+原因。
+
+\textbf{极限球。}只有落在以 $O$ 为中心、半径 $R=2/\lambda$ 的球内的倒易格点才可能产生
+衍射，该球称\textbf{衍射极限球}。由 $\sin\theta\le1$ 及
+$|\boldsymbol{H}|=2\sin\theta/\lambda$ 可得 $|\boldsymbol{H}|\le2/\lambda$，换言之
+\textbf{只有 $d\ge\lambda/2$ 的衍射是可达的}。由此：X 射线波长越短，可收集的衍射范围
+越大、衍射线越密；倒易格子越密，收集到的衍射越多。所以\textbf{波长选择要按样品定}——
+晶面间距 $d$ 大的样品宜用长波长 X 射线，否则大量低角信息落在极限球之外；而多晶衍射
+反而常用较长的 Cu 靶（$\lambda=\qty{1.54}{\angstrom}$）以\textbf{尽量拉开衍射角、
+减少峰重叠}，单晶衍射则常用 Mo 靶（$\lambda\approx\qty{0.71}{\angstrom}$）以多收
+数据点。两者的取舍方向恰好相反。\src{S1 §4.3.2，书内 p.240—241 / PDF p.259—260}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+% (a) Bragg 构型
+\begin{scope}
+\coordinate (O) at (0,0);
+\coordinate (nO) at (0,1.90);
+\coordinate (Apt) at (-1.55,0.53);
+% 晶面族
+\draw[accent,thinline] (-1.85,-1.15) -- (1.85,1.15);
+\draw[accent,thinline] (-2.00,-1.60) -- (1.85,0.62);
+\draw[accent,thinline] (-1.30,-1.75) -- (2.00,0.35);
+\fill (O) circle (0.9pt);
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=north] at (0.02,-0.10) {晶面 $(hkl)$};
+% 法线
+\draw[thinline,dashed] (O) -- (nO);
+\path (O) -- (nO) node[font=\fontsize{8}{9.5}\selectfont,midway,anchor=west,inner sep=1pt] {$n$};
+% 入射线与延长线
+\draw[mainline,-{Stealth[length=4pt]}] (Apt) -- (O);
+\draw[thinline,dashed] (O) -- (1.30,-1.20);
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=east] at (-1.58,0.56) {入射线};
+% 衍射线
+\draw[mainline,-{Stealth[length=4pt]}] (O) -- (1.55,0.70);
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=west] at (1.58,0.72) {衍射线};
+% 2theta 弧
+\draw[thinline,accent] (0.78,-0.72) arc[start angle=-42.7,end angle=24.3,radius=1.06];
+\node[font=\fontsize{8}{9.5}\selectfont] at (0.48,-0.95) {$2\theta$};
+% 面间距 d 与间距标记
+\draw[thinline,dashed] (1.68,1.05) -- (1.92,1.05);
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=west] at (1.95,1.05) {$d_{hkl}$};
+\node[font=\fontsize{8}{9.5}\selectfont] at (0,-2.05) {(a) Bragg 构型};
+\end{scope}
+% (b) Ewald 球
+\begin{scope}[xshift=4.05cm,scale=1.02]
+\coordinate (A) at (0,1);
+\coordinate (C) at (0,0);
+\draw[axisline] (C) circle (1.57);
+% 倒易格子点
+\foreach \xx in {0,0.5,1.0,1.5,-0.5,-1.0,-1.5}{
+  \foreach \yy in {1.0,0.5,0,-0.5,-1.0}{
+    \pgfmathsetmacro{\rr}{sqrt(\xx*\xx+\yy*\yy)}
+    \pgfmathparse{(\rr>0.18)&&(\rr<1.50)?1:0}
+    \ifnum\pgfmathresult=1
+      \fill[black] (\xx,\yy) circle (0.022);
+    \fi
+  }
+}
+\fill (A) circle (0.032);
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=south west] at (0.02,1.02) {$O$（倒易原点）};
+\fill (C) circle (0.026);
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=north east] at (-0.04,-0.02) {$A$（晶体）};
+% 入射 / 衍射方向
+\draw[mainline,-{Stealth[length=4pt]}] (A) -- (C);
+\draw[mainline,-{Stealth[length=4pt]}] (A) -- (0.47,-0.168);
+\draw[thinline,dashed] (A) -- (0.9,-0.322);
+\draw[thinline,dashed] (C) -- (0.47,-0.168);
+\fill (0.47,-0.168) circle (0.034);
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=west] at (0.50,-0.20) {$B$ $(hkl)$};
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=west,rotate=-19] at (0.06,0.16) {$\boldsymbol{s}_0/\lambda$};
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=north,rotate=-19] at (0.24,-0.30) {$\boldsymbol{s}/\lambda$};
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=north] at (-0.14,-0.42) {$1/\lambda$};
+\draw[thinline,accent] (0.36,-0.128) arc[start angle=-19.7,end angle=-90,radius=0.50];
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=west] at (0.16,-0.60) {$2\theta$};
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=north] at (0,-1.85) {(b) Ewald 球与倒易格点};
+\end{scope}
+\end{tikzpicture}
+\caption{\sloppy 衍射几何的两种等价表述。\textbf{（a）Bragg 构型}：读者应看三件事——$\theta$ 是
+入射束与晶面之间的掠射角，晶面法线与入射线和衍射线夹角的平分线重合，衍射束与入射束的
+夹角为 $2\theta$；同一族晶面中只有满足 $2d\sin\theta=n\lambda$ 的角度才出射，这就是
+「峰位只由 $d$ 与 $\lambda$ 决定」的几何来源。\textbf{（b）Ewald 球}：球心 $A$ 是晶体，
+球半径为 $1/\lambda$，倒易原点 $O$ 落在球面上。凡落在球面上的倒易格点（如 $B$）都
+产生衍射：由球心指向该格点的方向即衍射方向，格点矢量 $H_{hkl}$ 的长度等于 $1/d_{hkl}$。
+多晶样品中各微晶的同一 $(hkl)$ 倒易点绕 $O$ 扫成球面，该球面与 Ewald 球相交成圆，
+衍射方向随之扫成圆锥，在探测器或底片上即为德拜环。两图均为矢量关系的示意，格点间距
+与球半径的比例不代表任何具体晶体。\schemamark\figsrc{据 S1（上册）图 4-9，书内 p.240 /
+PDF p.259 改绘（本图另补入 Bragg 构型以便对照）。}}
+\label{fig:bragg-ewald}
+\end{figure}
+
+\subsubsection{峰位、峰强与峰形各自携带什么信息}
+
+把上面的几何换成三个可读量（图~\ref{fig:pattern-info}），本章后面的所有方法都是这三条线
+的延伸。
+
+\begin{equation}
+F(hkl)=\sum_{j=1}^{N} f_j\,
+\exp\!\left[\,2\pi i\,(hx_j+ky_j+lz_j)\,\right]
+=\sum_{j=1}^{N} f_j\,\mathrm{e}^{\mathrm{i}\varphi_j},
+\label{eq:sf}
+\end{equation}
+\begin{equation}
+\varphi_j=2\pi\,(hx_j+ky_j+lz_j),
+\label{eq:phase}
+\end{equation}
+\begin{equation}
+I(hkl)\propto\left|F(hkl)\right|^{2}\cdot L\!P\cdot A(\theta)\cdot
+\exp\!\left(-2M\right),
+\label{eq:intensity}
+\end{equation}
+式~\eqref{eq:sf} 中 $f_j$ 是第 $j$ 个原子的\textbf{原子散射因子}，$(x_j,y_j,z_j)$ 是其
+分数坐标，$N$ 为晶胞内原子数，$\varphi_j$ 为该原子的相位；$|F(hkl)|^{2}$ 决定该衍射的
+\textbf{本征强度}。
+式~\eqref{eq:intensity} 中 $L\!P$ 为 Lorentz--偏振因子、$A(\theta)$ 为吸收因子、
+$\exp(-2M)$ 为温度因子（Debye--Waller 因子）。量纲检查：$f_j$ 以「一个电子的散射
+振幅」为单位，$\varphi_j$ 为纯数（$h,k,l$ 与分数坐标均无量纲），故 $F$ 与 $I$ 均为
+相对量，实际工作中以相对强度报告。\tocheck{未对照原页面图像：式~\eqref{eq:sf} 与
+式~\eqref{eq:intensity} 是按学科标准形式重建的（分片 a 的 OCR 文本未给出结构因子式，
+它们应出现在分片 b/c 的强度与精修部分）。本书是否把温度因子写成 $\exp(-2M)$、是否把
+$L\!P$ 与 $A(\theta)$ 合并为单一校正项，请核对原页面。}
+
+\begin{keycond}
+\textbf{结构因子与系统消光的关键条件}：（1）式~\eqref{eq:sf} 求和\textbf{只对晶胞内
+全部原子}进行，原子种类由 $f_j$ 体现，位置由相位 $\varphi_j$ 体现；因此
+\textbf{「点阵型式」不足以决定消光规律，必须连基元一起算}。（2）\textbf{消光只发生在
+$F(hkl)\equiv0$ 时}，其后果是\textbf{系统性缺失}（整族反射全无），而不是强度偏低；
+强度偏低的反射可能只是弱，不能据此判断消光。（3）温度因子使 $f_j$ 随 $\sin\theta/\lambda$
+增大而衰减，即\textbf{高角峰系统性偏弱}，这是比较峰强时必须先做的归一化。
+\end{keycond}
+
+\begin{table}[htbp]
+\centering
+\caption{常见点阵与基元的系统消光条件（$n$ 为整数）}
+\label{tab:extinction}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}lXX@{}}
+\toprule
+类型 & 出现的反射 & 系统缺失的反射 \\
+\midrule
+简单立方（$cP$） & 全部 $hkl$ & 无 \\
+体心立方（$cI$） & $h+k+l$ 为偶数 & $h+k+l$ 为奇数 \\
+面心立方（$cF$） & $h,k,l$ 全奇或全偶 & $h,k,l$ 奇偶混杂 \\
+金刚石型（$cF$ $+$ 双原子基元） & $h,k,l$ 全奇，或全偶且 $h+k+l=4n$ & 全偶但 $h+k+l\neq4n$（如 200、222） \\
+NaCl 型（$cF$ $+$ 双原子基元） & $h,k,l$ 全奇或全偶 & $h,k,l$ 奇偶混杂 \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\begin{pitfall}
+表~\ref{tab:extinction} 第 3 行与第 4、5 行是同一 $cF$ 点阵下的不同基元，消光规律却
+不同：\textbf{把「$cF$ 就一定全奇全偶」当成本质规律，会误判金刚石型与 NaCl 型结构}。
+同理，$cI$ 点阵的 $h+k+l$ 奇数缺失只说明「点阵带心」，要确定空间群还必须把滑移面
+（$a$、$b$、$c$、$n$、$d$、$e$）与螺旋轴引起的\textbf{条件消光}一并列出——只知道「有
+系统缺失」不等于知道「哪个空间群」。\src{S1 §4.1.2、§4.3，书内 p.227—231、p.239—241 /
+PDF p.246—250、p.258—260}
+\end{pitfall}
+
+\begin{dataflow}
+三个可读量到结论的对应关系是本章的骨架：
+\textbf{峰位（$2\theta$）}$\rightarrow$ Bragg 方程 $\rightarrow$ $d$ 值 $\rightarrow$
+指标化 $\rightarrow$ 晶胞参数与物相；\textbf{峰强} $\rightarrow$ 结构因子与占据/含量
+$\rightarrow$ 原子位置、相对含量（定量）；\textbf{峰形（半高宽、线型）}$\rightarrow$
+晶粒尺寸（Scherrer）、微应变、堆垛层错，但要\textbf{先扣除仪器宽化}。三条线索互相独立
+又互相依赖：峰位错了，指标化就错，$|F|^{2}$ 的比较也就失去意义。
+\end{dataflow}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=77mm, height=42mm,
+  scale only axis,
+  xmin=10, xmax=80, ymin=0, ymax=1.32,
+  xlabel={$2\theta$ / $^{\circ}$}, ylabel={$I$}, ylabel style={rotate=-90},
+  xtick={10,20,30,40,50,60,70,80},
+  ytick=\empty,
+  axis line style={axisline},
+]
+\addplot[domain=10:80,samples=900,mainline,black]
+  {0.90/(1+((x-21.6)/0.55)^2)
+  +0.26/(1+((x-21.9)/0.55)^2)
+  +0.44/(1+((x-31.5)/0.70)^2)
+  +0.34/(1+((x-45.6)/0.60)^2)
+  +0.52/(1+((x-56.8)/0.72)^2)
+  +0.30/(1+((x-66.3)/0.85)^2)
+  +0.10/(1+((x-75.4)/1.0)^2)};
+% 峰位标注
+\draw[thinline,dashed] (21.6,0) -- (21.6,1.02);
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=west,align=left] at (22.4,1.14)
+  {峰位 $\rightarrow$ $d$ 值 $\rightarrow$ 晶胞参数、物相};
+% 峰强标注
+\draw[thinline,dashed] (56.8,0.52) -- (56.8,0.86);
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=west,align=left] at (48.4,0.94)
+  {峰强 $\rightarrow$ 结构因子、含量};
+% 峰宽标注
+\draw[thinline,{Stealth[length=3pt]}-{Stealth[length=3pt]}] (45.0,0.17) -- (46.2,0.17);
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=north west,align=left] at (38.0,0.10)
+  {峰宽 $\rightarrow$ 晶粒尺寸、微应变（须扣仪器宽化）};
+\end{axis}
+\end{tikzpicture}
+\caption{峰位、峰强、峰形三种信息的读法。读者应看三处标注分别指向横轴位置、纵轴高度与
+峰的半高宽：峰位是三者中\textbf{唯一可以做到高精度}的量，因为 $d$ 的相对误差与
+$\cot\theta$ 乘测角误差同量级，高角峰位因此更准；峰强受结构因子、择优取向、吸收与
+温度因子多重影响，定量前必须校正；峰宽则是尺寸、应变与仪器宽化的\textbf{卷积}，三者
+不能凭一条峰分开。纵轴 $I$ 为相对强度，本图为按有界线型函数（Lorentz 型）计算的模型图，
+峰位与峰强由教学设定，不代表任何真实样品。\modelmark\pedset{峰位与相对强度为教学设定
+值。}}
+\label{fig:pattern-info}
+\end{figure}
+
+\begin{crosscheck}
+XRD 的能力边界集中在表~\ref{tab:xrd-limits}：它给的是\textbf{长程有序的平均结构}，
+对局部结构、非晶、轻元素和纳米尺度信息要么不敏感、要么只能给「等效值」。凡是要下这类
+结论，都应当找互补手段回查，而不是把一条衍射曲线解释到极限。
+\end{crosscheck}
+
+\begin{table}[htbp]
+\centering
+\caption{XRD 能给出什么／不能给出什么}
+\label{tab:xrd-limits}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}lXX@{}}
+\toprule
+维度 & 能可靠给出 & 不能给出或只能给等效值 \\
+\midrule
+有序性 & 长程有序：晶胞参数、点阵型式、空间群线索 & 短程有序、局部配位、非晶结构（非晶无峰，只出弥散包） \\
+原子位置 & 重原子位置与占位（配合精修） & 氢与轻元素位置（$f$ 太小，几乎不贡献强度） \\
+物相 & 晶态物相鉴定与相对含量（需校正） & 非晶相含量、无定形表面层、单层分散物种的归属 \\
+尺寸与应变 & 相干衍射域尺寸（Scherrer，纳米级）与微应变的\textbf{耦合}结果 & 两者分开需要线型分析或多峰拟合；峰宽同时含仪器宽化 \\
+峰位误差 & 高角峰位精度可达 $10^{-4}$ 量级（$2\theta$） & 样品高度偏差、透明度、轴向发散引起的系统偏差不能靠平均消除 \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\begin{pitfall}
+\textbf{峰位系统误差必须与随机误差分开处理。}（1）\textbf{样品高度偏差}：样品表面偏离
+测角仪聚焦圆时，峰位整体偏移，且偏移量随 $2\theta$ 变化——低角与高角偏移方向相反、
+在 $2\theta=180^{\circ}$ 附近趋近于零。因此\textbf{用「内标」或「高角反射外推」可以
+校正，用「多点平均」不能}。（2）\textbf{样品透明度的深度穿透}：轻元素样品的 X 射线
+穿透深度大，衍射「重心」位于样品表面之下，等效于高度偏差。（3）\textbf{K$\alpha_2$
+未剥离}：在低角区 K$\alpha_1$ 与 K$\alpha_2$ 重叠成不对称峰，此时若用峰顶读
+$2\theta$，得到的是混合波长对应的位置，报告的 $d$ 值会随分峰方式而变。
+\tocheck{未对照原页面图像：样品高度偏差的量化关系（偏移量 $\propto\cos\theta$、
+在 $2\theta=180^{\circ}$ 处为零、低角负偏移/高角正偏移的符号约定）系按聚焦几何的
+标准结论写出；分片 a 的 OCR 文本未给出该式，也未确认本书在何处（可能在 4.4 及以后的
+仪器与误差部分）讨论，请核对原书的正负号与表达式。}
+\end{pitfall}
+
+\begin{measure}
+\textbf{实际测量中必须记录的实验条件}（缺一项，后续结论就无法回查）：
+靶材与滤光/单色方式（Cu K$\alpha$ 是否已剥离 K$\alpha_2$、有无 Ni 滤片或石墨单色器）、
+管压与管流、发散狭缝与接收狭缝、扫描步长与每步计数时间、$2\theta$ 扫描范围、
+样品制备方式（压片还是涂片、是否加内标、是否转动以抑制择优取向）。
+\textbf{判据}：若同一个样品两次测量的峰位差超过 $0.05^{\circ}$（$2\theta$），应先查
+制样与高度，再谈物相与晶胞参数的差异。\src{S1 §4.2—§4.3，书内 p.234—243 /
+PDF p.253—262}
+\end{measure}
+
+\begin{methodsum}
+分片 a 建立的链条是：\textbf{周期性}决定「有衍射」，\textbf{对称性与基元}决定「哪些
+衍射系统缺失」，\textbf{Ewald 球几何}决定「衍射出现在哪个 $2\theta$」（多晶中经德拜环
+退化为峰），\textbf{结构因子}决定「峰有多强」，\textbf{仪器与制样}决定「峰位准不准、
+峰形被污染多少」。三张表（晶系与布拉维格子、常见消光条件、XRD 能力边界）与三个公式
+（Bragg、结构因子、倒易--Ewald 关系）是后续分片反复调用的公共接口。
+\end{methodsum}
+
+\srcnote{本节依据 S1（上册）第 4 章 4.1—4.3 节编写，覆盖书内 p.219—243 /
+PDF p.238—262。原书 4.1.2 中宏观对称要素表（表 4-1）、螺旋轴与滑移面表（表 4-3、
+表 4-4）、空间群国际记号三个位方向（表 4-5）与 $P2_1/c$ 等效点系（表 4-6）属群论
+细节，本分片按压缩原则未逐表转录，只保留与衍射判读直接相关的结论；需要查阅原子坐标
+生成规则时请回原文。}

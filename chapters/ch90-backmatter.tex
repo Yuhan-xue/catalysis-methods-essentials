@@ -1,0 +1,274 @@
+% ================================================================
+%  chapters/ch90-backmatter.tex
+%  后置材料：缩写与全称、主要符号、术语索引、勘误与待核对
+%
+%  版式说明：三张长表放在「单栏整页」上（\widepageson/\widepagesoff），
+%  表格宽度用 \textwidth（183mm）。**不要**在双栏正文里直接用 \twocolwidth 宽的表——
+%  双栏上下文里每栏只有 88.5mm，会超版心约 88mm（本项目实际踩过）。
+%
+%  索引设计：术语索引采用「术语 → 主定义章节」对照表，而不是自动生成的页码索引。
+%  理由：本书由多个分片并发编写，页码随排版反复变动；以 \chapref 建立的章节引用
+%  始终自洽，符合企划「交叉引用自动生成，禁止手写最终页码」。
+% ================================================================
+
+\chapterheadstar{符号、缩写与索引}{缩写与英文全称（保留英文学术检索入口）、
+按领域分组的主要符号、以及术语主定义的位置索引。符号在不同章可能含义不同，
+各章局部重新定义，本表标注其主定义所在章。}
+
+\subsection{缩写与英文全称}
+
+缩写表按字母序排列，给出英文全称、中文名与主定义章。使用本表时请注意两点：
+其一，同一缩写在源书中可能被 OCR 识别成不同写法（例如 DRIFT 曾被识别为 D班FT、
+TPSR 曾作 即SR／冲SR），本书统一按正文标题确认的写法；其二，\textbf{英文全称保留是为了
+学术检索}，中文名以本书用法为准，与源书译名不完全一致时以源书为准。
+
+\subsection{主要符号}
+
+\begin{pitfall}
+\textbf{同一符号在不同章含义不同，这是有意保留的。}例如 $C$ 在吸附章是
+BET 常数，在动力学上下文中可能表示浓度；$D$ 在衍射章是晶粒尺寸，在动力学章是扩散系数；
+$\theta$ 在吸附章是覆盖度，在衍射章是 Bragg 角；$\beta$ 在衍射章是峰宽，
+在电化学章是 Tafel 斜率；$\phi$ 在 XPS 中是谱仪功函数，在别处可能是体积分数。
+阅读时以\textbf{该章局部的定义}为准，不要把本表当作全局约定。
+\end{pitfall}
+
+\subsection{术语索引}
+
+按主题分组，给出主定义位置与相关讨论位置。页码随排版变动，故一律用章节引用。
+
+\widepageson
+
+{\srcsize
+\begin{xltabular}{\textwidth}{@{}p{20mm}p{64mm}X p{17mm}@{}}
+\toprule
+缩写 & 英文全称 & 中文名 & 主定义章 \\
+\midrule
+\endfirsthead
+\toprule
+缩写 & 英文全称 & 中文名 & 主定义章 \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+AES & Auger Electron Spectroscopy & 俄歇电子能谱 & \chapref{ch:09} \\
+AFM & Atomic Force Microscopy & 原子力显微镜 & \chapref{ch:12} \\
+ATR & Attenuated Total Reflection & 衰减全反射 & \chapref{ch:07} \\
+BET & Brunauer--Emmett--Teller (method) & BET 法（比表面积） & \chapref{ch:01} \\
+BJH & Barrett--Joyner--Halenda (method) & BJH 法（孔径分布） & \chapref{ch:01} \\
+CP/MAS & Cross Polarization / Magic Angle Spinning & 交叉极化／魔角旋转 & \chapref{ch:08} \\
+DFT & Density Functional Theory & 密度泛函理论 & \chapref{ch:01} \\
+DRIFT & Diffuse Reflectance Infrared Fourier Transform (spectroscopy) & 漫反射红外傅里叶变换光谱 & \chapref{ch:07} \\
+DSC & Differential Scanning Calorimetry & 差示扫描量热法 & \chapref{ch:03} \\
+DTA & Differential Thermal Analysis & 差热分析 & \chapref{ch:03} \\
+EDS/EDX & Energy-Dispersive X-ray Spectroscopy & X 射线能谱 & \chapref{ch:02} \\
+EELS & Electron Energy Loss Spectroscopy & 电子能量损失谱 & \chapref{ch:02} \\
+EXAFS & Extended X-ray Absorption Fine Structure & 扩展 X 射线吸收精细结构 & \chapref{ch:03} \\
+FTIR & Fourier Transform Infrared (spectroscopy) & 傅里叶变换红外光谱 & \chapref{ch:03} \\
+HDS & Hydrodesulfurization & 加氢脱硫 & \chapref{ch:07} \\
+IMFP & Inelastic Mean Free Path & 非弹性平均自由程 & \chapref{ch:09} \\
+IR & Infrared (spectroscopy) & 红外（光谱） & \chapref{ch:07} \\
+ISS & Ion Scattering Spectroscopy & 离子散射谱 & \chapref{ch:09} \\
+IUPAC & International Union of Pure and Applied Chemistry & 国际纯粹与应用化学联合会 & \chapref{ch:01} \\
+L-H & Langmuir--Hinshelwood (mechanism) & 朗缪尔--欣谢尔伍德机理 & \chapref{ch:10} \\
+MARI & Most Abundant Reaction Intermediate & 最丰富反应中间物 & \chapref{ch:10} \\
+MAS & Magic Angle Spinning & 魔角旋转 & \chapref{ch:08} \\
+MS & Mass Spectrometry & 质谱 & \chapref{ch:03} \\
+Nano-FTIR & nanoscale Fourier Transform Infrared spectroscopy & 纳米傅里叶变换红外光谱 & \chapref{ch:12} \\
+NLDFT & Non-Local Density Functional Theory & 非局域密度泛函理论 & \chapref{ch:01} \\
+NMR & Nuclear Magnetic Resonance & 核磁共振 & \chapref{ch:08} \\
+operando & working-state in situ spectroscopy & 工作状态下原位（光谱）技术 & \chapref{ch:07} \\
+RDS & Rate-Determining Step & 速率控制步骤 & \chapref{ch:10} \\
+Rietveld & Rietveld full-pattern refinement & 里特维尔德全谱拟合精修 & \chapref{ch:04} \\
+Scherrer & Scherrer equation & 谢乐方程（峰宽与晶粒尺寸） & \chapref{ch:04} \\
+SSITKA & Steady-State Isotopic Transient Kinetic Analysis & 稳态同位素瞬变动力学分析 & \chapref{ch:10} \\
+STEM & Scanning Transmission Electron Microscopy & 扫描透射电子显微镜 & \chapref{ch:02} \\
+STM & Scanning Tunneling Microscopy & 扫描隧道显微镜 & \chapref{ch:12} \\
+TAP & Temporal Analysis of Products & 产物瞬时分析 & \chapref{ch:10} \\
+TEM & Transmission Electron Microscopy & 透射电子显微镜 & \chapref{ch:02} \\
+TERS & Tip-Enhanced Raman Spectroscopy & 针尖增强拉曼光谱 & \chapref{ch:12} \\
+TG & Thermogravimetry & 热重法 & \chapref{ch:03} \\
+TOF & Turnover Frequency & 转换频率 & \chapref{ch:10} \\
+TON & Turnover Number & 转换数 & \chapref{ch:10} \\
+TPD & Temperature-Programmed Desorption & 程序升温脱附 & \chapref{ch:05} \\
+TPO & Temperature-Programmed Oxidation & 程序升温氧化 & \chapref{ch:05} \\
+TPR & Temperature-Programmed Reduction & 程序升温还原 & \chapref{ch:05} \\
+TPSR & Temperature-Programmed Surface Reaction & 程序升温表面反应 & \chapref{ch:05} \\
+UPS & Ultraviolet Photoelectron Spectroscopy & 紫外光电子能谱 & \chapref{ch:09} \\
+XAFS & X-ray Absorption Fine Structure (spectroscopy) & X 射线吸收精细结构谱 & \chapref{ch:03} \\
+XAS & X-ray Absorption Spectroscopy & X 射线吸收光谱 & \chapref{ch:06} \\
+XPS & X-ray Photoelectron Spectroscopy & X 射线光电子能谱 & \chapref{ch:09} \\
+XRD & X-ray Diffraction & X 射线衍射 & \chapref{ch:04} \\
+\end{xltabular}}
+
+\vspace{4mm}
+{\heiti\fontsize{11}{13.5}\selectfont 主要符号}
+
+\vspace{2mm}
+{\srcsize
+\begin{xltabular}{\textwidth}{@{}p{22mm}p{60mm}X p{17mm}@{}}
+\toprule
+符号 & 含义 & 单位 & 主定义章 \\
+\midrule
+\endfirsthead
+\toprule
+符号 & 含义 & 单位 & 主定义章 \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+$V$ & 吸附量 & \unit{cm^3.g^{-1}}（STP） & \chapref{ch:01} \\
+$V_{\mathrm{m}}$ & 单层饱和吸附量 & \unit{cm^3.g^{-1}} & \chapref{ch:01} \\
+$\ppzero$ & 相对压力 & 无量纲 & \chapref{ch:01} \\
+$C$ & BET 常数，$C\approx\exp[(E_1-E_{\mathrm{L}})/RT]$ & 无量纲 & \chapref{ch:01} \\
+$\sigma$ & 吸附质分子截面积 & \unit{nm^2} & \chapref{ch:01} \\
+$S_{\mathrm{BET}}$ & BET 比表面积 & \unit{m^2.g^{-1}} & \chapref{ch:01} \\
+$\theta$ & 表面覆盖度（吸附章） & 无量纲 & \chapref{ch:01} \\
+$\theta$ & Bragg 角（衍射章） & ° & \chapref{ch:04} \\
+$d_{hkl}$ & 晶面间距 & \unit{nm} & \chapref{ch:04} \\
+$\lambda$ & 波长（X 射线／电子） & \unit{nm} & \chapref{ch:04} \\
+$F_{hkl}$ & 结构因子 & 无量纲 & \chapref{ch:04} \\
+$\beta$ & 衍射峰积分宽度 & \unit{rad} 或 ° & \chapref{ch:04} \\
+$D$ & 晶粒尺寸（衍射章） & \unit{nm} & \chapref{ch:04} \\
+$D$ & 扩散系数（动力学章） & \unit{m^2.s^{-1}} & \chapref{ch:10} \\
+$a,b,c$ & 晶胞基矢长度 & \unit{nm} & \chapref{ch:04} \\
+$E_{\mathrm{B}}$ & 电子结合能 & \unit{eV} & \chapref{ch:09} \\
+$E_{\mathrm{k}}$ & 光电子动能 & \unit{eV} & \chapref{ch:09} \\
+$\phi$ & 谱仪功函数（XPS）／体积分数 & \unit{eV} / 无量纲 & \chapref{ch:09} \\
+$\delta$ & 化学位移（NMR／XPS） & \unit{ppm} / \unit{eV} & \chapref{ch:08} \\
+$J$ & 自旋--自旋耦合常数 & \unit{Hz} & \chapref{ch:08} \\
+$\nu$ & 频率 & \unit{Hz} 或 \unit{cm^{-1}} & \chapref{ch:06} \\
+$\tilde{\nu}$ & 波数 & \unit{cm^{-1}} & \chapref{ch:06} \\
+$\alpha$ & 转化率／反应度 & 无量纲 & \chapref{ch:10} \\
+$r$ & 反应速率 & \unit{mol.s^{-1}.g^{-1}} & \chapref{ch:10} \\
+$k$ & 速率常数 & 随级数而定 & \chapref{ch:10} \\
+$K$ & 吸附平衡常数 & 随定义而定 & \chapref{ch:05} \\
+$E_{\mathrm{a}}$ & 活化能（表观／本征须注明） & \unit{kJ.mol^{-1}} & \chapref{ch:10} \\
+$A$ & 指前因子 & 随级数而定 & \chapref{ch:10} \\
+$R$ & 摩尔气体常数 & \unit{J.mol^{-1}.K^{-1}} & \chapref{ch:10} \\
+$\eta$ & 过电位（电化学） & \unit{V} & \chapref{ch:11} \\
+$j$ & 电流密度 & \unit{A.cm^{-2}} & \chapref{ch:11} \\
+$E$ & 电极电势 & \unit{V} & \chapref{ch:11} \\
+$Z$ & 阻抗 & \unit{\ohm} & \chapref{ch:11} \\
+$\beta$ & Tafel 斜率（电化学章） & \unit{mV.dec^{-1}} & \chapref{ch:11} \\
+$t$ & 吸附层统计厚度 & \unit{nm} & \chapref{ch:01} \\
+\end{xltabular}}
+
+\vspace{4mm}
+{\heiti\fontsize{11}{13.5}\selectfont 术语索引}
+
+\vspace{2mm}
+{\srcsize
+\begin{xltabular}{\textwidth}{@{}p{62mm}p{30mm}X@{}}
+\toprule
+术语 & 主定义 & 相关讨论 \\
+\midrule
+\endfirsthead
+\toprule
+术语 & 主定义 & 相关讨论 \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+\multicolumn{3}{@{}l}{\heiti 吸附与孔结构} \\
+物理吸附与化学吸附的判据 & \chapref{ch:01} & 与化学吸附的衔接见 \chapref{ch:05} \\
+IUPAC 等温线六型 & \chapref{ch:01} & 回滞环与孔形判读 \\
+BET 方程与适用窗口 & \chapref{ch:01} & $C$ 值的意义、微孔体系的高估 \\
+$t$ 图法与微孔分析 & \chapref{ch:01} & 与 NLDFT 的差别 \\
+宏观物性五项（表面积／孔容／颗粒度／密度／机械强度） & \chapref{ch:01} & 速查表 \\
+\midrule
+\multicolumn{3}{@{}l}{\heiti 电子显微与表面成像} \\
+电子与物质的相互作用、信号来源深度 & \chapref{ch:02} & 与扫描探针的比较见 \chapref{ch:12} \\
+电子衍射与倒易空间 & \chapref{ch:02} & 与多晶衍射的关系见 \chapref{ch:04} \\
+明场／暗场／高分辨成像的衬度来源 & \chapref{ch:02} & STEM 与成分分析 \\
+电子束辐射损伤与制样 & \chapref{ch:02} & 局限性与注意事项 \\
+STM 隧穿电流与扫描隧道谱 & \chapref{ch:12} & 近常压 STM \\
+AFM 工作模式与针尖--样品相互作用 & \chapref{ch:12} & TERS、Nano-FTIR \\
+\midrule
+\multicolumn{3}{@{}l}{\heiti 热分析} \\
+TG／DTA／DSC 的根本差别 & \chapref{ch:03} & 信号约定与定量能力 \\
+热分析动力学与等转化率法 & \chapref{ch:03} & 动力学三要素 \\
+联用技术（TG-IR／TG-MS／XRD-DSC） & \chapref{ch:03} & 升温速率、样品量、气氛、坩埚 \\
+\midrule
+\multicolumn{3}{@{}l}{\heiti 衍射与结构} \\
+Bragg 方程与衍射几何 & \chapref{ch:04} & Ewald 球、德拜环 \\
+结构因子与系统消光 & \chapref{ch:04} & 点阵型式判定 \\
+物相定性与定量分析 & \chapref{ch:04} & 参考强度比法 \\
+衍射图指标化与品质因子 & \chapref{ch:04} & Hesse--Lipson 法 \\
+Scherrer 方程与峰宽分析 & \chapref{ch:04} & 尺寸与应变的分离 \\
+Rietveld 全谱拟合精修 & \chapref{ch:04} & 峰形函数与择优取向 \\
+\midrule
+\multicolumn{3}{@{}l}{\heiti 化学吸附与程序升温} \\
+Langmuir／Freundlich／Temkin 等温式 & \chapref{ch:05} & 表面假设的差别 \\
+程序升温脱附原理与谱图判读 & \chapref{ch:05} & Redhead 方程及其前提 \\
+TPR／TPO／TPSR & \chapref{ch:05} & 氧化还原性能与积炭 \\
+活性位滴定与分散度 & \chapref{ch:05} & 计量比假设的风险 \\
+\midrule
+\multicolumn{3}{@{}l}{\heiti 振动光谱} \\
+拉曼效应与极化率变化 & \chapref{ch:06} & 与红外的互斥规则 \\
+荧光干扰与抑制途径 & \chapref{ch:06} & 共振拉曼、FT-拉曼、紫外拉曼 \\
+表面增强与共焦显微拉曼 & \chapref{ch:06} & 空间分辨与增强因子 \\
+透射／漫反射／发射／ATR 红外 & \chapref{ch:07} & 原位池与模式选择 \\
+探针分子与酸位表征 & \chapref{ch:07} & \ce{NH3}、\ce{CO}、吡啶 \\
+红外谱带归属与证据链 & \chapref{ch:07} & 消光系数的不确定性 \\
+\midrule
+\multicolumn{3}{@{}l}{\heiti 核磁共振} \\
+固体谱线增宽来源与窄化手段 & \chapref{ch:08} & MAS、去偶、CP \\
+魔角条件与旋转边带 & \chapref{ch:08} & 转速不足的判据 \\
+各核种（\ce{29Si}／\ce{27Al}／\ce{17O}／\ce{31P}） & \chapref{ch:08} & 四极核的特殊性 \\
+酸强度与探针分子 NMR & \chapref{ch:08} & \ce{1H} MAS NMR \\
+原位 MAS NMR 与积炭研究 & \chapref{ch:08} & 反应条件下的限制 \\
+\midrule
+\multicolumn{3}{@{}l}{\heiti 表面分析} \\
+表面、信息深度与非弹性平均自由程 & \chapref{ch:09} & 为何需要超高真空 \\
+光电效应与结合能关系式 & \chapref{ch:09} & 荷电校准与参考态 \\
+初态效应、化学位移与终态效应 & \chapref{ch:09} & 伴峰与多重分裂 \\
+XPS 定量（相对灵敏度因子法） & \chapref{ch:09} & 半定量的边界 \\
+谱图后处理（扣背景、分峰） & \chapref{ch:09} & 分峰的非唯一性 \\
+UPS／AES／ISS 与 XPS 的比较 & \chapref{ch:09} & 信息深度与元素范围 \\
+近常压与脉冲 XPS & \chapref{ch:09} & 准原位技术 \\
+\midrule
+\multicolumn{3}{@{}l}{\heiti 动力学与传递} \\
+速率方程、反应度与转换频率 & \chapref{ch:10} & TOF 的可比性前提 \\
+速率控制步骤与最丰富中间物 & \chapref{ch:10} & 双曲线式速率方程 \\
+幂式速率方程与经验拟合 & \chapref{ch:10} & 外推风险 \\
+动力学模型的回归与判别 & \chapref{ch:10} & 线性化带来的偏差 \\
+外扩散、内扩散与有效因子 & \chapref{ch:10} & 表观活化能的畸变 \\
+本征动力学区的确定 & \chapref{ch:10} & 传递干扰的排除 \\
+非稳态方法（SSITKA、TAP） & \chapref{ch:10} & 失活与振荡 \\
+\midrule
+\multicolumn{3}{@{}l}{\heiti 电化学催化} \\
+电极反应动力学与 Butler--Volmer 方程 & \chapref{ch:11} & Tafel 关系与交换电流 \\
+电势阶跃与电势扫描法 & \chapref{ch:11} & 扩散控制与可逆性判据 \\
+控制电流与整体电解 & \chapref{ch:11} & 库仑分析与电解分离 \\
+流体动力学方法与超微电极 & \chapref{ch:11} & 传质与电荷转移的分离 \\
+阻抗谱与等效电路 & \chapref{ch:11} & 半圆与 Warburg 阻抗 \\
+原位红外／拉曼／质谱 & \chapref{ch:11} & 中间物的直接证据 \\
+\midrule
+\multicolumn{3}{@{}l}{\heiti 跨方法} \\
+研究问题到方法的选择矩阵 & 导读 & 全书的入口 \\
+证据强度分级 & \chapref{ch:13-synthesis} & 自洽不等于支持 \\
+判断--方法约束矩阵 & \chapref{ch:13-synthesis} & 排他证据与替代解释 \\
+\end{xltabular}}
+
+\widepagesoff
+
+\subsection{勘误与待核对状态}
+
+本书对「未核对」的态度是\textbf{显式标注而不是隐去}。以下三类内容在正文中有专门标记，
+汇总如下，供使用者判断可信度：
+
+\begin{description}[leftmargin=0pt,style=nextline,font=\heiti]
+\item[\tocheck{待核对} 公式] 表示该式尚未与源书原页面图像逐式比对。本书的自动编写流程
+无法读取页面像素，公式由「OCR 上下文 + 学科标准形式」重建，风险集中在源书的符号约定
+与常数取值。已核对与待核对的清单见工程内 \texttt{sources/formula\_verify.md}。
+\item[\pedset{教学设定} 数值] 表示该数值是为说明计算步骤而设定的，\textbf{不是}源书或
+任何实验的测量结果，不得引用。
+\item[\supp{补充} 内容] 表示内容超出源书范围，附有独立来源与日期，与源书内容分开管理。
+\end{description}
+
+\begin{crosscheck}
+使用本书时，若某个结论对你的工作特别关键，请按正文的 \src{} 标记回到源书核对
+（上册 \texttt{S1}、下册 \texttt{S2}，同时给出书内页码与 PDF 页序）。
+本书的定位是\textbf{快速定位问题与方法、给出判断条件与陷阱}，
+不替代原始文献与源书本身。
+\end{crosscheck}

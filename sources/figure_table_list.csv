@@ -1,0 +1,40 @@
+﻿id,chapter,part,kind,label,caption_head,source_class,source_location,editable_source,planned_width,review_status
+ch01a-表01,1,a,table,tab:physis-chemis,物理吸附与化学吸附的判据,表格（图源四类不适用）,,chapters/parts/ch01-a.tex,单栏,待逐页渲染核查
+ch01a-图01,1,a,figure,fig:iupac,IUPAC 六型物理吸附等温线。读者应看三处：低相对压力段有无拐点、中段是否陡升、 高相对压力段有无平台。实线为,示意,据 S1（上册）图 1-7，书内 p.19 / PDF p.38 改绘。,chapters/parts/ch01-a.tex,未显式设定,待逐页渲染核查
+ch01a-表02,1,a,table,tab:isotherm-read,由等温线类型可读出的信息与常见误判,表格（图源四类不适用）,,chapters/parts/ch01-a.tex,单栏,待逐页渲染核查
+ch01a-图02,1,a,figure,fig:betplot,BET 直线形式。读者应看三处：数据点是否落在 $0.05$--$0.35$ 窗口内、 是否成直线、截距是否为正,模型计算,式 eq:bet-lin,chapters/parts/ch01-a.tex,单栏 84mm,待逐页渲染核查
+ch02a-图01,2,a,figure,fig:tem-col,透射电子显微镜电子光学系统的信号链。读者应看两处：一是后焦面与像平面 是两个并存的中间产物，中间镜的物平面选谁，,示意,据 S1（上册）图 2-1、2-4、2-5， 书内 p.88、p.91—92 / PDF p.107、p.110—111,chapters/parts/ch02-a.tex,未显式设定,待逐页渲染核查
+ch02a-表01,2,a,table,tab:tem-parts,透射电镜主要部件的作用与对成像/衍射的影响,表格（图源四类不适用）,,chapters/parts/ch02-a.tex,单栏,待逐页渲染核查
+ch02a-图02,2,a,figure,fig:tem-signals,高能电子与薄样品相互作用产生的信号及其来源深度。读者应看箭头的方向： 向上（背向）的信号只能来自表面或近表面，携,示意,据 S1（上册）图 2-6， 书内 p.95 / PDF p.114 改绘。,chapters/parts/ch02-a.tex,未显式设定,待逐页渲染核查
+ch02a-表02,2,a,table,tab:extinction,几种常见晶体结构的消光规律（$F$ 为结构因子，$n$ 为整数）,表格（图源四类不适用）,,chapters/parts/ch02-a.tex,单栏,待逐页渲染核查
+ch02a-表03,2,a,table,tab:pattern-read,衍射花样的形态与可读出的样品信息,表格（图源四类不适用）,,chapters/parts/ch02-a.tex,单栏,待逐页渲染核查
+ch02a-表04,2,a,table,tab:contrast,质厚衬度、衍射衬度与相位衬度的来源与适用条件,表格（图源四类不适用）,,chapters/parts/ch02-a.tex,单栏,待逐页渲染核查
+ch02a-图03,2,a,figure,fig:read-pattern,一个用于读图练习的多晶电子衍射花样示意（含少量异常明亮的斑点）。 读者应看三处：（i）环是连续还是断续——连续环,示意,,chapters/parts/ch02-a.tex,未显式设定,待逐页渲染核查
+ch02a-表05,2,a,table,tab:ring-index,多晶环花样的指认对照（$d$ 值按第一环归一）,表格（图源四类不适用）,,chapters/parts/ch02-a.tex,单栏,待逐页渲染核查
+ch03a-表01,3,a,table,tab:ch03-three,热重法、差热分析与差示扫描量热法的对照。读者应看两行：第二行的纵轴方向约定 （DTA 与 DSC 相反，是读图时,表格（图源四类不适用）,,chapters/parts/ch03-a.tex,跨栏,待逐页渲染核查
+ch03a-图01,3,a,figure,fig:ch03-tgdsc,同一模型样品上 TG、DTG 与 DSC 曲线的对应关系。读者应看三处：①—④ 的竖虚线把同一 温度区间的三种信,模型计算,信号约定与读图规则据 S1（上册）图 3-2（书内 p.175 / PDF p.194）与图 3-7（书内 p.179 ,chapters/parts/ch03-a.tex,未显式设定,待逐页渲染核查
+ch04a-表01,4,a,table,tab:crystal-systems,七个晶系、布拉维点阵型式与特征对称元素（压缩表）,表格（图源四类不适用）,,chapters/parts/ch04-a.tex,单栏,待逐页渲染核查
+ch04a-图01,4,a,figure,fig:mono,（a）质量吸收系数随波长的变化与 K 吸收边：波长变短吸收总体下降，但在 $_K$ 处出现向上突跃。读者应看「突,示意,据 S1（上册）图 4-7、图 4-8，书内 p.236—237 / PDF p.255—256 改绘。,chapters/parts/ch04-a.tex,未显式设定,待逐页渲染核查
+ch04a-表02,4,a,table,tab:recip-simple,几种晶系的正--倒格子参数对应（素格子）,表格（图源四类不适用）,,chapters/parts/ch04-a.tex,单栏,待逐页渲染核查
+ch04a-图02,4,a,figure,fig:bragg-ewald,衍射几何的两种等价表述。（a）Bragg 构型：读者应看三件事——$$ 是 入射束与晶面之间的掠射角，晶面法线与,示意,据 S1（上册）图 4-9，书内 p.240 / PDF p.259 改绘（本图另补入 Bragg 构型以便对照）。,chapters/parts/ch04-a.tex,未显式设定,待逐页渲染核查
+ch04a-表03,4,a,table,tab:extinction,常见点阵与基元的系统消光条件（$n$ 为整数）,表格（图源四类不适用）,,chapters/parts/ch04-a.tex,单栏,待逐页渲染核查
+ch04a-图03,4,a,figure,fig:pattern-info,峰位、峰强、峰形三种信息的读法。读者应看三处标注分别指向横轴位置、纵轴高度与 峰的半高宽：峰位是三者中唯一可以做,模型计算,,chapters/parts/ch04-a.tex,未显式设定,待逐页渲染核查
+ch04a-表04,4,a,table,tab:xrd-limits,XRD 能给出什么／不能给出什么,表格（图源四类不适用）,,chapters/parts/ch04-a.tex,单栏,待逐页渲染核查
+ch05a-表01,5,a,table,tab:ch05-tpd,TPD 谱能给出什么、不能给出什么,表格（图源四类不适用）,,chapters/parts/ch05-a.tex,单栏,待逐页渲染核查
+ch05a-图01,5,a,figure,,模型计算的 TPD 谱：(a) 中升温速率由 5 增到 20K.min^-1，峰温右移约 33K，而三条曲线下的,模型计算,据 S1 §5.3.1—5.3.3 原理自绘，书内 p.311—315 / PDF p.330—334,chapters/parts/ch05-a.tex,未显式设定,待逐页渲染核查
+ch05a-表02,5,a,table,tab:ch05-redhead,由峰温换算脱附活化能的四个前提,表格（图源四类不适用）,,chapters/parts/ch05-a.tex,单栏,待逐页渲染核查
+ch06a-表01,6,a,table,tab:raman-ir,拉曼与红外光谱的互补性对照。读者应看「选律」与「样品适应性」两行：前者决定 两者给出的是不同子集的振动，后者决定,表格（图源四类不适用）,,chapters/parts/ch06-a.tex,单栏,待逐页渲染核查
+ch06a-图01,6,a,figure,fig:raman-levels,拉曼与瑞利散射的能级过程示意（含共振拉曼）。读者应看三件事：基态 $E_0$ 与振动 激发态 $E_n$ 之间相,示意,据 S1（上册）图 6-1，书内 p.349 / PDF p.368 改绘。,chapters/parts/ch06-a.tex,未显式设定,待逐页渲染核查
+ch06a-表02,6,a,table,tab:fluor-suppress,荧光抑制的四条路线及其代价。读者应看「代价与边界」一列：四条路线都不是免费的， 其中改变激发波长是首选，因为只有,表格（图源四类不适用）,,chapters/parts/ch06-a.tex,单栏,待逐页渲染核查
+ch06a-表03,6,a,table,tab:raman-parts,激光拉曼光谱仪的五个部件：作用与对谱图质量的影响。读者应看最后一列——每个部件 都不是「可选配件」，它把一条具体,表格（图源四类不适用）,,chapters/parts/ch06-a.tex,单栏,待逐页渲染核查
+ch07a-表01,7,a,table,tab:modes,七种红外测量模式的选型对照。模式选择由三件事共同决定：样品形态（能否做成 薄片、是否含水、能否压紧）、散射强弱与,表格（图源四类不适用）,,chapters/parts/ch07-a.tex,跨栏,待逐页渲染核查
+ch07a-图01,7,a,figure,fig:paths,三种常用模式中光与样品的相互作用方式对比。读者应看三处：光在样品中走的 路径（穿过体相／在颗粒间多次散射后返回／,示意,据 S1（上册）图 7-10、图 7-14、图 7-16，书内 p.428、p.432、p.433 / PDF p.44,chapters/parts/ch07-a.tex,未显式设定,待逐页渲染核查
+ch09a-图01,9,a,figure,fig:escape,表面分析信号来源与逃逸深度示意。读者应看三处：① 入射 X 射线穿透约 1000 nm，远大于 电子的逃逸深度，,示意,据 S2 图 9-16，书内 p.582 / PDF p.73 改绘。,chapters/parts/ch09-a.tex,未显式设定,待逐页渲染核查
+ch09a-图02,9,a,figure,fig:xpsspec,模型计算的 XPS 谱示意。(a) 全谱：同一含碳含氧样品在 Al K$$（实线）与 Mg K$$（虚线，为便于,模型计算,,chapters/parts/ch09-a.tex,未显式设定,待逐页渲染核查
+ch09a-表01,9,a,table,tab:xpsparts,XPS 谱仪的主要组成部件、常见形式与使用要点,表格（图源四类不适用）,,chapters/parts/ch09-a.tex,跨栏,待逐页渲染核查
+ch09c-表02,9,c,table,tab:ups-xps,UPS 与 XPS 的分工,表格（图源四类不适用）,,chapters/parts/ch09-c.tex,单栏,待逐页渲染核查
+ch09c-表03,9,c,table,tab:surface-compare,四类表面分析方法的比较。信息深度一栏决定了「表面」在此处的实际含义,表格（图源四类不适用）,,chapters/parts/ch09-c.tex,跨栏,待逐页渲染核查
+ch00--表01,0,-,table,tab:selector,研究问题到方法的选择矩阵。「首选」是能独立支撑结论的方法，「互补」用于交叉验证或补足首选方法的盲区。 引用的是本,表格（图源四类不适用）,,chapters/ch00-intro.tex,跨栏,待逐页渲染核查
+ch00--图01,0,-,figure,fig:chooseroute,方法选择路径。读者应看的是分叉的依据：先分体相/表面，再分「有序程度」或 「要元素、位点还是吸附态」。图中只给最,示意,,chapters/ch00-intro.tex,未显式设定,待逐页渲染核查
+ch13--表01,13,-,table,tab:evidence-level,证据强度分级：不同组合能支撑到什么程度,表格（图源四类不适用）,,chapters/ch13-synthesis.tex,单栏,待逐页渲染核查
+ch13--表02,13,-,table,tab:matrix,判断—方法约束矩阵。同一行里至少要有两个物理量不同的方法，结论才站得住,表格（图源四类不适用）,,chapters/ch13-synthesis.tex,跨栏,待逐页渲染核查

@@ -1,0 +1,9 @@
+% chapters/ch01.tex —— 第 1 章 物理吸附和催化剂的宏观物性测定
+% 装配层：只负责按顺序引入各分片。分片缺失时跳过，便于增量成书。
+% 分片文件：chapters/parts/ch01-{a..e}.tex
+
+\IfFileExists{chapters/parts/ch01-a.tex}{\input{chapters/parts/ch01-a}}{}
+\IfFileExists{chapters/parts/ch01-b.tex}{\input{chapters/parts/ch01-b}}{}
+\IfFileExists{chapters/parts/ch01-c.tex}{\input{chapters/parts/ch01-c}}{}
+\IfFileExists{chapters/parts/ch01-d.tex}{\input{chapters/parts/ch01-d}}{}
+\IfFileExists{chapters/parts/ch01-e.tex}{\input{chapters/parts/ch01-e}}{}

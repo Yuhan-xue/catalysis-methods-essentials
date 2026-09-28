@@ -1,0 +1,259 @@
+% ================================================================
+%  chapters/ch01.tex
+%  第 1 章  物理吸附和催化剂的宏观物性测定
+%  源：S1（上册）第 1 章，书内 p.1—84 / PDF p.20—103
+%  状态：样章定标部分（1.1—1.2.1），其余节次待续写
+% ================================================================
+
+\chapterstart{物理吸附和催化剂的宏观物性测定}%
+{本章回答：物理吸附实际测量什么、BET 面积在什么条件下才有物理意义、如何从一条等温线
+读出孔结构信息，以及哪些结论不能只靠吸附数据支撑。全章覆盖比表面积、孔容与孔尺寸分布、
+颗粒度、密度与机械强度五类宏观物性，其中吸附模型是共用基础，后四类通过速查表调用。}
+\label{ch:01}
+
+\subsection{这个方法测量什么}
+
+\begin{probout}
+物理吸附测量的是\textbf{气体分子在固体表面的可逆富集量随压力的变化}。得到的原始数据
+只有一条曲线：恒温下的吸附量 $V$ 对相对压力 $\ppzero$ 的关系，即吸附等温线
+（adsorption isotherm）。由此可以换算三类信息：\textbf{可触及表面积}、\textbf{孔容}
+与\textbf{孔尺寸分布}。它不直接给出表面化学状态，也不区分吸附位的种类——同一条等温线
+可以由不同的孔结构组合拟合出来。
+\end{probout}
+
+物理吸附与化学吸附的差别决定了各自能回答的问题（表~\ref{tab:physis-chemis}）。判据中
+最可靠的是吸附热与饱和吸附层数；单凭吸附量大小不能区分二者。
+
+\begin{table}[htbp]
+\centering
+\caption{物理吸附与化学吸附的判据}
+\label{tab:physis-chemis}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}lXX@{}}
+\toprule
+判据 & 物理吸附 & 化学吸附 \\
+\midrule
+作用力 & 范德华力（无电子转移） & 化学键（有电子共享或转移） \\
+吸附热 & 与液化热同量级，通常 $<\qty{40}{kJ.mol^{-1}}$ & 与反应热同量级，约 $\qtyrange{40}{800}{kJ.mol^{-1}}$ \\
+选择性 & 低，任何气体在低温下均可发生 & 高，取决于表面与吸附质的化学匹配 \\
+层数 & 多层，不受单层限制 & 单层 \\
+可逆性 & 通常可逆，脱附容易 & 常不可逆或需活化能脱附 \\
+温度区间 & 低于吸附质临界温度 & 可远高于沸点，甚至高于临界温度 \\
+催化相关性 & 仅给出几何信息 & 直接关联活性位 \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\begin{pitfall}
+「吸附量很大」不是化学吸附的证据。微孔材料在 $\qty{77}{K}$ 下的氮吸附量可以远超其表面
+单层容量，那是\textbf{微孔填充}而非表面吸附；反过来，超临界温度下的物理吸附量可能很小，
+却仍然是物理吸附。
+\end{pitfall}
+
+\subsection{吸附等温线：唯一的核心数据}
+
+等温线在恒定温度下测定，横轴为相对压力 $\ppzero$（$p_0$ 为该温度下吸附质的饱和蒸气压）。
+相对压力而非绝对压力是关键自变量，因为它同时编码了吸附质与吸附剂的相互作用强度。
+International Union of Pure and Applied Chemistry（国际纯粹与应用化学联合会，IUPAC）
+将物理吸附等温线分为六型（图~\ref{fig:iupac}），分型的依据是\textbf{低相对压力段是否
+有拐点}、\textbf{中段是否陡升}和\textbf{高相对压力段是否出现平台}。
+
+\begin{figure}[tbp]
+\centering
+\begin{tikzpicture}
+\begin{groupplot}[
+  % 单栏改版后版心 165 mm：3×45 + 2×11 = 157 mm，再加左侧轴标签约 3.5 mm 仍有余量。
+  % 原为 3×50 + 2×9 = 168 mm，已超出新版权心。
+  % vertical sep 由 9 mm 加到 13 mm：原来上排的 x 刻度标签会压到下排的面板标题上
+  % （实测 p.7 出现「0.5」与「中孔，带回滞环」等标题文字重叠）。
+  group style={group size=3 by 2, xlabels at=edge bottom, ylabels at=edge left,
+               horizontal sep=11mm, vertical sep=13mm},
+  width=45mm, height=32mm,
+  xmin=0, xmax=1, ymin=0, ymax=1.6,
+  xtick={0,0.5,1}, ytick=\empty,
+  xlabel={$\ppzero$}, ylabel={$V$},
+  tick label style={font=\fontsize{8}{9.5}\selectfont},
+  scale only axis
+]
+\nextgroupplot[title={\fontsize{8}{9.5}\selectfont I 型（微孔）}]
+\addplot[domain=0:1,samples=200,mainline,black]{1.30*x/(0.008+x)};
+\nextgroupplot[title={\fontsize{8}{9.5}\selectfont II 型（非孔/大孔）}]
+\addplot[domain=0:1,samples=200,mainline,black]{(x/(0.006+x))*(0.55+0.80*x)};
+\nextgroupplot[title={\fontsize{8}{9.5}\selectfont III 型（弱相互作用）}]
+\addplot[domain=0:1,samples=200,mainline,black]{0.15*x+1.20*x^3};
+\nextgroupplot[title={\fontsize{8}{9.5}\selectfont IV 型（中孔，带回滞环）}]
+\addplot[domain=0:1,samples=200,mainline,black]{0.55*x/(0.012+x)+1.05*x^2.5};
+\addplot[domain=0.35:1,samples=200,thinline,black,dashed]{0.55*x/(0.012+x)+1.05*x^2.5+0.30*exp(-((x-0.62)/0.16)^2)};
+\nextgroupplot[title={\fontsize{8}{9.5}\selectfont V 型（弱相互作用+中孔）}]
+\addplot[domain=0:1,samples=200,mainline,black]{0.30*x^1.6+1.10*x^2.6};
+\nextgroupplot[title={\fontsize{8}{9.5}\selectfont VI 型（逐层吸附）}]
+\addplot[domain=0:1,samples=300,mainline,black]{0.40*(1-exp(-30*x))+0.40*(1-exp(-30*max(x-0.42,0)))+0.40*(1-exp(-30*max(x-0.75,0)))};
+\end{groupplot}
+\end{tikzpicture}
+\caption{IUPAC 六型物理吸附等温线。读者应看三处：低相对压力段有无拐点、中段是否陡升、
+高相对压力段有无平台。实线为吸附支，虚线为脱附支。本图为按各型特征函数计算的示意曲线，
+不代表任何具体样品。\schemamark\figsrc{据 S1（上册）图 1-7，书内 p.19 / PDF p.38 改绘。}}
+\label{fig:iupac}
+\end{figure}
+
+六型等温线可读出的信息归纳于表~\ref{tab:isotherm-read}。注意\textbf{分型是定性判断，
+不是定量结论}：实际样品常是混合孔结构，等温线介于两型之间。
+
+\begin{table}[htbp]
+\centering
+\caption{由等温线类型可读出的信息与常见误判}
+\label{tab:isotherm-read}
+{\srcsize
+\begin{tabularx}{\columnwidth}{@{}lXX@{}}
+\toprule
+类型 & 可读出 & 易误判之处 \\
+\midrule
+I & 微孔为主；平台值即微孔孔容 & 用 BET 计算「表面积」，实为等效值；用 BJH 分析会得到虚假孔径 \\
+II & 非孔或大孔；拐点 B 对应单层铺满 & 把拐点吸附量直接当 $V_{\mathrm{m}}$（仅在 $C\approx9$ 时成立） \\
+III & 吸附质--吸附剂相互作用弱 & 误判为「无孔」；实为相互作用弱，宜换吸附质 \\
+IV & 中孔；中段陡升为毛细凝聚 & 忽略回滞环就丢掉孔尺寸信息 \\
+V & 弱相互作用 + 中孔 & 同 III 型，先换吸附质再谈孔结构 \\
+VI & 逐层吸附，表面高度均一 & 少见；出现时应先怀疑测量或样品异常 \\
+\bottomrule
+\end{tabularx}}
+\end{table}
+
+\subsection{核心公式及其成立条件}
+
+\subsubsection{Langmuir 等温式}
+
+Langmuir 模型假设：表面吸附位等价且互不影响、吸附为单层、吸附与脱附达到动态平衡。
+由吸附速率与脱附速率相等可得
+
+\begin{equation}\label{eq:langmuir}
+\theta=\frac{V}{V_{\mathrm{m}}}=\frac{b\,p}{1+b\,p}
+\end{equation}
+
+其中 $V$ 为吸附量，$V_{\mathrm{m}}$ 为单层饱和吸附量，$b$ 为吸附平衡常数，$p$ 为平衡压力。
+重排为直线形式后可由斜率与截距求两个参数：
+
+\begin{equation}\label{eq:langmuir-lin}
+\frac{p}{V}=\frac{1}{V_{\mathrm{m}}b}+\frac{p}{V_{\mathrm{m}}}
+\end{equation}
+
+\begin{keycond}
+式~\eqref{eq:langmuir} 仅在\textbf{能量均匀、无相互作用、单层}的前提下成立。真实氧化物表面
+存在多种羟基与配位不饱和位，能量并不均匀。实践中的经验是：当覆盖度落在
+$\theta\approx\qtyrange{0.1}{0.4}{}$ 的中等区间时，表面不均匀性与吸附质侧向相互作用的
+影响部分抵消，$b$ 近似为常数，此时物理吸附等温线可用 Langmuir 公式近似表征
+\src{S1 §1.1.2，书内 p.16--17 / PDF p.35--36}。超出该区间，参数会随拟合窗口漂移。
+\end{keycond}
+
+\subsubsection{BET 等温式与比表面积}
+
+BET 模型保留 Langmuir 的「吸附位等价、分子间无相互作用」假设，补充两条：吸附可以是
+多分子层的，且不必铺满单层后再铺下一层；第一层的吸附热 $E_1$ 与固体表面直接作用有关，
+第二层以后各层吸附热相同，等于吸附质的液化热 $E_{\mathrm{L}}$。据此得到的二常数公式为
+
+\begin{equation}\label{eq:bet}
+V=\frac{V_{\mathrm{m}}C\,\ppzero}{\left(1-\ppzero\right)\left[1+(C-1)\ppzero\right]}
+\end{equation}
+
+其中 $C$ 为与 $E_1$、$E_{\mathrm{L}}$ 及温度有关的常数，反映吸附质与吸附剂相互作用的强弱，
+并可近似写作
+
+\begin{equation}\label{eq:cdef}
+C\approx\exp\!\left[\frac{E_1-E_{\mathrm{L}}}{RT}\right]
+\end{equation}
+
+式~\eqref{eq:bet} 的直线形式是实际计算的依据：
+
+\begin{equation}\label{eq:bet-lin}
+\frac{\ppzero}{V\left(1-\ppzero\right)}
+=\frac{C-1}{V_{\mathrm{m}}C}\cdot\ppzero+\frac{1}{V_{\mathrm{m}}C}
+\end{equation}
+
+以 $\ppzero$ 为横轴、$\ppzero/[V(1-\ppzero)]$ 为纵轴作图，斜率 $=(C-1)/(V_{\mathrm{m}}C)$，
+截距 $=1/(V_{\mathrm{m}}C)$，由此解得 $V_{\mathrm{m}}$ 与 $C$。总表面积由单层容量换算：
+
+\begin{equation}\label{eq:surface}
+S=\frac{V_{\mathrm{m}}\,N_{\mathrm{A}}\,\sigma}{22400}
+\end{equation}
+
+式中 $S$ 为吸附剂总表面积，$\sigma$ 为吸附质分子的截面积，$N_{\mathrm{A}}$ 为阿伏伽德罗常量，
+分母 $22400$ 为标准状况下气体的摩尔体积（$\unit{mL.mol^{-1}}$）；比表面积即 $S$ 除以样品质量。
+式~\eqref{eq:surface} 的量纲检查：$V_{\mathrm{m}}$ 取 $\unit{mL.g^{-1}}$ 时，
+$\unit{mL.g^{-1}}\times\unit{mol^{-1}}\times\unit{m^2}$ 除以 $\unit{mL.mol^{-1}}$ 得
+$\unit{m^2.g^{-1}}$，与比表面积单位一致。
+
+\begin{keycond}
+二常数 BET 公式\textbf{只在 $\ppzero\approx\qtyrange{0.05}{0.35}{}$ 区间成立}，更可靠的
+窗口是 $\qtyrange{0.05}{0.30}{}$。原因有两条：低于 $0.05$ 时多层吸附尚未建立，表面不均匀性
+凸显；高于 $0.35$ 时毛细凝聚破坏了多层吸附模型 \src{S1 §1.1.2，书内 p.18 / PDF p.37}。
+对吸附能较高的体系，线性范围会向低相对压力移动，因此\textbf{不可照搬固定窗口}，
+应以残差图和线性度判断。为保证可靠性，作图至少使用五个数据点。
+\end{keycond}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=\onecolwidth, height=46mm,
+  xlabel={$\ppzero$}, ylabel={$\dfrac{\ppzero}{V(1-\ppzero)}$ / $\unit{g.cm^{-3}}$},
+  xmin=0, xmax=0.36, ymin=0, ymax=0.016,
+  legend pos=north west, legend cell align=left]
+% 教学设定：Vm = 210 cm3/g, C = 120  -> 斜率 4.72e-3, 截距 3.97e-5
+\addplot[domain=0.02:0.35,samples=2,mainline,black]{4.72e-3*x+3.97e-5};
+\addplot[only marks,mark=*,mark size=1.1pt,black] coordinates{
+ (0.050,0.000276)(0.080,0.000417)(0.120,0.000606)(0.160,0.000795)
+ (0.200,0.000984)(0.250,0.001220)(0.300,0.001456)(0.350,0.001692)};
+\legend{回归直线,数据点（教学设定）}
+% 0.05–0.35 适用窗口
+\draw[accentsoft,dashed,thinline] (axis cs:0.05,0) -- (axis cs:0.05,0.016);
+\draw[accentsoft,dashed,thinline] (axis cs:0.35,0) -- (axis cs:0.35,0.016);
+\node[anchor=north east,font=\fontsize{8}{9.5}\selectfont,color=accent]
+  at (axis cs:0.345,0.0158) {适用窗口};
+\end{axis}
+\end{tikzpicture}
+\caption{BET 直线形式。读者应看三处：数据点是否落在 $0.05$--$0.35$ 窗口内、
+是否成直线、截距是否为正。截距为负说明 $C<0$，此时由式~\eqref{eq:surface} 得到的
+「表面积」没有物理意义，应改用别的模型或更换吸附质。
+数据点为\textbf{教学设定}的合成值（$V_{\mathrm{m}}=\qty{210}{cm^3.g^{-1}}$，$C=120$），
+不是实验数据。\modelmark\figsrc{式~\eqref{eq:bet-lin} 据 S1（上册）式(1-15)，书内 p.18 / PDF p.37。}}
+\label{fig:betplot}
+\end{figure}
+
+\subsection{数据到结论：比表面积的求算流程}
+
+\begin{dataflow}
+（1）确认等温线类型。I 型或含显著微孔者，BET 结果只能称为\textbf{等效 BET 表面积}
+（equivalent BET surface area），不可当作真实表面积极使用。（2）选取 $\ppzero$ 窗口，
+优先 $\qtyrange{0.05}{0.30}{}$，并用至少五个点。（3）按式~\eqref{eq:bet-lin} 线性回归，
+\textbf{必须检查截距为正}。（4）由斜率和截距解 $V_{\mathrm{m}}$ 与 $C$，按
+式~\eqref{eq:surface} 换算比表面积。（5）报告时同时给出取样窗口、数据点数与 $C$ 值——
+缺少这三项的表面积数值无法复核。
+\end{dataflow}
+
+对已知表面性质的大孔或非孔样品，当 $C>50$ 时可用\textbf{单点 BET 法}：取窗口内一个点，
+以 $V_{\mathrm{m}}=V(1-\ppzero)$ 求算，与多点法的偏差通常小于 $5\%$，适合快速筛选
+\src{S1 §1.2.1，书内 p.42 / PDF p.61}。$C$ 值未知时不应使用单点法。
+
+\subsection{误判与边界}
+
+\begin{pitfall}
+\textbf{（1）微孔材料的 BET 面积被系统性高估。}低相对压力下（$\ppzero<0.1$）微孔填充的
+吸附量无法从单层吸附量中扣除，所得值为等效值 \src{S1 §1.2.1，书内 p.42 / PDF p.61}。
+\textbf{（2）含 $2$--$\qty{4}{nm}$ 中孔时单层吸附量被高估。}单层铺满与毛细凝聚开始的相对
+压力过于接近，两者在等温线上不可分辨。\textbf{（3）回归相关系数高不等于模型正确。}
+$R^2$ 只说明数据在该窗口内近似线性，不说明 BET 假设成立；必须同时检查 $C>0$ 与
+$V_{\mathrm{m}}$ 的合理性。\textbf{（4）回滞环不能进入 BET 拟合。}BET 公式不处理毛细凝聚，
+拟合应只用吸附支，且避开回滞环所在压力区间。
+\end{pitfall}
+
+\begin{crosscheck}
+表面积是几何量，不能单独支撑结构结论。判断物相与晶体结构应用多晶 X 射线衍射
+（\chapref{ch:04}）；判断表面元素与化学态应用 X 射线光电子能谱（\chapref{ch:09}）；
+判断孔尺寸分布应与压汞法在重叠孔径区间相互印证；判断活性位数量需化学吸附与程序升温
+技术（\chapref{ch:05}）。若吸附法与压汞法给出的孔容不一致，应先复查样品预处理与
+模型假设，而不是取两者平均。
+\end{crosscheck}
+
+\srcnote{本节来源：S1（上册）§1.1--§1.2.1，书内 p.1--42 / PDF p.20--61。
+式~\eqref{eq:langmuir}--\eqref{eq:surface} 已按原页面图像（PDF p.36--37）逐式核对；
+数值算例为教学设定，非原书实验结果。其余节次（孔容与孔尺寸分布、颗粒度、密度、
+机械强度）的来源定位见\texttt{sources/coverage.csv}。}
