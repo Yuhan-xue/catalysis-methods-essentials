@@ -1,0 +1,1088 @@
+\subsection{衍射峰的宽化与 Scherrer 方程}
+\src{上册 §4.7，书内 p.270—278 / PDF p.289—297}
+
+和布拉格方程一样，Scherrer 方程是多晶衍射数据分析中应用最多的方程之一。布拉格方程回答
+``峰在哪里''，Scherrer 方程回答``峰为什么宽''。两者合起来构成粉末衍射中最常被引用的两句
+话；也正因为太常用，它成了本章被误用最多的一个公式——把实测半峰宽直接代进去就得到一个
+``晶粒大小''，这个数有时甚至和电镜观察相差数倍。本节的重点不在公式本身（它是标准形式，
+可以严格推导），而在\textbf{它成立的条件}：Scherrer 方程量的是晶粒在某一晶面法线方向的
+平均厚度，只有在单尺寸分布、无晶格畸变、且仪器宽化已被扣除时，这个厚度才有意义。
+
+\begin{probout}
+\textbf{测什么}：一个（或几个）衍射峰的半峰宽（FWHM）$\beta$，以及由它换算的、垂直于
+$(hkl)$ 晶面的平均晶粒厚度 $D_{hkl}$。\\
+\textbf{能推断什么}：在单尺寸分布、无微应变的前提下，$D_{hkl}$ 是晶粒沿 $(hkl)$ 法线方向的
+体积加权平均厚度；对不同 $hkl$ 分别求 $D_{hkl}$，其差异可以反映晶粒的各向异性形状（例如
+层状晶粒的 $00l$ 与 $hk0$ 给出不同的厚度）。\\
+\textbf{不能推断什么}：尺寸分布、形貌和比表面不能由一条峰的宽度唯一确定；存在晶格畸变
+（微应变）时峰宽是尺寸与应变的混合结果，Scherrer 给出的``尺寸''既不属于尺寸也不属于应变；
+$D_{hkl}$ 是相干散射柱长，不是颗粒直径，与 TEM 数出的粒径不必然相等。上述三条是方法本身的
+边界，不是操作失误。
+\end{probout}
+
+\subsubsection{Scherrer 方程：物理意义与数学表达}
+
+\begin{principle}
+\textbf{物理图像}。设小晶体在垂直于 $(hkl)$ 晶面的方向上共有 $p$ 个层间距为 $d$ 的格子面，
+则该方向的晶体厚度为 $D=pd$（原书图 4-17 即此``一定厚度晶粒对 X 射线的散射''示意）。对入射
+与反射 X 射线而言，同一格子面组 $(hkl)$ 中的各层是等程面，层与层之间才有光程差；因此衍射
+$hkl$ 的宽度只由这一组面在法线方向的层数决定，而与晶面内有多大无关。这是 Scherrer 方程
+全部适用边界的根源。
+
+\textbf{近似推导（系数为 1）}。布拉格条件与偏离 $\delta$ 后的条件分别是
+\begin{equation}
+2d\sin\theta=n\lambda,\qquad 2d\sin(\theta+\delta)=n\lambda+\Delta l .
+\label{eq:ch04c-delta}
+\end{equation}
+当 $\delta$ 增大到使第 1 层与第 $(p/2+1)$ 层、第 2 层与第 $(p/2+2)$ 层……依次两两相消时
+（每对的光程差正好是 $\lambda/2$，振幅完全抵消），衍射强度降为零——这就是峰的``起始处''：
+\begin{equation}
+\frac{p}{2}\cdot 2d\left[\sin(\theta+\delta)-\sin\theta\right]=\frac{\lambda}{2}
+\ \xrightarrow[\ \sin(\theta+\delta)\approx\sin\theta+\delta\cos\theta\ ]{}\
+D\,\delta\cos\theta=\frac{\lambda}{2}.
+\label{eq:ch04c-approx}
+\end{equation}
+以 $2\theta$ 为横坐标时峰的半高宽 $\beta=2\delta$，于是 $\beta=\lambda/(D\cos\theta)$，即
+带整数系数的近似式。
+
+\textbf{严格推导（$0.89$ 的来源）}。偏离 $\delta$ 时相邻两层的位相差为
+\begin{equation}
+\Delta l=2d\sin(\theta+\delta)-n\lambda=2\delta d\cos\theta,
+\qquad
+\Delta\varphi=\frac{2\pi\Delta l}{\lambda}=\frac{4\pi d\,\delta\cos\theta}{\lambda}.
+\label{eq:ch04c-dphi}
+\end{equation}
+振幅为 $E_{0}$ 的 X 射线照到该晶粒上，$p$ 个层的散射波相叠加：
+\begin{equation}
+E=E_{0}\sum_{k=0}^{p-1}\mathrm{e}^{\mathrm{i}k\Delta\varphi}
+=E_{0}\,\frac{\sin\left(p\Delta\varphi/2\right)}{\sin\left(\Delta\varphi/2\right)}\,
+\mathrm{e}^{\mathrm{i}(p-1)\Delta\varphi/2},
+\qquad
+I\propto\left[\frac{\sin\left(p\Delta\varphi/2\right)}{p\sin\left(\Delta\varphi/2\right)}\right]^{2},
+\label{eq:ch04c-sum}
+\end{equation}
+当 $\Delta\varphi\to0$ 时取极大值 $I_{\max}\propto(pE_{0})^{2}$。令 $u=p\Delta\varphi/2$，在
+小量极限下 $\sin u/u$ 的半高条件为 $\sin u/u=1/\sqrt{2}$，解得 $u=1.40$（弧度）：
+\begin{equation}
+u=\frac{p\Delta\varphi}{2}=\frac{2\pi D\,\delta\cos\theta}{\lambda}=1.40
+\quad\Longrightarrow\quad
+D\,\delta\cos\theta=\frac{1.40\,\lambda}{2\pi}.
+\label{eq:ch04c-u}
+\end{equation}
+此处 $\delta$ 是\textbf{半高处}对布拉格角的偏离，峰形左右对称，故 $2\theta$ 坐标下的半高宽
+$\beta=4\delta$（$\theta$ 下的半高宽为 $2\delta$，换成 $2\theta$ 再乘 2）。代入即得
+\begin{equation}
+\beta_{hkl}=\frac{4\times1.40}{2\pi}\cdot\frac{\lambda}{D_{hkl}\cos\theta},
+\qquad
+\boxed{\ D_{hkl}=\frac{K\lambda}{\beta_{hkl}\cos\theta}\ },\qquad
+K=\frac{4\times1.40}{2\pi}=0.891\approx0.89 .
+\label{eq:ch04c-scherrer}
+\end{equation}
+\textbf{三个必须记住的约定}：（i）$\beta_{hkl}$ 必须用\textbf{弧度}，且必须是扣除了仪器宽化
+与 $K\alpha_{2}$ 贡献之后属于样品的宽度；（ii）$D_{hkl}$ 是垂直于 $(hkl)$ 晶面的厚度，指标
+$hkl$ 不能省；（iii）$K$ 的取值随峰形函数与半高宽的读数方式而变（对 Lorentz 型取 $0.89$，
+对 Gauss 型常取 $0.90$—$1.0$），不同 $K$ 之间可差 $10\%$ 量级，引用数值时应写明所用 $K$。
+\tocheck{未对照原页面图像：式~\equref{eq:ch04c-approx} 与式~\equref{eq:ch04c-u} 中两个
+$\delta$ 的含义不同（前者为强度降为零处的偏离，后者为半高处的偏离），因而 $\beta=2\delta$ 与
+$\beta=4\delta$ 两种写法在原书不同段落中都出现；本处按上述物理含义统一，原书对这一步的
+文字说明ocr残缺，未能逐字核对。}
+\end{principle}
+
+\begin{measure}
+\textbf{半峰宽怎么读}。$\beta$ 的读数方式直接进入结果的分母，必须与数据质量匹配：\\
+（1）\textbf{步长}：步进扫描的步长应不大于半峰宽的 $1/5$（宽化明显时步长 $0.02°$ 足够，
+锐峰应取 $0.01°$ 或更小），否则峰形被采样离散化，宽度读数失真。\\
+（2）\textbf{背景}：先定背景再量半高。背景抬高的峰，若以``峰高一半''为准会把峰读窄。\\
+（3）\textbf{读数方法}：目测峰顶法误差最大；推荐对峰形函数（Gauss／Lorentz／
+pseudo-Voigt）做最小二乘拟合后取半峰宽，弱峰与重叠峰尤其必须拟合。\\
+（4）\textbf{必须记住的换算}：$\beta$ 用弧度。$1°=0.01745$ rad，故 $0.15°=2.62\times10^{-3}$ rad；
+若误把 $0.15$ 直接当弧度代入，尺寸会算小两个数量级。\\
+（5）\textbf{测几个峰}：至少测同一物相的两条以上、角度分开的衍射峰，用来判断宽化是否随
+角度变化（见本节``尺寸宽化与微应变宽化的分离''）。
+\end{measure}
+
+\begin{figure}[tbp]
+  \centering
+  \begin{tikzpicture}
+    \tikzset{declare function={
+        Lz(\x) = 1/(1+25*\x*\x);
+        Gz(\x) = exp(-17.3286*\x*\x);
+      }}
+    \begin{axis}[
+        width=\onecolwidth, height=62mm,
+        xlabel={$2\theta-2\theta_{\mathrm{B}}$ / (°)},
+        ylabel={归一化强度},
+        xmin=-0.9, xmax=0.9, ymin=0, ymax=1.06,
+        xtick={-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8},
+        ytick={0,0.2,0.4,0.6,0.8,1.0},
+        grid=both, major grid style={gray!35}, minor grid style={gray!12},
+        tick label style={font={\fontsize{8}{9.6}\selectfont}},
+        label style={font={\fontsize{8}{9.6}\selectfont}},
+        legend style={font={\fontsize{8}{9.6}\selectfont}, draw=none,
+                      fill=white, fill opacity=0.9, text opacity=1,
+                      legend cell align=left,
+                      at={(0.985,0.02)}, anchor=south east},
+        samples=401, domain=-0.9:0.9,
+      ]
+      \addplot[very thick, blue] {Lz(x)};
+      \addlegendentry{尺寸宽化：Lorentz（Cauchy）型，$\beta=0.40°$}
+      \addplot[very thick, red, dashed] {Gz(x)};
+      \addlegendentry{微应变宽化：Gauss 型，$\beta=0.40°$}
+      \addplot[black!55, thin, sharp plot, update limits=false]
+        coordinates {(-0.2,0.5) (0.2,0.5)};
+      \node[anchor=west, font={\fontsize{8}{9.6}\selectfont}]
+        at (axis cs:0.40,0.32) {L 型尾部明显更重};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{同一半峰宽下两种宽化机制的峰形差别（模型计算）。\textbf{看什么}：两条曲线的半峰宽
+    完全相同（都取 $\beta=0.40°$，横线标出半高位置），但\textbf{尾部}完全不同——在
+    $\pm1.5\beta$（即 $\pm0.6°$）处 Lorentz 型还剩约 $10\%$ 的强度，Gauss 型只剩约 $0.2\%$。
+    \textbf{条件与用法}：晶粒尺寸引起的宽化接近 Lorentz（Cauchy）型，微应变引起的宽化接近
+    Gauss 型；因此\textbf{峰尾形状是判断宽化来源的第一条线索}，也是``用半峰宽一个数反推一个
+    原因''会出错的原因。\textbf{局限}：这是理想化的单峰，实际谱线是仪器函数与样品函数的卷积，
+    仪器函数的尾部也会抬高峰尾，必须先扣除仪器贡献才能用尾部形状作判断。
+    \figsrc{模型计算图，非原书插图。}\modelmark}
+  \label{fig:ch04c-profile}
+\end{figure}
+
+\begin{example}[读图实例：同一个半峰宽，可能对应完全不同的样品]
+\begin{obs}
+图~\figref{fig:ch04c-profile} 中两条曲线：（a）实线，Lorentz 型，$\beta=0.40°$；
+（b）虚线，Gauss 型，$\beta=0.40°$。在 $2\theta-2\theta_{\mathrm{B}}=\pm0.2°$ 处两线重合于
+$0.5$；在 $\pm0.4°$ 处实线约 $0.20$、虚线约 $0.06$；在 $\pm0.6°$ 处实线约 $0.10$、虚线约
+$0.002$；在 $\pm0.8°$ 处实线仍有约 $0.06$，虚线已低于 $10^{-4}$。
+\end{obs}
+\begin{infer}
+两条曲线在\textbf{半高宽这一个数上没有任何区别}，差别全部在尾部。因此：
+（1）仅凭半峰宽无法区分``小晶粒''与``大晶粒加微应变''，二者可以给出同一个 $\beta$；
+（2）实测峰尾明显厚重、且用 Lorentz 型拟合远好于 Gauss 型时，宽化更可能来自尺寸；
+峰尾衰减很快、Gauss 型拟合更好时，更可能来自应变分布；
+（3）对重叠峰定量、对弱峰判识（例如杂质相的最强线与主相峰尾重叠）时，峰形函数选错会带来
+系统性误差，而不是随机误差。这条判断不是定论性判据，必须用多条不同角度的峰联合检验
+（见后文 Williamson--Hall 图）。
+\end{infer}
+\end{example}
+
+\begin{table}[tbp]
+  \centering
+  \caption{Scherrer 方程给出的半峰宽与晶粒尺寸的对应（按式~\equref{eq:ch04c-scherrer} 计算，
+    $K=0.89$，Cu $K\alpha_{1}$ 即 $\lambda=1.5406$ Å，取 $2\theta=30°$）。\textbf{读法}：
+    尺寸大于约 $100$ nm 时，尺寸宽化已降到 $0.1°$ 以下，与仪器宽化同量级甚至更小，
+    \textbf{再谈''用半峰宽算尺寸''已无意义}；尺寸小于约 $2$ nm 时半峰宽达 $4°$ 以上，
+    峰与背景难以分开，读数误差迅速放大。最后一列给出按 $0.02°$ 步长扫描时一个半峰宽内的
+    采样点数，点数少于约 $5$ 时峰形已不可靠。}
+  \label{tab:ch04c-scherrer}
+  \begin{tabular}{@{}rrr@{}}
+    \toprule
+    $D_{hkl}$ / nm & $\beta(2\theta)$ / (°) & 每 $0.02°$ 的采样点数 \\
+    \midrule
+    100 & 0.081 & 4 \\
+    50  & 0.163 & 8 \\
+    20  & 0.407 & 20 \\
+    10  & 0.813 & 41 \\
+    5   & 1.63  & 81 \\
+    2   & 4.07  & 204 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{dataflow}
+\textbf{从一张峰到一个小数}：
+实测峰（步进扫描数据）$\rightarrow$ 扣背景 $\rightarrow$ 剥离 $K\alpha_{2}$（若双线分离）
+$\rightarrow$ 峰形函数拟合得总半峰宽 $B$ $\rightarrow$ 由标样或基本参数法得仪器宽化 $b$
+$\rightarrow$ 解卷积得样品宽化 $\beta$ $\rightarrow$ 由式~\equref{eq:ch04c-scherrer} 得
+$D_{hkl}$ $\rightarrow$ 用多条不同角度的峰检验 $\beta\cos\theta$ 是否随 $\sin\theta$ 变化
+（判断是否含微应变）。任何一步没做，后面得到的数都不叫``晶粒大小''。
+\end{dataflow}
+
+\subsubsection{衍射峰分析与 Scherrer 方程的应用}
+
+实验得到的半峰宽 $B$ 是仪器因子与样品因子\textbf{共同}作用的结果，即衍射图谱可以看成仪器
+函数与样品函数的\textbf{卷积}（convolution）：用一个函数去``调制展开''另一个函数。第一步
+就是分离仪器因素。
+
+\paragraph{仪器因素的处理}
+\begin{principle}
+设仪器函数为 $g(x)$、样品函数为 $f(x)$，实测峰形为二者的卷积
+\begin{equation}
+h(x)=\int g(x')\,f(x-x')\,\mathrm{d}x' .
+\label{eq:ch04c-conv}
+\end{equation}
+卷积没有简单的``减法''，但在两种极限峰形下有可用的近似：
+\begin{equation}
+\text{Gauss 型：}\ B^{2}=b^{2}+\beta^{2}\ \Rightarrow\ \beta=\sqrt{B^{2}-b^{2}};
+\qquad
+\text{Lorentz 型：}\ B=b+\beta\ \Rightarrow\ \beta=B-b .
+\label{eq:ch04c-subtract}
+\end{equation}
+真实峰形介于两者之间，两端近似都不成立，此时应使用\textbf{工作曲线}（用已知函数把仪器函数
+与模型样品函数卷积，得到 $B$ 与 $\beta$ 的对应关系，见本节 ZnO 实例中的原书图 4-28）或直接
+做全谱拟合。获取仪器函数 $b(\theta)$ 有两条路：\\
+（1）\textbf{标样法}：选结晶良好、晶粒远大于 $100$ nm 且无应变的标样（原书用晶粒约
+$10$ µm 的 $\alpha$-石英），在待测峰附近测一条衍射，其宽度即为该角度下的仪器宽化。
+必须注意 $b$ 随角度变化，用低角测得的 $b$ 去修高角峰会带来系统误差。\\
+（2）\textbf{基本参数法}：由仪器几何（狭缝宽度、靶斑尺寸、样品透明度、轴向发散等）直接
+计算仪器函数，不需要标样，适合样品量少或找不到合适标样的情况。\\
+随着仪器改进，现代衍射仪的仪器贡献半峰宽一般可以控制在 $0.05°$ 甚至更小。因此当晶粒不是
+很大（宽化明显）时，忽略仪器因素或简单相减尚可接受；但\textbf{当算出的尺寸进入几十纳米
+以上时，仪器宽化就必须扣除}——它已是分母中的主要项。
+\end{principle}
+
+\paragraph{$K\alpha_{1}$ 与 $K\alpha_{2}$ 的双线加和与分离}
+\begin{principle}
+衍射实验通常用 $K\alpha$ 辐射，它由 $K\alpha_{1}$ 与 $K\alpha_{2}$ 两条线组成，强度比近似为
+$2:1$。二者峰形类似而波长不同，产生的衍射峰错开一个 $\Delta(2\theta)$，线性叠加后给出实验
+谱（原书图 4-20）。由布拉格方程 $2d\sin\theta_{1}=n\lambda_{1}$、$2d\sin\theta_{2}=n\lambda_{2}$，
+$\Delta(2\theta)=2(\theta_{2}-\theta_{1})$，利用三角变换并作小量近似（$\sin\theta$ 的微分）得
+\begin{equation}
+\Delta(2\theta)=\frac{2\Delta\lambda}{\lambda}\,\mathrm{tg}\,\theta .
+\label{eq:ch04c-doublet}
+\end{equation}
+对铜靶，$\lambda_{1}=1.5406$ Å、$\lambda_{2}=1.5444$ Å，$\Delta\lambda=0.0038$ Å，
+$K\alpha$ 加权平均值 $\bar{\lambda}=1.5418$ Å；代入得双线分离度
+\tocheck{未对照原页面图像：原书此处给出 $\Delta(2\theta)=0.2246\,\mathrm{tg}\,\theta$。
+按式~\equref{eq:ch04c-doublet} 用铜靶数值复算应为 $2\times0.0038/1.5418=4.93\times10^{-3}$
+弧度 $=0.282°$，即 $0.282\,\mathrm{tg}\,\theta$（以度为单位）；两者相差约 $20\%$，
+$\lambda$、$\Delta\lambda$ 的取值口径（是否用加权平均、是否以 pm 计）原书未在此处写明，
+数字待核。}
+\begin{equation}
+\Delta(2\theta)\big/°\approx0.28\,\mathrm{tg}\,\theta .
+\label{eq:ch04c-doubletnum}
+\end{equation}
+波长短的靶（Mo）双线分离更严重；同一靶下低角度分离度小、高角度分离越来越明显（原书
+图 4-21 给出铜靶、铝靶、铁靶的 $\Delta(2\theta)$—$2\theta$ 曲线，可据图直接查出各角度的
+分离度）。
+\end{principle}
+
+\begin{measure}
+\textbf{双线分离的 Rachinger 法}。由于两条线的叠加是线性加合，可以按 $\Delta(2\theta)/n$
+的等间隔把峰划分为若干区间。取 $n=3$（即以 $\Delta(2\theta)/3$ 为间隔读数），第 $i$ 点上的
+$K\alpha_{2}$ 贡献等于第 $i-3$ 点上 $K\alpha_{1}$ 贡献的一半，于是有递推
+\begin{equation}
+I_{i}(\alpha_{1})=I_{i}-\tfrac{1}{2}I_{i-3}(\alpha_{1}),
+\qquad i=4,5,6,\dots
+\label{eq:ch04c-rachinger}
+\end{equation}
+从第 1 区到第 3 区没有 $K\alpha_{2}$ 贡献，可以直接取 $I_{1},I_{2},I_{3}$ 作为
+$I(\alpha_{1})$ 的起点，然后逐点向右递推，得到纯 $K\alpha_{1}$ 的强度曲线。\\
+\textbf{适用边界（原书明确指出）}：从起始角到峰最大值之后约一半的位置，递推结果较好；再往后，
+$I_{i}(\alpha_{1})$ 与 $\tfrac{1}{2}I_{i-3}(\alpha_{1})$ 已接近，两者相减的误差被放大，曲线
+出现起伏，\textbf{分离出的 $\alpha_{1}$ 曲线在后半段准确性较差}。另有一个更基本的前提：
+式~\equref{eq:ch04c-rachinger} 只在该角度上双线确实分离（$\Delta(2\theta)$ 与半峰宽可比或更大）
+时才有意义；纳米样品低角峰宽化严重、双线根本不分离，此时强行剥离只会制造假的起伏。
+\end{measure}
+
+\begin{pitfall}
+\textbf{不扣仪器宽化，得到的尺寸系统偏小。}这是本节最常见、也最容易被忽略的错误，因为它
+不产生任何异常现象。定量地看：若仪器宽化 $b$ 与样品宽化 $\beta$ 大致相当，而直接用实测 $B$
+代入 Scherrer 公式，则得到的 $D'$ 满足
+\begin{equation}
+D'=\frac{K\lambda}{B\cos\theta}\approx\frac{K\lambda}{2\beta\cos\theta}=\frac{D}{2}
+\qquad(\text{Lorentz 型极限},\ B=b+\beta,\ b\approx\beta),
+\label{eq:ch04c-halving}
+\end{equation}
+即\textbf{尺寸被算小约一半}。概括地说：（i）$B$ 是仪器与样品卷积的结果，直接代入等于把仪器
+的``宽''记在晶粒的账上；（ii）宽化越弱（晶粒越大）这个错误越严重——尺寸大于 $100$ nm 时，
+实测宽度几乎全是仪器贡献，此时算出的``尺寸''实际是仪器分辨率决定的假值；（iii）仪器宽化
+随角度变化，用一个固定值去扣整张谱同样会残留系统误差。判别方法：换一台分辨率更高的仪器
+或改用更小的狭缝重测，若``尺寸''随之改变，说明之前的数主要是仪器贡献。
+\end{pitfall}
+
+\paragraph{尺寸宽化与微应变宽化的分离：Williamson--Hall 图}
+\begin{principle}
+晶粒变小往往同时伴随晶格畸变，实际峰形是两种效应的叠加。微应变 $\varepsilon=\Delta d/d$ 使
+不同晶粒、不同晶面的 $d$ 值在一个范围内分布，峰位随之弥散，宽化量随 $\mathrm{tg}\,\theta$
+增大；尺寸宽化则按 $1/\cos\theta$ 变化。把 Scherrer 公式与应变的贡献写成一项加和
+\begin{equation}
+\beta_{hkl}=\frac{K\lambda}{D\cos\theta}+4\varepsilon\,\mathrm{tg}\,\theta
+\quad\Longleftrightarrow\quad
+\beta_{hkl}\cos\theta=\frac{K\lambda}{D}+4\varepsilon\sin\theta ,
+\label{eq:ch04c-WH}
+\end{equation}
+两边同乘 $\cos\theta$ 后，$\beta\cos\theta$ 对 $4\sin\theta$ 作图应是一条直线：\textbf{截距}
+给出尺寸（$D=K\lambda/\text{截距}$），\textbf{斜率}给出微应变（$\varepsilon=\text{斜率}$）。
+这就是 Williamson--Hall（WH）图。若各点不能用一条直线拟合，说明尺寸分布过宽、应变各向异性
+或存在择优取向，此时应改用更完整的全谱模型（如 Rietveld 中的各向异性宽化模型）而不是硬划
+直线。\tocheck{未对照原页面图像：原书 §4.7 未给出 Williamson--Hall 关系式，本段是按标准
+文献形式补充的，用于说明 Scherrer 公式与应变宽化的分工；式~\equref{eq:ch04c-WH} 中
+晶体学惯例的 $4\varepsilon\sin\theta$ 系数（有的文献写作 $2\varepsilon\sin\theta$）取决于
+$\varepsilon$ 与积分宽度的定义，引用时须与本处定义一致。}
+\end{principle}
+
+\begin{figure}[tbp]
+  \centering
+  \begin{tikzpicture}
+    \tikzset{declare function={
+        WHa(\x) = 2.742;
+        WHb(\x) = 2.742+1.0*\x;
+        WHc(\x) = 6.856+3.0*\x;
+      }}
+    \begin{axis}[
+        width=\onecolwidth, height=62mm,
+        xlabel={$4\sin\theta$},
+        ylabel={$\beta\cos\theta$ / $10^{-3}$ rad},
+        xmin=0, xmax=2.0, ymin=0, ymax=14,
+        xtick={0,0.5,1.0,1.5,2.0},
+        ytick={0,2,4,6,8,10,12,14},
+        grid=both, major grid style={gray!35}, minor grid style={gray!12},
+        tick label style={font={\fontsize{8}{9.6}\selectfont}},
+        label style={font={\fontsize{8}{9.6}\selectfont}},
+        legend style={font={\fontsize{8}{9.6}\selectfont}, draw=none,
+                      fill=white, fill opacity=0.9, text opacity=1,
+                      legend cell align=left,
+                      at={(0.02,0.98)}, anchor=north west},
+        samples=2, domain=0:2,
+      ]
+      \addplot[very thick, blue] {WHa(x)};
+      \addlegendentry{样品 1：$D=50$ nm，无微应变}
+      \addplot[very thick, red, dashed] {WHb(x)};
+      \addlegendentry{样品 2：$D=50$ nm，$\varepsilon=0.1\%$}
+      \addplot[very thick, orange!80!black, dotted] {WHc(x)};
+      \addlegendentry{样品 3：$D=20$ nm，$\varepsilon=0.3\%$}
+      \addplot[only marks, mark=*, mark size=1.3pt, black] coordinates {
+        (0.4,8.3) (0.6,8.4) (0.8,9.6) (1.0,9.7) (1.2,10.8) (1.4,10.9) (1.6,11.9) (1.8,12.1)
+      };
+      \node[anchor=west, font={\fontsize{8}{9.6}\selectfont}]
+        at (axis cs:0.06,5.6) {截距 $=K\lambda/D$};
+      \node[anchor=west, font={\fontsize{8}{9.6}\selectfont}]
+        at (axis cs:1.45,8.6) {斜率 $=\varepsilon$};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{用 Williamson--Hall 图分离尺寸与微应变（模型计算，按式~\equref{eq:ch04c-WH}，
+    $K=0.89$，$\lambda=1.5406$ Å）。\textbf{看什么}：三个样品的横轴量都是
+    $4\sin\theta$、纵轴量都是 $\beta\cos\theta$。（i）样品 1 只有尺寸贡献，是一条水平线，
+    高度即 $K\lambda/D$；（ii）样品 2 的晶粒与样品 1 相同而多了 $0.1\%$ 的微应变，截距不变、
+    斜率变正——\textbf{尺寸只由截距决定，与斜率无关}；（iii）样品 3 晶粒更小，三条线里截距
+    最大。黑点为样品 3 的模拟实测点（带约 $\pm3\%$ 的随机误差），可见两三个角度的数据不足以
+    定直线。\textbf{条件与局限}：要求各峰宽化只来自尺寸与均匀微应变，且无择优取向；若峰形
+    偏离、存在层错或成分不均匀，点会系统偏离直线，此时 WH 图的作用是\textbf{提示模型不足}，
+    而不是给出可用的 $D$ 和 $\varepsilon$。\figsrc{模型计算图，非原书插图。}\modelmark}
+  \label{fig:ch04c-WH}
+\end{figure}
+
+\begin{table}[tbp]
+  \centering
+  \caption{Scherrer 方程适用的条件与典型失效方式。左列是使用者的操作，右列是后果。凡是
+    右列的现象出现，都应先回到左列检查，而不是修改结论。}
+  \label{tab:ch04c-boundary}
+  \begin{tabular}{@{}p{46mm}p{100mm}@{}}
+    \toprule
+    操作或前提 & 后果与判别 \\
+    \midrule
+    用未扣仪器宽化的 $B$ 直接代入 & 尺寸系统偏小，晶粒越大偏得越多（式~\equref{eq:ch04c-halving}）；
+    换仪器或换狭缝重测，结果会变 \\
+    存在微应变而只做 Scherrer & 把应变宽化记在尺寸上，算出``尺寸''显著小于 TEM 观察值；
+    用 WH 图看 $\beta\cos\theta$ 是否随 $\sin\theta$ 上升即可识别 \\
+    存在宽尺寸分布 & Scherrer 给出的是体积加权平均值，与 TEM 数均粒径、比表面等效粒径
+    可以差出数倍，三者不可直接互比 \\
+    峰太宽或太窄 & 尺寸大于约 $100$ nm 或小于约 $2$ nm 时，公式仍在，但读数与背景分离的
+    误差已超过结论本身的分辨能力 \\
+    用峰顶高度代替半峰宽 & 峰高受取向、织构、重叠影响，与半峰宽不是同一个量，量纲上也不
+    构成宽度 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{pitfall}
+\textbf{Scherrer 结果的四种典型误判}，都可先用一条内部判据自查：\\
+（1）\textbf{算出负尺寸或荒谬小的尺寸}。式~\equref{eq:ch04c-subtract} 的 $\beta=\sqrt{B^{2}-b^{2}}$
+在 $b>B$ 时无解；用 Lorentz 型相减时 $\beta=B-b$ 可能为负。这不是样品``负晶粒''，而是
+\textbf{仪器宽化被高估或标样选错}（标样本身有宽化、或不在同一角度）。正确处理：换标样、
+改用工作曲线或基本参数法。\\
+（2）\textbf{得到的尺寸远小于 TEM 观察值}。常见三种原因：未扣仪器宽化（式~\equref{eq:ch04c-halving}，
+因子约 $2$）；把微应变当成尺寸（应变可轻松贡献 $0.1°$—$0.5°$，等价于把尺寸压到几纳米）；
+样品本身是多晶团聚体，TEM 量的是颗粒而衍射量的是相干散射柱长。三者可用``换仪器''、
+``WH 图''、``不同 $hkl$ 的 $D$ 是否一致''分别排除。\\
+（3）\textbf{把微应变当尺寸}。判据是 $D_{hkl}$ 随 $hkl$ 系统变化——尺寸效应下不同方向的
+$D_{hkl}$ 差异有晶体学含义（各向异性形貌），而应变效应表现为所有峰的宽度都随
+$\mathrm{tg}\,\theta$ 增长。只看一条峰无法区分。\\
+（4）\textbf{只报一个数}。任何 Scherrer 结果都应同时给出：所用 $K$、波长、$2\theta$ 范围、
+仪器宽化的来源与数值、是否剥离 $K\alpha_{2}$。缺任一项，这个数无法被复核。
+\end{pitfall}
+
+\begin{crosscheck}
+Scherrer 结果必须与独立方法互校，且\textbf{不同方法量的是不同的平均}，一致时才说明样品
+简单，不一致时往往能反过来提供信息：\\
+（1）\textbf{TEM/HRTEM}：给出数均粒径与形貌。衍射值与 TEM 值一致 $\Rightarrow$ 单尺寸分布、
+无应变；衍射值小于 TEM $\Rightarrow$ 存在应变或多晶团聚；不同 $hkl$ 的 $D_{hkl}$ 与 TEM
+形貌（片状、针状）应对应得上。\\
+（2）\textbf{物理吸附／比表面}：由 $S_{\mathrm{BET}}$ 换算等效粒径
+$d\approx6/(\rho S)$，可与体积平均尺寸比较；此法给出的是外表面积等效尺寸，与相干长度同量级
+但不相等。\\
+（3）\textbf{小角散射（SAXS）}：给出颗粒尺寸分布，可判断``单尺寸''这一前提是否成立。\\
+（4）\textbf{中子衍射与 PDF}：中子对轻原子敏感且峰形更接近 Gauss，可分辨尺寸与应变；
+PDF 直接给出短程结构，不受晶粒尺寸限制。\\
+（5）\textbf{全谱拟合（Rietveld）}：把尺寸与应变作为峰宽参数一起精修，是当前最通用的做法，
+但它与 Scherrer 一样依赖峰形模型，不能作为完全独立的校验。
+\end{crosscheck}
+
+\subsection{Rietveld 全谱拟合}
+\src{上册 §4.8，书内 p.278—284 / PDF p.297—303}
+
+晶体结构解析通常由单晶衍射数据确定，但许多化合物难以长出单晶，有些材料的性质本身就体现在
+多晶状态，因此用多晶衍射数据做结构分析是必须进行的工作。早期的多晶结构分析靠提取积分强度，
+再用类似单晶的方法处理；由于粉末衍射峰严重重叠、强度难以合理分配，可用的有效数据很少，只能
+做较简单的结构且准确度差。20 世纪 60 年代 Rietveld 提出``全图拟合''方法，使基于多晶数据的
+结构精修成为结构分析的重要方法之一；峰形拟合物相分析与晶胞参数修正、晶体结构精修、无标相
+定量、结构从头解析等，Rietveld 方法已深入到多晶衍射分析的各个方面。
+
+\begin{probout}
+\textbf{测什么}：整张步进扫描谱（每一个 $2\theta$ 数据点都是一个观测点），而不是一张峰表。\\
+\textbf{能推断什么}：晶胞参数（可达 $10^{-4}$—$10^{-5}$ 相对精度）、原子坐标、占位度、
+温度因子、各相含量、晶粒尺寸与微应变、择优取向参数——前提是有合理的初始结构模型。\\
+\textbf{不能推断什么}：Rietveld 是\textbf{精修}方法而非求解方法，它不会从一个错误的模型出发
+找到正确答案；轻原子（H、Li、O）在 X 射线数据中约束很弱；强相关的参数组合（占位度与温度
+因子、晶胞参数与零点）不能由同一套数据独立确定；拟合优度高也\textbf{不等于}结构模型正确。
+\end{probout}
+
+\subsubsection{Rietveld 方法的基本原理}
+
+\begin{principle}
+Rietveld 方法处理多晶数据时不再分离衍射峰，而是反其道而行：把由初始模型计算出的强度分解，
+与各实验点数据关联。其基本要点为：\\
+（1）\textbf{采用步进扫描的实验数据}，每个数据点都是观测点；\\
+（2）\textbf{设置初始结构模型}，为拟分析的物相找到或建立较合理的初始结构；\\
+（3）\textbf{峰形函数拟合}，用合适的数学函数模拟衍射峰，把初始模型算出的积分强度分解成与
+各步对应的计算值；\\
+（4）\textbf{最小二乘全图拟合}，逐点比较计算值与实验值，修正结构参数，得到与实验数据对应的
+晶体结构参数。\\
+由初始结构模型计算出的衍射强度是某一衍射指标的积分强度（与 §4.4 给出的积分强度表达式同源，
+只是把几何与物理因子统一归入比例因子与修正项）
+\begin{equation}
+I_{hkl}=K\cdot P\cdot L\cdot\left|F_{hkl}\right|^{2}\cdot D\cdot A ,
+\label{eq:ch04c-ihkl}
+\end{equation}
+确定峰形函数后，把它展开成按 $2\theta$ 分布的强度。第 $i$ 个角度处的计算强度为
+\begin{equation}
+Y_{ic}=Y_{ib}+\sum_{\varphi}S_{\varphi}\sum_{\{hkl\}_{\varphi}}
+j_{hkl}\,L_{hkl}\left|F_{hkl,\varphi}\right|^{2}\Omega\!\left(2\theta_{i}-2\theta_{hkl,\varphi}\right),
+\label{eq:ch04c-rietveld}
+\end{equation}
+式中 $Y_{ib}$ 为该角度的背景值，$S_{\varphi}$ 为第 $\varphi$ 相的比例因子，$j_{hkl}$ 为多重性
+因子，$L_{hkl}$ 为洛伦兹--偏振因子，$\Omega$ 为归一化的峰形函数（其半峰宽随角度变化），
+对 $\varphi$ 加和表示对所有物相加和，对 $hkl$ 加和表示对所有衍射指标加和。背景可用多项式
+拟合求得，也可读入背景值后作内插。
+\tocheck{未对照原页面图像：式~\equref{eq:ch04c-rietveld} 的原书排版ocr严重残缺（下标、
+加和号与括号位置不可辨）。本式按标准 Rietveld 公式重建；原书明确给出的只有：$S$ 为比例
+因子、$2\theta_{hkl}$ 为布拉格角、$I_{hkl}$ 为某相某指标的积分强度、$P$ 为峰形函数、
+$Y_{ib}(2\theta_{i})$ 为背景值。式~\equref{eq:ch04c-ihkl} 中的因子顺序同样存疑。}
+\end{principle}
+
+\begin{measure}
+\textbf{衍射数据收集：Rietveld 结果的精度上限由数据决定。}\\
+（1）\textbf{样品}：结晶良好、晶粒大小适宜（研磨至 $10$\,µm 以下以减小消光与微吸收），
+尽可能消除择优取向。Bragg--Brentano 几何宜选较大的样品架并让样品转动，Debye--Scherrer
+几何可选毛细管装样，以保证有大量晶粒参与衍射。\\
+（2）\textbf{角度范围}：$2\theta$ 起始角从第一个峰之前 $2°$—$3°$ 开始，终止角到
+$120°$—$130°$（高角数据对晶胞参数与温度因子最重要，不应为了省时间砍掉）。\\
+（3）\textbf{步长与计数}：步长常取 $0.01°$—$0.02°$，每步数秒到数十秒（按仪器功率与探测器
+效率定）。选择计数时间的原则是使\textbf{最强衍射峰最高处的计数约为两万}。计数时间长，强度高、
+信噪比好、统计误差小、弱峰明确；但强到一定程度后改善有限，\textbf{甚至可能引入另外的
+``误差''导致拟合优度变差}——这一点在下面结合 $R$ 因子讨论，是理解 $R$ 因子的关键。
+\tocheck{未对照原页面图像：原书此处步长作``0.01—''后截断，''步长选 0.01—0.02°''为按
+上下文与常规取值补全；终止角原书作 1200—1300，按上下文应读作 120°—130°。}
+\end{measure}
+
+\begin{dataflow}
+\textbf{一次 Rietveld 精修的标准流程}：
+（i）收集步进扫描数据 $\rightarrow$（ii）确定背景与峰形函数，做\textbf{峰形拟合}
+（Pawley 或 LeBail，见 §4.8.2），得到晶胞参数、零点、峰宽参数与峰位 $\rightarrow$
+（iii）代入结构模型，先只精修比例因子与背景 $\rightarrow$（iv）逐步放开晶胞参数、零点、
+峰宽、取向，最后放开原子坐标、占位度、温度因子 $\rightarrow$（v）检查拟合差谱是否还有
+系统性残差（残差有结构 $\Rightarrow$ 模型或峰形有问题；残差随机 $\Rightarrow$ 拟合已到底）
+$\rightarrow$（vi）检查结构参数的物理合理性（键长键角、占位度总和、温度因子非负且量级
+合理）$\rightarrow$（vii）报告结果时必须同时给出 $R_{\mathrm{wp}}$、$R_{p}$、$R_{\mathrm{exp}}$、
+拟合差谱与参数的标准偏差。
+\end{dataflow}
+
+\subsubsection{峰形函数与最小二乘全图拟合}
+
+\begin{principle}
+峰形函数的选择非常重要，表~\tabref{tab:ch04c-profile} 列出常用的几类。对某衍射峰，取布拉格
+角处的 $2\theta=0$ 向两边展开：Gauss 函数图形变化较缓、拖尾效应小；Lorentz（Cauchy）函数
+图形变化较快、拖尾效应大（原书图 4-24 即两个函数的对比）。对于粉末中子衍射，峰形接近 Gauss
+函数；对于 X 射线衍射，实际峰形介于二者之间，是 Gauss 与 Lorentz 函数的``组合''，按权重加和
+即 pseudo-Voigt 函数。峰形与仪器、样品特征都有关，得到数据后必须通过对实验数据的拟合确定
+函数类型与参数，而不是先验指定。
+\end{principle}
+
+\begin{table}[tbp]
+  \centering
+  \caption{多晶衍射图拟合常用的峰形函数（对应原书表 4-8）。第三列为半峰宽随衍射角变化的
+    参数化，$U,V,W$ 与 $X,Y,F$ 都是拟合参数。\textbf{选择判据}：以拟合差谱的残差是否有
+    结构为准，不以单个 $R$ 因子最小为准。}
+  \label{tab:ch04c-profile}
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    函数类型 & 表达式（示意） & 半峰宽 $\Gamma$ 的参数化 \\
+    \midrule
+    Gaussian & $G(x)=\dfrac{1}{\sigma\sqrt{2\pi}}\exp\!\left(-\dfrac{x^{2}}{2\sigma^{2}}\right)$
+      & $\Gamma^{2}=U\mathrm{tg}^{2}\theta+V\mathrm{tg}\,\theta+W$ \\
+    Lorentzian & $L(x)=\dfrac{\Gamma/2}{\pi\left(x^{2}+\Gamma^{2}/4\right)}$
+      & $\Gamma=X\mathrm{tg}\,\theta+(Y+F)/\cos\theta$ \\
+    Voigt & $q(x)=G(x)*L(x)$（卷积） & —— \\
+    pseudo-Voigt & $q(x)=\eta L(x)+(1-\eta)G(x)$ & $\eta$ 为 Lorentz 成分的权重 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{pitfall}
+\textbf{表~\tabref{tab:ch04c-profile} 与 $\Gamma$ 参数化的使用边界}：\\
+（1）$\Gamma^{2}=U\mathrm{tg}^{2}\theta+V\mathrm{tg}\,\theta+W$ 是 Caglioti 型参数化，它把半峰宽
+写成角度的光滑函数，因此\textbf{隐含``所有峰的宽化机制相同''}；当样品同时有尺寸宽化与各向
+异性应变时，只用这一组参数拟合会把二者混在一起。\\
+（2）pseudo-Voigt 的 $\eta$ 与 $\Gamma$ 之间有强相关：$\Gamma$ 变大与 $\eta$ 变小在一定范围内
+可以给出几乎相同的曲线，因此单独报告 $\eta$ 或 $\Gamma$ 的物理含义有限。\\
+（3）原书中 modified Lorentzian 的表达式与半峰宽参数化在本页 ocr 中不可辨，本表未列出，
+以免给出错误的公式形式。\tocheck{未对照原页面图像：modified Lorentzian 的函数式与
+$\Gamma$ 参数化未能从 ocr 重建；Lorentzian 一行中 $(Y+F)/\cos\theta$ 的括号内容（原书此处
+似为两项之和）亦存疑。}
+\end{pitfall}
+
+\subsubsection{峰形拟合：Pawley 方法与 LeBail 方法}
+
+\begin{principle}
+要从多晶数据中解析结构，必须提取不同衍射指标的强度，于是又回到多晶衍射峰的重叠问题。随着
+高速计算机与高分辨衍射仪的使用，\textbf{全图分解}（whole powder pattern decomposition）成为
+解决这一问题的重要方法：采用``分解''拟合而不是去卷积来处理多晶衍射图。常用两种方法：\\
+（1）\textbf{Pawley 方法}（1980）：不考虑结构因子，直接从实验数据出发拟合衍射图。随角度
+变化的衍射图由以下参数确定——每个指标 $hkl$ 的强度 $I_{hkl}$（$N$ 个指标即 $N$ 个强度参数）、
+晶胞参数 $a,b,c,\alpha,\beta,\gamma$（6 个）、仪器零点修正（1 个）、峰宽参数 $U,V,W$（3 个）、
+以及与峰形函数选取有关的其他参数（$m$ 个，如 Lorentz 与 Gauss 成分的权重）。拟合参数总数
+为 $N+10+m$。对分离度好的峰，峰强由实验强度确定；对重叠严重的峰（尤其两峰位之差
+$\Delta2\theta$ 小于数据步长时）需\textbf{硬性限定}：按各指标衍射强度相等分配实验强度；
+若严重重叠但尚可分开，则采用\textbf{软性约束}：从强度均匀分配出发进行修正。\\
+（2）\textbf{LeBail 方法}（1988）：仍用上述 $10+m$ 个参数做最小二乘拟合，但强度不纳入拟合，
+而用``赋值—计算—赋值''的循环确定：先给各衍射峰一个大致的初值作为``计算值''，用 Rietveld
+拟合程序按所赋计算值对实验观察值进行分配，算出的观察值再设为新的计算值，对 $10+m$ 个参数
+做最小二乘修正，循环直到收敛。此法又称衍射强度分配法，\textbf{对任意数目的重叠峰都适用}；
+由于每步参与最小二乘的只有晶胞参数与峰形参数，各步运行很快，总时间大大缩短。注意：由于
+拟合中把实验值赋作计算值，原则上 $R$ 因子应趋于 $0$——这一点正是下面正确理解 $R$ 因子的
+关键。
+\end{principle}
+
+\begin{table}[tbp]
+  \centering
+  \caption{Pawley 方法与 LeBail 方法的对照。两者都只拟合``非结构''参数，因此它们是
+    Rietveld 精修的\textbf{前置步骤}，其 $R$ 因子构成结构精修 $R$ 因子的下界。}
+  \label{tab:ch04c-fitmethods}
+  \begin{tabular}{@{}p{24mm}p{56mm}p{62mm}@{}}
+    \toprule
+    比较项 & Pawley 方法 & LeBail 方法 \\
+    \midrule
+    拟合参数 & $N+10+m$（含每个 $hkl$ 的强度） & $10+m$（强度不参与拟合） \\
+    强度来源 & 最小二乘直接给出，并给出误差 & 赋值—计算—赋值循环，迭代收敛 \\
+    收敛速度 & 参数多、计算量大，较慢 & 每步参数少，运行快，但迭代步数多 \\
+    适用性 & 重叠峰的强度分配可能不尽合理 & 对任意重叠数目都适用 \\
+    $R$ 因子的意义 & 反映强度分配的好坏 & 原则上趋于 $0$，不能与结构精修的 $R$ 相比 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{dataflow}
+\textbf{峰形拟合的实际用处}（原书列出四点，都超出``只为提取强度''）：
+（i）在没有合适结构模型、或只需要准确晶胞参数时，可快速处理衍射图并得到相关信息；
+（ii）有助于判断空间群设定是否合理——例如 $Pnma$ 与 $Pbma$ 很难从强度上看出哪个更合理，
+峰形拟合可以较快给出选择；（iii）给出计算值与实验值的直观比较，直接显示体系是单一物相还是
+含有杂相；（iv）由于计算强度与结构无关，$R$ 因子可以尽量减小，这提示\textbf{含结构参数的
+Rietveld 精修其 $R$ 因子不可能更低}。因此目前通行做法是：先做峰形拟合，确定晶胞参数与峰形
+函数，满意后再代入结构参数做 Rietveld 精修——若结果显示衍射峰依然吻合很好、只是 $R$ 因子
+略有升高，则结构模型正确；若代入结构参数后计算值与实验值差别很大，说明相关参数偏离较大甚至
+整个模型不适合，需要重新考虑。
+\end{dataflow}
+
+\subsubsection{$R$ 因子与拟合可靠性的判据}
+
+\begin{principle}
+用计算机程序逐点比较计算值与实验值，通过最小二乘法调节晶胞参数、原子坐标与峰形函数参数，
+使两者尽量吻合，即拟合的剩余因子尽可能小。最常用的是加权剩余差方因子
+\begin{equation}
+R_{\mathrm{wp}}=\left[\frac{\sum_{i}w_{i}\left(Y_{io}-Y_{ic}\right)^{2}}
+{\sum_{i}w_{i}Y_{io}^{2}}\right]^{1/2},
+\qquad
+w_{i}=\frac{1}{\sigma_{i}^{2}}=\frac{1}{Y_{io}},
+\label{eq:ch04c-rwp}
+\end{equation}
+相关的其他因子有 $R_{p}$ 与 $R_{\mathrm{exp}}$
+\begin{equation}
+R_{p}=\frac{\sum_{i}\left|Y_{io}-Y_{ic}\right|}{\sum_{i}Y_{io}},
+\qquad
+R_{\mathrm{exp}}=\left[\frac{N-P}{\sum_{i}w_{i}Y_{io}^{2}}\right]^{1/2},
+\label{eq:ch04c-rpexp}
+\end{equation}
+式中 $N$ 为测量数据的点数，$P$ 为精修参数的数目，$\sigma_{i}$ 是统计学期望的误差。最小二乘
+拟合结果由拟合优度（goodness of fit，GOF）定义
+\begin{equation}
+\mathrm{GOF}=\frac{R_{\mathrm{wp}}}{R_{\mathrm{exp}}},
+\qquad
+\chi^{2}=\left(\frac{R_{\mathrm{wp}}}{R_{\mathrm{exp}}}\right)^{2}.
+\label{eq:ch04c-gof}
+\end{equation}
+GOF 接近 $1$ 表示拟合结果令人满意；若为 $1.5$ 或更高，参数或理论模型的选择可能需要重新考虑。
+\tocheck{未对照原页面图像：原书 $R_{\mathrm{wp}}$、$R_{p}$、$R_{\mathrm{exp}}$ 的定义式在
+ocr 中残缺（分母与指数不可辨），本处按标准定义重建；$w_{i}=1/\sigma_{i}^{2}=1/Y_{io}$ 与
+$\chi^{2}=(\mathrm{GOF})^{2}$ 为按计数统计与通行约定的补全。原书只给出 $\mathrm{GOF}=
+R_{\mathrm{wp}}/R_{\mathrm{exp}}$，未展开 $\chi^{2}$。}
+\end{principle}
+
+\begin{table}[tbp]
+  \centering
+  \caption{$R$ 因子的分工与读数。四个因子必须一起看：只看 $R_{\mathrm{wp}}$ 会被``压低
+    残差''的操作误导，只看 $R_{\mathrm{exp}}$ 又无法判断模型。}
+  \label{tab:ch04c-rfactor}
+  \begin{tabular}{@{}p{20mm}p{52mm}p{66mm}@{}}
+    \toprule
+    因子 & 反映什么 & 读数与判据 \\
+    \midrule
+    $R_{\mathrm{wp}}$ & 按计数统计加权的剩余差方，强峰权重大 &
+    常规精修 $<10\%$；数据好、结构合理时可到 $5\%$ 以下；多孔、含无序物种的体系可以到约 $20\%$ \\
+    $R_{p}$ & 未加权的绝对偏差，弱峰与强峰同等看待 &
+    与 $R_{\mathrm{wp}}$ 一起看：两者相差过大说明拟合被少数强峰或个别坏点主导 \\
+    $R_{\mathrm{exp}}$ & 由计数统计与自由度数决定的下限 &
+    计数越高它越小；$R_{\mathrm{wp}}$ 与它同量级才说明模型真的解释了数据 \\
+    GOF $=R_{\mathrm{wp}}/R_{\mathrm{exp}}$ & 拟合是否优于统计期望 &
+    接近 $1$ 满意；$\ge1.5$ 要考虑参数或模型；$<1$ 往往意味着权重被高估或参数过多 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{pitfall}
+\textbf{``拟合优度高''不等于``结构模型正确''}——这是 Rietveld 应用中最严重的误判来源，
+其机理有四条：\\
+（1）\textbf{$R$ 因子不是结构判据}。$R_{\mathrm{wp}}$ 只衡量计算曲线与实测曲线的数值接近
+程度。峰形函数、背景多项式、零点、样品位移、择优取向、晶粒尺寸与应变等\textbf{非结构参数}
+都参与拟合，它们可以把 $R_{\mathrm{wp}}$ 压得很低，而结构本身可能完全错误。判断模型正确性
+必须回到结构化学：键长键角是否合理、配位环境是否成立、占位度总和是否与化学分析一致、
+温度因子是否非负且量级合理。\\
+（2）\textbf{强度过高反而使 GOF 变差}。由式~\equref{eq:ch04c-rwp} 与式~\equref{eq:ch04c-rpexp}，
+当 $w_{i}=1/Y_{io}$ 时 $\sum_{i}w_{i}Y_{io}^{2}=\sum_{i}Y_{io}$，故
+$R_{\mathrm{exp}}\propto\left[(N-P)/\sum_{i}Y_{io}\right]^{1/2}$ 随总计数增大而减小，而
+$R_{\mathrm{wp}}$ 的改善有限，于是 GOF 增大。这正解释了``有些数据强度低、图谱看起来不太好，
+GOF 反而较小''的现象。\textbf{因此不能跨数据集比较 GOF}，也不能把 GOF 当作数据质量的打分。
+原书据此强调：作为精修结果的判据，要合理理解 $R$ 因子——精修后通常 $R$ 因子 $<10\%$，
+但出现约 $20\%$ 的情况也属正常，必须针对具体体系和具体结构分析：致密的无机化合物在数据好、
+结构合理时可得到很小的 $R$ 因子，而多孔结构（如沸石）因孔道中有溶剂或无序分布的物种，
+$R$ 因子会比较大。\textbf{关键是从结构化学角度分析，结构要合理}。\\
+（3）\textbf{参数相关性与过拟合}。占位度与温度因子强相关（两者都主要改变
+$\left|F\right|^{2}$ 的尺度，随 $\sin\theta/\lambda$ 的变化差异有限），常给出``占位度补温度
+因子''的伪解；晶胞参数与零点、样品位移相关；峰宽参数 $U,V,W$ 与尺寸、应变相关。参数越多、
+越接近独立观测数，$R_{\mathrm{wp}}$ 必然越低，但参数已失去意义。自查办法：看精修输出的参数
+标准偏差与相关系数矩阵；看增加参数后 $R_{\mathrm{wp}}$ 的下降是否与自由度消耗相称；
+把数据分成两半分别精修，比较所得参数是否一致。\\
+（4）\textbf{无约束精修出非物理的占位度}。自由放开占位度会给出大于 $1$、为负值或与化学式
+矛盾的结果（如两个位置总占位度 $1.4$）。必须施加约束：按化学分析固定总含量、让相关位置的
+占位度之和为常数、或先精修温度因子再放开占位度。\\
+（5）\textbf{择优取向未校正导致强度失配}。层状、针状晶粒压片时取向明显，$00l$ 与 $hk0$ 的
+强度系统偏离，拟合差谱在特定角度范围出现规律性残差，看起来像``结构不对''。判别方法很直接：
+改变制样方式（侧装、轻压、加冲淡剂、控制粒度）后重测，若强度比随之改变，则问题在制样而不在
+结构；确认存在取向后再用 March--Dollase 或球谐模型校正。
+\end{pitfall}
+
+\begin{crosscheck}
+Rietveld 结果的回查清单，按可靠性从高到低：
+（1）\textbf{先做峰形拟合再代入结构}（见 §4.8.3 的流程）：峰形拟合的 $R$ 因子构成结构精修
+$R$ 因子的下界；代入结构后 $R$ 只略有升高且峰位不变，是模型正确性的正面证据；若 $R$ 大幅
+上升或出现新的系统残差，说明参数甚至模型有问题。
+（2）\textbf{拟合差谱}：残差是否随机。残差在特定角度有结构 $\Rightarrow$ 峰形、取向、
+背景或杂相未处理好；残差整体偏移 $\Rightarrow$ 零点或样品位移未修好。
+（3）\textbf{结构参数的物理合理性}：键长键角与已知同构化合物比较、键价和检验、配位数检查、
+占位度与化学分析对照、温度因子与同构物比较。
+（4）\textbf{独立实验}：中子衍射（轻原子与氧的位置）、高分辨电镜（骨架与孔道直接成像）、
+吸附等温线（孔口尺寸与孔容）、化学分析（组成）、固体核磁（配位与有序度）。
+（5）\textbf{补充判据}：可另用只涉及结构模型的 $R_{\mathrm{Bragg}}$（$R_{F}$）监控结构本身，
+它不受背景与峰形参数影响；本书未展开，但它是把``拟合得好''与``结构对''分开的常用工具。
+\end{crosscheck}
+
+\subsection{多晶 X 射线衍射数据分析实例}
+\src{上册 §4.9，书内 p.284—295 / PDF p.303—314}
+
+本节用原书的五个实例说明前面各节的方法如何落到具体问题上。它们分别对应四类任务：
+\textbf{晶胞参数的精修}（4.9.1）、\textbf{物相确认与相定量}（4.9.2）、\textbf{晶粒大小分析}
+（4.9.3）、\textbf{结构解析与精修}（4.9.4、4.9.5）。四类任务的共同点是：结论的可靠性都
+由``前提是否成立''决定，而不由计算的复杂程度决定。
+
+\subsubsection{晶胞参数的精修：FAU 沸石的骨架组成}
+
+\begin{principle}
+在催化剂研制中，常通过掺杂或取代改变物相组成，而物相与结构的变化\textbf{首先体现在晶胞
+参数上}：外来离子是否引入、引入后原物相结构是否保持、结构有怎样的细微改变，是理解催化剂
+结构进而理解其性能的出发点。X、Y 沸石是应用最广泛的沸石，二者具有相同的骨架结构类型 FAU
+（原书图 4-25）：骨架基本单元是 $\beta$ 笼，$\beta$ 笼通过双六元环彼此连接形成三维骨架，
+连接中自然形成由 $18$ 个四元环（$6$ 组三联四元环）、$4$ 个六元环和 $4$ 个十二元环围绕而成
+的``八面沸石''笼，又称超笼。
+
+理想的 FAU 骨架属立方晶系，空间群 $Fd\bar{3}m$，晶胞参数主要随骨架元素组成而改变。结构中
+沿 $\langle111\rangle$ 方向存在有效孔径为 $7.4$ Å $\times$ $7.4$ Å 的十二元环孔道，是三维
+大孔沸石。X、Y 沸石组成可用通式表示，硅铝比可在一定范围内变化：\textbf{硅铝比低于 $2$—$3$
+的称 X 型，高于此值的称 Y 型}。随铝含量降低，结构稳定性增加、晶胞参数变小：$a_{\mathrm{X}}
+=24.86$—$25.05$ Å，$a_{\mathrm{Y}}=24.3$—$24.85$ Å。也可通过后处理（酸处理脱铝、碱处理脱硅）
+调节骨架组成，处理后的变化首先体现在晶胞参数上。对 X、Y 沸石体系，晶胞参数与硅铝比之间
+存在经验关系
+\begin{equation}
+\frac{\mathrm{Si}}{\mathrm{Al}}=\frac{25.858-a}{a-24.191},
+\label{eq:ch04c-sial}
+\end{equation}
+式中 $a$ 为以 Å 为单位的晶胞参数。于是\textbf{可以通过晶胞参数的变化推测骨架硅铝比}，从而在
+理解结构与组成的基础上认识性能变化的规律。
+\end{principle}
+
+\begin{pitfall}
+\textbf{关系式的灵敏度随 $a$ 急剧变化，必须报告晶胞参数的误差}。对式~\equref{eq:ch04c-sial}
+求微分得
+\begin{equation}
+\frac{\mathrm{d}(\mathrm{Si}/\mathrm{Al})}{\mathrm{d}a}
+=-\frac{1.667}{\left(a-24.191\right)^{2}} ,
+\label{eq:ch04c-sialsens}
+\end{equation}
+在 $a=24.86$ Å（X 型）处约为 $-3.7$ Å$^{-1}$，$a=24.5$ Å（Y 型）处约为 $-17.5$ Å$^{-1}$，
+$a=24.4$ Å 处已达约 $-38$ Å$^{-1}$。也就是说，晶胞参数 $0.001$ Å 的误差在低硅铝比端只对应
+$\pm0.004$ 的硅铝比误差，在高硅铝比端却可以放大到 $\pm0.04$ 甚至更大。\textbf{高硅铝比
+（脱铝严重）的样品，用一条经验式反推硅铝比是不可靠的}，应当用化学分析或核磁独立测定。
+\tocheck{未对照原页面图像：式~\equref{eq:ch04c-sialsens} 的灵敏度计算是本项目按
+式~\equref{eq:ch04c-sial} 微分得到的，原书未给出；系数 $25.858$、$24.191$ 两数取自 ocr，
+数字形态可靠但小数末位未逐位核对。}
+\end{pitfall}
+
+\begin{crosscheck}
+晶胞参数来自何处、精度如何，决定了它能支持什么结论：晶胞参数应由\textbf{峰形拟合或
+Rietveld 全谱拟合}给出（用大量高角峰联合精修，相对精度可达 $10^{-4}$ 以上），而不是由一
+两条峰的峰位手算；测得的 $a$ 应与同批样品的化学分析（ICP、XRF）、$^{27}\mathrm{Al}$ 与
+$^{29}\mathrm{Si}$ 固体核磁给出的配位与硅铝比、以及同构化合物的文献值互校。对改性问题，
+真正有说服力的证据不是某一次的 $a$ 值，而是\textbf{一系列}样品的 $a$ 随处理条件单调变化
+且与性能（酸量、稳定性、吸附量）同向变化。
+\end{crosscheck}
+
+\subsubsection{物相确认与相定量：莫来石--刚玉体系}
+
+\begin{principle}
+莫来石（mullite）化学式为 \ce{Al6Si2O13}，可用作高温耐火材料与载体材料。现有莫来石与刚玉的
+混合样品，要用多晶 X 射线衍射数据（除非特别说明，实验室衍射仪默认铜靶）确定体系中莫来石的
+含量。按 X 射线相定量原理：先取莫来石与刚玉纯样品按质量比 $1:1$ 配制混合样，选取适宜的衍射
+峰求取\textbf{参比强度}（RIR）。莫来石属正交晶系，空间群 $Pbam$，晶胞参数 $a=7.588(2)$ Å、
+$b=7.688(2)$ Å；刚玉的参数在 §4.5.2 已给出，空间群 $R\bar{3}c$，取六方晶轴
+$a=4.759$ Å、$c=12.992$ Å、$\gamma=120°$。原书图 4-26（a）为计算模拟图，（b）为实验图谱，
+二者都标出了较强峰的衍射指标，其中标 c 的衍射峰属于刚玉。此体系中，莫来石 $220$ 指标
+（$2\theta=33.2°$）与刚玉 $110$ 指标（$2\theta=37.8°$）的衍射峰都比较独立、相距不远、强度
+适宜，故选此二峰为参考；由两个衍射峰的强度求得莫来石的参比强度 $K=0.79$。
+
+由强度与质量分数的关系 $\dfrac{I_{\mathrm{M}}}{I_{\mathrm{C}}}=K\dfrac{w_{\mathrm{M}}}
+{w_{\mathrm{C}}}$，配合 $w_{\mathrm{M}}+w_{\mathrm{C}}=1$，得莫来石质量分数的计算式
+\begin{equation}
+w_{\mathrm{M}}=\frac{I_{\mathrm{M}(220)}}{K\,I_{\mathrm{C}(110)}+I_{\mathrm{M}(220)}}
+\times100\%=\frac{I_{\mathrm{M}(220)}}{0.79\,I_{\mathrm{C}(110)}+I_{\mathrm{M}(220)}}\times100\% .
+\label{eq:ch04c-rir}
+\end{equation}
+\end{principle}
+
+\begin{example}[读图实例：从两张衍射图的峰强读出莫来石含量]
+\begin{obs}
+原书图 4-26（b）给出混合样品的实验图谱，图中可读出莫来石 $220$（$2\theta\approx33.2°$）与
+刚玉 $110$（$2\theta\approx37.8°$）两个峰的强度 $I_{\mathrm{M}(220)}$ 与
+$I_{\mathrm{C}(110)}$。设从图上量得（示意取值）$I_{\mathrm{M}(220)}=1.60$、
+$I_{\mathrm{C}(110)}=1.00$（同一纵轴标尺下的峰面积即积分强度）。已知 $K=0.79$。
+作为反证用的一点：若两峰强度相等（$I_{\mathrm{M}}=I_{\mathrm{C}}$），按式~\equref{eq:ch04c-rir}
+应得 $w_{\mathrm{M}}=1/(0.79+1)=55.9\%$——与 $K<1$ 的含义一致：等质量混合时莫来石峰比刚玉峰弱。
+\end{obs}
+\begin{infer}
+代入式~\equref{eq:ch04c-rir}：
+$w_{\mathrm{M}}=1.60/(0.79\times1.00+1.60)=1.60/2.39\approx67\%$，即莫来石约占三分之二
+（质量分数），其余为刚玉。这一推断成立的前提是：两相都是结晶良好的纯相、无第三相、无择优
+取向、所用强度是\textbf{积分强度}而非峰高，且 $K$ 是在同一台仪器、同一实验条件下用纯样品
+标定的。以上任一条不成立，$67\%$ 这个数就要打折。
+\end{infer}
+\textbf{可自检的一点}：用 §4.5 给出的刚玉晶胞参数与本节给出的莫来石 $a$、$b$ 正算峰位，
+刚玉 $110$ 得 $2\theta\approx37.8°$、莫来石 $220$ 得 $2\theta\approx33.2°$（Cu $K\alpha_{1}$），
+与书内标注的位置一致——这说明所引晶胞参数与所选指标彼此自洽，可以放心用于定量。
+\end{example}
+
+\begin{pitfall}
+相定量的失效方式比定性更隐蔽，因为它总会给出一个数：\\
+（1）\textbf{$K$ 值不能挪用}。RIR 依赖于波长、仪器几何、探测器与所选峰，文献表值只在同一
+实验条件下可比；原书特意先用纯样品按 $1:1$ 配比实测 $K$，这是正确做法。\\
+（2）\textbf{峰高代替积分强度}。两相峰的宽度往往不同（一相晶粒小、一相晶粒大），峰高比与
+积分强度比不相等，直接代峰高会产生随晶粒尺寸变化的系统偏差。\\
+（3）\textbf{择优取向}。莫来石为柱状／针状晶粒、刚玉为块状，压片时取向程度不同，两峰强度比
+随制样改变。判别方法仍是改变制样后重测。\\
+（4）\textbf{重叠与无定形}。若样品含无定形相（如硅胶、玻璃态杂质），衍射法只``看见''晶相，
+算出的两相比例是\textbf{结晶相之间的相对比例}，不等于样品的真实质量分数；需要用内标法或
+全谱拟合加入无定形项才能给出绝对含量。\\
+（5）\textbf{微量相与固溶}。含量低于约 $3\%$ 的相通常难以定量；若莫来石中固溶了过量
+\ce{Al2O3}（莫来石本身是 $3/2$ 型与 $2/1$ 型之间的固溶体），其 ``化学式''并不固定，
+用固定式量换算质量分数会引入偏差。
+\end{pitfall}
+
+\subsubsection{晶粒大小分析：纳米 ZnO 的 (100) 衍射峰}
+
+\begin{example}[读图实例：从一条峰的半峰宽到 $55$ nm]
+\begin{obs}
+ZnO 属六方晶系，空间群 $P6_{3}mc$，晶胞参数 $a=3.243$ Å、$c=5.195$ Å。选 $100$ 指标的
+衍射峰（$2\theta=31.7°$），以 $1°$/min 的扫描速度取衍射数据，所得图谱是 $K\alpha_{1}$ 与
+$K\alpha_{2}$ 混合光源的衍射图（原书图 4-27）。原书明确：必须扣除 $K\alpha_{2}$ 后的衍射线；
+通过合理作图可量得该衍射峰的半峰宽 $B$。为消除仪器影响、获得反映样品晶粒的宽化，绘制了
+实验半峰宽 $B$ 与晶粒引起的半峰宽 $\beta$ 的工作曲线（原书图 4-28）：工作曲线由两步得到——
+（i）选结晶良好、晶粒约 $10$ µm 的标准样品（$\alpha$-石英），在待测峰附近选一条衍射，
+作图并函数拟合，所得拟合函数反映仪器因素导致的展宽；（ii）用 Cauchy 函数
+$G(x)=\dfrac{k}{k^{2}+x^{2}}$ 模拟不同晶粒大小引起的宽化，改变常数 $k$ 得到不同半峰宽的
+函数，与仪器函数卷积，即得 $B$—$\beta$ 工作曲线。\\
+从图 4-28 上读出：$B=0.300°$ 时 $\beta=0.150°=0.0026$ 弧度。
+\end{obs}
+\begin{infer}
+取 $\lambda=1.5406$ Å、$2\theta=31.70°$（故 $\theta=15.85°$、$\cos\theta=0.9619$），
+$\beta=0.0026$ rad，代入式~\equref{eq:ch04c-scherrer}（$K=0.89$）：
+\begin{equation}
+D_{100}=\frac{0.89\times1.5406}{0.0026\times0.9619}\ \text{Å}
+=\frac{1.3711}{0.002501}\ \text{Å}\approx548\ \text{Å}\approx55\ \text{nm},
+\label{eq:ch04c-znod}
+\end{equation}
+即纳米 ZnO 颗粒在垂直于 $(100)$ 方向的平均厚度约 $55$ nm，与原书给出的 $55$ nm 一致。
+\textbf{这一步的关键不是算术，而是代入的是 $\beta$ 而不是 $B$}：若把实测的 $B=0.300°$ 直接
+代入，得到的是约 $27$ nm，恰好是正确值的一半（式~\equref{eq:ch04c-halving} 的定量体现）。
+\end{infer}
+\textbf{两条可复核的旁证}：
+（i）$B=0.300°$ 与 $\beta=0.150°$ 的读数说明该工作曲线在此处等价于 Cauchy 型的线性相加
+$B=b+\beta$，反推仪器宽化 $b\approx0.150°$；这比 §4.7.2 提到的现代仪器 $0.05°$ 高出一个
+量级，与 $1°$/min 的快扫条件相符，也说明本例中仪器贡献绝不能忽略。
+（ii）$55$ nm 落在``用未扣仪器宽化的实验半峰宽直接计算''的适宜范围（约 $2$—$20$ nm）
+\textbf{之外}，之所以仍能给出可信结果，正是因为先通过工作曲线扣掉了仪器宽化——这两件事
+并不矛盾，而是同一件事的两面。\tocheck{未对照原页面图像：原书此处给出``利用 Scherrer 公式
+直接用实验半峰宽计算晶粒大小的适宜晶粒大小范围为 2—20 nm''，而 §4.7.2 末尾又出现
+``Scherrer 公式适宜的范围为 3—100 nm''（该处数字 ocr 作``3？100''，中间字符不可辨）。
+两处口径不同（是否扣仪器宽化、是否要求单尺寸无应变），本处按上下文解释，具体数字待核。
+另外，用书内给出的 $a=3.243$ Å 正算 $100$ 峰应得 $2\theta\approx31.84°$ 而非 $31.7°$，
+差异可能来自晶胞参数的取整，一并待核。}
+\end{example}
+
+\subsubsection{已知沸石及其修饰结构：B-CHA 的煅烧与吸附}
+
+原书以硼硅菱沸石（B-CHA-1）及其煅烧产物（B-CHA-1c）为例，示范``已知结构 + 修饰''这一类
+问题的完整链条。菱沸石骨架（CHA）的基本单元为双六元环（D6R），D6R 按 $\cdots$ABCABC$\cdots$
+立方密堆积排列，相邻 D6R 间通过四元环连接成三维骨架，在垂直于 $[001]$ 方向形成开口尺寸
+$3.8$ Å $\times$ $3.8$ Å 的八元环孔道；其中独特的 CHA 笼使它在吸附分离与催化领域有重要
+应用。
+
+\begin{principle}
+这类工作的逻辑是：\textbf{结构精修给出骨架参数 $\rightarrow$ 参数变化给出组成与几何信息
+$\rightarrow$ 几何信息解释分离性能}。原书表 4-9 与表 4-10 分别给出 B-CHA-1 及煅烧产物
+B-CHA-1c 的原子位置、坐标、占有率与温度因子，表 4-11 给出各样品的硅硼比、煅烧前后的晶胞
+参数与残差因子。比较原书图 4-30 的（a）与（b）可见：煅烧前后衍射峰\textbf{位置基本相同}而
+\textbf{强度差别显著}——低角度衍射峰的相对强度显著增大（这是一般多孔材料的典型特征，因为
+模板剂在孔道中会对低角度衍射产生明显的抵消作用），较高角度衍射峰相对强度变化较小（主要来自
+骨架原子的贡献）。
+\end{principle}
+
+\begin{obs}
+由表 4-9 与表 4-10 可读出：骨架元素（Si、B）的结构参数在煅烧前后变化不大；B-CHA-1c 的
+结构参数中有两个标记为``WO''的原子，代表以水分子形式存在的氧原子，位于孔道中。由表 4-11
+可读出：未煅烧样品随硼含量提高，晶胞体积变化不明显；而\textbf{煅烧后的样品，晶胞体积随
+掺硼量提高而逐渐收缩}。
+\end{obs}
+\begin{infer}
+骨架元素参数几乎不变 $\Rightarrow$ 模板剂除去后样品骨架结构几乎不变；孔道中出现水分子氧
+$\Rightarrow$ 除去模板剂的样品有很强的吸水性。煅烧前后晶胞体积随硼含量的变化趋势不同，原因
+在于：煅烧前菱沸石孔道里有有机模板剂，刚性模板剂占据 CHA 笼，起空间填充与支撑作用，
+\textbf{抑制了晶胞在 $c$ 方向的收缩}；煅烧后模板剂被移除，骨架中 B 取代 Si 使（$\mathrm{B^{3+}}$
+半径小）八元环窗口由 $3.8$ Å $\times$ $3.8$ Å 缩小为 $3.6$ Å $\times$ $3.7$ Å，因而表现出
+良好的气体选择性吸附。这一点由吸附实验证实：在 $273$ K、$760$ mmHg 条件下测得四个样品对
+\ce{CO2} 的吸附量分别约为 $3.39$、$3.57$、$3.39$、$3.$（第四值 ocr 缺失）mmol/g，对 \ce{CH4}
+的吸附量明显较弱（约 $0.44$ mmol/g 量级），对 \ce{CO2} 与 \ce{CH4} 的选择性吸附比分别约为
+$8.68$、$8.9$、$10.03$ 等。选择性来源于孔口尺寸的分子筛分：$3.6$—$3.7$ Å 的八元环窗口允许
+动力学直径 $3.3$ Å 的 \ce{CO2} 自由通过，而动力学直径 $3.9$ Å 的 \ce{CH4} 难以通过。
+\end{infer}
+\tocheck{未对照原页面图像：原书表 4-9、4-10、4-11 的数字串在 ocr 中大面积损坏（原子坐标、
+占有率、温度因子、晶胞参数与 $R$ 因子的小数位均不可辨），\textbf{本处不转录这三个表的数值}，
+只保留语义可靠的结论（骨架参数基本不变、煅烧后晶胞体积随掺硼量收缩、孔道中存在水分子氧、
+选择性吸附比量级）。吸附量的第四个数值与部分选择性比值在 ocr 中截断。需要引用具体数值时
+必须回原页面图像核对。}
+
+\subsubsection{新沸石的结构解析：从 RUB-39 到 RUB-41}
+
+\begin{principle}
+这个实例示范``指标化给出的晶胞参数本身就能提供结构线索''。以二甲基二丙基铵离子为模板剂，
+活性 \ce{SiO2} 在 $150$—$175$ \degC{} 的水热条件下生成层状硅酸盐 RUB-39，RUB-39 经灼烧处理
+得到 RUB-41。粉末 X 射线数据的指标化结果给出：RUB-39 与 RUB-41 均属单斜晶系，空间群
+$P2/c$，晶胞参数中\textbf{参数 $b$ 相差约 $2.0$ Å}（RUB-39 的 $b\approx10.72$ Å，RUB-41 的
+$b\approx8.72$ Å），而 $a$、$c$ 与 $\beta$ 在转化前后基本不变。这一条即为结构线索：
+$b$ 收缩 $2$ Å 而层内参数不动，意味着 RUB-39 的层间以\textbf{氢键}连接，受热后发生
+\textbf{脱水缩合}转变为三维沸石骨架，而层板结构在缩合过程中保持不变。
+\tocheck{未对照原页面图像：原书此处的晶胞参数串在 ocr 中丢失了轴标（数值为 $7.3264$、
+$10.719$、$17.50$、$8.7215$、$17.1665$、$\beta=114.155°$，且''在转化过程中参数 $a$、$c$、
+$\beta$ 基本不变''一句中三个符号不可辨）。本处按''$b$ 相差约 $2.0$ Å''与''层板不变''两条
+自洽约束，把 $10.719$ 与 $8.7215$ 判为 $b$、其余判为 $a$ 与 $c$；$P2/c$ 的空间群写法亦
+待核（可能是 $P2_{1}/c$）。}
+\end{principle}
+
+\begin{dataflow}
+\textbf{由晶胞参数到结构模型的推理链}：
+指标化得晶胞参数 $\rightarrow$ 查沸石骨架图谱，发现 RUB-41 与已知沸石\textbf{片沸石}的骨架
+拓扑 HEU 密切相关（HEU 属单斜晶系，空间群 $C2/m$，$a=17.767$ Å、$c=7.431$ Å、
+$\beta=115.930°$）$\rightarrow$ 比较两者晶胞参数：层内两轴相当于交换，而 $b$ 参数 RUB-41 恰为
+HEU 的一半 $\rightarrow$ 推断二者可能具有相同的层结构 $\rightarrow$ 追查堆积方式：HEU 骨架中
+相邻层以\textbf{镜面}关联、按 $\cdots$ABAB$\cdots$ 模式堆积，而 RUB-41 中相邻层以
+\textbf{对称中心}关联、按 $\cdots$AAAA$\cdots$ 方式堆积——这正好说明了 $b$ 参数成半数的
+几何来源 $\rightarrow$ 从晶体化学原理出发搭建模型，推出 $5$ 个独立的 Si 原子位置，并据
+\ce{SiO4} 四面体的共顶点连接特点导出 $10$ 个独立的 O 原子位置 $\rightarrow$ 由 Rietveld 精修
+确认结构 $\rightarrow$ 进一步通过结构重组，由粉末数据解析出 RUB-39 的结构，给出层状硅酸盐向
+沸石转变的清晰解释。RUB-39 结构中层间排列完全有序；煅烧时相邻两层的端羟基脱水缩合，在层间
+形成二维的十元环与八元环孔道，转变为 RUB-41（沿 $[100]$ 方向的十元环有效孔径约
+$4.0$ Å $\times$ $6.5$ Å，沿 $[001]$ 方向的八元环有效孔径约 $2.7$ Å $\times$ $5.0$ Å）。
+RUB-41 既是新沸石，也具有新的骨架拓扑类型，被国际沸石协会结构专业委员会认可并给出骨架编码
+RRO；基于其微孔结构特点，已被工业界用于小分子异构体（正丁烷/异丁烷、1-丁二烯/反-2-丁二烯
+等）的分离。\tocheck{未对照原页面图像：RUB-41 的骨架编码在 ocr 中作''RRO''，与文献通行
+写法一致，但''$4.0\times6.5$ Å''''$2.7\times5.0$ Å''两组孔径的小数位在 ocr 中部分不可辨
+（原文作 4.0 Å$\times$6.S Å、2.7 Å$\times$S.0 Å），孔口数值待核。}
+\end{dataflow}
+
+\begin{crosscheck}
+本例最值得学的一点是：\textbf{指标化不是结构解析的准备工作，它本身就在提供结构信息}。
+晶胞参数的``变''与``不变''是判断结构转变机制的硬约束——只有层间方向变而层内不变，才能把
+机理限定为层间缩合而不是骨架重排。这与 §4.9.4 中''骨架元素参数不变 $\Rightarrow$ 骨架结构
+不变''是同一类推理。外部校验途径：与电子衍射的层状形貌、吸附等温线给出的孔径（应能通过
+\ce{N2} 或 \ce{CO2} 吸附独立测出孔口尺寸）、固体核磁给出的 Si 配位环境、以及热重给出的
+脱水失重量（层间缩合会给出明确的失重台阶）互校。
+\end{crosscheck}
+
+\subsection{Debye 方法简介与低维材料散射图的模拟}
+\src{上册 §4.10，书内 p.295—298 / PDF p.314—317}
+
+利用粉末 X 射线衍射可以获得物相组成、物相含量、晶粒大小和物质结构等信息，是材料分析的重要
+手段。然而传统上这些信息的获得\textbf{均基于三维有序的晶体结构}。在催化材料中，活性相通常
+高度分散，以小颗粒、低维度的形态存在，其 X 射线散射／衍射图谱弥散、宽化且信号较弱，采用
+基于三维周期性结构的分析难以得到准确结果——这一直是催化领域活性组分分析的难点。近年来，
+随着同步辐射等大型装置的建设和应用，可以得到高强度、高分辨的散射／衍射数据；同时高性能
+计算机的发展使处理程序不断改良、计算速度大大提高，低维材料与有序—无序结构的研究成为可能。
+基于 Debye 方法、利用 PDF（对分布函数）解析低维体系与有序—无序结构，已成为国际上研究的
+重点。
+
+\begin{probout}
+\textbf{测什么}：一条弥散的散射曲线（不一定要有分立的 Bragg 峰），其横轴常用
+$Q=4\pi\sin\theta/\lambda$ 或 $2\theta$。\\
+\textbf{能推断什么}：对\textbf{任意}体系（不需周期性）计算散射强度，从而判断层数、层宽、
+维度、堆垛方式与短程有序；由高分辨散射数据可得 PDF，直接给出原子间距离分布。\\
+\textbf{不能推断什么}：Debye 方法本身不``解''结构，它是由给定结构模型正算散射图并与实验
+比较；结构参数（原子坐标、尺寸 $l\times m\times n$）必须人为设置，因此结果依赖模型的设定，
+也存在过拟合空间。低维体系的散射图往往是多种尺寸粒子散射的叠加，单靠一条曲线不能唯一确定
+尺寸分布。
+\end{probout}
+
+\begin{principle}
+从最基本的物理图像出发，考虑物质对 X 射线的散射，结构因子可用 \textbf{Debye 方程}描述：
+\begin{equation}
+\left|F(hkl)\right|^{2}=\sum_{i}\sum_{j}f_{i}f_{j}\,
+\frac{\sin\left(Q\,r_{ij}\right)}{Q\,r_{ij}} ,
+\label{eq:ch04c-debye}
+\end{equation}
+式中 $f_{i}$、$f_{j}$ 分别为任意两个原子的散射因子，$r_{ij}$ 为两原子之间的距离。该方程的
+关键性质是\textbf{适应于任意体系}：根据体系的结构参数获得所有原子的分布坐标，即可计算出
+相应的散射因子，\textbf{并不要求结构必须是周期性的}。因此对低维及有序—无序材料（纳米材料、
+一维、二维材料等）的散射图谱分析具有良好的普适性。其缺点是计算量大、结构参数需要设置，
+使用者必须掌握原理并使用合理的软件。原书选择两种常见催化材料 \ce{MoS2} 与薄水铝石，根据
+晶体结构的基本数据用 \textsf{Discus} 程序处理，推出二者在单层和多层状态下散射效应的参数，
+获得了不同尺度晶粒的散射图。
+\tocheck{未对照原页面图像：式~\equref{eq:ch04c-debye} 的横轴约定未在原书 ocr 中保留
+（散逸的变量名与括号不可辨）。本处写 $Q=4\pi\sin\theta/\lambda$；若原书采用
+$s=2\sin\theta/\lambda$，则式中应作 $\sin(2\pi s r_{ij})/(2\pi s r_{ij})$，两者等价但
+符号不同。}
+\end{principle}
+
+\begin{measure}
+\textbf{用单层模型的构造方法}（以薄水铝石为例）。薄水铝石（AlOOH）焙烧可转化为重要的催化剂
+载体 $\gamma$-\ce{Al2O3}，控制其形貌与结构对获得性能良好的 $\gamma$-\ce{Al2O3} 非常重要。
+薄水铝石属正交晶系，空间群 $Cmcm$（63），晶胞参数 $a=2.861$ Å、$b=12.246$ Å、
+$c\approx3.70$ Å；结构中层内氧原子按立方密堆积排列、铝离子处于氧原子形成的八面体空隙中，
+层间通过氢键连接，层平行于 $ac$ 面（即与 $b$ 轴垂直），每个晶胞包含两个层。由于层内作用强、
+层间作用弱，该物质倾向于形成薄层状结构。\\
+要得到\textbf{单层}模拟的散射图，需做一次晶胞转换：改用 $P1$ 空间群，$a$、$c$ 参数不变，
+$b$ 方向取原晶胞的一半（$b'=b/2\approx6.123$ Å），据此导出晶胞中的原子位置（单层
+``AlOOH'' 含 $6$ 个原子），再按这些参数做单层衍射图的模拟；用原晶胞则可做多层的模拟。
+\tocheck{未对照原页面图像：薄水铝石的 $c$ 参数在原书行末被截断（ocr 作''c=3''），本处按
+标准值 $3.70$ Å 补全；单层胞中 $6$ 个原子的具体坐标在 ocr 中不可辨，故未转录。}
+\end{measure}
+
+\begin{example}[读图实例：维度参数的改变如何改变散射图]
+\begin{obs}
+原书图 4-34 给出不同大小和维度下薄水铝石的散射／衍射模拟图，图注数字``$l*m*n$''中 $l$ 和
+$n$ 分别表示 $a$ 与 $c$ 方向重复的晶胞数、$m$ 表示层数。图中可读出的现象是：
+（i）只有一层厚度时，散射非常弱，$0k0$ 指标\textbf{完全不出现}，$hkl$ 指标对应的峰宽化严重，
+只有 $h0l$ 指标的峰相对较锐；（ii）层数增至两层时，低角度出现一个宽化的散射峰，与 $k$ 相关
+的峰可以出现但宽化严重；（iii）随层数进一步增加，散射效应增强，峰强度增大且逐步变窄；
+（iv）至``$50*40*50$''的模拟图谱已表现出衍射图的特征，与由单晶数据基于三维周期结构计算
+得到的理论衍射图非常相近。\ce{MoS2} 的情形完全平行（原书图 4-35）：单层体系 $001$ 指标
+完全不出现、$hkl$ 峰宽化严重、只有 $hk0$ 峰相对较锐（即观察到约 $32.8°$ 的 $100$ 衍射峰）；
+层数增加后在低角度出现宽化的散射峰、与 $l$ 相关的峰出现但宽化严重；至``$50*50*40$''时模拟
+图谱与三维周期结构计算的理论衍射图非常相近。
+\end{obs}
+\begin{infer}
+（1）\textbf{$b$ 方向只有一层时 $0k0$ 完全不出现，是维度效应最直接的信号}：$0k0$ 的衍射
+矢量恰好沿 $b$ 方向，只有一层意味着该方向没有周期性，因而没有对应的 Bragg 条件。反过来说，
+\textbf{在实测谱中看到 $0k0$（或 \ce{MoS2} 的 $00l$）完全不出现，就应优先怀疑该方向只有
+一层}，而不是''该峰强度太弱''。\\
+（2）宽化的\textbf{各向异性}直接编码了维度：层内方向（$h0l$ 或 $hk0$）的重复单元多、
+峰相对锐，层间方向峰弥散。\\
+（3）从``$20*1*20$''（原书中与实测谱最相似的曲线）到``$50*40*50$''的演化说明：实际体系的
+衍射图\textbf{是多种尺寸粒子散射叠加的结果}，因此不能用一个``平均层数''去解释整张谱——这
+正是低维体系分析必须用正算拟合而不是套用 Bragg 公式的原因。以这些模拟曲线为参照，可以进行
+实际衍射峰的指认。
+\end{infer}
+\textbf{可自检的一点}：用 §4.10.3 给出的 \ce{MoS2} 晶胞参数（$a=3.150$ Å）正算 $100$ 峰，
+得 $d=2.728$ Å、$2\theta=32.8°$（Cu $K\alpha_{1}$），与书内标注的约 $32.8°$ 一致——这既
+印证了所引晶胞参数，也说明了单层体系中``只剩 $hk0$ 锐峰''这一读法的可靠性。
+\end{example}
+
+\begin{pitfall}
+（1）\textbf{用 Bragg 法分析低维体系会得到系统错误的结论}。对只有一两个原子层厚的活性相，
+``晶粒大小''``物相鉴定''``相含量''这些基于三维周期性的概念本身就不成立；强行套用会得到
+莫名其妙的``新相''或''无定形''。正确做法是先判断体系是否低维（看 $00l$／$0k0$ 是否缺失、
+峰是否各向异性宽化），再选择 Debye 正算或 PDF。\\
+（2）\textbf{把''模拟得像''当作''结构唯一确定''}。Debye 正算的输入是人为设定的结构参数与
+尺寸参数（$l*m*n$、层数、堆垛方式），参数空间大、曲线平滑，很容易出现多组参数给出相似
+曲线的情况。必须用多条独立信息约束（层数由 $00l$ 的有无与位置约束、层宽由 $hk0$ 的宽度
+约束），并报告参数的不确定范围。\\
+（3）\textbf{忽略数据质量要求}。Debye／PDF 分析要求高 $Q$ 范围、高统计质量的数据（同步辐射
+或中子最理想），实验室数据在低 $Q$ 段噪声与背景会与宽化的散射峰混在一起，扣背景方式直接
+影响结论。
+\end{pitfall}
+
+\begin{dataflow}
+\textbf{低维体系的分析流程}：判断是否为低维／无序体系（峰是否弥散、$00l$ 或 $0k0$ 是否缺失、
+宽化是否各向异性）$\rightarrow$ 由晶体结构基本数据建立单层或有限尺寸模型（必要时做胞转换取
+$P1$）$\rightarrow$ 用 Debye 方程正算不同维度参数（$l*m*n$）的散射图 $\rightarrow$ 与实测
+散射／衍射图比较，逐步缩小尺寸与堆垛参数的可行范围 $\rightarrow$ 若需要原子尺度的结构信息，
+则收集高分辨散射数据、由 $S(Q)$ 经傅里叶变换得 PDF 并拟合 $\rightarrow$ 把结论与催化性能
+关联（例如 \ce{MoS2} 片晶的堆垛程度与其加氢脱硫活性相关）。原书特别指出：实际体系的衍射图
+是多种粒子散射叠加的结果，以此为参照才能做实际衍射峰的分析与指认；至于如何用合理参数设置
+引入缺陷、从而获得与 $\gamma$-\ce{Al2O3} 可比的散射／衍射模拟图，仍是需要进一步探讨的问题。
+\end{dataflow}
+
+\begin{crosscheck}
+Debye／PDF 结果的回查：（1）与 HRTEM 直接对照——层数、层间距在像中可以直接计数，是低维
+体系最硬的独立证据；（2）与吸附／催化性能对照——孔口尺寸与堆垛程度应有对应的性能变化；
+（3）与 EXAFS 对照——配位数与键长是 PDF 的强约束；（4）与同一材料的高分辨 XRD（若能长到
+三维有序）对照，可判断''低维''是材料的本征特征还是制样／处理引入的。
+\end{crosscheck}
+
+\begin{methodsum}
+本章后半部分的四种任务，判据各不相同，但结构是同一个：\textbf{先问前提，再看数字}。\\
+（1）\textbf{晶粒大小}：Scherrer 方程 $D_{hkl}=K\lambda/(\beta_{hkl}\cos\theta)$ 给出的是
+垂直于 $(hkl)$ 的体积平均厚度，只对单尺寸分布、无微应变的样品可靠；必须扣除仪器宽化
+（标样法或基本参数法）并剥离 $K\alpha_{2}$；尺寸宽化与微应变宽化要用 Williamson--Hall 图
+（$\beta\cos\theta$ 对 $4\sin\theta$ 作图，截距给尺寸、斜率给应变）分工，任何``只凭一条峰的
+半峰宽给出的晶粒大小''都应被视为待验证的数。\\
+（2）\textbf{Rietveld 精修}：以步进扫描数据、合理初始模型、合适峰形函数与最小二乘全图拟合
+为四要点；可靠性判据是 $R_{\mathrm{wp}}$、$R_{\mathrm{exp}}$、GOF（$\chi^{2}$）\textbf{与
+拟合差谱、参数标准偏差、结构化学合理性}的联合判断，而不是单一的 $R$ 值——拟合优度高不等于
+结构模型正确，参数相关性与过拟合是主要风险。\\
+（3）\textbf{相定量}：以参比强度 $K$ 为基础，$w_{\mathrm{M}}=I_{\mathrm{M}}/(K I_{\mathrm{C}}
++I_{\mathrm{M}})$；$K$ 必须在同一实验条件下用纯样品标定，强度必须用积分强度，需排除择优取向
+与无定形相。\\
+（4）\textbf{低维／无序体系}：Bragg 法失效，改用 Debye 方程正算或 PDF；$00l$（或 $0k0$）
+的有无与宽化的各向异性是判断维度的首要线索，实测谱是多种粒子散射的叠加。
+\end{methodsum}
+
+\srcnote{本节 §4.7—§4.10 依据上册第 4 章第 270—298 页（PDF p.289—317）编写。§4.7.1 的
+推导、$K=0.89$ 的来源、仪器因素与 $K\alpha$ 双线处理、Scherrer 公式的应用与注意点均取自
+原书；Williamson--Hall 关系、$R$ 因子的标准定义式、占位度与温度因子的相关性、Scherrer 结果
+的误判清单与回查清单为本项目按学科标准形式补充，已在正文中以 \tocheck{} 逐条标明未对照
+原页面图像之处。图~\figref{fig:ch04c-profile} 与图~\figref{fig:ch04c-WH} 为模型计算图，
+非原书插图。原书表 4-8（峰形函数）已重建为表~\tabref{tab:ch04c-profile}；原书表 4-9、4-10、
+4-11 的数值在ocr中大面积损坏，未转录。本章 4.7 节参考了董成教授在第 10 届粉末衍射学术会议
+上的相关文章，4.1—4.6 节参考了林炳雄教授编写的北京大学内部教材《多晶 X 射线衍射》讲义。}
