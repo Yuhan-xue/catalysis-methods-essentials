@@ -1,0 +1,218 @@
+file=C:\Users\53150\Documents\deepseek-harness\default-workspace\build\main.pdf  pages=169
+
+--- bookmarks (107) ---
+  [1] 导读与方法总览  -> p.5
+    [2] 这本书怎么用  -> p.5
+    [2] 五个问题  -> p.5
+    [2] 方法选择矩阵  -> p.5
+    [2] 选择路径  -> p.5
+    [2] 术语、符号与来源约定  -> p.5
+    [2] 三条阅读路线  -> p.5
+  [1] 1 物理吸附和催化剂的宏观物性测定  -> p.7
+    [2] 1.1 这个方法测量什么  -> p.7
+    [2] 1.2 吸附等温线：唯一的核心数据  -> p.7
+    [2] 1.3 核心公式及其成立条件  -> p.7
+    [2] 1.4 数据到结论：比表面积的求算流程  -> p.9
+    [2] 1.5 误判与边界  -> p.9
+    [2] 1.6 孔容和孔尺寸分布  -> p.9
+  [1] 2 透射电子显微镜  -> p.15
+    [2] 2.1 透射电子显微镜简介  -> p.16
+    [2] 2.2 电子衍射和成像  -> p.17
+    [2] 2.3 新型透射电镜  -> p.23
+    [2] 2.4 透射电子显微镜的局限性及注意事项  -> p.31
+  [1] 3 热分析方法  -> p.35
+    [2] 3.1 这个方法测量什么  -> p.36
+    [2] 3.2 核心原理与公式  -> p.36
+    [2] 3.3 测量与条件  -> p.39
+    [2] 3.4 数据到结论  -> p.39
+    [2] 3.5 误判与边界  -> p.39
+    [2] 3.6 互补与回查  -> p.40
+    [2] 3.7 联用热分析：质量信号必须与逸出物信号对接  -> p.41
+    [2] 3.8 实验条件对曲线的作用：峰温、峰形还是峰面积  -> p.42
+    [2] 3.9 气氛：改变的是反应路径，不只是反应速率  -> p.43
+    [2] 3.10 五类典型误判与回查方法  -> p.45
+
+--- fonts (12) ---
+  EMBEDDED     Type0      GSXJFF+FandolHei-Bold-Identity-H
+  EMBEDDED     Type0      GTVRJV+FandolKai-Regular-Identity-H
+  EMBEDDED     Type0      IHDCWL+TeXGyreCursor-Regular-Identity-H
+  EMBEDDED     Type0      JGUKHG+FandolSong-Regular-Identity-H
+  EMBEDDED     Type0      JHLEDX+FandolSong-Bold-Identity-H
+  EMBEDDED     Type0      JRYMRO+FandolHei-Regular-Identity-H
+  EMBEDDED     Type0      NGTUOI+TeXGyreTermes-Regular-Identity-H
+  EMBEDDED     Type0      REENYM+TeXGyreTermesMath-Regular-Identity-H
+  EMBEDDED     Type0      RQXYOW+TeXGyreTermes-Italic-Identity-H
+  EMBEDDED     Type0      SHLWCH+TeXGyreTermes-Bold-Identity-H
+  EMBEDDED     Type0      VEQQKW+FandolFang-Regular-Identity-H
+  EMBEDDED     Type0      YBQRHU+LatinModernMath-Regular-Identity-H
+
+--- per page: chars, ink%, first line ---
+  p.  1  chars=   69  ink=  1.0%  现代催化研究方法精要
+  p.  2  chars= 2945  ink=  5.1%  现代催化研究方法精要
+  p.  3  chars= 3072  ink=  4.7%  6
+  p.  4  chars=   76  ink=  0.3%  现代催化研究方法精要
+  p.  5  chars= 1276  ink=  8.8%  导读与方法总览
+  p.  6  chars= 1011  ink=  5.5%  现代催化研究方法精要
+  p.  7  chars= 1377  ink=  9.8%  第1 章物理吸附和催化剂的宏观物性测定
+  p.  8  chars=  899  ink=  5.9%  现代催化研究方法精要
+  p.  9  chars= 1665  ink=  9.7%  第1 章物理吸附和催化剂的宏观物性测定
+  p. 10  chars= 2095  ink= 12.9%  现代催化研究方法精要
+  p. 11  chars= 2108  ink= 12.5%  第1 章物理吸附和催化剂的宏观物性测定
+  p. 12  chars= 2183  ink= 12.6%  现代催化研究方法精要
+  p. 13  chars= 2070  ink= 12.9%  第1 章物理吸附和催化剂的宏观物性测定
+  p. 14  chars= 1866  ink= 11.5%  现代催化研究方法精要
+  p. 15  chars= 2130  ink= 13.4%  第2 章透射电子显微镜
+  p. 16  chars= 1368  ink=  9.6%  现代催化研究方法精要
+  p. 17  chars= 1511  ink=  9.4%  第2 章透射电子显微镜
+  p. 18  chars= 1873  ink= 11.4%  现代催化研究方法精要
+  p. 19  chars= 1718  ink= 11.2%  第2 章透射电子显微镜
+  p. 20  chars= 1409  ink=  9.2%  现代催化研究方法精要
+  p. 21  chars= 2155  ink= 12.9%  第2 章透射电子显微镜
+  p. 22  chars= 2088  ink= 12.7%  现代催化研究方法精要
+  p. 23  chars= 2182  ink= 14.1%  第2 章透射电子显微镜
+  p. 24  chars= 2058  ink= 13.6%  现代催化研究方法精要
+  p. 25  chars= 2166  ink= 14.7%  第2 章透射电子显微镜
+  p. 26  chars= 2188  ink= 14.1%  现代催化研究方法精要
+  p. 27  chars= 1946  ink= 13.4%  第2 章透射电子显微镜
+  p. 28  chars= 2307  ink= 15.3%  现代催化研究方法精要
+  p. 29  chars= 2072  ink= 12.4%  第2 章透射电子显微镜
+  p. 30  chars= 1727  ink= 11.8%  现代催化研究方法精要
+  p. 31  chars= 1932  ink= 13.3%  第2 章透射电子显微镜
+  p. 32  chars= 1796  ink= 11.7%  现代催化研究方法精要
+  p. 33  chars= 2141  ink= 15.1%  第2 章透射电子显微镜
+  p. 34  chars=  637  ink=  4.2%  现代催化研究方法精要
+  p. 35  chars=  718  ink=  4.8%  第3 章热分析方法
+  p. 36  chars= 1958  ink= 12.2%  现代催化研究方法精要
+  p. 37  chars= 2100  ink= 13.0%  第3 章热分析方法
+  p. 38  chars= 1840  ink= 11.1%  现代催化研究方法精要
+  p. 39  chars= 2328  ink= 14.2%  第3 章热分析方法
+  p. 40  chars= 2052  ink= 12.7%  现代催化研究方法精要
+  p. 41  chars= 1692  ink= 11.3%  第3 章热分析方法
+  p. 42  chars= 1683  ink=  9.9%  现代催化研究方法精要
+  p. 43  chars= 1868  ink= 12.5%  第3 章热分析方法
+  p. 44  chars= 1108  ink=  6.8%  现代催化研究方法精要
+  p. 45  chars= 1860  ink= 12.5%  第3 章热分析方法
+  p. 46  chars= 1918  ink= 12.5%  现代催化研究方法精要
+  p. 47  chars= 2132  ink= 13.0%  第4 章多晶X 射线衍射分析
+  p. 48  chars= 1832  ink= 11.4%  现代催化研究方法精要
+  p. 49  chars= 2054  ink= 12.4%  第4 章多晶X 射线衍射分析
+  p. 50  chars= 1780  ink= 10.9%  现代催化研究方法精要
+  p. 51  chars= 1554  ink=  8.3%  第4 章多晶X 射线衍射分析
+  p. 52  chars= 1911  ink= 10.0%  现代催化研究方法精要
+  p. 53  chars= 1701  ink= 10.7%  第4 章多晶X 射线衍射分析
+  p. 54  chars= 1982  ink= 11.0%  现代催化研究方法精要
+  p. 55  chars= 1678  ink=  9.5%  第4 章多晶X 射线衍射分析
+  p. 56  chars= 1854  ink= 11.1%  现代催化研究方法精要
+  p. 57  chars=  940  ink=  6.5%  第4 章多晶X 射线衍射分析
+  p. 58  chars= 1824  ink= 10.0%  现代催化研究方法精要
+  p. 59  chars= 1878  ink= 10.7%  第4 章多晶X 射线衍射分析
+  p. 60  chars= 2113  ink= 13.7%  现代催化研究方法精要
+  p. 61  chars= 1864  ink= 11.2%  第4 章多晶X 射线衍射分析
+  p. 62  chars= 1712  ink= 12.1%  现代催化研究方法精要
+  p. 63  chars= 1959  ink= 10.1%  第4 章多晶X 射线衍射分析
+  p. 64  chars= 1986  ink= 11.8%  现代催化研究方法精要
+  p. 65  chars= 1959  ink= 13.0%  第5 章化学吸附和程序升温技术
+  p. 66  chars= 1710  ink= 11.5%  现代催化研究方法精要
+  p. 67  chars= 2073  ink= 13.4%  第5 章化学吸附和程序升温技术
+  p. 68  chars= 1514  ink=  9.2%  现代催化研究方法精要
+  p. 69  chars= 2079  ink= 12.2%  第5 章化学吸附和程序升温技术
+  p. 70  chars= 1623  ink=  9.4%  现代催化研究方法精要
+  p. 71  chars= 2055  ink= 13.4%  第5 章化学吸附和程序升温技术
+  p. 72  chars= 2041  ink= 13.2%  现代催化研究方法精要
+  p. 73  chars= 2323  ink= 13.9%  第5 章化学吸附和程序升温技术
+  p. 74  chars= 1875  ink= 12.3%  现代催化研究方法精要
+  p. 75  chars= 2141  ink= 13.6%  第5 章化学吸附和程序升温技术
+  p. 76  chars= 2153  ink= 12.9%  现代催化研究方法精要
+  p. 77  chars= 1666  ink= 10.8%  第6 章催化过程的拉曼光谱方法
+  p. 78  chars= 1902  ink= 13.1%  现代催化研究方法精要
+  p. 79  chars= 1547  ink=  9.0%  第6 章催化过程的拉曼光谱方法
+  p. 80  chars= 1460  ink=  9.0%  现代催化研究方法精要
+  p. 81  chars= 2039  ink= 13.7%  第6 章催化过程的拉曼光谱方法
+  p. 82  chars= 1565  ink=  9.3%  现代催化研究方法精要
+  p. 83  chars= 1707  ink= 11.5%  第7 章原位红外光谱方法
+  p. 84  chars= 2084  ink= 12.5%  现代催化研究方法精要
+  p. 85  chars= 1300  ink=  6.5%  第7 章原位红外光谱方法
+  p. 86  chars= 1953  ink= 11.4%  现代催化研究方法精要
+  p. 87  chars= 2395  ink= 15.0%  第7 章原位红外光谱方法
+  p. 88  chars= 2105  ink= 13.9%  现代催化研究方法精要
+  p. 89  chars= 1934  ink= 11.8%  第8 章核磁共振方法
+  p. 90  chars= 1522  ink=  8.0%  现代催化研究方法精要
+  p. 91  chars= 2100  ink= 12.3%  第8 章核磁共振方法
+  p. 92  chars= 2228  ink= 11.1%  现代催化研究方法精要
+  p. 93  chars= 1957  ink= 12.0%  第8 章核磁共振方法
+  p. 94  chars= 2296  ink= 13.6%  现代催化研究方法精要
+  p. 95  chars= 2364  ink= 12.9%  第8 章核磁共振方法
+  p. 96  chars= 2002  ink= 13.2%  现代催化研究方法精要
+  p. 97  chars= 1816  ink= 10.6%  第8 章核磁共振方法
+  p. 98  chars=  537  ink=  2.4%  现代催化研究方法精要
+  p. 99  chars= 2387  ink= 15.1%  第8 章核磁共振方法
+  p.100  chars= 2215  ink= 13.1%  现代催化研究方法精要
+  p.101  chars= 2663  ink= 15.6%  第8 章核磁共振方法
+  p.102  chars= 2266  ink= 13.8%  现代催化研究方法精要
+  p.103  chars= 1775  ink= 11.3%  第8 章核磁共振方法
+  p.104  chars= 2097  ink= 13.6%  现代催化研究方法精要
+  p.105  chars= 2146  ink= 13.9%  第8 章核磁共振方法
+  p.106  chars= 2001  ink= 13.3%  现代催化研究方法精要
+  p.107  chars= 2152  ink= 13.5%  第8 章核磁共振方法
+  p.108  chars= 1183  ink=  7.5%  现代催化研究方法精要
+  p.109  chars= 1120  ink=  5.4%  第9 章表面分析技术基础
+  p.110  chars= 2067  ink= 12.7%  现代催化研究方法精要
+  p.111  chars= 2057  ink= 11.0%  第9 章表面分析技术基础
+  p.112  chars= 2232  ink= 12.9%  现代催化研究方法精要
+  p.113  chars= 2212  ink= 12.7%  第9 章表面分析技术基础
+  p.114  chars= 2238  ink= 14.1%  现代催化研究方法精要
+  p.115  chars= 2425  ink= 13.9%  第9 章表面分析技术基础
+  p.116  chars= 1711  ink= 12.0%  现代催化研究方法精要
+  p.117  chars= 1663  ink= 11.4%  第9 章表面分析技术基础
+  p.118  chars= 1897  ink= 11.1%  现代催化研究方法精要
+  p.119  chars= 1792  ink= 11.9%  第9 章表面分析技术基础
+  p.120  chars= 2024  ink= 11.9%  现代催化研究方法精要
+  p.121  chars= 2047  ink= 12.0%  第9 章表面分析技术基础
+  p.122  chars= 2110  ink= 13.0%  现代催化研究方法精要
+  p.123  chars= 1918  ink= 11.2%  第9 章表面分析技术基础
+  p.124  chars= 2047  ink= 12.6%  现代催化研究方法精要
+  p.125  chars= 1132  ink=  5.9%  第9 章表面分析技术基础
+  p.126  chars= 2112  ink= 12.3%  现代催化研究方法精要
+  p.127  chars= 1751  ink= 10.6%  第10 章多相催化反应动力学
+  p.128  chars= 1714  ink= 10.5%  现代催化研究方法精要
+  p.129  chars= 2092  ink= 11.4%  第10 章多相催化反应动力学
+  p.130  chars= 2265  ink= 11.7%  现代催化研究方法精要
+  p.131  chars= 2120  ink= 12.8%  第10 章多相催化反应动力学
+  p.132  chars= 1700  ink=  9.7%  现代催化研究方法精要
+  p.133  chars= 2287  ink= 12.4%  第10 章多相催化反应动力学
+  p.134  chars= 1649  ink=  9.4%  现代催化研究方法精要
+  p.135  chars= 2267  ink= 12.9%  第10 章多相催化反应动力学
+  p.136  chars= 2300  ink= 15.5%  现代催化研究方法精要
+  p.137  chars= 2382  ink= 15.3%  第10 章多相催化反应动力学
+  p.138  chars= 1413  ink=  7.0%  现代催化研究方法精要
+  p.139  chars= 2292  ink= 12.6%  第10 章多相催化反应动力学
+  p.140  chars= 2406  ink= 15.3%  现代催化研究方法精要
+  p.141  chars= 2207  ink= 13.0%  第10 章多相催化反应动力学
+  p.142  chars=  854  ink=  4.9%  现代催化研究方法精要
+  p.143  chars= 2046  ink= 12.0%  第10 章多相催化反应动力学
+  p.144  chars= 2304  ink= 13.9%  现代催化研究方法精要
+  p.145  chars= 2241  ink= 14.8%  第10 章多相催化反应动力学
+  p.146  chars= 2176  ink= 13.9%  现代催化研究方法精要
+  p.147  chars= 1068  ink=  5.8%  第11 章电化学催化研究方法
+  p.148  chars= 1967  ink= 13.9%  现代催化研究方法精要
+  p.149  chars= 1719  ink= 10.6%  第11 章电化学催化研究方法
+  p.150  chars= 1756  ink=  8.7%  现代催化研究方法精要
+  p.151  chars= 1566  ink=  8.3%  第11 章电化学催化研究方法
+  p.152  chars= 1346  ink=  7.1%  现代催化研究方法精要
+  p.153  chars= 1802  ink= 10.5%  第11 章电化学催化研究方法
+  p.154  chars= 1959  ink= 10.6%  现代催化研究方法精要
+  p.155  chars= 2272  ink= 13.6%  第11 章电化学催化研究方法
+  p.156  chars= 2456  ink= 15.9%  现代催化研究方法精要
+  p.157  chars= 1824  ink= 12.0%  第12 章扫描探针显微镜与纳米光谱技术
+  p.158  chars= 1545  ink=  9.4%  现代催化研究方法精要
+  p.159  chars= 1820  ink= 11.6%  第12 章扫描探针显微镜与纳米光谱技术
+  p.160  chars= 2403  ink= 14.5%  现代催化研究方法精要
+  p.161  chars= 2709  ink= 15.9%  第12 章扫描探针显微镜与纳米光谱技术
+  p.162  chars= 2118  ink= 13.6%  现代催化研究方法精要
+  p.163  chars= 1754  ink= 12.2%  第12 章扫描探针显微镜与纳米光谱技术
+  p.164  chars= 1821  ink= 11.7%  现代催化研究方法精要
+  p.165  chars=  810  ink=  5.9%  第12 章扫描探针显微镜与纳米光谱技术
+  p.166  chars= 2337  ink=  8.0%  现代催化研究方法精要
+  p.167  chars= 1177  ink=  6.6%  第12 章扫描探针显微镜与纳米光谱技术
+  p.168  chars=  754  ink=  4.7%  现代催化研究方法精要
+  p.169  chars=  404  ink=  2.9%  第12 章扫描探针显微镜与纳米光谱技术
