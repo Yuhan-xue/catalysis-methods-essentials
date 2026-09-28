@@ -1,0 +1,307 @@
+{
+  "review_baseline": "8c34d6902555a555159eeec38b510af42976e747",
+  "interpretation": "Counterexamples and structural findings; calculation assertions passing does not mean the textbook passes review.",
+  "findings_count": 25,
+  "priorities": {
+    "P1": 16,
+    "P2": 9
+  },
+  "body_parts": 23,
+  "planned_parts": 34,
+  "missing_planned_parts": [
+    "ch01-c",
+    "ch02-b",
+    "ch04-c",
+    "ch06-b",
+    "ch07-b",
+    "ch07-c",
+    "ch10-b",
+    "ch11-b",
+    "ch11-c",
+    "ch12-b",
+    "ch12-c"
+  ],
+  "duplicate_explicit_labels": {
+    "eq:bragg": [
+      "chapters/parts/ch02-a.tex:231",
+      "chapters/parts/ch04-a.tex:392",
+      "chapters/parts/ch09-a.tex:440"
+    ],
+    "eq:iss": [
+      "chapters/parts/ch09-c.tex:170",
+      "chapters/parts/ch11-a.tex:672"
+    ],
+    "eq:langmuir": [
+      "chapters/parts/ch01-a.tex:128",
+      "chapters/parts/ch10-a.tex:399"
+    ],
+    "tab:extinction": [
+      "chapters/parts/ch02-a.tex:285",
+      "chapters/parts/ch04-a.tex:583"
+    ]
+  },
+  "unresolved_explicit_reference_candidates": [
+    "ch:13-synthesis"
+  ],
+  "reference_scan_limit": "Macro-generated labels may need the compiled .aux; candidates are not automatically errors.",
+  "tex_float_inventory": {
+    "figures": 36,
+    "tables_including_longtable": 50
+  },
+  "figure_ledger": {
+    "rows": 39,
+    "kinds": {
+      "table": 24,
+      "figure": 15
+    },
+    "source_parts": 11
+  },
+  "source_sha256": {
+    "chapters/ch90-backmatter.tex": "caab04302f610b5895af7721065abe165b77304cd385cdd319fd709dfe74b9cb",
+    "tools/build.ps1": "2d70a967cc8574cf74d7abd5e38d2f3555aa75006975785285872e3f5087da96",
+    "tools/check_chapters.py": "bfa09d0a9d5fc259b62cc6ab39f386eaf643ca62383407142e8d63154a79712d",
+    "sources/assignments.md": "324ab05349312edfc05c3ab0f8d0158f5621ecb79c2425b3bbf0b417ff525b1a",
+    "chapters/parts/ch01-b.tex": "891986b8006e11910948859ea48a9c7bfde758bc2cc71cc8be4e4af64e3c76ca",
+    "chapters/parts/ch01-a.tex": "cee9a1da47d3a330cd2e7bfba9a38872373be4ab0b710cf2b16930f51c3711b5",
+    "chapters/parts/ch02-a.tex": "d6ab457fc234446632be8fe37a2fed5812417b1453ac1d48e555d100ed1bf297",
+    "chapters/parts/ch03-b.tex": "4e923d4aca60b037395451e7861316148dfdc5b4d81e43f4a1434d475ffac98a",
+    "chapters/parts/ch04-b.tex": "feeb0119933f386e17d05f3bd1c4ff8e788304e2d34f957f45f3b94ba244ba78",
+    "chapters/parts/ch05-a.tex": "74d3d2f7d91bb6b17d10f01e96750c77eb69aac449fa7ff16e03c5ed88f5a8a8",
+    "chapters/parts/ch06-a.tex": "54205e5c2bae2505e4b3bcaae2af71efc336109965a36c128131deec6d008ffd",
+    "chapters/parts/ch07-a.tex": "285294cddb64f3b5b7234c1a9d6f4f934f85b2fa6c562864819784d4911e7c0a",
+    "chapters/parts/ch08-a.tex": "61b631ffe97b9e4dddea961e5687b7888b177bad454fee1e81415833327d028c",
+    "chapters/parts/ch08-c.tex": "092ebc743feda8e37ea387c3c1aa5568b944c61b5b420b4744c5b97acdd999f7",
+    "chapters/parts/ch09-d.tex": "365f7eaaed53b86a2d63f28e8bc2c157b071d37ab34ed9120ec9867ea7b5eb38",
+    "chapters/parts/ch10-c.tex": "bfa3f01007dfd228b3ff3fed6b2b076ca96786e54e158e3067c4a6889393c6c3",
+    "chapters/parts/ch11-a.tex": "8e67adbbe148aafa74e34f4fb14fa790f65d667e70a96c37933ed0b32a21397d",
+    "chapters/parts/ch12-a.tex": "d20404ae46d50b94fa406fa3684a6994fc676d38fbd38cf314582ebcf24a6160"
+  },
+  "anchors": [
+    {
+      "id": "G-01",
+      "path": "chapters/ch90-backmatter.tex",
+      "line": 249,
+      "line_text": "证据强度分级 & \\chapref{ch:13-synthesis} & 自洽不等于支持 \\\\"
+    },
+    {
+      "id": "G-02",
+      "path": "tools/build.ps1",
+      "line": 57,
+      "line_text": "if ($code -ne 0 -or $errs.Count -gt 0 -or $miss.Count -gt 0) { exit 1 }"
+    },
+    {
+      "id": "G-03",
+      "path": "tools/check_chapters.py",
+      "line": 15,
+      "line_text": "ROOT = r\"C:\\Users\\53150\\Documents\\deepseek-harness\\default-workspace\""
+    },
+    {
+      "id": "G-04",
+      "path": "sources/assignments.md",
+      "line": 60,
+      "line_text": "进度：**23 / 34 个正文分片**（状态由 tools/update_ledger.py 从磁盘刷新；done = 文件存在），另有 3 个 Lead 亲写单元（导读、综合应用、后置）。"
+    },
+    {
+      "id": "G-05",
+      "path": "chapters/ch90-backmatter.tex",
+      "line": 1,
+      "line_text": "% ================================================================"
+    },
+    {
+      "id": "C01-01",
+      "path": "chapters/parts/ch01-b.tex",
+      "line": 97,
+      "line_text": "\\begin{equation}\\label{eq:bjh-balance}"
+    },
+    {
+      "id": "C01-02",
+      "path": "chapters/parts/ch01-a.tex",
+      "line": 174,
+      "line_text": "\\begin{equation}\\label{eq:surface}"
+    },
+    {
+      "id": "C02-01",
+      "path": "chapters/parts/ch02-a.tex",
+      "line": 545,
+      "line_text": "物镜传递函数 $A(u,v)=\\exp\\{2\\pi\\mathrm{i}\\chi(u,v)\\}B(u,v)D(u,v)$ 对电子波进行调制，"
+    },
+    {
+      "id": "C03-01",
+      "path": "chapters/parts/ch03-b.tex",
+      "line": 211,
+      "line_text": "\\tikzset{declare function={"
+    },
+    {
+      "id": "C04-01",
+      "path": "chapters/parts/ch04-b.tex",
+      "line": 779,
+      "line_text": "\\begin{equation}"
+    },
+    {
+      "id": "C04-02",
+      "path": "chapters/parts/ch04-b.tex",
+      "line": 860,
+      "line_text": "$F_{N}$ 定义为两项的乘积，前一项与准确性有关、后一项与数据完备性有关："
+    },
+    {
+      "id": "C04-03",
+      "path": "chapters/parts/ch04-b.tex",
+      "line": 114,
+      "line_text": "\\begin{equation}"
+    },
+    {
+      "id": "C05-01",
+      "path": "chapters/parts/ch05-a.tex",
+      "line": 155,
+      "line_text": ""
+    },
+    {
+      "id": "C05-02",
+      "path": "chapters/parts/ch05-a.tex",
+      "line": 197,
+      "line_text": "\\nextgroupplot[title={(a) 升温速率（一级）}]"
+    },
+    {
+      "id": "C06-01",
+      "path": "chapters/parts/ch06-a.tex",
+      "line": 176,
+      "line_text": "\\begin{equation}"
+    },
+    {
+      "id": "C07-01",
+      "path": "chapters/parts/ch07-a.tex",
+      "line": 326,
+      "line_text": "\\begin{equation}\\label{eq:dpen}"
+    },
+    {
+      "id": "C08-01",
+      "path": "chapters/parts/ch08-a.tex",
+      "line": 128,
+      "line_text": "式中 $\\beta$ 为样品（转子轴）与外磁场方向的夹角，$\\sigma_{\\mathrm{iso}}$ 为各向同性磁屏蔽"
+    },
+    {
+      "id": "C08-02",
+      "path": "chapters/parts/ch08-c.tex",
+      "line": 6,
+      "line_text": "\\src{S1 §8.6，书内 p.555--562 / PDF p.47--54}"
+    },
+    {
+      "id": "C09-01",
+      "path": "chapters/parts/ch09-d.tex",
+      "line": 3,
+      "line_text": "% 覆盖：§9.2.7 其他初级结构谱线 / §9.2.8 定量（半定量）分析"
+    },
+    {
+      "id": "C10-01",
+      "path": "chapters/parts/ch10-c.tex",
+      "line": 604,
+      "line_text": "r=k_1K_1c_L\\left(c_1-\\frac{c_2}{K_{eq}}\\right)"
+    },
+    {
+      "id": "C10-02",
+      "path": "chapters/parts/ch10-c.tex",
+      "line": 405,
+      "line_text": "\\textbf{（1）外扩散（Damköhler 数判据）}：对 $m$ 级反应，"
+    },
+    {
+      "id": "C11-01",
+      "path": "chapters/parts/ch11-a.tex",
+      "line": 236,
+      "line_text": "\\paragraph{Butler--Volmer 模型} 电势变化改变了电子的相对能量，因而改变氧化与还原的"
+    },
+    {
+      "id": "C11-02",
+      "path": "chapters/parts/ch11-a.tex",
+      "line": 414,
+      "line_text": "\\begin{equation}"
+    },
+    {
+      "id": "C12-01",
+      "path": "chapters/parts/ch12-a.tex",
+      "line": 154,
+      "line_text": "其中 $\\rho_{\\mathrm{s}}(0,E_{\\mathrm{F}})$ 为费米能级附近的表面局域态密度。指数的数值"
+    },
+    {
+      "id": "C12-02",
+      "path": "chapters/parts/ch12-a.tex",
+      "line": 169,
+      "line_text": "$\\Delta d=\\ln(1.01)/2\\kappa\\approx\\qty{5}{pm}$，这正是 STM 纵向灵敏度可达皮米量级的原因。"
+    }
+  ],
+  "independent_calculations": {
+    "C01-01": {
+      "filled_volume_per_length": 78.53981633974483,
+      "draft_ring_volume_per_length": 28.274333882308138,
+      "ratio": 0.36
+    },
+    "C01-02": {
+      "specific_area_m2_per_g": 914.612627925,
+      "erroneous_second_division_by_0.1g": 9146.126279249998
+    },
+    "C03-01": {
+      "draft_positive_conversion_derivative_peak_percent_per_K": 2.0833333333333335,
+      "positive_mass_loss_derivative_peak_percent_per_K": 0.4166666666666667
+    },
+    "C04-01": {
+      "Q_100_Angstrom_minus2": 0.0625,
+      "q_sin2theta_100": 0.03705625
+    },
+    "C04-02": {
+      "correct_Fn": 25.0,
+      "draft_Fn": 100.0
+    },
+    "C04-03": {
+      "draft_factor": 0.6645645240714637,
+      "correct_intensity_factor": 0.44164600665433107
+    },
+    "C05-01": {
+      "correct_volume": 1.2,
+      "draft_unnormalized": 120
+    },
+    "C05-02": {
+      "finite_400_750K_areas": [
+        1.187734978799073,
+        2.5085805970438244,
+        5.3272811205163295
+      ],
+      "finite_area_ratios": [
+        1.0,
+        2.1120709938005424,
+        4.485243943815463
+      ],
+      "whole_axis_area_ratios": [
+        1,
+        2.112149532710281,
+        4.4859813084112155
+      ],
+      "panel_b_area_second_over_first": 1.3038727860373465,
+      "note": "Quartic peak functions are even about their own centers; this is not an ODE solution."
+    },
+    "C07-01": {
+      "correct_field_depth_micrometers": 2.0051638064180586,
+      "using_medium_wavelength_with_extra_n1": 0.8354849193408578
+    },
+    "C08-01": {
+      "correct_beta_degrees": 54.735610317245346,
+      "P2_at_drawn_beta": 0.5000096183927709
+    },
+    "C10-01": {
+      "direct_substitution_rate": 0.5,
+      "draft_rate": 0.25
+    },
+    "C11-01": {
+      "at_equilibrium_CO10_CR1_unnormalized_i_over_FAk0": 9,
+      "normalized_i_over_i0": 0.0,
+      "note": "The unequal concentration case is outside the intermediate equal-concentration shortcut; the report requests the missing reference-potential conversion."
+    },
+    "C12-01": {
+      "kappa_coefficient_Angstrom_minus1_per_sqrt_eV": 0.5120980075510192,
+      "twice_kappa_coefficient": 1.0241960151020384,
+      "kappa_at_4eV": 1.0241960151020384
+    },
+    "C12-02": {
+      "distance_pm_for_1percent": 0.48538199283746797,
+      "back_substitution_relative_current": 0.010000000000000009
+    }
+  }
+}
