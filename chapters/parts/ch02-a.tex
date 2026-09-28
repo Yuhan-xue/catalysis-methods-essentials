@@ -546,9 +546,12 @@ $\psi(x,y)=\exp[\mathrm{i}\sigma V(x,y)]$，其中 $V(x,y)$ 是晶体电势场�
 \psi(x,y)\approx 1+\mathrm{i}\sigma V(x,y)
 \end{equation}
 
-物镜传递函数 $A(u,v)=\exp\{2\pi\mathrm{i}\chi(u,v)\}B(u,v)D(u,v)$ 对电子波进行调制，
+物镜传递函数 $A(u,v)=\exp\{\mathrm{i}\chi(u,v)\}B(u,v)D(u,v)$ 对电子波进行调制，
 其中 $B$ 为束发散度引起的衰减包络函数（反映空间相干性），$D$ 为色差引起的衰减包络
-函数（反映时间相干性），而 $\chi(u,v)$ 为物镜的波像差：
+函数（反映时间相干性），而 $\chi(u,v)$ 为物镜的波像差。\textbf{注意相位必须是
+$2\pi$ 周期的角量}：$\chi$ 已按\textbf{弧度}定义（式中带 $\pi$ 系数），故指数上写
+$\mathrm{i}\chi$；只有当 $\chi$ 被定义成\textbf{周期数}（转数）时指数才写成
+$2\pi\mathrm{i}\chi$。二者混用会让整条推导与 Scherzer 条件同时错位。
 
 \begin{equation}\label{eq:chi}
 \chi(u,v)=\frac{\pi}{2}C_{\mathrm{s}}\lambda^{3}(u^{2}+v^{2})^{2}
@@ -565,11 +568,30 @@ $(\Delta f)_{\mathrm{Sch}}=-1.2(C_{\mathrm{s}}\lambda)^{1/2}$（负值）联立�
 $\chi$ 单调递增的结果，\textbf{根本不会出现}式~\eqref{eq:hrtem-contrast} 所需的宽频带。
 遇到这种情况说明符号约定自相矛盾，应先统一约定再讨论成像，而不是直接引用结论。
 \tocheck{原书 $\chi$ 两项的符号约定无法从 OCR 文本确定；本节按可自洽的标准约定改写}
-把式~\eqref{eq:weak-phase} 代入并做逆傅里叶变换，可得像衬度
+
+\textbf{从出射波到像衬度。}约定傅里叶变换与逆变换为
+$\tilde{f}(u,v)=\mathrm{FT}\{f\}=\iint f(x,y)\mathrm{e}^{-2\pi\mathrm{i}(ux+vy)}
+\mathrm{d}x\,\mathrm{d}y$、$f=\mathrm{FT}^{-1}\{\tilde{f}\}$（因子 $2\pi$ 已含在
+指数里，故 $u,v$ 是空间频率、其倒数是长度，$\chi$ 本身无量纲）。物镜把出射波按
+\textbf{空间频率逐个}乘上传递函数，得到像面波
+$\psi_{\mathrm{i}}=\mathrm{FT}^{-1}\{A\cdot\mathrm{FT}\{\psi\}\}$。代入
+式~\eqref{eq:weak-phase} 并保留 $\sigma V$ 的\textbf{一阶项}（式~\eqref{eq:weak-phase}
+给出 $\psi=1+\mathrm{i}\sigma V$，故其共轭为 $1-\mathrm{i}\sigma V$、
+$|\psi|^{2}=1+\sigma^{2}V^{2}$，线性项只剩 $\mathrm{i}\sigma V$ 与 $-\mathrm{i}\sigma V$）：
 
 \begin{equation}\label{eq:hrtem-contrast}
-C(x,y)=I(x,y)-1\approx-2\sigma V(x,y)\cdot\mathrm{FT}\{\sin\chi(u,v)\}
+C(x,y)=I(x,y)-1
+\approx-2\sigma\,V(x,y)\ast\mathrm{FT}^{-1}\!\left\{\sin\chi(u,v)\right\}
+=-2\sigma\,\mathrm{FT}^{-1}\!\left\{\tilde{V}\sin\chi\right\}
 \end{equation}
+
+式中 $\ast$ 表示\textbf{二维卷积}。两个要点：
+\textbf{（1）是卷积不是点乘。}被乘的是频谱 $\tilde{V}$，乘完还要做逆变换，等效于把
+势投影 $V$ 与点扩散函数 $\mathrm{FT}^{-1}\{\sin\chi\}$ 卷积；写成
+$V\cdot\mathrm{FT}\{\sin\chi\}$ 是把实空间量与被乘过的频谱当成同类量，量纲和单位都对不上。
+\textbf{（2）近似丢掉了什么。}精确式在 $\sigma V$ 的一阶项之外还有
+$-2\sigma^{2}\{V^{2}-[V\ast\mathrm{FT}^{-1}\{\cos\chi\}]^{2}\}$ 的二阶项；弱相位体
+（$\sigma V\ll1$）下它可略，本节一律只保留一阶项。
 
 \textbf{量纲检查}：$\chi$ 是相位，无量纲；$C_{\mathrm{s}}\lambda^{3}(u^{2}+v^{2})^{2}$
 中 $C_{\mathrm{s}}$ 为长度、$\lambda$ 为长度、$u$ 为长度的倒数，故
@@ -579,7 +601,9 @@ C(x,y)=I(x,y)-1\approx-2\sigma V(x,y)\cdot\mathrm{FT}\{\sin\chi(u,v)\}
 \begin{keycond}
 式~\eqref{eq:hrtem-contrast} 说明高分辨像衬度受\textbf{球差、光源相干性与散焦}
 三者共同控制，故高分辨像\textbf{不是}结构的直接投影。只有在
-$\sin\chi=-1$ 时才有 $C(x,y)=2\sigma V(x,y)$——衬度正比于晶体势函数的投影，
+$\sin\chi\equiv-1$（在关心的空间频率范围内为常量）时，
+$\mathrm{FT}^{-1}\{\sin\chi\}=-\delta$，卷积退化为点乘，才有
+$C(x,y)=2\sigma V(x,y)$——衬度正比于晶体势函数的投影，
 像才反映真实结构。实际做法是对固定的 $C_{\mathrm{s}}$，取 Scherzer 最佳欠焦
 $(\Delta f)_{\mathrm{Sch}}=-1.2\,(C_{\mathrm{s}}\lambda)^{1/2}$，使 $\sin\chi$ 在
 很宽的空间频率范围内接近 $-1$。此时较暗的区域对应较重的原子柱。

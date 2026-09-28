@@ -95,13 +95,31 @@ BJH 法（Barrett--Joyner--Halenda 法）采用\textbf{圆柱形盲孔等效模�
 总吸附量等于\textbf{已凝聚孔内的液量}与\textbf{未凝聚孔壁上的液膜量}之和。
 
 \begin{equation}\label{eq:bjh-balance}
-V(x_k)=\underbrace{\sum_{i\le k}\pi\!\left[r_i^{2}-\left(r_i-t_k\right)^{2}\right]\ell_i}
-_{\text{半径 }r_i\le r_k\text{ 的孔内的凝聚液}}
-\;+\;\underbrace{\sum_{j>k}2\pi r_j\ell_j\,t_k}_{\text{尚未凝聚孔的孔壁液膜}}
+V(x_k)=\underbrace{\sum_{i\le k}\pi r_i^{2}\ell_i}
+_{\text{半径 }r_i\le r_k\text{ 的孔：已充满，计全孔体积}}
+\;+\;\underbrace{\sum_{j>k}\pi\!\left[r_j^{2}-\left(r_j-t_k\right)^{2}\right]\ell_j}
+_{\text{尚未凝聚的孔：只计孔壁液膜体积}}
 \end{equation}
 
-式中 $r_k$ 为 $x_k$ 对应的 Kelvin 半径，$t_k=t(x_k)$ 为对应液膜厚度，$r_i$、$\ell_i$ 为
-第 $i$ 组孔的半径与该组孔总长度。式~\eqref{eq:bjh-balance} 各项都是体积，故可直接相加；
+式中 $r_i$、$\ell_i$ 为第 $i$ 组孔的半径与该组孔总长度，$r_k$ 为 $x_k$ 对应的 Kelvin
+半径，$t_k=t(x_k)$ 为对应液膜厚度，且孔半径与膜厚满足 $r_i=r_k(x_i)+t(x_i)$——孔壁上先有
+厚度 $t$ 的吸附层，余下的孔心半径才是 Kelvin 半径（见本节前文曲率修正）。
+\textbf{两项记的是两件不同的事，不能互相套用公式}：
+\textbf{（1）已凝聚的孔}（$r_i\le r_k$）内是\textbf{充满}的液体，单位孔长的液量就是全孔
+截面积 $\pi r_i^{2}$，即整个体积 $\Delta V_i=\pi r_i^{2}\ell_i$；
+\textbf{（2）尚未凝聚的孔}（$r_j>r_k$）只有孔壁上的液膜，单位孔长液量为全截面积减去
+未填的孔心 $\pi[r_j^{2}-(r_j-t_k)^{2}]$，即等价的环形面积。若把第 (1) 项误写成
+$\pi[r_i^{2}-(r_i-t_k)^{2}]$，等于把已充满的孔当成只剩一圈液膜的孔：取 $r_i=\qty{5}{nm}$、
+$t_k=\qty{1}{nm}$，正确的单位孔长液量是 $25\pi\,\unit{nm^2}$，误式只给 $9\pi\,\unit{nm^2}$
+（少 $64\%$）；更荒谬的是令 $t_k\to0$ 时误式给出\textbf{零体积}，而充满的孔
+体积与膜厚无关。
+
+\textbf{液膜项的薄膜近似}：环面积可展开为
+$r_j^{2}-(r_j-t_k)^{2}=2r_jt_k-t_k^{2}$，当 $t_k\ll r_j$ 时略去 $t_k^{2}$ 得
+$2r_jt_k$（$t_k/r_j=0.04$ 时高估 $2\%$）。本书保留精确的环形写法，只有在孔半径远大于
+膜厚、且明确注明薄膜近似时才用 $2\pi r_j\ell_jt_k$。
+
+式~\eqref{eq:bjh-balance} 各项都是体积，故可直接相加；
 相邻两个相对压力下的差值 $V(x_{k+1})-V(x_k)$ 给出 $r_k$ 至 $r_{k+1}$ 区间的孔容增量，
 累加得积分分布，求导得微分分布 $\mathrm{d}V_p/\mathrm{d}D_p$，其最高峰对应
 \textbf{最可几孔宽}。
@@ -117,7 +135,11 @@ D_p=2\left(r_k+t\right),\qquad \ppzero=0.95\;\Longleftrightarrow\;D_p\approx\qty
 \end{equation}
 
 \tocheck{未对照原页面图像：原书式(1-36)的符号体系（$V(x_k)$、$r_i$、$t_k$ 的下标约定与
-求和上下限）OCR 完全失真，式~\eqref{eq:bjh-balance} 按 BJH 原始记账方式重写；
+求和上下限）OCR 完全失真，式~\eqref{eq:bjh-balance} 按 BJH 原始记账方式重写。其中
+\textbf{第 (1) 项「已充满孔计全孔体积 $\pi r_i^{2}\ell_i$」不是从 OCR 判读出来的，而是由
+该式自身的物理含义推定的}——已凝聚的孔内是充满的液体，写成环形面积
+$\pi[r_i^{2}-(r_i-t_k)^{2}]$ 会让「充满的孔」在 $t_k\to0$ 时体积归零，与该式的定义自相
+矛盾（本节已就该式加数值自检）。原书该项的确切写法仍需查 PDF p.65 原页面核对；
 SH/T 0572 的标准年份与完整题名亦未在图像上确认。}
 
 \begin{keycond}

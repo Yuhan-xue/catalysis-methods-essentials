@@ -125,8 +125,11 @@ $\eta$ 为不对称因子。\textbf{从静态谱可以直接读出张量的三�
 \end{aligned}
 \end{equation}
 
-式中 $\beta$ 为样品（转子轴）与外磁场方向的夹角，$\sigma_{\mathrm{iso}}$ 为各向同性磁屏蔽
-常数，$\delta$、$\eta$ 反映屏蔽矩阵的各向异性和非对称性，$\theta$、$\phi$ 为屏蔽环境的取向。
+式中 $\beta$ 为\textbf{样品（转子轴）与外磁场方向 $B_0$ 的夹角}，$\sigma_{\mathrm{iso}}$ 为
+各向同性磁屏蔽常数，$\delta$、$\eta$ 反映屏蔽矩阵的各向异性和非对称性，$\theta$、$\phi$
+为\textbf{屏蔽环境（分子）坐标系中张量主轴相对转子轴的取向}。
+两个角分工不同，不能互换：$\beta$ 由实验者通过转子取向设定，$\theta$、$\phi$ 由分子在
+转子中的排列决定、随分子翻滚而变，实验上无法逐个控制。
 \textbf{量纲检查}：$\sigma$、$\delta$ 同为磁屏蔽（无量纲量，以 ppm 表示），方括号内两项
 皆为「各向异性/各向同性之比」的纯数，故两边量纲一致。\src{S2 §8.1.2，书内 p.529—530 / PDF p.21—22}
 \tocheck{未对照原页面图像：式(8-1) 方括号内 $\delta$ 是否作公因子提到括号外、$\eta$ 项是否
@@ -135,45 +138,57 @@ $\eta$ 为不对称因子。\textbf{从静态谱可以直接读出张量的三�
 
 \begin{principle}
 \textbf{魔角条件。}式~\eqref{eq:sigma1} 的后一项是固体特有的化学位移各向异性项，其中只有
-$(3\cos^{2}\beta-1)$ 与转子取向有关。令其为零：
+$P_2(\cos\beta)=(3\cos^{2}\beta-1)/2$ 这一个因子与转子取向有关。\textbf{令 $P_2$ 为零，
+消去的才是转子轴与外场的夹角 $\beta$}（不是局部的 $\theta$）：
 
 \begin{equation}
 \label{eq:magic}
 \begin{aligned}
-&3\cos^{2}\theta-1=0
-\;\Longrightarrow\;\cos^{2}\theta=\tfrac{1}{3}\\
-&\;\Longrightarrow\;\theta=\arccos\tfrac{1}{\sqrt{3}}=54.74^\circ
+&3\cos^{2}\beta-1=0
+\;\Longrightarrow\;\cos^{2}\beta=\tfrac{1}{3}\\
+&\;\Longrightarrow\;\beta=\arccos\tfrac{1}{\sqrt{3}}=54.7356^\circ
 \end{aligned}
 \end{equation}
 
 此时 $\sigma_{\mathrm{rot}}=\sigma_{\mathrm{iso}}$，各向异性作用被极大程度消除。\textbf{它
 为什么能消掉一阶增宽}：化学位移各向异性、偶极--偶极作用、一阶四极作用的一阶微扰角因子
-都只含同一个二阶勒让德多项式 $P_2(\cos\theta)=(3\cos^{2}\theta-1)/2$；样品绕与磁场成
-$\beta$ 的轴快速旋转时，该角因子的时间平均正比于 $P_2(\cos\beta)$。$\beta$ 取 $54.736^\circ$
-时整体归零，所以\textbf{一项几何条件同时消掉三类一阶增宽}——这正是「魔角」之名的由来。
+都只含同一个二阶勒让德多项式 $P_2$；快速旋转下这些含时角因子的\textbf{时间平均}正比于
+$P_2(\cos\beta)$。$\beta$ 取 $54.7356^\circ$ 时 $P_2$ 归零，所以\textbf{一项几何条件同时
+消掉三类一阶增宽}——这正是「魔角」之名的由来。
 $54.7^\circ$ 被称为魔角，样品管在魔角位置上的整体转动即魔角旋转。
-\src{S2 §8.1.2，书内 p.530 / PDF p.22}
+\textbf{最常见的读图错误}：$\beta$ 一律\textbf{从 $B_0$（竖直方向）量起}，
+不是从水平面量起。把转子轴画成与水平面成 $54.7^\circ$ 时，它与 $B_0$ 只有 $35.3^\circ$，
+此时 $P_2(\cos 35.264^\circ)\approx0.5$，各向异性\textbf{只被消去一半、并未归零}，
+谱线仍宽。\src{S2 §8.1.2，书内 p.530 / PDF p.22}
 \end{principle}
 
 \begin{figure}[htbp]
 \centering
+% 图源几何自检（可复算）：转子轴方向 = 54.736 deg，自竖直 B_0 量起；
+%   端点 (34*sin54.736, 34*cos54.736) = (27.76, 19.63) mm；
+%   atan2(27.76, 19.63) = 54.7360 deg  ->  (3cos^2 - 1)/2 = 0
+%   若误按 TikZ 极角 (54.736:34) 画（即自水平量起），与 B_0 夹角只有 35.264 deg，
+%   P_2 = +0.5，各向异性并未消去。
 \begin{tikzpicture}[x=1mm,y=1mm]
   \draw[->,thick] (0,0) -- (0,33)
      node[right,text width=19mm,align=left,font=\fontsize{8}{9.6}\selectfont]{$B_0$：外磁场方向};
-  \draw[dashed,gray] (0,0) -- (32,0);
+  \draw[dashed,gray] (0,0) -- (30,0);
+  \draw[gray] (0,11) arc[start angle=90,end angle=54.736,radius=11];
+  \node[anchor=south west,font=\fontsize{8}{9.6}\selectfont] at (4.4,11.7)
+     {$54.736^\circ$（$P_2=0$）};
+  \draw[->,thick] (0,0) -- (27.76,19.63)
+     node[anchor=south west,font=\fontsize{8}{9.6}\selectfont] at (28.4,19.0)
+     {转子轴（样品管）};
   \begin{scope}[rotate=-35.264]
     \draw[thick,fill=gray!15] (-3.2,-9) rectangle (3.2,9);
   \end{scope}
-  \draw[->,thick] (0,0) -- (54.736:34)
-     node[above right,text width=17mm,align=left,font=\fontsize{8}{9.6}\selectfont]{转子轴（样品管）};
-  \draw[gray] (0,13) arc[start angle=90,end angle=54.736,radius=13];
-  \node[anchor=west,font=\fontsize{8}{9.6}\selectfont] at (7.4,13.6) {$54.736^\circ$};
-  \node[anchor=north west,text width=36mm,align=left,font=\fontsize{8}{9.6}\selectfont]
-     at (14,26){三类一阶增宽共用同一角因子 $3\cos^{2}\beta-1$，一起归零};
 \end{tikzpicture}
-\caption{魔角几何：样品管绕与 $B_0$ 成 $54.736^\circ$ 的轴旋转。读者应看两处——转角
-$\beta$ 由 $B_0$ 量起，只此一个角度就能同时归零化学位移各向异性、偶极--偶极与一阶四极
-的角因子。本图为几何示意图，不表示真实探头尺寸与转速方向。\schemamark\figsrc{据 S2 §8.1.2，
+\caption{魔角几何：样品管绕与 $B_0$ 成 $54.736^\circ$ 的轴旋转（$\beta$ 自\textbf{竖直的
+$B_0$} 量起，与水平方向成 $35.264^\circ$）。读者应看两处——$\beta$ 由 $P_2(\cos\beta)=0$
+定出，而\textbf{三类一阶增宽}（化学位移各向异性、偶极--偶极、一阶四极）\textbf{共用同一个
+角因子} $P_2(\cos\beta)=\tfrac{1}{2}(3\cos^{2}\beta-1)$，故只此一个角度就把它们一起归零；
+转子轴线与实心样品管长轴重合，图中画成一根轴。本图为几何示意图，
+不表示真实探头尺寸与转速方向。\schemamark\figsrc{据 S2 §8.1.2，
 书内 p.530 / PDF p.22 改绘。}}
 \label{fig:magic-angle}
 \end{figure}
@@ -192,8 +207,11 @@ b_{12}=-\frac{\mu_0}{4\pi}\cdot\frac{\gamma_1\gamma_2\hbar}{r^{3}},
 $\mathrm{rad\,s^{-1}\,T^{-1}}$，$\hbar$ 单位 $\mathrm{J\,s}$，故
 $\mu_0\gamma_1\gamma_2\hbar/r^{3}$ 约化后为 $\mathrm{s^{-1}}$（角频率），与 $\omega_{\mathrm{D}}$
 一致；除以 $2\pi$ 即得 Hz。两条可直接使用的推论：（i）耦合按 $r^{-3}$ 衰减，核间距增加
-10\% 耦合即下降约 25\%，因此偶极耦合是最近的「分子尺」；（ii）角因子在 $\theta=54.736^\circ$
-同样为零，与式~\eqref{eq:magic} 是同一个条件，故 MAS 对偶极作用与 CSA 同时生效。
+10\% 耦合即下降约 25\%，因此偶极耦合是最近的「分子尺」；（ii）角因子 $P_2(\cos\theta)$
+在 $\theta=54.736^\circ$ 为零——此处的 $\theta$ 是\textbf{核间矢量与 $B_0$} 的夹角，
+与式~\eqref{eq:magic} 的转子轴夹角 $\beta$ 是两个不同的角；MAS 下核间矢量随分子一起
+绕转子轴转动，其空间部分的时间平均正比于 $P_2(\cos\beta)$，故转子轴取 $\beta=54.736^\circ$
+即可让偶极作用与 CSA 的时间平均\textbf{同时}归零。
 \src{S2 §8.1、§8.1.2，书内 p.527、p.530 / PDF p.19、p.22}
 \pedset{本处数值算例为教学补充、非原书数据：取 $^{1}$H--$^{1}$H、$r=1.0$~\AA{}，由
 式~\eqref{eq:dipolar} 得 $|b|/2\pi\approx\qty{120}{kHz}$，与正文所述 $^{1}$H、$^{19}$F

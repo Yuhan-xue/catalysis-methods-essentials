@@ -164,6 +164,19 @@ TeX **不报错、不中断**，只在 log 里留一行 `Missing character`，PD
 这比「看起来应该没问题」可靠得多，也是子代理唯一能做的图形自检。
 
 
+### 7.5 TikZ / pgfplots 声明函数与 groupplot 的坑（新，由分片作者实测报回）
+
+- \	ikzset{declare function={...}}\ 的参数名**必须用单字母但不能用 \x、\u**
+  （它们是 LaTeX 重音命令）：多字母（\xx）报 \Missing control sequence inserted\；
+  用 \x/\u 报 \ill-formatted floating point number\。改用 \p、\q 之类。
+- 函数体里**乘法要加括号**：4-(100*\p)\，直接写 @*\p\ 会出问题。
+- **groupplot 的公共 \domain\ 会被每个子面板继承**。若各面板横轴范围不同，
+  必须**在每个 \nextgroupplot 里显式覆盖 domain**，否则报 \Dimension too large\。
+  实测：group 设 domain=1700:2200，面板 (c) 横轴 0—0.6，直接崩。
+- **未加载 amssymb，不要用 \lacksquare\**（改用 \\circ\ 或文字）。
+- Fandol 无「鎓」(U+9393)，写「吡啶阳离子」。
+
+
 ---
 
 ## 8. 回复格式（短，不要复述正文）
