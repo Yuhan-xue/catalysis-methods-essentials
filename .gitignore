@@ -48,3 +48,6 @@ _*
 Thumbs.db
 desktop.ini
 ~$*
+
+# 发布暂存区：产物以 Gitea Release 附件分发，不入库
+release/
