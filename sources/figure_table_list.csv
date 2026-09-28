@@ -21,7 +21,7 @@ ch04a-表03,4,a,table,tab:extinction,常见点阵与基元的系统消光条件�
 ch04a-图03,4,a,figure,fig:pattern-info,峰位、峰强、峰形三种信息的读法。读者应看三处标注分别指向横轴位置、纵轴高度与 峰的半高宽：峰位是三者中唯一可以做,模型计算,,chapters/parts/ch04-a.tex,未显式设定,待逐页渲染核查
 ch04a-表04,4,a,table,tab:xrd-limits,XRD 能给出什么／不能给出什么,表格（图源四类不适用）,,chapters/parts/ch04-a.tex,单栏,待逐页渲染核查
 ch05a-表01,5,a,table,tab:ch05-tpd,TPD 谱能给出什么、不能给出什么,表格（图源四类不适用）,,chapters/parts/ch05-a.tex,单栏,待逐页渲染核查
-ch05a-图01,5,a,figure,,模型计算的 TPD 谱：(a) 中升温速率由 5 增到 20K.min^-1，峰温右移约 33K，而三条曲线下的,模型计算,据 S1 §5.3.1—5.3.3 原理自绘，书内 p.311—315 / PDF p.330—334,chapters/parts/ch05-a.tex,未显式设定,待逐页渲染核查
+ch05a-图01,5,a,figure,fig:ch05-tpd,TPD 谱的模型计算：峰面积标定吸附量，峰位标定动力学（Polanyi-Wigner 数值解,模型计算,据 S1 §5.3.1—5.3.3 原理自绘，书内 p.311—315 / PDF p.330—334,chapters/parts/ch05-a.tex,50mm x 2（within \onecolwidth）,已按评审 C05-02 重绘图源并核对（积分均为 1.000000）
 ch05a-表02,5,a,table,tab:ch05-redhead,由峰温换算脱附活化能的四个前提,表格（图源四类不适用）,,chapters/parts/ch05-a.tex,单栏,待逐页渲染核查
 ch06a-表01,6,a,table,tab:raman-ir,拉曼与红外光谱的互补性对照。读者应看「选律」与「样品适应性」两行：前者决定 两者给出的是不同子集的振动，后者决定,表格（图源四类不适用）,,chapters/parts/ch06-a.tex,单栏,待逐页渲染核查
 ch06a-图01,6,a,figure,fig:raman-levels,拉曼与瑞利散射的能级过程示意（含共振拉曼）。读者应看三件事：基态 $E_0$ 与振动 激发态 $E_n$ 之间相,示意,据 S1（上册）图 6-1，书内 p.349 / PDF p.368 改绘。,chapters/parts/ch06-a.tex,未显式设定,待逐页渲染核查
