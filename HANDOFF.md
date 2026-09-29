@@ -1,6 +1,6 @@
 # 交接文档 · 《现代催化研究方法精要》
 
-> 最后更新：2026-09-29（v0.5.0-pre 发布后）
+> 最后更新：2026-09-30（v0.6.0-pre 发布后）
 > 上一轮负责人上下文已耗尽，本文用于**新会话无缝接手**。
 
 ---
@@ -12,8 +12,8 @@
 | 成品 | 《现代催化研究方法精要：原理、读图与方法选择》 |
 | 页数 | **310**（P0 收口后；基线 `feb8739` 实测 309，+1 页已对账，见 §5 P0）|
 | 分片 | **37**（`chapters/parts/`）|
-| 最新提交 | `9e197cd`（P0 收口；此前 `175a8d8`、`78f1c22`、`2325bbf`）|
-| 线上 pre | **v0.5.0-pre**（release id=38；**P0 收口后尚未重新发布**）|
+| 最新提交 | `5109139`（第七项门禁 + `build.ps1` BOM；此前 `9e197cd`、`175a8d8`、`78f1c22`、`2325bbf`）|
+| 线上 pre | **v0.6.0-pre**（release id=41，tag `v0.6.0-pre` @ `5109139`；附件 3970716 B，SHA-256 `C0FDD52B6B7A6740FFA3AFD125342DEE558D0C51907C5CEE67F3B4FE2EF40B08`，公开下载已回验字节一致）|
 | 构建门禁 | errors / overfull>5pt / missing glyphs / undefined refs / dup labels / **dup includes** —— **全 0** |
 | 日志直查 | Overfull hbox 0 / vbox 0、Float too large 0、Missing character 0、Underfull vbox 0 |
 | 叠印 | 图内元素 **0 处**；粗横线 0 / 粗竖线 0 |
@@ -370,13 +370,41 @@ WRITER_BRIEF.md             ★ 写作规范与全部已知坑，派单前必读
 4. 从 §5 的 **P0（75 张表补来源标注）** 开始
 5. 每改一处，**说明改前/改后实测值**；判据不要放宽，内容不要删
 
-### 版本发布流程
+### 版本发布流程（v0.6.0-pre 走的路径，已实测）
 
 ```powershell
+# 0) 工作树必须干净，且发布构建从要发布的那个提交上跑
+git status --short                       # 必须为空
+pwsh -NoProfile -ExecutionPolicy Bypass -File tools/build.ps1 -Release
+#    release 模式实测：pages 310 / errors 0 / overfull 0 / glyphs 0 / refs 0 / labels 0 / dup includes ok / PASS
+
+# 1) 暂存成品并取哈希（写进 release notes 的「校验」段）
+New-Item -ItemType Directory -Force -Path release | Out-Null
 Copy-Item build\main.pdf release\catalysis-methods-essentials-vX.Y.Z-pre.pdf
-# 用 REST API 建 release（tag_name/target_commitish/name/body/draft/prerelease）
-# 用 curl.exe -F 上传附件（PS 5.1 无 Invoke-RestMethod -Form）
+(Get-FileHash release\catalysis-methods-essentials-vX.Y.Z-pre.pdf -Algorithm SHA256).Hash
+
+# 2) 打轻量标签并推送（历史标签全是轻量标签：git cat-file -t v0.5.0-pre → commit）
+git tag vX.Y.Z-pre <提交>
+git push origin vX.Y.Z-pre
+
+# 3) 建 release（用 --data-binary 送 UTF-8 JSON 文件；body 里含中文，别用命令行拼）
+curl.exe -s -u deepseek:ROTATED-2026-10-02 -H "Content-Type: application/json" `
+  --data-binary "@build/_relpayload.json" -X POST `
+  "http://zsyq.hxlab.tech:3000/api/v1/repos/yuhanxue/catalysis-methods-essentials/releases"
+#    payload = {tag_name, target_commitish:"main", name, body, draft:false, prerelease:true}
+#    实测 HTTP 201；返回体里取 id（v0.6.0-pre = 41）
+
+# 4) 上传附件（PS 5.1 无 Invoke-RestMethod -Form，必须 curl.exe -F；字段名 attachment）
+curl.exe -s -u deepseek:ROTATED-2026-10-02 -F "attachment=@release/<pdf>" `
+  "http://zsyq.hxlab.tech:3000/api/v1/repos/yuhanxue/catalysis-methods-essentials/releases/<id>/assets?name=<pdf>"
+#    实测 HTTP 201
+
+# 5) 回验：把附件从公开地址下载回来比哈希（不验就等于没发）
+curl.exe -sL "http://zsyq.hxlab.tech:3000/yuhanxue/catalysis-methods-essentials/releases/download/vX.Y.Z-pre/<pdf>" -o build\_dl.pdf
+(Get-FileHash build\_dl.pdf -Algorithm SHA256).Hash   # 必须 == 第 1 步
 ```
+
+**易踩的坑**：① `git status` 不干净时发布的 PDF 可能来自未提交内容；② release notes 的 `SHA-256` 与 `对应提交` 两项是接手者的核验锚点，**必须实测填入**；③ 建 release 时若标签已存在，`target_commitish` 被忽略（标签指向谁就发谁）——所以先打标签再建 release；④ 附件建好后 `browser_download_url` 在部分 Gitea 版本里返回 `/attachments/<uuid>`，公开地址是 `/releases/download/<tag>/<name>`，两者都要能 200。
 
 ---
 
