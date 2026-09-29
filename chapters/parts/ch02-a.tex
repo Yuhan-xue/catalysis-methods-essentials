@@ -67,7 +67,15 @@
 \draw[ar] (c2) -- (spec);
 \draw[ar] (spec) -- (obj);
 \draw[ar] (obj) -- (bfo);
-\draw[thin] (bfo) -- node[right=0.6mm, font=\fontsize{8}{9.6}\selectfont]{\;衍射模式} (int);
+% 【重叠修正·第二轮，2026-09-29】
+% 上一轮注释声称「右移到 x=3.6 后全部让开」——**这个结论不成立**，是写在代码里的假结论。
+% 实测（build/main.pdf p.16，字符级包围盒求交）仍有 4 对字形叠印，且正是同样四对。
+% 真正的原因不是注记与标签相撞，而是**箭头上的 `衍射模式` 标注**：
+% 这条线 (bfo) -- (int) 从 y=-3.95 到 -5.55，中点 y=-4.75 恰好落在 ipo 箱体内部
+% （箱体 minimum width=30 mm，占 ±15 mm），而 right=0.6 mm 只把标注推离连线 0.6 mm，
+% 仍在箱体里。实测 bbox：箱体文字 [162,489,289,497]，标注 [233,491,265,499]——标注完全落在箱体文字上。
+% 修法：把标注推到箱体右外侧（15 mm 半宽 + 1.5 mm 余量）。注记在 x=36 mm，互不干涉。
+\draw[thin] (bfo) -- node[right=16.5mm, font=\fontsize{8}{9.6}\selectfont]{\;衍射模式} (int);
 \draw[thin] (ipo) -- (int);
 \draw[ar] (int) -- (prj);
 \draw[ar] (prj) -- (scr);
@@ -75,7 +83,8 @@
 % 【重叠修正】原注记放在 x=1.35（=13.5 mm），而：镜筒节点的右挂标签从约 8.3 mm 起、
 % 延伸到约 26 mm（如「第二聚光镜 C2 + 光阑」）；后焦面/像平面两个箱体 minimum width=30 mm，
 % 占 ±15 mm。三处注记因此分别压在标签与箱体上（实测 p.15 出现「面/像」「实/式」「像/射」
-% 「大/衍」四对字符重叠）。右移到 x=3.6（=36 mm）后全部让开。
+% 「大/衍」四对字符重叠）。右移到 x=3.6（=36 mm）——但**实测该结论不成立**，
+% 见下方 衍射模式 标注处的第二轮修正：真正的重叠源是箭头标注落在 ipo 箱体内部。
 \node[font=\fontsize{8}{9.6}\selectfont, align=left, anchor=west] at (3.6,-0.75)
   {照明模式\\（平行束 / 会聚束）};
 \node[font=\fontsize{8}{9.6}\selectfont, align=left, anchor=west] at (3.6,-2.35)

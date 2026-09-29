@@ -94,12 +94,18 @@ BJH 法（Barrett--Joyner--Halenda 法）采用\textbf{圆柱形盲孔等效模�
 有关}，与吸附质性质和孔半径无关。其核心是一步守恒记账：相对压力 $x_k=(p/p_0)_k$ 下的
 总吸附量等于\textbf{已凝聚孔内的液量}与\textbf{未凝聚孔壁上的液膜量}之和。
 
+% 【黑块修正】原来两个 \underbrace 的下标各放了一整句中文
+% （「半径 r_i<=r_k 的孔：已充满，计全孔体积」/「尚未凝聚的孔：只计孔壁液膜体积」）。
+% \underbrace 的下标被排成 script 尺寸（约 7 pt），CJK 在这个尺寸下笔画挤在一起、
+% 视觉上是一团发黑的密集字——用户报告的「公式 1-8 有黑块」即此。
+% 而且这两句与紧随其后的正文「（1）已凝聚的孔…」「（2）尚未凝聚的孔…」完全重复。
+% 改为短标记，含义交给下面的正文，两者都不再重复。
 \begin{equation}\label{eq:bjh-balance}
-V(x_k)=\underbrace{\sum_{i\le k}\pi r_i^{2}\ell_i}
-_{\text{半径 }r_i\le r_k\text{ 的孔：已充满，计全孔体积}}
-\;+\;\underbrace{\sum_{j>k}\pi\!\left[r_j^{2}-\left(r_j-t_k\right)^{2}\right]\ell_j}
-_{\text{尚未凝聚的孔：只计孔壁液膜体积}}
+V(x_k)=\underbrace{\sum_{i\le k}\pi r_i^{2}\ell_i}_{\text{(1)}}
+\;+\;\underbrace{\sum_{j>k}\pi\!\left[r_j^{2}-\left(r_j-t_k\right)^{2}\right]\ell_j}_{\text{(2)}}
 \end{equation}
+
+式中 $(1)$、$(2)$ 两项的含义如下。
 
 式中 $r_i$、$\ell_i$ 为第 $i$ 组孔的半径与该组孔总长度，$r_k$ 为 $x_k$ 对应的 Kelvin
 半径，$t_k=t(x_k)$ 为对应液膜厚度，且孔半径与膜厚满足 $r_i=r_k(x_i)+t(x_i)$——孔壁上先有
