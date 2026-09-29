@@ -251,13 +251,29 @@
 %           \label{ch:NN}
 %   一次完成：编号 + 目录条目 + 页眉标记 + 全宽章标题
 %   注意：章作者不要再直接使用 \section
+%
+%   【顺序纪律，勿动】\needspace 必须在 \sectionmark / \phantomsection /
+%   \addcontentsline **之前**。理由是本项目实测出来的两个真缺陷：
+%     1) \addcontentsline 写进 .toc 的页码是「这个 \write 落在哪一页」，
+%        hyperref 的目标锚点也落在同一页。若 \needspace 在这些之后才断页，
+%        锚点与 \write 就留在**上一页**——于是目录页码与书签目标统统指向前一页。
+%        改前实测：15 个一级条目里 10 个错（第 2/3/4/5/6/9/11/12 章各差 1 页，
+%        第 9 章差 2 页；跨方法综合应用、符号缩写与索引两项同病，见下）。
+%     2) \sectionmark 同样会留在断页前的**上一页**，使那一页的页眉提前变成新章名。
+%        改前实测：p191 页眉显示「第9 章表面分析技术基础」（应属第 8 章）、
+%        p271 页眉显示「第12 章扫描探针显微镜与纳米光谱技术」（应属第 11 章）。
+%   两条都由「\needspace 提前」一并修好。
+%   【遗留】main.tex 里三处不编号区块的 \phantomsection\addcontentsline 写在
+%   \input 之前，先于本宏的 \needspace，故「跨方法综合应用」（目录 p294，实际 p295）
+%   与「符号、缩写与索引」（目录 p296，实际 p297）仍差一页。该修法要动 main.tex
+%   （把这两条移进 \chapterheadstar），本次未改，已列在交付说明里。
 % ---------------------------------------------------------------
 \newcommand{\chapterstart}[2]{%
+  \needspace{12\baselineskip}%
   \refstepcounter{section}%
   \sectionmark{#1}%
   \phantomsection
   \addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
-  \needspace{12\baselineskip}%
   \begin{fullwidth}%
     \vspace{2pt}%
     \noindent{\heiti\fontsize{14}{17}\selectfont 第\,\thesection\,章\hspace{0.55em}#1}%
@@ -310,6 +326,26 @@
 \setlist{topsep=2pt,itemsep=1pt,parsep=0pt,partopsep=0pt,leftmargin=1.8em}
 \setlength{\parindent}{2em}
 \setlength{\parskip}{0pt}
+
+% ---------------------------------------------------------------
+% 8b 页面垂直对齐：raggedbottom（**不要删**）
+%    ctexart 是 twoside 文档类，默认 \flushbottom：TeX 的页构造器要把每一页
+%    都撑满 \textheight。本书 \parskip=0pt（无伸缩分量），单栏正文里的行距、
+%    显示公式间距也都是固定值，可伸缩的垂直胶极少，于是**任何差一点点没排满的页
+%    都会报 Underfull \vbox (badness 10000) has occurred while \output is active**，
+%    而能撑的页则把胶拉到极限，表现为行距/段距明显发松。
+%
+%    改前实测（301 页，tools/build.ps1 的 main.log）：
+%      Underfull \vbox 共 92 处，其中 badness 10000 有 77 处；
+%      有限 badness 的 15 处（1009—8151）就是被拉松的页
+%      （最松的 p41 badness 8151、p242 6792、p57 6316 —— 胶被拉到标称值的 2 倍以上）。
+%    最小复现（build/_audit/vt_fb.tex vs vt_rb.tex，同样的 geometry/parskip，
+%    自然分页而非 \clearpage）：flushbottom 3 处 badness 10000，raggedbottom 0 处，
+%    且两者页数相同（4 页）。即本告警与「少排的那点高度」无关，纯粹是
+%    \flushbottom 在无胶可拉时的噪声，同时它掩盖了真正被拉松的那 15 页。
+%    raggedbottom 只改变「页内垂直胶怎么设」，不改变 \pagegoal，故分页基本不动。
+% ---------------------------------------------------------------
+\raggedbottom
 % 中文断行缺少可行的连字点，易产生 overfull \hbox。给 5em 应急伸缩量，
 % 并放宽 tolerance：题注里常有长的行内公式串，无法断开时会顶出版心。
 \setlength{\emergencystretch}{5em}

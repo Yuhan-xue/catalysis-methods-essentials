@@ -1,0 +1,43 @@
+files scanned: 50
+distinct groups with competing forms: 7
+file-group pairs affected: 18
+
+### 比表面积
+   全书用量: 比表面积=14  |  比表面=2
+   - chapters/parts/ch01-c.tex: 比表面×1 @L118; 比表面积×10 @L217,217,417
+   - chapters/parts/ch05-b.tex: 比表面×1 @L468; 比表面积×4 @L506,506,511
+
+### 孔容 / 孔体积
+   全书用量: 孔容=48  |  孔体积=5
+   - chapters/parts/ch01-b.tex: 孔容×30 @L8,11,15; 孔体积×1 @L151
+   - chapters/parts/ch01-c.tex: 孔容×12 @L9,10,15; 孔体积×3 @L640,719,729
+   - chapters/parts/ch08-c.tex: 孔容×6 @L17,291,295; 孔体积×1 @L276
+
+### TOF 中文名
+   全书用量: 转换频率=5  |  转换数=4
+   - chapters/ch90-backmatter.tex: 转换频率×2 @L90,231; 转换数×1 @L91
+   - chapters/parts/ch10-a.tex: 转换频率×3 @L12,135,144; 转换数×3 @L135,138,145
+
+### 活性位 / 活性中心
+   全书用量: 活性位=11  |  活性中心=7
+   - chapters/parts/ch05-b.tex: 活性中心×2 @L358,627; 活性位×1 @L671
+   - chapters/parts/ch06-c.tex: 活性位×3 @L22,129,712; 活性中心×2 @L715,719
+   - chapters/parts/ch07-c.tex: 活性位×1 @L278; 活性中心×2 @L310,628
+   - chapters/parts/ch10-b.tex: 活性位×6 @L33,38,40; 活性中心×1 @L336
+
+### 标定 / 校准
+   全书用量: 标定=32  |  校准=18
+   - chapters/parts/ch03-a.tex: 标定×14 @L42,51,52; 校准×1 @L272
+   - chapters/parts/ch09-a.tex: 标定×13 @L114,235,242; 校准×6 @L360,376,377
+   - chapters/parts/ch09-d.tex: 校准×11 @L87,122,125; 标定×5 @L170,176,276
+
+### 原位 / 现场
+   全书用量: 现场=35  |  原位=11
+   - chapters/parts/ch11-c.tex: 原位×11 @L157,188,196; 现场×35 @L200,202,202
+
+### 透射电镜全称 / 简称
+   全书用量: 透射电镜=28  |  透射电子显微镜=17
+   - chapters/parts/ch02-a.tex: 透射电子显微镜×5 @L8,10,17; 透射电镜×2 @L126,170
+   - chapters/parts/ch02-b.tex: 透射电子显微镜×4 @L1,140,468; 透射电镜×5 @L207,694,1182
+   - chapters/parts/ch02-c.tex: 透射电镜×21 @L1,3,5; 透射电子显微镜×8 @L189,224,406
+

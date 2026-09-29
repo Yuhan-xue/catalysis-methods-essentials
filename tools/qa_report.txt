@@ -1,30 +1,23 @@
-file=C:\Users\53150\Documents\deepseek-harness\default-workspace\build\chk_ch01-c.pdf  pages=13
+file=build/chk_ch11-d.pdf  pages=8
 
---- bookmarks (3) ---
-  [1] 0.1 颗粒度测定  -> p.1
-  [1] 0.2 密度的三种定义与测定  -> p.8
-  [1] 0.3 催化剂机械强度的测定  -> p.11
+--- bookmarks (1) ---
+  [1] 0.1 阻抗谱基本原理  -> p.1
 
 --- fonts (7) ---
-  EMBEDDED     Type0      BMEIJC+FandolHei-Regular-Identity-H
-  EMBEDDED     Type0      DYVVBW+TeXGyreTermes-Italic-Identity-H
-  EMBEDDED     Type0      LNOSSR+FandolSong-Regular-Identity-H
-  EMBEDDED     Type0      LTBQZK+FandolSong-Bold-Identity-H
-  EMBEDDED     Type0      MDSBNR+TeXGyreTermes-Bold-Identity-H
-  EMBEDDED     Type0      NHNVJX+TeXGyreTermesMath-Regular-Identity-H
-  EMBEDDED     Type0      NUMSDI+TeXGyreTermes-Regular-Identity-H
+  EMBEDDED     Type0      CFEXBK+TeXGyreTermes-Bold-Identity-H
+  EMBEDDED     Type0      CQCNUT+FandolSong-Regular-Identity-H
+  EMBEDDED     Type0      NGGUQK+FandolSong-Bold-Identity-H
+  EMBEDDED     Type0      SXLLMB+FandolHei-Regular-Identity-H
+  EMBEDDED     Type0      UKUZII+TeXGyreTermes-Italic-Identity-H
+  EMBEDDED     Type0      VSQJHR+TeXGyreTermes-Regular-Identity-H
+  EMBEDDED     Type0      WKSXTE+TeXGyreTermesMath-Regular-Identity-H
 
 --- per page: chars, ink%, first line ---
-  p.  1  chars= 1955  ink= 13.6%  补足上一节：两种不用吸附仪的孔容测法除压汞法与气体吸附法之外，还有两种直接而简便的方法可以测
-  p.  2  chars= 1723  ink= 10.1%  现代催化研究方法精要
-  p.  3  chars= 2121  ink= 11.4%  • 最频值（mode）：频率曲线最高点所对应的粒径值，也称最可几粒径。最频值与D50 只有在
-  p.  4  chars= 2190  ink= 14.3%  现代催化研究方法精要
-  p.  5  chars= 2318  ink= 15.8%  粒径相同时离心沉降的测试时间大大缩短。离心沉降速度的表达式在形式上与重力沉降式一样，只是以离
-  p.  6  chars= 2234  ink= 14.7%  现代催化研究方法精要
-  p.  7  chars= 1887  ink= 11.9%  0.5
-  p.  8  chars= 1489  ink=  9.4%  现代催化研究方法精要
-  p.  9  chars= 2006  ink= 13.8%  两式的分母不同，不可混用：p 描述的是一颗颗粒内部的开孔占颗粒体积的分数，是材料的孔
-  p. 10  chars= 1928  ink= 11.3%  现代催化研究方法精要
-  p. 11  chars= 2017  ink= 13.5%  测量与条件三个数各自的条件。（1）骨架密度：样品必须严格干燥（表面水与孔内水都会使质量偏大）
-  p. 12  chars= 2204  ink= 14.0%  现代催化研究方法精要
-  p. 13  chars= 1645  ink= 10.0%  表0-3
+  p.  1  chars= 1875  ink= 10.2%  0.1 阻抗谱基本原理
+  p.  2  chars= 2175  ink= 12.8%  现代催化研究方法精要
+  p.  3  chars=  832  ink=  5.7%  表0-1
+  p.  4  chars= 2144  ink= 12.6%  现代催化研究方法精要
+  p.  5  chars= 2073  ink= 12.5%  两式消去ω 即得圆心在实轴上RΩ + Rct/2 处、半径为Rct/2 的圆方程——这是「半
+  p.  6  chars= 2411  ink= 14.1%  现代催化研究方法精要
+  p.  7  chars= 2213  ink= 12.6%  0
+  p.  8  chars= 1938  ink= 12.6%  现代催化研究方法精要
