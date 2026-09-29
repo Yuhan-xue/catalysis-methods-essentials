@@ -1,0 +1,209 @@
+{
+  "review_baseline": "8df5e1e0b9a2ccbe5ac0edf0d8d823e2fc5af114",
+  "meaning": "审阅基线反例，不是全书验收或未来修复判定",
+  "source_sha256": {
+    "chapters/parts/ch06-a.tex": "74424a897c9941d461f1908aed758ad19aa9cdd5618c62a3ccc0b70372b006c0",
+    "chapters/parts/ch03-b.tex": "bef3fbeb964abcf1e32c7ba5f2cdd72397cf9d8d0211ac14f36d9f58dcc407ec",
+    "chapters/parts/ch11-d.tex": "0fb238d67a75407c9e85c26217bb6e3ebb93a064c5e418c1a9b466887857391d",
+    "tools/check_src.py": "b44bf32e85342c8ee065729847e1cb0e642a916ce0a6af48f3a38462d35f92d1",
+    "tools/pdf_probe.py": "635a5a39fbbe2269baf79739d2625e7457c2669d7b7573c85ecef6369fb087f4",
+    "tools/overlap_check.py": "3696c79bccae47464e004328684f0c58a719bbd2e4b750154f11b89516e997fd"
+  },
+  "numerical": {
+    "cpe": {
+      "Q": 2.2086378152873377e-06,
+      "peak_f_hz": 3183.0988618379074,
+      "peak_x": 60.00000000000001,
+      "peak_minus_y": 39.41682172925463,
+      "analytical_y": 39.41682172925462,
+      "caption_peak": [
+        22.1,
+        22.7,
+        721.0
+      ]
+    },
+    "randles_samples": [
+      {
+        "f_hz": 0.02,
+        "randles_x": 222.8348987405032,
+        "randles_minus_y": 112.83996293629602,
+        "phi_deg": 26.856911138905854,
+        "plotted_x": 10.443096215230648,
+        "plotted_minus_y": 0.43920387225707425
+      },
+      {
+        "f_hz": 0.1,
+        "randles_x": 160.45787955583936,
+        "randles_minus_y": 50.46896236931385,
+        "phi_deg": 17.459973122283817,
+        "plotted_x": 10.990641092149614,
+        "plotted_minus_y": 0.9713913822401566
+      },
+      {
+        "f_hz": 32.0,
+        "randles_x": 112.75168169401375,
+        "randles_minus_y": 3.881959211727565,
+        "phi_deg": 1.9718735411087716,
+        "plotted_x": 26.938785441196572,
+        "plotted_minus_y": 12.50564847993151
+      },
+      {
+        "f_hz": 3200.0,
+        "randles_x": 59.59457970421257,
+        "randles_minus_y": 50.13846190413523,
+        "phi_deg": 40.07476996778162,
+        "plotted_x": 84.39573294574092,
+        "plotted_minus_y": 16.369030534128576
+      },
+      {
+        "f_hz": 40000.0,
+        "randles_x": 10.628697497536631,
+        "randles_minus_y": 7.907255655734228,
+        "phi_deg": 36.64752883176486,
+        "plotted_x": 102.10781225336979,
+        "plotted_minus_y": 6.80609251862833
+      },
+      {
+        "f_hz": 80000.0,
+        "randles_x": 10.157968141725316,
+        "randles_minus_y": 3.9725026950510345,
+        "phi_deg": 21.359104808544906,
+        "plotted_x": 104.39019609839029,
+        "plotted_minus_y": 5.0409891839386765
+      }
+    ],
+    "raman_units": {
+      "lhs_power_ratio_m_exponent": 0,
+      "rhs_cross_section_m_exponent": 2,
+      "fixed_solid_angle_distance_ratio": 1.0,
+      "text_distance_doubling_ratio": 0.25
+    },
+    "thermal": {
+      "E_j_mol": 180000.0,
+      "Tp_K": 673.0,
+      "beta_K_min": 5.0,
+      "T0_K": 300.0,
+      "A_per_min": 22322211465969.742,
+      "alpha_at_peak": 0.6105416949032803,
+      "quadrature_error": 5.016161904650981e-12,
+      "logistic_alpha_at_peak": 0.5,
+      "given_points_K": [
+        658.0,
+        673.0,
+        688.0,
+        703.0
+      ],
+      "given_beta_K_min": [
+        2.5,
+        5.0,
+        10.0,
+        20.0
+      ],
+      "kissinger_fit_j_mol": 166367.3413457951
+    },
+    "old_fixes": {
+      "coke_direct": 0.5,
+      "coke_factored": 0.5,
+      "WP_volume": 0.015000000000000001,
+      "WP_mass": 0.015000000000000001,
+      "jD_left": 0.059434690480103275,
+      "jD_right": 0.059434690480103275,
+      "parallel_R1_R2": 0.6666666666666666,
+      "AFM_sin2_mean": 0.5,
+      "BET_specific": 914.6126279250001,
+      "DTG_height": 0.4166666666666667,
+      "DTG_area": 20.0
+    }
+  },
+  "source_probes": {
+    "baseline": {
+      "exit_code": 0,
+      "summary": [
+        "checked 85 tables: PASS 85, REVIEW 0, FAIL 0",
+        "  ③ 内容人工核对（**本工具不判定**，只读台账 review_status）：已核对 0 / 未核对 85 —— 引用内容对不对必须人看页面图像",
+        "集合差异（实际 .tex 表 vs 台账 sources/figure_table_list.csv）：.tex 扫描到表 85 张、台账登记 85 张；.tex 有而台账无 0 张、台账有而 .tex 无 0 张"
+      ]
+    },
+    "unlabeled": {
+      "exit_code": 0,
+      "summary": [
+        "checked 85 tables: PASS 85, REVIEW 0, FAIL 0",
+        "  ③ 内容人工核对（**本工具不判定**，只读台账 review_status）：已核对 0 / 未核对 85 —— 引用内容对不对必须人看页面图像",
+        "集合差异（实际 .tex 表 vs 台账 sources/figure_table_list.csv）：.tex 扫描到表 85 张、台账登记 85 张；.tex 有而台账无 0 张、台账有而 .tex 无 0 张"
+      ]
+    },
+    "nonstandard_label": {
+      "exit_code": 0,
+      "summary": [
+        "checked 85 tables: PASS 85, REVIEW 0, FAIL 0",
+        "  ③ 内容人工核对（**本工具不判定**，只读台账 review_status）：已核对 0 / 未核对 85 —— 引用内容对不对必须人看页面图像",
+        "集合差异（实际 .tex 表 vs 台账 sources/figure_table_list.csv）：.tex 扫描到表 85 张、台账登记 85 张；.tex 有而台账无 0 张、台账有而 .tex 无 0 张"
+      ]
+    },
+    "registered_prefix_control": {
+      "exit_code": 1,
+      "summary": [
+        "checked 85 tables: PASS 85, REVIEW 0, FAIL 0",
+        "  ③ 内容人工核对（**本工具不判定**，只读台账 review_status）：已核对 0 / 未核对 85 —— 引用内容对不对必须人看页面图像",
+        "集合差异（实际 .tex 表 vs 台账 sources/figure_table_list.csv）：.tex 扫描到表 86 张、台账登记 85 张；.tex 有而台账无 1 张、台账有而 .tex 无 0 张"
+      ]
+    },
+    "out_of_range_control": {
+      "exit_code": 1,
+      "summary": [
+        "checked 85 tables: PASS 84, REVIEW 0, FAIL 1",
+        "  ③ 内容人工核对（**本工具不判定**，只读台账 review_status）：已核对 0 / 未核对 85 —— 引用内容对不对必须人看页面图像",
+        "集合差异（实际 .tex 表 vs 台账 sources/figure_table_list.csv）：.tex 扫描到表 85 张、台账登记 85 张；.tex 有而台账无 0 张、台账有而 .tex 无 0 张"
+      ]
+    },
+    "manual_empty": {
+      "exit_code": 0,
+      "summary": [
+        "checked 85 tables: PASS 85, REVIEW 0, FAIL 0",
+        "  ③ 内容人工核对（**本工具不判定**，只读台账 review_status）：已核对 1 / 未核对 84 —— 引用内容对不对必须人看页面图像",
+        "集合差异（实际 .tex 表 vs 台账 sources/figure_table_list.csv）：.tex 扫描到表 85 张、台账登记 85 张；.tex 有而台账无 0 张、台账有而 .tex 无 0 张"
+      ]
+    },
+    "manual_待复核": {
+      "exit_code": 0,
+      "summary": [
+        "checked 85 tables: PASS 85, REVIEW 0, FAIL 0",
+        "  ③ 内容人工核对（**本工具不判定**，只读台账 review_status）：已核对 1 / 未核对 84 —— 引用内容对不对必须人看页面图像",
+        "集合差异（实际 .tex 表 vs 台账 sources/figure_table_list.csv）：.tex 扫描到表 85 张、台账登记 85 张；.tex 有而台账无 0 张、台账有而 .tex 无 0 张"
+      ]
+    },
+    "manual_已核对页面图像": {
+      "exit_code": 0,
+      "summary": [
+        "checked 85 tables: PASS 85, REVIEW 0, FAIL 0",
+        "  ③ 内容人工核对（**本工具不判定**，只读台账 review_status）：已核对 1 / 未核对 84 —— 引用内容对不对必须人看页面图像",
+        "集合差异（实际 .tex 表 vs 台账 sources/figure_table_list.csv）：.tex 扫描到表 85 张、台账登记 85 张；.tex 有而台账无 0 张、台账有而 .tex 无 0 张"
+      ]
+    },
+    "manual_original": "未核对页面图像"
+  },
+  "pdf_probes": {
+    "without_bookmarks": {
+      "exit_code": 0,
+      "bookmarks_total": 0,
+      "U01_ok": true,
+      "U02_ok": true
+    },
+    "with_bookmark_control": {
+      "exit_code": 0,
+      "bookmarks_total": 1,
+      "U01_ok": true,
+      "U02_ok": true
+    },
+    "overlap_positive": {
+      "exit_code": 1,
+      "status": "BLOCK",
+      "blocking": 1
+    },
+    "overlap_negative": {
+      "exit_code": 0,
+      "status": "PASS",
+      "blocking": 0
+    }
+  }
+}

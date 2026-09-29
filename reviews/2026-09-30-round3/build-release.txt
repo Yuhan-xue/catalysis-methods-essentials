@@ -1,0 +1,15 @@
+root          : C:\Users\53150\Documents\Codex\2026-09-28\q\work\catalysis-review
+latexmk       : C:\texlive\2026\bin\windows\latexmk.exe
+==== build ====
+mode          : release（发布验收）
+latexmk exit  : 0
+pages         : 313
+errors        : 0
+overfull >5pt : 0
+missing glyphs: 0
+undefined refs: 0
+dup labels    : 0
+dup includes  : ok
+overlap       : ok
+  overlap gate: PASS blocking=0 candidates=99
+PASS

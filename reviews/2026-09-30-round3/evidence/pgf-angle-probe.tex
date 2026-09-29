@@ -1,0 +1,8 @@
+\documentclass{article}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\begin{document}
+\pgfmathparse{sin(0.85*pi/2)}\typeout{R3-SIN-DEFAULT=\pgfmathresult}
+\pgfmathparse{sin(deg(0.85*pi/2))}\typeout{R3-SIN-RAD=\pgfmathresult}
+Probe.
+\end{document}

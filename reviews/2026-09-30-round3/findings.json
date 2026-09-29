@@ -1,0 +1,175 @@
+{
+  "review_date": "2026-09-30",
+  "baseline": "8df5e1e0b9a2ccbe5ac0edf0d8d823e2fc5af114",
+  "counts": {
+    "total": 10,
+    "P1": 2,
+    "P2": 8
+  },
+  "findings": [
+    {
+      "id": "R3-C01",
+      "priority": 2,
+      "title": "拉曼功率比量纲及接收几何仍不一致",
+      "file": "chapters/parts/ch06-a.tex",
+      "line_start": 182,
+      "line_end": 207,
+      "pdf_pages": [
+        122,
+        123
+      ],
+      "previous_id": "R2-C09",
+      "report": "01-content-review.md",
+      "evidence": "P/P0 无量纲，微分截面乘 ΔΩ 仍为面积；固定 ΔΩ 又乘 R^-2 重复计算几何。",
+      "acceptance": "统一辐照度/功率/光斑面积口径；分别验收固定立体角、固定接收面积的距离缩放。",
+      "status": "open"
+    },
+    {
+      "id": "R3-C02",
+      "priority": 1,
+      "title": "CPE 绘图函数和硬编码峰顶不满足电路公式",
+      "file": "chapters/parts/ch11-d.tex",
+      "line_start": 516,
+      "line_end": 524,
+      "pdf_pages": [
+        271,
+        272,
+        273
+      ],
+      "previous_id": null,
+      "report": "01-content-review.md",
+      "evidence": "u 写成 (ωRQ)^n 且 PGF 三角函数角度误用；正确峰顶为 (60,39.4168) Ω、3183.10 Hz。",
+      "acceptance": "统一数据生成；验证 n=1、n=0.85、10/110 Ω 截距及标记与曲线一致。",
+      "status": "open"
+    },
+    {
+      "id": "R3-C03",
+      "priority": 1,
+      "title": "Warburg 图源遗漏 Cdl 并产生相反的频率极限",
+      "file": "chapters/parts/ch11-d.tex",
+      "line_start": 525,
+      "line_end": 528,
+      "pdf_pages": [
+        270,
+        272,
+        273
+      ],
+      "previous_id": null,
+      "report": "01-content-review.md",
+      "evidence": "0.02 Hz 正文公式给 (222.835,112.840)，图源给 (10.443,0.439)；80 kHz 文字误用 40 kHz 读数。",
+      "acceptance": "完整复数电路生成实际绘图数据，核验六个频率点、σ=0 与高低频极限。",
+      "status": "open"
+    },
+    {
+      "id": "R3-C04",
+      "priority": 2,
+      "title": "TG 的 logistic 示意被当作一级动力学并错误定义峰温",
+      "file": "chapters/parts/ch03-b.tex",
+      "line_start": 275,
+      "line_end": 276,
+      "pdf_pages": [
+        70,
+        71,
+        72
+      ],
+      "previous_id": null,
+      "report": "01-content-review.md",
+      "evidence": "一级 Arrhenius 反例峰温 673 K 对应 α=0.610542；四组图示峰温反算 E=166.37 kJ/mol。",
+      "acceptance": "明确形状示意或积分一级动力学；导数面积、峰值条件、活化能一致。",
+      "status": "open"
+    },
+    {
+      "id": "R3-U01",
+      "priority": 2,
+      "title": "图 11-5 的条件和峰顶说明被裁切或与曲线相交",
+      "file": "chapters/parts/ch11-d.tex",
+      "line_start": 555,
+      "line_end": 560,
+      "pdf_pages": [
+        273
+      ],
+      "previous_id": null,
+      "report": "02-layout-navigation-review.md",
+      "evidence": "节点 y=63 超出 ymax=60；右图截距条件下行被裁；文字压线且面板无 (a)/(b)。",
+      "acceptance": "科学图重算后重新布置说明与标记，最终 PDF 所有必要文本完整可见。",
+      "status": "open"
+    },
+    {
+      "id": "R3-U02",
+      "priority": 2,
+      "title": "后置书签与真正索引表入口分离",
+      "file": "chapters/ch90-backmatter.tex",
+      "line_start": 18,
+      "line_end": 41,
+      "pdf_pages": [
+        309,
+        310,
+        311,
+        312
+      ],
+      "previous_id": null,
+      "report": "02-layout-navigation-review.md",
+      "evidence": "三项书签均为 p309 说明页，缩写/符号/术语数据实际在 p310/p310/p311。",
+      "acceptance": "正式小节标题、说明、对应长表依次排，书签直接到表附近且保留续页表头。",
+      "status": "open"
+    },
+    {
+      "id": "R3-U03",
+      "priority": 2,
+      "title": "缩写表的主定义章链接指向错误内容",
+      "file": "chapters/ch90-backmatter.tex",
+      "line_start": 65,
+      "line_end": 66,
+      "pdf_pages": [
+        310
+      ],
+      "previous_id": null,
+      "report": "02-layout-navigation-review.md",
+      "evidence": "FTIR主定义在ch07-a:98却指第3章；EXAFS/XAFS/XAS的主定义章指向不含相应方法单元的章。",
+      "acceptance": "主定义、交叉提及、未系统介绍分别标注；核对四个链接的实际目标内容。",
+      "status": "open"
+    },
+    {
+      "id": "R3-W01",
+      "priority": 2,
+      "title": "无标签或非 tab: 标签新增表漏出来源清点",
+      "file": "tools/check_src.py",
+      "line_start": 355,
+      "line_end": 358,
+      "pdf_pages": [],
+      "previous_id": "R2-W03",
+      "report": "03-workflow-review.md",
+      "evidence": "两类无来源表注入后仍 85 PASS exit0；标准 tab: 前缀对照被拒绝。",
+      "acceptance": "按环境位置全量清点，所有无来源/未入账表均失败，正常85表通过。",
+      "status": "open"
+    },
+    {
+      "id": "R3-W02",
+      "priority": 2,
+      "title": "未知人工核对状态被统计为已核对",
+      "file": "tools/check_src.py",
+      "line_start": 544,
+      "line_end": 545,
+      "pdf_pages": [],
+      "previous_id": "R2-W03",
+      "report": "03-workflow-review.md",
+      "evidence": "一张表状态改空白或待复核后，已核对计数由0变1。",
+      "acceptance": "严格状态枚举；空白、待复核、未知不升级，已完成状态有证据。",
+      "status": "open"
+    },
+    {
+      "id": "R3-W03",
+      "priority": 2,
+      "title": "零书签 PDF 仍获得导航 PASS",
+      "file": "tools/pdf_probe.py",
+      "line_start": 122,
+      "line_end": 123,
+      "pdf_pages": [],
+      "previous_id": null,
+      "report": "03-workflow-review.md",
+      "evidence": "无书签三页PDF：bookmarks_total=0、U01/U02均true、exit0。",
+      "acceptance": "校验本书必要书签与检查覆盖；无对象 FAIL/UNUSABLE 或明确 N/A。",
+      "status": "open"
+    }
+  ]
+}

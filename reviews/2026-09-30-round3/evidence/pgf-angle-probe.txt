@@ -1,0 +1,5 @@
+XeTeX 3.141592653-2.6-0.999998 (TeX Live 2026)
+Command: xelatex -interaction=nonstopmode pgf-angle-probe.tex
+Exit: 0
+R3-SIN-DEFAULT=0.02328
+R3-SIN-RAD=0.97232
