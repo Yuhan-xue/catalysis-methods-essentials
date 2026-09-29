@@ -1,0 +1,480 @@
+file=build/main.pdf pages=268
+判据：面积重叠 >= 0.45 × 较小盒，两方向 > 1.2 pt
+
+===== p.16 =====
+  <跨span跨行> 6.7x8.0pt inter=54 含=84%
+     A '面' bbox=[179.2,488.8,187.6,497.3] w=8.5 h=8.5 sz=8.5 FandolSong-Regular org=(179.2,495.6) blk/lin/spn=13/0/0 span='像平面：样品的放大像（实空间）'
+     B '像' bbox=[180.9,488.8,188.9,496.8] w=8.0 h=8.0 sz=8.0 FandolSong-Regular org=(187.3,496.8) blk/lin/spn=21/1/0 span='成像系统'
+
+===== p.24 =====
+  <同span> 4.0x8.0pt inter=32 含=50%
+     A '］' bbox=[345.3,612.0,353.3,620.0] w=8.0 h=8.0 sz=8.0 FandolSong-Regular org=(345.3,618.4) blk/lin/spn=23/5/1 span='［示意］［据原书改绘］'
+     B '［' bbox=[349.3,612.0,357.3,620.0] w=8.0 h=8.0 sz=8.0 FandolSong-Regular org=(349.3,618.4) blk/lin/spn=23/5/1 span='［示意］［据原书改绘］'
+
+===== p.33 =====
+  <同span> 4.0x8.0pt inter=32 含=50%
+     A '］' bbox=[404.3,282.0,412.3,290.0] w=8.0 h=8.0 sz=8.0 FandolSong-Regular org=(404.3,288.4) blk/lin/spn=10/5/1 span='［示意］［据原书改绘］'
+     B '［' bbox=[408.3,282.0,416.3,290.0] w=8.0 h=8.0 sz=8.0 FandolSong-Regular org=(408.3,288.4) blk/lin/spn=10/5/1 span='［示意］［据原书改绘］'
+
+===== p.66 =====
+  <跨span跨行> 3.2x6.6pt inter=21 含=59%
+     A 'λ' bbox=[362.5,480.8,369.1,489.7] w=6.6 h=8.9 sz=8.0 TeXGyreTermes-Italic org=(363.0,486.8) blk/lin/spn=22/0/2 span='λ'
+     B '2' bbox=[365.9,483.1,370.4,491.1] w=4.5 h=8.0 sz=8.0 TeXGyreTermesMath-Regula org=(365.9,489.3) blk/lin/spn=23/0/3 span='2'
+
+===== p.67 =====
+  <跨span同行> 4.0x7.3pt inter=29 含=46%
+     A '］' bbox=[124.4,634.1,132.4,642.1] w=8.0 h=8.0 sz=8.0 FandolSong-Regular org=(124.4,640.5) blk/lin/spn=20/5/1 span='［模型计算］'
+     B '［' bbox=[128.4,633.5,136.4,641.5] w=8.0 h=8.0 sz=8.0 FandolSong-Bold org=(128.4,640.5) blk/lin/spn=20/5/2 span='［教学设定］'
+
+===== p.69 =====
+  <同span> 6.2x7.4pt inter=46 含=75%
+     A '⎛' bbox=[247.3,238.5,253.5,248.5] w=6.2 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(247.3,246.3) blk/lin/spn=19/0/0 span='⎛⎜'
+     B '⎜' bbox=[247.3,241.0,253.5,251.0] w=6.2 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(247.3,248.8) blk/lin/spn=19/0/0 span='⎛⎜'
+  <同span> 6.2x7.4pt inter=46 含=75%
+     A '⎞' bbox=[383.6,238.5,389.8,248.5] w=6.2 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(383.6,246.3) blk/lin/spn=25/0/0 span='⎞⎟'
+     B '⎟' bbox=[383.6,241.0,389.8,251.0] w=6.2 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(383.6,248.8) blk/lin/spn=25/0/0 span='⎞⎟'
+
+===== p.70 =====
+  <跨span同行> 6.2x7.8pt inter=48 含=78%
+     A '⎛' bbox=[239.4,118.6,245.6,128.6] w=6.2 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(239.4,126.4) blk/lin/spn=3/0/3 span='⎛'
+     B '⎜' bbox=[239.4,120.8,245.6,130.8] w=6.2 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(239.4,128.6) blk/lin/spn=3/0/4 span='⎜'
+  <同span> 6.2x7.8pt inter=48 含=78%
+     A '⎞' bbox=[290.2,118.6,296.4,128.6] w=6.2 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(290.2,126.4) blk/lin/spn=6/1/0 span='⎞⎟'
+     B '⎟' bbox=[290.2,120.8,296.4,130.8] w=6.2 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(290.2,128.6) blk/lin/spn=6/1/0 span='⎞⎟'
+
+===== p.71 =====
+  <跨span同行> 4.9x5.6pt inter=27 含=56%
+     A '⎡' bbox=[306.7,416.8,311.6,426.8] w=4.9 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(306.7,424.6) blk/lin/spn=21/0/3 span='⎡'
+     B '⎢' bbox=[306.7,421.2,311.6,431.1] w=4.9 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(306.7,429.0) blk/lin/spn=21/0/4 span='⎢'
+  <同span> 4.9x5.6pt inter=27 含=56%
+     A '⎤' bbox=[364.0,416.8,368.9,426.8] w=4.9 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(364.0,424.6) blk/lin/spn=25/1/0 span='⎤⎥'
+     B '⎥' bbox=[364.0,421.2,368.9,431.1] w=4.9 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(364.0,429.0) blk/lin/spn=25/1/0 span='⎤⎥'
+
+===== p.80 =====
+  <同span> 3.5x10.0pt inter=35 含=53%
+     A '−' bbox=[311.2,638.6,317.8,648.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(311.2,646.4) blk/lin/spn=16/2/2 span='−−−−−−−−−−−−−−−−−→'
+     B '−' bbox=[314.3,638.6,320.9,648.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(314.3,646.4) blk/lin/spn=16/2/2 span='−−−−−−−−−−−−−−−−−→'
+  <同span> 3.5x10.0pt inter=35 含=53%
+     A '−' bbox=[379.7,638.6,386.3,648.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(379.7,646.4) blk/lin/spn=16/2/2 span='−−−−−−−−−−−−−−−−−→'
+     B '→' bbox=[382.8,638.6,391.3,648.6] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(382.8,646.4) blk/lin/spn=16/2/2 span='−−−−−−−−−−−−−−−−−→'
+
+===== p.87 =====
+  <跨span同行> 4.9x5.7pt inter=28 含=57%
+     A '⎡' bbox=[366.0,230.8,370.9,240.7] w=4.9 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(366.0,238.6) blk/lin/spn=21/1/4 span='⎡'
+     B '⎢' bbox=[366.0,235.0,370.9,245.0] w=4.9 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(366.0,242.8) blk/lin/spn=21/1/5 span='⎢'
+  <同span> 4.9x5.7pt inter=28 含=57%
+     A '⎤' bbox=[407.9,230.8,412.8,240.7] w=4.9 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(407.9,238.6) blk/lin/spn=25/0/0 span='⎤⎥'
+     B '⎥' bbox=[407.9,235.0,412.8,245.0] w=4.9 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(407.9,242.8) blk/lin/spn=25/0/0 span='⎤⎥'
+
+===== p.94 =====
+  <跨span同行> 5.0x5.8pt inter=29 含=58%
+     A '［' bbox=[56.3,283.1,64.3,291.1] w=8.0 h=8.0 sz=8.0 FandolSong-Regular org=(56.3,289.5) blk/lin/spn=6/7/1 span='［'
+     B '0' bbox=[56.7,285.3,61.7,295.2] w=5.0 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(56.7,293.1) blk/lin/spn=6/7/0 span='0'
+  <跨span跨行> 6.6x8.0pt inter=53 含=80%
+     A '−' bbox=[283.5,284.3,290.1,294.3] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(283.5,292.1) blk/lin/spn=6/7/13 span='−−−⇀'
+     B '↽' bbox=[283.5,286.3,291.9,296.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(283.5,294.1) blk/lin/spn=6/8/0 span='↽−−−'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '−' bbox=[283.5,284.3,290.1,294.3] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(283.5,292.1) blk/lin/spn=6/7/13 span='−−−⇀'
+     B '−' bbox=[287.1,284.3,293.7,294.3] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(287.1,292.1) blk/lin/spn=6/7/13 span='−−−⇀'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '↽' bbox=[283.5,286.3,291.9,296.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(283.5,294.1) blk/lin/spn=6/8/0 span='↽−−−'
+     B '−' bbox=[287.1,284.3,293.7,294.3] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(287.1,292.1) blk/lin/spn=6/7/13 span='−−−⇀'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '↽' bbox=[283.5,286.3,291.9,296.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(283.5,294.1) blk/lin/spn=6/8/0 span='↽−−−'
+     B '−' bbox=[288.9,286.3,295.5,296.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(288.9,294.1) blk/lin/spn=6/8/0 span='↽−−−'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '−' bbox=[287.1,284.3,293.7,294.3] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(287.1,292.1) blk/lin/spn=6/7/13 span='−−−⇀'
+     B '−' bbox=[288.9,286.3,295.5,296.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(288.9,294.1) blk/lin/spn=6/8/0 span='↽−−−'
+  <跨span跨行> 4.0x8.0pt inter=32 含=49%
+     A '−' bbox=[288.9,286.3,295.5,296.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(288.9,294.1) blk/lin/spn=6/8/0 span='↽−−−'
+     B '−' bbox=[291.5,284.3,298.1,294.3] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(291.5,292.1) blk/lin/spn=6/7/13 span='−−−⇀'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '−' bbox=[291.5,284.3,298.1,294.3] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(291.5,292.1) blk/lin/spn=6/7/13 span='−−−⇀'
+     B '−' bbox=[293.3,286.3,299.9,296.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(293.3,294.1) blk/lin/spn=6/8/0 span='↽−−−'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '−' bbox=[291.5,284.3,298.1,294.3] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(291.5,292.1) blk/lin/spn=6/7/13 span='−−−⇀'
+     B '⇀' bbox=[295.1,284.3,303.5,294.3] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(295.1,292.1) blk/lin/spn=6/7/13 span='−−−⇀'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '−' bbox=[293.3,286.3,299.9,296.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(293.3,294.1) blk/lin/spn=6/8/0 span='↽−−−'
+     B '⇀' bbox=[295.1,284.3,303.5,294.3] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(295.1,292.1) blk/lin/spn=6/7/13 span='−−−⇀'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '−' bbox=[293.3,286.3,299.9,296.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(293.3,294.1) blk/lin/spn=6/8/0 span='↽−−−'
+     B '−' bbox=[296.9,286.3,303.5,296.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(296.9,294.1) blk/lin/spn=6/8/0 span='↽−−−'
+  <跨span跨行> 6.6x8.0pt inter=53 含=80%
+     A '⇀' bbox=[295.1,284.3,303.5,294.3] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(295.1,292.1) blk/lin/spn=6/7/13 span='−−−⇀'
+     B '−' bbox=[296.9,286.3,303.5,296.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(296.9,294.1) blk/lin/spn=6/8/0 span='↽−−−'
+
+===== p.97 =====
+  <跨span同行> 5.4x6.0pt inter=32 含=51%
+     A 'R' bbox=[154.6,635.5,161.2,645.5] w=6.6 h=10.0 sz=10.0 TeXGyreTermes-Regular org=(154.6,643.3) blk/lin/spn=20/2/0 span='CO-TPR'
+     B '［' bbox=[155.9,633.6,163.8,641.5] w=8.0 h=8.0 sz=8.0 FandolSong-Regular org=(155.9,639.9) blk/lin/spn=20/2/1 span='［'
+  <跨span同行> 5.4x6.2pt inter=33 含=52%
+     A '径' bbox=[175.0,225.0,185.0,235.0] w=10.0 h=10.0 sz=10.0 FandolSong-Regular org=(175.0,233.0) blk/lin/spn=5/3/1 span=' 的替代途径'
+     B '［' bbox=[179.6,223.2,187.6,231.2] w=8.0 h=8.0 sz=8.0 FandolSong-Regular org=(179.6,229.6) blk/lin/spn=5/3/2 span='［'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[229.1,333.3,235.7,343.3] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(229.1,341.1) blk/lin/spn=8/0/4 span=' −−−→'
+     B '−' bbox=[232.7,333.3,239.3,343.3] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(232.7,341.1) blk/lin/spn=8/0/4 span=' −−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[237.0,333.3,243.6,343.3] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(237.0,341.1) blk/lin/spn=8/0/4 span=' −−−→'
+     B '→' bbox=[240.6,333.3,249.1,343.3] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(240.6,341.1) blk/lin/spn=8/0/4 span=' −−−→'
+
+===== p.104 =====
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[171.1,737.7,177.7,747.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(171.1,745.4) blk/lin/spn=18/14/7 span=' −−−→'
+     B '−' bbox=[174.7,737.7,181.2,747.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(174.7,745.4) blk/lin/spn=18/14/7 span=' −−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[179.0,737.7,185.6,747.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(179.0,745.4) blk/lin/spn=18/14/7 span=' −−−→'
+     B '→' bbox=[182.6,737.7,191.0,747.6] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(182.6,745.4) blk/lin/spn=18/14/7 span=' −−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[227.1,737.7,233.7,747.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(227.1,745.4) blk/lin/spn=18/14/11 span=' −−−→'
+     B '−' bbox=[230.7,737.7,237.2,747.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(230.7,745.4) blk/lin/spn=18/14/11 span=' −−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[235.0,737.7,241.6,747.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(235.0,745.4) blk/lin/spn=18/14/11 span=' −−−→'
+     B '→' bbox=[238.6,737.7,247.0,747.6] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(238.6,745.4) blk/lin/spn=18/14/11 span=' −−−→'
+  <跨span跨行> 6.6x8.0pt inter=53 含=80%
+     A '−' bbox=[236.5,724.2,243.1,734.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(236.5,732.0) blk/lin/spn=18/11/5 span='−−−⇀'
+     B '↽' bbox=[236.5,726.2,244.9,736.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(236.5,734.0) blk/lin/spn=18/12/0 span='↽−−−'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '−' bbox=[236.5,724.2,243.1,734.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(236.5,732.0) blk/lin/spn=18/11/5 span='−−−⇀'
+     B '−' bbox=[240.1,724.2,246.7,734.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(240.1,732.0) blk/lin/spn=18/11/5 span='−−−⇀'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '↽' bbox=[236.5,726.2,244.9,736.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(236.5,734.0) blk/lin/spn=18/12/0 span='↽−−−'
+     B '−' bbox=[240.1,724.2,246.7,734.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(240.1,732.0) blk/lin/spn=18/11/5 span='−−−⇀'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '↽' bbox=[236.5,726.2,244.9,736.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(236.5,734.0) blk/lin/spn=18/12/0 span='↽−−−'
+     B '−' bbox=[241.9,726.2,248.5,736.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(241.9,734.0) blk/lin/spn=18/12/0 span='↽−−−'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '−' bbox=[240.1,724.2,246.7,734.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(240.1,732.0) blk/lin/spn=18/11/5 span='−−−⇀'
+     B '−' bbox=[241.9,726.2,248.5,736.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(241.9,734.0) blk/lin/spn=18/12/0 span='↽−−−'
+  <跨span跨行> 4.0x8.0pt inter=32 含=49%
+     A '−' bbox=[241.9,726.2,248.5,736.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(241.9,734.0) blk/lin/spn=18/12/0 span='↽−−−'
+     B '−' bbox=[244.5,724.2,251.1,734.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(244.5,732.0) blk/lin/spn=18/11/5 span='−−−⇀'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '−' bbox=[244.5,724.2,251.1,734.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(244.5,732.0) blk/lin/spn=18/11/5 span='−−−⇀'
+     B '−' bbox=[246.3,726.2,252.8,736.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(246.3,734.0) blk/lin/spn=18/12/0 span='↽−−−'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '−' bbox=[244.5,724.2,251.1,734.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(244.5,732.0) blk/lin/spn=18/11/5 span='−−−⇀'
+     B '⇀' bbox=[248.1,724.2,256.5,734.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(248.1,732.0) blk/lin/spn=18/11/5 span='−−−⇀'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '−' bbox=[246.3,726.2,252.8,736.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(246.3,734.0) blk/lin/spn=18/12/0 span='↽−−−'
+     B '⇀' bbox=[248.1,724.2,256.5,734.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(248.1,732.0) blk/lin/spn=18/11/5 span='−−−⇀'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '−' bbox=[246.3,726.2,252.8,736.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(246.3,734.0) blk/lin/spn=18/12/0 span='↽−−−'
+     B '−' bbox=[249.9,726.2,256.5,736.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(249.9,734.0) blk/lin/spn=18/12/0 span='↽−−−'
+  <跨span跨行> 6.6x8.0pt inter=53 含=80%
+     A '⇀' bbox=[248.1,724.2,256.5,734.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(248.1,732.0) blk/lin/spn=18/11/5 span='−−−⇀'
+     B '−' bbox=[249.9,726.2,256.5,736.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(249.9,734.0) blk/lin/spn=18/12/0 span='↽−−−'
+  <跨span跨行> 6.6x8.0pt inter=53 含=80%
+     A '−' bbox=[344.5,724.2,351.1,734.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(344.5,732.0) blk/lin/spn=18/12/7 span='−−−⇀'
+     B '↽' bbox=[344.5,726.2,352.9,736.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(344.5,734.0) blk/lin/spn=18/13/0 span='↽−−−'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '−' bbox=[344.5,724.2,351.1,734.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(344.5,732.0) blk/lin/spn=18/12/7 span='−−−⇀'
+     B '−' bbox=[348.1,724.2,354.7,734.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(348.1,732.0) blk/lin/spn=18/12/7 span='−−−⇀'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '↽' bbox=[344.5,726.2,352.9,736.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(344.5,734.0) blk/lin/spn=18/13/0 span='↽−−−'
+     B '−' bbox=[348.1,724.2,354.7,734.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(348.1,732.0) blk/lin/spn=18/12/7 span='−−−⇀'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '↽' bbox=[344.5,726.2,352.9,736.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(344.5,734.0) blk/lin/spn=18/13/0 span='↽−−−'
+     B '−' bbox=[349.9,726.2,356.5,736.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(349.9,734.0) blk/lin/spn=18/13/0 span='↽−−−'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '−' bbox=[348.1,724.2,354.7,734.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(348.1,732.0) blk/lin/spn=18/12/7 span='−−−⇀'
+     B '−' bbox=[349.9,726.2,356.5,736.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(349.9,734.0) blk/lin/spn=18/13/0 span='↽−−−'
+  <跨span跨行> 4.0x8.0pt inter=32 含=49%
+     A '−' bbox=[349.9,726.2,356.5,736.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(349.9,734.0) blk/lin/spn=18/13/0 span='↽−−−'
+     B '−' bbox=[352.4,724.2,359.0,734.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(352.4,732.0) blk/lin/spn=18/12/7 span='−−−⇀'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '−' bbox=[352.4,724.2,359.0,734.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(352.4,732.0) blk/lin/spn=18/12/7 span='−−−⇀'
+     B '−' bbox=[354.2,726.2,360.8,736.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(354.2,734.0) blk/lin/spn=18/13/0 span='↽−−−'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '−' bbox=[352.4,724.2,359.0,734.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(352.4,732.0) blk/lin/spn=18/12/7 span='−−−⇀'
+     B '⇀' bbox=[356.1,724.2,364.4,734.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(356.1,732.0) blk/lin/spn=18/12/7 span='−−−⇀'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '−' bbox=[354.2,726.2,360.8,736.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(354.2,734.0) blk/lin/spn=18/13/0 span='↽−−−'
+     B '⇀' bbox=[356.1,724.2,364.4,734.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(356.1,732.0) blk/lin/spn=18/12/7 span='−−−⇀'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '−' bbox=[354.2,726.2,360.8,736.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(354.2,734.0) blk/lin/spn=18/13/0 span='↽−−−'
+     B '−' bbox=[357.8,726.2,364.4,736.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(357.8,734.0) blk/lin/spn=18/13/0 span='↽−−−'
+  <跨span跨行> 6.6x8.0pt inter=53 含=80%
+     A '⇀' bbox=[356.1,724.2,364.4,734.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(356.1,732.0) blk/lin/spn=18/12/7 span='−−−⇀'
+     B '−' bbox=[357.8,726.2,364.4,736.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(357.8,734.0) blk/lin/spn=18/13/0 span='↽−−−'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[365.8,737.7,372.3,747.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(365.8,745.4) blk/lin/spn=18/14/19 span=' −−−→'
+     B '−' bbox=[369.3,737.7,375.9,747.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(369.3,745.4) blk/lin/spn=18/14/19 span=' −−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[373.7,737.7,380.3,747.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(373.7,745.4) blk/lin/spn=18/14/19 span=' −−−→'
+     B '→' bbox=[377.2,737.7,385.7,747.6] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(377.2,745.4) blk/lin/spn=18/14/19 span=' −−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[420.3,737.7,426.9,747.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(420.3,745.4) blk/lin/spn=18/14/23 span=' −−−→'
+     B '−' bbox=[423.9,737.7,430.4,747.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(423.9,745.4) blk/lin/spn=18/14/23 span=' −−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[428.2,737.7,434.8,747.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(428.2,745.4) blk/lin/spn=18/14/23 span=' −−−→'
+     B '→' bbox=[431.8,737.7,440.2,747.6] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(431.8,745.4) blk/lin/spn=18/14/23 span=' −−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[504.5,725.2,511.1,735.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(504.5,733.0) blk/lin/spn=18/13/7 span='−−−→'
+     B '−' bbox=[508.0,725.2,514.6,735.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(508.0,733.0) blk/lin/spn=18/13/7 span='−−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[512.4,725.2,519.0,735.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(512.4,733.0) blk/lin/spn=18/13/7 span='−−−→'
+     B '→' bbox=[516.0,725.2,524.4,735.2] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(516.0,733.0) blk/lin/spn=18/13/7 span='−−−→'
+
+===== p.129 =====
+  <跨span同行> 5.0x8.2pt inter=41 含=82%
+     A '–' bbox=[512.2,556.9,517.2,566.9] w=5.0 h=10.0 sz=10.0 TeXGyreTermes-Regular org=(512.2,564.7) blk/lin/spn=11/7/4 span='–'
+     B '–' bbox=[512.2,558.7,517.2,568.7] w=5.0 h=10.0 sz=10.0 TeXGyreTermes-Regular org=(512.2,566.5) blk/lin/spn=11/7/5 span='––N'
+  <跨span同行> 5.0x6.4pt inter=32 含=64%
+     A '–' bbox=[512.2,556.9,517.2,566.9] w=5.0 h=10.0 sz=10.0 TeXGyreTermes-Regular org=(512.2,564.7) blk/lin/spn=11/7/4 span='–'
+     B '–' bbox=[512.2,560.5,517.2,570.5] w=5.0 h=10.0 sz=10.0 TeXGyreTermes-Regular org=(512.2,568.3) blk/lin/spn=11/7/5 span='––N'
+  <同span> 5.0x8.2pt inter=41 含=82%
+     A '–' bbox=[512.2,558.7,517.2,568.7] w=5.0 h=10.0 sz=10.0 TeXGyreTermes-Regular org=(512.2,566.5) blk/lin/spn=11/7/5 span='––N'
+     B '–' bbox=[512.2,560.5,517.2,570.5] w=5.0 h=10.0 sz=10.0 TeXGyreTermes-Regular org=(512.2,568.3) blk/lin/spn=11/7/5 span='––N'
+
+===== p.134 =====
+  <跨span跨行> 5.5x7.1pt inter=39 含=63%
+     A '入' bbox=[150.4,617.6,158.3,625.5] w=7.9 h=7.9 sz=7.9 FandolSong-Regular org=(150.4,623.9) blk/lin/spn=26/2/0 span='入射光'
+     B '失' bbox=[152.8,618.3,160.7,626.2] w=7.9 h=7.9 sz=7.9 FandolSong-Regular org=(152.8,624.6) blk/lin/spn=22/0/0 span='散射损失'
+
+===== p.143 =====
+  <跨span跨行> 4.0x6.3pt inter=25 含=90%
+     A '位' bbox=[185.0,424.1,193.5,432.6] w=8.5 h=8.5 sz=8.5 FandolSong-Regular org=(185.0,430.9) blk/lin/spn=16/0/0 span='顶位'
+     B '2' bbox=[185.1,423.5,189.1,430.4] w=4.0 h=7.0 sz=7.0 TeXGyreTermesMath-Regula org=(185.1,428.9) blk/lin/spn=12/0/0 span='2000'
+  <跨span跨行> 4.0x6.3pt inter=25 含=90%
+     A '位' bbox=[185.0,424.1,193.5,432.6] w=8.5 h=8.5 sz=8.5 FandolSong-Regular org=(185.0,430.9) blk/lin/spn=16/0/0 span='顶位'
+     B '0' bbox=[189.1,423.5,193.1,430.4] w=4.0 h=7.0 sz=7.0 TeXGyreTermesMath-Regula org=(189.1,428.9) blk/lin/spn=12/0/0 span='2000'
+  <跨span跨行> 3.4x6.1pt inter=21 含=75%
+     A '2' bbox=[195.6,424.3,200.4,432.8] w=4.8 h=8.5 sz=8.5 TeXGyreTermesMath-Regula org=(195.6,430.9) blk/lin/spn=16/0/1 span='2074'
+     B '0' bbox=[197.0,423.5,201.0,430.4] w=4.0 h=7.0 sz=7.0 TeXGyreTermesMath-Regula org=(197.0,428.9) blk/lin/spn=12/0/0 span='2000'
+  <跨span跨行> 3.7x5.4pt inter=20 含=62%
+     A '0' bbox=[314.0,423.9,318.8,432.3] w=4.8 h=8.5 sz=8.5 TeXGyreTermesMath-Regula org=(314.0,430.5) blk/lin/spn=21/0/4 span='= 0'
+     B '−' bbox=[315.1,422.3,319.7,429.3] w=4.6 h=7.0 sz=7.0 TeXGyreTermesMath-Regula org=(315.1,427.8) blk/lin/spn=18/0/0 span='−20'
+  <跨span跨行> 4.8x4.8pt inter=23 含=47%
+     A '桥' bbox=[404.4,436.6,412.8,445.0] w=8.5 h=8.5 sz=8.5 FandolSong-Regular org=(404.4,443.3) blk/lin/spn=29/1/0 span='桥位（模型）'
+     B '移' bbox=[408.0,440.3,415.0,447.2] w=7.0 h=7.0 sz=7.0 FandolSong-Regular org=(408.0,445.8) blk/lin/spn=25/1/2 span='组成位移'
+  <跨span跨行> 4.0x4.6pt inter=18 含=66%
+     A '位' bbox=[412.8,436.6,421.3,445.0] w=8.5 h=8.5 sz=8.5 FandolSong-Regular org=(412.8,443.3) blk/lin/spn=29/1/0 span='桥位（模型）'
+     B '2' bbox=[417.3,440.4,421.3,447.4] w=4.0 h=7.0 sz=7.0 TeXGyreTermesMath-Regula org=(417.3,445.8) blk/lin/spn=25/1/3 span='29'
+  <跨span跨行> 5.4x4.6pt inter=25 含=67%
+     A '模' bbox=[429.8,436.6,438.2,445.0] w=8.5 h=8.5 sz=8.5 FandolSong-Regular org=(429.8,443.3) blk/lin/spn=29/1/0 span='桥位（模型）'
+     B 'm' bbox=[430.3,440.4,435.7,447.4] w=5.4 h=7.0 sz=7.0 TeXGyreTermes-Regular org=(430.3,445.8) blk/lin/spn=25/1/4 span=' cm'
+  <跨span跨行> 2.5x5.0pt inter=12 含=76%
+     A '模' bbox=[429.8,436.6,438.2,445.0] w=8.5 h=8.5 sz=8.5 FandolSong-Regular org=(429.8,443.3) blk/lin/spn=29/1/0 span='桥位（模型）'
+     B '−' bbox=[435.7,439.6,439.0,444.6] w=3.3 h=5.0 sz=5.0 TeXGyreTermesMath-Regula org=(435.7,443.5) blk/lin/spn=25/1/5 span='−'
+  <跨span跨行> 2.5x5.0pt inter=12 含=100%
+     A '型' bbox=[438.2,436.6,446.7,445.0] w=8.5 h=8.5 sz=8.5 FandolSong-Regular org=(438.2,443.3) blk/lin/spn=29/1/0 span='桥位（模型）'
+     B '1' bbox=[439.0,439.6,441.5,444.6] w=2.5 h=5.0 sz=5.0 TeXGyreTermes-Regular org=(439.0,443.5) blk/lin/spn=25/1/6 span='1'
+
+===== p.171 =====
+  <同span> 5.4x5.0pt inter=27 含=50%
+     A '⎧' bbox=[231.2,257.3,236.6,267.2] w=5.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(231.2,265.0) blk/lin/spn=7/0/0 span='⎧{{'
+     B '{' bbox=[231.2,262.2,236.6,272.2] w=5.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(231.2,270.0) blk/lin/spn=7/0/0 span='⎧{{'
+  <同span> 5.4x5.8pt inter=31 含=58%
+     A '{' bbox=[231.2,262.2,236.6,272.2] w=5.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(231.2,270.0) blk/lin/spn=7/0/0 span='⎧{{'
+     B '{' bbox=[231.2,266.4,236.6,276.4] w=5.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(231.2,274.2) blk/lin/spn=7/0/0 span='⎧{{'
+  <同span> 5.4x5.0pt inter=27 含=50%
+     A '⎨' bbox=[231.2,277.3,236.6,287.3] w=5.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(231.2,285.1) blk/lin/spn=7/1/0 span='⎨{{⎩'
+     B '{' bbox=[231.2,282.3,236.6,292.3] w=5.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(231.2,290.1) blk/lin/spn=7/1/0 span='⎨{{⎩'
+  <同span> 5.4x5.8pt inter=31 含=58%
+     A '{' bbox=[231.2,282.3,236.6,292.3] w=5.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(231.2,290.1) blk/lin/spn=7/1/0 span='⎨{{⎩'
+     B '{' bbox=[231.2,286.5,236.6,296.5] w=5.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(231.2,294.3) blk/lin/spn=7/1/0 span='⎨{{⎩'
+  <同span> 5.4x4.9pt inter=27 含=49%
+     A '{' bbox=[231.2,286.5,236.6,296.5] w=5.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(231.2,294.3) blk/lin/spn=7/1/0 span='⎨{{⎩'
+     B '⎩' bbox=[231.2,291.6,236.6,301.6] w=5.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(231.2,299.4) blk/lin/spn=7/1/0 span='⎨{{⎩'
+
+===== p.189 =====
+  <跨span同行> 3.9x7.3pt inter=29 含=46%
+     A '］' bbox=[136.6,407.7,144.6,415.7] w=8.0 h=8.0 sz=8.0 FandolSong-Regular org=(136.6,414.1) blk/lin/spn=14/0/4 span='］'
+     B '［' bbox=[140.6,407.1,148.6,415.1] w=8.0 h=8.0 sz=8.0 FandolSong-Bold org=(140.6,414.1) blk/lin/spn=14/0/5 span='［待核对］'
+
+===== p.190 =====
+  <同span> 3.8x10.0pt inter=38 含=58%
+     A '−' bbox=[301.0,658.5,307.5,668.4] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(301.0,666.3) blk/lin/spn=27/1/0 span='−−→'
+     B '−' bbox=[303.7,658.5,310.3,668.4] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(303.7,666.3) blk/lin/spn=27/1/0 span='−−→'
+  <同span> 3.8x10.0pt inter=38 含=58%
+     A '−' bbox=[303.7,658.5,310.3,668.4] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(303.7,666.3) blk/lin/spn=27/1/0 span='−−→'
+     B '→' bbox=[306.5,658.5,314.9,668.4] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(306.5,666.3) blk/lin/spn=27/1/0 span='−−→'
+  <跨span跨行> 2.7x3.7pt inter=10 含=68%
+     A '−' bbox=[303.7,658.5,310.3,668.4] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(303.7,666.3) blk/lin/spn=27/1/0 span='−−→'
+     B '1' bbox=[307.6,656.7,310.3,662.2] w=2.7 h=5.5 sz=5.5 TeXGyreTermes-Regular org=(307.6,661.0) blk/lin/spn=27/0/1 span='1'
+  <跨span跨行> 2.7x3.7pt inter=10 含=68%
+     A '→' bbox=[306.5,658.5,314.9,668.4] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(306.5,666.3) blk/lin/spn=27/1/0 span='−−→'
+     B '1' bbox=[307.6,656.7,310.3,662.2] w=2.7 h=5.5 sz=5.5 TeXGyreTermes-Regular org=(307.6,661.0) blk/lin/spn=27/0/1 span='1'
+  <同span> 3.8x10.0pt inter=38 含=58%
+     A '−' bbox=[331.3,658.5,337.9,668.4] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(331.3,666.3) blk/lin/spn=28/1/0 span='−−→'
+     B '−' bbox=[334.1,658.5,340.6,668.4] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(334.1,666.3) blk/lin/spn=28/1/0 span='−−→'
+  <同span> 3.8x10.0pt inter=38 含=58%
+     A '−' bbox=[334.1,658.5,340.6,668.4] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(334.1,666.3) blk/lin/spn=28/1/0 span='−−→'
+     B '→' bbox=[336.8,658.5,345.3,668.4] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(336.8,666.3) blk/lin/spn=28/1/0 span='−−→'
+  <跨span跨行> 2.7x3.7pt inter=10 含=68%
+     A '−' bbox=[334.1,658.5,340.6,668.4] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(334.1,666.3) blk/lin/spn=28/1/0 span='−−→'
+     B '2' bbox=[337.9,656.7,340.6,662.2] w=2.7 h=5.5 sz=5.5 TeXGyreTermes-Regular org=(337.9,661.0) blk/lin/spn=28/0/1 span='2'
+  <跨span跨行> 2.7x3.7pt inter=10 含=68%
+     A '→' bbox=[336.8,658.5,345.3,668.4] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(336.8,666.3) blk/lin/spn=28/1/0 span='−−→'
+     B '2' bbox=[337.9,656.7,340.6,662.2] w=2.7 h=5.5 sz=5.5 TeXGyreTermes-Regular org=(337.9,661.0) blk/lin/spn=28/0/1 span='2'
+
+===== p.203 =====
+  <同span> 4.0x8.0pt inter=32 含=50%
+     A '］' bbox=[208.6,694.8,216.5,702.8] w=8.0 h=8.0 sz=8.0 FandolSong-Regular org=(208.6,701.2) blk/lin/spn=17/5/4 span='［模型计算］［据'
+     B '［' bbox=[212.6,694.8,220.5,702.8] w=8.0 h=8.0 sz=8.0 FandolSong-Regular org=(212.6,701.2) blk/lin/spn=17/5/4 span='［模型计算］［据'
+  <同span> 4.0x8.0pt inter=32 含=50%
+     A '］' bbox=[241.0,354.1,248.9,362.1] w=8.0 h=8.0 sz=8.0 FandolSong-Regular org=(241.0,360.5) blk/lin/spn=9/7/1 span='［模型计算］［据'
+     B '［' bbox=[244.9,354.1,252.9,362.1] w=8.0 h=8.0 sz=8.0 FandolSong-Regular org=(244.9,360.5) blk/lin/spn=9/7/1 span='［模型计算］［据'
+
+===== p.212 =====
+  <跨span跨行> 6.6x8.0pt inter=53 含=80%
+     A '−' bbox=[293.7,301.0,300.3,311.0] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(293.7,308.8) blk/lin/spn=12/2/0 span='−−−⇀'
+     B '↽' bbox=[293.7,303.0,302.1,312.9] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(293.7,310.8) blk/lin/spn=12/3/0 span='↽−−−'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '−' bbox=[293.7,301.0,300.3,311.0] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(293.7,308.8) blk/lin/spn=12/2/0 span='−−−⇀'
+     B '−' bbox=[297.4,301.0,303.9,311.0] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(297.4,308.8) blk/lin/spn=12/2/0 span='−−−⇀'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '↽' bbox=[293.7,303.0,302.1,312.9] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(293.7,310.8) blk/lin/spn=12/3/0 span='↽−−−'
+     B '−' bbox=[297.4,301.0,303.9,311.0] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(297.4,308.8) blk/lin/spn=12/2/0 span='−−−⇀'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '↽' bbox=[293.7,303.0,302.1,312.9] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(293.7,310.8) blk/lin/spn=12/3/0 span='↽−−−'
+     B '−' bbox=[299.1,303.0,305.7,312.9] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(299.1,310.8) blk/lin/spn=12/3/0 span='↽−−−'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '−' bbox=[297.4,301.0,303.9,311.0] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(297.4,308.8) blk/lin/spn=12/2/0 span='−−−⇀'
+     B '−' bbox=[299.1,303.0,305.7,312.9] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(299.1,310.8) blk/lin/spn=12/3/0 span='↽−−−'
+  <跨span跨行> 3.7x4.2pt inter=15 含=57%
+     A '−' bbox=[299.1,303.0,305.7,312.9] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(299.1,310.8) blk/lin/spn=12/3/0 span='↽−−−'
+     B 'k' bbox=[300.2,308.7,303.9,316.1] w=3.7 h=7.4 sz=7.4 TeXGyreTermes-Regular org=(300.2,314.5) blk/lin/spn=12/4/0 span='k'
+  <跨span跨行> 4.0x8.0pt inter=32 含=49%
+     A '−' bbox=[299.1,303.0,305.7,312.9] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(299.1,310.8) blk/lin/spn=12/3/0 span='↽−−−'
+     B '−' bbox=[301.7,301.0,308.3,311.0] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(301.7,308.8) blk/lin/spn=12/2/0 span='−−−⇀'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '−' bbox=[301.7,301.0,308.3,311.0] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(301.7,308.8) blk/lin/spn=12/2/0 span='−−−⇀'
+     B '−' bbox=[303.5,303.0,310.1,312.9] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(303.5,310.8) blk/lin/spn=12/3/0 span='↽−−−'
+  <跨span跨行> 1.8x3.7pt inter=7 含=68%
+     A '−' bbox=[301.7,301.0,308.3,311.0] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(301.7,308.8) blk/lin/spn=12/2/0 span='−−−⇀'
+     B 'f' bbox=[304.4,299.2,306.2,304.7] w=1.8 h=5.5 sz=5.5 TeXGyreTermes-Regular org=(304.4,303.5) blk/lin/spn=12/1/1 span='f'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '−' bbox=[301.7,301.0,308.3,311.0] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(301.7,308.8) blk/lin/spn=12/2/0 span='−−−⇀'
+     B '⇀' bbox=[305.3,301.0,313.7,311.0] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(305.3,308.8) blk/lin/spn=12/2/0 span='−−−⇀'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '−' bbox=[303.5,303.0,310.1,312.9] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(303.5,310.8) blk/lin/spn=12/3/0 span='↽−−−'
+     B '⇀' bbox=[305.3,301.0,313.7,311.0] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(305.3,308.8) blk/lin/spn=12/2/0 span='−−−⇀'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '−' bbox=[303.5,303.0,310.1,312.9] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(303.5,310.8) blk/lin/spn=12/3/0 span='↽−−−'
+     B '−' bbox=[307.1,303.0,313.7,312.9] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(307.1,310.8) blk/lin/spn=12/3/0 span='↽−−−'
+  <跨span跨行> 6.6x8.0pt inter=53 含=80%
+     A '⇀' bbox=[305.3,301.0,313.7,311.0] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(305.3,308.8) blk/lin/spn=12/2/0 span='−−−⇀'
+     B '−' bbox=[307.1,303.0,313.7,312.9] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(307.1,310.8) blk/lin/spn=12/3/0 span='↽−−−'
+
+===== p.220 =====
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[250.6,647.8,257.2,657.8] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(250.6,655.6) blk/lin/spn=44/0/11 span='−−−→'
+     B '−' bbox=[254.1,647.8,260.7,657.8] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(254.1,655.6) blk/lin/spn=44/0/11 span='−−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[258.5,647.8,265.1,657.8] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(258.5,655.6) blk/lin/spn=44/0/11 span='−−−→'
+     B '→' bbox=[262.0,647.8,270.5,657.8] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(262.0,655.6) blk/lin/spn=44/0/11 span='−−−→'
+
+===== p.221 =====
+  <跨span跨行> 6.6x8.0pt inter=53 含=80%
+     A '−' bbox=[237.6,205.3,244.1,215.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(237.6,213.1) blk/lin/spn=11/0/5 span='−−−⇀'
+     B '↽' bbox=[237.6,207.2,245.9,217.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(237.6,215.0) blk/lin/spn=11/1/0 span='↽−−−'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '−' bbox=[237.6,205.3,244.1,215.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(237.6,213.1) blk/lin/spn=11/0/5 span='−−−⇀'
+     B '−' bbox=[241.2,205.3,247.7,215.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(241.2,213.1) blk/lin/spn=11/0/5 span='−−−⇀'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '↽' bbox=[237.6,207.2,245.9,217.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(237.6,215.0) blk/lin/spn=11/1/0 span='↽−−−'
+     B '−' bbox=[241.2,205.3,247.7,215.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(241.2,213.1) blk/lin/spn=11/0/5 span='−−−⇀'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '↽' bbox=[237.6,207.2,245.9,217.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(237.6,215.0) blk/lin/spn=11/1/0 span='↽−−−'
+     B '−' bbox=[243.0,207.2,249.5,217.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(243.0,215.0) blk/lin/spn=11/1/0 span='↽−−−'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '−' bbox=[241.2,205.3,247.7,215.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(241.2,213.1) blk/lin/spn=11/0/5 span='−−−⇀'
+     B '−' bbox=[243.0,207.2,249.5,217.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(243.0,215.0) blk/lin/spn=11/1/0 span='↽−−−'
+  <跨span跨行> 4.0x8.0pt inter=32 含=49%
+     A '−' bbox=[243.0,207.2,249.5,217.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(243.0,215.0) blk/lin/spn=11/1/0 span='↽−−−'
+     B '−' bbox=[245.5,205.3,252.1,215.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(245.5,213.1) blk/lin/spn=11/0/5 span='−−−⇀'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '−' bbox=[245.5,205.3,252.1,215.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(245.5,213.1) blk/lin/spn=11/0/5 span='−−−⇀'
+     B '−' bbox=[247.3,207.2,253.9,217.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(247.3,215.0) blk/lin/spn=11/1/0 span='↽−−−'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '−' bbox=[245.5,205.3,252.1,215.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(245.5,213.1) blk/lin/spn=11/0/5 span='−−−⇀'
+     B '⇀' bbox=[249.1,205.3,257.5,215.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(249.1,213.1) blk/lin/spn=11/0/5 span='−−−⇀'
+  <跨span跨行> 4.8x8.0pt inter=38 含=58%
+     A '−' bbox=[247.3,207.2,253.9,217.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(247.3,215.0) blk/lin/spn=11/1/0 span='↽−−−'
+     B '⇀' bbox=[249.1,205.3,257.5,215.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(249.1,213.1) blk/lin/spn=11/0/5 span='−−−⇀'
+  <同span> 3.0x10.0pt inter=30 含=45%
+     A '−' bbox=[247.3,207.2,253.9,217.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(247.3,215.0) blk/lin/spn=11/1/0 span='↽−−−'
+     B '−' bbox=[250.9,207.2,257.5,217.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(250.9,215.0) blk/lin/spn=11/1/0 span='↽−−−'
+  <跨span跨行> 6.6x8.0pt inter=53 含=80%
+     A '⇀' bbox=[249.1,205.3,257.5,215.2] w=8.4 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(249.1,213.1) blk/lin/spn=11/0/5 span='−−−⇀'
+     B '−' bbox=[250.9,207.2,257.5,217.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(250.9,215.0) blk/lin/spn=11/1/0 span='↽−−−'
+  <同span> 6.2x7.2pt inter=44 含=72%
+     A '⎛' bbox=[340.5,258.5,346.7,268.5] w=6.2 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(340.5,266.3) blk/lin/spn=22/0/0 span='⎛⎜'
+     B '⎜' bbox=[340.5,261.3,346.7,271.3] w=6.2 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(340.5,269.1) blk/lin/spn=22/0/0 span='⎛⎜'
+  <同span> 6.2x7.2pt inter=44 含=72%
+     A '⎞' bbox=[420.3,258.5,426.5,268.5] w=6.2 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(420.3,266.3) blk/lin/spn=27/0/0 span='⎞⎟'
+     B '⎟' bbox=[420.3,261.3,426.5,271.3] w=6.2 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(420.3,269.1) blk/lin/spn=27/0/0 span='⎞⎟'
+
+===== p.224 =====
+  <同span> 4.9x4.7pt inter=23 含=47%
+     A '⎡' bbox=[277.2,103.4,282.1,113.3] w=4.9 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(277.2,111.2) blk/lin/spn=6/0/2 span='⎡⎢'
+     B '⎢' bbox=[277.2,108.7,282.1,118.6] w=4.9 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(277.2,116.5) blk/lin/spn=6/0/2 span='⎡⎢'
+  <同span> 4.9x4.7pt inter=23 含=47%
+     A '⎤' bbox=[459.1,103.4,464.0,113.3] w=4.9 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(459.1,111.2) blk/lin/spn=10/0/0 span='⎤⎥'
+     B '⎥' bbox=[459.1,108.7,464.0,118.6] w=4.9 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(459.1,116.5) blk/lin/spn=10/0/0 span='⎤⎥'
+
+===== p.228 =====
+  <跨span同行> 4.0x7.3pt inter=29 含=46%
+     A '］' bbox=[199.9,291.8,207.9,299.8] w=8.0 h=8.0 sz=8.0 FandolSong-Regular org=(199.9,298.2) blk/lin/spn=20/7/7 span='［模型计算］'
+     B '［' bbox=[204.0,291.2,211.9,299.2] w=8.0 h=8.0 sz=8.0 FandolSong-Bold org=(204.0,298.2) blk/lin/spn=20/7/8 span='［教学设定］'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[217.2,550.3,223.8,560.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(217.2,558.1) blk/lin/spn=31/1/4 span=' −−−→'
+     B '−' bbox=[220.8,550.3,227.3,560.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(220.8,558.1) blk/lin/spn=31/1/4 span=' −−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[225.1,550.3,231.7,560.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(225.1,558.1) blk/lin/spn=31/1/4 span=' −−−→'
+     B '→' bbox=[228.7,550.3,237.1,560.2] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(228.7,558.1) blk/lin/spn=31/1/4 span=' −−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[285.9,537.8,292.5,547.8] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(285.9,545.6) blk/lin/spn=31/0/12 span='−−−→'
+     B '−' bbox=[289.5,537.8,296.1,547.8] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(289.5,545.6) blk/lin/spn=31/0/12 span='−−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[293.9,537.8,300.4,547.8] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(293.9,545.6) blk/lin/spn=31/0/12 span='−−−→'
+     B '→' bbox=[297.4,537.8,305.9,547.8] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(297.4,545.6) blk/lin/spn=31/0/12 span='−−−→'
+
+===== p.229 =====
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[174.6,286.6,181.1,296.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(174.6,294.4) blk/lin/spn=6/0/9 span='−−−→'
+     B '−' bbox=[178.1,286.6,184.7,296.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(178.1,294.4) blk/lin/spn=6/0/9 span='−−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[182.5,286.6,189.1,296.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(182.5,294.4) blk/lin/spn=6/0/9 span='−−−→'
+     B '→' bbox=[186.0,286.6,194.5,296.6] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(186.0,294.4) blk/lin/spn=6/0/9 span='−−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[248.3,321.2,254.9,331.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(248.3,329.0) blk/lin/spn=7/1/8 span='−−−→'
+     B '−' bbox=[251.9,321.2,258.5,331.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(251.9,329.0) blk/lin/spn=7/1/8 span='−−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[256.2,321.2,262.8,331.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(256.2,329.0) blk/lin/spn=7/1/8 span='−−−→'
+     B '→' bbox=[259.8,321.2,268.3,331.2] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(259.8,329.0) blk/lin/spn=7/1/8 span='−−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[382.4,321.2,389.0,331.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(382.4,329.0) blk/lin/spn=7/1/20 span='−−−→'
+     B '−' bbox=[386.0,321.2,392.6,331.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(386.0,329.0) blk/lin/spn=7/1/20 span='−−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[386.0,286.6,392.6,296.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(386.0,294.4) blk/lin/spn=6/2/9 span='−−−→'
+     B '−' bbox=[389.6,286.6,396.2,296.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(389.6,294.4) blk/lin/spn=6/2/9 span='−−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[390.3,321.2,396.9,331.2] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(390.3,329.0) blk/lin/spn=7/1/20 span='−−−→'
+     B '→' bbox=[393.9,321.2,402.3,331.2] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(393.9,329.0) blk/lin/spn=7/1/20 span='−−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[394.0,286.6,400.5,296.6] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(394.0,294.4) blk/lin/spn=6/2/9 span='−−−→'
+     B '→' bbox=[397.5,286.6,406.0,296.6] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(397.5,294.4) blk/lin/spn=6/2/9 span='−−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[427.8,308.8,434.3,318.7] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(427.8,316.6) blk/lin/spn=7/0/16 span='−−−→'
+     B '−' bbox=[431.3,308.8,437.9,318.7] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(431.3,316.6) blk/lin/spn=7/0/16 span='−−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[435.7,308.8,442.2,318.7] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(435.7,316.6) blk/lin/spn=7/0/16 span='−−−→'
+     B '→' bbox=[439.2,308.8,447.7,318.7] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(439.2,316.6) blk/lin/spn=7/0/16 span='−−−→'
+
+===== p.233 =====
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[426.7,227.9,433.3,237.9] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(426.7,235.7) blk/lin/spn=5/6/10 span='−−−→'
+     B '−' bbox=[430.3,227.9,436.8,237.9] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(430.3,235.7) blk/lin/spn=5/6/10 span='−−−→'
+  <同span> 3.0x10.0pt inter=30 含=46%
+     A '−' bbox=[434.6,227.9,441.2,237.9] w=6.6 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(434.6,235.7) blk/lin/spn=5/6/10 span='−−−→'
+     B '→' bbox=[438.2,227.9,446.7,237.9] w=8.5 h=10.0 sz=10.0 TeXGyreTermesMath-Regula org=(438.2,235.7) blk/lin/spn=5/6/10 span='−−−→'
+
+===== p.239 =====
+  <跨span跨行> 4.4x4.5pt inter=20 含=62%
+     A '距' bbox=[320.0,477.4,327.2,484.5] w=7.2 h=7.2 sz=7.2 FandolSong-Regular org=(320.0,483.1) blk/lin/spn=17/0/3 span='样品间距'
+     B 'E' bbox=[322.4,480.1,326.8,487.3] w=4.4 h=7.2 sz=7.2 TeXGyreTermes-Italic org=(322.4,485.8) blk/lin/spn=13/0/0 span='E'
+
+分档统计：{'含标点': 3186, '跨span跨行': 54, '同span': 75, '跨span同行': 11}  合计 3326

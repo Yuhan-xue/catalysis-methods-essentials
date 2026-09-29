@@ -522,7 +522,11 @@ $|\boldsymbol{H}|=2\sin\theta/\lambda$ 可得 $|\boldsymbol{H}|\le2/\lambda$，�
 \node[font=\fontsize{8}{9.5}\selectfont,anchor=north,rotate=-19] at (0.24,-0.30) {$\boldsymbol{s}/\lambda$};
 \node[font=\fontsize{8}{9.5}\selectfont,anchor=north] at (-0.14,-0.42) {$1/\lambda$};
 \draw[thinline,accent] (0.36,-0.128) arc[start angle=-19.7,end angle=-90,radius=0.50];
-\node[font=\fontsize{8}{9.5}\selectfont,anchor=west] at (0.16,-0.60) {$2\theta$};
+% 【重叠修正，2026-09-30】$2\theta$ 原在 (0.16,-0.60)，与 rotate=-19 的
+% $\boldsymbol{s}/\lambda$ 标注尾巴相碰：实测 $\lambda$ 墨迹 [363.3,368.7]×[481.9,488.3]
+% 与 $2$ 墨迹 [366.2,370.1]×[484.0,489.3] 相交 2.5×4.3 pt，轮廓交叠 0.417 pt²。
+% 右移 0.12 cm、下移 0.04 cm 至 (0.28,-0.64)。
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=west] at (0.28,-0.64) {$2\theta$};
 \node[font=\fontsize{8}{9.5}\selectfont,anchor=north] at (0,-1.85) {(b) Ewald 球与倒易格点};
 \end{scope}
 \end{tikzpicture}
@@ -554,21 +558,25 @@ F(hkl)=\sum_{j=1}^{N} f_j\,
 \varphi_j=2\pi\,(hx_j+ky_j+lz_j),
 \label{eq:phase}
 \end{equation}
+% 【重叠修正，2026-09-30】原来写的是 $L\!P$：`\!` 是**负** 3mu 细空（10 pt 下 −1.67 pt），
+% 把斜体 L 的脚压进斜体 P 的竖干里。实测 p.66 两处、p.67 一处轮廓真实交叠
+% 0.96 / 0.96 / 0.61 pt²（墨迹盒重叠 1.7×6.5、1.3×5.2 pt）。
+% 去掉 `\!` 后两字母各按自身边距相接，不再相交。LP 是缩写，本不需要收紧。
 \begin{equation}
-I(hkl)\propto\left|F(hkl)\right|^{2}\cdot L\!P\cdot A(\theta)\cdot
+I(hkl)\propto\left|F(hkl)\right|^{2}\cdot LP\cdot A(\theta)\cdot
 \exp\!\left(-2M\right),
 \label{eq:intensity}
 \end{equation}
 式~\eqref{eq:sf} 中 $f_j$ 是第 $j$ 个原子的\textbf{原子散射因子}，$(x_j,y_j,z_j)$ 是其
 分数坐标，$N$ 为晶胞内原子数，$\varphi_j$ 为该原子的相位；$|F(hkl)|^{2}$ 决定该衍射的
 \textbf{本征强度}。
-式~\eqref{eq:intensity} 中 $L\!P$ 为 Lorentz--偏振因子、$A(\theta)$ 为吸收因子、
+式~\eqref{eq:intensity} 中 $LP$ 为 Lorentz--偏振因子、$A(\theta)$ 为吸收因子、
 $\exp(-2M)$ 为温度因子（Debye--Waller 因子）。量纲检查：$f_j$ 以「一个电子的散射
 振幅」为单位，$\varphi_j$ 为纯数（$h,k,l$ 与分数坐标均无量纲），故 $F$ 与 $I$ 均为
 相对量，实际工作中以相对强度报告。\tocheck{未对照原页面图像：式~\eqref{eq:sf} 与
 式~\eqref{eq:intensity} 是按学科标准形式重建的（分片 a 的 OCR 文本未给出结构因子式，
 它们应出现在分片 b/c 的强度与精修部分）。本书是否把温度因子写成 $\exp(-2M)$、是否把
-$L\!P$ 与 $A(\theta)$ 合并为单一校正项，请核对原页面。}
+$LP$ 与 $A(\theta)$ 合并为单一校正项，请核对原页面。}
 
 \begin{keycond}
 \textbf{结构因子与系统消光的关键条件}：（1）式~\eqref{eq:sf} 求和\textbf{只对晶胞内

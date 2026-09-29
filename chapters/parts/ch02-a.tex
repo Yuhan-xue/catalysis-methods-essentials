@@ -75,7 +75,17 @@
 % （箱体 minimum width=30 mm，占 ±15 mm），而 right=0.6 mm 只把标注推离连线 0.6 mm，
 % 仍在箱体里。实测 bbox：箱体文字 [162,489,289,497]，标注 [233,491,265,499]——标注完全落在箱体文字上。
 % 修法：把标注推到箱体右外侧（15 mm 半宽 + 1.5 mm 余量）。注记在 x=36 mm，互不干涉。
-\draw[thin] (bfo) -- node[right=16.5mm, font=\fontsize{8}{9.6}\selectfont]{\;衍射模式} (int);
+% 【重叠修正·第三轮，2026-09-30】
+% 上一轮注释写「把标注推到箱体右外侧（15 mm 半宽 + 1.5 mm 余量）」——**前提是错的**：
+% `minimum width=30mm` 只是**最小**宽度，箱体实际宽度由文字决定。实测 ipo 箱体文字
+% `像平面：样品的放大像（实空间）` 宽 127 pt，加左右 inner xsep 2.4 mm 后箱体实宽
+% 49.6 mm（半宽 **24.8 mm**，不是 15 mm）。所以 right=16.5 mm 仍落在箱体里：
+% 实测 p.16 上 `衍射模式` 墨迹 [278.5,302.3] 与箱体文字 [162.2,289.3] 相交 2.0×5.9 pt，
+% 轮廓真实交叠 0.333 pt²。本轮按**实测箱体半宽**取 right=25 mm。
+% 同理，左侧竖排标签 / 花括号原在 x=-1.18 / -0.85 cm（= -11.8 / -8.5 mm），
+% 也在箱体半宽 24.8 mm 之内——`成像系统` 因此压在箱体文字上（实测 6.3×7.3 pt，
+% 轮廓交叠 3.713 pt²，是全书最大的一处）。左注记列一并外移到 -3.10 / -2.75 cm。
+\draw[thin] (bfo) -- node[right=25mm, font=\fontsize{8}{9.6}\selectfont]{\;衍射模式} (int);
 \draw[thin] (ipo) -- (int);
 \draw[ar] (int) -- (prj);
 \draw[ar] (prj) -- (scr);
@@ -85,18 +95,18 @@
 % 占 ±15 mm。三处注记因此分别压在标签与箱体上（实测 p.15 出现「面/像」「实/式」「像/射」
 % 「大/衍」四对字符重叠）。右移到 x=3.6（=36 mm）——但**实测该结论不成立**，
 % 见下方 衍射模式 标注处的第二轮修正：真正的重叠源是箭头标注落在 ipo 箱体内部。
-\node[font=\fontsize{8}{9.6}\selectfont, align=left, anchor=west] at (3.6,-0.75)
+\node[font=\fontsize{8}{9.6}\selectfont, align=left, anchor=west] at (3.95,-0.75)
   {照明模式\\（平行束 / 会聚束）};
-\node[font=\fontsize{8}{9.6}\selectfont, align=left, anchor=west] at (3.6,-2.35)
+\node[font=\fontsize{8}{9.6}\selectfont, align=left, anchor=west] at (3.95,-2.35)
   {像的衬度在此定局：\\散射角分布 $\to$ 光阑选择};
-\node[font=\fontsize{8}{9.6}\selectfont, align=left, anchor=west] at (3.6,-4.35)
+\node[font=\fontsize{8}{9.6}\selectfont, align=left, anchor=west] at (3.95,-4.35)
   {放大倍数 $=M_{\text{物}}\!\times\!M_{\text{中}}\!\times\!M_{\text{投}}$};
 \draw[decorate, decoration={brace, amplitude=2pt, mirror}, semithick]
-  (-0.85,-0.45) -- (-0.85,-2.0);
+  (-2.75,-0.45) -- (-2.75,-2.0);
 \draw[decorate, decoration={brace, amplitude=2pt, mirror}, semithick]
-  (-0.85,-2.75) -- (-0.85,-6.5);
-\node[font=\fontsize{8}{9.6}\selectfont, rotate=90, anchor=south] at (-1.18,-1.2) {照明系统};
-\node[font=\fontsize{8}{9.6}\selectfont, rotate=90, anchor=south] at (-1.18,-4.6) {成像系统};
+  (-2.75,-2.75) -- (-2.75,-6.5);
+\node[font=\fontsize{8}{9.6}\selectfont, rotate=90, anchor=south] at (-3.10,-1.2) {照明系统};
+\node[font=\fontsize{8}{9.6}\selectfont, rotate=90, anchor=south] at (-3.10,-4.6) {成像系统};
 \end{tikzpicture}
 \caption{透射电子显微镜电子光学系统的信号链。读者应看两处：一是\textbf{后焦面与像平面
 是两个并存的中间产物}，中间镜的物平面选谁，荧光屏上就得到衍射花样还是显微像；
@@ -197,7 +207,11 @@ $10^{6}$ 以上；而分辨率由加速电压（电子波长）与物镜球差$C
 \draw[-{Latex[length=1.3mm]}] (-0.42,0.90) -- (-0.42,-1.35);
 \node[rotate=90, anchor=south, font=\fontsize{8}{9.6}\selectfont] at (-0.62,-0.30) {逸出深度（示意）};
 \draw[dashed, black!45] (0,0.90) -- (4.8,0.90);
-\node[anchor=south west, font=\fontsize{8}{9.6}\selectfont] at (3.2,0.92) {样品表面};
+% 【重叠修正·第二轮，2026-09-30】`样品表面` 原在 (3.2,0.92)，正落在两行注记
+% `背散射电子、二次电子…` / `特征 X 射线…` 的**中间**（两行基线 476.15 / 486.12，
+% 本标注 481.19，各差 5.04 pt），实测 11 对字形墨迹相交（最大 `品`×`连` 1.182 pt²）。
+% 改挂在样品矩形右侧、与 `薄样品（几十 nm）` 同一水平线上，避开两行注记的 x 区间。
+\node[anchor=west, font=\fontsize{8}{9.6}\selectfont] at (4.90,0.40) {样品表面};
 \end{tikzpicture}
 \caption{高能电子与薄样品相互作用产生的信号及其来源深度。读者应看\textbf{箭头的方向}：
 向上（背向）的信号只能来自表面或近表面，携带表面成分信息；向下（透射）的信号穿过

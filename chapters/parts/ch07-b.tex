@@ -453,8 +453,13 @@ $0.2$—$0.3$ 个电子的转移量级上，组成位移与覆盖度位移才可
     \addplot[thinline, black, dashed] {lgk(x,1884,0.40,24)};
     \addlegendentry{桥位 $1884$（$\times2.5$）}
     \draw[gray] (axis cs:2000,0) -- (axis cs:2000,1.15);
-    \node[anchor=south east, font={\fontsize{7}{8.5}\selectfont}]
-      at (axis cs:1996,1.05) {$2000$};
+    % 【重叠修正，2026-09-30】$2000$ 原用 anchor=south east 挂在 (1996,1.05)，
+    % 与图例第一行 `顶位 2074` 完全压在一起：实测 `位`×`0` 墨迹相交 3.5×4.7 pt、
+    % 轮廓交叠 1.078 pt²，另有 `位`×`2`、`2`×`0` 两对，合计 3 对。
+    % 图例（实测 x 174—246、y 424—446）压不下来，改把标注移到竖线右侧、
+    % 图例下方（该处两条谱线均接近 0，实测空白）。
+    \node[anchor=west, font={\fontsize{7}{8.5}\selectfont}]
+      at (axis cs:2008,0.60) {$2000$};
   \nextgroupplot[ymin=0, ymax=1.25, ytick=\empty,
                  title={(b) 电子密度（几何不变）},
                  title style={font={\fontsize{8}{9.5}\selectfont}}]
@@ -462,8 +467,10 @@ $0.2$—$0.3$ 个电子的转移量级上，组成位移与覆盖度位移才可
     \addlegendentry{$\Delta n_{d}=0$}
     \addplot[thinline, black, dashed]  {lgk(x,2074-20,1.00,16)};
     \addlegendentry{$\Delta n_{d}=0.20$}
-    \node[anchor=north east, font={\fontsize{7}{8.5}\selectfont}]
-      at (axis cs:2066,1.22) {$-20$};
+    % 【重叠修正，2026-09-30】$-20$ 原用 anchor=north east 挂在 (2066,1.22)，
+    % 落在图例第二行 `$\Delta n_d=0.20$` 上（实测 `=0`×`−20`）。移到图例右侧空白处。
+    \node[anchor=west, font={\fontsize{7}{8.5}\selectfont}]
+      at (axis cs:2092,1.02) {$-20$};
   \nextgroupplot[ymin=1950, ymax=2090, ytick={1980,2020,2060},
                  % 必须显式覆盖 group 的 domain=1700:2200：本面板横轴是 0—0.6，
                  % 沿用 1700—2200 的 domain 会报 Dimension too large（实测）。
@@ -476,9 +483,11 @@ $0.2$—$0.3$ 个电子的转移量级上，组成位移与覆盖度位移才可
     \addlegendentry{桥位（模型）}
     \addplot[only marks, mark=*, mark size=1.5pt] coordinates {(0.09,2075)};
     \addplot[only marks, mark=square*, mark size=1.5pt] coordinates {(0,2049)};
-    \node[anchor=north east, font={\fontsize{7}{8.5}\selectfont}, align=left,
-          text width=29mm] at (axis cs:0.585,2062)
-      {$\bullet$ 组成位移 $29\;\mathrm{cm^{-1}}$\\$\circ$ 覆盖度位移 $9\;\mathrm{cm^{-1}}$};
+    % 【重叠修正，2026-09-30】这里原有的两行方块注记（`• 组成位移 29 cm⁻¹` /
+    % `∘ 覆盖度位移 9 cm⁻¹`）与图例 `桥位（模型）` 相撞：实测 6 对字形墨迹相交
+    % （最大 `桥`×`移` 0.903 pt²）。该面板内两条斜线贯穿全幅，注记方块
+    % （宽 29 mm、高两行）放在任何位置都与斜线或图例相交；而注记内容与图题
+    % 完全重复（图题已给出两个位移数值），故删除，改在图题中指明标记点形状。
 \end{groupplot}
 \end{tikzpicture}
 \caption{CO 探针谱带的模型计算：构型、电子密度与位移的关系}
@@ -489,8 +498,9 @@ $0.2$—$0.3$ 个电子的转移量级上，组成位移与覆盖度位移才可
 不变，展示每个电子约 $100\;\mathrm{cm^{-1}}$ 的红移率下
 $\Delta n_{d}=0.20$ 对应的 $-20\;\mathrm{cm^{-1}}$ 位移；(c) 横轴为模型设定
 的位移标尺（单位相当于「每个电子的 $100\;\mathrm{cm^{-1}}$」），两条直线
-是顶位与桥位的位移设定，两个标记点按本书实测量级放置（组成位移
-$29\;\mathrm{cm^{-1}}$、覆盖度位移 $9\;\mathrm{cm^{-1}}$）。读者应看的是：
+是顶位与桥位的位移设定，两个标记点按本书实测量级放置：\textbf{实心圆点}为
+组成位移 $29\;\mathrm{cm^{-1}}$、\textbf{实心方点}为覆盖度位移
+$9\;\mathrm{cm^{-1}}$。读者应看的是：
 (a) 中两峰间距远大于 (b) 中的电子效应位移，故构型归属不正确时，位移
 判读会被几何效应完全掩盖；(c) 中两个标记点在横轴上的间距说明，要区分
 电子效应与覆盖度效应，两者对应的位移必须在量级上先被分开。局限在于斜率

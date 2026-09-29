@@ -211,7 +211,11 @@ $\omega_{\mathrm{SF}}=\omega_{\mathrm{IR}}+\omega_{\mathrm{vis}}$，只有非中
 \node[anchor=south] at (104,31.4) {收集镜};
 \draw[beam] (46,27) -- (57.1,27);
 \draw[beam] (57.1,27) -- (70,16);
-\node[anchor=south east] at (46,27.6) {入射光};
+% 【重叠修正，2026-09-30】(b) 面板的 `入射光` 原用 anchor=south east 挂在 (46,27.6)，
+% 左侧要伸出到 x≈37 mm，正好压住 (a) 面板的 `散射损失`（占 26.5—38.5 mm）：
+% 实测墨迹相交 4.9×6.3 pt、轮廓交叠 0.556 pt²（另有 `失`×`射`、`损`×`入`）。
+% 改为 anchor=south 居中挂在入射线中段上方 (51.5,27.6)，占 47—56.5 mm，两侧都让开。
+\node[anchor=south] at (51.5,27.6) {入射光};
 \draw[scat] (70,16) -- (78,30);
 \draw[scat] (70,16) -- (90,33);
 \draw[scat] (70,16) -- (106.9,27);
