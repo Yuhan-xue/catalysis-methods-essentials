@@ -1,4 +1,4 @@
-# 分片作者简报（WRITER_BRIEF）
+﻿# 分片作者简报（WRITER_BRIEF）
 
 写给「只写一个分片」的你。**先读这一页，不要先去读 STYLE_GUIDE.md**（那是完整契约，
 遇到拿不准的地方再查它）。
@@ -155,6 +155,18 @@ TeX **不报错、不中断**，只在 log 里留一行 `Missing character`，PD
   - 手工 TikZ（`x=1mm`）：看**最大 x 坐标**，再加上最右那个 node 的文字宽度。
     实测最大坐标 166.4 mm 已超版心，加注记后约 178 mm。
   超了要么收窄尺寸，要么整体 `\resizebox{\textwidth}{!}{...}`。
+
+- **pgfplots 的 `width`/`height` 含轴标签与刻度文字，不是坐标轴盒。**
+  实测写 `width=54mm, height=5.2cm` 只得到 **37.4×35.4 mm** 的轴盒、整图仅 96 mm；
+  按 74 mm × 7.0 cm 反算后轴盒约 51 mm、整图 135.2 mm（≈`\onecolwidth`）。
+  **单栏图偏小多半是这里算错**——要按「含标签」反算目标宽度。
+  （因此 `groupplot` 总宽 ≈ `n×width + (n−1)×sep`，**不要再额外加左侧轴标签宽度**，
+  那会重复计入。）
+- **`\addplot {fn(\p)}` 报 `Undefined control sequence`。**
+  `declare function` 里的形参只是定义用的名字，**绘图表达式里必须传绘图自变量 `x`**，
+  即写成 `{fn(x)}`。
+- **`legend pos=outer north east` 会把图撑出栏宽**；`legend` 锚在轴顶时，
+  提高 `ymax` 可把曲线压低而图例位置不变——这是「曲线压图例」的常用修法。
 
 ### 7.4 没有视觉能力时怎么查「图元素重叠」
 
