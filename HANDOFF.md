@@ -12,8 +12,9 @@
 | 成品 | 《现代催化研究方法精要：原理、读图与方法选择》 |
 | 页数 | **313**（R2 修复后；P0 收口时 310、基线 `feb8739` 实测 309。中途曾因 `\samepage` 惩罚参数泄漏涨到 345 页，见 §6 方法类教训）|
 | 分片 | **37**（`chapters/parts/`）|
-| 最新提交 | `ddc8f1a`（**R2 第二轮评审修复**，22 文件 1890+/444−；逐项验收见 `reviews/2026-09-30-round2/VERIFICATION.md`。此前 `58b0440`、`b9bdf73`、`5109139`、`9e197cd`、`175a8d8`、`78f1c22`、`2325bbf`）|
-| 线上 pre | **v0.6.0-pre**（release id=41，tag `v0.6.0-pre` @ `5109139`；附件 3970716 B，SHA-256 `C0FDD52B6B7A6740FFA3AFD125342DEE558D0C51907C5CEE67F3B4FE2EF40B08`，公开下载已回验字节一致）|
+| 最新提交 | `ddc8f1a`（**R2 第二轮评审修复**，22 文件 1890+/444−；逐项验收见 `reviews/2026-09-30-round2/VERIFICATION.md`）。其后的 `c3225a3`（报告入库）、`cc8f73b`（凭据写法订正）及本文件自身的后续编辑都是 docs 提交，**不含 PDF 输入改动**。再往前：`58b0440`、`b9bdf73`、`5109139`、`9e197cd`、`175a8d8`、`78f1c22`、`2325bbf` |
+| 线上 pre | **v0.6.1-pre**（release id=42，tag `v0.6.1-pre` @ `cc8f73b`；附件 3987451 B，SHA-256 `27B726B2B41671A91151E03492B92F979ED5090FA3A66AD9C9985636FE50FF4E`；`/releases/download/v0.6.1-pre/…` 与 `/attachments/<uuid>` 两条公开地址均已回验 200 + 字节一致）|
+| 上一版 pre | v0.6.0-pre（release id=41，tag `v0.6.0-pre` @ `5109139`；附件 3970716 B，SHA-256 `C0FDD52B6B7A6740FFA3AFD125342DEE558D0C51907C5CEE67F3B4FE2EF40B08`，公开下载已回验字节一致）|
 | 构建门禁 | errors / overfull>5pt / missing glyphs / undefined refs / dup labels / **dup includes** / **overlap** —— 全 0；`-Release` 下静态检查**没跑成（unavailable）判失败**（见 §2、§5 P2）|
 | 日志直查 | Overfull hbox 0 / vbox 0、Float too large 0、Missing character 0、Underfull vbox 0 |
 | 叠印 | 图内元素 **0 处**；粗横线 0 / 粗竖线 0 |
@@ -489,7 +490,7 @@ curl.exe -s --netrc-file "$HOME\.netrc" -H "Content-Type: application/json" `
   --data-binary "@build/_relpayload.json" -X POST `
   "http://zsyq.hxlab.tech:3000/api/v1/repos/yuhanxue/catalysis-methods-essentials/releases"
 #    payload = {tag_name, target_commitish:"main", name, body, draft:false, prerelease:true}
-#    实测 HTTP 201；返回体里取 id（v0.6.0-pre = 41）
+#    实测 HTTP 201；返回体里取 id（v0.6.0-pre = 41、v0.6.1-pre = 42）
 
 # 4) 上传附件（PS 5.1 无 Invoke-RestMethod -Form，必须 curl.exe -F；字段名 attachment）
 curl.exe -s --netrc-file "$HOME\.netrc" -F "attachment=@release/<pdf>" `
