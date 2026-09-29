@@ -171,17 +171,54 @@ C\approx\exp\!\left[\frac{E_1-E_{\mathrm{L}}}{RT}\right]
 \end{equation}
 
 以 $\ppzero$ 为横轴、$\ppzero/[V(1-\ppzero)]$ 为纵轴作图，斜率 $=(C-1)/(V_{\mathrm{m}}C)$，
-截距 $=1/(V_{\mathrm{m}}C)$，由此解得 $V_{\mathrm{m}}$ 与 $C$。总表面积由单层容量换算：
+截距 $=1/(V_{\mathrm{m}}C)$，由此解得 $V_{\mathrm{m}}$ 与 $C$。表面积由单层容量换算，但
+必须先分清 $V_{\mathrm{m}}$ 与 $S$ 的基准是\emph{单位质量}还是\emph{整份样品}：
 
 \begin{equation}\label{eq:surface}
-S=\frac{V_{\mathrm{m}}\,N_{\mathrm{A}}\,\sigma}{22400}
+S_{\mathrm{s}}=\frac{V_{\mathrm{m,s}}\,N_{\mathrm{A}}\,\sigma}{22400},
+\qquad
+S_{\mathrm{total}}=\frac{V_{\mathrm{m,total}}\,N_{\mathrm{A}}\,\sigma}{22400}
 \end{equation}
 
-式中 $S$ 为吸附剂总表面积，$\sigma$ 为吸附质分子的截面积，$N_{\mathrm{A}}$ 为阿伏伽德罗常量，
-分母 $22400$ 为标准状况下气体的摩尔体积（$\unit{mL.mol^{-1}}$）；比表面积即 $S$ 除以样品质量。
-式~\eqref{eq:surface} 的量纲检查：$V_{\mathrm{m}}$ 取 $\unit{mL.g^{-1}}$ 时，
-$\unit{mL.g^{-1}}\times\unit{mol^{-1}}\times\unit{m^2}$ 除以 $\unit{mL.mol^{-1}}$ 得
-$\unit{m^2.g^{-1}}$，与比表面积单位一致。
+式中 $\sigma$ 为吸附质分子的截面积，$N_{\mathrm{A}}$ 为阿伏伽德罗常量，分母 $22400$ 为
+标准状况下气体的摩尔体积（$\unit{mL.mol^{-1}}$）。下标 $\mathrm{s}$ 表示\emph{比}量
+（单位质量吸附剂），$S_{\mathrm{s}}$ 即比表面积，单位 $\unit{m^2.g^{-1}}$；
+下标 $\mathrm{total}$ 表示\emph{整份样品}的量，$S_{\mathrm{total}}$ 即该样品的总表面积，
+单位 $\unit{m^2}$。两条式子是同一个换算，只是基准不同；实验等温线的纵轴 $V$ 通常已
+按样品质量归一化（$\unit{mL.g^{-1}}$），由此回归得到的 $V_{\mathrm{m,s}}$ 也以
+$\unit{mL.g^{-1}}$ 计，\textbf{直接代入上式得到的已经是比表面积，不需要再除以样品质量}。
+只有当 $V$ 是整份样品的吸附量（$\unit{mL}$）时，回归得到的 $V_{\mathrm{m,total}}$ 才
+以 $\unit{mL}$ 计，此时得到的 $S_{\mathrm{total}}$ 是整个样品的总表面积；要换算成
+比表面积，再除以样品质量 $m$：
+$S_{\mathrm{s}}=S_{\mathrm{total}}/m$。
+
+两条式子的量纲各自自洽，区别只在 $V_{\mathrm{m}}$ 与 $S$ 的基准必须配对：
+$V_{\mathrm{m,s}}$ 取 $\unit{mL.g^{-1}}$ 时，
+$\unit{mL.g^{-1}}\times\unit{mol^{-1}}\times\unit{m^2}\div\unit{mL.mol^{-1}}$
+得 $\unit{m^2.g^{-1}}$，与 $S_{\mathrm{s}}$ 的单位一致；$V_{\mathrm{m,total}}$ 取
+$\unit{mL}$ 时同一计算得 $\unit{m^2}$，与 $S_{\mathrm{total}}$ 的单位一致。
+后处理再除一次样品质量的写法只在用 $V_{\mathrm{m,s}}$ 得到 $S_{\mathrm{total}}$
+（或反之）时才正确；用 $V_{\mathrm{m,s}}$ 得到 $\unit{m^2.g^{-1}}$ 之后又除一次
+质量，会把结果凭空缩小 $m$ 倍。
+
+\textbf{两种合法输入方式必须给出同一个比表面积。} 设某材料的单层容量为
+$V_{\mathrm{m}}=210\ \unit{mL.g^{-1}}$（即图~\ref{fig:betplot} 的教学设定值），
+氮分子截面积 $\sigma=0.162\ \unit{nm^2}$、摩尔体积 $22400\ \unit{mL.mol^{-1}}$：
+按\textbf{单位质量输入}，得
+$S_{\mathrm{s}}=210\times6.02\times10^{23}\times0.162\times10^{-18}\div22400
+\approx914.6\ \unit{m^2.g^{-1}}$，与样品称取多少无关。按\textbf{总吸附量输入}，
+$0.1\ \unit{g}$ 样品的 $V_{\mathrm{m,total}}=21\ \unit{mL}$，代入得
+$S_{\mathrm{total}}\approx91.5\ \unit{m^2}$，再除以 $0.1\ \unit{g}$ 得
+$91.5/0.1\approx915\ \unit{m^2.g^{-1}}$；$1\ \unit{g}$ 样品则给出
+$S_{\mathrm{total}}\approx914.6\ \unit{m^2}$、除以 $1\ \unit{g}$ 仍是
+$914.6\ \unit{m^2.g^{-1}}$。两条路径得到同一个比表面积，差别只在报告的是
+\emph{比表面积}还是\emph{该样品总表面积}——后者随称样量成比例变化，是实验室
+内部核对用量，不应与比表面积混报。
+\tocheck{未对照原页面图像：上式把总表面积与比表面积分成两条带基准下标的式子，
+是本书为消除基准混用而改写的表述；源书只给出一个未标下标的换算式。数值算例
+（$\sigma=0.162\ \unit{nm^2}$、$22400\ \unit{mL.mol^{-1}}$、
+$V_{\mathrm{m}}=210\ \unit{mL.g^{-1}}$）为按标准常数补算的教学设定，
+不是原书实验结果。}
 
 \begin{keycond}
 二常数 BET 公式\textbf{只在 $\ppzero\approx\qtyrange{0.05}{0.35}{}$ 区间成立}，更可靠的

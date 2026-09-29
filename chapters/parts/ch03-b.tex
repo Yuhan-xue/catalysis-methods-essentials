@@ -189,8 +189,24 @@ $E$ 为活化能，$R$ 为摩尔气体常数。\src{上册 §3.3，书内 p.181 
 \equref{eq:ch03b-kissinger} 的微分近似，源 OCR 无此式，本书按标准推导补出。}
 
 与此同时，峰面积不受 $\beta$ 影响：一个过程无论走得多快，只要始态与终态相同，
-总质量变化与总焓变就相同。图 \ref{fig:ch03b-rate} 把这个对比画成了可直接
+总质量变化与总焓变就相同。以纵轴取\emph{质量导数}的 DTG 曲线为例，
+TG 曲线写作 $m\%=100-20\alpha(T)$（$\alpha$ 为归一化转化率，由 $0$ 增到 $1$），
+则 $-\mathrm{d}(m\%)/\mathrm{d}T=20\,\mathrm{d}\alpha/\mathrm{d}T$——一条始终为正的
+失重峰，且
+\begin{equation}
+\int_{T_1}^{T_2}\left[-\frac{\mathrm{d}(m\%)}{\mathrm{d}T}\right]\mathrm{d}T
+=20\int_{T_1}^{T_2}\frac{\mathrm{d}\alpha}{\mathrm{d}T}\,\mathrm{d}T
+=20\ \text{个百分点},
+\label{eq:ch03b-dtg-area}
+\end{equation}
+只要 $[T_1,T_2]$ 覆盖整个失重区间，积分值与 $\beta$ 无关，且恰好等于 TG 上的
+失重量。换用归一化转化率导数 $\mathrm{d}\alpha/\mathrm{d}T$ 作图，峰面积为
+$100\%$ 而不是 $20$ 个百分点；两种口径都合法，但纵轴名称、峰高数值与积分
+面积必须同时说明取自哪一种。图 \ref{fig:ch03b-rate} 把这个对比画成了可直接
 用来训练读图习惯的形式。
+\tocheck{未对照原页面图像：式 \equref{eq:ch03b-dtg-area} 是按标准
+TG/DTG 关系补出的恒等式（$\alpha$ 由 $0$ 增到 $1$ 时积分必为 $1$），
+源 OCR 未给出该式；图 \ref{fig:ch03b-rate} 的曲线为模型曲线，不是源书数据。}
 \end{principle}
 
 \begin{measure}
@@ -211,11 +227,11 @@ $E$ 为活化能，$R$ 为摩尔气体常数。\src{上册 §3.3，书内 p.181 
 \begin{tikzpicture}
 \tikzset{declare function={
   alpha(\x,\a) = 1/(1+exp(-(\x-\a)/12));
-  dtg(\x,\a)   = 100*exp(-(\x-\a)/12)/(12*(1+exp(-(\x-\a)/12))^2);
+  dtg(\x,\a)   = 20*exp(-(\x-\a)/12)/(12*(1+exp(-(\x-\a)/12))^2);
 }}
 \begin{groupplot}[
   group style={group size=1 by 2, vertical sep=9mm},
-  xmin=250, xmax=550,
+  xmin=523, xmax=823, xtick={550,600,650,700,750,800},
   tick label style={font={\fontsize{8}{9.6}\selectfont}},
   label style={font={\fontsize{8}{9.6}\selectfont}},
   legend style={font={\fontsize{7.5}{9}\selectfont}, draw=none, fill=none,
@@ -226,34 +242,41 @@ $E$ 为活化能，$R$ 为摩尔气体常数。\src{上册 §3.3，书内 p.181 
 \nextgroupplot[width=\onecolwidth, height=5.4cm,
   ylabel={残余质量 / \%}, ymin=76, ymax=103, ytick={80,90,100},
   legend pos=south west, xticklabel pos=lower]
-\addplot[domain=250:550,samples=161,black]                {100-20*alpha(x,385)};
-\addplot[domain=250:550,samples=161,blue!70!black,dashed]  {100-20*alpha(x,400)};
-\addplot[domain=250:550,samples=161,red!75!black,densely dotted] {100-20*alpha(x,415)};
-\addplot[domain=250:550,samples=161,green!45!black,dash pattern=on 4pt off 2pt]
-                                                           {100-20*alpha(x,430)};
+\addplot[domain=523:823,samples=161,black]                {100-20*alpha(x,658)};
+\addplot[domain=523:823,samples=161,blue!70!black,dashed]  {100-20*alpha(x,673)};
+\addplot[domain=523:823,samples=161,red!75!black,densely dotted] {100-20*alpha(x,688)};
+\addplot[domain=523:823,samples=161,green!45!black,dash pattern=on 4pt off 2pt]
+                                                           {100-20*alpha(x,703)};
 \legend{\qty{2.5}{K.min^{-1}}, \qty{5}{K.min^{-1}},
         \qty{10}{K.min^{-1}}, \qty{20}{K.min^{-1}}}
 \nextgroupplot[width=\onecolwidth, height=5.4cm,
-  xlabel={温度 / °C}, ylabel={$-\mathrm{d}\alpha/\mathrm{d}T$ / \%\,K$^{-1}$},
-  ymin=0, ymax=2.55, ytick={0,1,2}, legend pos=south west]
-\addplot[domain=250:550,samples=161,black]                {dtg(x,385)};
-\addplot[domain=250:550,samples=161,blue!70!black,dashed]  {dtg(x,400)};
-\addplot[domain=250:550,samples=161,red!75!black,densely dotted] {dtg(x,415)};
-\addplot[domain=250:550,samples=161,green!45!black,dash pattern=on 4pt off 2pt]
-                                                           {dtg(x,430)};
+  xlabel={温度 / K},
+  ylabel={$-\mathrm{d}m/\mathrm{d}T$ / \%\,K$^{-1}$（正峰表示失重）},
+  ymin=0, ymax=0.51, ytick={0,0.1,0.2,0.3,0.4,0.5}, legend pos=north west]
+\addplot[domain=523:823,samples=161,black]                {dtg(x,658)};
+\addplot[domain=523:823,samples=161,blue!70!black,dashed]  {dtg(x,673)};
+\addplot[domain=523:823,samples=161,red!75!black,densely dotted] {dtg(x,688)};
+\addplot[domain=523:823,samples=161,green!45!black,dash pattern=on 4pt off 2pt]
+                                                           {dtg(x,703)};
 \legend{\qty{2.5}{K.min^{-1}}, \qty{5}{K.min^{-1}},
         \qty{10}{K.min^{-1}}, \qty{20}{K.min^{-1}}}
 \end{groupplot}
 \end{tikzpicture}
 \caption{不同升温速率下 TG 与 DTG 的模型曲线（\modelmark，非原书数据）。
+两块面板共用横轴（单位为 K，与式~\eqref{eq:ch03b-kissinger}
+式~\eqref{eq:ch03b-dTp} 的 $T_{\mathrm p}\approx\qty{673}{K}$ 同一单位）。
 读者应看三件事：(a) 四条 TG 曲线的两个平台都落在 100\% 与 80\%，只有转变
-区间随升温速率右移；(b) DTG 峰顶由 385 °C 移到 430 °C，即升温速率变化八倍
-峰温移动 45 K；(c) 把纵坐标归一化为 $\mathrm{d}\alpha/\mathrm{d}T$ 后，四条
-DTG 曲线峰高与峰面积相同——失重量与升温速率无关。
+区间随升温速率右移；(b) DTG 峰顶由 658 K 移到 703 K（即 385 \degC{} 到 430 \degC），
+升温速率变化八倍峰温移动 45 K；(c) 纵轴取实际质量导数 $-\mathrm{d}m/\mathrm{d}T$
+（正峰表示失重）后，四条 DTG 曲线峰高（\qty{0.42}{\%\per K}，即
+$20/48$）与峰面积（$20$ 个质量百分点，等于 TG 的失重量）都相同——失重量与
+升温速率无关。取归一化转化率导数 $\mathrm{d}\alpha/\mathrm{d}T$ 作图时峰高
+改为 $100/48$，面积改为 $100\%$，结论不变；两种口径不能混用。
 模型条件：单步一级失重，固定失重 20\%，峰温按每翻一倍上移约 15 K 取值
 （对应表观活化能约 \qty{180}{kJ.mol^{-1}}--\qty{200}{kJ.mol^{-1}}），
 未计入传热滞后、浮力与基线漂移。真实样品的 DTG 峰高一般随升温速率上升，
-这里用归一化坐标是为了让「峰面积不变」直接可见。
+因为实际失重速率还随 $\beta$ 增大；这里用同一坐标作图是为了让「峰面积不变」
+直接可见。
 \figsrc{据本章动力学讨论绘制，上册 §3.3，书内 p.181 / PDF p.200。}}
 \label{fig:ch03b-rate}
 \end{figure}
@@ -263,8 +286,9 @@ DTG 曲线峰高与峰面积相同——失重量与升温速率无关。
 在图 \ref{fig:ch03b-rate} 上逐条读出的内容：
 (a) 面板中，升温速率从 \qty{2.5}{K.min^{-1}} 增到 \qty{20}{K.min^{-1}} 时，
 四条曲线的起始平台都在 100\%，终止平台都在 80\%，转变段的中心依次右移；
-(b) 面板中，DTG 峰顶的位置依次为 385、400、415、430 °C，峰的最大高度
-（归一化坐标）都在 2.08 \%\,K$^{-1}$ 附近，四个峰的半高宽相同。
+(b) 面板中，DTG 峰顶的位置依次为 658、673、688、703 K（即 385、400、
+415、430 \degC），峰的最大高度（纵轴为实际质量导数 $-\mathrm{d}m/\mathrm{d}T$）
+都在 0.42 \%\,K$^{-1}$ 附近，即理论值 $20/48$，四个峰的半高宽相同。
 两步之间没有出现新的失重台阶，也没有出现肩峰。
 \end{obs}
 \begin{infer}
@@ -355,7 +379,9 @@ Arrhenius 动力学估算，非源书实验数据。}}
 
 \textbf{用 DTG 峰高代替峰面积。} 峰高正比于升温速率（$\mathrm{d}m/\mathrm{d}t
 = \beta\,\mathrm{d}m/\mathrm{d}T$），换一个速率峰高就变，峰面积才守恒。
-这是把图 \ref{fig:ch03b-rate} 的纵坐标归一化之后再比较的原因。
+图 \ref{fig:ch03b-rate} 的纵轴取 $-\mathrm{d}m/\mathrm{d}T$ 而不是
+$-\mathrm{d}m/\mathrm{d}t$，就是为了让四个速率下的曲线落在同一坐标上比较；
+换成 $-\mathrm{d}m/\mathrm{d}t$ 作图，峰高会随 $\beta$ 按比例升高。
 
 \textbf{把肩峰当新相。} 样品量偏大或粒度不均时，同一个过程会因床层温度
 分布而裂成主峰加肩峰。判据：把样品量减半，若肩峰消失或大幅减弱，

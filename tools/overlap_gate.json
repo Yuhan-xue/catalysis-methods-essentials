@@ -1,0 +1,105 @@
+{
+ "tool": "tools/overlap_check.py",
+ "mode": "gate",
+ "gate": true,
+ "block_text": false,
+ "pdf": "C:\\Users\\53150\\Documents\\git\\chemical\\build\\r2\\fixtures\\mathscript.pdf",
+ "pages": 1,
+ "generated_at": "2026-09-30T02:09:51+08:00",
+ "status": "PASS",
+ "exit_code": 0,
+ "blocking": {},
+ "blocking_total": 0,
+ "candidates": {
+  "text-cross-unclassified": 0,
+  "text-script-sup": 1,
+  "text-script-sub": 0,
+  "thick-hline": 0,
+  "thick-vline": 0,
+  "filled-bar": 0
+ },
+ "candidate_total": 1,
+ "exempt": {
+  "text-same-string": 0,
+  "nested-box": 0
+ },
+ "exceptions": {
+  "path": "C:\\Users\\53150\\Documents\\git\\chemical\\tools\\overlap_gate_exceptions.json",
+  "provided": false,
+  "valid": 0,
+  "used": {
+   "n": 0,
+   "truncated": false,
+   "items": []
+  },
+  "unused": {
+   "n": 0,
+   "truncated": false,
+   "items": []
+  },
+  "invalid": {
+   "n": 0,
+   "truncated": false,
+   "items": []
+  }
+ },
+ "page_errors": {
+  "n": 0,
+  "truncated": false,
+  "items": []
+ },
+ "errors": [],
+ "hits": {
+  "graphics-collision": {
+   "n": 0,
+   "truncated": false,
+   "items": []
+  },
+  "text-cross-unclassified": {
+   "n": 0,
+   "truncated": false,
+   "items": []
+  },
+  "text-script": {
+   "n": 1,
+   "truncated": false,
+   "items": [
+    {
+     "page": 1,
+     "kind": "script-sup",
+     "ca": "A",
+     "cb": "2",
+     "ox": 2.35,
+     "oy": 3.24,
+     "inter": 7.61,
+     "ta": "A",
+     "tb": "2",
+     "boxa": [
+      72.15,
+      393.26,
+      79.06,
+      400.0
+     ],
+     "boxb": [
+      76.71,
+      391.768,
+      79.825,
+      396.5
+     ],
+     "size_a": 10.0,
+     "size_b": 7.0,
+     "dorg_y": 3.5
+    }
+   ]
+  },
+  "thick": {
+   "n": 0,
+   "truncated": false,
+   "items": []
+  }
+ },
+ "out": "C:\\Users\\53150\\Documents\\git\\chemical\\tools\\overlap_all.txt",
+ "json": "C:\\Users\\53150\\Documents\\git\\chemical\\tools\\overlap_gate.json",
+ "pdf_bytes": 158140,
+ "pdf_mtime": "2026-09-30T02:06:20+08:00"
+}

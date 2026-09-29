@@ -323,7 +323,7 @@ $\Delta\omega<0$，共振频率向低频移动；对负的作用力梯度，共�
 \begin{equation}\label{eq:afm-fz}
 \left\langle F_{\mathrm{ts}}\,z\right\rangle
 \equiv\frac{1}{T}\int_{0}^{T}F_{\mathrm{ts}}\left(d+A\sin\omega t\right)A\sin\omega t\,\dd t,
-\qquad T=\frac{1}{\omega_0}
+\qquad T=\frac{2\pi}{\omega}\approx\frac{2\pi}{\omega_0}
 \end{equation}
 
 可以看出，频率偏移正比于 $\left\langle F_{\mathrm{ts}}\,z\right\rangle$，即一个振动周期 $T$
@@ -331,9 +331,13 @@ $\Delta\omega<0$，共振频率向低频移动；对负的作用力梯度，共�
 可用线性近似结果，$\Delta\omega$ 简化为式~\eqref{eq:afm-domega-lin}，即频率偏移正比于
 针尖--表面相互作用力梯度\src{S2 §12.4.3，书内 p.918 / PDF p.404}。
 
-\tocheck{未对照原页面图像：式~\eqref{eq:afm-domega-fm} 的分母，源文 OCR 作 $A^{2}k$；
-按 Giessibl 原始推导，相同定义的 $\left\langle F_{\mathrm{ts}}z\right\rangle$ 前应为
-$2kA^{2}$。此处暂按源文形式排，待核原页面后再定是否补因子 2。}
+\tocheck{未对照原页面图像：源书原文把平均周期排印作 $T=1/\omega_0$，但振动写成
+$A\sin\omega t$，按角频率定义一个完整周期应为 $T=2\pi/\omega$（频率调制下
+$\omega\approx\omega_0$）。$T=1/\omega_0$ 只覆盖 $1$ 弧度相位：线性力下它给出
+$\left\langle F_{\mathrm{ts}}z\right\rangle\approx0.2727\,gA^{2}$，与下一段的小振幅极限
+$-\omega_0g/(2k)$ 不自洽。本稿按完整周期排，源书这一排印问题记入勘误清单（乙类 B10）。
+式~\eqref{eq:afm-domega-fm} 的分母 $A^{2}k$ 与源文一致，且在完整周期平均下线性极限恰为
+$-\omega_0g/(2k)$，自洽；在分母补因子 $2$ 会使其减半，依据不足，不采用。}
 
 这一小振幅条件正是 qPlus 的工作点：其石英音叉弹性常数很高（$k=\qty{1800}{N/m}$），因此
 可以稳定地以 \qty{100}{pm} 量级的振幅振动，刚好工作在线性近似区域；又因为短程力梯度很大，

@@ -454,7 +454,9 @@ $\Phi=\rho r_mR^{2}/(D_ec_B)$，与上式\textbf{数值恒等}：$\rho$ 在质�
 $\unit{kg.m^{-3}}$；按上述两式对照，原书的 $r$ 应取\textbf{质量基准}
 （其数据本身即 $\unit{mmol.g^{-1}.h^{-1}}$），或原式多写了一个 $\rho$。
 本节按体积基准形式给出，与式~\eqref{eq:da} 及第 10 章分片 b 的判据统一；
-两种基准相差 $\rho_p$ 约三个数量级，用错会让临界粒径差上千倍。}
+两种基准的速率数值相差 $\rho_p$ 约三个数量级；由 $\Phi\propto rR^{2}$ 可知同一阈值下
+$R_{\text{crit}}\propto r^{-1/2}$，故速率算错 $f$ 倍只把临界粒径算错 $\sqrt{f}$ 倍
+（$\rho_p\approx1500$ 对应约 $39$ 倍），\textbf{不是 $f$ 倍}。}
 对等温球形颗粒，一级反应时 $\Phi<1$ 对应有效因子约 $0.94$；二级反应取 $\Phi<0.3$。
 \textbf{（3）相间传热（Mears 判据）}：$\eta>0.95$ 的判据是
 \begin{equation}
@@ -477,10 +479,12 @@ $\unit{mol.g^{-1}.s^{-1}}=\unit{mol.kg^{-1}.s^{-1}}\times10^{3}$ 直接当 $r$ �
 得到的"判据"单位是 $\unit{m^3.kg^{-1}}$——\textbf{有量纲、无论数值大小都不成判据}，
 这正是"看起来通过判据"的假阴性来源。自检办法只有一个：
 \textbf{逐式展开 SI 单位，确认结果是纯数}（如上三式）。
-注意判据 (2) 与 (1)(3) 形式上不同，不是因为它换了基准，而是因为它的分子里本来就有
-一个 $\rho$（把表面速率换算成体积基准时引入）：把 $r_m$ 代进 (2) 时要写成
-$r_m\rho^{2}R^{2}/(D_ec_B)$ 才与 $r_v\rho R^{2}/(D_ec_B)$ 相等，
-若只写成 $r_m\rho R^{2}/(D_ec_B)$ 就少了 $\rho$ 倍、把小颗粒误判成受内扩散控制。
+三条判据的基准约定\textbf{完全相同}，判据 (2) 在这一点上与 (1)(3) 没有区别：
+用体积速率时分子上\textbf{不带} $\rho$，用质量速率时\textbf{恰好带一个} $\rho$。
+把 $r_m$ 代进 (2) 时要写成 $\rho r_mR^{2}/(D_ec_B)$，才与
+$r_vR^{2}/(D_ec_B)$（由 $r_v=\rho r_m$）相等；若在体积速率上再乘一个 $\rho$，
+得到的 $r_v\rho R^{2}/(D_ec_B)$ 量纲是 $\unit{kg.m^{-3}}$、不是纯数，
+会把本可忽略的内扩散误判成受内扩散控制。
 
 \textbf{式~\eqref{eq:wp} 两处印刷／OCR 存疑，务必按原页面核验后再引用。}
 （a）原书表述为「一级反应时 $\Phi<1$ 可保证内扩散有效因子小于 $0.95$」，但按球形颗粒
@@ -512,13 +516,14 @@ $r_vR/(k_mc_B)=0.15\times10^{-3}/(0.10\times10)=1.5\times10^{-4}$ 完全相同�
 两者都\textbf{无量纲}。
 
 （ii）\textbf{Weisz--Prater}：以体积速率代入
-$r_v\rho R^{2}/(D_ec_B)=0.15\times1500\times10^{-6}/(10^{-6}\times10)
-=2.25\times10^{1}$；以质量速率代入
-$r_m\rho^{2}R^{2}/(D_ec_B)=10^{-4}\times1500^{2}\times10^{-6}/(10^{-5})
-=2.25\times10^{1}$。两者仍是同一个数——\textbf{但前提是分子上有两个 $\rho$}。
-若只写一个 $\rho$（$r_m\rho R^{2}/(D_ec_B)=1.5\times10^{-2}$），
-结果就小了 $1500$ 倍，$\Phi=22.5$ 会被误算成 $0.015$、从「受内扩散控制」变成
-「已排除内扩散」，结论完全相反。
+$r_vR^{2}/(D_ec_B)=0.15\times10^{-6}/(10^{-6}\times10)
+=1.5\times10^{-2}$；以质量速率代入
+$\rho r_mR^{2}/(D_ec_B)=1500\times10^{-4}\times10^{-6}/(10^{-5})
+=1.5\times10^{-2}$。两者是同一个数——\textbf{分子上恰好一个 $\rho$}
+（体积基准一个都不带），$\Phi=0.015<0.3$，\textbf{内扩散影响可以忽略}。
+反过来，若在体积速率上再乘一次 $\rho$（$r_v\rho R^{2}/(D_ec_B)=22.5$，量纲
+$\unit{kg.m^{-3}}$、根本不成判据），就把它虚增 $1500$ 倍，同一个实验从
+「已排除内扩散」变成「受内扩散控制」，结论完全相反——\textbf{多乘的那一次密度才是误算}。
 
 （iii）\textbf{Mears}：$r_m\rho(-\Delta H)R/(h_BT_B)
 =10^{-4}\times1500\times10^{5}\times10^{-3}/(100\times500)=3.0\times10^{-4}$，
@@ -706,7 +711,7 @@ c_t-c_{CL}=c_L(1+K_1c_1+K_2c_2)
 把式~\eqref{eq:coke-langmuir} 代入式~\eqref{eq:coke-r}，得
 \begin{equation}
 r=\frac{c_t-c_{CL}}{c_t}\cdot
-\frac{k_1K_1\left(c_1-c_2/K_{eq}\right)}{1+K_1c_1+K_2c_2}
+\frac{k_1K_1c_t\left(c_1-c_2/K_{eq}\right)}{1+K_1c_1+K_2c_2}
 =\varphi\,r_{\text{fresh}},\qquad
 \varphi\equiv\frac{c_t-c_{CL}}{c_t}
 \label{eq:coke-activity}
@@ -714,19 +719,28 @@ r=\frac{c_t-c_{CL}}{c_t}\cdot
 
 \textbf{这个等式只有一种正确读法，代入时不要多做一步除法}：右边第一个因子
 $\varphi=(c_t-c_{CL})/c_t$ 是\textbf{无量纲的活性系数}（$\varphi=1$ 为未失活），
-第二个因子才是\textbf{速率}（单位与 $r$ 相同）。两者是\textbf{相乘}关系，
-$c_t$ 只在 $\varphi$ 里出现一次。逐项核对：
+第二个因子 $r_{\text{fresh}}$ 才是\textbf{速率}（单位与 $r$ 相同）。
+两者是\textbf{相乘}关系：$\varphi$ 的分子 $(c_t-c_{CL})$ 与 $r_{\text{fresh}}$ 的分子
+各含一个 $c_t$，与 $\varphi$ 分母的那个 $c_t$ 相约，正好还原成绝对速率里的
+$(c_t-c_{CL})$；\textbf{两处 $c_t$ 漏掉任何一处，速率就差 $c_t$ 倍}。逐项核对：
 
 - \textbf{与直接代入恒等}：式~\eqref{eq:coke-langmuir} 给出
-  $c_L=(c_t-c_{CL})/(1+K_1c_1+K_2c_2)$，代回式~\eqref{eq:coke-r} 立即得到上式，
-  故式~\eqref{eq:coke-activity} 与式~\eqref{eq:coke-r} 是同一个方程，增减任何因子都会破坏恒等。
+  $c_L=(c_t-c_{CL})/(1+K_1c_1+K_2c_2)$，代回式~\eqref{eq:coke-r} 得
+  $r=k_1K_1(c_1-c_2/K_{eq})(c_t-c_{CL})/(1+K_1c_1+K_2c_2)$；把 $(c_t-c_{CL})$ 写成
+  $\left[(c_t-c_{CL})/c_t\right]\cdot c_t$ 即得上式，故式~\eqref{eq:coke-activity}
+  与式~\eqref{eq:coke-r} 是同一个方程，增减任何因子都会破坏恒等。
 - \textbf{未失活极限}：$c_{CL}=0$ 时 $\varphi=1$，$r$ 回到新鲜的
-  $r_{\text{fresh}}=k_1K_1(c_1-c_2/K_{eq})/(1+K_1c_1+K_2c_2)$；$c_{CL}=c_t$
-  时 $\varphi=0$、$r=0$，两端都正确。
+  $r_{\text{fresh}}=k_1K_1c_t(c_1-c_2/K_{eq})/(1+K_1c_1+K_2c_2)$（即 $Ac_t/D$）；
+  $c_{CL}=c_t$ 时 $\varphi=0$、$r=0$，两端都正确。
+- \textbf{数值自检}：取 $c_t=2$、$c_{CL}=0.5$、$k_1K_1(c_1-c_2/K_{eq})=1$、
+  $1+K_1c_1+K_2c_2=3$，则直接代入得 $r=1\times(2-0.5)/3=0.5$，按上式
+  $\varphi\,r_{\text{fresh}}=0.75\times(1\times2/3)=0.5$，两者一致；若
+  $r_{\text{fresh}}$ 漏掉 $c_t$，同一组数据只给 $0.25$。
 - \textbf{对总位点浓度的依赖}：$c_{CL}$ 固定时
   $r\propto(c_t-c_{CL})$；若 $c_{CL}$ 与 $c_t$ 同比例变化（$\varphi$ 不变），
-  则 $r\propto c_t$。$c_t$ 翻倍、$c_{CL}$ 不变时速率不会只翻一倍，
-  而是按 $(c_t-c_{CL})$ 线性增加——这正是「活性系数」与「绝对速率」必须分开的原因，
+  则 $r\propto c_t$（$r_{\text{fresh}}$ 本身就正比于 $c_t$）。$c_t$ 翻倍、
+  $c_{CL}$ 不变时速率不会只翻一倍，而是按 $(c_t-c_{CL})$ 线性增加——
+  这正是「活性系数」与「绝对速率」必须分开的原因，
   也是该模型给不出绝对速率、只能给出相对失活描述的根本局限。
 
 活性位的初始积炭覆盖速率 $r_{s0}$
@@ -735,8 +749,10 @@ $c_t$ 只在 $\varphi$ 里出现一次。逐项核对：
 $r_{s0}=r_C/(m_C\gamma c_t)$。
 \tocheck{未对照原页面图像：$r_{s0}$ 的换算式中 $\gamma$ 与 $c_t$ 的位置无法从 OCR 判定
 （OCR 仅给出 $r_C/(c_t m_C)$）；式~\eqref{eq:coke-activity} 分子中\textbf{不应}再乘一个
-$c_1$——$c_1$ 已经出现在 $(c_1-c_2/K_{eq})$ 里，再乘一次即重复计入，OCR 是否多出这一
-因子未能判读。}
+$c_1$——$c_1$ 已经出现在 $(c_1-c_2/K_{eq})$ 里，再乘一次即重复计入。该处 OCR 多出的
+那个符号，经下标行与基行逐位比对为 $c_t$（基行 $c\ c\ k\ K\ c\ (\cdots)$ 配下标行
+$t\ CL\ 1\ 1\ t\ (\cdots)$，第五个下标是 $t$），不是又一个 $c_1$；它与
+式~\eqref{eq:coke-sites}、式~\eqref{eq:coke-langmuir} 的恒等要求一致，已按 $c_t$ 复原。}
 \src{S2 §10.6.1，书内 p.794 / PDF p.283}
 \end{principle}
 

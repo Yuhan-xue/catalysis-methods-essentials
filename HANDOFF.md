@@ -10,11 +10,11 @@
 | 项 | 值 |
 |---|---|
 | 成品 | 《现代催化研究方法精要：原理、读图与方法选择》 |
-| 页数 | **310**（P0 收口后；基线 `feb8739` 实测 309，+1 页已对账，见 §5 P0）|
+| 页数 | **313**（R2 修复后；P0 收口时 310、基线 `feb8739` 实测 309。中途曾因 `\samepage` 惩罚参数泄漏涨到 345 页，见 §6 方法类教训）|
 | 分片 | **37**（`chapters/parts/`）|
 | 最新提交 | `5109139`（第七项门禁 + `build.ps1` BOM；此前 `9e197cd`、`175a8d8`、`78f1c22`、`2325bbf`）|
 | 线上 pre | **v0.6.0-pre**（release id=41，tag `v0.6.0-pre` @ `5109139`；附件 3970716 B，SHA-256 `C0FDD52B6B7A6740FFA3AFD125342DEE558D0C51907C5CEE67F3B4FE2EF40B08`，公开下载已回验字节一致）|
-| 构建门禁 | errors / overfull>5pt / missing glyphs / undefined refs / dup labels / **dup includes** —— **全 0** |
+| 构建门禁 | errors / overfull>5pt / missing glyphs / undefined refs / dup labels / **dup includes** / **overlap** —— 全 0；`-Release` 下静态检查**没跑成（unavailable）判失败**（见 §2、§5 P2）|
 | 日志直查 | Overfull hbox 0 / vbox 0、Float too large 0、Missing character 0、Underfull vbox 0 |
 | 叠印 | 图内元素 **0 处**；粗横线 0 / 粗竖线 0 |
 
@@ -28,15 +28,20 @@
 # 先 cd 到仓库根（下面的路径是上一轮作者的工作副本；仓库可放在任何位置，
 # tools/build.ps1 用 $PSScriptRoot 推导根目录，不写死路径）
 
-# 全书构建 + 六项门禁（-Quick 草稿模式只查前三项；-Release 加 overfull>5pt/未定义引用/重复标签）
+# 全书构建 + 八项门禁（-Release 加 overfull>5pt/未定义引用/重复标签/版面重叠确认缺陷，
+#   并把「静态检查没跑成」判为失败；draft 模式只拦编译错误与缺字）
 pwsh -NoProfile -ExecutionPolicy Bypass -File tools/build.ps1 -Release
 
 # 单分片 / 单章
 pwsh -NoProfile -ExecutionPolicy Bypass -File tools/check_chapter.ps1 -Chap ch11-c
 pwsh -NoProfile -ExecutionPolicy Bypass -File tools/check_chapter.ps1 -Chap ch11
 
-# 图内元素叠印（真实墨迹几何，非目测）
+# 图内元素叠印（真实墨迹几何，非目测）；--gate 即第八项门禁，build.ps1 -Release 已调用
 python tools/overlap_check.py
+python tools/overlap_check.py --gate --pdf build/main.pdf --out build/overlap_all.txt
+
+# 书签落页 / 后置页眉串章（R2-U01/U02 的程序化验收，只读；对旧 PDF 跑应复现缺陷）
+python tools/pdf_probe.py --pdf build/main.pdf --out build/pdf_probe.txt
 
 # 重复 \input / \IfFileExists（第七项门禁，已接入 build.ps1，draft 模式也拦）
 python tools/check_includes.py
@@ -241,8 +246,9 @@ WRITER_BRIEF.md             ★ 写作规范与全部已知坑，派单前必读
 
 1. 用文字层 `get_text()` 定位公式所在 PDF 页与关键词
 2. `tools/vpage.py` 高分辨率渲染该区域
-3. `read_image` 读图
-4. **与数值/物理一致性交叉验证**（不要只"看像不像"）
+3. `read_image` 读图 ⚠️ **该步依赖宿主确实有视觉**；2026-09 续作会话实测**没有**（§7 方法类有
+   三层证据与自测方法），那次 P1 只能推进到「OCR 文字层 + 独立复算」这一层
+4. **与数值/物理一致性交叉验证**（不要只"看像不像"）——无视觉时这是唯一可用的判据
 
 已完成示范：**#19 ATR 穿透深度** → 证实原书符号定义冲突（0.836 μm vs 物理正确值 2.005 μm），
 本稿此前的修改正确。
@@ -253,10 +259,19 @@ WRITER_BRIEF.md             ★ 写作规范与全部已知坑，派单前必读
   它**静态**检查重复 `\input`/`\IfFileExists`，与编译无关，因此 draft 模式也拦
   （该缺陷会让正文重复排页，而其余六项门禁全报 0）。python 或脚本不可用时该项打印
   `skipped` 而不是静默放过。
+- ✅ **第八项门禁 `overlap_check.py --gate` 已接入**（R2-W05）：只拦「两个描边图形确认相撞」，
+  文字轮廓、数学上下标、合法嵌套框按候选分类报告，不按候选总数一刀切。本书实测
+  `blocking=0 / candidates=99`。
+- ✅ **静态检查的三种状态不再混同**（R2-W04）：`ok` / `FAIL` / `unavailable`（python 不可用、
+  脚本缺失、调用异常、工具自报退出码 2）。**`-Release` 把 `unavailable` 判为失败**，
+  不再出现「检查根本没跑成却打印 PASS」；draft 允许但必须打印 `skipped（原因）`。
 - `chapters/parts/` **行尾风格混用**（17 CRLF-only / 19 LF-only），建议单独一次纯格式提交
-- `ch11-b:6`、`ch11-d:8` 两处**过期头注释**
-- `fig:ch04b-pld` / `fig:ch04b-texture` 缺 `\modelmark`；`fig:ch07b-co-model` / `fig:ch07c-transient`
-  的 `\modelmark` 在图体内、题注外（成品图题看不到）
+- ✅ `ch11-b:6` 过期头注释**已改正**；`ch11-d:8` 复核后**本来就对**，未改
+- **`\modelmark` 位置**（R2 复核：**不是缺声明，本轮不改**）：`fig:ch04b-pld`/`fig:ch04b-texture`
+  的题注文字里已写「（模型计算）」并有 `\figsrc{模型计算图，非原书插图…}`；
+  `fig:ch07b-co-model`/`fig:ch07c-transient` 的 `\modelmark` 在浮动体内、`\caption` 之后——
+  虽不在题注内，但**读者看得到**（pdftotext 实测「［模型计算］」出现在 PDF p.159/p.170）。
+  若要统一成「一律写进题注」，需重排题注并另起一轮构建
 - 全书**无参考文献机制**（`\cite` 零命中），原书人名+年份无法回溯
 
 ---
@@ -293,6 +308,60 @@ WRITER_BRIEF.md             ★ 写作规范与全部已知坑，派单前必读
 - 台账：`figure_table_list.csv` **39 → 143 条**全覆盖，`caption_head` **143/143 与成品一致**
 - 判定「不改」并记录理由的：`ch01-c` 的「现场」= 工业装置现场；110 个孤儿公式；
   3 个浮动体加 label 后不补引用（可引用位置都指向**原书**图）
+
+### R2 第二轮评审（2026-09-30）：16 项 → 15 项关闭
+
+评审材料在 `reviews/2026-09-30-round2/`（`README.md` / `TODO.md` / `01`–`04` / `recheck_review.py` /
+`verification.json`）。**逐项结论、复现命令与残余风险见 `reviews/2026-09-30-round2/VERIFICATION.md`**；
+`verification.json` 是评审当时的「缺陷可复现」快照，**不是**绿色验收报告，别再拿它当成绩单。
+
+**内容类 9 项（每项都补了可独立复算的证据）**
+
+- `R2-C01/C02` `ch10-c.tex`：积炭速率主式补回漏掉的 $c_t$（原书 (10-135) 分子本来就含 $c_t$，
+  OCR 下标行可证），附「0.5 vs 漏 $c_t$ 的 0.25」数值自检；临界粒径改 $\propto\sqrt{f}$ 缩放；
+  两个基准都写 0.015、把 22.5 标为量纲不合格
+- `R2-C03` `ch10-b.tex`：$j_D$ 左端补 $\rho$ 并定义之（量纲反证：$k_G$ 由 $Sh=k_Gd_p/D$ 定为 m/s，
+  $G$ 为 kg·m⁻²·s⁻¹，原式左端 kg⁻¹m³ 不成立；源文 OCR 该处正有丢字符的空档）
+- `R2-C04` `ch11-d.tex`：把「倒数之和」改回并联阻抗（倒数之和 = 导纳，10 Ω∥10 Ω = 5 Ω）
+- `R2-C05` `ch12-b.tex`：平均周期改 $T=2\pi/\omega\approx2\pi/\omega_0$，并把「分母应补 2」
+  写成**不采纳**的理由（三项独立复算都回到 $-\omega_0g/(2k)$，补 2 会使其减半）；源书同处排印
+  问题记入 `sources/errata.md` 乙类 B10
+- `R2-C06` `ch11-c/d.tex`：全章统一相角约定 $\varphi\equiv-\arg Z$，并明说源书图轴定义未核对
+- `R2-C07` `ch01-a.tex`：BET 分开总量与单位质量量，给出双路径算例（0.1 g → 91.5 m² → 915 m²/g）
+- `R2-C08` `ch03-b.tex`：DTG 改用实际质量导数 $-\dd m/\dd T$（峰值 0.4167 %/K）、横轴改 K，
+  与本章 $T_p\approx673$ K 接通
+- `R2-C09` `ch06-a.tex`：拉曼改 $I/I_0=(\dd\sigma/\dd\Omega)\Delta\Omega\sin^2\theta$，两端无量纲，
+  可预测收集立体角加倍 ⇒ 信号加倍
+- 台账 `sources/formula_verify.md` 同步（首轮「评审有误」的判定已撤销并留记录）
+
+**导航类 2 项**
+
+- `R2-U01/U02`：`\chapterheadstar` 原地写目录项 + `\markboth`，删掉 `main.tex` 里三处事后锚点；
+  验收改由 `tools/pdf_probe.py` **程序化**完成（比目视可复现）：出厂 PDF `R2-U01 PASS（143 条不符 0）`、
+  `R2-U02 PASS（命中 0）`；对 v0.6.0-pre 的旧 PDF 跑则逐条复现评审的 2 条错页 + 4 处串章页眉
+- ⚠️ 踩过的坑：给 `\chapterheadstar@run` 加 `\samepage` 会让 `\interlinepenalty` **永久泄漏**
+  （微测 0 → 10000，翻页不复位），页数 310 → **345**；已删，判据组合见 §7 方法类
+
+**工程类 5 项**
+
+- `R2-W01`：`HANDOFF.md` 三处明文凭据改为仓库外 `~/.gitea-netrc`（**仓库内部分已关闭**；
+  旧口令仍留在历史提交与本机 `.git/config` 里，**须账户管理者轮换后才算关闭**）
+- `R2-W02`：README 状态快照 + draft/release 两档命令 + 八项门禁表 + 「字节哈希每次都变」的说明
+- `R2-W03`：`check_src.py` 三层结论（标注格式 / 目标页可达 / **内容人工核对本工具不判定**）
+  + `.tex`↔台账集合差异；三个负例（页码 +10000、错原表号、未入账表）全部 exit 1
+- `R2-W04`：`build.ps1` 新增 `Invoke-PyCheck` 三态 `ok/FAIL/unavailable`，`-Release` 把
+  unavailable 判失败（「未检查 ≠ 通过」），draft 只打印 `skipped（原因）`
+- `R2-W05`：`overlap_check.py --gate` 只拦确认相撞的图形，文字/上下标/粗条按类别报候选；
+  退出码 0/1/2（2 = 没检查）；已接入 `-Release`
+
+**必须留给下一位的三条残余风险**
+
+1. `check_src.py` 的「目标页可达」是**二手证据**：源 PDF 不随仓库分发，判据依赖人维护的
+   `sources/page_map_up.csv` / `page_map_down.csv`
+2. `check_src.py` 第③层「内容人工核对」全书 **85/85 仍是「未核对页面图像」** ⇒
+   **release PASS 只说明标注格式与页号自洽，不代表内容正确**
+3. 重叠门禁默认只拦图形相撞（本书 `blocking=0 candidates=99`）；要把文字压文字也纳入阻断，
+   须显式 `--block-text`——评审明确要求不得按候选总数一刀切
 
 ---
 
@@ -332,6 +401,21 @@ WRITER_BRIEF.md             ★ 写作规范与全部已知坑，派单前必读
     因此 **`STYLE_GUIDE.md` 第 10 节第 3 条「所有公式已对照原页面图像核对」在该会话中无法执行**——
     当时一律按 `\tocheck{待核对}` 处理，**没有假称核对**。接手的 agent 请**先自测一次再决定**：
     渲染一张带随机码的图，把答案写进文件，`read_image` 后核对；答不出就是无视觉。
+- **修导航这类「全局布局」缺陷，动手前先量页数与每页字数**。实例（R2-U01/U02）：为了让
+  不编号章标题的锚点落在标题页，宏里加了 `\samepage`，结果 **310 → 345 页**。
+  根因是 `\samepage` 的惩罚参数**永久泄漏**（微测 `build/_pen/pen.tex`：`\interlinepenalty`
+  由 0 变 10000，跨段落 / `\section*` / `itemize` / 翻页都不复位）⇒ 全书段落再也不能跨页断开。
+  **判据组合**：总页数 + 每页字数中位数（2039→1811）+「<800 字符页」计数（9→23）
+  ——三者同向变化才说明是版面密度问题，而不是内容增减。修法：这里根本不需要 keep-together
+  （`\phantomsection`/`\addcontentsline`/`\markboth` 都不产生垂直材料，锚点与标题之间无可断点），
+  直接删掉 `\samepage`，页数回到 313。
+- **验证探针必须先对「已知有缺陷的基线」跑一次**。`tools/pdf_probe.py`（R2-U01/U02 验收用）
+  在新构建上报 PASS 不算证据——它在**发布版 310 页 PDF** 上必须复现出评审报告的那几条
+  （书签 303/305 对标题 304/306；p.303/305/307/309 页眉仍印「第12 章…」），这才叫有灵敏度。
+  首版探针曾因两个自身 bug 全判 FAIL：①用「去空白标题前 8 字」当键，而章标题印作
+  「第1 章物理吸附…」、书签写作「1 物理吸附…」（中间夹一个「章」字）；
+  ②把 `level1[-1]`（后置区块自身的「符号、缩写与索引」）当成「最后一个章」，
+  于是把**正确**的页眉误报成串章。
 - **归因于外部（OCR、LaTeX、并发）之前，先排除自己的工具**。
   实例：台账里的「OCR 损坏」其实是 `build_figlist.py` 把 `$\theta$` 清成了 `$ $`
 - **改了内容就要回头检查所有指向它的说明**（实例：删了一段 `\tocheck`，`\srcnote` 就成了过期注）

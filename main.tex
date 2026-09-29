@@ -24,7 +24,9 @@
 \clearpage
 
 % ---------------- 目录 ----------------
-\chapterheadstar{目录}{全书结构：导读与方法总览、12 章方法正文、跨方法综合应用、符号与索引。}
+% 目录页自身的标题用 * 形式：不建目录项也不建书签——目录里的「目录」条目
+% 既无导航价值，又会和它自己指向同一页。
+\chapterheadstar*{目录}{全书结构：导读与方法总览、12 章方法正文、跨方法综合应用、符号与索引。}
 \vspace{-4pt}
 {\small
 \makeatletter
@@ -35,11 +37,13 @@
 
 % ---------------- 正文 ----------------
 % 不编号区块（导读、综合应用、后置材料）：
-%   secnumdepth=0 让小标题不带编号（否则会继承 \thesection=0，出现 0.1 / 0.2 这类假编号）；
-%   同时手动加一条 section 级目录/书签，使这些小标题挂在它下面，而不是散在根层。
+%   secnumdepth=0 让小标题不带编号（否则会继承 \thesection=0，出现 0.1 / 0.2 这类假编号）。
+%   【R2-U01】这一层的目录项与书签目标由 \chapterheadstar 自己创建（见
+%   style/preamble.tex 5a 节）：它先做 \needspace 落页判断，再写锚点与目录项，
+%   所以两者必然落在标题实际所在页。**不要**在这里再补 \phantomsection
+%   \addcontentsline——那样又会在断页之前写号，重现「书签比标题早一页」。
 \setcounter{secnumdepth}{0}
 \IfFileExists{chapters/ch00-intro.tex}{%
-  \phantomsection\addcontentsline{toc}{section}{导读与方法总览}%
   \input{chapters/ch00-intro.tex}}{}
 \setcounter{secnumdepth}{3}
 
@@ -57,14 +61,13 @@
 \IfFileExists{chapters/ch12.tex}{\input{chapters/ch12.tex}}{}
 
 % ---------------- 跨方法综合应用（不编号）----------------
+% 标题、目录项、书签目标、页眉标记都在 \chapterheadstar 内部一次完成（R2-U01/U02）。
 \setcounter{secnumdepth}{0}
 \IfFileExists{chapters/ch13-synthesis.tex}{%
-  \phantomsection\addcontentsline{toc}{section}{跨方法综合应用}%
   \input{chapters/ch13-synthesis.tex}}{}
 
 % ---------------- 后置：符号、缩写与索引（不编号）----------------
 \IfFileExists{chapters/ch90-backmatter.tex}{%
-  \phantomsection\addcontentsline{toc}{section}{符号、缩写与索引}%
   \input{chapters/ch90-backmatter.tex}}{}
 \setcounter{secnumdepth}{3}
 

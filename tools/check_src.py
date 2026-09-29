@@ -28,6 +28,35 @@ Usage
     python tools/check_src.py --legacy-out ch10-b  # write sources/_p0_verify_*.txt
     P0_BASELINE=<ref> python tools/check_src.py  # pin a different baseline
 
+Three conclusions, kept apart (R2-W03)
+-------------------------------------
+A PASS from this tool used to be readable as "the source citation is fine". It is
+not. The tool now prints three *distinguishable* conclusions per table, and the
+summary counts them separately:
+
+  ① 标注格式合格 -- the checks in 1.-4. above (this is what the tool decides);
+  ② 目标页可达   -- the cited pages must exist: PDF page <= that volume's actual
+     PDF page count, book page <= that volume's printed-page maximum, and every
+     cited page must appear in sources/page_map_up.csv / page_map_down.csv (the
+     page map built from the PDFs themselves). The original-book table number is
+     also related to the cited pages: |cited page - OCR index page| <= PAGE_TOL,
+     distance measured to the nearest cited page range;
+  ③ 内容人工核对 -- **this tool does NOT do it.** It only reads the ledger's
+     review_status column and reports 已核对/未核对. Whether the cited table really
+     says what the caption claims is a human judgement on the page image.
+
+Why the original-table-number tolerance is PAGE_TOL = 2 pages: the OCR table index
+was read off the PDF text layer, and for some tables that layer puts the number one
+page lower than the printed table (the number is found in the running text of the
+page before, or the table's caption line falls on the next PDF page). A 1-page
+discrepancy is therefore expected noise, not evidence of a wrong citation; 2 pages
+leaves one page of headroom on top of the observed worst case (measured: all
+tables 0, one table 1) while still failing a citation that names an unrelated table.
+
+The table set is also compared both ways against the ledger: a \begin{table} in the
+tree that has no ledger row is NOT checked by this tool (未检查 ≠ 通过) and makes the
+exit status 1; a ledger row whose float has disappeared is reported as stale.
+
 Report goes to build/check_src[__<shards>].txt (or sources/_p0_verify_* with
 --legacy-out). Exit status is 0 when nothing FAILs, 1 otherwise, so it can be
 wired into tools/build.ps1 as an extra gate.
@@ -210,6 +239,127 @@ def float_bounds(lines, line_no):
     return found
 
 
+# ------------------------------------------------- 结论② : 目标页可达（页码证据）
+# Tolerance between the cited page and the OCR index page of the cited original
+# table number. Reason (measured, see module docstring): the OCR text layer puts
+# some table numbers one page lower than the printed table, so a 1-page delta is
+# expected noise; 2 pages keeps one page of headroom while still failing a
+# citation that names an unrelated table.
+PAGE_TOL = 2
+
+VOLUMES = (('up', 'page_map_up.csv', u'上册'), ('down', 'page_map_down.csv', u'下册'))
+
+
+def load_page_map():
+    """Read both volume page maps (pdf_page <-> book_page). Derived from the PDFs.
+
+    Read through module-level ROOT so a probe that rebinds ROOT redirects it.
+    book_page may be a roman numeral or empty (front matter) -- only rows whose
+    book_page parses as a number become 'printed page exists' evidence.
+    """
+    vols = {}
+    for key, fn, label in VOLUMES:
+        vol = {'file': fn, 'label': label, 'n': 0, 'pdf_max': 0, 'book_max': 0,
+               'pdfs': set(), 'books': set(), 'rows': {}, 'missing': False}
+        path = os.path.join(ROOT, 'sources', fn)
+        if not os.path.exists(path):
+            vol['missing'] = True
+            vols[key] = vol
+            continue
+        with io.open(path, encoding='utf-8-sig', newline='') as fh:
+            for row in csv.DictReader(fh):
+                if None in row:
+                    del row[None]
+                vol['n'] += 1
+                try:
+                    pdf = int((row.get('pdf_page') or '').strip())
+                except ValueError:
+                    continue
+                vol['pdfs'].add(pdf)
+                vol['pdf_max'] = max(vol['pdf_max'], pdf)
+                bp = (row.get('book_page') or '').strip()
+                if re.match(r'^\d+$', bp):
+                    b = int(bp)
+                    vol['books'].add(b)
+                    vol['rows'][pdf] = b
+                    vol['book_max'] = max(vol['book_max'], b)
+        vols[key] = vol
+    return vols
+
+
+def index_distance(idx, ranges):
+    """Distance from the OCR index page to the nearest cited book-page range (0 if inside)."""
+    best = None
+    for bl, bh in ranges:
+        lo, hi = (bl, bh) if bl <= bh else (bh, bl)
+        d = 0 if lo <= idx <= hi else (lo - idx if idx < lo else idx - hi)
+        best = d if best is None else min(best, d)
+    return best
+
+
+def fmt_ranges(ranges):
+    return u'、'.join(u'p.%d—%d' % (bl, bh) if bl != bh else u'p.%d' % bl for bl, bh in ranges)
+
+
+def check_reachable(vol, ps):
+    """② 目标页可达：页码必须在册内、必须在页码表里、且两侧指向同一行。"""
+    probs = []
+    if vol is None or vol.get('missing'):
+        return [u'页码表缺失（%s），无法判断目标页是否存在' % (vol or {}).get('file', '?')]
+    for (bl, bh, pl, ph) in ps:
+        if ph > vol['pdf_max']:
+            probs.append(u'PDF p.%d 超出%s PDF 实际页数 %d' % (ph, vol['label'], vol['pdf_max']))
+        if bh > vol['book_max']:
+            probs.append(u'书内 p.%d 超出%s 印刷页上限 %d' % (bh, vol['label'], vol['book_max']))
+        miss_pdf = [p for p in range(pl, ph + 1) if p not in vol['pdfs']]
+        if miss_pdf:
+            probs.append(u'PDF p.%s 不在 %s 中（页码表无此行 → 无法确认该页存在）'
+                         % (u','.join(str(p) for p in miss_pdf), vol['file']))
+        miss_book = [b for b in range(bl, bh + 1) if b not in vol['books']]
+        if miss_book:
+            probs.append(u'书内 p.%s 不在 %s 中（该印刷页不在页码表：缺失页/非正文页）'
+                         % (u','.join(str(b) for b in miss_book), vol['file']))
+        row = vol['rows'].get(pl)
+        if row is not None and row != bl:
+            probs.append(u'%s：PDF p.%d 对应书内 p.%d，引用写的是 p.%d'
+                         % (vol['file'], pl, row, bl))
+    return probs
+
+
+def scan_tex_tables():
+    """③的前置：树里实际存在的表 {label: 'file:line'}，经模块级 read_lines 读盘。
+
+    read_lines is looked up at call time on purpose: a probe can rebind it to
+    inject an unregistered float without touching the working tree.
+    """
+    found = {}
+    opener = re.compile(r'\s*\\begin\{(table|longtable)\*?\}')
+    closer = re.compile(r'\s*\\end\{(table|longtable)\*?\}')
+    for dirpath, dirnames, filenames in os.walk(os.path.join(ROOT, 'chapters')):
+        dirnames[:] = sorted(d for d in dirnames if not d.startswith('.'))
+        for fn in sorted(filenames):
+            if not fn.endswith('.tex'):
+                continue
+            path = os.path.join(dirpath, fn)
+            rel = os.path.relpath(path, ROOT).replace(os.sep, '/')
+            lines = read_lines(path)
+            i = 0
+            while i < len(lines):
+                if not opener.match(lines[i]):
+                    i += 1
+                    continue
+                end = i
+                while end < len(lines) and not closer.match(lines[end]):
+                    end += 1
+                body = '\n'.join(lines[i:end + 1])
+                for lab, _a, _b in balanced(body, '\\label'):
+                    lab = lab.strip()
+                    if lab.startswith('tab:'):
+                        found.setdefault(lab, '%s:%d' % (rel, i + 1))
+                i = end + 1
+    return found
+
+
 # ------------------------------------------------------------------------ main
 def main(argv):
     only, unlabeled, legacy_out = set(), False, False
@@ -251,7 +401,13 @@ def main(argv):
         m = re.match(r'ch(\d{2})', os.path.splitext(os.path.basename(f))[0])
         global_offs['up' if (m and int(m.group(1)) <= 7) else 'down'] |= o
 
+    page_map = load_page_map()
+    tex_tables = scan_tex_tables()
     out, fail, npass, nrev = [], 0, 0, 0
+    # 三层结论分别计数：①②由本工具判定，③只读台账（不判定内容）
+    n_fmt_fail = n_page_fail = n_page_na = n_num_fail = 0
+    n_manual_done = n_manual_todo = 0
+    tol_used = 0
     for r in sorted(targets, key=lambda x: (x['file'], int(x['line'] or 0))):
         shard = os.path.splitext(os.path.basename(r['file']))[0]
         if only and shard not in only:
@@ -305,6 +461,9 @@ def main(argv):
                 status.append('\\figsrc in table float (must be \\src)')
 
         anchor = 'n/a'
+        ps = []
+        page_bad = []
+        num_bad = []
         if src is not None:
             ps, pnotes = pairs_of(src)
             m2 = re.match(r'ch(\d{2})', shard)
@@ -332,14 +491,37 @@ def main(argv):
                           else 'all %d pairs offset-consistent' % len(ps))
                 if inline:
                     anchor += ' | ' + '; '.join(inline)
+            ranges = [(bl, bh) for (bl, bh, _pl, _ph) in ps]
             for m in TABREF.finditer(src):
                 key = '%s-%s' % (m.group(1), m.group(2))
                 if key not in OCR_TABLE_INDEX:
                     anchor += ' | table %s not in OCR index' % key
+                    continue
+                idx = OCR_TABLE_INDEX[key]
+                if not ranges:
+                    anchor += u' | 原表号 %s：OCR 索引页 %d（无页对可比）' % (key, idx)
+                    continue
+                d = index_distance(idx, ranges)
+                if d > PAGE_TOL:
+                    num_bad.append(key)
+                    anchor += (u' | 原表号 %s 与页码不符：OCR 索引页 %d 距引用书页 %s 最近 %d 页 > 容差 %d 页'
+                               % (key, idx, fmt_ranges(ranges), d, PAGE_TOL))
+                else:
+                    if d:
+                        tol_used += 1
+                    anchor += (u' | 原表号 %s ↔ OCR 索引页 %d 差 %d 页（≤ %d 页容差）'
+                               % (key, idx, d, PAGE_TOL))
+
+            # 结论② 目标页可达：独立于①的格式判定（页码是否存在，不代替人看内容）
+            if ps:
+                page_bad = check_reachable(page_map.get(book), ps)
+                if page_bad:
+                    anchor += u' | ② ' + u'; '.join(page_bad)
 
         verdict = 'PASS'
         if (status[0] != 'has \\src' or len(status) > 1 or 'BAD' in anchor
-                or 'NO PAGE PAIR' in anchor or 'not in OCR index' in anchor):
+                or 'NO PAGE PAIR' in anchor or 'not in OCR index' in anchor
+                or num_bad or page_bad):
             verdict = 'FAIL'
         elif note:
             verdict = 'REVIEW'
@@ -349,22 +531,80 @@ def main(argv):
             nrev += 1
         else:
             fail += 1
+        fmt_state = 'PASS'
+        if status[0] != 'has \\src' or len(status) > 1 or 'BAD' in anchor:
+            fmt_state = 'FAIL'
+        elif 'NO PAGE PAIR' in anchor:
+            fmt_state = 'REVIEW'
+        if src is None or not ps:
+            page_state = u'N/A（无页对或声明非源书）'
+        else:
+            page_state = 'FAIL' if page_bad else 'PASS'
+        num_state = u'N/A' if src is None else ('FAIL' if num_bad else 'PASS')
+        man = (r.get('review_status') or '').strip() or u'（台账未填）'
+        man_state = u'未核对' if u'未核对' in man else u'已核对'
+        if fmt_state == 'FAIL':
+            n_fmt_fail += 1
+        if page_state == 'FAIL':
+            n_page_fail += 1
+        elif page_state.startswith('N/A'):
+            n_page_na += 1
+        if num_state == 'FAIL':
+            n_num_fail += 1
+        if man_state == u'已核对':
+            n_manual_done += 1
+        else:
+            n_manual_todo += 1
         out.append('%-6s %-26s %-30s %s:%s' % (verdict, r['label'], r['number'],
                                                r['file'], line_no))
         out.append('        %s | %s' % (status[0], anchor))
+        out.append(u'        ①②③ 标注格式=%s 目标页可达=%s（原表号↔页码=%s）'
+                   u' 内容人工核对=%s［台账 review_status=%s；本工具不替代人看页面图像］'
+                   % (fmt_state, page_state, num_state, man_state, man))
         for extra in status[1:]:
             out.append('        %s' % extra)
         if src:
             out.append('        src = %s' % src.replace('\n', ' '))
 
     checked = npass + nrev + fail
+    ledger_labels = set((r['label'] or '').strip() for r in rows
+                        if (r['kind'] or '').strip() == 'table')
+    tex_only = sorted(set(tex_tables) - ledger_labels)
+    ledger_only = sorted(ledger_labels - set(tex_tables))
+    up, down = page_map['up'], page_map['down']
     out += ['',
             'checked %d tables: PASS %d, REVIEW %d, FAIL %d' % (checked, npass, nrev, fail),
             'trusted page pairs (from %s): %d' % (BASELINE, len(trusted)),
             'shard offsets: ' + '; '.join('%s=%s' % (os.path.basename(f), sorted(o))
                                           for f, o in sorted(shard_offs.items())),
             'global offsets: up=%s down=%s' % (sorted(global_offs['up']),
-                                               sorted(global_offs['down']))]
+                                               sorted(global_offs['down'])),
+            '',
+            u'三层结论（本工具的判定边界，R2-W03）—— 三者不可互相替代：',
+            u'  ① 标注格式合格（本工具判定）：PASS %d / FAIL %d'
+            % (checked - n_fmt_fail, n_fmt_fail),
+            u'  ② 目标页可达（本工具判定；依据 sources/%s %d 行 / sources/%s %d 行）：'
+            u'PASS %d / FAIL %d / N/A %d'
+            % (up['file'], up['n'], down['file'], down['n'],
+               checked - n_page_fail - n_page_na, n_page_fail, n_page_na),
+            u'     册页数：%s PDF %d 页、印刷页到 %d 页；%s PDF %d 页、印刷页到 %d 页'
+            % (up['label'], up['pdf_max'], up['book_max'],
+               down['label'], down['pdf_max'], down['book_max']),
+            u'  ③ 内容人工核对（**本工具不判定**，只读台账 review_status）：'
+            u'已核对 %d / 未核对 %d —— 引用内容对不对必须人看页面图像'
+            % (n_manual_done, n_manual_todo),
+            u'原表号↔页码：容差 %d 页（已知 OCR 索引对部分表低 1 页，留 1 页余量；'
+            u'理由见模块 docstring）；用到容差（差 1–%d 页）的表 %d 个，超出容差 %d 个'
+            % (PAGE_TOL, PAGE_TOL, tol_used, n_num_fail),
+            u'集合差异（实际 .tex 表 vs 台账 sources/figure_table_list.csv）：'
+            u'.tex 扫描到表 %d 张、台账登记 %d 张；.tex 有而台账无 %d 张、台账有而 .tex 无 %d 张'
+            % (len(tex_tables), len(ledger_labels), len(tex_only), len(ledger_only))]
+    out.append(u'')
+    for lab in tex_only:
+        out.append(u'    FAIL .tex 有而台账无：%s（%s）—— 本门禁没有检查过它（未检查 ≠ 通过）'
+                   % (lab, tex_tables[lab]))
+    for lab in ledger_only:
+        out.append(u'    WARN 台账有而 .tex 无：%s —— 台账可能过期，请重新生成' % lab)
 
     if legacy_out:
         name = '_p0_verify_%s.txt' % '_'.join(sorted(only)) if only else '_p0_verify.txt'
@@ -377,8 +617,10 @@ def main(argv):
     with io.open(dest, 'w', encoding='utf-8') as fh:
         fh.write('\n'.join(out) + '\n')
     print('wrote %s' % os.path.relpath(dest, ROOT).replace('\\', '/'))
-    print(out[-4] if len(out) >= 4 else out[-1])
-    return 1 if fail else 0
+    print(next((ln for ln in out if ln.startswith('checked ')), out[-1]))
+    if tex_only:
+        sys.stderr.write('unregistered tables (not checked): %s\n' % ', '.join(tex_only))
+    return 1 if (fail or tex_only) else 0
 
 
 if __name__ == '__main__':

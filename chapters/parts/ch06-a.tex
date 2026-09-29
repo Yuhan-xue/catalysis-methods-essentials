@@ -179,8 +179,32 @@ I=I_0\,\sigma\sin^2\theta ,
 \label{eq:classical-intensity}
 \end{equation}
 
-式中 $\theta$ 为观察方向与感生偶极矩的夹角。\textbf{量纲检查}：$I/I_0$ 无量纲，故散射
-截面 $\sigma$ 具有面积量纲，$\sin^2\theta$ 无量纲，两端一致。
+式中 $\theta$ 为观察方向与感生偶极矩的夹角。\textbf{三个量的口径先说清}：$I$ 是在观察
+方向上、落入固定接收立体角 $\Delta\Omega$ 的散射\emph{功率}（\unit{W}）；$I_0$ 是入射
+光的\emph{功率}（\unit{W}）；$\sigma$ 是分子的散射截面，量纲为面积。偶极辐射的角分布为
+$\sin^2\theta$，因此更便于量纲检查的写法是把这条式理解为\emph{微分散射截面}的形式
+
+\begin{equation}
+\frac{I}{I_0}=\frac{\mathrm{d}\sigma}{\mathrm{d}\Omega}\,\Delta\Omega\,\sin^2\theta ,
+\label{eq:classical-intensity-ratio}
+\end{equation}
+
+其中 $\mathrm{d}\sigma/\mathrm{d}\Omega$ 是每单位立体角的微分散射截面（\unit{m^2.sr^{-1}}），
+$\Delta\Omega$ 是接收立体角（\unit{sr}）。\textbf{量纲检查}：左端为功率之比，无量纲；
+右端为 $\unit{m^2.sr^{-1}}\times\unit{sr}\times1$，立体角相消后也是面积除以面积——两端
+同为无量纲。于是式~\eqref{eq:classical-intensity} 中的 $\sigma$ 应读作
+$\mathrm{d}\sigma/\mathrm{d}\Omega$ 与某个参考面积的比值，即「按接收立体角折算后的等效
+截面」；$\sigma$ 单独出现时\emph{不能}既说它是无量纲比例、又说它具有面积量纲。若要把
+$I$ 写成绝对功率而非比值，就应保留 $\Delta\Omega$ 与距离平方的因子；本条不预设具体
+谱仪的几何。
+
+\textbf{观测几何}：偶极辐射的强度按 $\sin^2\theta$ 分布——在与偶极矩垂直的方向
+（$\theta=90^\circ$）最强，沿偶极矩方向（$\theta=0^\circ$）为零。在角分布不变的前提下，
+按微分散射截面的定义（每单位立体角、固定距离处的功率），$I$ 正比于接收立体角
+$\Delta\Omega$、反比于样品到接收端的距离平方 $R^2$，这两项都属仪器条件，不与分子量混写。
+\textbf{定量结论}：$\Delta\Omega$ 加倍而其余条件不变时，$I$ 加倍，而 $I/(I_0\Delta\Omega)$
+——即式~\eqref{eq:classical-intensity-ratio} 右端——不变；这正是「比较散射截面时必须
+固定收集立体角」的原因，与量子理论一节「与入射光强度成正比、与距离平方成反比」两条一致。
 
 \begin{tocheck}
 未对照原页面图像：式~\eqref{eq:classical-intensity} 在 OCR 中作「$I=I_0\sigma\sin^2\theta$」，

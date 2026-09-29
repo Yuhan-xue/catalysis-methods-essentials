@@ -75,19 +75,20 @@ e=E\sin\omega t
 \src{式（11-115），书内 p.856 / PDF p.344}。可以把电压用旋转矢量（或\textbf{相量}）表示：
 观察到的电压 $e$ 是任意时刻投影在某一特定轴（通常取 $0$°）上相量的分量（见原书图 11-33）。
 两个正弦信号——电流 $i$ 与电压 $e$——可以表示成以同样频率旋转的独立相量 $\dot I$ 和 $\dot E$，
-它们通常不同相，相差一个相角 $\varphi$，以 $\dot E$ 为参考信号，$\varphi$ 即相对它测出。若电流
-滞后于电压，则
+它们通常不同相，相差一个相角 $\varphi$，以 $\dot E$ 为参考信号，$\varphi$ 即相对它测出。图 11-34
+中电流滞后于电压，此时 $\varphi<0$，可表示为
 
 \begin{equation}
-i=I\sin(\omega t-\varphi)
+i=I\sin(\omega t+\varphi)
 \label{eq:eis-d-phase}
 \end{equation}
 
 \src{式（11-116），书内 p.857 / PDF p.345；原书图 11-34 给出频率为 $\omega$ 的交流电压与电流
-相互关系的相量图}。\tocheck{未对照原页面图像：源文本此处 OCR 把该式印成
-$i=I\sin(\omega t+\varphi)$，而同句正文明说「图 11-34 中电流滞后于电压」，且下文的容抗式
-（11-119）$E=-jX_CI$ 与式（11-125）$\tan\varphi=1/\omega RC$ 都只在滞后（相位取负）时自洽，
-故本分片按 $\sin(\omega t-\varphi)$ 写；相角的正负号约定未能与页面核对。}
+相互关系的相量图}。\tocheck{未对照原页面图像：源文本此式即印作
+$i=I\sin(\omega t+\varphi)$，本稿照印、不再改写成 $\sin(\omega t-\varphi)$——按本节的测量相角
+约定 $\varphi\equiv-\arg Z$（见下文式~\eqref{eq:eis-d-zmod} 后的约定行），该符号是自洽的：电流
+滞后即 $\varphi<0$；纯电容时式（11-118）的 $i=(E/X_C)\sin(\omega t+\pi/2)$ 给出
+$\varphi=+\pi/2$。该式的符号未能逐字与页面核对。}
 
 简单元件对电压的响应是本节的积木。纯电阻 $R$ 上施加 $e=E\sin\omega t$ 时，由欧姆定律电流为
 $(E/R)\sin\omega t$，相角为零（原书图 11-35）。把电阻换成纯电容 $C$，所需的基本关系式是
@@ -137,20 +138,36 @@ $Z$ 的幅值与相角为
 \lvert Z\rvert^{2}=R^{2}+X_C^{2}
 =\left(Z_{\mathrm{Re}}\right)^{2}+\left(Z_{\mathrm{Im}}\right)^{2},
 \qquad
-\tan\varphi=\frac{Z_{\mathrm{Im}}}{Z_{\mathrm{Re}}}=-\frac{X_C}{R}
-=-\frac{1}{\omega RC}
+\tan\varphi=-\frac{Z_{\mathrm{Im}}}{Z_{\mathrm{Re}}}=\frac{X_C}{R}
+=\frac{1}{\omega RC}
 \label{eq:eis-d-zmod}
 \end{equation}
 
-\src{式（11-123）至（11-125），书内 p.858—859 / PDF p.346—347}。相角表示串联电路中电容分量与
-电阻分量之间的配比：对纯电阻 $\varphi=0$；对纯电容 $\varphi=-\pi/2$；对混合体则观察到介于两者
-之间的相角。\textbf{更为复杂的电路，可以按与电阻相同的规则通过合并阻抗来分析——串联阻抗的总
-阻抗是各阻抗值之和，并联阻抗的总阻抗是各阻抗值倒数之和}
-\src{书内 p.859 / PDF p.347}。这两条合并规则加上式~\eqref{eq:eis-d-series}，就是全部等效电路的
-数学基础；后文所有电路的阻抗表达式都只是这两条规则的反复应用。
-\tocheck{未对照原页面图像：式~\eqref{eq:eis-d-zdef} 与式~\eqref{eq:eis-d-zmod} 中虚部的符号
-（源文本写作 $Z_{\mathrm{Im}}=-X_C$，故纯电容的 $\varphi$ 为负）按式（11-119）与式（11-125）
-反推；源文本式（11-125）OCR 只剩 $\tan\varphi=1/\omega RC$ 的骨架，符号与绝对值未能逐字核对。}
+\src{式（11-123）至（11-125），书内 p.858—859 / PDF p.346—347}。式~\eqref{eq:eis-d-zmod} 中的
+$\varphi$ 是\textbf{测量相角}，本节统一取 $\varphi\equiv-\arg Z$（$\arg Z$ 为 $Z$ 的辐角），
+即\textbf{容性为正}：纯电阻 $\varphi=0$、纯电容 $\varphi=+\pi/2$、纯电感 $\varphi=-\pi/2$；
+对混合体则观察到介于相应两者之间的相角。\textbf{Nyquist 图纵轴取 $-Z''$（向上为正）与 Bode 图的
+相角曲线同属这一约定}——同一条谱在两种图上必须给出同一个 $\varphi$，换图不换号。
+\textbf{更为复杂的电路，可以按与电阻相同的规则通过合并阻抗来分析——串联阻抗的总阻抗是各阻抗值
+之和；并联则用导纳 $Y\equiv1/Z$ 表述：总导纳是各支路导纳之和，即}
+\begin{equation}
+Y_{\text{并}}=\frac{1}{Z_{\text{并}}}=\sum_i\frac{1}{Z_i},
+\qquad
+Z_{\text{并}}=\Bigl(\sum_i\frac{1}{Z_i}\Bigr)^{-1}
+\label{eq:eis-d-parallel}
+\end{equation}
+\src{书内 p.859 / PDF p.347。原文作「并联阻抗的总阻抗是单个阻抗值倒数之和」，本式即按「总阻抗的
+倒数是各阻抗倒数之和」理解}。核对两个数：两个 $10$ \unit{\ohm} 的电阻并联，
+$Y_{\text{并}}=0.1+0.1=0.2$ S，故 $Z_{\text{并}}=1/0.2=5$ \unit{\ohm}（若把「倒数之和」
+$0.2$ S 直接当成阻抗值，会得到 $0.2$ \unit{\ohm}，与 $5$ \unit{\ohm} 差 $25$ 倍）；$R$ 与
+$C$ 并联时 $Y=1/R+j\omega C$，低频极限 $Z\to R$（$\varphi\to0$）、高频极限
+$Z\to-j/(\omega C)$（$\varphi\to+\pi/2$）。这两条合并规则加上式~\eqref{eq:eis-d-series}，就是
+全部等效电路的数学基础；后文所有电路的阻抗表达式都只是这两条规则的反复应用。
+\tocheck{未对照原页面图像：源文本式（11-123）以下的 $Z_{\mathrm{Im}}$ 印作 $+X_C$、式（11-125）
+印作 $\tan\varphi=X_C/R$，二者与式（11-121）$Z=R-jX_C$ 相差一个符号；本稿取
+$Z_{\mathrm{Im}}=-X_C$（即 $j$ 的系数）并令 $\varphi\equiv-\arg Z$，两式即同时成立，也与源文本
+p.859「纯电容 $\varphi=\pi/2$」一致。源文本式（11-125）OCR 只剩
+$\tan\varphi=1/\omega RC$ 的骨架，符号与绝对值未能逐字核对。}
 
 \begin{principle}
 \textbf{把电化学系统看成等效电路。} 利用电化学阻抗谱研究一个电化学系统时，它的基本思路是把
@@ -189,10 +206,11 @@ $Z$ 的幅值与相角为
 \item \textbf{纯电阻}：Nyquist 图上表现为 $Z'$ 轴（横轴）上的一个点，该点到原点的距离为电阻值的
 大小；Bode 图中 $\lg\lvert Z\rvert$–$\lg f$ 为一条水平直线，相角 $\varphi$ 为 $0$°且不随测量
 频率变化。
-\item \textbf{纯电容体系}：Nyquist 图上表现为与 $Z''$ 轴（纵轴）重合的一条直线；Bode 图中
-$\lg\lvert Z\rvert$–$\lg f$ 是斜率为 $-1$ 的直线，$\varphi$ 为 $-90$°。
+\item \textbf{纯电容体系}：Nyquist 图上表现为与纵轴（$-Z''$ 轴，按本节 $\varphi\equiv-\arg Z$ 的
+约定向上为正）重合的一条直线；Bode 图中 $\lg\lvert Z\rvert$–$\lg f$ 是斜率为 $-1$ 的直线，
+$\varphi$ 为 $+90$°。
 \item \textbf{Warburg 阻抗} $Z_{\mathrm{W}}$：Nyquist 图上表现为相角为 $45$°的直线；Bode 图上
-表现为斜率为 $-1/2$、$\varphi$ 为 $-45$°的直线。
+表现为斜率为 $-1/2$、$\varphi$ 为 $+45$°的直线。
 \end{itemize}
 
 这幅「字典」的价值在于它给出了\textbf{三条可直接反查的判据}：$|Z|$ 对频率的幂律指数 $0$、$-1$、
@@ -367,7 +385,7 @@ Z'_{\mathrm{W}}=-Z''_{\mathrm{W}}=\sigma\,\omega^{-1/2},
 \label{eq:eis-d-warburg}
 \end{equation}
 
-实部与虚部恒相等，故相角恒为 $-45$°，在 Nyquist 图上是一条斜率 $1$ 的直线
+实部与虚部恒相等，故相角恒为 $+45$°（按 $\varphi\equiv-\arg Z$），在 Nyquist 图上是一条斜率 $1$ 的直线
 \src{相角 $45$°这一结论见书内 p.859 / PDF p.347}。由 $45$°直线在 $\omega^{-1/2}$ 轴上的斜率读出
 $\sigma$ 后，若已知 $n$、$A$ 与浓度，即可估出扩散系数 $D$——这是阻抗谱少有的「能给出传质定量
 参数」的场合。\tocheck{未对照原页面图像：$\sigma$ 的表达式（含系数 $RT/(n^{2}F^{2}A\sqrt{2})$
@@ -380,7 +398,7 @@ $C_{\mathrm{dl}}$ 换成\textbf{常相位元件}（constant phase element，CPE�
 \begin{equation}
 Z_{\mathrm{CPE}}=\frac{1}{Q(j\omega)^{n}},\qquad 0<n\le1,
 \qquad
-\varphi_{\mathrm{CPE}}=-\frac{n\pi}{2}
+\varphi_{\mathrm{CPE}}=\frac{n\pi}{2}
 \label{eq:eis-d-cpe}
 \end{equation}
 
@@ -463,17 +481,17 @@ $R_{\Omega}$。缺任何一项，别处无法复现，也无法判断读出的�
 
 \begin{dataflow}
 \textbf{第一层（构造）：} 由相量关系 $Z=Z'+jZ''$ 把每个频率的一对实数量组织成一个复数；
-$|Z|^{2}=(Z')^{2}+(Z'')^{2}$，$\tan\varphi=Z''/Z'$\src{式（11-123）至（11-125），
-书内 p.858—859 / PDF p.346—347}。源文本在此处把 $Z_{\mathrm{Re}}$ 记作 $R$、把
-$Z_{\mathrm{Im}}$ 记作 $-X_C$，那是式（11-121）的串联 $RC$ 情形；本节其余处一律用一般记号
-$Z'$、$Z''$。
+$|Z|^{2}=(Z')^{2}+(Z'')^{2}$，$\tan\varphi=-Z''/Z'$\src{式（11-123）至（11-125），
+书内 p.858—859 / PDF p.346—347}。源文本在此处把 $Z_{\mathrm{Re}}$ 记作 $R$、把虚部印作
+$X_C$（符号不严，见上文式~\eqref{eq:eis-d-zmod} 后的 \tocheck），那是式（11-121）的串联 $RC$
+情形；本节其余处一律用一般记号 $Z'$、$Z''$，相角取测量约定 $\varphi\equiv-\arg Z$。
 
 \textbf{第二层（定向）：} Nyquist 图上横轴 $Z'$ 向右增大、纵轴 $-Z''$ 向上增大，
 \textbf{左侧频率高、右侧频率低}\src{书内 p.859 / PDF p.347}。因此沿曲线从左端走到右端 =
 频率从高降到低；这条约定是后面所有「先看到谁」判断的基础。
 
 \textbf{第三层（不变量检验）：} 纯电阻对应 $|Z|$–$f$ 水平线与 $\varphi=0$°；纯电容对应斜率
-$-1$ 与 $\varphi=-90$°；Warburg 阻抗对应斜率 $-1/2$ 与 $\varphi=-45$°
+$-1$ 与 $\varphi=+90$°；Warburg 阻抗对应斜率 $-1/2$ 与 $\varphi=+45$°
 \src{书内 p.859—860 / PDF p.347—348}。\textbf{先在 Bode 图上量出局部幂律指数，再回 Nyquist
 图谈几何}——顺序颠倒就会把 Warburg 的直线段当圆弧读。
 
@@ -508,10 +526,11 @@ $n$）、低频尾定扩散 $\to$（拟合）选定电路拓扑做非线性最�
   dkwa(\z) = 1+dkwd(\z);
   dkwx(\z) = 10+100*dkwa(\z)/((dkwa(\z))^2+(dkwd(\z))^2);
   dkwy(\z) = 100*dkwd(\z)/((dkwa(\z))^2+(dkwd(\z))^2);
-  dm       = 0.85;
-  dmt      = tan(dm*90);
-  dmph(\z) = -90+atan(((10^(\z))/3183.1)^(dm)*dmt)/0.0174532925199433;
-  diph(\z) = -atan(2*3.14159265358979*dpw(\z)*0.5e-6*100)/0.0174532925199433;
+  % R2-C06：原先还声明过 dm / dmt / dmph / diph 四个量，已删除——
+  %   ① 全书 grep 确认它们从未被任何 \addplot 调用（纯死代码）；
+  %   ② 数学上也不成立：pgfmath 的 tan 取弧度，`tan(dm*90)` 算的是 tan(76.5 rad) 而非
+  %      tan(76.5°)；`diph` 给出的是 atan(ωRC)，按本节 φ≡−arg Z（tanφ=1/ωRC）恰是 φ 的余角。
+  %   留着会被后来者当成可用函数，故删除而不是改写。本图不画相角曲线。
 }}
 
 \begin{axis}[
@@ -580,7 +599,7 @@ $R_{\mathrm{ct}}$ 与同一个低频极限电容，仅因 $n=0.85$ 就使弧的�
 收敛到 $R_{\Omega}+R_{\mathrm{ct}}=110$ \unit{\ohm}（在 (b) 的右端可见）。
 \textbf{(b)} 频率 80 kHz 至 0.02 Hz：实线在 $f\lesssim 10$ Hz 之后已明显
 偏离点线，朝向 $45$°参考线（虚线）——但\textbf{即使在 40 kHz，实线的截距仍是
-10.6 \unit{\ohm} 而非 10.0 \unit{\ohm}、相角仍有 $-37$°，即高频平台并未形成}，
+10.6 \unit{\ohm} 而非 10.0 \unit{\ohm}、相角仍有 $+37$°（按 $\varphi\equiv-\arg Z$），即高频平台并未形成}，
 这正是规则一第（1）条的量化含义。注意 (b) 两个坐标轴的刻度尺度不同（二者比例为
 $300:260$），故 $45$°参考线在图上并不呈 $45$°；判斜率请用数值而非图面角度。
 局限：本图不含接触电阻、引线电感、有限扩散与吸附弛豫，真实数据在高频端与最低频端都会多出
@@ -665,7 +684,7 @@ $(R\parallel C)$ 串联。三者的残差都可以做到很小，而它们给出
 \textbf{（3）把 Warburg 当半圆。} 半无限扩散的 $45$°直线在只测到一段时很像大半径圆弧的一部分；
 图~\ref{fig:eis-d-model}(b) 的实线在 10 Hz 以下那一段若单独放大，斜率 $0.95$ 的
 「直线」完全可以被一个半径很大的圆拟合。直接按半圆读直径会把 $R_{\mathrm{ct}}$ 高估几倍。
-\textbf{判别办法是换到 Bode 图}：扩散段的 $|Z|$ 应呈 $\omega^{-1/2}$、相角应稳定在约 $-45$°，
+\textbf{判别办法是换到 Bode 图}：扩散段的 $|Z|$ 应呈 $\omega^{-1/2}$、相角应稳定在约 $+45$°，
 而圆弧段的相角会扫过一整段。
 
 \textbf{（4）频率范围不够就下结论。} 图~\ref{fig:eis-d-model}(b) 已经给出量化例子：两条曲线
@@ -737,8 +756,10 @@ $R_{\mathrm{ct}}=RT/(nFi_0)$，因此由弧直径反推的 $i_0$ 应与 Tafel �
 \textbf{（6）与其它分片的一致性。} 本节是同一章内给出阻抗基本定义与 $Z$ 与元件关系的地方，
 因此它与下一节（§11.5，电化学阻抗谱的应用与读图）的接口必须一致：\textbf{（i）}$R_{\Omega}$
 的符号与含义（分片 c 沿用源文本符号 $R_{\mathrm{s}}$，指同一量）；\textbf{（ii）}Nyquist 图
-纵轴取 $-Z''$ 的约定；\textbf{（iii）}$\omega_{\max}$ 而非 $f_{\max}$ 用于
-式~\eqref{eq:eis-d-cdl}。三处中任何一处不一致，读图结论就无法互相引用。
+纵轴取 $-Z''$ 的约定；\textbf{（iii）}相角取测量约定 $\varphi\equiv-\arg Z$（容性为正，纯电容
+$+90$°、感性为负——分片 c 的读图实例即按此约定写「相角接近 $90$°」与「第四象限的负相角」）；
+\textbf{（iv）}$\omega_{\max}$ 而非 $f_{\max}$ 用于
+式~\eqref{eq:eis-d-cdl}。四处中任何一处不一致，读图结论就无法互相引用。
 
 装配顺序已在 \texttt{chapters/ch11.tex} 中按文件头注释的处置办法（A）修正：本分片现排在
 §11.4（分片 b）之后、§11.5 与 §11.6（分片 c）之前，故上文的「读图规则」在下文中确为

@@ -231,19 +231,58 @@
 % 章标题行：见下方 \chapterstar / \chapterstart / \chapterheadstar
 
 % 不编号的章级标题（导读、综合应用、索引等）
-\newcommand{\chapterheadstar}[2]{%
-  \needspace{14\baselineskip}%
+%   \chapterheadstar{标题}{导读}   → 标题 + 目录项 + 书签目标 + 页眉标记
+%   \chapterheadstar*{标题}{导读}  → 同上，但不建目录项/书签（目录页自身用）
+%
+% 【R2-U01】目录项与锚点必须由本宏在「落页之后」统一创建。
+%   改前实测（build/main.pdf，310 页）：书签「跨方法综合应用」=303、实际标题 304；
+%   「符号、缩写与索引」=305、实际 306；build/main.toc 记录同为 303/305。
+%   原因是 main.tex 把 \phantomsection\addcontentsline 放在 \input 之前，
+%   先于本宏的 \needspace，断页后写号与锚点留在上一页。
+\makeatletter
+% 目录项的两种写法。【教训，勿改回去】不要把 \addcontentsline 本身当参数传进来：
+% 它的定义用了 \@dblarg 处理可选参数，在参数位置无法通过扫描——实测报
+% "Argument of \addcontentsline has an extra }"、"Paragraph ended before
+% \addcontentsline was complete"。改用下面的委托宏：宏体里直接调用
+% \addcontentsline，只把**宏名**当参数传，再在正文里定向展开 #1{#2}。
+\newcommand{\chapterheadstar@writetoc}[1]{\addcontentsline{toc}{section}{#1}}
+\newcommand{\chapterheadstar@notoc}[1]{}
+% #1 = 上面的委托（目录页用 \chapterheadstar@notoc）
+% #2 = 标题   #3 = 导读文字
+% 【教训，勿改成 [4]】\chapterheadstar 展开成
+%   \chapterheadstar@run\chapterheadstar@writetoc{标题}{导读}
+% 有效参数只有 3 个。若声明成 [4] 个，TeX 会把标题后的**下一个 token** 吃成第 4 个
+% 参数（main.tex 该处恰好是 \vspace，于是编译照过），属脆弱写法。
+\newcommand{\chapterheadstar@run}[3]{%
+  \needspace{14\baselineskip}%      ← 先决定落页：空间不足就在此断页
+  \phantomsection                   % 断页已发生，锚点必然落在标题所在页
+  #1{#2}%                           ← 委托到此才展开，此时页码才是当前页
+  {\markboth{#2}{}}%                % 非编号区块同样更新页眉标记（R2-U02）
+  % 【教训，勿加 \samepage】曾在此处写 \samepage「保证锚点与标题同页」，实测其惩罚
+  %   参数会**永久泄漏**：\interlinepenalty 由 0 变 10000 且不再复位（微测
+  %   build/_pen/pen.tex：跨段落、跨 \section*、跨 itemize、翻页之后仍为 10000）
+  %   ⇒ 全书段落从此不能跨页断开，页数 310 → 345、每页字数中位数 2039 → 1811。
+  %   此处本不需要 keep-together：\phantomsection/\addcontentsline/\markboth 都不产生
+  %   垂直材料，锚点与标题之间无可断点；标题块是否落页由上面的 \needspace 保证。
   \begin{fullwidth}%
     \vspace{2pt}%
-    \noindent{\heiti\fontsize{14}{17}\selectfont #1}%
+    \noindent{\heiti\fontsize{14}{17}\selectfont #2}%
     \par\vspace{2.5pt}%
     \noindent{\color{accent}\rule{\linewidth}{0.8pt}}%
     \par\vspace{3pt}%
-    \noindent{\fontsize{9}{11.5}\selectfont #2}%
+    \noindent{\fontsize{9}{11.5}\selectfont #3}%
     \par\vspace{4pt}%
   \end{fullwidth}%
-  \noindent\ignorespaces
 }
+% 出入口。\@ifstar 会吞掉星号后的空格，故两种写法都安全。
+%   \chapterheadstar{标题}{导读}  → 建目录项 + 书签 + 页眉标记
+%   \chapterheadstar*{标题}{导读} → 只建书签 + 页眉标记，不写目录项（目录页自身用）
+\newcommand{\chapterheadstar}{%
+  \@ifstar
+    {\chapterheadstar@run\chapterheadstar@notoc}%
+    {\chapterheadstar@run\chapterheadstar@writetoc}%
+}
+\makeatother
 
 % ---------------------------------------------------------------
 % 5b  章起始（章作者唯一入口）
@@ -263,10 +302,11 @@
 %        改前实测：p191 页眉显示「第9 章表面分析技术基础」（应属第 8 章）、
 %        p271 页眉显示「第12 章扫描探针显微镜与纳米光谱技术」（应属第 11 章）。
 %   两条都由「\needspace 提前」一并修好。
-%   【遗留】main.tex 里三处不编号区块的 \phantomsection\addcontentsline 写在
-%   \input 之前，先于本宏的 \needspace，故「跨方法综合应用」（目录 p294，实际 p295）
-%   与「符号、缩写与索引」（目录 p296，实际 p297）仍差一页。该修法要动 main.tex
-%   （把这两条移进 \chapterheadstar），本次未改，已列在交付说明里。
+%   【R2-U01 已修】不编号区块原先把 \phantomsection\addcontentsline 写在 main.tex
+%   的 \input **之前**，先于 \chapterheadstar 的 \needspace，故同样差一页。现已把
+%   这两条统一下沉进 \chapterheadstar（见上方 5a 节），main.tex 只保留 \input。
+%   改前实测（本轮 310 页 PDF）：目录/书签 p303 对标题 p304、p305 对 p306；
+%   旧注释里的「目录 p294／实际 p295、目录 p296／实际 p297」是更早一版的过期页码。
 % ---------------------------------------------------------------
 \newcommand{\chapterstart}[2]{%
   \needspace{12\baselineskip}%

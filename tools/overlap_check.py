@@ -50,20 +50,83 @@ C. **粗线**：全书 > 2 pt 的粗横线 / 粗竖线。
 
 输出：tools/overlap_all.txt（明细）、tools/overlap_hits.json（供轮廓复核）
 用法：python tools/overlap_check.py [pdf]
-"""
-import io
-import os
-import sys
-import collections
-import json
 
-import pymupdf
+门禁模式（v4 新增，R2-W05）
+============================
+
+扫描模式只**报告**，恒返回 0；它不能当门禁用（命中相交矩形也照样 0）。门禁模式
+把结果按**类别**分开，只对「确认应阻断」的一类设失败退出码：
+
+    阻断（BLOCK）  graphics-collision              图形相撞：两个都描边、非嵌套、
+                                                   两方向重叠 > 2 pt 的近似矩形。
+                                                   —— 本项目已确认的缺陷形态
+                                                   （图 0-1 圆角节点框互侵）。
+    （--block-text 时另含 text-cross-unclassified，见下）
+
+    候选（候选不阻断，分开报数）
+                   text-cross-unclassified         跨串墨迹盒相交但**未归类**的候选。
+                                                   真实本书有大量此类（文字轮廓、
+                                                   斜体与箭头标注擦边），按总数一刀切
+                                                   会把好稿子判死，故只报数。
+                   text-script-sup / -sub          数学上下标：字号比 ≤ 0.85 且基线
+                                                   错位 0.12–1.00 em（TeX 上下标
+                                                   约 0.35 em）。分类可审计。
+                   thick-hline / -vline / filled-bar  粗线/填充粗条（`\underbrace`
+                                                   字形退化的监测项；实测本书 12 处
+                                                   全是图形里的合法实心条）。
+    豁免（记数，不入候选）
+                   text-same-string                同一字符串内部（字体字距/斜体倾斜，
+                                                   任何用该字体的文档都一样）。
+                   nested-box                      合法嵌套：一个框的四条边都在另一个
+                                                   内部（容差 3 pt）。
+                   delimiter-piece                 MATH 定界符零件拼接（判据内已排除）。
+
+**例外台账**（可审计）：`--exceptions tools/overlap_gate_exceptions.json`，JSON 数组，
+每条 `{kind, page, boxes:[[x0,y0,x1,y1],[x0,y0,x1,y1]], reason, date, reviewer}`
+（`kind ∈ {graphics-collision, text-cross-unclassified}`；box 匹配容差 0.5 pt，与顺序无关）。
+缺 `reason`/`date`/`reviewer` 的条目**一律作废**（计入 invalid，不产生豁免）；
+台帐里没有被命中的条目计入 unused（过期）并打印告警——不阻断，但必须可见。
+
+退出码（**区分「没问题」与「没检查」**）：
+    0 = PASS      没有阻断类命中（候选数照常分别报告）
+    1 = BLOCK     有阻断类命中（扣掉例外台账里有效的条目后仍 > 0）
+    2 = UNUSABLE  跑不起来：PDF 缺失/损坏、pymupdf 或 fontTools 缺失、参数错误、
+                  或**有页面检查异常**（那意味着没检查，不是通过）
+扫描模式：0 = 报告完成；2 = 有页面未能检查；**永不返回 1**（它只报告，不阻断）。
+
+用法：
+    python tools/overlap_check.py [pdf]                     # 扫描模式（只报告，退出码恒 0）
+    python tools/overlap_check.py --gate [--pdf PDF] [--json OUT] [--exceptions FILE]
+    python tools/overlap_check.py --gate --block-text       # 把未归类文字候选也计入阻断
+    python tools/overlap_check.py --gate --status-file F    # 另写一行 ASCII 状态供脚本判读
+"""
+import argparse
+import collections
+import datetime
+import io
+import json
+import os
+import re
+import sys
+import traceback
+
+_IMPORT_ERROR = None
+try:
+    import pymupdf
+except Exception as _e:                           # pragma: no cover - 依赖缺失路径
+    pymupdf = None
+    _IMPORT_ERROR = "pymupdf 不可用：%s" % _e
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import inkbox                                    # noqa: E402
+try:
+    import inkbox                                    # noqa: E402
+except Exception as _e:                           # pragma: no cover - 依赖缺失路径
+    inkbox = None
+    _IMPORT_ERROR = ((_IMPORT_ERROR + "；") if _IMPORT_ERROR else "") + \
+                    "inkbox/fontTools 不可用：%s" % _e
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PDF = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "build", "main.pdf")
+PDF = os.path.join(ROOT, "build", "main.pdf")
 OUT = os.path.join(ROOT, "tools", "overlap_all.txt")
 
 # ---- A 判据参数 ----
@@ -317,9 +380,229 @@ def check_thick(page):
     return hz, vt, bar
 
 
-def main():
-    doc = pymupdf.open(PDF)
-    lines = [f"file={PDF}  pages={doc.page_count}", ""]
+# ---- 门禁模式参数（R2-W05）----
+_SCRIPT_SIZE_RATIO = 0.85     # 上下标：小/大字号比上限（TeX \scriptstyle ≈ 0.7 em）
+_SCRIPT_RAISE = (0.12, 1.00)  # 上下标：基线错位 / 大字号（em）。TeX 上下标 ≈ 0.35 em
+_EXC_TOL = 0.5                # 例外台账 box 匹配容差（pt）
+GATE_MAX_HITS = 500           # 结构化输出里每类最多收录多少条（防病态膨胀）
+BLOCKING_KINDS = ("graphics-collision", "text-cross-unclassified")
+
+
+class GateUnusable(Exception):
+    """跑不起来（**不是**「没问题」）：PDF 缺失/损坏、依赖缺失、页面检查异常等。"""
+
+
+def parse_args(argv):
+    p = argparse.ArgumentParser(prog="overlap_check.py", add_help=True,
+                                description="全书叠印检查器（扫描模式 / 门禁模式）")
+    p.add_argument("pdf", nargs="?", default=None,
+                   help="目标 PDF（扫描模式的位置参数，兼容旧的 `overlap_check.py <pdf>` 用法）")
+    p.add_argument("--pdf", dest="pdf_opt", default=None, help="目标 PDF（显式选项，优先于位置参数）")
+    p.add_argument("--gate", action="store_true", help="门禁模式：按类别判定并设失败退出码")
+    p.add_argument("--block-text", dest="block_text", action="store_true",
+                   help="把「未归类的跨串文字候选」也计入阻断（默认只阻断图形相撞）")
+    p.add_argument("--out", default=None, help="明细报告路径（默认 tools/overlap_all.txt）")
+    p.add_argument("--json", dest="json_path", default=None,
+                   help="结构化结果路径（扫描模式默认 tools/overlap_hits.json；门禁模式 tools/overlap_gate.json）")
+    p.add_argument("--exceptions", default=None, help="例外台账 JSON（默认 tools/overlap_gate_exceptions.json）")
+    p.add_argument("--status-file", dest="status_file", default=None,
+                   help="另写一行 ASCII 状态（overlap gate: PASS|BLOCK|UNUSABLE）供发布脚本判读")
+    return p.parse_args(argv if argv is not None else [])
+
+
+def classify_cross(ga, gb):
+    r"""跨串墨迹命中是否属于「数学上下标」。
+
+    两条都要满足：
+      1) 两侧字号不同且 小/大 ≤ 0.85（TeX 上下标用 \scriptstyle，约 0.7 em）；
+      2) 小字号基线相对大字号基线**竖直错位** 0.12–1.00 em（按大字号计）——
+         TeX 上标抬升、下标下沉都在 0.35 em 量级，0.12 em 是肉眼可辨的下限。
+    只对横排文字（span 的 dir 竖直分量 ≈ 0）作此判定，旋转文字一律归为未归类。
+
+    **这只是分类，不是免罪**：未归类候选默认也不阻断（真实本书这类候选很多），
+    只有 --block-text 才把未归类候选计入阻断；上下标单独成类是为了让候选数
+    可审计、不混成一锅。
+    """
+    if not ga or not gb:
+        return "cross-other"
+    _fa, _gida, aorg, asz, adir = ga
+    _fb, _gidb, borg, bsz, bdir = gb
+    if abs(adir[1]) > 0.05 or abs(bdir[1]) > 0.05:
+        return "cross-other"
+    big = asz if asz >= bsz else bsz
+    small = bsz if asz >= bsz else asz
+    if big <= 0 or abs(asz - bsz) < 1e-6 or small / big > _SCRIPT_SIZE_RATIO:
+        return "cross-other"
+    dy = aorg[1] - borg[1]                     # y 轴向下：dy < 0 表示 A 更靠上
+    if not (_SCRIPT_RAISE[0] * big <= abs(dy) <= _SCRIPT_RAISE[1] * big):
+        return "cross-other"
+    sup = (asz < bsz and dy < 0) or (bsz < asz and dy > 0)
+    return "script-sup" if sup else "script-sub"
+
+
+def _exc_box(v):
+    return tuple(round(float(x), 3) for x in v)
+
+
+def load_exceptions(path):
+    r"""读例外台账，返回 (有效条目, 作废条目)。
+
+    作废 = 结构或字段不合格（**绝不产生豁免**）：kind 不在 BLOCKING_KINDS、
+    page 不是 ≥1 的整数、boxes 不是两条 4 数字数组、缺 reason / date / reviewer。
+    例外必须写明「为什么可接受、哪天、谁确认的」——否则它就不是审计记录。
+    """
+    valid, invalid = [], []
+    if not path or not os.path.exists(path):
+        return valid, invalid
+    try:
+        raw = json.loads(io.open(path, encoding="utf-8").read())
+    except Exception as e:
+        return [], [{"index": None, "error": "台账无法解析：%s" % e, "record": None}]
+    if not isinstance(raw, list):
+        return [], [{"index": None, "error": "台账必须是 JSON 数组", "record": None}]
+    for i, rec in enumerate(raw):
+        err = None
+        if not isinstance(rec, dict):
+            err = "条目不是对象"
+        elif rec.get("kind") not in BLOCKING_KINDS:
+            err = "kind 必须是 %s 之一" % " / ".join(BLOCKING_KINDS)
+        elif not isinstance(rec.get("page"), int) or rec.get("page") < 1:
+            err = "page 必须是 ≥1 的整数"
+        elif not isinstance(rec.get("boxes"), list) or len(rec["boxes"]) != 2:
+            err = "boxes 必须是两条 [x0,y0,x1,y1]"
+        else:
+            try:
+                rec["boxes"] = [_exc_box(b) for b in rec["boxes"]]
+            except Exception as e:
+                err = "boxes 不是数字：%s" % e
+        if err is None and not str(rec.get("reason") or "").strip():
+            err = "缺 reason（例外必须写明理由）"
+        if err is None and not re.match(r"^\d{4}-\d{2}-\d{2}$", str(rec.get("date") or "")):
+            err = "缺 date（YYYY-MM-DD）"
+        if err is None and not str(rec.get("reviewer") or "").strip():
+            err = "缺 reviewer（谁确认的）"
+        if err:
+            invalid.append({"index": i, "error": err, "record": rec})
+        else:
+            valid.append(rec)
+    return valid, invalid
+
+
+def _match_exception(exceptions, kind, page, boxes):
+    r"""命中是否有台账例外（同 kind、同页、两条 box 与顺序无关、容差 _EXC_TOL）。"""
+    want = sorted(tuple(b) for b in boxes)
+    if len(want) != 2:
+        return None
+    for rec in exceptions:
+        if rec.get("_used"):
+            continue
+        if rec["kind"] != kind or rec["page"] != page:
+            continue
+        got = sorted(tuple(b) for b in rec["boxes"])
+        if all(all(abs(a - b) <= _EXC_TOL for a, b in zip(g, w)) for g, w in zip(got, want)):
+            return rec
+    return None
+
+
+def _status_line(mode, status, blocking, candidates):
+    return "overlap %s: %s blocking=%d candidates=%d" % (mode, status, blocking, candidates)
+
+
+def _ensure_parent(path):
+    """输出目录不存在就建出来（探针/CI 常把输出重定向到全新目录）。"""
+    if not path:
+        return
+    parent = os.path.dirname(os.path.abspath(path))
+    if parent and not os.path.isdir(parent):
+        os.makedirs(parent)
+
+
+def write_status_file(path, line, blocking, candidates, exit_code, reason=""):
+    r"""给发布脚本（build.ps1）判读的 ASCII 状态文件——绕开控制台编码。"""
+    if not path:
+        return
+    _ensure_parent(path)
+    io.open(path, "w", encoding="utf-8").write(
+        "%s\nblocking=%d\ncandidates=%d\nexit_code=%d\n%s"
+        % (line, blocking, candidates, exit_code,
+           ("reason=%s\n" % reason) if reason else ""))
+
+
+def _cap(items):
+    return {"n": len(items), "truncated": len(items) > GATE_MAX_HITS,
+            "items": items[:GATE_MAX_HITS]}
+
+
+def main(argv=None):
+    args = parse_args(argv)
+    gate = bool(args.gate)
+    mode = "gate" if gate else "scan"
+    out_path = args.out or OUT
+    json_path = args.json_path or os.path.join(
+        ROOT, "tools", "overlap_gate.json" if gate else "overlap_hits.json")
+    result = {
+        "tool": "tools/overlap_check.py",
+        "mode": mode,
+        "gate": gate,
+        "block_text": bool(args.block_text),
+        "pdf": None,
+        "pages": None,
+        "generated_at": datetime.datetime.now().astimezone().isoformat(timespec="seconds"),
+        "status": "UNUSABLE",
+        "exit_code": 2,
+        "blocking": {},
+        "blocking_total": 0,
+        "candidates": {},
+        "candidate_total": 0,
+        "exempt": {},
+        "exceptions": {"path": None, "provided": False, "valid": 0, "used": [],
+                       "unused": [], "invalid": []},
+        "page_errors": [],
+        "errors": [],
+        "hits": {},
+        "out": out_path,
+        "json": json_path,
+    }
+    try:
+        return _run(args, gate, out_path, json_path, result)
+    except GateUnusable as exc:
+        result["errors"].append(str(exc))
+    except Exception:
+        result["errors"].append(traceback.format_exc())
+        sys.stderr.write(result["errors"][-1])
+    result["status"] = "UNUSABLE"
+    result["exit_code"] = 2
+    first = result["errors"][0].strip().splitlines()[-1] if result["errors"] else "未知原因"
+    line = _status_line(mode, "UNUSABLE", 0, 0)
+    print(line)
+    print("  原因：%s" % first)
+    if gate:
+        _ensure_parent(json_path)
+        io.open(json_path, "w", encoding="utf-8").write(
+            json.dumps(result, ensure_ascii=False, indent=1))
+    write_status_file(args.status_file, line, 0, 0, 2, first)
+    return result
+
+
+def _run(args, gate, out_path, json_path, result):
+    if _IMPORT_ERROR:
+        raise GateUnusable("依赖缺失：%s" % _IMPORT_ERROR)
+    pdf_path = os.path.abspath(args.pdf_opt or args.pdf or PDF)
+    result["pdf"] = pdf_path
+    if not os.path.exists(pdf_path):
+        raise GateUnusable("PDF 不存在：%s" % pdf_path)
+    st = os.stat(pdf_path)
+    result["pdf_bytes"] = st.st_size
+    result["pdf_mtime"] = datetime.datetime.fromtimestamp(
+        st.st_mtime).astimezone().isoformat(timespec="seconds")
+    try:
+        doc = pymupdf.open(pdf_path)
+    except Exception as e:
+        raise GateUnusable("PDF 打不开：%s" % e)
+    if doc.page_count <= 0:
+        raise GateUnusable("PDF 页数为 0：%s" % pdf_path)
+    result["pages"] = doc.page_count
+    lines = [f"file={pdf_path}  pages={doc.page_count}", ""]
     lines.append("判据 A（文字/墨迹盒级）：**跨串**（两个不同字符串）、两方向重叠 > %.1f pt、"
                  "交叠面积 ≥ %.1f pt²" % (A_MIN_PT, A_MIN_AREA))
     lines.append("判据 B（图形/真矩形）：两侧均描边、非嵌套（容差 %.0f pt）、两方向重叠 > %.1f pt、"
@@ -333,16 +616,33 @@ def main():
     page_hits = []
     same_rows = []
     same_hits = []
+    cat = collections.Counter()          # 跨串候选的分类计数
+    block_hits = []                      # 阻断类命中（结构化）
+    cand_text_other = []                 # 未归类跨串候选（默认不阻断）
+    cand_text_script = []                # 数学上下标候选（单独成类）
+    thick_hits = []                      # 粗线 / 填充粗条（候选）
+    page_errors = []                     # 页面检查异常（= 没检查，不是通过）
 
     for pno in range(doc.page_count):
         page = doc[pno]
         try:
             ha, hs = check_text(page, unmapped)
         except Exception as e:
-            ha, hs = [("<检查异常 %s>" % e, "", 0, 0, 0, "", "",
-                       None, None, None, None)], []
-        hb, nested = check_graphics(page)
-        hz, vt, bar = check_thick(page)
+            ha, hs = [], []
+            page_errors.append({"page": pno + 1, "check": "text",
+                                "error": "%s: %s" % (type(e).__name__, e)})
+        try:
+            hb, nested = check_graphics(page)
+        except Exception as e:
+            hb, nested = [], 0
+            page_errors.append({"page": pno + 1, "check": "graphics",
+                                "error": "%s: %s" % (type(e).__name__, e)})
+        try:
+            hz, vt, bar = check_thick(page)
+        except Exception as e:
+            hz, vt, bar = [], [], []
+            page_errors.append({"page": pno + 1, "check": "thick",
+                                "error": "%s: %s" % (type(e).__name__, e)})
         tot_nested += nested
         if not (ha or hs or hb or hz or vt or bar):
             continue
@@ -361,6 +661,22 @@ def main():
                          % (ac, bc, ox, oy, inter))
             lines.append("        串A=%r 墨迹盒=[%.1f,%.1f,%.1f,%.1f]" % (atxt, *abox))
             lines.append("        串B=%r 墨迹盒=[%.1f,%.1f,%.1f,%.1f]" % (btxt, *bbox))
+            kind = classify_cross(ga, gb)
+            cat[kind] += 1
+            rec_a = dict(page=pno + 1, kind=kind, ca=ac, cb=bc, ox=round(ox, 2),
+                         oy=round(oy, 2), inter=round(inter, 2), ta=atxt, tb=btxt,
+                         boxa=list(abox) if abox else None,
+                         boxb=list(bbox) if bbox else None,
+                         size_a=ga[3], size_b=gb[3],
+                         dorg_y=round(ga[2][1] - gb[2][1], 2))
+            if kind == "cross-other":
+                cand_text_other.append(rec_a)
+                lines.append("        分类：未归类跨串候选（默认不阻断；--block-text 时计入阻断）")
+            else:
+                cand_text_script.append(rec_a)
+                lines.append("        分类：数学%s（字号 %.2f ↔ %.2f，基线错位 %.2f pt，免阻断）"
+                             % ("上标" if kind == "script-sup" else "下标",
+                                ga[3], gb[3], abs(ga[2][1] - gb[2][1])))
         for ac, bc, ox, oy, inter, atxt, btxt, abox, bbox, ga, gb in hs:
             nA2 += 1
             same_rows.append((pno + 1, ac, bc, ox, oy, inter, atxt))
@@ -376,15 +692,26 @@ def main():
             nB += 1
             lines.append("  [B/相撞] 框[%.1f,%.1f,%.1f,%.1f] 与 [%.1f,%.1f,%.1f,%.1f] 重叠 %.1fx%.1f pt"
                          % (ra.x0, ra.y0, ra.x1, ra.y1, rb.x0, rb.y0, rb.x1, rb.y1, ox, oy))
+            block_hits.append(dict(
+                page=pno + 1, kind="graphics-collision",
+                boxa=[round(ra.x0, 2), round(ra.y0, 2), round(ra.x1, 2), round(ra.y1, 2)],
+                boxb=[round(rb.x0, 2), round(rb.y0, 2), round(rb.x1, 2), round(rb.y1, 2)],
+                ox=round(ox, 2), oy=round(oy, 2), inter=round(ox * oy, 2)))
         for r, w in hz:
             nHZ += 1
             lines.append("  [C/粗横线] %.2f pt  [%.1f,%.1f]→[%.1f,%.1f]" % (w, r.x0, r.y0, r.x1, r.y1))
+            thick_hits.append(dict(page=pno + 1, kind="thick-hline", width=round(w, 2),
+                                   box=[round(r.x0, 2), round(r.y0, 2), round(r.x1, 2), round(r.y1, 2)]))
         for r, w in vt:
             nVT += 1
             lines.append("  [C/粗竖线] %.2f pt  [%.1f,%.1f]→[%.1f,%.1f]" % (w, r.x0, r.y0, r.x1, r.y1))
+            thick_hits.append(dict(page=pno + 1, kind="thick-vline", width=round(w, 2),
+                                   box=[round(r.x0, 2), round(r.y0, 2), round(r.x1, 2), round(r.y1, 2)]))
         for r, t in bar:
             nBAR += 1
             lines.append("  [C/填充粗条] 厚 %.2f pt  [%.1f,%.1f,%.1f,%.1f]" % (t, r.x0, r.y0, r.x1, r.y1))
+            thick_hits.append(dict(page=pno + 1, kind="filled-bar", width=round(t, 2),
+                                   box=[round(r.x0, 2), round(r.y0, 2), round(r.x1, 2), round(r.y1, 2)]))
 
     lines.append("")
     if same_rows:
@@ -404,13 +731,107 @@ def main():
                  "粗横线 %d 处，粗竖线 %d 处，填充粗条 %d 处"
                  % (nA, nA2, nB, nHZ, nVT, nBAR))
     lines.append("（图形级另排除「嵌套」%d 对）" % tot_nested)
-    io.open(OUT, "w", encoding="utf-8").write("\n".join(lines))
-    io.open(os.path.join(ROOT, "tools", "overlap_hits.json"), "w",
-            encoding="utf-8").write(json.dumps(page_hits + same_hits, ensure_ascii=False, indent=1))
+    if page_errors:
+        lines.append("")
+        lines.append("**检查异常 %d 处（未能检查 ≠ 通过）**：" % len(page_errors))
+        for pe in page_errors:
+            lines.append("    p.%s 的 %s 检查异常：%s" % (pe["page"], pe["check"], pe["error"]))
+
+    # ---- 例外台账：只有写明理由+日期+确认人的例外才能免阻断（可审计）----
+    exc_path = args.exceptions or os.path.join(ROOT, "tools", "overlap_gate_exceptions.json")
+    exc_valid, exc_invalid = load_exceptions(exc_path)
+    raw_blocking = list(block_hits)
+    if gate and args.block_text:
+        raw_blocking += cand_text_other
+    effective = []
+    exc_used = []
+    for rec in raw_blocking:
+        m = _match_exception(exc_valid, rec["kind"], rec["page"], (rec["boxa"], rec["boxb"]))
+        if m is None:
+            effective.append(dict(rec))
+        else:
+            m["_used"] = True
+            exc_used.append(dict(rec, exception=m.get("reason", "")))
+    exc_unused = [m for m in exc_valid if not m.get("_used")]
+
+    # ---- 判定与退出码：区分「没问题」与「没检查」----
+    blocking_by_kind = collections.Counter(r["kind"] for r in effective)
+    candidate_total = len(cand_text_other) + len(cand_text_script) + len(thick_hits)
+    if page_errors:
+        status, exit_code = "UNUSABLE", 2
+    elif gate and effective:
+        status, exit_code = "BLOCK", 1
+    else:
+        status, exit_code = "PASS", 0
+    if gate:
+        lines.append("")
+        lines.append("===== 门禁（--gate）=====")
+        lines.append("  阻断（扣掉有效例外后）%d 处%s" % (
+            len(effective),
+            "：" + "、".join("%s %d" % kv for kv in sorted(blocking_by_kind.items()))
+            if effective else "（无）"))
+        lines.append("  候选（默认不阻断，分类报告）%d 处：未归类跨串 %d、数学上标 %d、数学下标 %d、"
+                     "粗横线 %d、粗竖线 %d、填充粗条 %d"
+                     % (candidate_total, len(cand_text_other), cat["script-sup"], cat["script-sub"],
+                        nHZ, nVT, nBAR))
+        lines.append("  豁免（记数不阻断）%d 处：同串内墨迹相碰 %d、合法嵌套框 %d"
+                     % (nA2 + tot_nested, nA2, tot_nested))
+        lines.append("  例外台账：%s（有效 %d、本次命中 %d、过期 %d、作废 %d）"
+                     % (exc_path if os.path.exists(exc_path) else "未提供（" + exc_path + " 不存在）",
+                        len(exc_valid), len(exc_used), len(exc_unused), len(exc_invalid)))
+        for m in exc_unused:
+            lines.append("    ! 过期例外（台账里有、本次没命中）：p.%s %s" % (m.get("page"), m.get("kind")))
+        for m in exc_invalid:
+            lines.append("    x 作废例外（字段不合格，不产生豁免）：#%s %s" % (m.get("index"), m.get("error")))
+        lines.append("  结论：%s（退出码 %d）—— %s" % (
+            status, exit_code,
+            {"PASS": "没有确认缺陷类命中（候选数照常报告，见上）",
+             "BLOCK": "命中确认缺陷类，必须处理或登记可审计的例外",
+             "UNUSABLE": "有页面未能检查，不可当作通过"}[status]))
+    _ensure_parent(out_path)
+    io.open(out_path, "w", encoding="utf-8").write("\n".join(lines))
+    if gate:
+        result.update(
+            status=status, exit_code=exit_code,
+            blocking=dict(blocking_by_kind), blocking_total=len(effective),
+            candidates={"text-cross-unclassified": len(cand_text_other),
+                        "text-script-sup": cat["script-sup"], "text-script-sub": cat["script-sub"],
+                        "thick-hline": nHZ, "thick-vline": nVT, "filled-bar": nBAR},
+            candidate_total=candidate_total,
+            exempt={"text-same-string": nA2, "nested-box": tot_nested},
+            exceptions={"path": exc_path, "provided": os.path.exists(exc_path),
+                        "valid": len(exc_valid), "used": _cap(exc_used),
+                        "unused": _cap(exc_unused), "invalid": _cap(exc_invalid)},
+            page_errors=_cap(page_errors),
+            hits={"graphics-collision": _cap(block_hits),
+                  "text-cross-unclassified": _cap(cand_text_other),
+                  "text-script": _cap(cand_text_script),
+                  "thick": _cap(thick_hits)})
+        _ensure_parent(json_path)
+        io.open(json_path, "w", encoding="utf-8").write(
+            json.dumps(result, ensure_ascii=False, indent=1))
+    else:
+        result.update(
+            status=status, exit_code=exit_code,
+            candidates={"text-cross-unclassified": len(cand_text_other),
+                        "text-script-sup": cat["script-sup"], "text-script-sub": cat["script-sub"],
+                        "thick-hline": nHZ, "thick-vline": nVT, "filled-bar": nBAR},
+            candidate_total=candidate_total,
+            exempt={"text-same-string": nA2, "nested-box": tot_nested},
+            page_errors=_cap(page_errors))
+        _ensure_parent(json_path)
+        io.open(json_path, "w", encoding="utf-8").write(
+            json.dumps(page_hits + same_hits, ensure_ascii=False, indent=1))
     print("文字级(跨串) %d  同串 %d  图形级 %d  粗横线 %d  粗竖线 %d  填充粗条 %d  嵌套已排除 %d"
           % (nA, nA2, nB, nHZ, nVT, nBAR, tot_nested))
-    print("->", OUT)
+    print("->", out_path)
+    line = _status_line("gate" if gate else "scan", status,
+                        len(effective) if gate else 0, candidate_total)
+    print(line)
+    write_status_file(args.status_file, line, len(effective) if gate else 0, candidate_total,
+                      exit_code, "；".join(str(e) for e in result.get("errors", []))[:200])
+    return result
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main(sys.argv[1:]).get("exit_code", 2))
