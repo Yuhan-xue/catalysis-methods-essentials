@@ -1,0 +1,219 @@
+{
+  "baseline": "38f32fbd6abb85155d3bbc9cb55e293cc637acd4",
+  "findings": [
+    {
+      "id": "R2-C01",
+      "priority": "P1",
+      "title": "积炭速率分解仍缺 ct 因子",
+      "path": "chapters/parts/ch10-c.tex",
+      "line": 708,
+      "report": "01-content-review.md",
+      "pdf_pages": [
+        238,
+        239
+      ],
+      "previous_id": "C10-01",
+      "status": "open",
+      "verification": "see report and verification.json"
+    },
+    {
+      "id": "R2-C02",
+      "priority": "P1",
+      "title": "WP 算例仍重复乘密度",
+      "path": "chapters/parts/ch10-c.tex",
+      "line": 514,
+      "report": "01-content-review.md",
+      "pdf_pages": [
+        236
+      ],
+      "previous_id": "C10-02",
+      "status": "open",
+      "verification": "see report and verification.json"
+    },
+    {
+      "id": "R2-C03",
+      "priority": "P1",
+      "title": "传质因子缺少密度因子",
+      "path": "chapters/parts/ch10-b.tex",
+      "line": 384,
+      "report": "01-content-review.md",
+      "pdf_pages": [
+        224
+      ],
+      "previous_id": null,
+      "status": "open",
+      "verification": "see report and verification.json"
+    },
+    {
+      "id": "R2-C04",
+      "priority": "P1",
+      "title": "并联阻抗误写为导纳之和",
+      "path": "chapters/parts/ch11-d.tex",
+      "line": 147,
+      "report": "01-content-review.md",
+      "pdf_pages": [
+        266
+      ],
+      "previous_id": null,
+      "status": "open",
+      "verification": "see report and verification.json"
+    },
+    {
+      "id": "R2-C05",
+      "priority": "P1",
+      "title": "AFM 周期错误及额外因子 2 建议不成立",
+      "path": "chapters/parts/ch12-b.tex",
+      "line": 326,
+      "report": "01-content-review.md",
+      "pdf_pages": [
+        290
+      ],
+      "previous_id": null,
+      "status": "open",
+      "verification": "see report and verification.json"
+    },
+    {
+      "id": "R2-C06",
+      "priority": "P2",
+      "title": "EIS 实例与基础的相角约定未转换",
+      "path": "chapters/parts/ch11-c.tex",
+      "line": 29,
+      "report": "01-content-review.md",
+      "pdf_pages": [
+        276
+      ],
+      "previous_id": null,
+      "status": "open",
+      "verification": "see report and verification.json"
+    },
+    {
+      "id": "R2-C07",
+      "priority": "P2",
+      "title": "BET 总面积与比表面积混用",
+      "path": "chapters/parts/ch01-a.tex",
+      "line": 180,
+      "report": "01-content-review.md",
+      "pdf_pages": [],
+      "previous_id": "C01-02",
+      "status": "open",
+      "verification": "see report and verification.json"
+    },
+    {
+      "id": "R2-C08",
+      "priority": "P2",
+      "title": "DTG 曲线与纵轴导数符号相反",
+      "path": "chapters/parts/ch03-b.tex",
+      "line": 237,
+      "report": "01-content-review.md",
+      "pdf_pages": [],
+      "previous_id": "C03-01",
+      "status": "open",
+      "verification": "see report and verification.json"
+    },
+    {
+      "id": "R2-C09",
+      "priority": "P2",
+      "title": "拉曼强度量纲检查自相矛盾",
+      "path": "chapters/parts/ch06-a.tex",
+      "line": 182,
+      "report": "01-content-review.md",
+      "pdf_pages": [],
+      "previous_id": "C06-01",
+      "status": "open",
+      "verification": "see report and verification.json"
+    },
+    {
+      "id": "R2-U01",
+      "priority": "P2",
+      "title": "综合应用与索引书签提前一页",
+      "path": "main.tex",
+      "line": 61,
+      "report": "02-layout-navigation-review.md",
+      "pdf_pages": [
+        303,
+        304,
+        305,
+        306
+      ],
+      "previous_id": null,
+      "status": "open",
+      "verification": "see report and verification.json"
+    },
+    {
+      "id": "R2-U02",
+      "priority": "P2",
+      "title": "后置材料沿用第 12 章页眉",
+      "path": "style/preamble.tex",
+      "line": 234,
+      "report": "02-layout-navigation-review.md",
+      "pdf_pages": [
+        305,
+        307,
+        309
+      ],
+      "previous_id": null,
+      "status": "open",
+      "verification": "see report and verification.json"
+    },
+    {
+      "id": "R2-W01",
+      "priority": "P1",
+      "title": "交接文档包含明文认证凭据",
+      "path": "HANDOFF.md",
+      "line": 67,
+      "report": "03-workflow-review.md",
+      "pdf_pages": [],
+      "previous_id": null,
+      "status": "open",
+      "verification": "see report and verification.json"
+    },
+    {
+      "id": "R2-W02",
+      "priority": "P2",
+      "title": "README 状态与默认验收命令过期",
+      "path": "README.md",
+      "line": 47,
+      "report": "03-workflow-review.md",
+      "pdf_pages": [],
+      "previous_id": "G-02",
+      "status": "open",
+      "verification": "see report and verification.json"
+    },
+    {
+      "id": "R2-W03",
+      "priority": "P2",
+      "title": "来源检查接受越界页码且依赖旧台账范围",
+      "path": "tools/check_src.py",
+      "line": 232,
+      "report": "03-workflow-review.md",
+      "pdf_pages": [],
+      "previous_id": null,
+      "status": "open",
+      "verification": "see report and verification.json"
+    },
+    {
+      "id": "R2-W04",
+      "priority": "P2",
+      "title": "发布模式将必需检查跳过仍判 PASS",
+      "path": "tools/build.ps1",
+      "line": 103,
+      "report": "03-workflow-review.md",
+      "pdf_pages": [],
+      "previous_id": null,
+      "status": "open",
+      "verification": "see report and verification.json"
+    },
+    {
+      "id": "R2-W05",
+      "priority": "P2",
+      "title": "重叠检查命中后不返回失败状态",
+      "path": "tools/overlap_check.py",
+      "line": 415,
+      "report": "03-workflow-review.md",
+      "pdf_pages": [],
+      "previous_id": null,
+      "status": "open",
+      "verification": "see report and verification.json"
+    }
+  ]
+}

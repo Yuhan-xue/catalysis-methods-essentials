@@ -1,0 +1,82 @@
+{
+  "source_commit": "38f32fbd6abb85155d3bbc9cb55e293cc637acd4",
+  "coke": {
+    "direct_substitution": 0.5,
+    "printed_factorization": 0.25
+  },
+  "weisz_prater": {
+    "mass_basis": 0.015000000000000001,
+    "volume_basis": 0.015000000000000001,
+    "printed_example": 22.5
+  },
+  "chilton_colburn": {
+    "printed_left": 0.03149802624737183,
+    "right": 0.06299605249474366,
+    "corrected_left": 0.06299605249474366
+  },
+  "parallel_impedance": {
+    "inverse_sum_siemens": 0.2,
+    "impedance_ohms": 5.0
+  },
+  "afm": {
+    "average_sin_squared_for_T_1_over_omega": 0.2726756432935796,
+    "average_over_full_period": 0.5,
+    "linear_limit_coefficient_correct": -0.5,
+    "with_proposed_extra_denominator_two": -0.25
+  },
+  "eis_phase": {
+    "capacitor_arg_degrees": -90,
+    "capacitor_negative_arg_degrees": 90
+  },
+  "bet_area": {
+    "specific_m2_per_g": 914.612627925,
+    "incorrect_second_division_by_0_1_g": 9146.126279249998,
+    "total_area_of_0_1_g_then_divided_by_mass": 914.6126279250001
+  },
+  "dtg_center": {
+    "printed_positive_peak": 2.0833333333333335,
+    "positive_mass_loss_derivative": 0.4166666666666667,
+    "negative_conversion_derivative": -0.020833333333333332
+  },
+  "raman_dimensions": {
+    "manuscript_I_over_I0": "dimensionless",
+    "manuscript_sigma_sin2theta": "area",
+    "consistent": false
+  },
+  "invalid_source_pages": {
+    "exit_code": 0,
+    "mutated_page_pairs": 22,
+    "summary": "wrote build/check_src__ch01-a.txt\nchecked 2 tables: PASS 2, REVIEW 0, FAIL 0"
+  },
+  "overlap_gate": {
+    "graphics_hits": 1,
+    "main_return": null,
+    "entrypoint": "main() without sys.exit / raising on hits"
+  },
+  "release_missing_checker": {
+    "exit_code": 0,
+    "skipped": true,
+    "prints_pass": true
+  },
+  "pdf": {
+    "pages": 310,
+    "bookmarks": 143,
+    "backmatter_bookmarks": [
+      [
+        1,
+        "跨方法综合应用",
+        303
+      ],
+      [
+        1,
+        "符号、缩写与索引",
+        305
+      ]
+    ]
+  },
+  "credential_rows": [
+    67,
+    391,
+    398
+  ]
+}

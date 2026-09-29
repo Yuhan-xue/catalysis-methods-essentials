@@ -1,0 +1,14 @@
+root          : C:\Users\53150\Documents\Codex\2026-09-28\q\work\catalysis-review
+latexmk       : C:\texlive\2026\bin\windows\latexmk.exe
+include check: OK（无重复引入）
+==== build ====
+mode          : release（发布验收）
+latexmk exit  : 0
+pages         : 310
+errors        : 0
+overfull >5pt : 0
+missing glyphs: 0
+undefined refs: 0
+dup labels    : 0
+dup includes  : ok
+PASS
