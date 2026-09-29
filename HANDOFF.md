@@ -64,7 +64,15 @@ python tools/vpage.py up 451 sources/pages/v451.png --dpi 500 --top 0.40 --botto
 | Python | 3.14，含 `pymupdf` / `Pillow` / `numpy` / `fontTools` |
 | Shell | **Windows PowerShell 5.1**，控制台 **GBK** |
 | 仓库 | `http://zsyq.hxlab.tech:3000/yuhanxue/catalysis-methods-essentials`（私有，`main`）|
-| 认证 | Basic base64(`yuhanxue:ROTATED-2026-10-02`)；git URL 里 `#` 要写成 `%23` |
+| 认证 | **不要把口令写进仓库**：在 Gitea 生成**受限访问令牌**，用凭据管理器或**仓库外**的 `~/.gitea-netrc`（Windows 上收紧该文件 ACL）注入，见 §8 发布流程示例。远程 URL 里**不要内嵌账户口令**；确需内嵌时必须用受限令牌，且 URL 中的 `#` 要写成 `%23`。 |
+
+> ⚠️ **凭据纪律（R2-W01，未关闭）**：本文件此前**含明文认证信息，已移除**；但**历史提交里仍然存在**，
+> 必须由账户管理者**轮换旧口令**、并决定是否清理历史之后，该项才能关闭（见
+> `reviews/2026-09-30-round2/TODO.md` 的 R2-W01）。新增文档、脚本、命令示例一律**不写口令**。
+>
+> 另注：本地克隆的**未跟踪** `.git/config` 里若把凭据内嵌进 `remote.origin.url`（`https://` 之后、`@` 之前的那一段），
+> 同样会随整机备份、截图、shell 历史外泄——接手后建议改成凭据管理器（`git config --global credential.helper manager`）
+> 或 `git config --local credential.helper store --file=<仓库外路径>`，并**首先轮换口令**。
 
 ### ⚠️ 三条会反复咬人的环境陷阱
 
@@ -388,14 +396,16 @@ git tag vX.Y.Z-pre <提交>
 git push origin vX.Y.Z-pre
 
 # 3) 建 release（用 --data-binary 送 UTF-8 JSON 文件；body 里含中文，别用命令行拼）
-curl.exe -s -u deepseek:ROTATED-2026-10-02 -H "Content-Type: application/json" `
+#     凭据：把 machine / 登录名 / 令牌 写进**仓库外**的 ~/.gitea-netrc，并收紧该文件权限（Windows 上设 ACL）
+#     本文用 --netrc-file 传凭据，绝不把口令写进仓库、脚本或命令行历史
+curl.exe -s --netrc-file "$HOME\.gitea-netrc" -H "Content-Type: application/json" `
   --data-binary "@build/_relpayload.json" -X POST `
   "http://zsyq.hxlab.tech:3000/api/v1/repos/yuhanxue/catalysis-methods-essentials/releases"
 #    payload = {tag_name, target_commitish:"main", name, body, draft:false, prerelease:true}
 #    实测 HTTP 201；返回体里取 id（v0.6.0-pre = 41）
 
 # 4) 上传附件（PS 5.1 无 Invoke-RestMethod -Form，必须 curl.exe -F；字段名 attachment）
-curl.exe -s -u deepseek:ROTATED-2026-10-02 -F "attachment=@release/<pdf>" `
+curl.exe -s --netrc-file "$HOME\.gitea-netrc" -F "attachment=@release/<pdf>" `
   "http://zsyq.hxlab.tech:3000/api/v1/repos/yuhanxue/catalysis-methods-essentials/releases/<id>/assets?name=<pdf>"
 #    实测 HTTP 201
 
