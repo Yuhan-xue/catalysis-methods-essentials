@@ -12,9 +12,9 @@
 | 成品 | 《现代催化研究方法精要：原理、读图与方法选择》 |
 | 页数 | **310**（P0 收口后；基线 `feb8739` 实测 309，+1 页已对账，见 §5 P0）|
 | 分片 | **37**（`chapters/parts/`）|
-| 最新提交 | 见 `git log -1`（P0 收口提交；P0 批次提交为 `2325bbf`、`78f1c22`）|
+| 最新提交 | `9e197cd`（P0 收口；此前 `175a8d8`、`78f1c22`、`2325bbf`）|
 | 线上 pre | **v0.5.0-pre**（release id=38；**P0 收口后尚未重新发布**）|
-| 构建门禁 | errors / overfull>5pt / missing glyphs / undefined refs / dup labels —— **全 0** |
+| 构建门禁 | errors / overfull>5pt / missing glyphs / undefined refs / dup labels / **dup includes** —— **全 0** |
 | 日志直查 | Overfull hbox 0 / vbox 0、Float too large 0、Missing character 0、Underfull vbox 0 |
 | 叠印 | 图内元素 **0 处**；粗横线 0 / 粗竖线 0 |
 
@@ -38,7 +38,7 @@ pwsh -NoProfile -ExecutionPolicy Bypass -File tools/check_chapter.ps1 -Chap ch11
 # 图内元素叠印（真实墨迹几何，非目测）
 python tools/overlap_check.py
 
-# 重复 \input / \IfFileExists（第七项门禁，尚未接入 build.ps1）
+# 重复 \input / \IfFileExists（第七项门禁，已接入 build.ps1，draft 模式也拦）
 python tools/check_includes.py
 
 # 术语一致性
@@ -72,6 +72,22 @@ python tools/vpage.py up 451 sources/pages/v451.png --dpi 500 --top 0.40 --botto
    `python -c "...print('中文')"` 或 `| Out-File` 会因 GBK 编码**抛 `UnicodeEncodeError` 并中断**，
    使后续的写文件**根本没执行**（已实际踩过一次：台账没更新，但命令看起来"跑了"）。
    → 一律**写脚本文件、结果写 UTF-8 文件、再 `Get-Content -Encoding utf8` 读**。
+
+1b. **`.ps1` 文件必须带 UTF-8 BOM。**
+   PowerShell 5.1 对**无 BOM** 的文件按 ANSI（本机 = GBK）解码。中文字符串被误解码后仍然
+   "能跑"，但 GBK 双字节的**尾字节可以吃掉紧随其后的 ASCII 字符**（`}`、`"` 都在 GBK 尾字节
+   范围 0x40–0x7E 内）——于是脚本报出一堆**莫须有的语法错误**（`意外的标记`、`字符串缺少终止符`），
+   而错误行号指向几百行之外毫无问题的代码。
+   → 2026-09 实测：`tools/build.ps1` 原本就没有 BOM，一直靠运气跑通；给它加了几句中文注释后
+   立刻炸。判据与修法（`edit` 类工具会**丢掉** BOM）：
+   ```powershell
+   $b = [IO.File]::ReadAllBytes($p); '{0:X2} {1:X2} {2:X2}' -f $b[0],$b[1],$b[2]   # 应为 EF BB BF
+   $t = [IO.File]::ReadAllText($p, [Text.Encoding]::UTF8)                          # 按 UTF-8 读进来
+   [IO.File]::WriteAllText($p, $t, [Text.UTF8Encoding]::new($true))                # 带 BOM 写回
+   # 语法自检（不执行）：解析器报错才是真错
+   $e = $null; $null = [System.Management.Automation.Language.Parser]::ParseFile($p, [ref]$null, [ref]$e)
+   if ($e.Count) { $e | ForEach-Object { $_.Extent.StartLineNumber.ToString() + ' ' + $_.Message } } else { 'syntax OK' }
+   ```
 
 2. **提交信息里的特殊字符会被 PowerShell 解析。**
    例如 `git commit -m "... (?<!全)孔体积 ..."` 会把 `(?<!全)` 当命令执行，`commit` 失败。
@@ -225,7 +241,10 @@ WRITER_BRIEF.md             ★ 写作规范与全部已知坑，派单前必读
 
 ### P2 —— 工程收尾
 
-- `check_includes.py` **接入 `build.ps1`** 作为第七项门禁（脚本已写好，只需调用）
+- ✅ `check_includes.py` **已接入 `build.ps1`** 作为第七项门禁（2026-09 完成）。
+  它**静态**检查重复 `\input`/`\IfFileExists`，与编译无关，因此 draft 模式也拦
+  （该缺陷会让正文重复排页，而其余六项门禁全报 0）。python 或脚本不可用时该项打印
+  `skipped` 而不是静默放过。
 - `chapters/parts/` **行尾风格混用**（17 CRLF-only / 19 LF-only），建议单独一次纯格式提交
 - `ch11-b:6`、`ch11-d:8` 两处**过期头注释**
 - `fig:ch04b-pld` / `fig:ch04b-texture` 缺 `\modelmark`；`fig:ch07b-co-model` / `fig:ch07c-transient`
