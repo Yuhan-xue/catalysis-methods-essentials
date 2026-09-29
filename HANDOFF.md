@@ -69,7 +69,7 @@ python tools/vpage.py up 451 sources/pages/v451.png --dpi 500 --top 0.40 --botto
 | Python | 3.14，含 `pymupdf` / `Pillow` / `numpy` / `fontTools` |
 | Shell | **Windows PowerShell 5.1**，控制台 **GBK** |
 | 仓库 | `http://zsyq.hxlab.tech:3000/yuhanxue/catalysis-methods-essentials`（私有，`main`）|
-| 认证 | **不要把口令写进仓库**：在 Gitea 生成**受限访问令牌**，用凭据管理器或**仓库外**的 `~/.gitea-netrc`（Windows 上收紧该文件 ACL）注入，见 §8 发布流程示例。远程 URL 里**不要内嵌账户口令**；确需内嵌时必须用受限令牌，且 URL 中的 `#` 要写成 `%23`。 |
+| 认证 | **不要把口令写进仓库**：在 Gitea 生成**受限访问令牌**，用凭据管理器或**仓库外**的 `~/.netrc`（Windows 上收紧该文件 ACL；git 与 curl 都读它）注入，见 §8 发布流程示例。远程 URL 里**不要内嵌账户口令**；确需内嵌时必须用受限令牌，且 URL 中的 `#` 要写成 `%23`。 |
 
 > ⚠️ **凭据纪律（R2-W01，未关闭）**：本文件此前**含明文认证信息，已移除**；但**历史提交里仍然存在**，
 > 必须由账户管理者**轮换旧口令**、并决定是否清理历史之后，该项才能关闭（见
@@ -344,7 +344,7 @@ WRITER_BRIEF.md             ★ 写作规范与全部已知坑，派单前必读
 
 **工程类 5 项**
 
-- `R2-W01`：`HANDOFF.md` 三处明文凭据改为仓库外 `~/.gitea-netrc`（**仓库内部分已关闭**；
+- `R2-W01`：`HANDOFF.md` 三处明文凭据改为仓库外 `~/.netrc`（**仓库内部分已关闭**；
   旧口令仍留在历史提交与本机 `.git/config` 里，**须账户管理者轮换后才算关闭**）
 - `R2-W02`：README 状态快照 + draft/release 两档命令 + 八项门禁表 + 「字节哈希每次都变」的说明
 - `R2-W03`：`check_src.py` 三层结论（标注格式 / 目标页可达 / **内容人工核对本工具不判定**）
@@ -480,16 +480,19 @@ git tag vX.Y.Z-pre <提交>
 git push origin vX.Y.Z-pre
 
 # 3) 建 release（用 --data-binary 送 UTF-8 JSON 文件；body 里含中文，别用命令行拼）
-#     凭据：把 machine / 登录名 / 令牌 写进**仓库外**的 ~/.gitea-netrc，并收紧该文件权限（Windows 上设 ACL）
-#     本文用 --netrc-file 传凭据，绝不把口令写进仓库、脚本或命令行历史
-curl.exe -s --netrc-file "$HOME\.gitea-netrc" -H "Content-Type: application/json" `
+#     凭据（R2-W01）：把 machine / 登录名 / 口令写进**仓库外**的 ~/.netrc，并收紧权限（icacls /inheritance:r）。
+#     git 自己读 ~/.netrc（Windows 实测 .netrc 即可，不必用 _netrc）——所以 remote URL 里**不要**再嵌凭据：
+#       git remote set-url origin http://<主机>:3000/<组织>/<仓库>.git
+#       验证：$env:GIT_TERMINAL_PROMPT='0'; git -c credential.helper= ls-remote origin -h refs/heads/main
+#     curl 用 --netrc-file 显式指同一个文件（这是 curl 的选项，git 没有这个选项）
+curl.exe -s --netrc-file "$HOME\.netrc" -H "Content-Type: application/json" `
   --data-binary "@build/_relpayload.json" -X POST `
   "http://zsyq.hxlab.tech:3000/api/v1/repos/yuhanxue/catalysis-methods-essentials/releases"
 #    payload = {tag_name, target_commitish:"main", name, body, draft:false, prerelease:true}
 #    实测 HTTP 201；返回体里取 id（v0.6.0-pre = 41）
 
 # 4) 上传附件（PS 5.1 无 Invoke-RestMethod -Form，必须 curl.exe -F；字段名 attachment）
-curl.exe -s --netrc-file "$HOME\.gitea-netrc" -F "attachment=@release/<pdf>" `
+curl.exe -s --netrc-file "$HOME\.netrc" -F "attachment=@release/<pdf>" `
   "http://zsyq.hxlab.tech:3000/api/v1/repos/yuhanxue/catalysis-methods-essentials/releases/<id>/assets?name=<pdf>"
 #    实测 HTTP 201
 
