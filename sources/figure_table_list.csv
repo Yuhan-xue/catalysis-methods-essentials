@@ -1,40 +1,144 @@
-﻿id,chapter,part,kind,label,caption_head,source_class,source_location,editable_source,planned_width,review_status
-ch01a-表01,1,a,table,tab:physis-chemis,物理吸附与化学吸附的判据,表格（图源四类不适用）,,chapters/parts/ch01-a.tex,单栏,待逐页渲染核查
-ch01a-图01,1,a,figure,fig:iupac,IUPAC 六型物理吸附等温线。读者应看三处：低相对压力段有无拐点、中段是否陡升、 高相对压力段有无平台。实线为,示意,据 S1（上册）图 1-7，书内 p.19 / PDF p.38 改绘。,chapters/parts/ch01-a.tex,未显式设定,待逐页渲染核查
-ch01a-表02,1,a,table,tab:isotherm-read,由等温线类型可读出的信息与常见误判,表格（图源四类不适用）,,chapters/parts/ch01-a.tex,单栏,待逐页渲染核查
-ch01a-图02,1,a,figure,fig:betplot,BET 直线形式。读者应看三处：数据点是否落在 $0.05$--$0.35$ 窗口内、 是否成直线、截距是否为正,模型计算,式 eq:bet-lin,chapters/parts/ch01-a.tex,单栏 84mm,待逐页渲染核查
-ch02a-图01,2,a,figure,fig:tem-col,透射电子显微镜电子光学系统的信号链。读者应看两处：一是后焦面与像平面 是两个并存的中间产物，中间镜的物平面选谁，,示意,据 S1（上册）图 2-1、2-4、2-5， 书内 p.88、p.91—92 / PDF p.107、p.110—111,chapters/parts/ch02-a.tex,未显式设定,待逐页渲染核查
-ch02a-表01,2,a,table,tab:tem-parts,透射电镜主要部件的作用与对成像/衍射的影响,表格（图源四类不适用）,,chapters/parts/ch02-a.tex,单栏,待逐页渲染核查
-ch02a-图02,2,a,figure,fig:tem-signals,高能电子与薄样品相互作用产生的信号及其来源深度。读者应看箭头的方向： 向上（背向）的信号只能来自表面或近表面，携,示意,据 S1（上册）图 2-6， 书内 p.95 / PDF p.114 改绘。,chapters/parts/ch02-a.tex,未显式设定,待逐页渲染核查
-ch02a-表02,2,a,table,tab:extinction,几种常见晶体结构的消光规律（$F$ 为结构因子，$n$ 为整数）,表格（图源四类不适用）,,chapters/parts/ch02-a.tex,单栏,待逐页渲染核查
-ch02a-表03,2,a,table,tab:pattern-read,衍射花样的形态与可读出的样品信息,表格（图源四类不适用）,,chapters/parts/ch02-a.tex,单栏,待逐页渲染核查
-ch02a-表04,2,a,table,tab:contrast,质厚衬度、衍射衬度与相位衬度的来源与适用条件,表格（图源四类不适用）,,chapters/parts/ch02-a.tex,单栏,待逐页渲染核查
-ch02a-图03,2,a,figure,fig:read-pattern,一个用于读图练习的多晶电子衍射花样示意（含少量异常明亮的斑点）。 读者应看三处：（i）环是连续还是断续——连续环,示意,,chapters/parts/ch02-a.tex,未显式设定,待逐页渲染核查
-ch02a-表05,2,a,table,tab:ring-index,多晶环花样的指认对照（$d$ 值按第一环归一）,表格（图源四类不适用）,,chapters/parts/ch02-a.tex,单栏,待逐页渲染核查
-ch03a-表01,3,a,table,tab:ch03-three,热重法、差热分析与差示扫描量热法的对照。读者应看两行：第二行的纵轴方向约定 （DTA 与 DSC 相反，是读图时,表格（图源四类不适用）,,chapters/parts/ch03-a.tex,跨栏,待逐页渲染核查
-ch03a-图01,3,a,figure,fig:ch03-tgdsc,同一模型样品上 TG、DTG 与 DSC 曲线的对应关系。读者应看三处：①—④ 的竖虚线把同一 温度区间的三种信,模型计算,信号约定与读图规则据 S1（上册）图 3-2（书内 p.175 / PDF p.194）与图 3-7（书内 p.179 ,chapters/parts/ch03-a.tex,未显式设定,待逐页渲染核查
-ch04a-表01,4,a,table,tab:crystal-systems,七个晶系、布拉维点阵型式与特征对称元素（压缩表）,表格（图源四类不适用）,,chapters/parts/ch04-a.tex,单栏,待逐页渲染核查
-ch04a-图01,4,a,figure,fig:mono,（a）质量吸收系数随波长的变化与 K 吸收边：波长变短吸收总体下降，但在 $_K$ 处出现向上突跃。读者应看「突,示意,据 S1（上册）图 4-7、图 4-8，书内 p.236—237 / PDF p.255—256 改绘。,chapters/parts/ch04-a.tex,未显式设定,待逐页渲染核查
-ch04a-表02,4,a,table,tab:recip-simple,几种晶系的正--倒格子参数对应（素格子）,表格（图源四类不适用）,,chapters/parts/ch04-a.tex,单栏,待逐页渲染核查
-ch04a-图02,4,a,figure,fig:bragg-ewald,衍射几何的两种等价表述。（a）Bragg 构型：读者应看三件事——$$ 是 入射束与晶面之间的掠射角，晶面法线与,示意,据 S1（上册）图 4-9，书内 p.240 / PDF p.259 改绘（本图另补入 Bragg 构型以便对照）。,chapters/parts/ch04-a.tex,未显式设定,待逐页渲染核查
-ch04a-表03,4,a,table,tab:extinction,常见点阵与基元的系统消光条件（$n$ 为整数）,表格（图源四类不适用）,,chapters/parts/ch04-a.tex,单栏,待逐页渲染核查
-ch04a-图03,4,a,figure,fig:pattern-info,峰位、峰强、峰形三种信息的读法。读者应看三处标注分别指向横轴位置、纵轴高度与 峰的半高宽：峰位是三者中唯一可以做,模型计算,,chapters/parts/ch04-a.tex,未显式设定,待逐页渲染核查
-ch04a-表04,4,a,table,tab:xrd-limits,XRD 能给出什么／不能给出什么,表格（图源四类不适用）,,chapters/parts/ch04-a.tex,单栏,待逐页渲染核查
-ch05a-表01,5,a,table,tab:ch05-tpd,TPD 谱能给出什么、不能给出什么,表格（图源四类不适用）,,chapters/parts/ch05-a.tex,单栏,待逐页渲染核查
-ch05a-图01,5,a,figure,fig:ch05-tpd,TPD 谱的模型计算：峰面积标定吸附量，峰位标定动力学（Polanyi-Wigner 数值解,模型计算,据 S1 §5.3.1—5.3.3 原理自绘，书内 p.311—315 / PDF p.330—334,chapters/parts/ch05-a.tex,50mm x 2（within \onecolwidth）,已按评审 C05-02 重绘图源并核对（积分均为 1.000000）
-ch05a-表02,5,a,table,tab:ch05-redhead,由峰温换算脱附活化能的四个前提,表格（图源四类不适用）,,chapters/parts/ch05-a.tex,单栏,待逐页渲染核查
-ch06a-表01,6,a,table,tab:raman-ir,拉曼与红外光谱的互补性对照。读者应看「选律」与「样品适应性」两行：前者决定 两者给出的是不同子集的振动，后者决定,表格（图源四类不适用）,,chapters/parts/ch06-a.tex,单栏,待逐页渲染核查
-ch06a-图01,6,a,figure,fig:raman-levels,拉曼与瑞利散射的能级过程示意（含共振拉曼）。读者应看三件事：基态 $E_0$ 与振动 激发态 $E_n$ 之间相,示意,据 S1（上册）图 6-1，书内 p.349 / PDF p.368 改绘。,chapters/parts/ch06-a.tex,未显式设定,待逐页渲染核查
-ch06a-表02,6,a,table,tab:fluor-suppress,荧光抑制的四条路线及其代价。读者应看「代价与边界」一列：四条路线都不是免费的， 其中改变激发波长是首选，因为只有,表格（图源四类不适用）,,chapters/parts/ch06-a.tex,单栏,待逐页渲染核查
-ch06a-表03,6,a,table,tab:raman-parts,激光拉曼光谱仪的五个部件：作用与对谱图质量的影响。读者应看最后一列——每个部件 都不是「可选配件」，它把一条具体,表格（图源四类不适用）,,chapters/parts/ch06-a.tex,单栏,待逐页渲染核查
-ch07a-表01,7,a,table,tab:modes,七种红外测量模式的选型对照。模式选择由三件事共同决定：样品形态（能否做成 薄片、是否含水、能否压紧）、散射强弱与,表格（图源四类不适用）,,chapters/parts/ch07-a.tex,跨栏,待逐页渲染核查
-ch07a-图01,7,a,figure,fig:paths,三种常用模式中光与样品的相互作用方式对比。读者应看三处：光在样品中走的 路径（穿过体相／在颗粒间多次散射后返回／,示意,据 S1（上册）图 7-10、图 7-14、图 7-16，书内 p.428、p.432、p.433 / PDF p.44,chapters/parts/ch07-a.tex,未显式设定,待逐页渲染核查
-ch09a-图01,9,a,figure,fig:escape,表面分析信号来源与逃逸深度示意。读者应看三处：① 入射 X 射线穿透约 1000 nm，远大于 电子的逃逸深度，,示意,据 S2 图 9-16，书内 p.582 / PDF p.73 改绘。,chapters/parts/ch09-a.tex,未显式设定,待逐页渲染核查
-ch09a-图02,9,a,figure,fig:xpsspec,模型计算的 XPS 谱示意。(a) 全谱：同一含碳含氧样品在 Al K$$（实线）与 Mg K$$（虚线，为便于,模型计算,,chapters/parts/ch09-a.tex,未显式设定,待逐页渲染核查
-ch09a-表01,9,a,table,tab:xpsparts,XPS 谱仪的主要组成部件、常见形式与使用要点,表格（图源四类不适用）,,chapters/parts/ch09-a.tex,跨栏,待逐页渲染核查
-ch09c-表02,9,c,table,tab:ups-xps,UPS 与 XPS 的分工,表格（图源四类不适用）,,chapters/parts/ch09-c.tex,单栏,待逐页渲染核查
-ch09c-表03,9,c,table,tab:surface-compare,四类表面分析方法的比较。信息深度一栏决定了「表面」在此处的实际含义,表格（图源四类不适用）,,chapters/parts/ch09-c.tex,跨栏,待逐页渲染核查
-ch00--表01,0,-,table,tab:selector,研究问题到方法的选择矩阵。「首选」是能独立支撑结论的方法，「互补」用于交叉验证或补足首选方法的盲区。 引用的是本,表格（图源四类不适用）,,chapters/ch00-intro.tex,跨栏,待逐页渲染核查
-ch00--图01,0,-,figure,fig:chooseroute,方法选择路径。读者应看的是分叉的依据：先分体相/表面，再分「有序程度」或 「要元素、位点还是吸附态」。图中只给最,示意,,chapters/ch00-intro.tex,未显式设定,待逐页渲染核查
-ch13--表01,13,-,table,tab:evidence-level,证据强度分级：不同组合能支撑到什么程度,表格（图源四类不适用）,,chapters/ch13-synthesis.tex,单栏,待逐页渲染核查
-ch13--表02,13,-,table,tab:matrix,判断—方法约束矩阵。同一行里至少要有两个物理量不同的方法，结论才站得住,表格（图源四类不适用）,,chapters/ch13-synthesis.tex,跨栏,待逐页渲染核查
+﻿label,kind,number,chapter,file,line,caption_head,source_class,source_location,review_status,id,part,env,section,caption_source,class_evidence,source_macro,check_note,width
+fig:chooseroute,figure,0-1,0,chapters/ch00-intro.tex,91,方法选择路径。读者应看的是分叉的依据：先分体相/表面，再分「有序程度」或 「要元素、位点还是吸附态」。,示意,,未核对页面图像,ch00-图1,-,figure,0,源码 \caption{},图题内标记,,,
+tab:selector,table,0-1,0,chapters/ch00-intro.tex,49,研究问题到方法的选择矩阵。「首选」是能独立支撑结论的方法，「互补」用于交叉验证或补足首选方法的盲区。,未标注,,未核对页面图像,ch00-表1,-,table,0,源码 \caption{},,,,跨栏或全宽
+fig:iupac,figure,1-1,1,chapters/parts/ch01-a.tex,61,IUPAC 六型物理吸附等温线。读者应看三处：低相对压力段有无拐点、中段是否陡升、 高相对压力段有无平台。,示意,据 S1（上册）图 1-7，书内 p.19 / PDF p.38 改绘。,未核对页面图像,ch01a-图1,a,figure,1,源码 \caption{},图题内标记,figsrc,,
+tab:physis-chemis,table,1-1,1,chapters/parts/ch01-a.tex,27,物理吸附与化学吸附的判据,未标注,,未核对页面图像,ch01a-表1,a,table,1,源码 \caption{},,,,
+fig:betplot,figure,1-2,1,chapters/parts/ch01-a.tex,192,BET 直线形式。读者应看三处：数据点是否落在 $0.05$--$0.35$ 窗口内、 是否成直线、截距是否为正…,模型计算,式 eq:bet-lin 据 S1（上册）式(1-15)，书内 p.18 / PDF p.37。,未核对页面图像,ch01a-图2,a,figure,1,源码 \caption{},图题内标记,figsrc,,单栏
+tab:isotherm-read,table,1-2,1,chapters/parts/ch01-a.tex,102,由等温线类型可读出的信息与常见误判,未标注,,未核对页面图像,ch01a-表2,a,table,1,源码 \caption{},,,,
+fig:psd-model,figure,1-3,1,chapters/parts/ch01-b.tex,401,同一组等温线的两种反演结果。读者应看三处：峰的位置（BJH 用吸附支时中孔 峰在约 $3.2nm$，用脱附支时右…,模型计算,据 S1（上册）§1.2.2，书内 p.45--48 / PDF p.64--67 所述模型差异计算绘制。,未核对页面图像,ch01b-图3,b,figure,1,源码 \caption{},图题内标记,figsrc,,单栏
+tab:pore-class,table,1-3,1,chapters/parts/ch01-b.tex,441,各类孔的适用分析方法与不适用方法,未标注,,未核对页面图像,ch01b-表3,b,table,1,源码 \caption{},,,,
+fig:ch01c-equivalent,figure,1-4,1,chapters/parts/ch01-c.tex,444,同一批颗粒、三种等效口径给出的三条分布曲线。读者应看三处：峰的位置 （个数基准峰在约 $2.2µm$，同一批颗粒…,模型计算,据 S1（上册）§1.2.3 2)3)，书内 p.62--64 / PDF p.81--83 所述等效粒径与分布基准 的差异计算绘制。,未核对页面图像,ch01c-图4,c,figure,1,源码 \caption{},图题内标记,figsrc,,单栏
+tab:ch01c-methods,table,1-4,1,chapters/parts/ch01-c.tex,193,实验室常用粒度分析方法及其特点。读者应重点看第二列与第四列：第二列说明 该法给出的是哪一种等效直径、以什么为基准…,未标注,,未核对页面图像,ch01c-表4,c,longtable,1,源码 \caption{},,,,
+fig:ch01c-volume,figure,1-5,1,chapters/parts/ch01-c.tex,648,三种密度各自的分母是哪一份体积。读者应看三根条的长度：堆积体积最长 （骨架＋内孔＋颗粒间空隙），颗粒体积少了颗粒…,示意,据 S1（上册）§1.2.4，书内 p.75--76 / PDF p.94--95 的体积分解关系绘制。,未核对页面图像,ch01c-图5,c,figure,1,源码 \caption{},图题内标记,figsrc,,
+tab:ch01c-density,table,1-5,1,chapters/parts/ch01-c.tex,773,三种密度：定义、测定方法、典型值与常见误用。读者应重点看第二列与第四列： 第二列决定这个数测的是哪一种体积，第四…,未标注,,未核对页面图像,ch01c-表5,c,table,1,源码 \caption{},,,「典型值」一列为数量级参考（以 γ-氧化铝基载体与条状催化剂为例），不是原书数据； 具体数值随制备与成型工艺变化很大。,
+tab:ch01c-strength,table,1-6,1,chapters/parts/ch01-c.tex,959,四类强度测定的加载方式、结果表示与代表标准。读者应重点看第二列： 试样形状与加载方式写在方法名里，因而换一种加载…,未标注,,未核对页面图像,ch01c-表6,c,table,1,源码 \caption{},,,,
+fig:tem-col,figure,2-1,2,chapters/parts/ch02-a.tex,35,透射电子显微镜电子光学系统的信号链。读者应看两处：一是后焦面与像平面 是两个并存的中间产物，中间镜的物平面选谁，…,示意,据 S1（上册）图 2-1、2-4、2-5， 书内 p.88、p.91—92 / PDF p.107、p.110—111 改绘。,未核对页面图像,ch02a-图1,a,figure,2,源码 \caption{},图题内标记,figsrc,,
+tab:tem-parts,table,2-1,2,chapters/parts/ch02-a.tex,125,透射电镜主要部件的作用与对成像/衍射的影响,未标注,,未核对页面图像,ch02a-表1,a,table,2,源码 \caption{},,,,
+fig:tem-signals,figure,2-2,2,chapters/parts/ch02-a.tex,179,高能电子与薄样品相互作用产生的信号及其来源深度。读者应看箭头的方向： 向上（背向）的信号只能来自表面或近表面，携…,示意,据 S1（上册）图 2-6， 书内 p.95 / PDF p.114 改绘。,未核对页面图像,ch02a-图2,a,figure,2,源码 \caption{},图题内标记,figsrc,,
+tab:extinction-ch02,table,2-2,2,chapters/parts/ch02-a.tex,305,几种常见晶体结构的消光规律（$F$ 为结构因子，$n$ 为整数）,未标注,,未核对页面图像,ch02a-表2,a,table,2,源码 \caption{},,,,
+fig:read-pattern,figure,2-3,2,chapters/parts/ch02-a.tex,440,一个用于读图练习的多晶电子衍射花样示意（含少量异常明亮的斑点）。 读者应看三处：（i）环是连续还是断续——连续环…,示意,,未核对页面图像,ch02a-图3,a,figure,2,源码 \caption{},图题内标记,,,
+tab:pattern-read,table,2-3,2,chapters/parts/ch02-a.tex,361,衍射花样的形态与可读出的样品信息,未标注,,未核对页面图像,ch02a-表3,a,table,2,源码 \caption{},,,,
+fig:ch02b-stem,figure,2-4,2,chapters/parts/ch02-b.tex,91,扫描透射电子显微镜的探针光路与探测器几何（示意图）。 (a) 聚光镜把束会聚成探针，扫描线圈使探针在薄样品上逐点…,示意、据原书改绘,据 S1 2.3 图 2-18、图 2-19，书内 p.111--112 / PDF p.130--131 改绘,未核对页面图像,ch02b-图4,b,figure,2,源码 \caption{},图题内标记,figsrc,,
+tab:contrast,table,2-4,2,chapters/parts/ch02-a.tex,404,质厚衬度、衍射衬度与相位衬度的来源与适用条件,未标注,,未核对页面图像,ch02a-表4,a,table,2,源码 \caption{},,,,
+fig:ch02b-haadf-profile,figure,2-5,2,chapters/parts/ch02-b.tex,902,一张用来练习「读成分」的 HAADF 强度线扫描（示意重绘）。 横轴是沿粒子直径方向依次排列的原子列，纵轴是该原…,示意、据原书改绘,据 S1 2.6.4 图 2-35，书内 p.131 / PDF p.150；源文只给出 Pd 约 500、 Au 约 900 两个强度值与「强度与原子序数平方成正比」的说明。,未核对页面图像,ch02b-图5,b,figure,2,源码 \caption{},图题内标记,figsrc,,单栏
+tab:ring-index,table,2-5,2,chapters/parts/ch02-a.tex,499,多晶环花样的指认对照（$d$ 值按第一环归一）,未标注,,未核对页面图像,ch02a-表5,a,table,2,源码 \caption{},,,,
+fig:ch02c-pressure,figure,2-6,2,chapters/parts/ch02-c.tex,240,透射电镜可及气体压力范围与真实催化反应条件的对照（对数标度，数值为源文给出的典型值而非某一机型的保证指标）。,示意,据 S1 2.7.5，书内 p.155--157 / PDF p.174--176 重绘,未核对页面图像,ch02c-图6,c,figure,2,源码 \caption{},图题内标记,figsrc,,
+tab:ch02b-eds-eels,table,2-6,2,chapters/parts/ch02-b.tex,429,EDS 与 EELS 的分工表：同一台分析电镜上两种成分信号的能干什么、前提是什么、 会被什么搅乱,未标注,据 S1 2.4.1-- 2.4.2、 2.6.8，书内 p.113--119、p.143--146 / PDF p.132--138、p.162--165 整理；表中「最适合回答」一行为本改编本为便于方法选择 而归纳，非源文原句。,未核对页面图像,ch02b-表6,b,table,2,源码 \caption{},,figsrc,,
+tab:ch02b-bimetal,table,2-7,2,chapters/parts/ch02-b.tex,986,判断「合金还是两相混合物」的 EDS 采样对照（比值取自源文，为相对强度比）,未标注,据 S1 2.6.4，书内 p.129--130 / PDF p.148--149。源文只给出总体谱的 6.6:3.4，并对单粒子谱说明「几乎和这一值没有区别」而无具体数值， 故第二列中该行不填数字。,未核对页面图像,ch02b-表7,b,table,2,源码 \caption{},,figsrc,,
+tab:ch02b-smsi,table,2-8,2,chapters/parts/ch02-b.tex,1046,金属载体相互作用的形貌证据：用侧面成像法（高分辨像）能看到什么、能下什么结论,未标注,据 S1 2.6.5 图 2-37 及相关正文，书内 p.133--136 / PDF p.152--155 整理； 表中「必要的对照」一列是本改编本为读图纪律而归纳，非源文原句。,未核对页面图像,ch02b-表8,b,table,2,源码 \caption{},,figsrc,,
+tab:ch02c-pt,table,2-9,2,chapters/parts/ch02-c.tex,309,原位气氛反应的压力与温度边界：两种原位方案与工业反应条件的对照。读者应重点比较「压力落差」与「分析通道」两行——…,未标注,,未核对页面图像,ch02c-表9,c,table,2,源码 \caption{},,,,
+tab:ch02c-newold,table,2-10,2,chapters/parts/ch02-c.tex,366,成像与能量分辨类新技术的新旧限制对照。读者应看「引入的新限制」一列：每一项能力的代价都写在那里，而它往往就是实际…,未标注,,未核对页面图像,ch02c-表10,c,table,2,源码 \caption{},,,,
+tab:ch02c-situ,table,2-11,2,chapters/parts/ch02-c.tex,385,三维与原位类新技术的新旧限制对照。两类技术的共同点是：解除的限制写在中间一列，而新限制往往由「样品台／样品杆」这…,未标注,,未核对页面图像,ch02c-表11,c,table,2,源码 \caption{},,,,
+tab:ch02c-gaps,table,2-12,2,chapters/parts/ch02-c.tex,466,透射电镜结论的五类落差及其报告要求。读者应把右列当作投稿或内部报告前的检查清单：任何一项缺失，都要在正文中用「在…,未标注,,未核对页面图像,ch02c-表12,c,table,2,源码 \caption{},,,,
+fig:ch03-tgdsc,figure,3-1,3,chapters/parts/ch03-a.tex,280,同一模型样品上 TG、DTG 与 DSC 曲线的对应关系。读者应看三处：①—④ 的竖虚线把同一 温度区间的三种信…,模型计算,信号约定与读图规则据 S1（上册）图 3-2（书内 p.175 / PDF p.194）与图 3-7（书内 p.179 / PDF p.198）自绘。,未核对页面图像,ch03a-图1,a,figure,3,源码 \caption{},图题内标记,figsrc,,
+tab:ch03-three,table,3-1,3,chapters/parts/ch03-a.tex,38,热重法、差热分析与差示扫描量热法的对照。读者应看两行：第二行的纵轴方向约定 （DTA 与 DSC 相反，是读图时…,未标注,,未核对页面图像,ch03a-表1,a,table,3,源码 \caption{},,,,
+fig:ch03b-rate,figure,3-2,3,chapters/parts/ch03-b.tex,208,不同升温速率下 TG 与 DTG 的模型曲线（，非原书数据）。 读者应看三件事：(a) 四条 TG 曲线的两个平…,模型计算,据本章动力学讨论绘制，上册 §3.3，书内 p.181 / PDF p.200。,未核对页面图像,ch03b-图2,b,figure,3,源码 \caption{},图题内标记,figsrc,,单栏
+tab:ch03b-hyphenated,table,3-2,3,chapters/parts/ch03-b.tex,82,热分析联用技术的可获得信息与接口代价。读者应先看第 3 列： 接口的滞后与分流决定了第 2 列的信息能不能定量；,未标注,,未核对页面图像,ch03b-表2,b,table,3,源码 \caption{},,,,
+tab:ch03b-conditions,table,3-3,3,chapters/parts/ch03-b.tex,299,实验条件对曲线的三种作用：峰温、峰形、峰面积。读者应看出第 3、4 列 的规律——峰温几乎对所有条件敏感，峰面积…,未标注,,未核对页面图像,ch03b-表3,b,table,3,源码 \caption{},,,,
+fig:mono,figure,4-1,4,chapters/parts/ch04-a.tex,251,（a）质量吸收系数随波长的变化与 K 吸收边：波长变短吸收总体下降，但在 $λK$ 处出现向上突跃。,示意,据 S1（上册）图 4-7、图 4-8，书内 p.236—237 / PDF p.255—256 改绘。,未核对页面图像,ch04a-图1,a,figure,4,源码 \caption{},图题内标记,figsrc,,
+tab:crystal-systems,table,4-1,4,chapters/parts/ch04-a.tex,70,七个晶系、布拉维点阵型式与特征对称元素（压缩表）,未标注,,未核对页面图像,ch04a-表1,a,table,4,源码 \caption{},,,,
+fig:bragg-ewald,figure,4-2,4,chapters/parts/ch04-a.tex,463,衍射几何的两种等价表述。（a）Bragg 构型：读者应看三件事——$θ$ 是 入射束与晶面之间的掠射角，晶面法线…,示意,据 S1（上册）图 4-9，书内 p.240 / PDF p.259 改绘（本图另补入 Bragg 构型以便对照）。,未核对页面图像,ch04a-图2,a,figure,4,源码 \caption{},图题内标记,figsrc,,
+tab:recip-simple,table,4-2,4,chapters/parts/ch04-a.tex,343,几种晶系的正--倒格子参数对应（素格子）,未标注,,未核对页面图像,ch04a-表2,a,table,4,源码 \caption{},,,,
+fig:pattern-info,figure,4-3,4,chapters/parts/ch04-a.tex,626,峰位、峰强、峰形三种信息的读法。读者应看三处标注分别指向横轴位置、纵轴高度与 峰的半高宽：峰位是三者中唯一可以做…,模型计算、教学设定,,未核对页面图像,ch04a-图3,a,figure,4,源码 \caption{},图题内标记,,,
+tab:extinction-ch04,table,4-3,4,chapters/parts/ch04-a.tex,590,常见点阵与基元的系统消光条件（$n$ 为整数）,未标注,,未核对页面图像,ch04a-表3,a,table,4,源码 \caption{},,,,
+fig:ch04b-pld,figure,4-4,4,chapters/parts/ch04-b.tex,220,两个必须做的角度修正因子随 $2θ$ 的变化（模型计算，按式 eq:ch04b-PL 与式 eq:ch04b-D…,未标注,模型计算图，非原书插图；$PL$ 的形式与原书第 246 页 PL 因子图一致。,未核对页面图像,ch04b-图4,b,figure,4,源码 \caption{},,figsrc,,单栏
+tab:xrd-limits,table,4-4,4,chapters/parts/ch04-a.tex,676,XRD 能给出什么／不能给出什么,未标注,,未核对页面图像,ch04a-表4,a,table,4,源码 \caption{},,,,
+fig:ch04b-texture,figure,4-5,4,chapters/parts/ch04-b.tex,267,择优取向对相对强度的影响（模型计算）。看什么：同一物相、同一晶胞，只改变 晶粒取向的统计分布，相对强度就可以整体…,未标注,模型计算图，非原书插图。,未核对页面图像,ch04b-图5,b,figure,4,源码 \caption{},,figsrc,,单栏
+tab:ch04b-Qtable,table,4-5,4,chapters/parts/ch04-b.tex,43,各晶系的 $Q=1/d2$ 表达式的标准形式，以及需要确定的独立晶胞参数个数。单斜式取 $b$ 轴唯一（$β$…,未标注,,未核对页面图像,ch04b-表5,b,table,4,源码 \caption{},,,,
+fig:ch04c-profile,figure,4-6,4,chapters/parts/ch04-c.tex,104,同一半峰宽下两种宽化机制的峰形差别（模型计算）。看什么：两条曲线的半峰宽 完全相同（都取 $β=0.40°$，横…,模型计算,模型计算图，非原书插图。,未核对页面图像,ch04c-图6,c,figure,4,源码 \caption{},图题内标记,figsrc,,单栏
+tab:ch04b-multiplicity,table,4-6,4,chapters/parts/ch04-b.tex,178,常见晶系（取该晶系最高对称点群）的多重度因子 $j$。括号内为衍射指标类型。对称性 降低时表中数值按点群阶次成比…,未标注,,未核对页面图像,ch04b-表6,b,table,4,源码 \caption{},,,,
+fig:ch04c-WH,figure,4-7,4,chapters/parts/ch04-c.tex,312,用 Williamson--Hall 图分离尺寸与微应变（模型计算，按式 eq:ch04c-WH， $K=0.8…,模型计算,模型计算图，非原书插图。,未核对页面图像,ch04c-图7,c,figure,4,源码 \caption{},图题内标记,figsrc,,单栏
+tab:ch04b-extinction,table,4-7,4,chapters/parts/ch04-b.tex,424,点阵类型与微观对称元素引起的系统消光规律。表中“出现条件”是对该组衍射指标而言， 其余指标不受此条限制。,未标注,,未核对页面图像,ch04b-表7,b,table,4,源码 \caption{},,,,
+tab:ch04b-quantmethods,table,4-8,4,chapters/parts/ch04-b.tex,631,四类相定量方法的适用差别。选择方法的第一步是判断“总质量吸收系数是否随组成变化”， 第二步是判断“能否接受加入内…,未标注,,未核对页面图像,ch04b-表8,b,table,4,源码 \caption{},,,,
+tab:ch04b-FOM,table,4-9,4,chapters/parts/ch04-b.tex,896,品质因子的判据。两个因子分别从“指标化精度”和“数据完备性”两个角度衡量同一套解， 单独使用任何一个都可能误判，…,未标注,,未核对页面图像,ch04b-表9,b,table,4,源码 \caption{},,,,
+tab:ch04c-scherrer,table,4-10,4,chapters/parts/ch04-c.tex,166,Scherrer 方程给出的半峰宽与晶粒尺寸的对应（按式 eq:ch04c-scherrer 计算， $K=0.…,未标注,,未核对页面图像,ch04c-表10,c,table,4,源码 \caption{},,,,
+tab:ch04c-boundary,table,4-11,4,chapters/parts/ch04-c.tex,363,Scherrer 方程适用的条件与典型失效方式。左列是使用者的操作，右列是后果。凡是 右列的现象出现，都应先回到…,未标注,,未核对页面图像,ch04c-表11,c,table,4,源码 \caption{},,,,
+tab:ch04c-profile,table,4-12,4,chapters/parts/ch04-c.tex,509,"多晶衍射图拟合常用的峰形函数（对应原书表 4-8）。第三列为半峰宽随衍射角变化的 参数化，$U,V,W$ 与 $…",未标注,,未核对页面图像,ch04c-表12,c,table,4,源码 \caption{},,,,
+tab:ch04c-fitmethods,table,4-13,4,chapters/parts/ch04-c.tex,564,Pawley 方法与 LeBail 方法的对照。两者都只拟合``非结构''参数，因此它们是 Rietveld 精…,未标注,,未核对页面图像,ch04c-表13,c,table,4,源码 \caption{},,,,
+tab:ch04c-rfactor,table,4-14,4,chapters/parts/ch04-c.tex,628,$R$ 因子的分工与读数。四个因子必须一起看：只看 $Rwp$ 会被``压低 残差''的操作误导，只看 $Rex…,未标注,,未核对页面图像,ch04c-表14,c,table,4,源码 \caption{},,,,
+fig:ch05-tpd,figure,5-1,5,chapters/parts/ch05-a.tex,198,TPD 谱的模型计算：峰面积标定吸附量，峰位标定动力学。曲线由 Polanyi--Wigner 方程数值求解，取…,模型计算,据 S1 §5.3.1—5.3.3 原理自绘，书内 p.311—315 / PDF p.330—334；坐标表由 tools/gentpdtable.py 生成,未核对页面图像,ch05a-图1,a,figure,5,源码 \caption{},图题内标记,figsrc,,
+tab:ch05-tpd,table,5-1,5,chapters/parts/ch05-a.tex,135,TPD 谱能给出什么、不能给出什么,未标注,,未核对页面图像,ch05a-表1,a,table,5,源码 \caption{},,,,
+fig:ch05b-tpd-model,figure,5-2,5,chapters/parts/ch05-b.tex,68,再吸附与升温速率对一级 TPD 峰形的模型影响。读者应看三件事：虚线相对实线的峰温上移约 17 K， 与 eq:…,模型计算,据本书 5.4 的判读逻辑自行构造的模型计算，非原书插图,未核对页面图像,ch05b-图2,b,figure,5,源码 \caption{},图题内标记,figsrc,,单栏
+tab:ch05-redhead,table,5-2,5,chapters/parts/ch05-a.tex,723,由峰温换算脱附活化能的四个前提,未标注,,未核对页面图像,ch05a-表2,a,table,5,源码 \caption{},,,,
+tab:ch05b-tpr-shift,table,5-3,5,chapters/parts/ch05-b.tex,421,同一样品 TPR 峰温发生位移的可能原因与判别实验。读者应先做判别实验，再决定是否把峰温位移 解释为化学差异；,未标注,,未核对页面图像,ch05b-表3,b,table,5,源码 \caption{},,,,
+fig:raman-levels,figure,6-1,6,chapters/parts/ch06-a.tex,208,拉曼与瑞利散射的能级过程示意（含共振拉曼）。读者应看三件事：基态 $E0$ 与振动 激发态 $En$ 之间相差一…,示意,据 S1（上册）图 6-1，书内 p.349 / PDF p.368 改绘。,未核对页面图像,ch06a-图1,a,figure,6,源码 \caption{},图题内标记,figsrc,,
+tab:raman-ir,table,6-1,6,chapters/parts/ch06-a.tex,94,拉曼与红外光谱的互补性对照。读者应看「选律」与「样品适应性」两行：前者决定 两者给出的是不同子集的振动，后者决定…,未标注,,未核对页面图像,ch06a-表1,a,table,6,源码 \caption{},,,,
+fig:uv-fluor-model,figure,6-2,6,chapters/parts/ch06-b.tex,301,模型计算：同一物种在不同激发波长下的拉曼相对强度与荧光背底对比。读者应看 三件事：（i）荧光背底（实线）在约 3…,模型计算,机制与三条观测据 S1 §6.4.1、§6.4.6.2，书内 p.374、p.386 / PDF p.393、p.405,未核对页面图像,ch06b-图2,b,figure,6,源码 \caption{},图题内标记,figsrc,,单栏
+tab:fluor-suppress,table,6-2,6,chapters/parts/ch06-a.tex,322,荧光抑制的四条路线及其代价。读者应看「代价与边界」一列：四条路线都不是免费的， 其中改变激发波长是首选，因为只有…,未标注,,未核对页面图像,ch06a-表2,a,table,6,源码 \caption{},,,,
+fig:confocal-axial,figure,6-3,6,chapters/parts/ch06-b.tex,798,模型计算：共焦针孔对轴向（深度）响应的影响。读者应看三件事：（i）无针孔时 （虚线）离焦 $±5$µm 仍收到大…,模型计算,剖层原理据 S1 §6.4.5，书内 p.379—380 / PDF p.398—399,未核对页面图像,ch06b-图3,b,figure,6,源码 \caption{},图题内标记,figsrc,,单栏
+tab:raman-parts,table,6-3,6,chapters/parts/ch06-a.tex,366,激光拉曼光谱仪的五个部件：作用与对谱图质量的影响。读者应看最后一列——每个部件 都不是「可选配件」，它把一条具体…,未标注,,未核对页面图像,ch06a-表3,a,table,6,源码 \caption{},,,,
+fig:v2o5-hyd,figure,6-4,6,chapters/parts/ch06-c.tex,245,水合（a）与脱水（b）V2O5/SiO2 的拉曼谱带位置模型。 读者应看的不是曲线形状，而是三条对比：端基 V=…,模型计算,据 S1（上册）图 6-8， 书内 p.361 / PDF p.380 改绘。,未核对页面图像,ch06c-图4,c,figure,6,源码 \caption{},图题内标记,figsrc,,
+tab:insitu-window,table,6-4,6,chapters/parts/ch06-b.tex,111,"原位拉曼池的通光与耐环境方案（本节实例）。读者应看""代价""一列：源文本给出的每一种 方案都是用一项能力换另一项能…",未标注,,未核对页面图像,ch06b-表4,b,table,6,源码 \caption{},,,,
+tab:raman-routes,table,6-5,6,chapters/parts/ch06-b.tex,346,"三条激发波长路线的机制与代价。读者应看第三列：三条路线不是""哪个更好""，而是各自把不 同的一项当作代价付出去；",未标注,,未核对页面图像,ch06b-表5,b,table,6,源码 \caption{},,,,
+tab:mo-lines,table,6-6,6,chapters/parts/ch06-b.tex,468,三条激发线各自给出的观测与可用判断（本实例）。读者应看最后一列：每条线能回答的问题 是有限的，把三条线合起来才能…,未标注,,未核对页面图像,ch06b-表6,b,table,6,源码 \caption{},,,,
+tab:uv-apps,table,6-7,6,chapters/parts/ch06-b.tex,665,"紫外拉曼在催化中的五个落点：关键谱峰与""为什么必须用紫外""。读者应看最后一列——每个 落点都需要紫外，但需要的理…",未标注,,未核对页面图像,ch06b-表7,b,table,6,源码 \caption{},,,,
+tab:zeolite-ring,table,6-8,6,chapters/parts/ch06-c.tex,376,常规分子筛的骨架振动频率与相应环结构。读者应横向读表：同一行的几个频率是 同一骨架的不同结构单元的指纹，不是同一…,未标注,据 S1（上册）表 6-1，书内 p.364 / PDF p.383。峰位单位 cm-1。,未核对页面图像,ch06c-表8,c,table,6,源码 \caption{},,figsrc,,
+tab:pyridine,table,6-9,6,chapters/parts/ch06-c.tex,634,吡啶吸附物种的拉曼谱峰位置。读者应看两列数字的分工：左列的 1014—1016 归属 Lewis 酸位配位物种、…,未标注,据 S1（上册）表 6-3，书内 p.370—371 / PDF p.389—390。峰位单位 cm-1。 原表部分单元格在 OCR 中残缺，此处凡不能确认者记「---」，未对照原页面图像： 表 6-3 中 Mo（1.25）、Mo（7.5）、Co(3)Mo(10) 等行的 999／1014 列 在 OCR 中仅余「9 9 9」「八谧」「．」等残迹，本表以「---」表示不确定，未作猜测填充。,未核对页面图像,ch06c-表9,c,table,6,源码 \caption{},,figsrc,未对照原页面图像： 表 6-3 中 Mo（1.25）、Mo（7.5）、Co(3)Mo(10) 等行的 999／1014 列 在 OCR 中仅余「9 9 9」「八谧」「．」等残迹，本表以「---」表示不确定，未作猜测填充,
+tab:raman-bands-c,table,6-10,6,chapters/parts/ch06-c.tex,838,金属氧化物、硫化物与分子筛的拉曼谱带归属汇总。读者应重点看第四列：同一区间常 有多个候选物种，区分它们的从来不是…,未标注,,未核对页面图像,ch06c-表10,c,longtable,6,源码 \caption{},,,,
+fig:paths,figure,7-1,7,chapters/parts/ch07-a.tex,180,三种常用模式中光与样品的相互作用方式对比。读者应看三处：光在样品中走的 路径（穿过体相／在颗粒间多次散射后返回／…,示意,据 S1（上册）图 7-10、图 7-14、图 7-16，书内 p.428、p.432、p.433 / PDF p.447、 p.451、p.452 改绘。,未核对页面图像,ch07a-图1,a,figure,7,源码 \caption{},图题内标记,figsrc,,
+tab:modes,table,7-1,7,chapters/parts/ch07-a.tex,132,七种红外测量模式的选型对照。模式选择由三件事共同决定：样品形态（能否做成 薄片、是否含水、能否压紧）、散射强弱与…,未标注,,未核对页面图像,ch07a-表1,a,table,7,源码 \caption{},,,,
+fig:ch07b-co-model,figure,7-2,7,chapters/parts/ch07-b.tex,421,CO 探针谱带的模型计算：构型、电子密度与位移的关系,模型计算,峰位分界与两类位移的实测数值据原书 §7.3.2（书内 p.452—453 / PDF p.471—472）；曲线形式为本节模型设定。,未核对页面图像,ch07b-图2,b,figure,7,源码 \caption{},环境体内标记,figsrc,,
+tab:ch07b-probes,table,7-2,7,chapters/parts/ch07-b.tex,67,常用探针分子的适用范围、谱带位置与干扰,未标注,,未核对页面图像,ch07b-表2,b,table,7,源码 \caption{},,,,单栏
+fig:ch07c-transient,figure,7-3,7,chapters/parts/ch07-c.tex,432,把两条判据画成序列：吸附态的「库」与真正中间体在升温过程中的消长 （a），以及同位素置换后表面物种与气相组成的走…,未标注,判据（分解速率与总包速率的两个数量级之差、ZnO 上两者相等、 DCOOD 的同位素位移与置换后 DCOO- 回到气相）据原书 §7.6.1， 书内 p.499—501 / PDF p.518—520；曲线形式为本节模型设定。,未核对页面图像,ch07c-图3,c,figure,7,源码 \caption{},,figsrc,,单栏
+tab:ch07b-py,table,7-3,7,chapters/parts/ch07-b.tex,716,吡啶吸附物种的环变形振动归属与抽空条件,未标注,,未核对页面图像,ch07b-表3,b,table,7,源码 \caption{},,,未对照原页面图像：原书表 7-12（书内 p.475 / PDF p.494）在源 OCR 中列间错位严重——$19b$ 与 $19a$ 两列的数被拆到不同行，「$1457$」 「$1625$」「$1615$」「$1540$」等数各自所属的吸附形式无法从文本层判定； 本表只列出源文本与正文别处可相互印证的带位，其余带位与全部 最近邻配位数、峰半宽数据一律不列，须核原页 p.475 后补齐。,单栏
+tab:ch07c-probe,table,7-4,7,chapters/parts/ch07-c.tex,235,硫化态 Co--Mo/Al2O3 体系上 CO 与 NO 双探针共吸附的谱带归属与判读 （据原书图 7-83～图…,未标注,,未核对页面图像,ch07c-表4,c,table,7,源码 \caption{},,,,单栏
+tab:ch07c-criteria,table,7-5,7,chapters/parts/ch07-c.tex,399,判定「反应中间体」的四条判据、操作方式与本书实例（含反例）,未标注,,未核对页面图像,ch07c-表5,c,table,7,源码 \caption{},,,,单栏
+tab:ch07c-formate,table,7-6,7,chapters/parts/ch07-c.tex,681,Cu/ZnO 表面相关物种的红外谱带归属（据原书表 7-19、表 7-20 与 图 7-95～图 7-100 整…,未标注,,未核对页面图像,ch07c-表6,c,table,7,源码 \caption{},,,,单栏
+fig:magic-angle,figure,8-1,8,chapters/parts/ch08-a.tex,165,魔角几何：样品管绕与 $B0$ 成 $54.736°$ 的轴旋转（$β$ 自竖直的 $B0$ 量起，与水平方向成…,示意,据 S2 §8.1.2， 书内 p.530 / PDF p.22 改绘。,未核对页面图像,ch08a-图1,a,figure,8,源码 \caption{},图题内标记,figsrc,,
+tab:narrow-map,table,8-1,8,chapters/parts/ch08-a.tex,41,固体谱线增宽来源与对应窄化手段的一一对应。读者应看第三列：任何一张谱都要说清 它用了哪几种手段，未消除的那一项就…,未标注,,未核对页面图像,ch08a-表1,a,table,8,源码 \caption{},,,,
+fig:mas-compare,figure,8-2,8,chapters/parts/ch08-a.tex,390,同一组三条共振线的增宽与窄化对照（自下而上：静态粉末谱、MAS 谱、CP/MAS 谱）。,示意,据 S2 §8.1.2--§8.1.3，书内 p.529—530 / PDF p.21—22 的原理绘制。,未核对页面图像,ch08a-图2,a,figure,8,源码 \caption{},图题内标记,figsrc,,单栏
+tab:nuclei,table,8-2,8,chapters/parts/ch08-a.tex,313,分子筛骨架各核种能给出的结构信息与灵敏度难点。读者应看第三、四列：同一份骨架 结构需要多个核种互查，而每个核种都…,未标注,,未核对页面图像,ch08a-表2,a,table,8,源码 \caption{},,,,
+fig:acetone-shift,figure,8-3,8,chapters/parts/ch08-b.tex,146,吸附丙酮-2-$13$C 的羰基 $13$C 低场位移，即一条 B 酸强度刻度。读者应看两点： 纵轴自下而上酸强…,据原书改绘,据 S2 §8.3.2，书内 p.542 / PDF p.34 的数据改绘。,未核对页面图像,ch08b-图3,b,figure,8,源码 \caption{},图题内标记,figsrc,,单栏
+tab:probes,table,8-3,8,chapters/parts/ch08-b.tex,305,"酸性探针分子对照。读者用法：先按""想测什么""选行，再核对同一行的""定量前提与 主要干扰""是否满足；",未标注,据 S2 §8.3.2—§8.3.3，书内 p.542—544 / PDF p.34—36 汇总。,未核对页面图像,ch08b-表3,b,table,8,源码 \caption{},,src,,
+fig:tmp-p,figure,8-4,8,chapters/parts/ch08-b.tex,258,模型计算的吸附 TMP 的 $31$P MAS NMR 谱：两条峰位随酸强度移动。读者应看两件事： （i）每个酸…,模型计算,模型参数据 S2 §8.3.3，书内 p.543—544 / PDF p.35—36 的化学位移区间设定。,未核对页面图像,ch08b-图4,b,figure,8,源码 \caption{},图题内标记,figsrc,,单栏
+tab:c13-assign,table,8-4,8,chapters/parts/ch08-c.tex,84,13C 化学位移与积炭归属（本节实例）。读者应看两件事：不同类型的碳落在不同位移区间， 而「芳香碳区很宽」本身就…,未标注,,未核对页面图像,ch08c-表4,c,table,8,源码 \caption{},,,,
+fig:c13-coke-model,figure,8-5,8,chapters/parts/ch08-c.tex,35,模型计算的 13C MAS NMR 谱随积炭量的变化示意。读者应看两件事：右侧脂肪碳峰（10--40 ppm）相…,模型计算,参数取值参考 S2 §8.6.1，书内 p.555--556 / PDF p.47--48,未核对页面图像,ch08c-图5,c,figure,8,源码 \caption{},图题内标记,figsrc,,单栏
+tab:nuclei-coke,table,8-5,8,chapters/parts/ch08-c.tex,310,四种核在分子筛积炭研究中的分工对照。读者应把同一行的四项一起读：「测什么」决定它能回答哪个问题， 「定量前提」决…,未标注,,未核对页面图像,ch08c-表5,c,table,8,源码 \caption{},,,,跨栏或全宽
+fig:escape,figure,9-1,9,chapters/parts/ch09-a.tex,120,表面分析信号来源与逃逸深度示意。读者应看三处：① 入射 X 射线穿透约 1000 nm，远大于 电子的逃逸深度，…,示意,据 S2 图 9-16，书内 p.582 / PDF p.73 改绘。,未核对页面图像,ch09a-图1,a,figure,9,源码 \caption{},图题内标记,figsrc,,
+tab:xpsparts,table,9-1,9,chapters/parts/ch09-a.tex,389,XPS 谱仪的主要组成部件、常见形式与使用要点,未标注,据 S2 §9.2.3，书内 p.586—605 / PDF p.77—96，图 9-20—图 9-42 整理。,未核对页面图像,ch09a-表1,a,table,9,源码 \caption{},,figsrc,,跨栏或全宽
+fig:xpsspec,figure,9-2,9,chapters/parts/ch09-a.tex,273,模型计算的 XPS 谱示意。(a) 全谱：同一含碳含氧样品在 Al K$α$（实线）与 Mg K$α$（虚线，为…,模型计算,,未核对页面图像,ch09a-图2,a,figure,9,源码 \caption{},图题内标记,,,
+tab:satellite,table,9-2,9,chapters/parts/ch09-b.tex,173,四类伴峰的来源、位置与用途,未标注,,未核对页面图像,ch09b-表2,b,table,9,源码 \caption{},,,,
+fig:satellites,figure,9-3,9,chapters/parts/ch09-b.tex,97,四类伴峰在 XPS 谱上的相对位置。读者应看方向：结合能向右增大， 所以震激峰、等离子激元损失峰都出现在主峰右侧…,模型计算,各类伴峰的相对位置与判据据 S2 §9.2.6（书内 p.617—623 / PDF p.108—114）整理绘制。,未核对页面图像,ch09b-图3,b,figure,9,源码 \caption{},图题内标记,figsrc,,单栏
+tab:ups-xps,table,9-3,9,chapters/parts/ch09-c.tex,62,UPS 与 XPS 的分工,未标注,,未核对页面图像,ch09c-表3,c,table,9,源码 \caption{},,,,
+fig:ch09-bgfit,figure,9-4,9,chapters/parts/ch09-d.tex,214,模型计算：同一张谱分别用线性背景（中）与 Shirley 背景（下）扣除后的双峰分解差异。,模型计算,本图为模型计算，源文件无对应图,未核对页面图像,ch09d-图4,d,figure,9,源码 \caption{},图题内标记,figsrc,,单栏
+tab:surface-compare,table,9-4,9,chapters/parts/ch09-c.tex,197,四类表面分析方法的比较。信息深度一栏决定了「表面」在此处的实际含义,未标注,,未核对页面图像,ch09c-表4,c,table,9,源码 \caption{},,,,跨栏或全宽
+tab:ch09-bg,table,9-5,9,chapters/parts/ch09-d.tex,149,三种背景扣除方法的假设、适用范围与主要风险。选背景的依据是背景的物理形态（台阶是否明显、有无显著等离子体损失），…,未标注,,未核对页面图像,ch09d-表5,d,table,9,源码 \caption{},,,,
+tab:ch09-so,table,9-6,9,chapters/parts/ch09-d.tex,190,常用芯能级的自旋轨道分裂与强度比，以及拟合时的注意事项。强度比由简并度 $(2j+1)$ 决定，与实验值的偏差本…,未标注,书内 p.712 / PDF p.203,未核对页面图像,ch09d-表6,d,table,9,源码 \caption{},,src,,
+tab:ch09-problems,table,9-7,9,chapters/parts/ch09-d.tex,292,XPS 实验中的常见问题：症状、判据与处置。判据一栏给的是可以在谱图上直接核对的量，凡判据不成立就不要把现象写成…,未标注,,未核对页面图像,ch09d-表7,d,table,9,源码 \caption{},,,,
+fig:rds-chain,figure,10-1,10,chapters/parts/ch10-a.tex,451,速率控制步骤（RDS）判别逻辑链：吸附、表面反应、脱附分别为 RDS 时速率方程形式的 差异。,示意,据 S2（下册）§10.2.2—§10.2.3，书内 p.753—756 / PDF p.242—245 的 式(10-63)、式(10-67)、式(10-68) 讨论绘制；非原书插图（原书图 10-1 为反应器示意）。,未核对页面图像,ch10a-图1,a,figure,10,源码 \caption{},图题内标记,figsrc,,
+tab:power-vs-hyp,table,10-1,10,chapters/parts/ch10-a.tex,765,幂式与双曲线式速率方程的对照。读者应看两处：参数的含义（$mi$ 是覆盖度的函数， $Ki$ 有热力学约束）与外…,未标注,,未核对页面图像,ch10a-表1,a,table,10,源码 \caption{},,,,
+fig:arrh-bend,figure,10-2,10,chapters/parts/ch10-a.tex,653,表观活化能随温度区间变化的模型 Arrhenius 图。读者应看两处：曲线在中段发生弯曲， 两侧渐近于两条不同斜…,模型计算,模型计算，依据 S2（下册）§10.2.3 与 §10.3.4 关于参数温度系数、Arrhenius 图不呈直线的讨论，书内 p.754—756、p.766—767 / PDF p.243—245、p.255—256。,未核对页面图像,ch10a-图2,a,figure,10,源码 \caption{},图题内标记,figsrc,,单栏
+tab:ch10-modelfam,table,10-2,10,chapters/parts/ch10-b.tex,73,同一组数据上的四类候选速率方程：参数、可辨识条件与失效边界。 选取时应先看第 4 列——数据窗口是否覆盖了能把模…,未标注,,未核对页面图像,ch10b-表2,b,table,10,源码 \caption{},,,,
+fig:ch10-resid,figure,10-3,10,chapters/parts/ch10-b.tex,175,"同一组数据、两种模型的相对残差随分压的分布。读图看两件事：幂式的残差 符号成块（$+,-,-,-,-,-,-,+…",模型计算,,未核对页面图像,ch10b-图3,b,figure,10,源码 \caption{},图题内标记,,,单栏
+tab:ch10-window,table,10-3,10,chapters/parts/ch10-b.tex,146,同一套教学设定数据、同一个幂式模型，只换拟合窗口：幂式指数 $n$ 从 $0.50$ 漂到 $0.20$（变 $…,未标注,,未核对页面图像,ch10b-表3,b,table,10,源码 \caption{},,,,
+fig:ch10-extrap,figure,10-4,10,chapters/parts/ch10-b.tex,264,把两种拟合外推到数据窗口之外。读图看 $p>3$kPa（竖虚线右侧）两线如何 分道：幂式继续单调上升，L-H 越…,模型计算,,未核对页面图像,ch10b-图4,b,figure,10,源码 \caption{},图题内标记,,,单栏
+tab:ch10-resid-diag,table,10-4,10,chapters/parts/ch10-b.tex,228,残差图的形态与它提示的病因。这张表是判别阶段的检查清单：先按形态定位病因， 再决定是改模型、改权重还是去排除传递…,未标注,,未核对页面图像,ch10b-表4,b,table,10,源码 \caption{},,,,
+fig:ch10b-etaphi,figure,10-5,10,chapters/parts/ch10-b.tex,543,有效因子随 Thiele 模数的变化（一级反应，双对数坐标）。读图看三处：$φ<0.4$ 时两曲线都在 $0.9…,模型计算,,未核对页面图像,ch10b-图5,b,figure,10,源码 \caption{},图题内标记,,,单栏
+tab:ch10-diffmech,table,10-5,10,chapters/parts/ch10-b.tex,457,四种孔内扩散机制：系数、依赖关系与适用孔径。第 3 列是判据用得上的一条—— 压力依赖不同，会推出不同的表观反应…,未标注,,未核对页面图像,ch10b-表5,b,table,10,源码 \caption{},,,,
+fig:ch10-wp,figure,10-6,10,chapters/parts/ch10-b.tex,789,同一条 Weisz--Prater 判据、同一个观测速率，三种速率基准下 $Φ$ 随粒径的变化 （双对数，$Φ∝…,模型计算,,未核对页面图像,ch10b-图6,b,figure,10,源码 \caption{},图题内标记,,,单栏
+tab:ch10-criteria,table,10-6,10,chapters/parts/ch10-b.tex,870,三个判据的假设与失效条件。左列三式均用体积基准 $rv$；换成质量基准时 每式恰好乘一个 $ρp$——不是每式各…,未标注,,未核对页面图像,ch10b-表6,b,table,10,源码 \caption{},,,,
+fig:ch10-velocity,figure,10-7,10,chapters/parts/ch10-c.tex,538,模型计算：接触时间（空速）保持不变、只改变线速时，转化率随线速的变化 如何判别外扩散控制。,模型计算,据 S2 §10.5.4 图 10-20、图 10-21 的判据改绘为模型计算,未核对页面图像,ch10c-图7,c,figure,10,源码 \caption{},图题内标记,src,,单栏
+tab:ch10-reactor,table,10-7,10,chapters/parts/ch10-c.tex,134,实验室动力学反应器的选型对照。先看第三列不能测什么——反应器的用途 边界比它的优点更需要提前确认；,未标注,,未核对页面图像,ch10c-表7,c,table,10,源码 \caption{},,,,跨栏或全宽
+fig:ch10-etaphi,figure,10-8,10,chapters/parts/ch10-c.tex,580,模型计算：Weisz 模数与有效因子的关系，用于把式 eq:wp 的判据落到可读的 数值上。,模型计算,据 S2 §10.5.2 图 10-12 与 §10.5.4 式（10-131）重算,未核对页面图像,ch10c-图8,c,figure,10,源码 \caption{},图题内标记,src,,单栏
+tab:ch10-transient,table,10-8,10,chapters/parts/ch10-c.tex,959,稳态与非稳态动力学方法的时间尺度与信息分工。看第二列：方法的时间分辨率 必须快于所测过程的时间常数，否则得到的是…,未标注,,未核对页面图像,ch10c-表8,c,table,10,源码 \caption{},,,未对照原页面图像：原书只在 TAP 的能力列表中列出「程序升温脱附／反应实验」， 未给出升温速率范围；本行的分钟级时间尺度与信息表述属常规实践归纳，需回查原书或另找 出处。,跨栏或全宽
+fig:tafel,figure,11-1,11,chapters/parts/ch11-a.tex,381,Butler--Volmer 方程在高过电位极限下的 Tafel 图（模型计算，$298K$）。,模型计算,,未核对页面图像,ch11a-图1,a,figure,11,源码 \caption{},图题内标记,,,跨栏或全宽
+tab:methods,table,11-1,11,chapters/parts/ch11-a.tex,944,四类控制电势方法的测量对象与信息边界,未标注,,未核对页面图像,ch11a-表1,a,table,11,源码 \caption{},,,,
+fig:series,figure,11-2,11,chapters/parts/ch11-a.tex,525,静态电极界面的双电层与扩散层示意，以及传质与电荷转移的串联位置（示意）。 读者应看三处：紧贴电极的 IHP/OH…,示意,据 S2 （下册）§11.1.5 与原书图 11-2 改绘；书内 p.817—819，PDF p.305—307。,未核对页面图像,ch11a-图2,a,figure,11,源码 \caption{},图题内标记,figsrc,,单栏
+tab:chrono-diagnostics,table,11-2,11,chapters/parts/ch11-b.tex,199,控制电流（计时电势）实验的作图量与可求参数。读者应把这张表当作「一条 $E$–$t$ 曲线能回答哪些问题」的清单…,未标注,,未核对页面图像,ch11b-表2,b,table,11,源码 \caption{},,,,
+fig:levich-kl,figure,11-3,11,chapters/parts/ch11-b.tex,708,RDE 上的两种线性化图（模型计算）。取 $A=0.196cm2$（5 mm 圆盘）、 $c*=1.2e-6mo…,模型计算、教学设定,按 S2 §11.4.2 式（11-92）与式（11-102）计算，书内 p.849—850 / PDF p.337—338。,未核对页面图像,ch11b-图3,b,figure,11,源码 \caption{},图题内标记,figsrc,,
+tab:bulk-vs-kinetics,table,11-3,11,chapters/parts/ch11-b.tex,497,整体电解（库仑法/电重量法）与动力学方法的适用边界对照。读者应看第三列与第四列 的关系：两种方法的误差主源完全不…,未标注,,未核对页面图像,ch11b-表3,b,table,11,源码 \caption{},,,,
+fig:rrde-geometry,figure,11-4,11,chapters/parts/ch11-b.tex,873,旋转环盘电极的几何与流型（示意）。读者应看三个几何量如何定义：盘半径 $r1$、 环内半径 $r2$、环外半径…,示意,几何取自 S2 §11.4.2 对 RRDE 收集实验的论述，书内 p.853—854 / PDF p.341—342；流型按同章冯卡曼–科克伦速度分布的文字描述绘制。,未核对页面图像,ch11b-图4,b,figure,11,源码 \caption{},图题内标记,figsrc,,
+tab:eis-d-elements,table,11-4,11,chapters/parts/ch11-d.tex,210,等效电路中的常用等效元件（源文本表 11-1），以及读图时各自的成立条件。第四列是本分片 按学科标准形式补出的：…,未标注,,未核对页面图像,ch11d-表4,d,table,11,源码 \caption{},,,,单栏
+fig:eis-d-model,figure,11-5,11,chapters/parts/ch11-d.tex,488,三类等效电路的 Nyquist 图对照（模型计算）。取 $RΩ=10$ 、$Rct=100$ 、 $Cdl=0.…,模型计算、教学设定,结构取自 S2 §11.5.1 对四类电极 Nyquist 图与原书表 11-1 的论述 （书内 p.859—861 / PDF p.347—349）；具体数值为模型计算，非原书数据。,未核对页面图像,ch11d-图5,d,figure,11,源码 \caption{},图题内标记,figsrc,,
+tab:ch11c-insitu-methods,table,11-5,11,chapters/parts/ch11-c.tex,179,四类原位谱学方法的分工与边界。「关键条件」一列是使用该方法数据前必须确认的前提；「主要陷阱」一列给出最常见的误用…,未标注,据 S2 §11.6.1—§11.6.4 汇总，书内 p.867—879 / PDF p.355—367。,未核对页面图像,ch11c-表5,c,table,11,源码 \caption{},,figsrc,,单栏
+fig:stm-junction,figure,12-1,12,chapters/parts/ch12-a.tex,44,针尖-样品隧穿结与恒流模式反馈回路的原理示意。读者应看三处：电子波函数在势垒区 中的指数衰减、功函数 $Φ$ 决…,示意,据 S2（下册）图 12-1 与图 12-2，书内 p.888—890 / PDF p.374—376 改绘。,未核对页面图像,ch12a-图1,a,figure,12,源码 \caption{},图题内标记,figsrc,,
+tab:afm-modes,table,12-1,12,chapters/parts/ch12-b.tex,223,AFM 三种基本工作模式的对比,未标注,S2 §12.3.2，书内 p.914--915 / PDF p.400--401,未核对页面图像,ch12b-表1,b,table,12,源码 \caption{},,src,,
+fig:stm-modes,figure,12-2,12,chapters/parts/ch12-a.tex,212,恒高模式（a）与恒流模式（b）的原理对比。读者应看两点：针尖轨迹的高度是预设的 还是由反馈跟随表面决定的；,示意,据 S2（下册）§12.1.1 与图 12-1 （书内 p.888 / PDF p.374）重绘，两模式差异亦见同页正文。,未核对页面图像,ch12a-图2,a,figure,12,源码 \caption{},图题内标记,figsrc,,
+tab:nano-three,table,12-2,12,chapters/parts/ch12-c.tex,657,"三种纳米光谱技术的分工。读者应横着读：同一行里""测什么""决定了""分辨率由什么决定""， 也决定了""样品必须满足什么…",未标注,,未核对页面图像,ch12c-表2,c,table,12,源码 \caption{},,,"未对照原页面图像：本表为跨小节的归纳，源书并无此表；各格内容均可在正文找到出处， 但""主要假象""一列中""厚度与热学性质衬度被当作化学衬度""一条是依原理作的推论，源书未逐条给出 实验判据。",
+fig:afm-setup,figure,12-3,12,chapters/parts/ch12-b.tex,106,光束偏转法 AFM 的原理示意。读者应看三条通路：悬臂偏转改变反射光方向，光斑在 四象限探测器上的位移给出偏转量…,示意,据 S2 图 12-21（b），书内 p.913--914 / PDF p.399--400 重绘。,未核对页面图像,ch12b-图3,b,figure,12,源码 \caption{},图题内标记,figsrc,,单栏
+tab:nano-methods,table,12-3,12,chapters/parts/ch12-c.tex,700,"近场与纳米光谱方法一览。读者应重点看最后一列：每一项技术的""能不能用""都由该列的 限制决定，而不是由分辨率数字决…",未标注,,未核对页面图像,ch12c-表3,c,longtable,12,源码 \caption{},,,,
+fig:afm-forcecurve,figure,12-4,12,chapters/parts/ch12-b.tex,376,针尖--样品相互作用力随间距的变化（示意模型曲线）。读者应看三处：$d$ 大于零力点时 总力为吸引且随间距增大缓…,模型计算,据 S2 图 12-21（a），书内 p.913--914 / PDF p.399--400 改绘并简化。,未核对页面图像,ch12b-图4,b,figure,12,源码 \caption{},图题内标记,figsrc,,单栏
+fig:snom-geometry,figure,12-5,12,chapters/parts/ch12-c.tex,153,针尖—样品近场耦合与远场背底抑制的几何。读者应看三件事：① 参与相互作用的样品体积 由针尖顶端的近场增强区决定，…,示意,据 S2（下册）§12.6.1，书内 p.927—929 / PDF p.413— 415 正文改绘。,未核对页面图像,ch12c-图5,c,figure,12,源码 \caption{},图题内标记,figsrc,,单栏
+fig:nearfield-decay,figure,12-6,12,chapters/parts/ch12-c.tex,230,"为什么近场实验""必须靠近、必须解调""——一个只用于说明数量级关系的模型曲线。实线是 式 eq:nearfield…",模型计算,据 S2（下册）§12.6.1、§12.6.3，书内 p.929、p.936—937 / PDF p.415、p.422—423 的 定性描述绘制。,未核对页面图像,ch12c-图6,c,figure,12,源码 \caption{},图题内标记,figsrc,"未对照原页面图像：源书只以文字说明""近场信号随距离指数衰减""""远场背景远强于近场 信号""""通过锁相解调剔除背景""，未给出曲线与数值；本图按标准指数衰减形式构造。",单栏
+tab:evidence-level,table,12-4,13,chapters/ch13-synthesis.tex,49,证据强度分级：不同组合能支撑到什么程度,未标注,,未核对页面图像,ch13-表4,-,table,12,源码 \caption{},,,,
+tab:matrix,table,12-5,13,chapters/ch13-synthesis.tex,81,判断—方法约束矩阵。同一行里至少要有两个物理量不同的方法，结论才站得住,未标注,,未核对页面图像,ch13-表5,-,table,12,源码 \caption{},,,,跨栏或全宽
