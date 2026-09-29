@@ -1,27 +1,30 @@
-file=C:\Users\53150\Documents\deepseek-harness\default-workspace\build\chk_ch11-b.pdf  pages=11
+file=C:\Users\53150\Documents\deepseek-harness\default-workspace\build\chk_ch01-c.pdf  pages=13
 
---- bookmarks (2) ---
-  [1] 0.1 控制电流与整体电解研究方法  -> p.1
-  [1] 0.2 流体动力学方法  -> p.6
+--- bookmarks (3) ---
+  [1] 0.1 颗粒度测定  -> p.1
+  [1] 0.2 密度的三种定义与测定  -> p.8
+  [1] 0.3 催化剂机械强度的测定  -> p.11
 
 --- fonts (7) ---
-  EMBEDDED     Type0      CRFMSN+FandolSong-Regular-Identity-H
-  EMBEDDED     Type0      KLDALW+TeXGyreTermes-Bold-Identity-H
-  EMBEDDED     Type0      LDWEGP+TeXGyreTermesMath-Regular-Identity-H
-  EMBEDDED     Type0      QINSXA+FandolSong-Bold-Identity-H
-  EMBEDDED     Type0      RPFMNP+TeXGyreTermes-Regular-Identity-H
-  EMBEDDED     Type0      TFOCKM+FandolHei-Regular-Identity-H
-  EMBEDDED     Type0      VLABHM+FandolKai-Regular-Identity-H
+  EMBEDDED     Type0      BMEIJC+FandolHei-Regular-Identity-H
+  EMBEDDED     Type0      DYVVBW+TeXGyreTermes-Italic-Identity-H
+  EMBEDDED     Type0      LNOSSR+FandolSong-Regular-Identity-H
+  EMBEDDED     Type0      LTBQZK+FandolSong-Bold-Identity-H
+  EMBEDDED     Type0      MDSBNR+TeXGyreTermes-Bold-Identity-H
+  EMBEDDED     Type0      NHNVJX+TeXGyreTermesMath-Regular-Identity-H
+  EMBEDDED     Type0      NUMSDI+TeXGyreTermes-Regular-Identity-H
 
 --- per page: chars, ink%, first line ---
-  p.  1  chars= 1759  ink=  9.3%  0.1 控制电流与整体电解研究方法
-  p.  2  chars= 2057  ink= 10.5%  现代催化研究方法精要
-  p.  3  chars= 1979  ink= 11.9%  表0-1
-  p.  4  chars= 2464  ink= 15.6%  现代催化研究方法精要
-  p.  5  chars= 2198  ink= 13.4%  条件（搅拌速度、𝑡d、温度）必须在样品与标准物之间严格一致［书内p.844 / PDF p.
-  p.  6  chars= 1643  ink= 10.5%  现代催化研究方法精要
-  p.  7  chars= 2205  ink= 12.7%  ［式11-85、11-86，书内p.848 / PDF p.336］。当对流不存在时（右端第
-  p.  8  chars= 2219  ink= 12.2%  现代催化研究方法精要
-  p.  9  chars= 1920  ink=  9.7%  0
-  p. 10  chars= 2001  ink= 12.4%  现代催化研究方法精要
-  p. 11  chars= 1611  ink=  9.9%  0.2.3 超微电极
+  p.  1  chars= 1955  ink= 13.6%  补足上一节：两种不用吸附仪的孔容测法除压汞法与气体吸附法之外，还有两种直接而简便的方法可以测
+  p.  2  chars= 1723  ink= 10.1%  现代催化研究方法精要
+  p.  3  chars= 2121  ink= 11.4%  • 最频值（mode）：频率曲线最高点所对应的粒径值，也称最可几粒径。最频值与D50 只有在
+  p.  4  chars= 2190  ink= 14.3%  现代催化研究方法精要
+  p.  5  chars= 2318  ink= 15.8%  粒径相同时离心沉降的测试时间大大缩短。离心沉降速度的表达式在形式上与重力沉降式一样，只是以离
+  p.  6  chars= 2234  ink= 14.7%  现代催化研究方法精要
+  p.  7  chars= 1887  ink= 11.9%  0.5
+  p.  8  chars= 1489  ink=  9.4%  现代催化研究方法精要
+  p.  9  chars= 2006  ink= 13.8%  两式的分母不同，不可混用：p 描述的是一颗颗粒内部的开孔占颗粒体积的分数，是材料的孔
+  p. 10  chars= 1928  ink= 11.3%  现代催化研究方法精要
+  p. 11  chars= 2017  ink= 13.5%  测量与条件三个数各自的条件。（1）骨架密度：样品必须严格干燥（表面水与孔内水都会使质量偏大）
+  p. 12  chars= 2204  ink= 14.0%  现代催化研究方法精要
+  p. 13  chars= 1645  ink= 10.0%  表0-3

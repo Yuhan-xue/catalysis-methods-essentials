@@ -19,42 +19,42 @@
 
 | 分片 | 内容 | 状态 | 作者/备注 |
 |---|---|---|---|
-| ch01-a | 物理吸附、BET、比表面积 | **done** | Lead 亲写；BET 三式已用页面图像核对  [14.2 KB on disk]  [14.2 KB on disk]  [14.2 KB on disk]  [14.2 KB on disk]  [14.2 KB on disk]  [14.6 KB on disk]  [14.6 KB on disk]  [14.6 KB on disk]  [14.6 KB on disk]  [14.6 KB on disk]  [14.6 KB on disk]  [14.6 KB on disk] |
-| ch01-b | 孔容与孔尺寸分布 | **done** | —  [38.6 KB on disk]  [38.8 KB on disk]  [38.8 KB on disk]  [38.8 KB on disk]  [38.8 KB on disk]  [38.8 KB on disk]  [40.6 KB on disk]  [40.6 KB on disk]  [40.6 KB on disk]  [40.6 KB on disk] |
-| ch01-c | 颗粒度、密度、机械强度 | todo |                         |
-| ch02-a | TEM 原理、衍射与成像 | **done** | 6 页；经 Lead 修正 4 处  [44.7 KB on disk]  [44.7 KB on disk]  [44.7 KB on disk]  [44.7 KB on disk]  [44.7 KB on disk]  [45.1 KB on disk]  [45.6 KB on disk]  [45.6 KB on disk]  [47.4 KB on disk]  [47.4 KB on disk]  [47.4 KB on disk]  [47.4 KB on disk] |
-| ch02-b | STEM、分析电镜、辐射损伤、催化应用 | **done** | —  [90.8 KB on disk]  [90.8 KB on disk]  [90.8 KB on disk]  [90.8 KB on disk]  [90.8 KB on disk]  [90.8 KB on disk] |
-| ch02-c | 新型电镜（球差/三维/全息/环境 TEM）、局限 | **done** | —  [70.5 KB on disk]  [70.5 KB on disk]  [70.5 KB on disk]  [70.5 KB on disk]  [70.5 KB on disk]  [70.5 KB on disk]  [70.5 KB on disk] |
-| ch03-a | 热分析分类、TG/DTA/DSC、动力学简介 | **done** | 曾因 groupplot declare function 作用域报错，已修  [34.1 KB on disk]  [34.1 KB on disk]  [34.1 KB on disk]  [34.1 KB on disk]  [34.1 KB on disk]  [34.5 KB on disk]  [34.8 KB on disk]  [34.8 KB on disk]  [34.8 KB on disk]  [34.8 KB on disk]  [34.8 KB on disk]  [34.8 KB on disk] |
-| ch03-b | 热分析应用、联用技术、实验技巧 | **done** | —  [38.7 KB on disk]  [38.7 KB on disk]  [38.7 KB on disk]  [38.7 KB on disk]  [38.7 KB on disk]  [38.7 KB on disk]  [38.7 KB on disk] |
-| ch04-a | 晶体学基础、X 射线性质、衍射几何 | **done** | 5 页 / 11762 字 / 3 图 5 表  [43.8 KB on disk]  [43.8 KB on disk]  [43.8 KB on disk]  [43.8 KB on disk]  [44.5 KB on disk]  [44.5 KB on disk]  [44.7 KB on disk]  [44.7 KB on disk]  [44.7 KB on disk]  [44.7 KB on disk]  [44.7 KB on disk]  [44.7 KB on disk] |
-| ch04-b | 衍射、物相鉴定与定量、指标化 | **done** | —  [64.7 KB on disk]  [66.8 KB on disk]  [66.8 KB on disk]  [66.8 KB on disk]  [66.8 KB on disk]  [66.8 KB on disk]  [66.8 KB on disk] |
-| ch04-c | Scherrer、Rietveld、实例、Debye | **done** | —  [77.5 KB on disk]  [77.5 KB on disk]  [77.5 KB on disk]  [77.5 KB on disk]  [77.5 KB on disk] |
-| ch05-a | 化学吸附原理、三种等温式、TPD 理论 | **done** | —  [22.6 KB on disk]  [22.6 KB on disk]  [22.6 KB on disk]  [22.6 KB on disk]  [23.0 KB on disk]  [23.0 KB on disk]  [23.7 KB on disk]  [23.7 KB on disk]  [35.5 KB on disk]  [35.5 KB on disk]  [36.3 KB on disk]  [36.3 KB on disk] |
-| ch05-b | TPD/TPR/TPO/TPSR 应用实例 | **done** | —  [50.3 KB on disk]  [50.3 KB on disk]  [50.3 KB on disk]  [50.3 KB on disk]  [50.3 KB on disk]  [50.9 KB on disk]  [50.9 KB on disk] |
-| ch06-a | 拉曼原理、实验技术、荧光 | **done** | 图注 node 未设 text width 曾致超版心 66 pt，已修  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk] |
-| ch06-b | 拉曼催化应用、紫外拉曼、SERS、共焦 | **done** | —  [80.0 KB on disk]  [80.0 KB on disk]  [80.0 KB on disk] |
-| ch07-a | 原位红外原理与七种测量模式 | **done** | 5 页  [36.6 KB on disk]  [36.6 KB on disk]  [36.6 KB on disk]  [36.6 KB on disk]  [36.6 KB on disk]  [37.1 KB on disk]  [38.2 KB on disk]  [38.2 KB on disk]  [38.2 KB on disk]  [38.2 KB on disk]  [38.2 KB on disk]  [38.2 KB on disk] |
-| ch07-b | 探针分子、金属与氧化物催化剂表征 | **done** | —  [62.7 KB on disk]  [62.7 KB on disk]  [62.7 KB on disk]  [62.7 KB on disk] |
-| ch07-c | 硫化物催化剂、反应机理 | todo |                         |
-| ch08-a | MAS/CP-MAS、分子筛结构 | **done** | 曾派两次失败，未产出  [33.7 KB on disk]  [33.7 KB on disk]  [34.2 KB on disk]  [34.2 KB on disk]  [34.2 KB on disk]  [34.2 KB on disk]  [34.2 KB on disk]  [35.6 KB on disk]  [35.6 KB on disk]  [35.6 KB on disk]  [35.6 KB on disk] |
-| ch08-b | 酸性研究、吸附分子 | **done** | —  [47.9 KB on disk]  [48.1 KB on disk]  [48.1 KB on disk]  [48.1 KB on disk]  [48.1 KB on disk]  [48.1 KB on disk]  [48.1 KB on disk] |
-| ch08-c | 原位 MAS NMR、积炭 | **done** | —  [42.7 KB on disk]  [42.7 KB on disk]  [42.7 KB on disk]  [42.7 KB on disk]  [42.7 KB on disk]  [42.7 KB on disk]  [42.7 KB on disk] |
-| ch09-a | 表面、XPS 原理与仪器、实验方式 | **done** | 57.8 KB  [41.8 KB on disk]  [41.8 KB on disk]  [41.8 KB on disk]  [41.8 KB on disk]  [41.8 KB on disk]  [42.3 KB on disk]  [42.3 KB on disk]  [42.3 KB on disk]  [42.3 KB on disk]  [42.3 KB on disk]  [42.3 KB on disk]  [42.3 KB on disk] |
-| ch09-b | XPS 化学位移、伴峰、定量、后处理、常见问题 | **done** | —  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk] |
-| ch09-c | UPS、AES、ISS | **done** | Lead 亲写；ISS 式已用 θ=90° 极限自检  [13.4 KB on disk]  [13.4 KB on disk]  [13.4 KB on disk]  [13.4 KB on disk]  [13.4 KB on disk]  [13.7 KB on disk]  [13.7 KB on disk]  [13.7 KB on disk]  [13.7 KB on disk]  [13.7 KB on disk]  [13.7 KB on disk]  [13.7 KB on disk] |
-| ch09-d | 表面分析应用、表面分析与催化、XPS 技术进展 | **done** | —  [37.9 KB on disk]  [37.9 KB on disk]  [37.9 KB on disk]  [37.9 KB on disk]  [37.9 KB on disk]  [37.9 KB on disk]  [37.9 KB on disk] |
-| ch10-a | 动力学概念、速率方程 | **done** | —  [54.0 KB on disk]  [54.1 KB on disk]  [54.1 KB on disk]  [54.9 KB on disk]  [54.9 KB on disk]  [54.9 KB on disk]  [54.9 KB on disk]  [54.9 KB on disk]  [54.9 KB on disk]  [54.9 KB on disk]  [54.9 KB on disk] |
-| ch10-b | 模型建立与检验、传递过程 | todo |                         |
-| ch10-c | 测定方法与实验装置、非稳态动力学 | **done** | —  [70.0 KB on disk]  [70.0 KB on disk]  [70.0 KB on disk]  [76.6 KB on disk]  [76.6 KB on disk]  [76.6 KB on disk]  [76.6 KB on disk] |
-| ch11-a | 电化学原理、控制电势方法 | **done** | —  [54.2 KB on disk]  [58.5 KB on disk]  [58.5 KB on disk]  [58.5 KB on disk]  [62.3 KB on disk]  [62.3 KB on disk]  [62.3 KB on disk]  [62.3 KB on disk]  [62.3 KB on disk]  [62.3 KB on disk] |
-| ch11-b | 控制电流、整体电解、流体动力学 | **done** | —  [0.1 KB on disk]  [70.1 KB on disk] |
-| ch11-c | 阻抗、现场谱学 | **done** | —  [48.2 KB on disk]  [48.2 KB on disk] |
-| ch12-a | STM 原理与应用 | **done** | —  [49.2 KB on disk]  [40.8 KB on disk]  [39.5 KB on disk]  [39.5 KB on disk]  [39.8 KB on disk]  [40.0 KB on disk]  [40.0 KB on disk]  [40.0 KB on disk]  [40.0 KB on disk]  [40.0 KB on disk]  [40.0 KB on disk] |
-| ch12-b | AFM 原理、模型、应用 | **done** | —  [48.3 KB on disk]  [48.3 KB on disk]  [48.3 KB on disk]  [48.3 KB on disk] |
-| ch12-c | 近场光学、TERS、Nano-FTIR | **done** | —  [66.2 KB on disk]  [66.2 KB on disk] |
+| ch01-a | 物理吸附、BET、比表面积 | **done** | Lead 亲写；BET 三式已用页面图像核对  [14.2 KB on disk]  [14.2 KB on disk]  [14.2 KB on disk]  [14.2 KB on disk]  [14.2 KB on disk]  [14.6 KB on disk]  [14.6 KB on disk]  [14.6 KB on disk]  [14.6 KB on disk]  [14.6 KB on disk]  [14.6 KB on disk]  [14.6 KB on disk]  [14.6 KB on disk] |
+| ch01-b | 孔容与孔尺寸分布 | **done** | —  [38.6 KB on disk]  [38.8 KB on disk]  [38.8 KB on disk]  [38.8 KB on disk]  [38.8 KB on disk]  [38.8 KB on disk]  [40.6 KB on disk]  [40.6 KB on disk]  [40.6 KB on disk]  [40.6 KB on disk]  [41.6 KB on disk] |
+| ch01-c | 颗粒度、密度、机械强度 | **done** | —  [79.3 KB on disk] |
+| ch02-a | TEM 原理、衍射与成像 | **done** | 6 页；经 Lead 修正 4 处  [44.7 KB on disk]  [44.7 KB on disk]  [44.7 KB on disk]  [44.7 KB on disk]  [44.7 KB on disk]  [45.1 KB on disk]  [45.6 KB on disk]  [45.6 KB on disk]  [47.4 KB on disk]  [47.4 KB on disk]  [47.4 KB on disk]  [47.4 KB on disk]  [49.7 KB on disk] |
+| ch02-b | STEM、分析电镜、辐射损伤、催化应用 | **done** | —  [90.8 KB on disk]  [90.8 KB on disk]  [90.8 KB on disk]  [90.8 KB on disk]  [90.8 KB on disk]  [90.8 KB on disk]  [90.8 KB on disk] |
+| ch02-c | 新型电镜（球差/三维/全息/环境 TEM）、局限 | **done** | —  [70.5 KB on disk]  [70.5 KB on disk]  [70.5 KB on disk]  [70.5 KB on disk]  [70.5 KB on disk]  [70.5 KB on disk]  [70.5 KB on disk]  [70.5 KB on disk] |
+| ch03-a | 热分析分类、TG/DTA/DSC、动力学简介 | **done** | 曾因 groupplot declare function 作用域报错，已修  [34.1 KB on disk]  [34.1 KB on disk]  [34.1 KB on disk]  [34.1 KB on disk]  [34.1 KB on disk]  [34.5 KB on disk]  [34.8 KB on disk]  [34.8 KB on disk]  [34.8 KB on disk]  [34.8 KB on disk]  [34.8 KB on disk]  [34.8 KB on disk]  [34.8 KB on disk] |
+| ch03-b | 热分析应用、联用技术、实验技巧 | **done** | —  [38.7 KB on disk]  [38.7 KB on disk]  [38.7 KB on disk]  [38.7 KB on disk]  [38.7 KB on disk]  [38.7 KB on disk]  [38.7 KB on disk]  [38.7 KB on disk] |
+| ch04-a | 晶体学基础、X 射线性质、衍射几何 | **done** | 5 页 / 11762 字 / 3 图 5 表  [43.8 KB on disk]  [43.8 KB on disk]  [43.8 KB on disk]  [43.8 KB on disk]  [44.5 KB on disk]  [44.5 KB on disk]  [44.7 KB on disk]  [44.7 KB on disk]  [44.7 KB on disk]  [44.7 KB on disk]  [44.7 KB on disk]  [44.7 KB on disk]  [45.4 KB on disk] |
+| ch04-b | 衍射、物相鉴定与定量、指标化 | **done** | —  [64.7 KB on disk]  [66.8 KB on disk]  [66.8 KB on disk]  [66.8 KB on disk]  [66.8 KB on disk]  [66.8 KB on disk]  [66.8 KB on disk]  [66.8 KB on disk] |
+| ch04-c | Scherrer、Rietveld、实例、Debye | **done** | —  [77.5 KB on disk]  [77.5 KB on disk]  [77.5 KB on disk]  [77.5 KB on disk]  [77.5 KB on disk]  [77.5 KB on disk] |
+| ch05-a | 化学吸附原理、三种等温式、TPD 理论 | **done** | —  [22.6 KB on disk]  [22.6 KB on disk]  [22.6 KB on disk]  [22.6 KB on disk]  [23.0 KB on disk]  [23.0 KB on disk]  [23.7 KB on disk]  [23.7 KB on disk]  [35.5 KB on disk]  [35.5 KB on disk]  [36.3 KB on disk]  [36.3 KB on disk]  [36.3 KB on disk] |
+| ch05-b | TPD/TPR/TPO/TPSR 应用实例 | **done** | —  [50.3 KB on disk]  [50.3 KB on disk]  [50.3 KB on disk]  [50.3 KB on disk]  [50.3 KB on disk]  [50.9 KB on disk]  [50.9 KB on disk]  [50.9 KB on disk] |
+| ch06-a | 拉曼原理、实验技术、荧光 | **done** | 图注 node 未设 text width 曾致超版心 66 pt，已修  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk]  [29.2 KB on disk] |
+| ch06-b | 拉曼催化应用、紫外拉曼、SERS、共焦 | **done** | —  [80.0 KB on disk]  [80.0 KB on disk]  [80.0 KB on disk]  [80.0 KB on disk] |
+| ch07-a | 原位红外原理与七种测量模式 | **done** | 5 页  [36.6 KB on disk]  [36.6 KB on disk]  [36.6 KB on disk]  [36.6 KB on disk]  [36.6 KB on disk]  [37.1 KB on disk]  [38.2 KB on disk]  [38.2 KB on disk]  [38.2 KB on disk]  [38.2 KB on disk]  [38.2 KB on disk]  [38.2 KB on disk]  [38.6 KB on disk] |
+| ch07-b | 探针分子、金属与氧化物催化剂表征 | **done** | —  [62.7 KB on disk]  [62.7 KB on disk]  [62.7 KB on disk]  [62.7 KB on disk]  [63.7 KB on disk] |
+| ch07-c | 硫化物催化剂、反应机理 | **done** | —  [57.1 KB on disk] |
+| ch08-a | MAS/CP-MAS、分子筛结构 | **done** | 曾派两次失败，未产出  [33.7 KB on disk]  [33.7 KB on disk]  [34.2 KB on disk]  [34.2 KB on disk]  [34.2 KB on disk]  [34.2 KB on disk]  [34.2 KB on disk]  [35.6 KB on disk]  [35.6 KB on disk]  [35.6 KB on disk]  [35.6 KB on disk]  [35.6 KB on disk] |
+| ch08-b | 酸性研究、吸附分子 | **done** | —  [47.9 KB on disk]  [48.1 KB on disk]  [48.1 KB on disk]  [48.1 KB on disk]  [48.1 KB on disk]  [48.1 KB on disk]  [48.1 KB on disk]  [48.6 KB on disk] |
+| ch08-c | 原位 MAS NMR、积炭 | **done** | —  [42.7 KB on disk]  [42.7 KB on disk]  [42.7 KB on disk]  [42.7 KB on disk]  [42.7 KB on disk]  [42.7 KB on disk]  [42.7 KB on disk]  [42.7 KB on disk] |
+| ch09-a | 表面、XPS 原理与仪器、实验方式 | **done** | 57.8 KB  [41.8 KB on disk]  [41.8 KB on disk]  [41.8 KB on disk]  [41.8 KB on disk]  [41.8 KB on disk]  [42.3 KB on disk]  [42.3 KB on disk]  [42.3 KB on disk]  [42.3 KB on disk]  [42.3 KB on disk]  [42.3 KB on disk]  [42.3 KB on disk]  [42.3 KB on disk] |
+| ch09-b | XPS 化学位移、伴峰、定量、后处理、常见问题 | **done** | —  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk]  [12.8 KB on disk] |
+| ch09-c | UPS、AES、ISS | **done** | Lead 亲写；ISS 式已用 θ=90° 极限自检  [13.4 KB on disk]  [13.4 KB on disk]  [13.4 KB on disk]  [13.4 KB on disk]  [13.4 KB on disk]  [13.7 KB on disk]  [13.7 KB on disk]  [13.7 KB on disk]  [13.7 KB on disk]  [13.7 KB on disk]  [13.7 KB on disk]  [13.7 KB on disk]  [13.7 KB on disk] |
+| ch09-d | 表面分析应用、表面分析与催化、XPS 技术进展 | **done** | —  [37.9 KB on disk]  [37.9 KB on disk]  [37.9 KB on disk]  [37.9 KB on disk]  [37.9 KB on disk]  [37.9 KB on disk]  [37.9 KB on disk]  [37.9 KB on disk] |
+| ch10-a | 动力学概念、速率方程 | **done** | —  [54.0 KB on disk]  [54.1 KB on disk]  [54.1 KB on disk]  [54.9 KB on disk]  [54.9 KB on disk]  [54.9 KB on disk]  [54.9 KB on disk]  [54.9 KB on disk]  [54.9 KB on disk]  [54.9 KB on disk]  [54.9 KB on disk]  [54.9 KB on disk] |
+| ch10-b | 模型建立与检验、传递过程 | todo |                           |
+| ch10-c | 测定方法与实验装置、非稳态动力学 | **done** | —  [70.0 KB on disk]  [70.0 KB on disk]  [70.0 KB on disk]  [76.6 KB on disk]  [76.6 KB on disk]  [76.6 KB on disk]  [76.6 KB on disk]  [76.6 KB on disk] |
+| ch11-a | 电化学原理、控制电势方法 | **done** | —  [54.2 KB on disk]  [58.5 KB on disk]  [58.5 KB on disk]  [58.5 KB on disk]  [62.3 KB on disk]  [62.3 KB on disk]  [62.3 KB on disk]  [62.3 KB on disk]  [62.3 KB on disk]  [62.3 KB on disk]  [62.3 KB on disk] |
+| ch11-b | 控制电流、整体电解、流体动力学 | **done** | —  [0.1 KB on disk]  [70.1 KB on disk]  [70.1 KB on disk] |
+| ch11-c | 阻抗、现场谱学 | **done** | —  [48.2 KB on disk]  [48.2 KB on disk]  [48.2 KB on disk] |
+| ch12-a | STM 原理与应用 | **done** | —  [49.2 KB on disk]  [40.8 KB on disk]  [39.5 KB on disk]  [39.5 KB on disk]  [39.8 KB on disk]  [40.0 KB on disk]  [40.0 KB on disk]  [40.0 KB on disk]  [40.0 KB on disk]  [40.0 KB on disk]  [40.0 KB on disk]  [40.7 KB on disk] |
+| ch12-b | AFM 原理、模型、应用 | **done** | —  [48.3 KB on disk]  [48.3 KB on disk]  [48.3 KB on disk]  [48.3 KB on disk]  [48.3 KB on disk] |
+| ch12-c | 近场光学、TERS、Nano-FTIR | **done** | —  [66.2 KB on disk]  [66.2 KB on disk]  [66.2 KB on disk] |
 | — | ch00-intro 导读与方法选择矩阵 | **done** | Lead 亲写 |
 | — | ch13-synthesis 跨方法综合应用 | **done** | Lead 亲写 |
 | — | ch90-backmatter 缩写/符号/索引 | **done** | Lead 亲写；长表置于单栏整页 |
 
-进度：**31 / 34 个正文分片**（状态由 tools/update_ledger.py 从磁盘刷新；done = 文件存在），另有 3 个 Lead 亲写单元（导读、综合应用、后置）。
+进度：**33 / 34 个正文分片**（状态由 tools/update_ledger.py 从磁盘刷新；done = 文件存在），另有 3 个 Lead 亲写单元（导读、综合应用、后置）。
