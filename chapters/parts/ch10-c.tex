@@ -430,17 +430,31 @@ $R$ 为催化剂颗粒半径，$k_m$ 为颗粒外膜的传质系数。
 \big(\unit{m.s^{-1}}\times\unit{mol.m^{-3}}\big)$——无量纲。
 改用质量速率时本式写成 $Da=\rho r_mR/(k_mc_B)$，与上式\textbf{数值恒等}。
 \textbf{（2）内扩散（Weisz–Prater 判据）}：
+% 【量纲修正 2026-09-29】原式写作 \Phi = r\rho R^2/(D_e c_B)，并声明「r 一律指 r_v」。
+% 但 r_v 已是体积基准 mol.m^-3.s^-1，再乘 rho(kg.m^-3) 后整体量纲是 **kg.m^-3**，
+% 不是无量纲——本节自己的量纲式也得出 kg.m^-3，却写成了「无量纲」。
+% 随后又说质量基准要写成 r_m\rho^2 R^2/(...)——那是把 rho 记了两次。
+% 正确形式（与第 10 章分片 b 及评审 C10-02 一致）：
+%   体积基准 Phi = r_v R^2/(D_e c_B)        —— 无 rho
+%   质量基准 Phi = rho r_m R^2/(D_e c_B)    —— 恰好一个 rho
+% 原书印成「r rho R^2/(...)」只有在 r 取**质量基准**时才成立
+% （原书数据本身就是 mmol/(g.h)）——这就是评审指出的缺陷根源。
 \begin{equation}
-\Phi=\frac{r\rho R^{2}}{D_e c_B}
+\Phi=\frac{r_v R^{2}}{D_e c_B}
 \label{eq:wp}
 \end{equation}
-式中 $\rho$ 为催化剂颗粒密度，$D_e$ 为有效扩散系数。\textbf{量纲}：
-$\unit{mol.m^{-3}.s^{-1}}\times\unit{kg.m^{-3}}\times\unit{m^2}\big/
+式中 $r_v$ 为\textbf{体积基准}的反应速率，$D_e$ 为有效扩散系数。\textbf{量纲}：
+$\unit{mol.m^{-3}.s^{-1}}\times\unit{m^2}\big/
 \big(\unit{m^2.s^{-1}}\times\unit{mol.m^{-3}}\big)$——无量纲。
-以 $r_v$ 代入时分子上的 $\rho$ 就是颗粒密度；改用质量速率时代入
-$r=\rho r_m$，本式成为 $r_m\rho^{2}R^{2}/(D_ec_B)$，与上式\textbf{数值恒等}
-（两种写法都不是"多记一次密度"：质量速率必须再乘一次密度才能变成体积速率）。
-对等温球形颗粒，一级反应时 $\Phi<1$ 对应有效因子约 $0.95$；二级反应取 $\Phi<0.3$。
+改用\textbf{质量基准}速率 $r_m$ 时，用 $r_v=\rho r_m$ 代入，本式写成
+$\Phi=\rho r_mR^{2}/(D_ec_B)$，与上式\textbf{数值恒等}：$\rho$ 在质量基准形式里
+\textbf{只出现一次}。
+\tocheck{原书式（10-131）印为「$r\rho R^{2}/(D_ec_B)$」而无量纲式又给出
+$\unit{kg.m^{-3}}$；按上述两式对照，原书的 $r$ 应取\textbf{质量基准}
+（其数据本身即 $\unit{mmol.g^{-1}.h^{-1}}$），或原式多写了一个 $\rho$。
+本节按体积基准形式给出，与式~\eqref{eq:da} 及第 10 章分片 b 的判据统一；
+两种基准相差 $\rho_p$ 约三个数量级，用错会让临界粒径差上千倍。}
+对等温球形颗粒，一级反应时 $\Phi<1$ 对应有效因子约 $0.94$；二级反应取 $\Phi<0.3$。
 \textbf{（3）相间传热（Mears 判据）}：$\eta>0.95$ 的判据是
 \begin{equation}
 \frac{r(-\Delta H)R}{h_BT_B}<0.15\,\frac{\mathscr{R}T_B}{E}

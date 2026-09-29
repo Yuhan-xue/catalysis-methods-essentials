@@ -325,8 +325,8 @@ $0.5$—$0.9$\,\unit{kPa} 内 $R^2=0.995$。
 （Damk\"ohler 数、Weisz--Prater 数、Mears 判据）分别检验哪一个环节，它们的\textbf{前提}
 是什么、什么情况下会失效？（4）最要紧的一件事：三个判据里的速率必须是\textbf{同一种
 基准}——催化研究习惯用单位质量速率，而判据是按单位颗粒体积推出来的，差一个颗粒密度；
-本节对每一式做 SI 量纲展开，并给出把临界粒径从 $0.37$\,\unit{mm} 误判成 $13$\,\unit{mm}
-的实例。
+本节对每一式做 SI 量纲展开，并给出同一条判据因基准不同把临界粒径从 $3.65$\,\unit{mm}
+误判成 $0.105$\,\unit{mm}（相差 $35$ 倍）的实例。
 \end{probout}
 
 \subsubsection{七个步骤、耦合的后果与速率基准}
@@ -401,8 +401,11 @@ j_H=\frac{\alpha_s}{Gc_p}\,Pr^{2/3}=\frac{Nu}{Re\,Pr^{1/3}},\qquad
 Nu=\frac{\alpha_s d_p}{\lambda_f}
 \label{eq:ch10-jh}
 \end{equation}
-固定床在同一条 $Re$、$Sc$ 范围内 $j_H=1.10/(Re^{0.41}-0.15)$，于是
-$j_D/j_H=0.66$。代入热量衡算得相间温差
+固定床在同一条 $Re$、$Sc$ 范围内 $j_H=1.10/(Re^{0.41}-0.15)$，两式相除即
+$j_D/j_H=0.725/1.10=0.66$。\textbf{这里要留意}：经典的 Chilton--Colburn 类比给出
+$j_D=j_H$（比值为 $1$），因此 $0.66$ 不是普适常数，而是\textbf{固定床在
+$Re=0.8$—$2130$ 内两个经验关联式之商}；用其他床层结构或超出该 $Re$ 范围时比值要重算。
+代入热量衡算得相间温差
 \begin{equation}
 T_S-T_B=\frac{j_D}{j_H}\Bigl(\frac{Pr}{Sc}\Bigr)^{2/3}
 \frac{-\Delta H_r}{\rho c_p}\,(c_B-c_S)
@@ -573,11 +576,11 @@ $\varphi>3$ 时 $\eta\approx1/\varphi$，\textbf{内扩散严重}。因此要消
 （板），两条竖虚线为 $\varphi=0.4$ 与 $\varphi=3$。条件与局限：等温、一级不可逆反应、
 $D_e$ 为常数、球与平板两种理想几何；$\eta$ 由式~\eqref{eq:ch10-eta} 计算，属模型计算。
 \modelmark}
-\label{fig:ch10-etaphi}
+\label{fig:ch10b-etaphi}
 \end{figure}
 
 \begin{obs}
-读图~\ref{fig:ch10-etaphi}：$\varphi=0.4$ 处球形 $\eta=0.990$、平板 $\eta=0.950$；
+读图~\ref{fig:ch10b-etaphi}：$\varphi=0.4$ 处球形 $\eta=0.990$、平板 $\eta=0.950$；
 $\varphi=1$ 处两者分别为 $0.939$ 与 $0.762$；$\varphi=10$ 处分别为 $0.270$ 与 $0.100$，
 而渐近线 $3/\varphi$ 与 $1/\varphi$ 在同一点给出 $0.300$ 与 $0.100$。$\varphi$ 从 $0.4$
 增到 $10$（$25$ 倍），球形 $\eta$ 从 $0.99$ 掉到 $0.27$（$3.7$ 倍）。
@@ -751,8 +754,17 @@ $r_v=\eta k_vc_S$ 代入 $\eta\varphi^2$ 得
 \end{equation}
 式中 $D_e$ 为有效扩散系数。\textbf{量纲}：
 $\unit{mol.m^{-3}.s^{-1}}\times\unit{m^2}\big/\bigl(\unit{m^2.s^{-1}}\times
-\unit{mol.m^{-3}}\bigr)$——无量纲。对等温球形颗粒、一级反应，$\Phi<1$ 可保证
-$\eta$ 在 $0.95$ 以上；二级反应取 $\Phi<0.3$；为保险起见一般要求 $\Phi<1$。
+\unit{mol.m^{-3}}\bigr)$——无量纲。由于 $\Phi=\eta\varphi^{2}$ 把两个未知量绑在一起，
+判据本身只给 $\Phi$，\textbf{阈值必须按「容许多大的 $\eta$ 下降」来定}。对等温球形
+颗粒、一级反应，把式~\eqref{eq:ch10-eta} 的 $\eta(\varphi)$ 逐点代入可算得：
+$\Phi=0.3$ 对应 $\varphi\approx0.55$、$\eta\approx0.98$；$\Phi=1$ 对应
+$\varphi\approx1.03$、$\eta\approx0.94$。因此原书「一级反应 $\Phi<1$ 可保证有效因子
+\textbf{小于} $0.95$」的方向应为\textbf{大于}——$\Phi<1$ 保证的是 $\eta>0.94$；
+若要求 $\eta>0.95$ 需 $\Phi<0.74$，要求 $\eta>0.99$（即常用界 $\varphi<0.4$）则需
+$\Phi<0.16$。平板几何在同一个 $\Phi$ 下 $\eta$ 更低（$\Phi=1$ 时 $\eta\approx0.70$），
+所以\textbf{报阈值必须连几何与级数一起报出}；下文按惯例写「一级 $\Phi<1$、二级
+$\Phi<0.3$」，其中 $\Phi<1$ 是\textbf{不出现严重内扩散}的设计上限，不等于
+「$\eta$ 仍在 $0.95$ 以上」。
 \textbf{注意}：质量基准式里的 $\rho_p$ 就是\textbf{把质量速率换算成体积速率的那一个
 因子}，它只出现一次。
 
@@ -797,8 +809,10 @@ $\unit{mol.m^{-3}.s^{-1}}\times\unit{J.mol^{-1}}\times\unit{m}\big/
 \end{axis}
 \end{tikzpicture}
 \caption{同一条 Weisz--Prater 判据、同一个观测速率，三种速率基准下 $\Phi$ 随粒径的变化
-（双对数，$\Phi\propto d_p^{2}$）。读图看三线的相对位置：正确基准居中，两个错误基准
-分别偏离 $\rho_p=1200$ 倍；两条水平点线为阈值 $\Phi=1$（一级）与 $\Phi=0.3$（二级）。
+（双对数，$\Phi\propto d_p^{2}$）。读图看三线的相对位置：正确基准居中；「少乘 $\rho_p$」
+那条线偏低 $1/1200$（判据失效），「多乘 $\rho_p$」那条线偏高 $1199$ 倍（误判），两条
+错误线彼此相距 $1.44\times10^{6}$ 倍；两条水平点线为阈值 $\Phi=1$（设计上限）与
+$\Phi=0.3$（二级反应用；对一级反应它给出 $\eta>0.95$）。
 条件与局限：等温球形颗粒、一级反应，取
 $r_m=9$\,\unit{mmol.g^{-1}.h^{-1}}、$\rho_p=1200$\,\unit{kg.m^{-3}}、
 $D_e=1.0\times10^{-6}$\,\unit{m^2.s^{-1}}、$c_B=10$\,\unit{mol.m^{-3}}
@@ -811,7 +825,14 @@ $D_e=1.0\times10^{-6}$\,\unit{m^2.s^{-1}}、$c_B=10$\,\unit{mol.m^{-3}}
 $d_p=2.0$\,\unit{mm}，与 $\Phi=1$ 相交于 $d_p=3.65$\,\unit{mm}；「多乘 $\rho_p$」那条线
 是 $90\,d_p^{2}$，与 $\Phi=1$ 相交于 $d_p=0.105$\,\unit{mm}；「少乘 $\rho_p$」那条线是
 $6.25\times10^{-5}d_p^{2}$，在横轴到 $10$\,\unit{mm} 时 $\Phi$ 仅 $6.3\times10^{-3}$，
-始终没有触及任何阈值。三条线在任意横坐标上的比值恒为 $1200$ 与 $1/1200$。
+始终没有触及任何阈值。三条线在任意横坐标上的比值恒为 $1/1200$（少乘线/正确线）与
+$1200$（多乘线/正确线）。三条线的系数可以把量纲检查直接算出来：$r_v=\rho_pr_m
+=1200\times2.5\times10^{-3}=3.0$\,\unit{mol.m^{-3}.s^{-1}}，
+$\Phi=r_vR^{2}/(D_ec_B)$ 中 $R=d_p/2$，故
+$\Phi=r_vd_p^{2}/(4D_ec_B)=3d_p^{2}/(4\times10^{-5})=0.075\,d_p^{2}$
+（$d_p$ 以 \unit{mm} 计）；少乘线用 $r_m$ 代替 $r_v$，系数即
+$2.5\times10^{-3}/(4\times10^{-5})=6.25\times10^{-5}$；多乘线用 $r_v\rho_p$，
+系数即 $0.075\times1200=90$。
 \end{obs}
 
 \begin{infer}
