@@ -38,6 +38,20 @@
 \setmonofont{TeX Gyre Cursor}[Scale=0.94]
 \usepackage{unicode-math}
 \setmathfont{TeX Gyre Termes Math}
+% 【兼容性修正】unicode-math 默认把数学斜体拉丁字母映射到 U+1D400 区
+% （补充平面 Mathematical Alphanumeric Symbols），例如 a → U+1D44E、t → U+1D461。
+% 这类字符需要阅读器正确处理 Type0 复合字体 + 代理对；**部分中文 PDF 阅读器
+% （WPS、旧版 Foxit 等）会把它渲染成实心黑块**——本项目收到过用户报告
+% 「公式有黑块」，而编译期既无缺字告警、渲染器侧也复现不出。
+% 实测：全书 372737 个字符里有 9605 个（2.6%）属补充平面，分布在 178/198 页上，
+% 即几乎每个含公式的页面都受影响。
+% 下面两行把斜体/正体拉丁字母与数字改从文本字体（TeX Gyre Termes）的
+% **ASCII 码位**取字形，从而避开补充平面；希腊字母与数学符号仍用数学字体。
+\setmathfont{TeX Gyre Termes Italic}[range=it/{latin,Latin}]
+\setmathfont{TeX Gyre Termes}[range=up/{latin,Latin},range=sfup/{latin,Latin}]
+% 希腊字母同样处理（变量里的 α、β、θ、σ 等也走补充平面 U+1D6xx 区）。
+\setmathfont{TeX Gyre Termes Italic}[range=it/{greek,Greek}]
+\setmathfont{TeX Gyre Termes}[range=up/{greek,Greek}]
 
 % 10 pt 正文 / 12.5 pt 基线距。ctex 默认 15.6 pt（stretch 1.3）过松，
 % 按企划 §6.1 收紧；12 pt x 1.0417 = 12.5 pt。

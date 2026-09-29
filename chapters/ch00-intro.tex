@@ -91,34 +91,31 @@
 \begin{figure}[tbp]
 \centering
 \begin{tikzpicture}[
-  node distance=6mm,
+  x=1mm,y=1mm,
   box/.style={draw=accent,line width=0.5pt,rounded corners=1pt,align=center,
-              inner sep=1.8mm,font=\fontsize{8.5}{10.5}\selectfont,text width=24mm},
+              inner sep=1.4mm,font=\fontsize{8}{10}\selectfont,text width=21mm},
   dec/.style={draw=accent,line width=0.5pt,align=center,inner sep=1.5mm,
-              font=\fontsize{8.5}{10.5}\selectfont,text width=22mm,
-              shape=diamond,aspect=1.9},
-  ans/.style={align=center,font=\fontsize{8.5}{10.5}\selectfont,text width=24mm},
+              font=\fontsize{8}{10}\selectfont,text width=21mm,
+              shape=diamond,aspect=2.1},
+  ans/.style={align=center,font=\fontsize{8}{10}\selectfont,text width=21mm},
   ar/.style={-{Stealth[length=2mm]},line width=0.6pt,draw=accent}
 ]
-\node[dec] (q1) {要问的是\\体相还是表面？};
-% 【重叠修正】原来两支的叶子节点在中间几乎完全重叠：
-% q2 的右子 nmr 占 x≈-16.9…13.1 mm，q3 的左子 xps 占 x≈-13.1…16.9 mm，
-% 而两者 y 区间完全相同 —— 结果「MAS NMR / XAFS」与「XPS/AES」叠印（实测 p.5）。
-% 根因是 q2 与 q3 的间距只有约 53 mm，而每个叶子宽 30 mm，中间必然相撞。
-% 修法：把两支各向外移 13 mm，使中间让出约 79 mm；两叶子不再相交。
-\begin{scope}[xshift=-13mm]
-  \node[box,below left=8mm and 2mm of q1] (bulk) {体相结构\\晶相、晶胞、价态};
-  \node[dec,below=9mm of bulk] (q2) {有序还是\\无定形/短程？};
-  \node[box,below left=7mm and 0mm of q2] (xrd) {多晶 XRD\\\chapref{ch:04}};
-  \node[box,below right=7mm and 0mm of q2] (nmr) {MAS NMR\\XAFS\\\chapref{ch:08}};
-\end{scope}
-\begin{scope}[xshift=13mm]
-  \node[box,below right=8mm and 2mm of q1] (surf) {表面与界面\\组成、位点、吸附态};
-  \node[dec,below=9mm of surf] (q3) {元素、位点\\还是吸附态？};
-  \node[box,below left=7mm and 0mm of q3] (xps) {XPS/AES\\\chapref{ch:09}};
-  \node[box,below=7mm of q3] (ads) {化学吸附/TPD\\\chapref{ch:05}};
-  \node[box,below right=7mm and 0mm of q3] (insitu) {原位 IR/Raman\\原位 NMR\\\chapref{ch:07}\chapref{ch:06}};
-\end{scope}
+% 【重叠修正·第二轮】原来各子节点用 below left/right=<v> and <h> of <父> 定位——
+% 那定位的是**节点角点**，同一父节点的多个子节点会从父节点中心向两侧铺开而互相侵入。
+% 实测 p.6 有 4 对框重叠，最严重一对 66.9x28.4 pt（几乎完全重合）。
+% 现在全部改用**显式 (x,y) 坐标**：相邻框中心间距 28.8 mm
+% = 框宽 23.8 mm（text width 21 + 2x1.4 内边距）+ 5 mm 缝，是算出来的确定值。
+% 图幅 x 从 -67.3 到 81.7 mm = 149 mm，小于单栏版心 165 mm。
+\node[dec] (q1) at (0,0) {要问的是\\体相还是表面？};
+\node[box] (bulk) at (-41,-18) {体相结构\\晶相、晶胞、价态};
+\node[box] (surf) at (41,-18) {表面与界面\\组成、位点、吸附态};
+\node[dec] (q2) at (-41,-37) {有序还是\\无定形/短程？};
+\node[dec] (q3) at (41,-37) {元素、位点\\还是吸附态？};
+\node[box] (xrd) at (-55.4,-53) {多晶 XRD\\\chapref{ch:04}};
+\node[box] (nmr) at (-26.6,-53) {MAS NMR\\XAFS\\\chapref{ch:08}};
+\node[box] (xps) at (12.2,-53) {XPS/AES\\\chapref{ch:09}};
+\node[box] (ads) at (41,-53) {化学吸附/TPD\\\chapref{ch:05}};
+\node[box] (insitu) at (69.8,-53) {原位 IR/Raman\\原位 NMR\\\chapref{ch:07}\chapref{ch:06}};
 
 \draw[ar] (q1) -- (bulk);
 \draw[ar] (q1) -- (surf);
@@ -130,11 +127,11 @@
 \draw[ar] (q3) -- (ads);
 \draw[ar] (q3) -- (insitu);
 
-\node[ans,below=3mm of xrd] {峰位→物相\\峰宽→尺寸};
-\node[ans,below=3mm of nmr] {配位\\短程有序};
-\node[ans,below=3mm of xps] {元素\\化学态};
-\node[ans,below=3mm of ads] {位点数量\\强度};
-\node[ans,below=3mm of insitu] {中间物\\反应路径};
+\node[ans] at (-55.4,-68) {峰位$\to$物相\\峰宽$\to$尺寸};
+\node[ans] at (-26.6,-68) {配位\\短程有序};
+\node[ans] at (12.2,-68) {元素\\化学态};
+\node[ans] at (41,-68) {位点数量\\强度};
+\node[ans] at (69.8,-68) {中间物\\反应路径};
 \end{tikzpicture}
 \caption{方法选择路径。读者应看的是\textbf{分叉的依据}：先分体相/表面，再分「有序程度」或
 「要元素、位点还是吸附态」。图中只给最常用的入口，边界情况见正文各章的「互补与回查」
