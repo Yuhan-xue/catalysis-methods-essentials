@@ -77,6 +77,15 @@
 % "Missing { inserted"）。正确做法是给 U+2218 单独指定一个含该字形的数学字体。
 \setmathfont{Latin Modern Math}[range={"2218}, Scale=MatchLowercase]
 
+% 横向花括号：\underbrace 在 unicode-math 下用的是 U+23DF（BOTTOM CURLY BRACKET）
+% 及其延长件。**TeX Gyre Termes Math 没有这组字形**，于是退化成了粗横条——
+% 实测描边宽度 **4.48 pt**（正常花括号约 0.4—0.8 pt），并断成四段、中间有缺口。
+% 后果：式(1-8) 的 \underbrace 处出现两条 4.5 pt 粗的黑条，用户报告为「公式有黑块」，
+% 且此前一直查不到——文字层完全正常（(1)(2) 是普通 ASCII，字体已嵌入），
+% **缺陷只在矢量描边里**，靠查字符/字体永远查不出来。
+% 从 Latin Modern Math 补这组字形。
+\setmathfont{Latin Modern Math}[range={"23DE-"23DF}, Scale=MatchLowercase]
+
 % ---------------------------------------------------------------
 % 3  数学、量纲与化学式（企划 §6.4）
 % ---------------------------------------------------------------
