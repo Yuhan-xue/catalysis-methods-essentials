@@ -1,6 +1,6 @@
 # 交接文档 · 《现代催化研究方法精要》
 
-> 最后更新：2026-09-30（R2 第二轮评审修复后）
+> 最后更新：2026-09-30（R3 第三轮评审修复后）
 > 上一轮负责人上下文已耗尽，本文用于**新会话无缝接手**。
 
 ---
@@ -10,9 +10,9 @@
 | 项 | 值 |
 |---|---|
 | 成品 | 《现代催化研究方法精要：原理、读图与方法选择》 |
-| 页数 | **313**（R2 修复后；P0 收口时 310、基线 `feb8739` 实测 309。中途曾因 `\samepage` 惩罚参数泄漏涨到 345 页，见 §6 方法类教训）|
+| 页数 | **315**（R3 修复后；R2 修复后 313、P0 收口时 310、基线 `feb8739` 实测 309。R3 的 +2 页来自后置索引重排（三张长表各自回到自己的小节之后）。中途曾因 `\samepage` 惩罚参数泄漏涨到 345 页，见 §6 方法类教训）|
 | 分片 | **37**（`chapters/parts/`）|
-| 最新提交 | `ddc8f1a`（**R2 第二轮评审修复**，22 文件 1890+/444−；逐项验收见 `reviews/2026-09-30-round2/VERIFICATION.md`）。其后的 `c3225a3`（报告入库）、`cc8f73b`（凭据写法订正）及本文件自身的后续编辑都是 docs 提交，**不含 PDF 输入改动**。再往前：`58b0440`、`b9bdf73`、`5109139`、`9e197cd`、`175a8d8`、`78f1c22`、`2325bbf` |
+| 最新提交 | 第三轮评审修复（**本次提交**，10 项收口；逐项验收见 `reviews/2026-09-30-round3/CLOSURE.md`）。其前的 `b17b1e9`（评审目录入库）、`8df5e1e`（v0.6.1-pre 发布记录）、`cc8f73b`（凭据写法订正）、`c3225a3`（R2 报告入库）都是 docs 提交；**PDF 输入的上一次修复是** `ddc8f1a`（**R2 第二轮**，22 文件 1890+/444−；逐项验收见 `reviews/2026-09-30-round2/VERIFICATION.md`）。再往前：`58b0440`、`b9bdf73`、`5109139`、`9e197cd`、`175a8d8`、`78f1c22`、`2325bbf` |
 | 线上 pre | **v0.6.1-pre**（release id=42，tag `v0.6.1-pre` @ `cc8f73b`；附件 3987451 B，SHA-256 `27B726B2B41671A91151E03492B92F979ED5090FA3A66AD9C9985636FE50FF4E`；`/releases/download/v0.6.1-pre/…` 与 `/attachments/<uuid>` 两条公开地址均已回验 200 + 字节一致）|
 | 上一版 pre | v0.6.0-pre（release id=41，tag `v0.6.0-pre` @ `5109139`；附件 3970716 B，SHA-256 `C0FDD52B6B7A6740FFA3AFD125342DEE558D0C51907C5CEE67F3B4FE2EF40B08`，公开下载已回验字节一致）|
 | 构建门禁 | errors / overfull>5pt / missing glyphs / undefined refs / dup labels / **dup includes** / **overlap** —— 全 0；`-Release` 下静态检查**没跑成（unavailable）判失败**（见 §2、§5 P2）|
@@ -363,6 +363,47 @@ WRITER_BRIEF.md             ★ 写作规范与全部已知坑，派单前必读
    **release PASS 只说明标注格式与页号自洽，不代表内容正确**
 3. 重叠门禁默认只拦图形相撞（本书 `blocking=0 candidates=99`）；要把文字压文字也纳入阻断，
    须显式 `--block-text`——评审明确要求不得按候选总数一刀切
+
+---
+
+### R3 第三轮评审（2026-09-30）：10 项 → 全部候选完成
+
+评审材料在 `reviews/2026-09-30-round3/`（`README.md` / `TODO.md` / `01`–`03` / `findings.json` /
+`pdf-audit.json` / `verification.json` / `recheck_review.py` / `evidence/`）。
+**逐项结论、接受条件对照、复现命令与残余风险见 `reviews/2026-09-30-round3/CLOSURE.md`**；
+`verification.json` 与 `recheck_review.py` 的数值是**评审当时的基线反例**，改公式后必须回头核对实际图源与图注。
+
+- 两项 P1 都在图 11-5（`chapters/parts/ch11-d.tex`）：CPE 幂次 `(ω·100·Q)^n` → `100·Q·ω^n`、
+  相位角由弧度改「度」（pgfmath 三角函数吃度）；Warburg 支路补回 C_dl 并联并改成归一化导纳形式。
+  六频点坐标与独立模型脚本逐位一致；`tools/fig_probe_eis.py` 从「CPE 弧被压成 1.18 pt 的直线、
+  方标记孤立 23.61 pt、3 处文字压线」变为全绿（弧外接框 105.84×70.33 pt，比值 0.6645 vs 模型 0.6656）。
+- `chapters/parts/ch06-a.tex`：拉曼功率式改 `P_sc=E_0(dσ/dΩ)ΔΩsin²θ`、`E_0=P_0/A_beam`，
+  补四条缩放对照与 SI 单位。**注意：这个式子上轮 R2-C09 已改过一次，改完仍量纲不平——
+  同一处被两轮评审判到两次，教训是改式先验量纲，别只改叙述。**
+- `chapters/parts/ch03-b.tex`：TG/DTG 由 logistic 形状示意改为一级速率方程积分
+  （E=180 kJ/mol、单一 A、T0=300 K），删掉「峰温＝半转化温度」；峰温 659.6/673.0/686.9/701.4 K。
+- 后置索引（`chapters/ch90-backmatter.tex`）重排为「小节标题 → 说明 → 对应长表」：书签从
+  「三节全停在 p.309」变为缩写 309 / 主要符号 312 / 术语索引 313；缩写表拆「主定义位置」+
+  「本书应用／交叉提及」两列，FTIR 改指第 7 章，EXAFS/XAFS/XAS 标「本书未系统介绍」。
+- 工具三项（`tools/check_src.py`、`tools/pdf_probe.py` + 新增 `tools/pdf_required_bookmarks.txt`）：
+  表格清点改按环境登记（无 label / 非 `tab:` 前缀 / 台账缺项 / 重复标签四类反例都退出非零）、
+  只认带「页面+核验者+时间+结论」四类证据的「已核对」、PDF 检查在没有检查对象时报 UNUSABLE——
+  **`tools/pdf_probe.py` 新增退出码 2，将来接进 `tools/build.ps1` 必须判 `!= 0`，不能判 `== 1`**。
+- `tools/build_figlist.py` 已同步台账（143 条 = 图 58 / 表 85）。
+
+**R3 留给下一位的注意事项**
+
+1. **本会话的模型没有视觉能力**（`read_image` 只返回尺寸与 sha256），`TODO.md:33` 的
+   「最终 PDF 放大查看」**没有做**。已用矢量层 / 文字层 / 书签三类探针替代，但观感复核
+   （图 11-5 两条弧的读图观感、后置三张长表的断页位置与字号）仍需有视觉的人打开 `build/main.pdf`。
+2. `build/` 被 `.gitignore` 忽略：`build/r3/` 下的四份详细回执与全部探针输出只在原机；
+   受跟踪的只有 `reviews/2026-09-30-round3/CLOSURE.md` 与 `tools/` 的改动。
+3. 新发现、本轮**只报不改**：`chapters/ch00-intro.tex:69` 与 `:115` 把 XAFS 归到第 6 章（拉曼），
+   与 R3-U03 的新口径冲突（该文件不在本轮写入范围）。
+4. 台账 `review_status` **不接硬门禁**：全书 85 张表的第③层（内容人工核对）仍是「未核对页面图像」，
+   接成硬门禁会让现网从 exit 0 变 exit 1——那是人工读图任务，不是代码任务。
+5. 本轮 `overlap gate` 报 `blocking=0 candidates=91`（R2 时为 99）：候选总数随内容波动，不是指标，
+   评审也明确要求不得按候选数一刀切。
 
 ---
 

@@ -13,14 +13,78 @@
 
 \chapterheadstar{符号、缩写与索引}{缩写与英文全称（保留英文学术检索入口）、
 按领域分组的主要符号、以及术语主定义的位置索引。符号在不同章可能含义不同，
-各章局部重新定义，本表标注其主定义所在章。}
+各章局部重新定义，本表标注其主定义位置。}
 
 \subsection{缩写与英文全称}
 
-缩写表按字母序排列，给出英文全称、中文名与主定义章。使用本表时请注意两点：
+缩写表按字母序排列，给出英文全称、中文名，并把「主定义位置」与「本书应用／交叉提及」分成两列：前者是查定义的入口，后者列出该缩写的字母串在本书其他章出现的位置（大小写敏感，不把 \ce{FTIR} 里的 IR 计作 IR）。本稿没有系统介绍过的方法，前者直接写「本书未系统介绍」。使用本表时请注意两点：
 其一，同一缩写在源书中可能被 OCR 识别成不同写法（例如 DRIFT 曾被识别为 D班FT、
 TPSR 曾作 即SR／冲SR），本书统一按正文标题确认的写法；其二，\textbf{英文全称保留是为了
 学术检索}，中文名以本书用法为准，与源书译名不完全一致时以源书为准。
+
+{\srcsize
+\begin{xltabular}{\textwidth}{@{}p{18mm}p{60mm}X p{26mm}p{34mm}@{}}
+\toprule
+缩写 & 英文全称 & 中文名 & 主定义位置 & 本书应用／交叉提及 \\
+\midrule
+\endfirsthead
+\toprule
+缩写 & 英文全称 & 中文名 & 主定义位置 & 本书应用／交叉提及 \\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+AES & Auger Electron Spectroscopy & 俄歇电子能谱 & \chapref{ch:09} & \chapref{ch:11}、导读 \\
+AFM & Atomic Force Microscopy & 原子力显微镜 & \chapref{ch:12} & \chapref{ch:02}、\chapref{ch:09}、\hyperref[ch:13-synthesis]{跨方法综合应用}、导读 \\
+ATR & Attenuated Total Reflection & 衰减全反射 & \chapref{ch:07} & — \\
+BET & Brunauer--Emmett--Teller (method) & BET 法（比表面积） & \chapref{ch:01} & \chapref{ch:04}、\chapref{ch:05}、\chapref{ch:10}、导读 \\
+BJH & Barrett--Joyner--Halenda (method) & BJH 法（孔径分布） & \chapref{ch:01} & — \\
+CP/MAS & Cross Polarization / Magic Angle Spinning & 交叉极化／魔角旋转 & \chapref{ch:08} & \hyperref[ch:13-synthesis]{跨方法综合应用}、导读 \\
+DFT & Density Functional Theory & 密度泛函理论 & \chapref{ch:01} & \chapref{ch:02}、\chapref{ch:12} \\
+DRIFT & Diffuse Reflectance Infrared Fourier Transform (spectroscopy) & 漫反射红外傅里叶变换光谱 & \chapref{ch:07} & — \\
+DSC & Differential Scanning Calorimetry & 差示扫描量热法 & \chapref{ch:03} & 导读 \\
+DTA & Differential Thermal Analysis & 差热分析 & \chapref{ch:03} & 导读 \\
+EDS/EDX & Energy-Dispersive X-ray Spectroscopy & X 射线能谱 & \chapref{ch:02} & \chapref{ch:03}、\chapref{ch:06}、\chapref{ch:09} \\
+EELS & Electron Energy Loss Spectroscopy & 电子能量损失谱 & \chapref{ch:02} & — \\
+EXAFS & Extended X-ray Absorption Fine Structure & 扩展 X 射线吸收精细结构 & 本书未系统介绍 & \chapref{ch:02}、\chapref{ch:04}、\chapref{ch:09}、\chapref{ch:12} \\
+FTIR & Fourier Transform Infrared (spectroscopy) & 傅里叶变换红外光谱 & \chapref{ch:07} & \chapref{ch:03}、\chapref{ch:10}、\chapref{ch:12} \\
+HDS & Hydrodesulfurization & 加氢脱硫 & \chapref{ch:07} & — \\
+IMFP & Inelastic Mean Free Path & 非弹性平均自由程 & \chapref{ch:09} & — \\
+IR & Infrared (spectroscopy) & 红外（光谱） & \chapref{ch:07} & \chapref{ch:09}、\chapref{ch:10}、\chapref{ch:11}、\chapref{ch:12} 等 \\
+ISS & Ion Scattering Spectroscopy & 离子散射谱 & \chapref{ch:09} & \chapref{ch:06}、导读 \\
+IUPAC & International Union of Pure and Applied Chemistry & 国际纯粹与应用化学联合会 & \chapref{ch:01} & — \\
+L-H & Langmuir--Hinshelwood (mechanism) & 朗缪尔--欣谢尔伍德机理 & \chapref{ch:10} & — \\
+MARI & Most Abundant Reaction Intermediate & 最丰富反应中间物 & \chapref{ch:10} & — \\
+MAS & Magic Angle Spinning & 魔角旋转 & \chapref{ch:08} & \hyperref[ch:13-synthesis]{跨方法综合应用}、导读 \\
+MS & Mass Spectrometry & 质谱 & \chapref{ch:03} & \chapref{ch:10} \\
+Nano-FTIR & nanoscale Fourier Transform Infrared spectroscopy & 纳米傅里叶变换红外光谱 & \chapref{ch:12} & \chapref{ch:07}、\hyperref[ch:13-synthesis]{跨方法综合应用}、导读 \\
+NLDFT & Non-Local Density Functional Theory & 非局域密度泛函理论 & \chapref{ch:01} & — \\
+NMR & Nuclear Magnetic Resonance & 核磁共振 & \chapref{ch:08} & \chapref{ch:09}、\chapref{ch:10}、\hyperref[ch:13-synthesis]{跨方法综合应用}、导读 \\
+operando & working-state in situ spectroscopy & 工作状态下原位（光谱）技术 & \chapref{ch:07} & \chapref{ch:12} \\
+RDS & Rate-Determining Step & 速率控制步骤 & \chapref{ch:10} & — \\
+Rietveld & Rietveld full-pattern refinement & 里特维尔德全谱拟合精修 & \chapref{ch:04} & — \\
+Scherrer & Scherrer equation & 谢乐方程（峰宽与晶粒尺寸） & \chapref{ch:04} & \chapref{ch:01}、\hyperref[ch:13-synthesis]{跨方法综合应用} \\
+SSITKA & Steady-State Isotopic Transient Kinetic Analysis & 稳态同位素瞬变动力学分析 & \chapref{ch:10} & \chapref{ch:07}、\hyperref[ch:13-synthesis]{跨方法综合应用}、导读 \\
+STEM & Scanning Transmission Electron Microscopy & 扫描透射电子显微镜 & \chapref{ch:02} & \hyperref[ch:13-synthesis]{跨方法综合应用} \\
+STM & Scanning Tunneling Microscopy & 扫描隧道显微镜 & \chapref{ch:12} & \chapref{ch:02}、\chapref{ch:09}、\hyperref[ch:13-synthesis]{跨方法综合应用}、导读 \\
+TAP & Temporal Analysis of Products & 产物瞬时分析 & \chapref{ch:10} & \hyperref[ch:13-synthesis]{跨方法综合应用}、导读 \\
+TEM & Transmission Electron Microscopy & 透射电子显微镜 & \chapref{ch:02} & \chapref{ch:01}、\chapref{ch:04}、\chapref{ch:09}、\hyperref[ch:13-synthesis]{跨方法综合应用} \\
+TERS & Tip-Enhanced Raman Spectroscopy & 针尖增强拉曼光谱 & \chapref{ch:12} & \hyperref[ch:13-synthesis]{跨方法综合应用}、导读 \\
+TG & Thermogravimetry & 热重法 & \chapref{ch:03} & \hyperref[ch:13-synthesis]{跨方法综合应用}、导读 \\
+TOF & Turnover Frequency & 转换频率 & \chapref{ch:10} & \chapref{ch:05}、\hyperref[ch:13-synthesis]{跨方法综合应用} \\
+TON & Turnover Number & 转换数 & \chapref{ch:10} & — \\
+TPD & Temperature-Programmed Desorption & 程序升温脱附 & \chapref{ch:05} & \chapref{ch:02}、\chapref{ch:07}、\hyperref[ch:13-synthesis]{跨方法综合应用}、导读 \\
+TPO & Temperature-Programmed Oxidation & 程序升温氧化 & \chapref{ch:05} & \hyperref[ch:13-synthesis]{跨方法综合应用}、导读 \\
+TPR & Temperature-Programmed Reduction & 程序升温还原 & \chapref{ch:05} & \chapref{ch:02} \\
+TPSR & Temperature-Programmed Surface Reaction & 程序升温表面反应 & \chapref{ch:05} & \chapref{ch:07}、\chapref{ch:10} \\
+UPS & Ultraviolet Photoelectron Spectroscopy & 紫外光电子能谱 & \chapref{ch:09} & \chapref{ch:12}、导读 \\
+XAFS & X-ray Absorption Fine Structure (spectroscopy) & X 射线吸收精细结构谱 & 本书未系统介绍 & \hyperref[ch:13-synthesis]{跨方法综合应用}、导读 \\
+XAS & X-ray Absorption Spectroscopy & X 射线吸收光谱 & 本书未系统介绍 & \hyperref[ch:13-synthesis]{跨方法综合应用} \\
+XPS & X-ray Photoelectron Spectroscopy & X 射线光电子能谱 & \chapref{ch:09} & \chapref{ch:02}、\chapref{ch:06}、\chapref{ch:07}、\chapref{ch:11} 等 \\
+XRD & X-ray Diffraction & X 射线衍射 & \chapref{ch:04} & \chapref{ch:01}、\chapref{ch:02}、\chapref{ch:03}、\chapref{ch:05} 等 \\
+\end{xltabular}}
+
+\widepageson
 
 \subsection{主要符号}
 
@@ -32,86 +96,15 @@ $\theta$ 在吸附章是覆盖度，在衍射章是 Bragg 角；$\beta$ 在衍�
 阅读时以\textbf{该章局部的定义}为准，不要把本表当作全局约定。
 \end{pitfall}
 
-\subsection{术语索引}
-
-按主题分组，给出主定义位置与相关讨论位置。页码随排版变动，故一律用章节引用。
-
-\widepageson
-
-{\srcsize
-\begin{xltabular}{\textwidth}{@{}p{20mm}p{64mm}X p{17mm}@{}}
-\toprule
-缩写 & 英文全称 & 中文名 & 主定义章 \\
-\midrule
-\endfirsthead
-\toprule
-缩写 & 英文全称 & 中文名 & 主定义章 \\
-\midrule
-\endhead
-\bottomrule
-\endlastfoot
-AES & Auger Electron Spectroscopy & 俄歇电子能谱 & \chapref{ch:09} \\
-AFM & Atomic Force Microscopy & 原子力显微镜 & \chapref{ch:12} \\
-ATR & Attenuated Total Reflection & 衰减全反射 & \chapref{ch:07} \\
-BET & Brunauer--Emmett--Teller (method) & BET 法（比表面积） & \chapref{ch:01} \\
-BJH & Barrett--Joyner--Halenda (method) & BJH 法（孔径分布） & \chapref{ch:01} \\
-CP/MAS & Cross Polarization / Magic Angle Spinning & 交叉极化／魔角旋转 & \chapref{ch:08} \\
-DFT & Density Functional Theory & 密度泛函理论 & \chapref{ch:01} \\
-DRIFT & Diffuse Reflectance Infrared Fourier Transform (spectroscopy) & 漫反射红外傅里叶变换光谱 & \chapref{ch:07} \\
-DSC & Differential Scanning Calorimetry & 差示扫描量热法 & \chapref{ch:03} \\
-DTA & Differential Thermal Analysis & 差热分析 & \chapref{ch:03} \\
-EDS/EDX & Energy-Dispersive X-ray Spectroscopy & X 射线能谱 & \chapref{ch:02} \\
-EELS & Electron Energy Loss Spectroscopy & 电子能量损失谱 & \chapref{ch:02} \\
-EXAFS & Extended X-ray Absorption Fine Structure & 扩展 X 射线吸收精细结构 & \chapref{ch:03} \\
-FTIR & Fourier Transform Infrared (spectroscopy) & 傅里叶变换红外光谱 & \chapref{ch:03} \\
-HDS & Hydrodesulfurization & 加氢脱硫 & \chapref{ch:07} \\
-IMFP & Inelastic Mean Free Path & 非弹性平均自由程 & \chapref{ch:09} \\
-IR & Infrared (spectroscopy) & 红外（光谱） & \chapref{ch:07} \\
-ISS & Ion Scattering Spectroscopy & 离子散射谱 & \chapref{ch:09} \\
-IUPAC & International Union of Pure and Applied Chemistry & 国际纯粹与应用化学联合会 & \chapref{ch:01} \\
-L-H & Langmuir--Hinshelwood (mechanism) & 朗缪尔--欣谢尔伍德机理 & \chapref{ch:10} \\
-MARI & Most Abundant Reaction Intermediate & 最丰富反应中间物 & \chapref{ch:10} \\
-MAS & Magic Angle Spinning & 魔角旋转 & \chapref{ch:08} \\
-MS & Mass Spectrometry & 质谱 & \chapref{ch:03} \\
-Nano-FTIR & nanoscale Fourier Transform Infrared spectroscopy & 纳米傅里叶变换红外光谱 & \chapref{ch:12} \\
-NLDFT & Non-Local Density Functional Theory & 非局域密度泛函理论 & \chapref{ch:01} \\
-NMR & Nuclear Magnetic Resonance & 核磁共振 & \chapref{ch:08} \\
-operando & working-state in situ spectroscopy & 工作状态下原位（光谱）技术 & \chapref{ch:07} \\
-RDS & Rate-Determining Step & 速率控制步骤 & \chapref{ch:10} \\
-Rietveld & Rietveld full-pattern refinement & 里特维尔德全谱拟合精修 & \chapref{ch:04} \\
-Scherrer & Scherrer equation & 谢乐方程（峰宽与晶粒尺寸） & \chapref{ch:04} \\
-SSITKA & Steady-State Isotopic Transient Kinetic Analysis & 稳态同位素瞬变动力学分析 & \chapref{ch:10} \\
-STEM & Scanning Transmission Electron Microscopy & 扫描透射电子显微镜 & \chapref{ch:02} \\
-STM & Scanning Tunneling Microscopy & 扫描隧道显微镜 & \chapref{ch:12} \\
-TAP & Temporal Analysis of Products & 产物瞬时分析 & \chapref{ch:10} \\
-TEM & Transmission Electron Microscopy & 透射电子显微镜 & \chapref{ch:02} \\
-TERS & Tip-Enhanced Raman Spectroscopy & 针尖增强拉曼光谱 & \chapref{ch:12} \\
-TG & Thermogravimetry & 热重法 & \chapref{ch:03} \\
-TOF & Turnover Frequency & 转换频率 & \chapref{ch:10} \\
-TON & Turnover Number & 转换数 & \chapref{ch:10} \\
-TPD & Temperature-Programmed Desorption & 程序升温脱附 & \chapref{ch:05} \\
-TPO & Temperature-Programmed Oxidation & 程序升温氧化 & \chapref{ch:05} \\
-TPR & Temperature-Programmed Reduction & 程序升温还原 & \chapref{ch:05} \\
-TPSR & Temperature-Programmed Surface Reaction & 程序升温表面反应 & \chapref{ch:05} \\
-UPS & Ultraviolet Photoelectron Spectroscopy & 紫外光电子能谱 & \chapref{ch:09} \\
-XAFS & X-ray Absorption Fine Structure (spectroscopy) & X 射线吸收精细结构谱 & \chapref{ch:03} \\
-XAS & X-ray Absorption Spectroscopy & X 射线吸收光谱 & \chapref{ch:06} \\
-XPS & X-ray Photoelectron Spectroscopy & X 射线光电子能谱 & \chapref{ch:09} \\
-XRD & X-ray Diffraction & X 射线衍射 & \chapref{ch:04} \\
-\end{xltabular}}
-
-\vspace{4mm}
-{\heiti\fontsize{11}{13.5}\selectfont 主要符号}
-
 \vspace{2mm}
 {\srcsize
 \begin{xltabular}{\textwidth}{@{}p{22mm}p{60mm}X p{17mm}@{}}
 \toprule
-符号 & 含义 & 单位 & 主定义章 \\
+符号 & 含义 & 单位 & 主定义位置 \\
 \midrule
 \endfirsthead
 \toprule
-符号 & 含义 & 单位 & 主定义章 \\
+符号 & 含义 & 单位 & 主定义位置 \\
 \midrule
 \endhead
 \bottomrule
@@ -153,18 +146,21 @@ $\beta$ & Tafel 斜率（电化学章） & \unit{mV.dec^{-1}} & \chapref{ch:11} 
 $t$ & 吸附层统计厚度 & \unit{nm} & \chapref{ch:01} \\
 \end{xltabular}}
 
-\vspace{4mm}
-{\heiti\fontsize{11}{13.5}\selectfont 术语索引}
+\widepageson
+
+\subsection{术语索引}
+
+按主题分组，给出主定义位置与相关讨论位置。页码随排版变动，故一律用章节引用。
 
 \vspace{2mm}
 {\srcsize
 \begin{xltabular}{\textwidth}{@{}p{62mm}p{30mm}X@{}}
 \toprule
-术语 & 主定义 & 相关讨论 \\
+术语 & 主定义位置 & 相关讨论 \\
 \midrule
 \endfirsthead
 \toprule
-术语 & 主定义 & 相关讨论 \\
+术语 & 主定义位置 & 相关讨论 \\
 \midrule
 \endhead
 \bottomrule

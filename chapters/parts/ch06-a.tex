@@ -172,45 +172,68 @@ p_{\text{斯托克斯}} &= \tfrac12
 
 \textbf{由此得到拉曼活性的经典判据}：$\left(\partial\alpha/\partial q\right)_0\neq 0$ 才
 有拉曼活性，等于零则为非拉曼活性——这就是「拉曼测极化率变化」的确切含义
-\src{S1 §6.1.2，书内 p.347—348 / PDF p.366—367}。振动的感生电偶极所辐射的散射强度为
+\src{S1 §6.1.2，书内 p.347—348 / PDF p.366—367}。振动的感生电偶极所辐射的散射功率为
 
 \begin{equation}
-I=I_0\,\sigma\sin^2\theta ,
+P_{\mathrm{sc}}=E_0\,\frac{\mathrm{d}\sigma}{\mathrm{d}\Omega}\,\Delta\Omega\,\sin^2\theta ,
+\qquad E_0=\frac{P_0}{A_{\mathrm{beam}}} ,
 \label{eq:classical-intensity}
 \end{equation}
 
-式中 $\theta$ 为观察方向与感生偶极矩的夹角。\textbf{三个量的口径先说清}：$I$ 是在观察
-方向上、落入固定接收立体角 $\Delta\Omega$ 的散射\emph{功率}（\unit{W}）；$I_0$ 是入射
-光的\emph{功率}（\unit{W}）；$\sigma$ 是分子的散射截面，量纲为面积。偶极辐射的角分布为
-$\sin^2\theta$，因此更便于量纲检查的写法是把这条式理解为\emph{微分散射截面}的形式
+式中 $\theta$ 为观察方向与感生偶极矩的夹角。\textbf{先把五个量的口径说清}（全部用 SI
+单位）：$P_0$ 是入射到样品上的\emph{功率}（\unit{W}）；$A_{\mathrm{beam}}$ 是光束在样品
+处的\emph{光斑面积}（\unit{m^2}）；$E_0=P_0/A_{\mathrm{beam}}$ 是样品处的\emph{入射辐照度}
+（\unit{W.m^{-2}}）；$\mathrm{d}\sigma/\mathrm{d}\Omega$ 是\emph{微分散射截面}
+（\unit{m^2.sr^{-1}}），按定义即「单位立体角内的散射功率除以入射辐照度」；
+$\Delta\Omega$ 是接收端张开的\emph{接收立体角}（\unit{sr}），由接收面积
+$A_{\mathrm{rec}}$ 与样品到接收端的距离 $R$ 决定，$\Delta\Omega\approx A_{\mathrm{rec}}/R^2$。
+偶极辐射的角分布为 $\sin^2\theta$，于是落入接收端的散射功率就是
+式~\eqref{eq:classical-intensity}。若只问\emph{比例}，两端同除 $P_0$：
 
 \begin{equation}
-\frac{I}{I_0}=\frac{\mathrm{d}\sigma}{\mathrm{d}\Omega}\,\Delta\Omega\,\sin^2\theta ,
+\frac{P_{\mathrm{sc}}}{P_0}
+=\frac{\mathrm{d}\sigma}{\mathrm{d}\Omega}\,\frac{\Delta\Omega}{A_{\mathrm{beam}}}\,\sin^2\theta ,
 \label{eq:classical-intensity-ratio}
 \end{equation}
 
-其中 $\mathrm{d}\sigma/\mathrm{d}\Omega$ 是每单位立体角的微分散射截面（\unit{m^2.sr^{-1}}），
-$\Delta\Omega$ 是接收立体角（\unit{sr}）。\textbf{量纲检查}：左端为功率之比，无量纲；
-右端为 $\unit{m^2.sr^{-1}}\times\unit{sr}\times1$，立体角相消后也是面积除以面积——两端
-同为无量纲。于是式~\eqref{eq:classical-intensity} 中的 $\sigma$ 应读作
-$\mathrm{d}\sigma/\mathrm{d}\Omega$ 与某个参考面积的比值，即「按接收立体角折算后的等效
-截面」；$\sigma$ 单独出现时\emph{不能}既说它是无量纲比例、又说它具有面积量纲。若要把
-$I$ 写成绝对功率而非比值，就应保留 $\Delta\Omega$ 与距离平方的因子；本条不预设具体
-谱仪的几何。
+\textbf{量纲检查}：左端是功率之比，无量纲；右端为
+$\unit{m^2.sr^{-1}}\times\unit{sr}\times\unit{m^{-2}}\times1$——立体角与面积都相消，
+也是无量纲，两端一致。分母上的 $A_{\mathrm{beam}}$ 不能省：它正是「入射功率 → 入射
+辐照度」那一步带进来的因子；上一轮把该式写成
+$I/I_0=(\mathrm{d}\sigma/\mathrm{d}\Omega)\,\Delta\Omega\,\sin^2\theta$，右端只剩面积量纲
+（\unit{m^2}），与无量纲的左端不一致，本稿据此改写为
+式~\eqref{eq:classical-intensity-ratio}。
 
-\textbf{观测几何}：偶极辐射的强度按 $\sin^2\theta$ 分布——在与偶极矩垂直的方向
-（$\theta=90^\circ$）最强，沿偶极矩方向（$\theta=0^\circ$）为零。在角分布不变的前提下，
-按微分散射截面的定义（每单位立体角、固定距离处的功率），$I$ 正比于接收立体角
-$\Delta\Omega$、反比于样品到接收端的距离平方 $R^2$，这两项都属仪器条件，不与分子量混写。
-\textbf{定量结论}：$\Delta\Omega$ 加倍而其余条件不变时，$I$ 加倍，而 $I/(I_0\Delta\Omega)$
-——即式~\eqref{eq:classical-intensity-ratio} 右端——不变；这正是「比较散射截面时必须
-固定收集立体角」的原因，与量子理论一节「与入射光强度成正比、与距离平方成反比」两条一致。
+\textbf{观测几何与四条可检验的推论}：偶极辐射的强度按 $\sin^2\theta$ 分布——在与偶极矩
+垂直的方向（$\theta=90^\circ$）最强，沿偶极矩方向（$\theta=0^\circ$）为零。在角分布不变
+的前提下，式~\eqref{eq:classical-intensity} 给出四条可以逐条代入核对的结论：
+
+\begin{enumerate}
+\item 固定入射功率与光斑，只把接收立体角加倍（接收面积加倍，或距离减为 $1/\sqrt2$）：
+      $P_{\mathrm{sc}}$ 加倍；
+\item 固定 $\Delta\Omega$（距离拉长时同步放大接收面积以保持立体角不变），距离 $R$ 加倍：
+      $P_{\mathrm{sc}}$ \emph{不变}——微分散射截面本身就定义在「单位立体角」上，几何衰减
+      已由 $\Delta\Omega$ 承担，再乘一次 $R^{-2}$ 就是重复计入；
+\item 固定接收\emph{面积} $A_{\mathrm{rec}}$，距离 $R$ 加倍：$\Delta\Omega$ 降为 $1/4$，
+      故 $P_{\mathrm{sc}}$ 约为原来的 $1/4$；
+\item 比值 $P_{\mathrm{sc}}/(P_0\Delta\Omega)
+      =(\mathrm{d}\sigma/\mathrm{d}\Omega)\sin^2\theta/A_{\mathrm{beam}}$ 与 $\Delta\Omega$
+      无关——这正是「比较散射截面时必须同时固定收集立体角与光斑面积」的原因。
+\end{enumerate}
+
+以上四条只针对\emph{单个散射体}、固定入射辐照度与固定角分布范围的情形：$N$ 个相互独立
+的散射体是功率相加（截面本身与 $N$ 无关），仪器透过率与探测效率也不在本节讨论范围内，
+定量比较实验时须另行补齐。与量子理论一节「与入射光强度成正比、与距离平方成反比」两条
+一致——后者说的是固定接收面积的情形，即上述第 3 条。
 
 \begin{tocheck}
-未对照原页面图像：式~\eqref{eq:classical-intensity} 在 OCR 中作「$I=I_0\sigma\sin^2\theta$」，
-前因子 $\sigma$ 的完整表达式（OCR 残片作「$\sigma\sim$ 某式」）以及它是否含
-$\nu_0^4$、是否写成 $\sigma=\frac{8\pi^3\nu_0^4}{3c^4}\alpha^2$ 之类的具体形式无法确认；
-本行只保留角度因子与入射强度的依赖为确定内容。
+未对照原页面图像：源书该处印作「$I=I_0\sigma\sin^2\theta$」，前因子 $\sigma$ 的完整表达式
+（OCR 残片作「$\sigma\sim$ 某式」）以及它是否含 $\nu_0^4$、是否写成
+$\sigma=\frac{8\pi^3\nu_0^4}{3c^4}\alpha^2$ 之类的具体形式无法确认；本行只保留角度因子与
+入射强度的依赖为确定内容。本稿把该式改写为辐照度口径的
+式~\eqref{eq:classical-intensity}（$P_{\mathrm{sc}}=E_0\,(\mathrm{d}\sigma/\mathrm{d}\Omega)
+\,\Delta\Omega\,\sin^2\theta$，$E_0=P_0/A_{\mathrm{beam}}$），理由是源书原式右端带面积
+量纲、左端无量纲；改写只做口径统一，不引入新的实验常数，文中四条缩放推论可自行代入核对。
 \end{tocheck}
 
 经典理论能解释拉曼与瑞利散射的频率，但\textbf{不能解释斯托克斯线与反斯托克斯线强度为

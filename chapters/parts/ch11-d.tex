@@ -516,20 +516,40 @@ $n$）、低频尾定扩散 $\to$（拟合）选定电路拓扑做非线性最�
   didy(\z) = 100*dpr(\z)/(1+(dpr(\z))^2);
   dq0      = (0.5e-6)^(0.85)*100^(0.85-1);
   dcpn     = 0.85;
-  dcpb     = dcpn*3.14159265358979/2;
-  dcpu(\z) = (dwn(\z)*100*dq0)^(dcpn);
+  % 角度一律用「度」：pgfmath 的 sin/cos/tan 取度不取弧度（R3-C02 的实测探针
+  %   sin(0.85*pi/2)=0.02328 是 sin(1.335°) 的值）。原先写 dcpb=n*pi/2 等于把
+  %   θ 当成 1.335 rad 用，sin/cos 全部算错，弧被压成一条贴着横轴的线。
+  dcpb     = dcpn*90;
+  % u = Rct*Q*ωⁿ 才是无量纲组合；原写法 (ω*100*Q)^n 把整个乘积升到 n 次，
+  %   量纲和数值都不对。下面的 a、d 分别是分母 1+u(cosθ+j sinθ) 的实部与虚部。
+  dcpu(\z) = 100*dq0*(dwn(\z))^(dcpn);
   dcpa(\z) = 1+dcpu(\z)*cos(dcpb);
   dcpd(\z) = dcpu(\z)*sin(dcpb);
   dcpx(\z) = 10+100*dcpa(\z)/((dcpa(\z))^2+(dcpd(\z))^2);
   dcpy(\z) = 100*dcpd(\z)/((dcpa(\z))^2+(dcpd(\z))^2);
-  dkwd(\z) = 40/sqrt(dwn(\z));
-  dkwa(\z) = 1+dkwd(\z);
-  dkwx(\z) = 10+100*dkwa(\z)/((dkwa(\z))^2+(dkwd(\z))^2);
-  dkwy(\z) = 100*dkwd(\z)/((dkwa(\z))^2+(dkwd(\z))^2);
+  % CPE 弧顶的解析值：对 u 求极值（u=1）得 Z'=Rs+Rct/2、-Z''=(Rct/2)tan(nπ/4)。
+  %   标记点由这两个式子给出，不再手写孤立坐标。
+  dcpxp    = 60;
+  dcpyp    = 50*tan(dcpn*45);
+  % Randles 加半无限 Warburg：Z = Rs + [1/(Rct+σ(1-j)/√ω) + jωC]^{-1}
+  %   （式~\eqref{eq:eis-d-randles}）。原写法把它当成 Rct∥Warburg 的两元并联
+  %   —— 丢失了 Cdl 支路 —— 并且把有量纲的 σ/√ω 直接与 1 相加（R3-C03 的根因）。
+  %   下面改用归一化导纳 Ŷ = Y·Rct（无量纲）：
+  %     t = σ/(Rct√ω)，S = (1+t)²+t²，Ŷ = (1+t)/S + j[t/S + ω C Rct]
+  %   再取 Z - Rs = Rct/Ŷ。中间量都远离 pgfmath 的数值上下限，低频段也不会
+  %   因为两个小量相减而丢精度。
+  dkwz(\z) = 40/(100*sqrt(dwn(\z)));
+  dkwS(\z) = (1+dkwz(\z))^2+(dkwz(\z))^2;
+  dkwA(\z) = (1+dkwz(\z))/dkwS(\z);
+  dkwB(\z) = dkwz(\z)/dkwS(\z)+dwn(\z)*0.5e-6*100;
+  dkwN(\z) = (dkwA(\z))^2+(dkwB(\z))^2;
+  dkwx(\z) = 10+100*dkwA(\z)/dkwN(\z);
+  dkwy(\z) = 100*dkwB(\z)/dkwN(\z);
   % R2-C06：原先还声明过 dm / dmt / dmph / diph 四个量，已删除——
   %   ① 全书 grep 确认它们从未被任何 \addplot 调用（纯死代码）；
-  %   ② 数学上也不成立：pgfmath 的 tan 取弧度，`tan(dm*90)` 算的是 tan(76.5 rad) 而非
-  %      tan(76.5°)；`diph` 给出的是 atan(ωRC)，按本节 φ≡−arg Z（tanφ=1/ωRC）恰是 φ 的余角。
+  %   ② 数学上也不成立：`diph` 给出的是 atan(ωRC)，按本节 φ≡−arg Z
+  %      （tanφ=1/ωRC）恰是 φ 的余角；并且 pgfmath 的三角函数取「度」，
+  %      要算 tan(76.5°) 就得写 tan(76.5)，写成 tan(dm*90) 之类是弧度思维。
   %   留着会被后来者当成可用函数，故删除而不是改写。本图不画相角曲线。
 }}
 
@@ -538,25 +558,31 @@ $n$）、低频尾定扩散 $\to$（拟合）选定电路拓扑做非线性最�
   width=70mm, height=62mm,
   unit vector ratio=1 1 1,
   xlabel={$Z'$ / $\Omega$}, ylabel={$-Z''$ / $\Omega$},
-  xmin=0, xmax=60, ymin=0, ymax=60,
-  xtick={0,10,20,30,40,50,60}, ytick={0,10,20,30,40,50,60},
-  legend style={at={(0.98,0.04)},anchor=south east,
-                font={\fontsize{7}{8.5}\selectfont},draw=none,fill=none,row sep=0.5pt},
+  % 轴伸到 62 Ω（刻度仍到 60），让两个弧顶标记落在框内而不是压在边框上。
+  xmin=0, xmax=62, ymin=0, ymax=62,
+  xtick={0,20,40,60}, ytick={0,20,40,60},
 ]
   \addplot[mainline,black,domain=0.3:4.9,samples=220,variable=\z]
     ({didx(\z)},{didy(\z)});
-  \addlegendentry{理想弧，$n=1$}
   \addplot[mainline,black,dashed,domain=0.3:4.9,samples=220,variable=\z]
     ({dcpx(\z)},{dcpy(\z)});
-  \addlegendentry{CPE 弧，$n=0.85$}
   \addplot[only marks,mark=*,mark size=1pt,black]
     coordinates {(60,50)};
   \addplot[only marks,mark=square*,mark size=1pt,black]
-    coordinates {(22.05,22.69)};
-  \node[anchor=south west,align=left,text width=30mm,font={\fontsize{7}{8.5}\selectfont}]
-    at (axis cs:1,63)
-    {理想弧顶点 $(60,\,50)$：\\ $\omega_{\max}=1/(R_{\mathrm{ct}}C_{\mathrm{dl}})$\\[1pt]
-     CPE 弧顶点 $(22.1,\,22.7)$：\\ 不是 $R_{\mathrm{ct}}/2$};
+    coordinates {({dcpxp},{dcpyp})};
+  \node[anchor=north west,font={\fontsize{7}{8.5}\selectfont}]
+    at (axis cs:1.2,60.5) {(a)};
+  % 曲线身份直接写在面板里（理想弧在 y>50 Ω 处、CPE 弧在 x>22 Ω 处都已是最上沿，
+  %   这两处标注不会与任何曲线交叉）。图例因此取消，避免文字块压住弧顶。
+  \node[anchor=west,font={\fontsize{7}{8.5}\selectfont}] at (axis cs:14,58) {实线 $n{=}1$};
+  \node[anchor=west,font={\fontsize{7}{8.5}\selectfont}] at (axis cs:14,52) {虚线 $n{=}0.85$};
+  % 说明块放进右下角的空白区（两条弧在 x>22 Ω、y<15 Ω 处都没有线），
+  %   不再放到坐标区外，避免被裁掉。
+  \node[anchor=south east,align=right,text width=28mm,font={\fontsize{7}{8.5}\selectfont}]
+    at (axis cs:60.5,14.5)
+    {理想弧顶点 $(60,\,50)$\\[1pt]
+     CPE 弧顶点 $(60,\,39.4)$\\[1pt]
+     $=(R_{\mathrm{ct}}/2)\tan(n\pi/4)$};
 \end{axis}
 
 \begin{axis}[
@@ -566,24 +592,37 @@ $n$）、低频尾定扩散 $\to$（拟合）选定电路拓扑做非线性最�
   xlabel={$Z'$ / $\Omega$}, ylabel={$-Z''$ / $\Omega$},
   xmin=0, xmax=300, ymin=0, ymax=260,
   xtick={0,50,100,150,200,250,300}, ytick={0,50,100,150,200,250},
-  legend style={at={(0.98,0.96)},anchor=north east,
-                font={\fontsize{7}{8.5}\selectfont},draw=none,fill=none,row sep=0.5pt},
 ]
   \addplot[mainline,black,densely dotted,domain=0.3:5.4,samples=300,variable=\z]
     ({didx(\z)},{didy(\z)});
-  \addlegendentry{无扩散 $Z_{\mathrm{W}}{=}0$}
   \addplot[mainline,black,domain=-1.7:5.4,samples=320,variable=\z]
     ({dkwx(\z)},{dkwy(\z)});
-  \addlegendentry{含 Warburg $\sigma{=}40$}
-  \addplot[mainline,black,dashed,domain=0.3:2.0,samples=2] coordinates
-    {(25,25) (200,200)};
-  \addlegendentry{$45$° 参考线}
-  \node[anchor=south west,align=left,text width=32mm,font={\fontsize{7}{8.5}\selectfont}]
-    at (axis cs:4,18)
-    {3 条线在 $f\gtrsim 100$ Hz\\ 几乎重合：Nyquist 图\\ 分不开「$Z_{\mathrm{W}}$ 大」\\ 与「$R_{\mathrm{ct}}$ 大」};
-  \node[anchor=north east,align=right,text width=32mm,font={\fontsize{7}{8.5}\selectfont}]
-    at (axis cs:298,20)
-    {高频截距 $\approx R_{\Omega}$\\ 只在弧闭合、无电感时成立};
+  % 六个读图点的坐标同样来自上面的函数（log10 f = -1.69897、-1、1.50515、
+  %   3.50515、4.60206、4.90309，即 0.02 Hz、0.1 Hz、32 Hz、3.2 kHz、40 kHz、
+  %   80 kHz），不是手写读数。
+  \addplot[only marks,mark=o,mark size=1.1pt,black,mark options={fill=white}]
+    coordinates {({dkwx(-1.69897)},{dkwy(-1.69897)})
+                 ({dkwx(-1)},{dkwy(-1)})
+                 ({dkwx(1.50515)},{dkwy(1.50515)})
+                 ({dkwx(3.50515)},{dkwy(3.50515)})
+                 ({dkwx(4.60206)},{dkwy(4.60206)})
+                 ({dkwx(4.90309)},{dkwy(4.90309)})};
+  % 45° 参考线只画一小段，放在扩散尾下方、说明块左侧的空白处（原先横跨全图，
+  %   从三块说明文字上穿过去 —— R3-U01）。
+  \addplot[mainline,black,dashed] coordinates {(140,10) (170,40)};
+  \node[anchor=north east,font={\fontsize{7}{8.5}\selectfont}]
+    at (axis cs:296,256) {(b)};
+  % 面板 (b) 里最高的一条曲线只到 112.8 Ω，故 y>150 Ω 的整条带都是空白。
+  \node[anchor=north west,align=left,text width=30mm,font={\fontsize{7}{8.5}\selectfont}]
+    at (axis cs:8,250)
+    {点线：$Z_{\mathrm{W}}{=}0$\\ 实线：$\sigma{=}40$\\ 虚线：$45$° 参考线};
+  % 两块说明都落在空白区：上方（y>120 Ω 无曲线）与右下方（扩散尾下方）。
+  \node[anchor=north west,align=left,text width=34mm,font={\fontsize{7}{8.5}\selectfont}]
+    at (axis cs:8,182)
+    {实线与点线在 $f\gtrsim 100$ Hz 几乎重合：只看高频段，\\ 分不开「$Z_{\mathrm{W}}$ 大」与「$R_{\mathrm{ct}}$ 大」};
+  \node[anchor=south east,align=right,text width=22mm,font={\fontsize{7}{8.5}\selectfont}]
+    at (axis cs:296,6)
+    {高频截距 $\approx R_{\Omega}$\\ 只在弧闭合、\\ 无电感时成立};
 \end{axis}
 \end{tikzpicture}
 \caption{三类等效电路的 Nyquist 图对照（模型计算）。取
@@ -592,16 +631,24 @@ $C_{\mathrm{dl}}=0.5$ µF（$\omega_{\max}=1/(R_{\mathrm{ct}}C_{\mathrm{dl}})$
 对应 $f_{\max}\approx3.2$ kHz）；CPE 取 $n=0.85$、
 $Q=C_{\mathrm{dl}}^{\,n}R_{\mathrm{ct}}^{\,n-1}\approx2.21\times10^{-6}$ S·s$^{0.85}$，
 即低频极限电容与理想情形相同；Warburg 取 $\sigma=40$ \unit{\ohm.s^{-1/2}}。
-\textbf{(a)} 只看 80 kHz 至 8 Hz（$Z'=0\sim60$ \unit{\ohm}）这一段的差别：
-理想弧的顶点恰在 $(R_{\Omega}+R_{\mathrm{ct}}/2,\;R_{\mathrm{ct}}/2)=(60,\,50)$，
-而 CPE 弧被压到 $(22.1,\,22.7)$、且顶点频率左移到约 721 Hz——\textbf{同一个
-$R_{\mathrm{ct}}$ 与同一个低频极限电容，仅因 $n=0.85$ 就使弧的几何完全改变}。两条曲线最终都
-收敛到 $R_{\Omega}+R_{\mathrm{ct}}=110$ \unit{\ohm}（在 (b) 的右端可见）。
-\textbf{(b)} 频率 80 kHz 至 0.02 Hz：实线在 $f\lesssim 10$ Hz 之后已明显
+三条曲线（实线、虚线、点线）分别由式~\eqref{eq:eis-d-randles}、
+式~\eqref{eq:eis-d-cpe}、式~\eqref{eq:eis-d-rc} 按同一组参数算出：图中两个弧顶标记与
+六个空心圆点都是这些函数的取值，不是手工写上的读数。
+\textbf{(a)} 只画 $f=2$ Hz 至 79 kHz、$Z'\le62$ \unit{\ohm} 的窗口（两条弧的右半段落在
+窗口外）：理想弧（$n=1$）的顶点在
+$(R_{\Omega}+R_{\mathrm{ct}}/2,\;R_{\mathrm{ct}}/2)=(60,\,50)$，CPE 弧的顶点在
+$(60,\,39.4)$——\textbf{横坐标相同，纵坐标只有 $(R_{\mathrm{ct}}/2)\tan(n\pi/4)$；
+同样一个 $R_{\mathrm{ct}}$、同样一个低频极限电容，仅因 $n=0.85$ 就把弧的高度压到
+$0.79$ 倍，而顶点频率并不改变}。两条曲线在 $f\to0$ 时都收敛到
+$R_{\Omega}+R_{\mathrm{ct}}=110$ \unit{\ohm}（点线在 (b) 中可见 $10\to110$ \unit{\ohm}
+的完整弧；CPE 弧的右半段落在 (a) 的窗口之外）。
+\textbf{(b)} 频率 0.02 Hz 至 250 kHz：实线在 $f\lesssim 10$ Hz 之后已明显
 偏离点线，朝向 $45$°参考线（虚线）——但\textbf{即使在 40 kHz，实线的截距仍是
-10.6 \unit{\ohm} 而非 10.0 \unit{\ohm}、相角仍有 $+37$°（按 $\varphi\equiv-\arg Z$），即高频平台并未形成}，
-这正是规则一第（1）条的量化含义。注意 (b) 两个坐标轴的刻度尺度不同（二者比例为
-$300:260$），故 $45$°参考线在图上并不呈 $45$°；判斜率请用数值而非图面角度。
+10.6 \unit{\ohm} 而非 10.0 \unit{\ohm}、相角仍有 $+36.6$°（按 $\varphi\equiv-\arg Z$），即高频平台并未形成}，
+这正是规则一第（1）条的量化含义；六个空心圆点依次标出后文读图实例所用的频率
+（80 kHz、40 kHz、3.2 kHz、32 Hz、0.1 Hz、0.02 Hz），可以逐点核对。
+注意 (b) 两个坐标轴的刻度尺度不同（横轴 300 \unit{\ohm} 与纵轴 260 \unit{\ohm}
+画在等宽的图面上），故 $45$°参考线在图上并不呈 $45$°；判斜率请用数值而非图面角度。
 局限：本图不含接触电阻、引线电感、有限扩散与吸附弛豫，真实数据在高频端与最低频端都会多出
 本图没有的结构。
 \modelmark\pedset{$R_{\Omega}$、$R_{\mathrm{ct}}$、$C_{\mathrm{dl}}$、$n$、$\sigma$ 为教学设定，
@@ -616,43 +663,52 @@ $300:260$），故 $45$°参考线在图上并不呈 $45$°；判斜率请用数
 一个前提。
 
 \begin{obs}
-在图~\ref{fig:eis-d-model}(b) 的实线（含 Warburg）上：
-（1）从高频端（80 kHz）开始，曲线左端落在 $Z'\approx 10.6$ \unit{\ohm}、
-$-Z''\approx 7.9$ \unit{\ohm} 处，并未落在实轴上；
-（2）频率降到约 3.2 kHz 时，$-Z''$ 达到极大值约 50 \unit{\ohm}，此时
-$Z'\approx 59.9$ \unit{\ohm}；
-（3）继续降频，$-Z''$ 先减小到约 3.9 \unit{\ohm}（$f\approx 32$ Hz），再转而增大；
-（4）在 $f\lesssim 10$ Hz 之后，$Z'$ 与 $-Z''$ 同步增大，在
+在图~\ref{fig:eis-d-model}(b) 的实线（含 Warburg）上（六个空心圆点即下列读数，
+按频率从高到低排列）：
+（1）从最高频端（80 kHz）开始，曲线左端落在 $Z'\approx 10.16$ \unit{\ohm}、
+$-Z''\approx 3.97$ \unit{\ohm} 处，并未落在实轴上；
+（2）频率降到 40 kHz 时 $Z'\approx 10.63$ \unit{\ohm}、$-Z''\approx 7.91$ \unit{\ohm}：
+截距几乎没变，$-Z''$ 却翻了一倍；
+（3）频率降到约 3.2 kHz 时，$-Z''$ 达到极大值约 50.1 \unit{\ohm}，此时
+$Z'\approx 59.6$ \unit{\ohm}；
+（4）继续降频，$-Z''$ 先减小到约 3.9 \unit{\ohm}（$f\approx 32$ Hz，此时
+$Z'\approx 112.8$ \unit{\ohm}），再转而增大；
+（5）在 $f\lesssim 10$ Hz 之后，$Z'$ 与 $-Z''$ 同步增大，在
 0.1～0.02 Hz 段内 $Z'$ 从 160 \unit{\ohm} 增至 223 \unit{\ohm}、
-$-Z''$ 从 50 \unit{\ohm} 增至 113 \unit{\ohm}，两点连线的斜率约为 $0.95$；
-（5）把 (b) 中的点线（无扩散）与实线对比：两条线在 $f\gtrsim 100$ Hz 时肉眼不可分，
+$-Z''$ 从 50 \unit{\ohm} 增至 113 \unit{\ohm}，两点连线的斜率约为 $1.00$；
+（6）把 (b) 中的点线（无扩散）与实线对比：两条线在 $f\gtrsim 100$ Hz 时肉眼不可分，
 分岔从约 30 Hz 开始，到 0.02 Hz 时点线停在 $Z'=110$ \unit{\ohm}、
 $-Z''\approx0$，而实线已走出 223 \unit{\ohm} 之外。
 在 (a) 中对比理想弧（实线）与 CPE 弧（虚线）：两条弧的高频端都趋向同一点
-（$Z'=R_{\Omega}$），低频端都趋向 $Z'=R_{\Omega}+R_{\mathrm{ct}}$，但中段完全分开——
-理想弧顶点 $(60,\,50)$，CPE 弧顶点约 $(22.1,\,22.7)$。
+（$Z'=R_{\Omega}$），低频端都趋向 $Z'=R_{\Omega}+R_{\mathrm{ct}}$（两端位置与 $n$ 无关），
+但中段完全分开——理想弧顶点 $(60,\,50)$，CPE 弧顶点 $(60,\,39.4)$，后者只有前者的
+$0.79$ 倍高，而顶点频率同为 $3.2$ kHz。
 \end{obs}
 
 \begin{infer}
-（1）高频端不落在实轴上、且 $-Z''$ 仍有 7.9 \unit{\ohm}，说明\textbf{最高频处高频平台
-尚未形成}，因此 (b) 左端那个 10.6 \unit{\ohm} \textbf{不能直接当作 $R_{\Omega}$}；若照读，
-会把溶液电阻高估约 $6\%$。（该值是否可读，判据是 Bode 图上 $|Z|$ 与 $\varphi$ 是否出现平台。）
+（1）高频端不落在实轴上、且 $-Z''$ 仍有 4.0 \unit{\ohm}，说明\textbf{最高频处高频平台
+尚未形成}，因此 (b) 左端那个 10.16 \unit{\ohm} \textbf{不能直接当作 $R_{\Omega}$}：
+照读会把溶液电阻高估约 $1.6\%$；若改用 40 kHz 的读数 10.63 \unit{\ohm}，高估量升到
+$6.3\%$。（该值是否可读，判据是 Bode 图上 $|Z|$ 与 $\varphi$ 是否出现平台。）
 （2）极化电阻以弧的形式出现，说明该频段由电荷转移与双电层构成的\textbf{并联}支路支配；
 在扩散尚未参与的高频段，这段弧的直径给出 $R_{\mathrm{ct}}$：理想弧的直径
 $110-10=100$ \unit{\ohm}，与设定值一致。顶点条件
 $\omega_{\max}=1/(R_{\mathrm{ct}}C_{\mathrm{dl}})$ 反过来给出
-$C_{\mathrm{dl}}=1/(2\pi\times3210\times100)\approx0.5$ µF，也与设定值一致——
-\textbf{但这两个数能读对，是因为本例恰好是完整半圆；若只有 (a) 中的 CPE 弧，用
-$R_{\mathrm{ct}}=\text{直径}$、$C=1/(\omega_{\max}R_{\mathrm{ct}})$ 读出的
-「$R_{\mathrm{ct}}$」只有约 24 \unit{\ohm}、「$C$」只有约 9 µF，
-两者都错，因为压扁的弧不满足式~\eqref{eq:eis-d-rc} 的圆方程。}
+$C_{\mathrm{dl}}=1/(2\pi\times3183\times100)\approx0.5$ µF，也与设定值一致——
+\textbf{但这两个数能读对，是因为本例恰好是完整半圆；换成 (a) 中的 CPE 弧，
+用「直径」读 $R_{\mathrm{ct}}$ 仍得 100 \unit{\ohm}（两端截距与 $n$ 无关），
+而用「弧顶高度 $=R_{\mathrm{ct}}/2$」读就只有 $2\times39.4=79$ \unit{\ohm}，
+再代入 $C=1/(\omega_{\max}R_{\mathrm{ct}})$ 得 $0.63$ µF——与真值分别差 $21\%$ 与
+$27\%$。压扁的弧不满足式~\eqref{eq:eis-d-rc} 的圆方程：顶点高度是
+$(R_{\mathrm{ct}}/2)\tan(n\pi/4)$，不是 $R_{\mathrm{ct}}/2$。}
 （3）$-Z''$ 先减到极小再增大，是本图上最容易被忽略的特征：极小值点的出现说明\textbf{有两个
 不同时间尺度的过程串接在同一支路上}——高频弧（电荷转移）在约 30 Hz 处已衰减完毕，
 而扩散项在更低频处才开始主导。因此「$-Z''$ 极小点」的位置是判断两个过程是否已分离的实用标志。
-（4）低频段 $Z'$ 与 $-Z''$ 同步增大且连线斜率约 $0.95\approx1$，与式~\eqref{eq:eis-d-warburg}
+（4）低频段 $Z'$ 与 $-Z''$ 同步增大且连线斜率约 $1.00$，与式~\eqref{eq:eis-d-warburg}
 的 $Z'_{\mathrm{W}}=-Z''_{\mathrm{W}}$ 一致，故该段可归为\textbf{半无限线性扩散（Warburg 阻抗）
-控制}。斜率从理想值 $1$ 偏离到 $0.95$，原因是这一段仍混着正在衰减的电荷转移弧——这提示
-\textbf{用斜率反算 $\sigma$ 时必须扣掉弧的贡献}，直接拟合整段会低估 $\sigma$。
+控制}。斜率也因此是判断「扩散段是否已经独立」的实用判据：若把拟合区间一直取到弧上
+（例如 3.2 kHz 与 0.02 Hz 两点连线，斜率只有约 $0.38$），正在衰减的电荷转移弧会把斜率
+大幅拉低——\textbf{用斜率反算 $\sigma$ 必须先扣掉弧的贡献}。
 （5）(b) 中点线与实线的分岔起点约 30 Hz，正是「扩散开始参与」的频率；而两条线在
 $f\gtrsim 100$ Hz 不可分，说明\textbf{只看高频段的数据无法判断体系有没有扩散}。
 这给出频率范围要求的一个定量形式：低频端必须至少比这个分岔频率低两个数量级，扩散尾才成形。
@@ -666,10 +722,14 @@ $n$ 的信息}——端点是 $R_{\Omega}$ 与 $R_{\Omega}+R_{\mathrm{ct}}$，�
 \begin{pitfall}
 \textbf{（1）拟合优度高不等于电路唯一。} 这是等效电路拟合的第一风险，也是本节所有其它风险的
 放大器。\textbf{不同的电路可以对同一组数据给出几乎相同的拟合曲线}——只看图~\ref{fig:eis-d-model}(a)
-的中段，一个压扁的弧（约 24 \unit{\ohm} 宽、顶点高 22.7 \unit{\ohm}）至少可以用三种完全
-不同的电路拟合：①理想 $C_{\mathrm{dl}}$ 加一个约 24 \unit{\ohm} 的 $R_{\mathrm{ct}}$；
-②CPE（$n=0.85$）加 $R_{\mathrm{ct}}=100$ \unit{\ohm}；③两个时间常数接近的
-$(R\parallel C)$ 串联。三者的残差都可以做到很小，而它们给出的 $R_{\mathrm{ct}}$ 相差四倍以上。
+的中段，同一段压扁的弧（跨度 $110-10=100$ \unit{\ohm}、顶点高 $39.4$ \unit{\ohm}）
+至少可以用三种完全不同的电路拟合：①CPE（$n=0.85$）加 $R_{\mathrm{ct}}=100$ \unit{\ohm}；
+②两个时间常数相差 $4$ 倍的 $(R\parallel C)$ 串联（各 $50$ \unit{\ohm}，即把这一段
+100 \unit{\ohm} 拆成 $50+50$——峰值仍在 $3.2$ kHz、峰高 $40.0$ \unit{\ohm} 与
+$39.4$ \unit{\ohm} 几乎相同，全频段与①的差别不超过约 $3$ \unit{\ohm}）；
+③单个理想 $(R\parallel C)$ 串一个扩散项。三者的残差都可以做到很小，而它们给出的
+「$R_{\mathrm{ct}}$」可以是 100 \unit{\ohm}（①）、两个各 50 \unit{\ohm}（②）、
+或按弧顶高度误读出的 79 \unit{\ohm}——相差一倍以上。
 \textbf{残差小只说明该电路在数值上能复现数据，不代表它对应真实的物理过程}。实践判据：换一组
 完全不同的初值（或换一个拓扑相近的电路）重新拟合，若参数漂移到另一个解而残差几乎不变，就说明
 该解不可辨识；此时只能报告「表观值」并把候选机理并列写出。
@@ -682,7 +742,7 @@ $(R\parallel C)$ 串联。三者的残差都可以做到很小，而它们给出
 （式~\eqref{eq:eis-d-cpeceff}），否则读者无法复算。
 
 \textbf{（3）把 Warburg 当半圆。} 半无限扩散的 $45$°直线在只测到一段时很像大半径圆弧的一部分；
-图~\ref{fig:eis-d-model}(b) 的实线在 10 Hz 以下那一段若单独放大，斜率 $0.95$ 的
+图~\ref{fig:eis-d-model}(b) 的实线在 10 Hz 以下那一段若单独放大，斜率 $1.00$ 的
 「直线」完全可以被一个半径很大的圆拟合。直接按半圆读直径会把 $R_{\mathrm{ct}}$ 高估几倍。
 \textbf{判别办法是换到 Bode 图}：扩散段的 $|Z|$ 应呈 $\omega^{-1/2}$、相角应稳定在约 $+45$°，
 而圆弧段的相角会扫过一整段。
@@ -694,10 +754,12 @@ $(R\parallel C)$ 串联。三者的残差都可以做到很小，而它们给出
 它是结论的适用范围}，必须与结论一起报告。
 
 \textbf{（5）把 CPE 当理想电容算电容值。} 这是最常见的一个算术错误，且\textbf{不报错、不告警}。
-$Q$ 的量纲是 $\mathrm{S.s^{n}}$，$n=0.85$ 时 $Q$ 的数值与同体系的电容值相差不是「百分之几」，
-而是可以差几倍；式~\eqref{eq:eis-d-cpeceff} 的换算是必须做的。另一个同源错误是把
+$Q$ 的量纲是 $\mathrm{S.s^{n}}$，$n=0.85$ 时 $Q=2.21\times10^{-6}$ 与同体系的
+$C_{\mathrm{dl}}=0.5$ µF 相差 $4.4$ 倍，而且量纲不同——直接拿 $Q$ 当作电容会高估四倍以上；
+式~\eqref{eq:eis-d-cpeceff} 的换算是必须做的。另一个同源错误是把
 $C_{\mathrm{dl}}=1/(\omega_{\max}R_{\mathrm{ct}})$ 直接用在压扁的弧上——如图~\ref{fig:eis-d-model}(a)
-所示，这样读出的「电容」约 9 µF，是真实值 0.5 µF 的十八倍。
+所示，把弧顶高度当 $R_{\mathrm{ct}}/2$ 会读成 $R_{\mathrm{ct}}\approx79$ \unit{\ohm}，
+代入后得 $0.63$ µF（真值 0.5 µF，高 $27\%$）；压得越扁，误差越大。
 \textbf{只要 $n<0.95$，就不要用几何法读电容。}
 
 \textbf{（6）未扣除溶液电阻。} $R_{\mathrm{ct}}$ 必须是在扣除 $R_{\Omega}$ 之后读出的弧直径；

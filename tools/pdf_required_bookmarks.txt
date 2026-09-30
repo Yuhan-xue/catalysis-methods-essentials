@@ -1,0 +1,26 @@
+# R3-W03 必要书签清单（章级 + 后置区块）—— pdf_probe.py 的唯一外部期望源。
+#
+# 格式：每行 `<组名><TAB><书签标题>`；`#` 开头为注释行；空行忽略。
+#   组名      : frontmatter | chapter | backmatter（仅用于报告分组，不参与匹配）
+#   书签标题  : 去掉全部空白后与 PDF 书签标题精确比较；标题以 `*` 结尾表示前缀匹配。
+#
+# 维护约定：正文增删章 / 改名后必须同步本清单，否则 pdf_probe.py 报
+# R3-W03 FAIL + 列出缺失项（这是有意的：清单与文档不一致本身就是缺陷信号，
+# 不许用「书签里有什么就查什么」的自指口径冒充覆盖检查）。
+# 本清单取自 8df5e1e 基线 build/main.pdf 的一级书签（15 条 = 12 章 + 前置导读 + 2 个后置区块）。
+
+frontmatter	导读与方法总览
+chapter	1 物理吸附和催化剂的宏观物性测定
+chapter	2 透射电子显微镜
+chapter	3 热分析方法
+chapter	4 多晶X 射线衍射分析
+chapter	5 化学吸附和程序升温技术
+chapter	6 催化过程的拉曼光谱方法
+chapter	7 原位红外光谱方法
+chapter	8 核磁共振方法
+chapter	9 表面分析技术基础
+chapter	10 多相催化反应动力学
+chapter	11 电化学催化研究方法
+chapter	12 扫描探针显微镜与纳米光谱技术
+backmatter	跨方法综合应用
+backmatter	符号、缩写与索引

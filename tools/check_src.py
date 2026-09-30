@@ -326,14 +326,22 @@ def check_reachable(vol, ps):
     return probs
 
 
+TABLE_LABEL_PREFIX = 'tab:'
+
+
 def scan_tex_tables():
-    """③的前置：树里实际存在的表 {label: 'file:line'}，经模块级 read_lines 读盘。
+    """③的前置：树里实际存在的**每一个** table/longtable 环境（R3-W01）。
+
+    清点口径 = 「文件 + 表环境起始行」，label 只是这条记录的**属性**，不再是筛选条件。
+    旧实现只收 `tab:` 前缀标签并放进 dict，于是无标签表、非 `tab:` 标签表整个从分母里
+    消失（新增一张无来源无标签的表，仍报 85 PASS、差异 0）；重复标签也被
+    `setdefault` 静默吃掉一个。返回 list[dict(file, line, env, labels)]。
 
     read_lines is looked up at call time on purpose: a probe can rebind it to
     inject an unregistered float without touching the working tree.
     """
-    found = {}
-    opener = re.compile(r'\s*\\begin\{(table|longtable)\*?\}')
+    found = []
+    opener = re.compile(r'\s*\\begin\{(table|longtable)(\*?)\}')
     closer = re.compile(r'\s*\\end\{(table|longtable)\*?\}')
     for dirpath, dirnames, filenames in os.walk(os.path.join(ROOT, 'chapters')):
         dirnames[:] = sorted(d for d in dirnames if not d.startswith('.'))
@@ -345,19 +353,122 @@ def scan_tex_tables():
             lines = read_lines(path)
             i = 0
             while i < len(lines):
-                if not opener.match(lines[i]):
+                m = opener.match(lines[i])
+                if not m:
                     i += 1
                     continue
-                end = i
-                while end < len(lines) and not closer.match(lines[end]):
+                end, depth = i, 1
+                while end + 1 < len(lines):
                     end += 1
+                    if opener.match(lines[end]):
+                        depth += 1
+                    elif closer.match(lines[end]):
+                        depth -= 1
+                        if depth == 0:
+                            break
                 body = '\n'.join(lines[i:end + 1])
-                for lab, _a, _b in balanced(body, '\\label'):
-                    lab = lab.strip()
-                    if lab.startswith('tab:'):
-                        found.setdefault(lab, '%s:%d' % (rel, i + 1))
+                labels = [lab.strip() for lab, _a, _b in balanced(body, '\\label')]
+                found.append(dict(file=rel, line=i + 1,
+                                  env='%s%s' % (m.group(1), m.group(2)),
+                                  labels=labels))
                 i = end + 1
     return found
+
+
+def classify_tex_tables(scan, ledger_labels):
+    """把扫描到的表分成「已检查」与五类「未检查」，标签问题单列（R3-W01）。
+
+    未检查 ≠ 通过：任何一类未检查都写 FAIL 并让退出码非零。
+    """
+    by_label = {}
+    for rec in scan:
+        for lab in rec['labels']:
+            by_label.setdefault(lab, []).append(rec)
+    dup_labels = sorted(l for l, rs in by_label.items() if len(rs) > 1)
+    checked, unchecked = [], []
+    for rec in scan:
+        where = '%s:%d' % (rec['file'], rec['line'])
+        labs = rec['labels']
+        if not labs:
+            why = u'无 \\label（台账无从关联）'
+        elif len(labs) > 1:
+            why = u'一个表环境里 %d 个 \\label：%s' % (len(labs), u'、'.join(labs))
+        elif labs[0] in dup_labels:
+            why = u'重复标签 %s（共 %d 处）' % (labs[0], len(by_label[labs[0]]))
+        elif not labs[0].startswith(TABLE_LABEL_PREFIX):
+            why = u'标签不合规范 %s（表标签须以 %s 开头）' % (labs[0], TABLE_LABEL_PREFIX)
+        elif labs[0] not in ledger_labels:
+            why = u'台账缺项 %s（.tex 有而 sources/figure_table_list.csv 无）' % labs[0]
+        else:
+            checked.append(dict(where=where, label=labs[0], env=rec['env']))
+            continue
+        unchecked.append(dict(where=where, label=(labs[0] if labs else u'（无标签）'),
+                              env=rec['env'], why=why))
+    ledger_only = sorted(ledger_labels - set(by_label))
+    return dict(checked=checked, unchecked=unchecked, dup_labels=dup_labels,
+                ledger_only=ledger_only, scanned=len(scan))
+
+
+# ------------------------------------------------- ③ 台账 review_status 解析
+# R3-W02：旧判据是「文本含『未核对』→ 未核对，否则 → 已核对」，于是清空单元格、
+# 填「待复核」、写成错别字都会被**静默计成已完成**（0/85 → 1/84）。
+# 现判据：显式枚举 + 白名单前缀 + 证据字段四要素齐全，未知取值一律**失败关闭**
+# （计入未完成，绝不默认已完成）。
+REVIEW_STATES = (u'未核对', u'待复核', u'已核对', u'不适用')
+REVIEW_BUCKETS = (u'已核对', u'已核对（缺证据）', u'未核对', u'待复核', u'不适用', u'未识别')
+# 四类证据字段（验收口径：页面、核验者、时间、结论）。台账没有独立列，证据写在
+# review_status 单元格内，用 ; ； | ｜ 分隔，形如
+#   已核对; 页面=PDF p.36 / 书内 p.17; 核验者=张三; 时间=2026-09-30; 结论=与源书一致
+REVIEW_EVIDENCE = ((u'页面', (u'页面', u'页码', 'page', 'pages')),
+                   (u'核验者', (u'核验者', u'核对人', u'核对人', 'verifier', 'reviewer', 'by')),
+                   (u'时间', (u'时间', u'日期', 'date', 'time')),
+                   (u'结论', (u'结论', u'判定', 'verdict', 'conclusion', 'result')))
+REVIEW_SEP_RE = re.compile(u'[;；|｜]')
+REVIEW_EV_RE = re.compile(u'\\s*([^=:：;；|｜]+?)\\s*[=:：]\\s*([^;；|｜]*)')
+
+
+def parse_review(raw):
+    """把一个 review_status 单元格解析成 {state, done, token, missing, evidence, note}。
+
+    判定顺序：精确匹配 → 白名单前缀匹配（只认四个规范态）→ 未识别。
+    未识别 / 已核对但缺证据 → done=False，即**只在证据齐全时**才计入已完成。
+    """
+    text = (raw or '').strip()
+    if not text:
+        return dict(raw='', state=u'未核对', token=u'（空）', done=False,
+                    missing=[], evidence={}, note=u'单元格为空，按未核对计')
+    parts = REVIEW_SEP_RE.split(text)
+    token = parts[0].strip()
+    rest = ';'.join(parts[1:])
+    ev, why = {}, ''
+    for name, val in REVIEW_EV_RE.findall(rest):
+        key = name.strip().lower()
+        for canon, aliases in REVIEW_EVIDENCE:
+            if key == canon.lower() or key in aliases:
+                if val.strip():
+                    ev.setdefault(canon, val.strip())
+    state = None
+    if token in REVIEW_STATES:
+        state = token
+    else:
+        for canon in REVIEW_STATES:
+            if token.startswith(canon):
+                state, why = canon, u'前缀匹配「%s…」' % canon
+                break
+    if state is None:
+        return dict(raw=text, state=u'未识别', token=token, done=False,
+                    missing=[c for c, _ in REVIEW_EVIDENCE], evidence=ev,
+                    note=u'取值不在枚举 未核对/待复核/已核对/不适用 内（错别字或未定义）')
+    missing = [c for c, _ in REVIEW_EVIDENCE if c not in ev]
+    if state == u'已核对':
+        if missing:
+            return dict(raw=text, state=u'已核对（缺证据）', token=token, done=False,
+                        missing=missing, evidence=ev,
+                        note=u'声明已核对但缺 %s' % u'、'.join(missing))
+        return dict(raw=text, state=u'已核对', token=token, done=True,
+                    missing=[], evidence=ev, note=why)
+    return dict(raw=text, state=state, token=token, done=False,
+                missing=[], evidence=ev, note=why)
 
 
 # ------------------------------------------------------------------------ main
@@ -402,11 +513,12 @@ def main(argv):
         global_offs['up' if (m and int(m.group(1)) <= 7) else 'down'] |= o
 
     page_map = load_page_map()
-    tex_tables = scan_tex_tables()
+    tex_scan = scan_tex_tables()
     out, fail, npass, nrev = [], 0, 0, 0
     # 三层结论分别计数：①②由本工具判定，③只读台账（不判定内容）
     n_fmt_fail = n_page_fail = n_page_na = n_num_fail = 0
-    n_manual_done = n_manual_todo = 0
+    n_manual = dict((k, 0) for k in REVIEW_BUCKETS)
+    man_bad, accounting_bad = [], []
     tol_used = 0
     for r in sorted(targets, key=lambda x: (x['file'], int(x['line'] or 0))):
         shard = os.path.splitext(os.path.basename(r['file']))[0]
@@ -541,8 +653,14 @@ def main(argv):
         else:
             page_state = 'FAIL' if page_bad else 'PASS'
         num_state = u'N/A' if src is None else ('FAIL' if num_bad else 'PASS')
-        man = (r.get('review_status') or '').strip() or u'（台账未填）'
-        man_state = u'未核对' if u'未核对' in man else u'已核对'
+        man_raw = (r.get('review_status') or '').strip()
+        man = parse_review(man_raw)
+        man_state = man['state']
+        n_manual[man_state] = n_manual.get(man_state, 0) + 1
+        if man_state in (u'未识别', u'已核对（缺证据）'):
+            man_bad.append(u'%s（%s:%s）review_status=%r → %s：%s'
+                           % (r['label'], r['file'], line_no, man_raw,
+                              man_state, man['note']))
         if fmt_state == 'FAIL':
             n_fmt_fail += 1
         if page_state == 'FAIL':
@@ -551,26 +669,48 @@ def main(argv):
             n_page_na += 1
         if num_state == 'FAIL':
             n_num_fail += 1
-        if man_state == u'已核对':
-            n_manual_done += 1
-        else:
-            n_manual_todo += 1
         out.append('%-6s %-26s %-30s %s:%s' % (verdict, r['label'], r['number'],
                                                r['file'], line_no))
         out.append('        %s | %s' % (status[0], anchor))
+        man_show = man_raw or u'（空）'
+        man_extra = u''
+        if man_state == u'已核对（缺证据）':
+            man_extra = u'；缺证据字段：' + u'、'.join(man['missing'])
+        elif man_state == u'未识别':
+            man_extra = u'；取值不在枚举内（首段=%r）' % man['token']
+        elif man['note'].startswith(u'前缀匹配') or man['note'].startswith(u'单元格为空'):
+            man_extra = u'；%s' % man['note']
         out.append(u'        ①②③ 标注格式=%s 目标页可达=%s（原表号↔页码=%s）'
-                   u' 内容人工核对=%s［台账 review_status=%s；本工具不替代人看页面图像］'
-                   % (fmt_state, page_state, num_state, man_state, man))
+                   u' 内容人工核对=%s［台账 review_status=%s%s；本工具不替代人看页面图像］'
+                   % (fmt_state, page_state, num_state, man_state, man_show, man_extra))
         for extra in status[1:]:
             out.append('        %s' % extra)
         if src:
             out.append('        src = %s' % src.replace('\n', ' '))
 
     checked = npass + nrev + fail
+    # R3-W02：③ 的完成数是「证据齐全的已核对」，其余（未核对/待复核/未识别/
+    # 已核对但缺证据）全算未完成；不适用单列，不计入完成也不计入未完成。
+    n_manual_done = n_manual[u'已核对']
+    n_manual_na = n_manual[u'不适用']
+    n_manual_todo = checked - n_manual_done - n_manual_na
+    if sum(n_manual.values()) != checked:
+        accounting_bad.append(u'③ 台账对账不平：分桶合计 %d ≠ 已检查表数 %d'
+                              % (sum(n_manual.values()), checked))
     ledger_labels = set((r['label'] or '').strip() for r in rows
                         if (r['kind'] or '').strip() == 'table')
-    tex_only = sorted(set(tex_tables) - ledger_labels)
-    ledger_only = sorted(ledger_labels - set(tex_tables))
+    # R3-W01：分母 = .tex 里真实存在的**每一个**表环境（文件 + 起始行），
+    # 不再是「台账里登记过的 tab: 标签」——后者会让无标签表 / 非 tab: 标签表
+    # 直接从分母里消失，新增一张这样的表仍然报 85 PASS、差异 0。
+    tex_cov = classify_tex_tables(tex_scan, ledger_labels)
+    tex_unchecked, tex_dup = tex_cov['unchecked'], tex_cov['dup_labels']
+    ledger_only = tex_cov['ledger_only']
+    n_tex_scanned = tex_cov['scanned']
+    n_tex_checked = len(tex_cov['checked'])
+    if not only and n_tex_checked != checked:
+        accounting_bad.append(
+            u'.tex 已检查表数 %d ≠ 台账已检查行数 %d（清点口径与检查口径不一致）'
+            % (n_tex_checked, checked))
     up, down = page_map['up'], page_map['down']
     out += ['',
             'checked %d tables: PASS %d, REVIEW %d, FAIL %d' % (checked, npass, nrev, fail),
@@ -590,21 +730,40 @@ def main(argv):
             u'     册页数：%s PDF %d 页、印刷页到 %d 页；%s PDF %d 页、印刷页到 %d 页'
             % (up['label'], up['pdf_max'], up['book_max'],
                down['label'], down['pdf_max'], down['book_max']),
-            u'  ③ 内容人工核对（**本工具不判定**，只读台账 review_status）：'
-            u'已核对 %d / 未核对 %d —— 引用内容对不对必须人看页面图像'
-            % (n_manual_done, n_manual_todo),
+            u'  ③ 内容人工核对（**本工具不判定**，只读台账 review_status；枚举：'
+            u'未核对 / 待复核 / 已核对 / 不适用）：已完成 %d / 未完成 %d'
+            u'（未核对 %d、待复核 %d、未识别 %d、已核对但缺证据 %d）、不适用 %d'
+            u' —— 只有「已核对」且带齐 页面/核验者/时间/结论 四类证据才计入完成；'
+            u'台账无独立证据列，证据写在 review_status 单元格内（分号分隔，形如'
+            u'「已核对; 页面=PDF p.36; 核验者=…; 时间=…; 结论=…」）；'
+            u'引用内容对不对必须人看页面图像'
+            % (n_manual_done, n_manual_todo, n_manual[u'未核对'], n_manual[u'待复核'],
+               n_manual[u'未识别'], n_manual[u'已核对（缺证据）'], n_manual_na),
             u'原表号↔页码：容差 %d 页（已知 OCR 索引对部分表低 1 页，留 1 页余量；'
             u'理由见模块 docstring）；用到容差（差 1–%d 页）的表 %d 个，超出容差 %d 个'
             % (PAGE_TOL, PAGE_TOL, tol_used, n_num_fail),
-            u'集合差异（实际 .tex 表 vs 台账 sources/figure_table_list.csv）：'
-            u'.tex 扫描到表 %d 张、台账登记 %d 张；.tex 有而台账无 %d 张、台账有而 .tex 无 %d 张'
-            % (len(tex_tables), len(ledger_labels), len(tex_only), len(ledger_only))]
+            u'.tex 表清点（口径＝「文件 + 表环境起始行」，R3-W01）：扫描到 %d 张、'
+            u'已检查 %d 张、未检查 %d 张；台账登记 %d 张；台账有而 .tex 无 %d 张'
+            % (n_tex_scanned, n_tex_checked, len(tex_unchecked), len(ledger_labels),
+               len(ledger_only))]
     out.append(u'')
-    for lab in tex_only:
-        out.append(u'    FAIL .tex 有而台账无：%s（%s）—— 本门禁没有检查过它（未检查 ≠ 通过）'
-                   % (lab, tex_tables[lab]))
+    if tex_unchecked:
+        out.append(u'    未检查的表（新增表若不写 tab: 标签或不入台账，旧口径会当它不存在）：')
+    for rec in tex_unchecked:
+        out.append(u'    FAIL %s %s [%s] —— %s（未检查 ≠ 通过）'
+                   % (rec['where'], rec['label'], rec['env'], rec['why']))
+    if tex_dup:
+        out.append(u'    重复标签：%s —— 同一标签出现在多个表环境，页面/台账关联不可靠'
+                   % u'、'.join(tex_dup))
     for lab in ledger_only:
         out.append(u'    WARN 台账有而 .tex 无：%s —— 台账可能过期，请重新生成' % lab)
+    if man_bad:
+        out.append(u'')
+        out.append(u'    ③ 台账 review_status 问题行（均计入「未完成」，不会默认已完成）：')
+        for msg in man_bad:
+            out.append(u'    WARN ' + msg)
+    for msg in accounting_bad:
+        out.append(u'    FAIL ' + msg)
 
     if legacy_out:
         name = '_p0_verify_%s.txt' % '_'.join(sorted(only)) if only else '_p0_verify.txt'
@@ -618,9 +777,14 @@ def main(argv):
         fh.write('\n'.join(out) + '\n')
     print('wrote %s' % os.path.relpath(dest, ROOT).replace('\\', '/'))
     print(next((ln for ln in out if ln.startswith('checked ')), out[-1]))
-    if tex_only:
-        sys.stderr.write('unregistered tables (not checked): %s\n' % ', '.join(tex_only))
-    return 1 if (fail or tex_only) else 0
+    if tex_unchecked:
+        unregistered = [r['label'] for r in tex_unchecked if u'台账缺项' in r['why']]
+        if unregistered:
+            sys.stderr.write('unregistered tables (not checked): %s\n'
+                             % ', '.join(unregistered))
+        sys.stderr.write('unchecked tables: %d (scanned %d, checked %d)\n'
+                         % (len(tex_unchecked), n_tex_scanned, n_tex_checked))
+    return 1 if (fail or tex_unchecked or accounting_bad) else 0
 
 
 if __name__ == '__main__':
