@@ -12,9 +12,9 @@
 | 成品 | 《现代催化研究方法精要：原理、读图与方法选择》 |
 | 页数 | **314**（R4 修复后 313，再补写 §8.5 原位 MAS NMR 后 +1；R3 修复后 315、R2 修复后 313、P0 收口时 310、基线 `feb8739` 实测 309。R4 的 315→313 来自缩写表列宽调整与正文措辞修改，自动门禁全 0，**不是**浮动体错排）。中途曾因 `\samepage` 惩罚参数泄漏涨到 345 页，见 §6 方法类教训）|
 | 分片 | **37**（`chapters/parts/`）|
-| 最新提交 | `675066a`（R4 todo：补写 §8.5 原位 MAS NMR + 第 8/9 章覆盖台账）。R4 评审修复为 `52a4b90`（8 项 P2 + 继承队列；逐项验收见 `reviews/2026-09-30-round4/CLOSURE.md`）。其前 `4e1db7f` 是第四轮评审目录入库；R3 修复为 `5cf40f7`（10 项，见 `reviews/2026-09-30-round3/CLOSURE.md`）。**PDF 输入的再上一次修复是** `ddc8f1a`（**R2 第二轮**，22 文件 1890+/444−；见 `reviews/2026-09-30-round2/VERIFICATION.md`）。再往前：`b17b1e9`、`8df5e1e`、`cc8f73b`、`c3225a3`、`58b0440`、`b9bdf73`、`5109139`、`9e197cd`、`175a8d8`、`78f1c22`、`2325bbf` |
-| 线上 pre | **v0.6.3-pre**（release id=44，tag `v0.6.3-pre` @ `675066a`；附件 4018344 B，SHA-256 `3E1A436DD08FB9B480D43CFA400AA95618841289A3E75A26DBD568ADAC392D27`；314 页 / 144 书签；`/releases/download/v0.6.3-pre/…` 已回验字节一致）|
-| 上一版 pre | v0.6.2-pre（release id=43，tag @ `52a4b90`；附件 4004860 B，SHA-256 `A9917235AC7CC184E7EDB96FF458431B0261C85A5B126A70ABDCB852FD980E2D`）；再上一版 v0.6.1-pre（id=42 @ `cc8f73b`）|
+| 最新提交 | `081a846`（R4 todo：覆盖映射 + 85 表 OCR 内容核对 + ch11 显式引用 + 后置可关闭索引）；此前 `675066a`（补写 §8.5 原位 MAS NMR + 第 8/9 章覆盖台账）。R4 评审修复为 `52a4b90`（8 项 P2 + 继承队列；逐项验收见 `reviews/2026-09-30-round4/CLOSURE.md`）。其前 `4e1db7f` 是第四轮评审目录入库；R3 修复为 `5cf40f7`（10 项，见 `reviews/2026-09-30-round3/CLOSURE.md`）。**PDF 输入的再上一次修复是** `ddc8f1a`（**R2 第二轮**，22 文件 1890+/444−；见 `reviews/2026-09-30-round2/VERIFICATION.md`）。再往前：`b17b1e9`、`8df5e1e`、`cc8f73b`、`c3225a3`、`58b0440`、`b9bdf73`、`5109139`、`9e197cd`、`175a8d8`、`78f1c22`、`2325bbf` |
+| 线上 pre | **v0.6.4-pre**（release id=46，tag `v0.6.4-pre` @ `081a846`；附件 4021273 B，SHA-256 `6511DA7511ADD50F8134983E29621B0AEF42174A3710919FD2BB3C4BEB82874A`；314 页 / 144 书签；`/releases/download/v0.6.4-pre/…` 已回验字节一致）|
+| 上一版 pre | v0.6.3-pre（release id=44，tag @ `675066a`；附件 4018344 B，SHA-256 `3E1A436DD08FB9B480D43CFA400AA95618841289A3E75A26DBD568ADAC392D27`）；再上一版 v0.6.2-pre（id=43 @ `52a4b90`）|
 | 构建门禁 | errors / overfull>5pt / missing glyphs / undefined refs / dup labels / **dup includes** / **overlap** —— 全 0；`-Release` 下静态检查**没跑成（unavailable）判失败**（见 §2、§5 P2）|
 | 日志直查 | Overfull hbox 0 / vbox 0、Float too large 0、Missing character 0、Underfull vbox 0 |
 | 叠印 | 图内元素 **0 处**；粗横线 0 / 粗竖线 0 |
@@ -30,7 +30,8 @@
 - **继承项**：导读 XAFS 归属已改（`ch00-intro`）；C09-01 覆盖矩阵见
   `sources/ch09_coverage_matrix.md`（§9.6—§9.8 明确删节并记理由，`ch09-c` 假指向已修）；
   C05-02 生成器逐点复验 PASS。**未完成**：85 表逐表核原书页面图像、旧凭据轮换——都需要人工/账户。
-- **发布**：v0.6.3-pre（release id=44 @ `675066a`，314 页 / 144 书签，附件 4018344 B，SHA-256 `3E1A436DD08FB9B480D43CFA400AA95618841289A3E75A26DBD568ADAC392D27`）；前一版 v0.6.2-pre（id=43 @ `52a4b90`）。均回验字节一致。
+- **发布**：v0.6.4-pre（release id=46 @ `081a846`，314 页 / 144 书签，附件 4021273 B，SHA-256 `6511DA7511ADD50F8134983E29621B0AEF42174A3710919FD2BB3C4BEB82874A`）；此前 v0.6.3-pre（id=44）、v0.6.2-pre（id=43）。均回验字节一致。
+- **todo 收尾（081a846）**：新增 `tools/check_table_content.py`（85 表 OCR 文本层内容核对：13 FOUND / 1 INDEX_OK / 54 无表号 / 17 非源书 / 0 MISS，见 `sources/table_content_check.md`）与 `tools/build_coverage_map.py`（原书节覆盖映射：二级节 79/81，未映射的 2 个为「结束语」，见 `sources/coverage_map.md`/`_notes.md`）；ch11「上一节」改显式 `\ref`；后置「勘误与待核对」加逐条可关闭索引。**剩余仅两项需人工**：85 表像素级核图、旧凭据轮换。
 - **todo 补写**：新增 §8.5「分子筛催化反应的原位 MAS NMR」（三种实现方式 + 13C 标记判别分子内/分子间），映射见 `sources/ch08_coverage_note.md`；第 9 章完成状态见 `sources/ch09_coverage_matrix.md`；assignments 增列「科学核验状态」。
 - 本轮无视觉能力：U01/U02 只做了矢量与文字层探针，观感复核仍建议人工打开 `build/main.pdf`。
 
