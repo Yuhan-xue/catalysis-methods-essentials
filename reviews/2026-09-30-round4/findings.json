@@ -1,0 +1,151 @@
+{
+  "baseline": "5cf40f70c0db2697ec60745751dd264f6cb28d82",
+  "findings": [
+    {
+      "id": "R4-C01",
+      "priority": "P2",
+      "category": "content",
+      "status": "open",
+      "title": "微分截面定义与额外角度因子重复",
+      "location": {
+        "path": "chapters/parts/ch06-a.tex",
+        "start": 178,
+        "end": 195,
+        "pdf_pages": [
+          122,
+          123
+        ]
+      },
+      "report": "01-content.md",
+      "evidence": "45 度相对功率应为 0.5，重复角因子给 0.25",
+      "acceptance": "方向微分截面或参考系数二选一，角分布只计一次"
+    },
+    {
+      "id": "R4-C02",
+      "priority": "P2",
+      "category": "content",
+      "status": "open",
+      "title": "CPE 有效电容误称低频极限电容",
+      "location": {
+        "path": "chapters/parts/ch11-d.tex",
+        "start": 632,
+        "end": 642,
+        "pdf_pages": [
+          273
+        ]
+      },
+      "report": "01-content.md",
+      "evidence": "n=0.85 时表观并联电容随频率降低而增加，没有有限低频极限",
+      "acceptance": "注明有效电容转换约定，检查 n=1 和 n<1"
+    },
+    {
+      "id": "R4-C03",
+      "priority": "P2",
+      "category": "content",
+      "status": "open",
+      "title": "Nyquist 几何斜率不能识别 Warburg 系数",
+      "location": {
+        "path": "chapters/parts/ch11-d.tex",
+        "start": 707,
+        "end": 711,
+        "pdf_pages": [
+          274
+        ]
+      },
+      "report": "01-content.md",
+      "evidence": "sigma=20 和 40 的纯 Warburg 几何斜率都为 1",
+      "acceptance": "明确频率坐标并从样本恢复 sigma"
+    },
+    {
+      "id": "R4-C04",
+      "priority": "P2",
+      "category": "content",
+      "status": "open",
+      "title": "DTG 跨升温速率峰高不严格成正比",
+      "location": {
+        "path": "chapters/parts/ch03-b.tex",
+        "start": 529,
+        "end": 533,
+        "pdf_pages": [
+          71,
+          72
+        ]
+      },
+      "report": "01-content.md",
+      "evidence": "beta 增加 8 倍，模型时间峰高增加 7.097656 倍",
+      "acceptance": "区分链式关系与跨实验近似"
+    },
+    {
+      "id": "R4-U01",
+      "priority": "P2",
+      "category": "ui",
+      "status": "open",
+      "title": "图 11-5 CPE 虚线穿过说明文字",
+      "location": {
+        "path": "chapters/parts/ch11-d.tex",
+        "start": 579,
+        "end": 585,
+        "pdf_pages": [
+          273
+        ]
+      },
+      "report": "02-ui-reading.md",
+      "evidence": "最终 PDF 放大确认虚线穿过理想弧顶点说明",
+      "acceptance": "完整文本区域避开曲线，最终 PDF 人眼确认"
+    },
+    {
+      "id": "R4-U02",
+      "priority": "P2",
+      "category": "ui",
+      "status": "open",
+      "title": "缩写表中文列过窄导致碎片化断行",
+      "location": {
+        "path": "chapters/ch90-backmatter.tex",
+        "start": 26,
+        "end": 26,
+        "pdf_pages": [
+          309,
+          310,
+          311
+        ]
+      },
+      "report": "02-ui-reading.md",
+      "evidence": "DRIFT/SSITKA 中文名称分别占 5/6 行，每行仅两三个字",
+      "acceptance": "正常中文短语宽度，保留主讲与出现位置及续表头"
+    },
+    {
+      "id": "R4-W01",
+      "priority": "P2",
+      "category": "workflow",
+      "status": "open",
+      "title": "图形探针短段过滤漏检虚线穿字",
+      "location": {
+        "path": "tools/fig_probe_eis.py",
+        "start": 329,
+        "end": 330,
+        "pdf_pages": [
+          273
+        ]
+      },
+      "report": "03-workflow.md",
+      "evidence": "原阈值 5 pt 返回 0 交叉；降低阈值恢复真实 2.5 pt 交叉",
+      "acceptance": "数据路径短段参与检查且轴刻度对照不误报"
+    },
+    {
+      "id": "R4-W02",
+      "priority": "P2",
+      "category": "workflow",
+      "status": "open",
+      "title": "TG 生成器和回执仅引用忽略目录",
+      "location": {
+        "path": "chapters/parts/ch03-b.tex",
+        "start": 232,
+        "end": 235,
+        "pdf_pages": []
+      },
+      "report": "03-workflow.md",
+      "evidence": "build/r3/recompute_ch03b_dtg.py 不受 Git 跟踪且同步后不存在",
+      "acceptance": "干净克隆可运行生成器并复现坐标与回执"
+    }
+  ]
+}

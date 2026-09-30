@@ -1,0 +1,1102 @@
+{
+  "pdf": "C:\\Users\\53150\\Documents\\Codex\\2026-09-28\\q\\work\\catalysis-round4-probes\\normal.pdf",
+  "pages": 315,
+  "bookmarks_total": 143,
+  "bookmark_targets": [
+    {
+      "title": "导读与方法总览",
+      "bookmark_page": 5,
+      "first_page_with_title": 5,
+      "matched_key": "导读与方法总览",
+      "ok": true
+    },
+    {
+      "title": "这本书怎么用",
+      "bookmark_page": 5,
+      "first_page_with_title": 5,
+      "matched_key": "这本书怎么用",
+      "ok": true
+    },
+    {
+      "title": "五个问题",
+      "bookmark_page": 5,
+      "first_page_with_title": 5,
+      "matched_key": "五个问题",
+      "ok": true
+    },
+    {
+      "title": "方法选择矩阵",
+      "bookmark_page": 5,
+      "first_page_with_title": 5,
+      "matched_key": "方法选择矩阵",
+      "ok": true
+    },
+    {
+      "title": "选择路径",
+      "bookmark_page": 5,
+      "first_page_with_title": 5,
+      "matched_key": "选择路径",
+      "ok": true
+    },
+    {
+      "title": "术语、符号与来源约定",
+      "bookmark_page": 5,
+      "first_page_with_title": 5,
+      "matched_key": "术语、符号与来源约定",
+      "ok": true
+    },
+    {
+      "title": "三条阅读路线",
+      "bookmark_page": 5,
+      "first_page_with_title": 5,
+      "matched_key": "三条阅读路线",
+      "ok": true
+    },
+    {
+      "title": "1 物理吸附和催化剂的宏观物性测定",
+      "bookmark_page": 7,
+      "first_page_with_title": 7,
+      "matched_key": "物理吸附和催化剂的宏",
+      "ok": true
+    },
+    {
+      "title": "1.1 这个方法测量什么",
+      "bookmark_page": 7,
+      "first_page_with_title": 7,
+      "matched_key": "1这个方法测量什么",
+      "ok": true
+    },
+    {
+      "title": "1.2 吸附等温线：唯一的核心数据",
+      "bookmark_page": 7,
+      "first_page_with_title": 7,
+      "matched_key": "2吸附等温线：唯一的",
+      "ok": true
+    },
+    {
+      "title": "1.3 核心公式及其成立条件",
+      "bookmark_page": 8,
+      "first_page_with_title": 8,
+      "matched_key": "3核心公式及其成立条",
+      "ok": true
+    },
+    {
+      "title": "1.4 数据到结论：比表面积的求算流程",
+      "bookmark_page": 9,
+      "first_page_with_title": 9,
+      "matched_key": "4数据到结论：比表面",
+      "ok": true
+    },
+    {
+      "title": "1.5 误判与边界",
+      "bookmark_page": 10,
+      "first_page_with_title": 10,
+      "matched_key": "5误判与边界",
+      "ok": true
+    },
+    {
+      "title": "1.6 孔容和孔尺寸分布",
+      "bookmark_page": 10,
+      "first_page_with_title": 10,
+      "matched_key": "6孔容和孔尺寸分布",
+      "ok": true
+    },
+    {
+      "title": "1.7 颗粒度测定",
+      "bookmark_page": 16,
+      "first_page_with_title": 16,
+      "matched_key": "7颗粒度测定",
+      "ok": true
+    },
+    {
+      "title": "1.8 密度的三种定义与测定",
+      "bookmark_page": 23,
+      "first_page_with_title": 23,
+      "matched_key": "8密度的三种定义与测",
+      "ok": true
+    },
+    {
+      "title": "1.9 催化剂机械强度的测定",
+      "bookmark_page": 27,
+      "first_page_with_title": 27,
+      "matched_key": "9催化剂机械强度的测",
+      "ok": true
+    },
+    {
+      "title": "2 透射电子显微镜",
+      "bookmark_page": 30,
+      "first_page_with_title": 30,
+      "matched_key": "透射电子显微镜",
+      "ok": true
+    },
+    {
+      "title": "2.1 透射电子显微镜简介",
+      "bookmark_page": 30,
+      "first_page_with_title": 30,
+      "matched_key": "1透射电子显微镜简介",
+      "ok": true
+    },
+    {
+      "title": "2.2 电子衍射和成像",
+      "bookmark_page": 31,
+      "first_page_with_title": 31,
+      "matched_key": "2电子衍射和成像",
+      "ok": true
+    },
+    {
+      "title": "2.3 扫描透射电子显微镜：探针、探测器几何与 Z 衬度",
+      "bookmark_page": 37,
+      "first_page_with_title": 37,
+      "matched_key": "3扫描透射电子显微镜",
+      "ok": true
+    },
+    {
+      "title": "2.4 分析电子显微镜：X 射线能谱与电子能量损失谱",
+      "bookmark_page": 39,
+      "first_page_with_title": 39,
+      "matched_key": "4分析电子显微镜：X",
+      "ok": true
+    },
+    {
+      "title": "2.5 电子束辐射损伤：观察会改变样品",
+      "bookmark_page": 43,
+      "first_page_with_title": 43,
+      "matched_key": "5电子束辐射损伤：观",
+      "ok": true
+    },
+    {
+      "title": "2.6 电子显微镜在多相催化中的应用",
+      "bookmark_page": 44,
+      "first_page_with_title": 44,
+      "matched_key": "6电子显微镜在多相催",
+      "ok": true
+    },
+    {
+      "title": "2.7 新型透射电镜",
+      "bookmark_page": 51,
+      "first_page_with_title": 51,
+      "matched_key": "7新型透射电镜",
+      "ok": true
+    },
+    {
+      "title": "2.8 透射电子显微镜的局限性及注意事项",
+      "bookmark_page": 59,
+      "first_page_with_title": 59,
+      "matched_key": "8透射电子显微镜的局",
+      "ok": true
+    },
+    {
+      "title": "3 热分析方法",
+      "bookmark_page": 64,
+      "first_page_with_title": 64,
+      "matched_key": "热分析方法",
+      "ok": true
+    },
+    {
+      "title": "3.1 这个方法测量什么",
+      "bookmark_page": 64,
+      "first_page_with_title": 64,
+      "matched_key": "1这个方法测量什么",
+      "ok": true
+    },
+    {
+      "title": "3.2 核心原理与公式",
+      "bookmark_page": 64,
+      "first_page_with_title": 64,
+      "matched_key": "2核心原理与公式",
+      "ok": true
+    },
+    {
+      "title": "3.3 测量与条件",
+      "bookmark_page": 67,
+      "first_page_with_title": 67,
+      "matched_key": "3测量与条件",
+      "ok": true
+    },
+    {
+      "title": "3.4 数据到结论",
+      "bookmark_page": 67,
+      "first_page_with_title": 67,
+      "matched_key": "4数据到结论",
+      "ok": true
+    },
+    {
+      "title": "3.5 误判与边界",
+      "bookmark_page": 67,
+      "first_page_with_title": 67,
+      "matched_key": "5误判与边界",
+      "ok": true
+    },
+    {
+      "title": "3.6 互补与回查",
+      "bookmark_page": 68,
+      "first_page_with_title": 68,
+      "matched_key": "6互补与回查",
+      "ok": true
+    },
+    {
+      "title": "3.7 联用热分析：质量信号必须与逸出物信号对接",
+      "bookmark_page": 69,
+      "first_page_with_title": 69,
+      "matched_key": "7联用热分析：质量信",
+      "ok": true
+    },
+    {
+      "title": "3.8 实验条件对曲线的作用：峰温、峰形还是峰面积",
+      "bookmark_page": 70,
+      "first_page_with_title": 70,
+      "matched_key": "8实验条件对曲线的作",
+      "ok": true
+    },
+    {
+      "title": "3.9 气氛：改变的是反应路径，不只是反应速率",
+      "bookmark_page": 73,
+      "first_page_with_title": 73,
+      "matched_key": "9气氛：改变的是反应",
+      "ok": true
+    },
+    {
+      "title": "3.10 五类典型误判与回查方法",
+      "bookmark_page": 74,
+      "first_page_with_title": 74,
+      "matched_key": "10五类典型误判与回",
+      "ok": true
+    },
+    {
+      "title": "3.11 应用实例选读：从曲线到结论",
+      "bookmark_page": 75,
+      "first_page_with_title": 75,
+      "matched_key": "11应用实例选读：从",
+      "ok": true
+    },
+    {
+      "title": "4 多晶X 射线衍射分析",
+      "bookmark_page": 76,
+      "first_page_with_title": 76,
+      "matched_key": "多晶X射线衍射分析",
+      "ok": true
+    },
+    {
+      "title": "4.1 晶体学基础：周期性与对称性",
+      "bookmark_page": 76,
+      "first_page_with_title": 76,
+      "matched_key": "1晶体学基础：周期性",
+      "ok": true
+    },
+    {
+      "title": "4.2 X 射线的性质及其与物质的作用",
+      "bookmark_page": 77,
+      "first_page_with_title": 77,
+      "matched_key": "2X射线的性质及其与",
+      "ok": true
+    },
+    {
+      "title": "4.3 衍射的几何原理：倒易空间与衍射方法",
+      "bookmark_page": 78,
+      "first_page_with_title": 78,
+      "matched_key": "3衍射的几何原理：倒",
+      "ok": true
+    },
+    {
+      "title": "4.4 晶体对 X 射线的衍射",
+      "bookmark_page": 82,
+      "first_page_with_title": 82,
+      "matched_key": "4晶体对X射线的衍射",
+      "ok": true
+    },
+    {
+      "title": "4.5 物相鉴定与相定量分析",
+      "bookmark_page": 88,
+      "first_page_with_title": 88,
+      "matched_key": "5物相鉴定与相定量分",
+      "ok": true
+    },
+    {
+      "title": "4.6 衍射图的指标化",
+      "bookmark_page": 91,
+      "first_page_with_title": 91,
+      "matched_key": "6衍射图的指标化",
+      "ok": true
+    },
+    {
+      "title": "4.7 衍射峰的宽化与 Scherrer 方程",
+      "bookmark_page": 94,
+      "first_page_with_title": 94,
+      "matched_key": "7衍射峰的宽化与Sc",
+      "ok": true
+    },
+    {
+      "title": "4.8 Rietveld 全谱拟合",
+      "bookmark_page": 99,
+      "first_page_with_title": 99,
+      "matched_key": "8Rietveld全",
+      "ok": true
+    },
+    {
+      "title": "4.9 多晶 X 射线衍射数据分析实例",
+      "bookmark_page": 103,
+      "first_page_with_title": 103,
+      "matched_key": "9多晶X射线衍射数据",
+      "ok": true
+    },
+    {
+      "title": "4.10 Debye 方法简介与低维材料散射图的模拟",
+      "bookmark_page": 106,
+      "first_page_with_title": 106,
+      "matched_key": "10Debye方法简",
+      "ok": true
+    },
+    {
+      "title": "5 化学吸附和程序升温技术",
+      "bookmark_page": 109,
+      "first_page_with_title": 109,
+      "matched_key": "化学吸附和程序升温技",
+      "ok": true
+    },
+    {
+      "title": "5.1 化学吸附的基本原理",
+      "bookmark_page": 109,
+      "first_page_with_title": 109,
+      "matched_key": "1化学吸附的基本原理",
+      "ok": true
+    },
+    {
+      "title": "5.2 三种模型的吸附等温式",
+      "bookmark_page": 109,
+      "first_page_with_title": 109,
+      "matched_key": "2三种模型的吸附等温",
+      "ok": true
+    },
+    {
+      "title": "5.3 动态分析方法理论",
+      "bookmark_page": 110,
+      "first_page_with_title": 110,
+      "matched_key": "3动态分析方法理论",
+      "ok": true
+    },
+    {
+      "title": "5.4 TPD 谱的三层信息：峰数、峰温与峰面积",
+      "bookmark_page": 113,
+      "first_page_with_title": 113,
+      "matched_key": "4TPD谱的三层信息",
+      "ok": true
+    },
+    {
+      "title": "5.5 读谱实例：O2-TPD 上的氧物种与 CO-TPD 上的吸附态",
+      "bookmark_page": 114,
+      "first_page_with_title": 114,
+      "matched_key": "5读谱实例：O2-T",
+      "ok": true
+    },
+    {
+      "title": "5.6 多探针 TPD 区分酸位类型：NH3、乙烯与丁烯",
+      "bookmark_page": 115,
+      "first_page_with_title": 115,
+      "matched_key": "6多探针TPD区分酸",
+      "ok": true
+    },
+    {
+      "title": "5.7 TPR 谱的解析：峰温、耗氢量与物种归属",
+      "bookmark_page": 116,
+      "first_page_with_title": 116,
+      "matched_key": "7TPR谱的解析：峰",
+      "ok": true
+    },
+    {
+      "title": "5.8 为什么 TPR 峰温不能单独作为还原难易的判据",
+      "bookmark_page": 117,
+      "first_page_with_title": 117,
+      "matched_key": "8为什么TPR峰温不",
+      "ok": true
+    },
+    {
+      "title": "5.9 TPR 与 TPO 的定量前提",
+      "bookmark_page": 117,
+      "first_page_with_title": 117,
+      "matched_key": "9TPR与TPO的定",
+      "ok": true
+    },
+    {
+      "title": "5.10 TPO 与积炭：三种信号的伴生关系",
+      "bookmark_page": 119,
+      "first_page_with_title": 119,
+      "matched_key": "10TPO与积炭：三",
+      "ok": true
+    },
+    {
+      "title": "5.11 TPSR：从脱附谱读出反应机理",
+      "bookmark_page": 119,
+      "first_page_with_title": 119,
+      "matched_key": "11TPSR：从脱附",
+      "ok": true
+    },
+    {
+      "title": "5.12 误判清单与边界条件",
+      "bookmark_page": 120,
+      "first_page_with_title": 120,
+      "matched_key": "12误判清单与边界条",
+      "ok": true
+    },
+    {
+      "title": "6 催化过程的拉曼光谱方法",
+      "bookmark_page": 121,
+      "first_page_with_title": 121,
+      "matched_key": "催化过程的拉曼光谱方",
+      "ok": true
+    },
+    {
+      "title": "6.1 拉曼光谱原理简述",
+      "bookmark_page": 121,
+      "first_page_with_title": 121,
+      "matched_key": "1拉曼光谱原理简述",
+      "ok": true
+    },
+    {
+      "title": "6.2 荧光的发生机制与抑制",
+      "bookmark_page": 124,
+      "first_page_with_title": 124,
+      "matched_key": "2荧光的发生机制与抑",
+      "ok": true
+    },
+    {
+      "title": "6.3 拉曼光谱实验技术的发展",
+      "bookmark_page": 125,
+      "first_page_with_title": 125,
+      "matched_key": "3拉曼光谱实验技术的",
+      "ok": true
+    },
+    {
+      "title": "6.4 拉曼光谱在催化剂表征中的应用",
+      "bookmark_page": 126,
+      "first_page_with_title": 126,
+      "matched_key": "4拉曼光谱在催化剂表",
+      "ok": true
+    },
+    {
+      "title": "6.5 紫外拉曼与共振拉曼",
+      "bookmark_page": 128,
+      "first_page_with_title": 128,
+      "matched_key": "5紫外拉曼与共振拉曼",
+      "ok": true
+    },
+    {
+      "title": "6.6 表面增强拉曼与共焦拉曼",
+      "bookmark_page": 134,
+      "first_page_with_title": 134,
+      "matched_key": "6表面增强拉曼与共焦",
+      "ok": true
+    },
+    {
+      "title": "6.7 拉曼光谱在金属氧化物催化剂中的应用",
+      "bookmark_page": 138,
+      "first_page_with_title": 138,
+      "matched_key": "7拉曼光谱在金属氧化",
+      "ok": true
+    },
+    {
+      "title": "6.8 拉曼光谱在负载型催化剂中的应用",
+      "bookmark_page": 140,
+      "first_page_with_title": 140,
+      "matched_key": "8拉曼光谱在负载型催",
+      "ok": true
+    },
+    {
+      "title": "6.9 拉曼光谱在分子筛与表面吸附研究中的应用",
+      "bookmark_page": 142,
+      "first_page_with_title": 142,
+      "matched_key": "9拉曼光谱在分子筛与",
+      "ok": true
+    },
+    {
+      "title": "6.10 原位拉曼反应研究",
+      "bookmark_page": 146,
+      "first_page_with_title": 146,
+      "matched_key": "10原位拉曼反应研究",
+      "ok": true
+    },
+    {
+      "title": "7 原位红外光谱方法",
+      "bookmark_page": 149,
+      "first_page_with_title": 149,
+      "matched_key": "原位红外光谱方法",
+      "ok": true
+    },
+    {
+      "title": "7.1 原位红外光谱测量什么",
+      "bookmark_page": 149,
+      "first_page_with_title": 149,
+      "matched_key": "1原位红外光谱测量什",
+      "ok": true
+    },
+    {
+      "title": "7.2 红外吸收的基本原理",
+      "bookmark_page": 149,
+      "first_page_with_title": 149,
+      "matched_key": "2红外吸收的基本原理",
+      "ok": true
+    },
+    {
+      "title": "7.3 七种测量模式：按样品与信息深度选型",
+      "bookmark_page": 150,
+      "first_page_with_title": 150,
+      "matched_key": "3七种测量模式：按样",
+      "ok": true
+    },
+    {
+      "title": "7.4 原位与 operando：差别必须写清",
+      "bookmark_page": 153,
+      "first_page_with_title": 153,
+      "matched_key": "4原位与operan",
+      "ok": true
+    },
+    {
+      "title": "7.5 从原始谱图到结论",
+      "bookmark_page": 154,
+      "first_page_with_title": 154,
+      "matched_key": "5从原始谱图到结论",
+      "ok": true
+    },
+    {
+      "title": "7.6 误判与边界",
+      "bookmark_page": 154,
+      "first_page_with_title": 154,
+      "matched_key": "6误判与边界",
+      "ok": true
+    },
+    {
+      "title": "7.7 探针分子的选择与红外光谱诊释",
+      "bookmark_page": 155,
+      "first_page_with_title": 155,
+      "matched_key": "7探针分子的选择与红",
+      "ok": true
+    },
+    {
+      "title": "7.8 红外光谱在金属催化剂表征中的应用",
+      "bookmark_page": 157,
+      "first_page_with_title": 157,
+      "matched_key": "8红外光谱在金属催化",
+      "ok": true
+    },
+    {
+      "title": "7.9 红外光谱在氧化物与分子筛催化剂表征中的应用",
+      "bookmark_page": 160,
+      "first_page_with_title": 160,
+      "matched_key": "9红外光谱在氧化物与",
+      "ok": true
+    },
+    {
+      "title": "7.10 加氢精制催化剂活性相与助剂作用（硫化物催化剂）",
+      "bookmark_page": 164,
+      "first_page_with_title": 164,
+      "matched_key": "10加氢精制催化剂活",
+      "ok": true
+    },
+    {
+      "title": "7.11 原位红外光谱应用于反应机理的研究",
+      "bookmark_page": 168,
+      "first_page_with_title": 168,
+      "matched_key": "11原位红外光谱应用",
+      "ok": true
+    },
+    {
+      "title": "8 核磁共振方法",
+      "bookmark_page": 174,
+      "first_page_with_title": 174,
+      "matched_key": "核磁共振方法",
+      "ok": true
+    },
+    {
+      "title": "8.1 固体高分辨核磁共振技术",
+      "bookmark_page": 174,
+      "first_page_with_title": 174,
+      "matched_key": "1固体高分辨核磁共振",
+      "ok": true
+    },
+    {
+      "title": "8.2 分子筛结构的 MAS NMR 研究",
+      "bookmark_page": 177,
+      "first_page_with_title": 177,
+      "matched_key": "2分子筛结构的MAS",
+      "ok": true
+    },
+    {
+      "title": "8.3 固体 NMR 在催化剂酸性研究中的应用",
+      "bookmark_page": 180,
+      "first_page_with_title": 180,
+      "matched_key": "3固体NMR在催化剂",
+      "ok": true
+    },
+    {
+      "title": "8.4 催化剂表面吸附分子的 NMR 研究",
+      "bookmark_page": 185,
+      "first_page_with_title": 185,
+      "matched_key": "4催化剂表面吸附分子",
+      "ok": true
+    },
+    {
+      "title": "8.5 MAS NMR 技术研究积炭引起的分子筛失活",
+      "bookmark_page": 187,
+      "first_page_with_title": 187,
+      "matched_key": "5MASNMR技术研",
+      "ok": true
+    },
+    {
+      "title": "9 表面分析技术基础",
+      "bookmark_page": 196,
+      "first_page_with_title": 196,
+      "matched_key": "表面分析技术基础",
+      "ok": true
+    },
+    {
+      "title": "9.1 关于表面",
+      "bookmark_page": 196,
+      "first_page_with_title": 196,
+      "matched_key": "1关于表面",
+      "ok": true
+    },
+    {
+      "title": "9.2 X 射线光电子能谱（XPS）",
+      "bookmark_page": 198,
+      "first_page_with_title": 198,
+      "matched_key": "2X射线光电子能谱（",
+      "ok": true
+    },
+    {
+      "title": "9.3 电子结合能、初态效应与化学位移",
+      "bookmark_page": 202,
+      "first_page_with_title": 202,
+      "matched_key": "3电子结合能、初态效",
+      "ok": true
+    },
+    {
+      "title": "9.4 终态效应及伴峰",
+      "bookmark_page": 203,
+      "first_page_with_title": 203,
+      "matched_key": "4终态效应及伴峰",
+      "ok": true
+    },
+    {
+      "title": "9.5 紫外光电子能谱（UPS）",
+      "bookmark_page": 204,
+      "first_page_with_title": 204,
+      "matched_key": "5紫外光电子能谱（U",
+      "ok": true
+    },
+    {
+      "title": "9.6 俄歇电子能谱（AES）",
+      "bookmark_page": 205,
+      "first_page_with_title": 205,
+      "matched_key": "6俄歇电子能谱（AE",
+      "ok": true
+    },
+    {
+      "title": "9.7 离子散射谱（ISS）",
+      "bookmark_page": 205,
+      "first_page_with_title": 205,
+      "matched_key": "7离子散射谱（ISS",
+      "ok": true
+    },
+    {
+      "title": "9.8 四种表面方法的比较与选择",
+      "bookmark_page": 206,
+      "first_page_with_title": 206,
+      "matched_key": "8四种表面方法的比较",
+      "ok": true
+    },
+    {
+      "title": "9.9 XPS 中除芯能级谱外的其他初级结构谱线的应用",
+      "bookmark_page": 206,
+      "first_page_with_title": 206,
+      "matched_key": "9XPS中除芯能级谱",
+      "ok": true
+    },
+    {
+      "title": "9.10 XPS 定量（半定量）分析",
+      "bookmark_page": 207,
+      "first_page_with_title": 207,
+      "matched_key": "10XPS定量（半定",
+      "ok": true
+    },
+    {
+      "title": "9.11 XPS 数据的后期处理",
+      "bookmark_page": 208,
+      "first_page_with_title": 208,
+      "matched_key": "11XPS数据的后期",
+      "ok": true
+    },
+    {
+      "title": "9.12 XPS 实验中的常见问题",
+      "bookmark_page": 210,
+      "first_page_with_title": 210,
+      "matched_key": "12XPS实验中的常",
+      "ok": true
+    },
+    {
+      "title": "10 多相催化反应动力学",
+      "bookmark_page": 213,
+      "first_page_with_title": 213,
+      "matched_key": "多相催化反应动力学",
+      "ok": true
+    },
+    {
+      "title": "10.1 一般动力学概念",
+      "bookmark_page": 213,
+      "first_page_with_title": 213,
+      "matched_key": "1一般动力学概念",
+      "ok": true
+    },
+    {
+      "title": "10.2 吸附和多相催化反应速率方程",
+      "bookmark_page": 217,
+      "first_page_with_title": 217,
+      "matched_key": "2吸附和多相催化反应",
+      "ok": true
+    },
+    {
+      "title": "10.3 动力学模型的建立与检验",
+      "bookmark_page": 222,
+      "first_page_with_title": 222,
+      "matched_key": "3动力学模型的建立与",
+      "ok": true
+    },
+    {
+      "title": "10.4 传递过程的影响与判据",
+      "bookmark_page": 226,
+      "first_page_with_title": 226,
+      "matched_key": "4传递过程的影响与判",
+      "ok": true
+    },
+    {
+      "title": "10.5 动力学测定方法和实验装置",
+      "bookmark_page": 232,
+      "first_page_with_title": 232,
+      "matched_key": "5动力学测定方法和实",
+      "ok": true
+    },
+    {
+      "title": "10.6 非稳态催化过程动力学",
+      "bookmark_page": 240,
+      "first_page_with_title": 240,
+      "matched_key": "6非稳态催化过程动力",
+      "ok": true
+    },
+    {
+      "title": "10.7 结论",
+      "bookmark_page": 243,
+      "first_page_with_title": 243,
+      "matched_key": "10.7结论",
+      "ok": true
+    },
+    {
+      "title": "11 电化学催化研究方法",
+      "bookmark_page": 246,
+      "first_page_with_title": 246,
+      "matched_key": "电化学催化研究方法",
+      "ok": true
+    },
+    {
+      "title": "11.1 电化学基本原理",
+      "bookmark_page": 246,
+      "first_page_with_title": 246,
+      "matched_key": "1电化学基本原理",
+      "ok": true
+    },
+    {
+      "title": "11.2 控制电势的研究方法",
+      "bookmark_page": 251,
+      "first_page_with_title": 251,
+      "matched_key": "2控制电势的研究方法",
+      "ok": true
+    },
+    {
+      "title": "11.3 控制电流与整体电解研究方法",
+      "bookmark_page": 256,
+      "first_page_with_title": 256,
+      "matched_key": "3控制电流与整体电解",
+      "ok": true
+    },
+    {
+      "title": "11.4 流体动力学方法",
+      "bookmark_page": 261,
+      "first_page_with_title": 261,
+      "matched_key": "4流体动力学方法",
+      "ok": true
+    },
+    {
+      "title": "11.5 阻抗谱基本原理",
+      "bookmark_page": 266,
+      "first_page_with_title": 266,
+      "matched_key": "5阻抗谱基本原理",
+      "ok": true
+    },
+    {
+      "title": "11.6 阻抗技术在电催化领域中的应用",
+      "bookmark_page": 275,
+      "first_page_with_title": 275,
+      "matched_key": "6阻抗技术在电催化领",
+      "ok": true
+    },
+    {
+      "title": "11.7 电化学阻抗谱",
+      "bookmark_page": 278,
+      "first_page_with_title": 278,
+      "matched_key": "7电化学阻抗谱",
+      "ok": true
+    },
+    {
+      "title": "11.8 电化学原位谱学技术",
+      "bookmark_page": 279,
+      "first_page_with_title": 279,
+      "matched_key": "8电化学原位谱学技术",
+      "ok": true
+    },
+    {
+      "title": "12 扫描探针显微镜与纳米光谱技术",
+      "bookmark_page": 284,
+      "first_page_with_title": 284,
+      "matched_key": "扫描探针显微镜与纳米",
+      "ok": true
+    },
+    {
+      "title": "12.1 扫描隧道显微镜（STM）基本原理",
+      "bookmark_page": 284,
+      "first_page_with_title": 284,
+      "matched_key": "1扫描隧道显微镜（S",
+      "ok": true
+    },
+    {
+      "title": "12.2 STM 在催化研究中的应用",
+      "bookmark_page": 286,
+      "first_page_with_title": 286,
+      "matched_key": "2STM在催化研究中",
+      "ok": true
+    },
+    {
+      "title": "12.3 误判与边界",
+      "bookmark_page": 288,
+      "first_page_with_title": 288,
+      "matched_key": "3误判与边界",
+      "ok": true
+    },
+    {
+      "title": "12.4 互补与回查",
+      "bookmark_page": 289,
+      "first_page_with_title": 289,
+      "matched_key": "4互补与回查",
+      "ok": true
+    },
+    {
+      "title": "12.5 原子力显微镜的基本原理",
+      "bookmark_page": 289,
+      "first_page_with_title": 289,
+      "matched_key": "5原子力显微镜的基本",
+      "ok": true
+    },
+    {
+      "title": "12.6 成像模式与力–距离曲线",
+      "bookmark_page": 290,
+      "first_page_with_title": 290,
+      "matched_key": "6成像模式与力–距离",
+      "ok": true
+    },
+    {
+      "title": "12.7 原子力显微镜在催化研究中的应用",
+      "bookmark_page": 294,
+      "first_page_with_title": 294,
+      "matched_key": "7原子力显微镜在催化",
+      "ok": true
+    },
+    {
+      "title": "12.8 扫描探针与光谱技术的结合",
+      "bookmark_page": 297,
+      "first_page_with_title": 297,
+      "matched_key": "8扫描探针与光谱技术",
+      "ok": true
+    },
+    {
+      "title": "12.9 结束语",
+      "bookmark_page": 305,
+      "first_page_with_title": 305,
+      "matched_key": "9结束语",
+      "ok": true
+    },
+    {
+      "title": "跨方法综合应用",
+      "bookmark_page": 307,
+      "first_page_with_title": 307,
+      "matched_key": "跨方法综合应用",
+      "ok": true
+    },
+    {
+      "title": "证据链的基本结构",
+      "bookmark_page": 307,
+      "first_page_with_title": 307,
+      "matched_key": "证据链的基本结构",
+      "ok": true
+    },
+    {
+      "title": "证据强度分级",
+      "bookmark_page": 307,
+      "first_page_with_title": 307,
+      "matched_key": "证据强度分级",
+      "ok": true
+    },
+    {
+      "title": "验证矩阵：什么方法能约束什么",
+      "bookmark_page": 307,
+      "first_page_with_title": 307,
+      "matched_key": "验证矩阵：什么方法能",
+      "ok": true
+    },
+    {
+      "title": "综合案例一：负载型金属催化剂的分散度与活性位",
+      "bookmark_page": 307,
+      "first_page_with_title": 307,
+      "matched_key": "综合案例一：负载型金",
+      "ok": true
+    },
+    {
+      "title": "综合案例二：分子筛的酸性、积炭与失活",
+      "bookmark_page": 308,
+      "first_page_with_title": 308,
+      "matched_key": "综合案例二：分子筛的",
+      "ok": true
+    },
+    {
+      "title": "写结论时的三条硬规则",
+      "bookmark_page": 308,
+      "first_page_with_title": 308,
+      "matched_key": "写结论时的三条硬规则",
+      "ok": true
+    },
+    {
+      "title": "符号、缩写与索引",
+      "bookmark_page": 309,
+      "first_page_with_title": 309,
+      "matched_key": "符号、缩写与索引",
+      "ok": true
+    },
+    {
+      "title": "缩写与英文全称",
+      "bookmark_page": 309,
+      "first_page_with_title": 309,
+      "matched_key": "缩写与英文全称",
+      "ok": true
+    },
+    {
+      "title": "主要符号",
+      "bookmark_page": 312,
+      "first_page_with_title": 312,
+      "matched_key": "主要符号",
+      "ok": true
+    },
+    {
+      "title": "术语索引",
+      "bookmark_page": 313,
+      "first_page_with_title": 313,
+      "matched_key": "术语索引",
+      "ok": true
+    },
+    {
+      "title": "勘误与待核对状态",
+      "bookmark_page": 315,
+      "first_page_with_title": 315,
+      "matched_key": "勘误与待核对状态",
+      "ok": true
+    }
+  ],
+  "bookmark_targets_skipped": [],
+  "bookmark_mismatches": [],
+  "level1_chapters": [
+    {
+      "title": "导读与方法总览",
+      "page": 5
+    },
+    {
+      "title": "1 物理吸附和催化剂的宏观物性测定",
+      "page": 7
+    },
+    {
+      "title": "2 透射电子显微镜",
+      "page": 30
+    },
+    {
+      "title": "3 热分析方法",
+      "page": 64
+    },
+    {
+      "title": "4 多晶X 射线衍射分析",
+      "page": 76
+    },
+    {
+      "title": "5 化学吸附和程序升温技术",
+      "page": 109
+    },
+    {
+      "title": "6 催化过程的拉曼光谱方法",
+      "page": 121
+    },
+    {
+      "title": "7 原位红外光谱方法",
+      "page": 149
+    },
+    {
+      "title": "8 核磁共振方法",
+      "page": 174
+    },
+    {
+      "title": "9 表面分析技术基础",
+      "page": 196
+    },
+    {
+      "title": "10 多相催化反应动力学",
+      "page": 213
+    },
+    {
+      "title": "11 电化学催化研究方法",
+      "page": 246
+    },
+    {
+      "title": "12 扫描探针显微镜与纳米光谱技术",
+      "page": 284
+    },
+    {
+      "title": "跨方法综合应用",
+      "page": 307
+    },
+    {
+      "title": "符号、缩写与索引",
+      "page": 309
+    }
+  ],
+  "last_numbered_chapter": {
+    "title": "12 扫描探针显微镜与纳米光谱技术",
+    "page": 284
+  },
+  "backmatter_scan_from": 307,
+  "backmatter_header_hits": [],
+  "required_coverage": {
+    "require_coverage": true,
+    "source": "C:\\Users\\53150\\Documents\\Codex\\2026-09-28\\q\\work\\catalysis-review\\tools\\pdf_required_bookmarks.txt",
+    "required_total": 15,
+    "present_total": 15,
+    "missing_total": 0,
+    "missing": [],
+    "status": "PASS",
+    "skip_reason": ""
+  },
+  "U01_skip_reason": "",
+  "U02_skip_reason": "",
+  "U01_status": "PASS",
+  "U02_status": "PASS",
+  "W03_status": "PASS",
+  "U01_ok": true,
+  "U02_ok": true,
+  "W03_ok": true,
+  "exit_code": 0,
+  "statuses": {
+    "R2-U01": "PASS",
+    "R2-U02": "PASS",
+    "R3-W03": "PASS"
+  }
+}
