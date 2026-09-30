@@ -1,395 +1,110 @@
 # 现代催化研究方法精要：原理、读图与方法选择
 
-> **接手本项目请先读 [HANDOFF.md](HANDOFF.md)** —— 当前状态、能跑的命令、环境陷阱、
-> 未完成事项（按优先级）、已修/已核实清单、以及全部已知坑的浓缩版。
+据《现代催化研究方法新编》（上册、下册，科学出版社）浓缩编写的中文研究方法手册 ——
+**LaTeX / XeLaTeX 工程**。
 
-据《现代催化研究方法新编》（上册、下册，辛勤、罗孟飞、徐杰 主编，科学出版社）
-浓缩编写的中文研究方法手册 —— **LaTeX / XeLaTeX 工程**。
+> **接手本项目请先读 [HANDOFF.md](HANDOFF.md)**：当前状态、能跑的命令、环境陷阱、
+> 未完成事项与全部已知坑的浓缩版。写作细节见 [STYLE_GUIDE.md](STYLE_GUIDE.md) 与
+> [WRITER_BRIEF.md](WRITER_BRIEF.md)。
 
----
+## 一、这是什么
 
-## 目录
+一套可编译的中文科技专著工程，产出可检索、含中文书签的 PDF，以及可复现的源码、图源、
+来源覆盖表与质检记录。全书按「一个方法一个单元」组织，每个方法都要能回答五件事：
 
-- [一、这个仓库是什么](#一这个仓库是什么)
-- [二、当前进度（重要：未完成）](#二当前进度重要未完成)
-- [三、快速开始](#三快速开始)
-- [四、目录结构](#四目录结构)
-- [五、版式契约](#五版式契约)
-- [六、写作契约：方法单元与六环节](#六写作契约方法单元与六环节)
-- [七、来源建档与页码映射](#七来源建档与页码映射)
-- [八、工具链](#八工具链)
-- [九、诚实纪律（本项目最重要的一条）](#九诚实纪律本项目最重要的一条)
-- [十、已知问题与待办](#十已知问题与待办)
-- [十一、版权与仓库可见性](#十一版权与仓库可见性)
+1. 测什么、能推断什么？2. 原理、公式与**成立条件**？3. 拿到数据/谱图/图像**怎么读**？
+4. 哪些**假设与干扰**会让结论失效？5. 用哪个**互补方法**验证？
 
----
+## 二、当前状态（未完成）
 
-## 一、这个仓库是什么
-
-一套可编译的中文科技专著工程。目标产出：**约 200 页、可检索、含中文书签的 PDF**，
-以及可复现的 LaTeX 源码、图源、来源覆盖表与质检记录。
-
-写作对象是**催化研究方法**。全书按「一个方法一个单元」组织，每个方法都要能让读者回答五个问题：
-
-1. 这个方法**测量**什么、能**推断**什么？
-2. 核心原理、公式与**成立条件**是什么？
-3. 拿到数据／谱图／图像后**怎么读**？
-4. 有哪些**假设与干扰**会让结论失效？
-5. 用哪个**互补方法**验证？
-
-## 二、当前进度（重要：未完成）
-
-> **本工程未完成，且按用户指示已停止推进。** 仓库记录的是停止时的状态，
-> 可作为继续写作的起点。请勿把当前构建的 PDF 当作成书。
-
-**状态快照**（可溯源的四要素：生成时间 / 源码 SHA / 模式 / 产物哈希）：
-
-| 字段 | 值 |
-|---|---|
-| 生成时间 | 2026-09-30 02:11（本机时区，`build/main.pdf` 的 mtime） |
-| 源码 SHA | `58b0440ed5b54b7ea4736c025c3234fdc3b15112`（`git rev-parse HEAD`；当时工作区**有未提交改动**——R2 第二轮修复在其后入库） |
-| 模式 | release（`pwsh -NoProfile -ExecutionPolicy Bypass -File tools/build.ps1 -Release`；八项门禁全过，`overlap gate: PASS blocking=0 candidates=99`） |
-| 产物 | `build/main.pdf`，3,987,451 字节，SHA256 `27B726B2B41671A91151E03492B92F979ED5090FA3A66AD9C9985636FE50FF4E` |
-| 页数 / 书签 | **313 页** / **143 条**中文书签 |
-
-> 页数与哈希**随正文推进而变**：上表只是某一次构建的快照，不是常量。
-> ⚠️ **字节哈希每次构建都会变**（PDF 内含 `/CreationDate` 与 `/ID`）：2026-09-30 的两次 313 页
-> 构建同为 3,987,451 字节，哈希却分别是 `08D468A1…` 与 `27B726B2…`。判断「内容有没有变」
-> 不能比字节哈希，要比**文本层逐页**（`pdftotext -layout` 后逐页 diff；实测两次构建
-> `text_identical True`），或比页数、书签落页（`tools/pdf_probe.py`）与各项门禁计数。
-> 取当前值：跑 §三 的「发布验收」命令（页数与各门禁计数打印在 `==== build ====` 块里），
-> 再 `Get-FileHash build/main.pdf -Algorithm SHA256`。
-> 字体嵌入与文本可检索性来自既有的 `qa_pdf.py` 质检记录，**本次快照未重跑**。
-
-| 项目 | 状态 |
-|---|---|
-| 章数 | **12 章全部到位**，章号不变式校验通过 |
-| 正文分片 | **37 / 37 片**全部写出（`chapters/parts/*.tex` 实测 37 个；`sources/assignments.md` 无 `todo` 行） |
-| 全书页数 | 构建产物 **313 页**（2026-09-30 快照；原定目标约 200 页） |
-| 编译 | 0 错误、0 缺字、0 未定义引用、0 重复标签、0 重复引入（release 实测） |
-| 书签 / 字体 | 143 条中文书签；12 个字体**全部嵌入**；文本可检索 |
-| 版面 | **0 处 overfull >5 pt**（release 门禁全绿；历史记录见 §十） |
-| 图内元素叠印 | **图形相撞 0 处**（确认缺陷类）；另有 **99 处**「候选」（未归类跨串 16、数学下标 71、填充粗条 12；同串 22、嵌套 15 记数豁免），按**类别**报告、不按总数阻断（`tools/overlap_check.py --gate`，见 §八） |
-| 门禁 | **8 项**：编译错误 / overfull>5pt / 缺字 / 未定义引用 / 重复标签 / 重复引入 / 版面重叠 / 页数计数（详见 §三 表） |
-| 公式核对 | 3 项已用页面图像核对；40+ 项**仍待核对**（登记在 `sources/formula_verify.md`） |
-| 阶段 4（整合） | 术语统一已完成（13 组竞争 → 3 组刻意保留） |
-| 阶段 5（验收） | 部分完成：编译、字体嵌入、书签、缺字、术语、重复引入、版面重叠均有脚本守护 |
-
-**已完成与未完成的逐片台账见 `sources/assignments.md`**（由 `tools/update_ledger.py`
-从磁盘刷新，`done` 只等于「文件存在」）。
+- 12 章全部到位；正文分片 **37 / 37**；后置索引（缩写/符号/术语/勘误）齐备。
+- 最新发布 **v0.6.4-pre**：**314 页 / 144 条书签**，release 门禁全 0
+  （errors / overfull>5pt / missing glyphs / undefined refs / dup labels / dup includes / overlap）。
+- 逐片台账见 `sources/assignments.md`（`done` 只等于「文件存在」）；内容核验状态见
+  `reviews/2026-09-30-round4/CLOSURE.md` 与 `HANDOFF.md` §1/§5。
+- **仍未完成**：85 张表逐表**像素级**核图、公式逐式核对原页面图像、旧凭据轮换（后两项需人工/账户）。
+- ⚠️ **字节哈希每次构建都会变**（PDF 内含 `/CreationDate` 与 `/ID`）。判断内容有没有变，
+  请比**文本层逐页**、页数与书签落页（`tools/pdf_probe.py`），不要只比字节哈希。
 
 ## 三、快速开始
 
-### 依赖
-
-- **TeX Live 2025+**（需 `xelatex`、`latexmk`、Fandol 字体、`pdftoppm`、`pdftotext`）
-- **Python 3.10+**，含 `pymupdf`、`Pillow`、`numpy`
-
-### 构建
+依赖：TeX Live 2026（XeLaTeX + `latexmk`）、Python 3（`pymupdf` / `Pillow` / `numpy` / `scipy`）、Windows PowerShell。
 
 ```powershell
-# ① 快速预览（draft）：能出 PDF 就行；静态检查只报告、不拦
-pwsh -NoProfile -ExecutionPolicy Bypass -File tools/build.ps1
-
-# ② 发布验收（release）：加严门禁 —— 发布、交付、或在文档里写页数/哈希之前，必须跑这一条
+# 发布验收（发布/交付前必须跑；-Release 会把「静态检查没跑成」判为失败）
 pwsh -NoProfile -ExecutionPolicy Bypass -File tools/build.ps1 -Release
 
-# 只构建某一章 / 某一分片（分片作者提交前必跑）
-pwsh -NoProfile -ExecutionPolicy Bypass -File tools/check_chapter.ps1 -Chap ch09
-pwsh -NoProfile -ExecutionPolicy Bypass -File tools/check_chapter.ps1 -Chap ch09-a
+# 单分片（作者提交前必跑）
+pwsh -NoProfile -ExecutionPolicy Bypass -File tools/check_chapter.ps1 -Chap ch11-d
 
-# 附带每页字符数与墨迹覆盖率
-pwsh -NoProfile -ExecutionPolicy Bypass -File tools/check_chapter.ps1 -Chap ch01 -Pages
+# 关键探针（只读）
+python tools/pdf_probe.py --pdf build/main.pdf          # 书签落页 / 后置页眉 / 必要书签
+python tools/fig_probe_eis.py --pdf build/main.pdf      # 图 11-5 矢量层
+python tools/fig_probe_eis.py --selftest                # 探针自检
+python tools/check_src.py                               # 85 张表来源标注
+python tools/check_table_content.py                     # 85 张表来源内容（OCR 文本层）
+python tools/build_coverage_map.py                      # 原书节覆盖落点
+python tools/recompute_ch03b_dtg.py                     # TG/DTG 坐标复算
+python tools/gen_tpd_table.py --check                   # TPD 坐标逐点复验
 ```
-
-**两条命令别混用**：只有 `-Release` 打印的 `PASS` 才等于「八项门禁都查过且没问题」。
-draft 模式对 overfull / 未定义引用 / 重复标签 / 版面重叠**只打印数字、不阻断**，
-所以 draft 的 `PASS` 只说明「编译出来了」，不说明版面干净。
-
-八项门禁一览（release 全查；draft 只查前 4 项）：
-
-| # | 门禁 | draft | release | 判据 |
-|---|---|---|---|---|
-| 1 | 编译 | 拦 | 拦 | `latexmk` 退出码 = 0 |
-| 2 | 编译错误 | 拦 | 拦 | 日志无 `!` 开头的错误（见 §九） |
-| 3 | 缺字 | 拦 | 拦 | `Missing character` = 0（见 §九） |
-| 4 | 重复引入 | 拦 | 拦 | `tools/check_includes.py` 退出码 0；**没跑成也拦** |
-| 5 | overfull | 只报 | 拦 | overfull > 5 pt = 0 |
-| 6 | 未定义引用 | 只报 | 拦 | `Reference/Citation ... undefined` = 0 |
-| 7 | 重复标签 | 只报 | 拦 | `multiply defined` = 0 |
-| 8 | 版面重叠 | 只报 | 拦 | `tools/overlap_check.py --gate` = 0（只拦**确认缺陷**：图形相撞；**没跑成也拦**） |
-| — | 页数 | 打印 | 打印 | 信息量，不参与判定（取自 `Output written on ... (N pages)`） |
-
-> **「没检查」不等于「没问题」（2026-09-30 加，R2-W04）**
-> 第 4、8 项由独立的 Python 检查器执行。当 python 不可用、脚本缺失、
-> 或检查器自报无法检查（退出码 2）时：draft 打印 `skipped（原因）` 后继续；
-> **release 直接 `exit 1`**，并在 `FAIL:` 行写明是哪个检查没跑成。
-> 修复前 release 会把这三种情况当通过（实测缺失检查器 + 编译器桩仍打印 `PASS`、退出码 0）。
-
-> **为什么默认强制全量构建（`-g`）**
-> 分片通过 `\IfFileExists{chapters/parts/chNN-x.tex}` 引入。latexmk 的依赖数据库
-> **不记录「尚不存在」的文件**，所以新增分片后若只做增量构建，latexmk 会认为无事可做
-> 而跳过，产出**过期的 PDF**。本项目实际踩过：`ch00-intro.tex` 加好后没进书、页数不变。
-> 需要快时用 `-Quick`，但**增删分片后必须全量**。
-
-### 执行策略
-
-本机默认禁止未签名脚本，故一律带 `-ExecutionPolicy Bypass`。
 
 ## 四、目录结构
 
 ```
-main.tex                    主文件（封面、目录、按序引入各章）
-style/
-  preamble.tex              版式契约：页面几何、字体、标题层级、图表编号、页眉页脚
-  macros.tex                语义宏：六环节环境、观察/推断、来源标记、图源标记
-chapters/
-  chNN.tex                  装配层（自动生成，只按序 \input 分片；分片缺失则跳过）
-  parts/chNN-x.tex          分片正文 —— 实际的写作单位，每片独立成文、独立可编译
-  ch00-intro.tex            导读与方法总览（跨章方法选择层）
-  ch13-synthesis.tex        跨方法综合应用（证据链、判据矩阵、两个完整案例）
-  ch90-backmatter.tex       缩写表、符号表、术语索引、勘误状态
-sources/                    来源建档（见 §七）
-tools/                      构建、校验、抽取脚本（见 §八）
-docs/qa/                    质检记录（机检输出归档）
-build/                      编译产物（不入库）
+chapters/            正文分片（parts/）与装配层（chNN.tex）
+style/               preamble.tex（版式/字体）、macros.tex（环境与宏）
+sources/             来源建档：parts/（分片源文本）、coverage.csv、页码映射、覆盖/核对台账
+tools/               构建、检查、探针脚本（.ps1 构建入口；.py 各司其职）
+reviews/             历轮评审（TODO / CLOSURE / findings / 复核脚本）
+main.tex             主文件    HANDOFF.md 交接    STYLE_GUIDE.md / WRITER_BRIEF.md 写作契约
 ```
 
-**为什么按分片组织**：12 章正文量很大，分片是并发写作的最小单位。每片独立文件、
-独立编译，两个作者不会写同一个文件。装配层让「缺片」不影响整书编译，
-但也因此**新增分片必须全量构建**。
+`sources/pages/`（原书页面位图）、`sources/text/`（原书全文转储）、`build/`、`release/`
+均由 `.gitignore` 排除。
 
-## 五、版式契约
+## 五、版式与写作契约（摘要）
 
-| 项目 | 取值 |
-|---|---|
-| 纸张 | A4 竖版，`twoside`，**单栏** |
-| 页边距 | 内 25 mm、外 20 mm、上 18 mm、下 18 mm（页眉页脚计入版心） |
-| 版心 | **165 mm** × 约 245 mm |
-| 正文 | 10 pt |
-| 中文字体 | Fandol（随 TeX Live 分发，可复现）：正文宋体、标题黑体 |
-| 西文与数学 | TeX Gyre Termes + TeX Gyre Termes Math |
-| 标题层级 | 三级：`\chapterstart`（章）／`\subsection`／`\subsubsection` |
-| 编号 | 公式、图、表按章编号，形如 式(4-7)、图 4-3、表 4-2 |
-| 图宽 | `\onecolwidth` = 0.80\textwidth ≈ 132 mm；`\twocolwidth` = 0.96\textwidth ≈ 158 mm |
+- **单栏**、A4、10 pt、`twoside`，版心 **165 mm**；`\onecolwidth`≈132 mm、`\twocolwidth`≈158 mm。
+- **禁用** `figure*` / `table*`（单栏下非法）；长表用 `longtable` + 定宽 `p{}`，
+  放单栏整页（`\widepageson/off`，表宽 `\textwidth`）。
+- 一个分片 = 2 个 `\subsection` + 若干 `\subsubsection`，六环节各至少一处
+  （`probout/principle/measure/dataflow/pitfall/crosscheck`）；至少一个读图实例，`obs` 与
+  `infer` 严格分开。完整契约见 STYLE_GUIDE / WRITER_BRIEF。
 
-> **为什么改单栏（2026-09-28）**
-> 原设计是双栏（每栏 88.5 mm）。实际写作中发现：大量原理图与对照表挤在窄栏里，
-> 出现**多幅图元素互相压叠**、长表超版心（实测最大 89.7 pt）。改为单栏后版心总宽
-> 基本不变，但图与表第一次拿到整幅宽度。用户同时允许「字体大小可随内容调整」，
-> 因此不再强制 10 pt 正文与 8 pt 图内文字下限（仍建议正文 ≥9 pt、图内 ≥8 pt）。
+## 六、来源与页码映射
 
-章起始用 `\chapterstart{标题}{导读}`：一次完成编号、目录条目、页眉标记与全宽章标题，
-**不强制起新页、不插空白页**。
+- 来源两册：`S1` 上册、`S2` 下册；引用写法 `\src{S1 §x.y，书内 p.NN / PDF p.MM}`。
+- 页码一律以 `sources/parts/*.txt` 的页标记 `[[UP/DOWN PDF p.n | 书内 p.m]]` 为准
+  （读出的页码可用页码映射验算，但**不要**反过来用固定偏移猜页码）。
+- 原书 PDF 与页面位图**不在仓库**：只保留按分片切好的源文本 `sources/parts/`（写作与核对必需）。
 
-**单栏迁移的两个连带改动**（都已处理，但后续改动需注意）：
+## 七、工具链
 
-- `figure*` / `table*` 在单栏下**非法**，会报 `\begin{table} ended by \end{table*}`。
-  已用 `tools/unstar_floats.py` 批量转换 16 处。
-- `cuted` 的 `strip`（跨栏章标题带）与 `\widepageson/\widepagesoff`（双栏↔单栏切换）
-  均已退化为恒等／只分页。
+- 构建：`tools/build.ps1`（draft/release）、`tools/check_chapter.ps1`（单分片）。
+- 门禁与检查：`check_includes.py`（重复 `\input`）、`check_src.py`（表来源）、
+  `check_terms.py`（术语）、`overlap_check.py`（版面重叠，`--gate` 接入构建）。
+- 内容核对（不依赖像素）：`check_table_content.py`、`build_coverage_map.py`、
+  `recompute_ch03b_dtg.py`、`gen_tpd_table.py --check`。
+- 阅读/导航探针：`pdf_probe.py`、`fig_probe_eis.py`。
+- 其余一次性分析脚本在 `tools/` 下，按需查阅；生成的中间产物（`overlap_*.txt` 等）已不入库。
 
-## 六、写作契约：方法单元与六环节
+## 八、诚实纪律（本项目最重要的一条）
 
-每个方法单元必须包含六个语义环境（定义在 `style/macros.tex`）：
+- 维护会话**没有视觉能力**：公式由「OCR 上下文 + 学科标准形式」重建，未核对页面图像的一律写
+  `\tocheck{未对照原页面图像：…}`，**不写「已核对」**。
+- 静默失效是主要风险：缺字、`\underbrace` 黑条、`\ce{Mo=O}` 双连字符、重复 `\input`
+  都不报错。发布前必须让 `-Release` 门禁全绿。
+- 观测可信、归因易错；校验器本身也会错。判据以命令与文件为准，不以措辞为准。
 
-| 环境 | 作用 |
-|---|---|
-| `probout` | 这个方法**测量什么、能推断什么**（对应五问之一） |
-| `principle` | 原理、公式与适用条件 |
-| `measure` | 怎么测：样品、条件、参数选择 |
-| `dataflow` | 从原始数据到结论的处理链 |
-| `pitfall` | 误判、边界、容易搞错的地方 |
-| `crosscheck` | 用哪个互补方法验证 |
+## 九、发布
 
-另有 `keycond`（成立条件）、`obs` / `infer`（**观测与推断必须分开写**）、
-`methodsum`、`example` 等。
+流程（构建 → 打 tag → 建 release → 上传附件 → 回验哈希）见 `HANDOFF.md` §8。
+releases 见 Gitea：`/yuhanxue/catalysis-methods-essentials/releases`。
 
-完整写法见 `STYLE_GUIDE.md`，分片作者速查见 `WRITER_BRIEF.md`。
+## 十、版权与仓库可见性
 
-## 七、来源建档与页码映射
-
-浓缩内容的每一处都能回溯到原书位置。核心文件：
-
-| 文件 | 内容 |
-|---|---|
-| `coverage.csv` | **12 章全部二级/三级目录的覆盖表**（362 行；81 个二级 / 269 个三级），含 `ocr_state` 与逐行修复取证 |
-| `coverage.md` | 逐章统计、待核对清单、未编号条目登记 |
-| `page_map_up.csv` / `page_map_down.csv` | **逐页** PDF 页序 ↔ 书内页码映射 |
-| `page_map.md` | 映射方法与限度、待核对项 |
-| `chapter_ranges.csv` | 12 章的 PDF/书内起止页 |
-| `glossary_seed.csv` | 缩写表种子（36 条，均有目录依据） |
-| `parts/chNN-x.txt` | **按分片切分的源文本**（作者的实际输入，含双页码标记） |
-| `figure_table_list.csv` | 图表清单：图源类别、来源定位、可编辑文件、校核状态 |
-| `formula_verify.md` | 公式核对登记表（含 Lead 侧核对**尝试与失败**的记录） |
-| `errata.md` | **勘误清单**：本书自缺陷 + 原书错误或可疑之处 |
-| `terminology_decisions.md` | 术语统一裁定与**刻意不改**的理由 |
-| `qa_layout.md` | 版式实测记录与已排除的坑 |
-| `assignments.md` | 分片派单台账（自磁盘刷新） |
-
-### 页码映射（关键，别套固定偏移）
-
-- **上册**：`书内 = PDF − 19`，**全书恒定**。498 个页眉读数全部满足，相邻观测间隔 ≤4 页，
-  因此「不缺页」是硬结论。注意上册页眉右上角**是**印了页码的。
-- **下册**：**8 段**分段偏移，断点在 PDF 页 18 / 19 / 60 / 225 / 226 / 297 / 372 / 373。
-  **缺 7 个印刷页**：526、568、734、736、808、884、886（均为偶数页，几乎肯定是空白填充页）。
-- **陷阱**：下册第 8–12 章章名页与附录首页的**扫描图像上没有书眉**，但 PDF 文本层里却有
-  `第8 章 核磁共振方法 ·525·` 这样的**虚影**，全文抽取时必须剔除。
-
-查询工具：`python tools/pagemap.py up 268` → `up: pdf 268 -> printed 249`。
-
-### 源 PDF 不在本仓库
-
-两册原书 PDF 属版权材料，**不随仓库分发**。如需重建 `sources/text/` 与 `sources/parts/`，
-把 PDF 放到本机后运行：
-
-```powershell
-python tools/split_chapters.py    # 按章切分
-python tools/split_parts.py       # 按分片切分
-```
-
-`tools/vpage.py` 与 `tools/vbook.py` 用于渲染页面区域（公式核对、图源裁切）。
-
-## 八、工具链
-
-### 构建与校验
-
-| 脚本 | 用途 |
-|---|---|
-| `build.ps1` | 全书构建。draft / release 两档门禁与失败条件见 §三 |
-| `check_chapter.ps1` | 章／分片级校验（同样的失败条件） |
-| `check_includes.py` | **重复引入**检查：同一分片被 `\input` / `\IfFileExists` 引入两次会让正文重复排页，而其余门禁全报 0（第 4 项门禁） |
-| `check_src.py` | **来源标注三层结论**：①标注格式合格 ②目标页可达（PDF 页数边界 + 页码表逐页存在性 + 原表号↔页码容差 2 页）③内容人工核对（**本工具不判定**，只读台账 `review_status`）。另做「实际 `.tex` 表集合 vs 台账」差异检查：**未入账的表报 FAIL**（本门禁没检查过它，未检查 ≠ 通过） |
-| `check_chapters.py` | **章号不变式**：章号由装配顺序决定，缺章会使后续章号静默错位且 `\chapref` 全错却仍能解析 |
-| `check_sources.py` | 源码规范审计（字号下限、禁用构造、空环境、手写图号） |
-| `check_terms.py` | **术语一致性**：只报告「同概念多种写法」这一事实，不做判断 |
-| `fix_terms.py` | 施加已裁定的术语统一（幂等） |
-| `fix_fonts.py` | 把低于下限的字号提升 |
-| `unstar_floats.py` | 单栏迁移：`figure*`/`table*` → 非星号 |
-| `find_unbalanced.py` | 花括号平衡检查（定位截断的 `\caption{}` 之类） |
-
-### 质检
-
-| 脚本 | 用途 |
-|---|---|
-| `qa_pdf.py` | PDF 质检：书签、字体嵌入、逐页字符数与墨迹覆盖率 |
-| `overlap_check.py` | **版面叠印**：默认**扫描模式**只报告；`--gate` 为**门禁模式**——图形相撞即非零退出，文字轮廓 / 上下标 / 嵌套框 / 填充粗条按**类别**报候选、不按总数一刀切（第 8 项门禁）。退出码 0 通过 / 1 命中阻断项 / 2 无法检查；例外台账 `tools/overlap_gate_exceptions.json` |
-| `find_overlaps.py` | **字符级**重叠检测（只关心文字压文字，见下方说明） |
-| `find_math_cjk.py` | 定位「数学模式里的汉字」（会静默丢字） |
-| `find_codepoints.py` | 定位特定 Unicode 码位（静默丢字排查） |
-| `figsheet.py` | 把多幅图拼成一张联页，便于人工过目 |
-| `vbook.py` / `vpage.py` | 渲染本工程 / 原书 PDF 的页面区域 |
-| `update_ledger.py` | 从磁盘刷新派单台账 |
-| `build_figlist.py` | 生成图表清单 |
-
-### 抽取与建档
-
-`split_chapters.py`、`split_parts.py`、`chapter_ranges.py`、`build_assemblers.py`、
-`pagemap.py`、`pagemap_lib.py`、`folio_ocr.py`、`stage1.py`、`inkcheck.py` 等。
-
-### `find_overlaps.py` 的设计说明（踩过三次坑）
-
-第一版用 **span** 包围盒 → 报 211 处，抽查高倍渲染却是干净的：XeLaTeX 逐字定位，
-PyMuPDF 的行盒对中英混排会虚胖，**相邻表格单元被误判为重叠**。
-第二版降到**字符**级 → 反报 1342 处，全是 `。` `，` 这类中文标点：xeCJK 把标点挤压到
-半宽，而 PyMuPDF 按 1 em 给框，相邻标点必然「重叠」。
-**排除中文标点后**才得到可用的清单。用的时候务必知道这个前提。
-
-## 九、诚实纪律（本项目最重要的一条）
-
-> **写 `\tocheck{}` 不扣分；假称核对过是严重错误。**
-
-- 本项目作者（含子代理）**看不到图像**，`read_image` 只回元数据。
-  **绝不允许**声称用页面图像核对过公式。
-- 公式一律按「OCR 上下文 + 学科标准形式」重建，存疑处标
-  `\tocheck{未对照原页面图像：<存疑点>}`，并汇总 FORMULA_VERIFY 清单交人工复核。
-- 遇到**原书疑似有错**时，按契约**保留原书说法并写明问题**，不得静默改动后声称忠于原书。
-  `sources/errata.md` 的「乙类」记录了 9 项此类情况（如 Ewald 球球心在几何上不可能、
-  100 kV 波长数值与所给非相对论公式不自洽、绝缘样品荷电方向与通行物理相反等）。
-- 合成数据一律标 `\pedset{教学设定}`，补充知识标 `\supp{补充}`。
-  模型计算图在图上标 `\modelmark`，据原书改绘标 `\redrawmark`，纯示意标 `\schemamark`。
-
-### 静默失效是主要风险
-
-本项目一次性丢过 **76 个字符**而**编译不报错、不中断**：xeCJK 把某些码位判给西文字体
-（TeX Gyre Termes），而该字体没有那些字形时，TeX 只在日志留一行 `Missing character`，
-PDF 上字符直接消失。已把「缺字数」做成构建失败条件。
-
-已确认的不可写法（详见 `WRITER_BRIEF.md` §7.1）：
-
-| 不要写 | 原因 | 改写成 |
-|---|---|---|
-| `^{\circ}` | `\circ` 映射到 U+2218，Termes 与 Fandol 都没有 | `°`（U+00B0）或 `\degC` |
-| `\unit{\mu m}` / `\qty{}{\micro m}` | siunitx 排成 U+1D707，Termes 无此字形 | 字面 `µm` |
-| `\celsius`（独立使用） | siunitx v3 里只在 `\qty{}{\celsius}` 参数内有效 | `\degC` |
-| `width=0.72\onecolwidth` | 报 `Illegal unit of measure`，**静默生成 18 pt 退化轴，且不产生 overfull** | `width=\onecolwidth` |
-
-## 十、已知问题与待办
-
-### 待修（已精确定位）
-
-1. ~~**2 处 overfull >5 pt**~~ → **2026-09-30 复测：0 处**（release 门禁 `overfull > 5 pt = 0` 全绿；
-   `build/main.log` 里 `Overfull \hbox` 计数为 0）。下面保留当时的定位结果与一条勘误教训：
-
-   | 分片 | 行 | 超宽（当时） |
-   |---|---|---|
-   | `ch03-a` | L343–355 | 29.82 pt |
-   | `ch07-a` | L230–238 | 35.96 pt |
-
-   单独编译 `ch02-a`、`ch04-a`、`ch08-b` 均**无** overfull（`ch08-b` 原有 9.05 pt 已修为 3.36 pt，
-   低于阈值）。这两处对 `\emergencystretch` 调到 10em **数值一字不变** → 是不可断行的盒子，
-   不是容差问题。
-
-   > **勘误**：本表原先把位置写成 `ch02-a` / `ch04-a` / `ch08-b`，是错的。
-   > 根因是我用「在 main.log 里向前搜索 `^\((\./)?(chapters/…)`」来判定 overfull 属于哪个文件，
-   > 而 LaTeX 的文件打开标记**出现在行中间**（如 `(./chapters/ch06.tex (./chapters/parts/ch06-a.tex [77]`），
-   > 行首锚定的正则会一路回溯到错误的文件。**照这个错位置去修会白费功夫**——本项目实际因此
-   > 误改了 `ch02-a` 的表格与 `ch06-a` 的图。
-   > 可靠办法：**逐个分片单独编译**（`check_chapter.ps1` 一次一个）来归属，
-   > 或打印 main.log 里 overfull 那几行的**原始上下文**再判断。
-2. **图内元素叠印：确认缺陷 0 处**（2026-09-29 全书清零；2026-09-30 用门禁模式复测，图形相撞仍为 0）。
-   门禁口径（2026-09-30 起，R2-W05）：只拦「**图形相撞**」这类确认缺陷；文字轮廓、数学上下标、
-   填充粗条是**候选**，按类别报告、不按总数一刀切阻断。复测时的真实统计（313 页产物）：
-   跨串 87（未归类 16 + 数学下标 71）、同串 22、嵌套 15、填充粗条 12
-   —— 候选数随正文推进而变，不参与判定。
-   排查中推翻了两代判据，记录于此以免重犯：
-   - 第一代（行/单元格包围盒）：211 处命中，多为相邻单元格误报。
-   - 第二代（字形包围盒 + 相对面积 45%）：125 处里只有 11 处为真。两个根本缺陷：
-     ① **度量盒不是墨迹**——`−` 的度量盒 6.6×10.0 pt，真实墨迹只有 5.0×0.52 pt；
-     `］` 的度量盒整 1 em，墨迹挤在左半。
-     ② **相对判据会漏报**——两行字只压 2–3 pt 时包含率很低，
-     p.17 / p.158 / p.239 / p.143 的叠印因此从未暴露。
-   - 第三代（**真实墨迹盒 + 绝对阈值 1 pt² + 轮廓求交复核**）才可用。
-     取字形必须按 **gid**：ToUnicode 会把多变体/拼装件映射到同一 unicode，
-     而 Fandol 系是 **CID 键**字体（U+2013 的 cmap 名 `cid09910` vs PDF 报 gid=9910，差 1010 位）。
-     加轮廓求交后，78 处候选里 77 处实测 0.000 pt²——盒子搭上、笔画根本没碰。
-
-   共修 **43 处**真实墨迹相交，其中一处是**严重版面缺陷**：表 8-3（p.158）日志实测
-   `Float too large for page by 37.14 pt`，表格只用 108/165 mm 版心 → 浮动体超高被强行放下，
-   **图题溢进页脚压住页码**。
-
-   唯一残留（如实记录）：p.231 `$\omega_{\max}=2\pi f_{\max}$` 的 `π`×`f` 轮廓相交
-   0.022 pt²，属**同一字符串内**的字体字距，移动任何图元都改不掉；未为凑「0」而调阈值。
-3. ~~**16 个正文分片未写**~~ → **2026-09-30 复测：37 / 37 片全部写出**
-   （`chapters/parts/*.tex` 共 37 个文件；`sources/assignments.md` 台账无 `todo` 行）。
-4. **40+ 项公式待用页面图像核对**（见 `sources/formula_verify.md`）。
-   注意其中记录的失败：上册扫描（Pdg2Pic）一次即成功，下册（Acrobat Paper Capture）
-   三次尝试均未辨读成功；**三次失败均未据此猜值**。
-5. 阶段 4 的**去重与交叉引用闭环**、阶段 5 的**逐页渲染核查与灰度可读性**尚未系统做完。
-
-### 刻意的非改动
-
-`sources/terminology_decisions.md` 记录了 3 组**故意不统一**的术语，理由充分，
-后来者不要按工具报告机械替换。其中最重要的一条：
-
-> `转换频率`（TOF，s⁻¹）与 `转换数`（TON，无量纲）**不是同义词，是两个不同的量**。
-> 工具会把它们报成「术语不一致」，照改会制造真正的错误。
-
-## 十一、版权与仓库可见性
-
-- 本仓库**据原书浓缩编写**，是对原著的二次创作。原书文字与图像的著作权属原作者与出版社。
-- 仓库中**不含**原书 PDF，也**不含**原书页面的位图渲染
-  （`sources/pages/`、`sources/text/` 已在 `.gitignore` 中排除）。
-- `sources/parts/chNN-x.txt` 是**按分片切分的源文本**，写作流程必需，故随仓库保留；
-  它是原书文字的摘录，**请保持本仓库为私有**。
-- 用于教学、个人研究与内部参考。对外分发前请自行确认授权范围。
+- 本仓库据原书**浓缩编写**，是对原著的二次创作；原书文字与图像著作权属原作者与出版社。
+- 仓库**不含**原书 PDF，也**不含**原书页面位图（`sources/pages/`、`sources/text/` 及历轮评审的
+  页面截图均已排除）。
+- `sources/parts/*.txt` 是按分片切分的**源文本摘录**，写作流程必需，故保留；**请保持本仓库私有**。
+- 用于教学、个人研究与内部参考；对外分发前请自行确认授权范围。

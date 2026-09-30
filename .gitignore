@@ -51,3 +51,22 @@ desktop.ini
 
 # 发布暂存区：产物以 Gitea Release 附件分发，不入库
 release/
+
+# ============================================================
+#  工具运行时生成的中间产物：可由对应脚本重新生成，不入库
+#  （overlap_check.py / check_terms.py / check_sources.py / qa_pdf.py 等）
+# ============================================================
+tools/overlap_all.txt
+tools/overlap_hits.json
+tools/overlap_gate.json
+tools/overlap_spans.txt
+tools/overlap_ctx.txt
+tools/overlap_ink.txt
+tools/overlap_report.md
+tools/overlap_report.txt
+tools/source_audit.txt
+tools/term_audit.txt
+tools/term_fix_log.txt
+tools/qa_report.txt
+tools/blackblock_report.txt
+tools/*.bak

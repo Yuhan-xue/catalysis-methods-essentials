@@ -11,3 +11,5 @@
 - `pdf-probe.json`：正常 PDF 的完整探针结果。
 
 哈希和完整抽样页号见 [pdf-audit.json](../pdf-audit.json)。低阈值诊断及变异案例摘要见 [verification.json](../verification.json)，变异 PDF 不入库，可由复核脚本重新生成。
+
+> 说明：本目录此前的原书页面截图（PNG）已移出仓库——它们体积大且是原书页面的位图副本。需要时用 tools/vpage.py 从源 PDF 重新渲染同一页。

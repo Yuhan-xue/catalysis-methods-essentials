@@ -1,4 +1,0 @@
-file=C:\Users\53150\Documents\deepseek-harness\default-workspace\build\main.pdf
-criterion: horizontal dark run >= 12px @ 150dpi, fill >= 0.55
-
-未检出符合判据的黑块
