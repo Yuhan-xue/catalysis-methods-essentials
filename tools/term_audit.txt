@@ -11,7 +11,7 @@ file-group pairs affected: 17
    全书用量: 孔容=48  |  孔体积=5
    - chapters/parts/ch01-b.tex: 孔容×30 @L8,11,15; 孔体积×1 @L151
    - chapters/parts/ch01-c.tex: 孔容×12 @L9,10,15; 孔体积×3 @L640,719,729
-   - chapters/parts/ch08-c.tex: 孔容×6 @L17,291,295; 孔体积×1 @L276
+   - chapters/parts/ch08-c.tex: 孔容×6 @L120,394,398; 孔体积×1 @L379
 
 ### TOF 中文名
    全书用量: 转换频率=5  |  转换数=4
