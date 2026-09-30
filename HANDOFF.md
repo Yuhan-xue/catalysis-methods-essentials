@@ -1,6 +1,6 @@
 # 交接文档 · 《现代催化研究方法精要》
 
-> 最后更新：2026-09-30（R3 第三轮评审修复后）
+> 最后更新：2026-09-30（R4 第四轮评审修复后）
 > 上一轮负责人上下文已耗尽，本文用于**新会话无缝接手**。
 
 ---
@@ -10,14 +10,27 @@
 | 项 | 值 |
 |---|---|
 | 成品 | 《现代催化研究方法精要：原理、读图与方法选择》 |
-| 页数 | **315**（R3 修复后；R2 修复后 313、P0 收口时 310、基线 `feb8739` 实测 309。R3 的 +2 页来自后置索引重排（三张长表各自回到自己的小节之后）。中途曾因 `\samepage` 惩罚参数泄漏涨到 345 页，见 §6 方法类教训）|
+| 页数 | **313**（R4 修复后；R3 修复后 315、R2 修复后 313、P0 收口时 310、基线 `feb8739` 实测 309。R4 的 315→313 来自缩写表列宽调整（中文名不再被压成窄列）与正文措辞修改，自动门禁全 0，**不是**浮动体错排）。中途曾因 `\samepage` 惩罚参数泄漏涨到 345 页，见 §6 方法类教训）|
 | 分片 | **37**（`chapters/parts/`）|
-| 最新提交 | 第三轮评审修复（**本次提交**，10 项收口；逐项验收见 `reviews/2026-09-30-round3/CLOSURE.md`）。其前的 `b17b1e9`（评审目录入库）、`8df5e1e`（v0.6.1-pre 发布记录）、`cc8f73b`（凭据写法订正）、`c3225a3`（R2 报告入库）都是 docs 提交；**PDF 输入的上一次修复是** `ddc8f1a`（**R2 第二轮**，22 文件 1890+/444−；逐项验收见 `reviews/2026-09-30-round2/VERIFICATION.md`）。再往前：`58b0440`、`b9bdf73`、`5109139`、`9e197cd`、`175a8d8`、`78f1c22`、`2325bbf` |
+| 最新提交 | 第四轮评审修复（**本次提交**，8 项 P2 + 继承队列；逐项验收见 `reviews/2026-09-30-round4/CLOSURE.md`）。其前 `4e1db7f` 是第四轮评审目录入库；R3 修复为 `5cf40f7`（10 项，见 `reviews/2026-09-30-round3/CLOSURE.md`）。**PDF 输入的再上一次修复是** `ddc8f1a`（**R2 第二轮**，22 文件 1890+/444−；见 `reviews/2026-09-30-round2/VERIFICATION.md`）。再往前：`b17b1e9`、`8df5e1e`、`cc8f73b`、`c3225a3`、`58b0440`、`b9bdf73`、`5109139`、`9e197cd`、`175a8d8`、`78f1c22`、`2325bbf` |
 | 线上 pre | **v0.6.1-pre**（release id=42，tag `v0.6.1-pre` @ `cc8f73b`；附件 3987451 B，SHA-256 `27B726B2B41671A91151E03492B92F979ED5090FA3A66AD9C9985636FE50FF4E`；`/releases/download/v0.6.1-pre/…` 与 `/attachments/<uuid>` 两条公开地址均已回验 200 + 字节一致）|
 | 上一版 pre | v0.6.0-pre（release id=41，tag `v0.6.0-pre` @ `5109139`；附件 3970716 B，SHA-256 `C0FDD52B6B7A6740FFA3AFD125342DEE558D0C51907C5CEE67F3B4FE2EF40B08`，公开下载已回验字节一致）|
 | 构建门禁 | errors / overfull>5pt / missing glyphs / undefined refs / dup labels / **dup includes** / **overlap** —— 全 0；`-Release` 下静态检查**没跑成（unavailable）判失败**（见 §2、§5 P2）|
 | 日志直查 | Overfull hbox 0 / vbox 0、Float too large 0、Missing character 0、Underfull vbox 0 |
 | 叠印 | 图内元素 **0 处**；粗横线 0 / 粗竖线 0 |
+
+### R4 第四轮收口（2026-09-30）
+
+- **8 项 P2 全部处理**，逐项证据见 `reviews/2026-09-30-round4/CLOSURE.md`：拉曼角度因子去重（C01）、
+  CPE 有效电容口径（C02）、Warburg 只用频率坐标定量（C03）、DTG 峰高 $h_t=\beta h_T$（C04）、
+  图 11-5 说明块避线（U01）、缩写表列宽（U02）、图形探针路径级分类（W01）、TG 生成器入库（W02）。
+- **新增受版本管理的工具**：`tools/recompute_ch03b_dtg.py`（`--check` 复算 654 点）、
+  `tools/gen_tpd_table.py --check`（逐点复验 5×83 点）；`tools/fig_probe_eis.py` 增加
+  `--selftest`（9 项，含「虚线短段必须被检出」「刻度不误报」）。
+- **继承项**：导读 XAFS 归属已改（`ch00-intro`）；C09-01 覆盖矩阵见
+  `sources/ch09_coverage_matrix.md`（§9.6—§9.8 明确删节并记理由，`ch09-c` 假指向已修）；
+  C05-02 生成器逐点复验 PASS。**未完成**：85 表逐表核原书页面图像、旧凭据轮换——都需要人工/账户。
+- 本轮无视觉能力：U01/U02 只做了矢量与文字层探针，观感复核仍建议人工打开 `build/main.pdf`。
 
 **源头**：《现代催化研究方法新编》上、下册扫描 PDF（附件，见 §7）。
 
@@ -501,7 +514,7 @@ WRITER_BRIEF.md             ★ 写作规范与全部已知坑，派单前必读
 1. 读 `WRITER_BRIEF.md` 与本文
 2. `pwsh -File tools/build.ps1 -Release` 确认基线是 309 页 / 六项全 0
 3. `python tools/check_includes.py`、`python tools/overlap_check.py` 各跑一次
-4. 从 §5 的 **P0（75 张表补来源标注）** 开始
+4. R3/R4 两轮的评审修复都已完成（见 `reviews/*/CLOSURE.md`），**未完成的都是人工读图/账户类**（见 §5 与 R4 CLOSURE §2）；先跑一遍 §2 的门禁确认基线
 5. 每改一处，**说明改前/改后实测值**；判据不要放宽，内容不要删
 
 ### 版本发布流程（v0.6.0-pre 走的路径，已实测）

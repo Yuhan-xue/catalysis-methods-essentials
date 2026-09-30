@@ -1,0 +1,41 @@
+R4-U01 / R4-W01 探针证据：修前阻断、修后通过、单元自检
+
+说明：本文件是 tools/fig_probe_eis.py（R4-W01 改进后）的原始输出副本。
+build/ 被 .gitignore 忽略，故把关键输出留在这里，供评审复算。
+
+===== A. 改进后的探针，对**未修 U01** 的 PDF（315→313 前那次构建）=====
+退出码 1（必须阻断）
+
+fig 11-5 render probe: FAIL
+pdf=main.pdf page=272 frame_a=[124.6, 246.5, 255.5, 377.5] frame_b=[315.4, 249.4, 480.3, 374.6]
+P1 CPE visible bbox 105.84 x 70.33 pt ratio=0.6645 (model 105.68 x 70.34 pt ratio=0.6656)
+P2 markers n=2 tol=3.0pt d=0.03pt d=0.01pt
+P3 text blocks=10 crossings=1 letters_missing=[]
+FAIL P3: 1 text line(s) crossed by data curves
+  crossed(pa): 理想弧顶点(60, 50) at [[187.1, 315.3], [185.0, 316.8]]
+
+
+===== B. 改进后的探针，对**已修 U01** 的最终 PDF =====
+退出码 0
+
+fig 11-5 render probe: PASS
+pdf=main.pdf page=272 frame_a=[124.6, 246.5, 255.5, 377.5] frame_b=[315.4, 249.4, 480.3, 374.6]
+P1 CPE visible bbox 105.84 x 70.33 pt ratio=0.6645 (model 105.68 x 70.34 pt ratio=0.6656)
+P2 markers n=2 tol=3.0pt d=0.03pt d=0.01pt
+P3 text blocks=10 crossings=0 letters_missing=[]
+
+
+===== C. 单元自检 --selftest（不需要 PDF）=====
+退出码 0
+
+SELFTEST PASS dashes_shorter_than_old_threshold
+SELFTEST PASS dashed_curve_classified_as_data  (data=1 deco=0)
+SELFTEST PASS dashed_curve_crossing_detected  (crossings=1)
+SELFTEST PASS sampling_density_invariant
+SELFTEST PASS solid_detected_like_dashed
+SELFTEST PASS subsampled_still_data
+SELFTEST PASS tick_is_decoration
+SELFTEST PASS tick_not_flagged
+SELFTEST PASS frame_border_excluded
+selftest: PASS
+

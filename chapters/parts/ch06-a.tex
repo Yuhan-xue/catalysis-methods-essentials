@@ -175,7 +175,7 @@ p_{\text{斯托克斯}} &= \tfrac12
 \src{S1 §6.1.2，书内 p.347—348 / PDF p.366—367}。振动的感生电偶极所辐射的散射功率为
 
 \begin{equation}
-P_{\mathrm{sc}}=E_0\,\frac{\mathrm{d}\sigma}{\mathrm{d}\Omega}\,\Delta\Omega\,\sin^2\theta ,
+P_{\mathrm{sc}}=E_0\,\frac{\mathrm{d}\sigma}{\mathrm{d}\Omega}\,\Delta\Omega ,
 \qquad E_0=\frac{P_0}{A_{\mathrm{beam}}} ,
 \label{eq:classical-intensity}
 \end{equation}
@@ -184,29 +184,39 @@ P_{\mathrm{sc}}=E_0\,\frac{\mathrm{d}\sigma}{\mathrm{d}\Omega}\,\Delta\Omega\,\s
 单位）：$P_0$ 是入射到样品上的\emph{功率}（\unit{W}）；$A_{\mathrm{beam}}$ 是光束在样品
 处的\emph{光斑面积}（\unit{m^2}）；$E_0=P_0/A_{\mathrm{beam}}$ 是样品处的\emph{入射辐照度}
 （\unit{W.m^{-2}}）；$\mathrm{d}\sigma/\mathrm{d}\Omega$ 是\emph{微分散射截面}
-（\unit{m^2.sr^{-1}}），按定义即「单位立体角内的散射功率除以入射辐照度」；
+（\unit{m^2.sr^{-1}}），按定义即「单位立体角内的散射功率除以入射辐照度」，\textbf{它本身
+就含所观察方向的角分布}——对感生电偶极辐射，
+\begin{equation}
+\frac{\mathrm{d}\sigma}{\mathrm{d}\Omega}=K\sin^2\theta ,
+\label{eq:dipole-dcs}
+\end{equation}
+其中 $K\equiv\left.(\mathrm{d}\sigma/\mathrm{d}\Omega)\right|_{\theta=90^\circ}$ 是与方向
+无关的\emph{参考方向系数}（偶极垂直方向的微分截面），它对应源书式中的前因子 $\sigma$；
 $\Delta\Omega$ 是接收端张开的\emph{接收立体角}（\unit{sr}），由接收面积
 $A_{\mathrm{rec}}$ 与样品到接收端的距离 $R$ 决定，$\Delta\Omega\approx A_{\mathrm{rec}}/R^2$。
-偶极辐射的角分布为 $\sin^2\theta$，于是落入接收端的散射功率就是
-式~\eqref{eq:classical-intensity}。若只问\emph{比例}，两端同除 $P_0$：
+把式~\eqref{eq:dipole-dcs} 代回式~\eqref{eq:classical-intensity}，\textbf{偶极的角分布
+$\sin^2\theta$ 只经微分散面出现一次}，落入接收端的散射功率为
+$P_{\mathrm{sc}}=E_0K\sin^2\theta\,\Delta\Omega$。若只问\emph{比例}，两端同除 $P_0$：
 
 \begin{equation}
 \frac{P_{\mathrm{sc}}}{P_0}
-=\frac{\mathrm{d}\sigma}{\mathrm{d}\Omega}\,\frac{\Delta\Omega}{A_{\mathrm{beam}}}\,\sin^2\theta ,
+=\frac{\mathrm{d}\sigma}{\mathrm{d}\Omega}\,\frac{\Delta\Omega}{A_{\mathrm{beam}}}
+=\frac{K\sin^2\theta\,\Delta\Omega}{A_{\mathrm{beam}}} ,
 \label{eq:classical-intensity-ratio}
 \end{equation}
 
 \textbf{量纲检查}：左端是功率之比，无量纲；右端为
-$\unit{m^2.sr^{-1}}\times\unit{sr}\times\unit{m^{-2}}\times1$——立体角与面积都相消，
-也是无量纲，两端一致。分母上的 $A_{\mathrm{beam}}$ 不能省：它正是「入射功率 → 入射
+$\unit{m^2.sr^{-1}}\times\unit{sr}\times\unit{m^{-2}}$（$K\sin^2\theta$ 无量纲）——立体角
+与面积都相消，也是无量纲，两端一致。分母上的 $A_{\mathrm{beam}}$ 不能省：它正是「入射功率 → 入射
 辐照度」那一步带进来的因子；上一轮把该式写成
 $I/I_0=(\mathrm{d}\sigma/\mathrm{d}\Omega)\,\Delta\Omega\,\sin^2\theta$，右端只剩面积量纲
 （\unit{m^2}），与无量纲的左端不一致，本稿据此改写为
 式~\eqref{eq:classical-intensity-ratio}。
 
 \textbf{观测几何与四条可检验的推论}：偶极辐射的强度按 $\sin^2\theta$ 分布——在与偶极矩
-垂直的方向（$\theta=90^\circ$）最强，沿偶极矩方向（$\theta=0^\circ$）为零。在角分布不变
-的前提下，式~\eqref{eq:classical-intensity} 给出四条可以逐条代入核对的结论：
+垂直的方向（$\theta=90^\circ$）最强，沿偶极矩方向（$\theta=0^\circ$）为零。以 90° 方向为
+基准，45° 与 30° 的相对收集功率分别是 $\sin^2 45^\circ/\sin^2 90^\circ=0.5$ 与 $0.25$。
+在角分布不变的前提下，式~\eqref{eq:classical-intensity} 给出四条可以逐条代入核对的结论：
 
 \begin{enumerate}
 \item 固定入射功率与光斑，只把接收立体角加倍（接收面积加倍，或距离减为 $1/\sqrt2$）：
@@ -217,7 +227,8 @@ $I/I_0=(\mathrm{d}\sigma/\mathrm{d}\Omega)\,\Delta\Omega\,\sin^2\theta$，右端
 \item 固定接收\emph{面积} $A_{\mathrm{rec}}$，距离 $R$ 加倍：$\Delta\Omega$ 降为 $1/4$，
       故 $P_{\mathrm{sc}}$ 约为原来的 $1/4$；
 \item 比值 $P_{\mathrm{sc}}/(P_0\Delta\Omega)
-      =(\mathrm{d}\sigma/\mathrm{d}\Omega)\sin^2\theta/A_{\mathrm{beam}}$ 与 $\Delta\Omega$
+      =K\sin^2\theta/A_{\mathrm{beam}}
+      =(\mathrm{d}\sigma/\mathrm{d}\Omega)/A_{\mathrm{beam}}$ 与 $\Delta\Omega$
       无关——这正是「比较散射截面时必须同时固定收集立体角与光斑面积」的原因。
 \end{enumerate}
 
@@ -232,8 +243,9 @@ $I/I_0=(\mathrm{d}\sigma/\mathrm{d}\Omega)\,\Delta\Omega\,\sin^2\theta$，右端
 $\sigma=\frac{8\pi^3\nu_0^4}{3c^4}\alpha^2$ 之类的具体形式无法确认；本行只保留角度因子与
 入射强度的依赖为确定内容。本稿把该式改写为辐照度口径的
 式~\eqref{eq:classical-intensity}（$P_{\mathrm{sc}}=E_0\,(\mathrm{d}\sigma/\mathrm{d}\Omega)
-\,\Delta\Omega\,\sin^2\theta$，$E_0=P_0/A_{\mathrm{beam}}$），理由是源书原式右端带面积
-量纲、左端无量纲；改写只做口径统一，不引入新的实验常数，文中四条缩放推论可自行代入核对。
+\,\Delta\Omega$，$E_0=P_0/A_{\mathrm{beam}}$），并把源书前因子 $\sigma$ 认作偶极垂直方向的
+参考系数 $K$，角因子 $\sin^2\theta$ 只经式~\eqref{eq:dipole-dcs} 的微分散面出现一次，
+不再在功率式中重复相乘；改写只做口径统一，不引入新的实验常数，文中四条缩放推论可自行代入核对。
 \end{tocheck}
 
 经典理论能解释拉曼与瑞利散射的频率，但\textbf{不能解释斯托克斯线与反斯托克斯线强度为

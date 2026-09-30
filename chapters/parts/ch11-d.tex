@@ -413,6 +413,22 @@ C_{\mathrm{eff}}=\left(Q\,R_{\mathrm{ct}}^{\,1-n}\right)^{1/n}
 \end{equation}
 而有效电容的取法（是否用 $R_{\Omega}$ 还是 $R_{\mathrm{ct}}$、或两者的并联）本身有不同约定，
 因此\textbf{报告结果时必须同时给出 $n$ 与所用换算式的出处}，否则读者无法复算。
+
+\textbf{$C_{\mathrm{eff}}$ 是约定下的等效值，不是能在低频直接读到的静态电容}。去掉串联欧姆
+电阻后，并联支路的导纳为 $Y=R_{\mathrm{ct}}^{-1}+Q(j\omega)^{n}$，其\emph{频率依赖的表观
+并联电容}为
+\begin{equation}
+C_{\mathrm{p}}(\omega)=\frac{\operatorname{Im}Y}{\omega}
+=Q\sin(n\pi/2)\,\omega^{\,n-1},
+\label{eq:eis-d-cpapp}
+\end{equation}
+$n=1$ 时它退化为常数 $Q=C_{\mathrm{dl}}$；$n<1$ 时随频率单调变化，在理想 CPE 模型中
+\textbf{没有有限的低频极限}（$n=0.85$ 时 $C_{\mathrm{p}}\propto\omega^{-0.15}$）。以
+图~\ref{fig:eis-d-model} 的参数（$R_{\mathrm{ct}}=100$ \unit{\ohm}、
+$Q=2.21\times10^{-6}$、$n=0.85$）为例，$C_{\mathrm{p}}$ 在 1、0.01、0.0001 Hz 处分别约为
+$1.63$、$3.25$、$6.49$ µF，并非 $0.5$ µF；只有把 $C_{\mathrm{eff}}$ 理解成
+式~\eqref{eq:eis-d-cpeceff} 所依据的\emph{峰值时间常数约定}下的等效值，上述换算才成立。
+把它当成可直接读取的低频极限电容，是对非理想界面参数的一类系统性误判。
 \tocheck{未对照原页面图像：式~\eqref{eq:eis-d-cpe} 中 $Q$ 的符号与 $0<n\le1$ 的区间、以及
 式~\eqref{eq:eis-d-cpeceff} 的换算形式按学科标准形式重建，源文本 §11.5.1 未出现 CPE 或 $n$ 的
 讨论（原书表 11-1 只有理想双电层电容 $C_{\mathrm{dl}}$），故该元件与原书的对照关系未能核对。}
@@ -576,10 +592,11 @@ $n$）、低频尾定扩散 $\to$（拟合）选定电路拓扑做非线性最�
   %   这两处标注不会与任何曲线交叉）。图例因此取消，避免文字块压住弧顶。
   \node[anchor=west,font={\fontsize{7}{8.5}\selectfont}] at (axis cs:14,58) {实线 $n{=}1$};
   \node[anchor=west,font={\fontsize{7}{8.5}\selectfont}] at (axis cs:14,52) {虚线 $n{=}0.85$};
-  % 说明块放进右下角的空白区（两条弧在 x>22 Ω、y<15 Ω 处都没有线），
-  %   不再放到坐标区外，避免被裁掉。
-  \node[anchor=south east,align=right,text width=28mm,font={\fontsize{7}{8.5}\selectfont}]
-    at (axis cs:60.5,14.5)
+  % 说明块放右下角空白区，并**按整块文字边界避开数据曲线**（R4-U01）：虚线的左半段
+  %   在 x≈28 Ω 处已升到 y≈28 Ω，故把文本宽收到 24 mm（≈32 Ω）并把锚点下移到 y=9 Ω，
+  %   整块上沿约 y≈24 Ω，落在虚线以下；旧版宽 28 mm、锚点 y=14.5 Ω，上沿被虚线穿过。
+  \node[anchor=south east,align=right,text width=24mm,font={\fontsize{7}{8.5}\selectfont}]
+    at (axis cs:60.5,9)
     {理想弧顶点 $(60,\,50)$\\[1pt]
      CPE 弧顶点 $(60,\,39.4)$\\[1pt]
      $=(R_{\mathrm{ct}}/2)\tan(n\pi/4)$};
@@ -630,7 +647,9 @@ $R_{\Omega}=10$ \unit{\ohm}、$R_{\mathrm{ct}}=100$ \unit{\ohm}、
 $C_{\mathrm{dl}}=0.5$ µF（$\omega_{\max}=1/(R_{\mathrm{ct}}C_{\mathrm{dl}})$
 对应 $f_{\max}\approx3.2$ kHz）；CPE 取 $n=0.85$、
 $Q=C_{\mathrm{dl}}^{\,n}R_{\mathrm{ct}}^{\,n-1}\approx2.21\times10^{-6}$ S·s$^{0.85}$，
-即低频极限电容与理想情形相同；Warburg 取 $\sigma=40$ \unit{\ohm.s^{-1/2}}。
+即按式~\eqref{eq:eis-d-cpeceff} 的峰值时间常数约定换算出的有效电容与理想情形相同
+（$C_{\mathrm{eff}}=0.5$ µF；频率依赖的表观并联电容 $C_{\mathrm{p}}$ 随频率变化，见
+式~\eqref{eq:eis-d-cpapp}）；Warburg 取 $\sigma=40$ \unit{\ohm.s^{-1/2}}。
 三条曲线（实线、虚线、点线）分别由式~\eqref{eq:eis-d-randles}、
 式~\eqref{eq:eis-d-cpe}、式~\eqref{eq:eis-d-rc} 按同一组参数算出：图中两个弧顶标记与
 六个空心圆点都是这些函数的取值，不是手工写上的读数。
@@ -638,7 +657,7 @@ $Q=C_{\mathrm{dl}}^{\,n}R_{\mathrm{ct}}^{\,n-1}\approx2.21\times10^{-6}$ S·s$^{
 窗口外）：理想弧（$n=1$）的顶点在
 $(R_{\Omega}+R_{\mathrm{ct}}/2,\;R_{\mathrm{ct}}/2)=(60,\,50)$，CPE 弧的顶点在
 $(60,\,39.4)$——\textbf{横坐标相同，纵坐标只有 $(R_{\mathrm{ct}}/2)\tan(n\pi/4)$；
-同样一个 $R_{\mathrm{ct}}$、同样一个低频极限电容，仅因 $n=0.85$ 就把弧的高度压到
+同样一个 $R_{\mathrm{ct}}$、同样一个有效电容 $C_{\mathrm{eff}}$，仅因 $n=0.85$ 就把弧的高度压到
 $0.79$ 倍，而顶点频率并不改变}。两条曲线在 $f\to0$ 时都收敛到
 $R_{\Omega}+R_{\mathrm{ct}}=110$ \unit{\ohm}（点线在 (b) 中可见 $10\to110$ \unit{\ohm}
 的完整弧；CPE 弧的右半段落在 (a) 的窗口之外）。
@@ -706,9 +725,16 @@ $(R_{\mathrm{ct}}/2)\tan(n\pi/4)$，不是 $R_{\mathrm{ct}}/2$。}
 而扩散项在更低频处才开始主导。因此「$-Z''$ 极小点」的位置是判断两个过程是否已分离的实用标志。
 （4）低频段 $Z'$ 与 $-Z''$ 同步增大且连线斜率约 $1.00$，与式~\eqref{eq:eis-d-warburg}
 的 $Z'_{\mathrm{W}}=-Z''_{\mathrm{W}}$ 一致，故该段可归为\textbf{半无限线性扩散（Warburg 阻抗）
-控制}。斜率也因此是判断「扩散段是否已经独立」的实用判据：若把拟合区间一直取到弧上
-（例如 3.2 kHz 与 0.02 Hz 两点连线，斜率只有约 $0.38$），正在衰减的电荷转移弧会把斜率
-大幅拉低——\textbf{用斜率反算 $\sigma$ 必须先扣掉弧的贡献}。
+控制}。\textbf{但 Nyquist 图上的几何斜率只能用来判别扩散是否主导，不能用来反算 $\sigma$}：
+纯 Warburg 有 $Z'_{\mathrm{W}}=-Z''_{\mathrm{W}}=\sigma\omega^{-1/2}$，故几何斜率
+$\mathrm{d}(-Z''_{\mathrm{W}})/\mathrm{d}Z'_{\mathrm{W}}=1$ 与 $\sigma$ 无关——取 $\sigma=20$
+与 $\sigma=40$ \unit{\ohm.s^{-1/2}} 两条曲线，Nyquist 上的斜率都等于 $1$，只有振幅与频率的
+对应关系整体翻倍。要把 $\sigma$ 定量，必须\textbf{保留频率标记}：把 $Z'_{\mathrm{W}}$
+（或 $-Z''_{\mathrm{W}}$）对 $\omega^{-1/2}$ 作图，其斜率才分别是 $20$ 与 $40$ \unit{\ohm.s^{-1/2}}，
+再按式~\eqref{eq:eis-d-warburg} 反推 $D$；或直接用含频率的复数模型做整体拟合。斜率本身仍是
+判断「扩散段是否已经独立」的判据：若把拟合区间一直取到弧上（例如 3.2 kHz 与 0.02 Hz 两点
+连线，斜率只有约 $0.38$），正在衰减的电荷转移弧会把斜率大幅拉低，拟合区间与扣弧方法必须
+与频率坐标一并说明。
 （5）(b) 中点线与实线的分岔起点约 30 Hz，正是「扩散开始参与」的频率；而两条线在
 $f\gtrsim 100$ Hz 不可分，说明\textbf{只看高频段的数据无法判断体系有没有扩散}。
 这给出频率范围要求的一个定量形式：低频端必须至少比这个分岔频率低两个数量级，扩散尾才成形。

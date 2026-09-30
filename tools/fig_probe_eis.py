@@ -24,8 +24,13 @@
      把 ω 与 Q 的幂次写错、或 PGF 三角函数把弧度当角度，可见高会掉到 ≈1 pt（近乎压平）。
   P2 标记落线：面板 (a) 每个小填充标记（mark=*、mark=square*）的中心，
      到该面板任一曲线可见折线的最小距离必须 <= --mark-tol 点。
-  P3 标注可见：落在轴框内的文字块不得与曲线可见段相交（线条穿字），
+  P3 标注可见：落在轴框内的文字行不得与**数据曲线**的可见段相交（线条穿字），
      并检查面板字母 (a)/(b) 是否出现在图内文字层里。
+     判据按**路径**分类而不是按线段长度过滤（R4-W01）：先按可见长度与是否贴在
+     轴框边界，把每条 drawing 判成「数据曲线」或「轴/刻度装饰」，再对属于数据曲线的
+     全部线段（含虚线每节约 2.5 pt 的短段）做相交检查。旧版把短线段一律当装饰删掉，
+     虚线数据曲线的穿字会被报成 PASS（假阴性）。文字用行框而非块外接框。
+     另有 --selftest 单元自检：虚线/实线、不同采样密度结论一致，轴刻度与边框不误报。
 
 用法：
   python tools/fig_probe_eis.py --pdf build/main.pdf
@@ -59,8 +64,12 @@ RATIO_TOL = 0.05
 WIDTH_TOL_FRAC = 0.04          # 可见宽容差 = 轴宽的 4%
 HEIGHT_TOL_FRAC = 0.03         # 可见高容差 = 轴高的 3%
 MARK_TOL_PT = 3.0
-MIN_SEG_PT = 5.0               # 短于此的线段视为刻度等装饰，不参与相交判断
-MIN_CURVE_PT = 40.0            # 可视长度大于此才算「数据曲线」，用于 P1
+# MIN_SEG_PT 是旧版 P3 的逐段过滤阈值。新版按路径分类（见 MIN_DATA_PT / BORDER_TOL_PT），
+# 不再用它决定「数据曲线是否被检查」；保留该名字以免依赖它的诊断脚本（如 R4 复核脚本）报错。
+MIN_SEG_PT = 5.0
+MIN_CURVE_PT = 40.0            # 可视长度大于此才算「数据曲线」，用于 P1/P2
+MIN_DATA_PT = 10.0             # P3 路径级分类下界：长于此且不贴边框者视为数据曲线
+BORDER_TOL_PT = 2.0            # 距轴框边界不超过此值的路径视为轴/边框，不参与文字相交
 
 
 def cpe_z(omega):
@@ -161,13 +170,159 @@ def pt_seg_dist(p, a, b):
     return ((px - (ax + t * vx)) ** 2 + (py - (ay + t * vy)) ** 2) ** 0.5
 
 
+def pt_frame_border_dist(p, frame):
+    """点到轴框边界的距离：框内取到最近边的距离，框外取到矩形的距离。"""
+    x0, y0, x1, y1 = frame
+    x, y = p
+    if x < x0 or x > x1 or y < y0 or y > y1:
+        dx = max(x0 - x, 0.0, x - x1)
+        dy = max(y0 - y, 0.0, y - y1)
+        return (dx * dx + dy * dy) ** 0.5
+    return min(x - x0, x1 - x, y - y0, y1 - y)
+
+
+def path_on_frame_border(segments, frame, tol=BORDER_TOL_PT):
+    """整条路径是否都贴在轴框边界上（轴框线或边框装饰）。"""
+    pts = [pt for s in segments for pt in s]
+    if not pts:
+        return True
+    return all(pt_frame_border_dist(pt, frame) <= tol for pt in pts)
+
+
+def classify_panel_paths(paths, frame):
+    """路径级分类：返回 (数据曲线, 轴/刻度装饰)。
+
+    只按「可见长度」和「是否贴在边框」判，不按单段长度过滤——虚线数据曲线由许多
+    2—3 pt 的短段组成，逐段过滤会把它整条漏掉。
+    """
+    data, deco = [], []
+    for p in paths:
+        if p["fill"] or p["vis_len"] < MIN_DATA_PT or path_on_frame_border(p["segments"], frame):
+            deco.append(p)
+        else:
+            data.append(p)
+    return data, deco
+
+
+def find_crossings(text_lines, data_paths):
+    """文字行框与数据曲线可见段的相交（线条穿字）。data_paths: {panel: [path, ...]}。"""
+    crossed = []
+    for tb in text_lines:
+        r = tb["rect"]
+        hit = None
+        for panel in ("a", "b"):
+            for p in data_paths.get(panel, []):
+                for s in p["segments"]:
+                    if seg_rect_intersect(s[0], s[1], r, pad=0.5):
+                        hit = {"panel": panel, "text": tb["text"][:40],
+                               "segment": [[round(v, 1) for v in s[0]],
+                                           [round(v, 1) for v in s[1]]],
+                               "seg_pt": round(seg_len(s), 2)}
+                        break
+                if hit:
+                    break
+            if hit:
+                break
+        if hit:
+            crossed.append(hit)
+    return crossed
+
+
+def _mk_path(segments, fill=False):
+    return {"fill": fill, "segments": list(segments),
+            "vis_len": sum(seg_len(s) for s in segments)}
+
+
+def _polyline_segments(p0, p1, n):
+    segs = []
+    for i in range(n):
+        a = (p0[0] + (p1[0] - p0[0]) * i / n, p0[1] + (p1[1] - p0[1]) * i / n)
+        b = (p0[0] + (p1[0] - p0[0]) * (i + 1) / n, p0[1] + (p1[1] - p0[1]) * (i + 1) / n)
+        segs.append((a, b))
+    return segs
+
+
+def _dashed_segments(p0, p1, dash_pt, gap_pt):
+    L = ((p1[0] - p0[0]) ** 2 + (p1[1] - p0[1]) ** 2) ** 0.5
+    ux, uy = (p1[0] - p0[0]) / L, (p1[1] - p0[1]) / L
+    segs, t = [], 0.0
+    while t < L:
+        t2 = min(t + dash_pt, L)
+        segs.append(((p0[0] + ux * t, p0[1] + uy * t),
+                     (p0[0] + ux * t2, p0[1] + uy * t2)))
+        t = t2 + gap_pt
+    return segs
+
+
+def run_self_tests():
+    """P3 判据的单元自检（不需要 PDF）：虚线/实线与采样密度结论一致，刻度/边框不误报。"""
+    frame = (0.0, 0.0, 100.0, 100.0)
+    p0, p1 = (10.0, 10.0), (90.0, 90.0)
+    text = [{"rect": [40, 40, 50, 52], "text": "说明文字"}]
+    results = []
+
+    def check(name, cond, detail=""):
+        results.append((name, bool(cond), detail))
+
+    dashed = _dashed_segments(p0, p1, 2.5, 2.5)
+    dpath = _mk_path(dashed)
+    check("dashes_shorter_than_old_threshold",
+          all(seg_len(s) < MIN_SEG_PT for s in dashed))
+    data, deco = classify_panel_paths([dpath], frame)
+    check("dashed_curve_classified_as_data", len(data) == 1 and not deco,
+          "data=%d deco=%d" % (len(data), len(deco)))
+    cross = find_crossings(text, {"a": data, "b": []})
+    check("dashed_curve_crossing_detected", len(cross) == 1, "crossings=%d" % len(cross))
+
+    dense = _dashed_segments(p0, p1, 1.25, 1.25)
+    ddata, _ = classify_panel_paths([_mk_path(dense)], frame)
+    check("sampling_density_invariant",
+          len(find_crossings(text, {"a": ddata, "b": []})) == 1)
+
+    solid = _mk_path([(p0, p1)])
+    sdata, _ = classify_panel_paths([solid], frame)
+    check("solid_detected_like_dashed",
+          len(find_crossings(text, {"a": sdata, "b": []})) == 1)
+
+    sub = int(len(dashed) / 2)
+    sub_segs = [dashed[i] for i in range(0, sub)]
+    sub = _mk_path(_polyline_segments(sub_segs[0][0], sub_segs[-1][1], len(sub_segs)))
+    subdata, _ = classify_panel_paths([sub], frame)
+    check("subsampled_still_data", len(subdata) == 1)
+
+    tick = _mk_path([((10.0, 0.0), (13.0, 0.0))])
+    tdata, tdeco = classify_panel_paths([tick], frame)
+    check("tick_is_decoration", not tdata and len(tdeco) == 1)
+    check("tick_not_flagged",
+          find_crossings([{"rect": [8, 0, 20, 6], "text": "x"}], {"a": tdata, "b": []}) == [])
+
+    border = _mk_path([((0.0, 0.0), (100.0, 0.0))])
+    bdata, bdeco = classify_panel_paths([border], frame)
+    check("frame_border_excluded", not bdata and len(bdeco) == 1)
+
+    ok = all(r[1] for r in results)
+    for name, passed, detail in results:
+        sys.stdout.write("SELFTEST %-4s %s%s\n"
+                         % ("PASS" if passed else "FAIL", name,
+                            ("  (%s)" % detail) if detail else ""))
+    sys.stdout.write("selftest: %s\n" % ("PASS" if ok else "FAIL"))
+    return 0 if ok else 1
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--pdf", required=True)
+    ap.add_argument("--pdf", default=None)
     ap.add_argument("--json", default=None)
     ap.add_argument("--out", default=None)
     ap.add_argument("--mark-tol", type=float, default=MARK_TOL_PT)
+    ap.add_argument("--selftest", action="store_true",
+                    help="只运行 P3 判据的单元自检，不需要 PDF")
     args = ap.parse_args()
+
+    if args.selftest:
+        return run_self_tests()
+    if not args.pdf:
+        ap.error("--pdf is required unless --selftest is given")
 
     doc = fitz.open(args.pdf)
     page = None
@@ -309,7 +464,16 @@ def main() -> int:
     def in_frames(r):
         return any(r.intersects(fitz.Rect(fr)) for fr in (fa, fb))
 
+    # 路径级分类：先判「数据曲线 / 轴·刻度装饰」，再对数据曲线的**全部**线段做相交检查。
+    # 旧版逐段过滤 seg_len < MIN_SEG_PT，会把虚线数据曲线的每一节短段当装饰删掉（R4-W01）。
+    data_paths, deco_paths = {}, {}
+    for panel, fr in (("a", fa), ("b", fb)):
+        data, deco = classify_panel_paths(panels[panel], fr)
+        data_paths[panel], deco_paths[panel] = data, deco
+
+    # 文字用**行框**而不是块外接框：块框把多行并成一个大矩形，会平白放大相交机会。
     text_blocks = []
+    text_lines = []
     for b in page.get_text("dict")["blocks"]:
         if b.get("type") != 0:
             continue
@@ -318,35 +482,25 @@ def main() -> int:
             continue
         snippet = "".join(sp["text"] for l in b.get("lines", []) for sp in l.get("spans", [])).strip()
         text_blocks.append({"rect": [round(v, 1) for v in r], "text": snippet[:70]})
-    crossed = []
-    for tb in text_blocks:
-        r = tb["rect"]
-        for panel in ("a", "b"):
-            for p in panels[panel]:
-                if p["fill"]:
-                    continue  # 标记不是线
-                for s in p["segments"]:
-                    if seg_len(s) < MIN_SEG_PT:
-                        continue
-                    if seg_rect_intersect(s[0], s[1], r, pad=0.5):
-                        crossed.append({"panel": panel, "text": tb["text"][:40],
-                                        "segment": [[round(v, 1) for v in s[0]],
-                                                    [round(v, 1) for v in s[1]]]})
-                        break
-                else:
-                    continue
-                break
-            else:
+        for l in b.get("lines", []):
+            lr = fitz.Rect(l["bbox"])
+            if not in_frames(lr):
                 continue
-            break
+            ls = "".join(sp["text"] for sp in l.get("spans", [])).strip()
+            text_lines.append({"rect": [round(v, 1) for v in lr], "text": ls[:70]})
+
+    crossed = find_crossings(text_lines, data_paths)
     joined = " ".join(tb["text"] for tb in text_blocks)
     missing_letters = [L for L in PANEL_LETTERS if L not in joined]
-    report["checks"]["P3_text"] = {"n_blocks": len(text_blocks), "blocks": text_blocks,
+    report["checks"]["P3_text"] = {"n_blocks": len(text_blocks), "n_lines": len(text_lines),
+                                   "blocks": text_blocks,
+                                   "data_paths": {k: len(v) for k, v in data_paths.items()},
+                                   "decoration_paths": {k: len(v) for k, v in deco_paths.items()},
                                    "text_curve_intersections": crossed,
                                    "panel_letters_present": [L for L in PANEL_LETTERS if L in joined],
                                    "panel_letters_missing": missing_letters}
     if crossed:
-        fail("P3", "%d text block(s) crossed by curves" % len(crossed))
+        fail("P3", "%d text line(s) crossed by data curves" % len(crossed))
     if missing_letters:
         fail("P3", "panel letter(s) missing inside the figure area: %s" % ", ".join(missing_letters))
 

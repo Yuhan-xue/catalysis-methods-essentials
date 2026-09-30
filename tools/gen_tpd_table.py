@@ -113,10 +113,62 @@ def emit():
         print()
 
 
+def parse_tex_tables():
+    """从 chapters/parts/ch05-a.tex 抽出图 5-? 的 5 张坐标表（按出现顺序）。"""
+    import re
+    from pathlib import Path
+    tex = (Path(__file__).resolve().parents[1] / 'chapters' / 'parts' / 'ch05-a.tex').read_text(encoding='utf-8')
+    lines = tex.splitlines()
+    tables, i = [], 0
+    while i < len(lines):
+        if lines[i].startswith('\\addplot[') and 'table[row sep=' in lines[i]:
+            pts, i = [], i + 1
+            while i < len(lines) and not lines[i].strip().startswith('};'):
+                m = re.match(r'\s*([0-9.]+)\s+([0-9.eE+-]+)\s*\\\\\s*$', lines[i])
+                if m:
+                    pts.append((float(m.group(1)), float(m.group(2))))
+                i += 1
+            tables.append(pts)
+        i += 1
+    return tables
+
+
+SPECS = ((5.0, 1, '(a) beta=5 n=1'), (10.0, 1, '(a) beta=10 n=1'), (20.0, 1, '(a) beta=20 n=1'),
+         (10.0, 1, '(b) n=1'), (10.0, 2, '(b) n=2'))
+
+
+def check(rtol=1e-5):
+    """逐点复验：.tex 内嵌坐标必须等于用本脚本参数求解的结果（R4 继承项 C05-02）。"""
+    tables = parse_tex_tables()
+    if len(tables) != len(SPECS):
+        print('TPD check: FAIL（.tex 内坐标表 %d 张，期望 %d 张）' % (len(tables), len(SPECS)))
+        return 1
+    g = grid()
+    worst = 0.0
+    ok = True
+    for (beta, n, tag), pts in zip(SPECS, tables):
+        gen = solve(beta, n, g)[1]
+        if len(pts) != len(g) or any(abs(p[0] - x) > 1e-6 for p, x in zip(pts, g)):
+            print('TPD check: FAIL  %s 栅格不一致（tex %d 点）' % (tag, len(pts)))
+            ok = False
+            continue
+        rel = max(abs(p[1] - yv) / max(abs(yv), 1e-30) for p, yv in zip(pts, gen))
+        worst = max(worst, rel)
+        good = rel <= rtol
+        ok = ok and good
+        print('TPD check: %-4s %-16s rel_max=%.3e (%d pts)'
+              % ('PASS' if good else 'FAIL', tag, rel, len(pts)))
+    print('TPD check: %s  worst_rel=%.3e  rtol=%.1e' % ('PASS' if ok else 'FAIL', worst, rtol))
+    return 0 if ok else 1
+
+
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
     ap.add_argument('--coords', action='store_true')
+    ap.add_argument('--check', action='store_true', help='逐点复验 .tex 内嵌坐标')
     a = ap.parse_args()
+    if a.check:
+        raise SystemExit(check())
     report()
     if a.coords:
         print()

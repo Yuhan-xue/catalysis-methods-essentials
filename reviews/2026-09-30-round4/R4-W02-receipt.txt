@@ -1,0 +1,26 @@
+R4-W02 回执：ch03-b TG/DTG 坐标生成器
+
+命令（仓库根目录，干净检出即可运行）：
+  python tools/recompute_ch03b_dtg.py
+
+脚本：tools/recompute_ch03b_dtg.py（受版本管理；参数、采样规则、容差见文件头）
+模型：一级速率方程 d(alpha)/dT=(A/beta)exp(-E/RT)(1-alpha)，E=180 kJ/mol，
+      A 由 beta=5 K/min 时 Tp=673.000 K 定出；TG=100-20alpha，DTG=20 d(alpha)/dT。
+采样：低温粗点 [523,545,568,585] + 595:2.5:770 + 高温粗点 [780,795,810,823]
+      + 峰温节点 {Tp-3, Tp, Tp+3}。
+
+实测输出：
+ch03b TG/DTG generator: PASS
+  params: E=180000 J/mol A=22322211465969.742188 /min T0=300 K T_ref=673 K
+  TG  beta=2.5   n= 82 max_dx=0.00e+00 max_dy=4.97e-05 (tol 2e-04)
+  TG  beta=5.0   n= 81 max_dx=0.00e+00 max_dy=4.94e-05 (tol 2e-04)
+  TG  beta=10.0  n= 82 max_dx=0.00e+00 max_dy=4.95e-05 (tol 2e-04)
+  TG  beta=20.0  n= 82 max_dx=0.00e+00 max_dy=1.02e-04 (tol 2e-04)
+  DTG beta=2.5   n= 82 max_dx=0.00e+00 max_dy=4.89e-06 (tol 1e-05)
+  DTG beta=5.0   n= 81 max_dx=0.00e+00 max_dy=4.75e-06 (tol 1e-05)
+  DTG beta=10.0  n= 82 max_dx=0.00e+00 max_dy=4.79e-06 (tol 1e-05)
+  DTG beta=20.0  n= 82 max_dx=0.00e+00 max_dy=4.97e-06 (tol 1e-05)
+  total points: 654
+
+结论：8 组共 654 点全部再生；x 与 .tex 内嵌坐标逐点相等，y 在声明容差内
+      （TG 2e-4 %、DTG 1e-5 %/K）。本文件是回执，不是全书 PASS。
