@@ -9,7 +9,7 @@
 |---|---|
 | 代码起点 | `4e1db7f`（第四轮评审目录提交） |
 | 构建模式 | release（`pwsh -NoProfile -ExecutionPolicy Bypass -File tools/build.ps1 -Release`） |
-| 制品 | `build/main.pdf`：**313 页 / 143 条书签 / 4 004 860 字节**，SHA-256 `327EDB67BFE8BDE570F2D145DDAC24ABE211C8BE021CE7E3EA8E0EE5D0D221B3` |
+| 制品 | `build/main.pdf`：**313 页 / 143 条书签 / 4 004 860 字节**，SHA-256 `A9917235AC7CC184E7EDB96FF458431B0261C85A5B126A70ABDCB852FD980E2D`（= 已发布附件 v0.6.2-pre；PDF 含构建时间，重跑构建哈希会变，以本条发布的附件为准） |
 | 入库 | `build/` 被 `.gitignore` 忽略，PDF 不入库；复现请重跑上面的构建命令 |
 | 页数变化 | 315 → 313 页。来源：缩写表列宽调整（中文名不再被压成窄列）与正文措辞修改，非浮动体错排（自动门禁全 0） |
 | 八项发布门禁 | errors 0 / overfull>5pt 0 / missing glyphs 0 / undefined refs 0 / dup labels 0 / dup includes ok / overlap ok（blocking=0 candidates=91）/ PASS |

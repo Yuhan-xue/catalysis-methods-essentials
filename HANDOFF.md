@@ -13,8 +13,8 @@
 | 页数 | **313**（R4 修复后；R3 修复后 315、R2 修复后 313、P0 收口时 310、基线 `feb8739` 实测 309。R4 的 315→313 来自缩写表列宽调整（中文名不再被压成窄列）与正文措辞修改，自动门禁全 0，**不是**浮动体错排）。中途曾因 `\samepage` 惩罚参数泄漏涨到 345 页，见 §6 方法类教训）|
 | 分片 | **37**（`chapters/parts/`）|
 | 最新提交 | 第四轮评审修复（**本次提交**，8 项 P2 + 继承队列；逐项验收见 `reviews/2026-09-30-round4/CLOSURE.md`）。其前 `4e1db7f` 是第四轮评审目录入库；R3 修复为 `5cf40f7`（10 项，见 `reviews/2026-09-30-round3/CLOSURE.md`）。**PDF 输入的再上一次修复是** `ddc8f1a`（**R2 第二轮**，22 文件 1890+/444−；见 `reviews/2026-09-30-round2/VERIFICATION.md`）。再往前：`b17b1e9`、`8df5e1e`、`cc8f73b`、`c3225a3`、`58b0440`、`b9bdf73`、`5109139`、`9e197cd`、`175a8d8`、`78f1c22`、`2325bbf` |
-| 线上 pre | **v0.6.1-pre**（release id=42，tag `v0.6.1-pre` @ `cc8f73b`；附件 3987451 B，SHA-256 `27B726B2B41671A91151E03492B92F979ED5090FA3A66AD9C9985636FE50FF4E`；`/releases/download/v0.6.1-pre/…` 与 `/attachments/<uuid>` 两条公开地址均已回验 200 + 字节一致）|
-| 上一版 pre | v0.6.0-pre（release id=41，tag `v0.6.0-pre` @ `5109139`；附件 3970716 B，SHA-256 `C0FDD52B6B7A6740FFA3AFD125342DEE558D0C51907C5CEE67F3B4FE2EF40B08`，公开下载已回验字节一致）|
+| 线上 pre | **v0.6.2-pre**（release id=43，tag `v0.6.2-pre` @ `52a4b90`；附件 4004860 B，SHA-256 `A9917235AC7CC184E7EDB96FF458431B0261C85A5B126A70ABDCB852FD980E2D`；`/releases/download/v0.6.2-pre/…` 与 `/attachments/<uuid>` 两条公开地址均已回验 200 + 字节一致）|
+| 上一版 pre | v0.6.1-pre（release id=42，tag `v0.6.1-pre` @ `cc8f73b`；附件 3987451 B，SHA-256 `27B726B2B41671A91151E03492B92F979ED5090FA3A66AD9C9985636FE50FF4E`，公开下载已回验字节一致）；再上一版 v0.6.0-pre（id=41 @ `5109139`）|
 | 构建门禁 | errors / overfull>5pt / missing glyphs / undefined refs / dup labels / **dup includes** / **overlap** —— 全 0；`-Release` 下静态检查**没跑成（unavailable）判失败**（见 §2、§5 P2）|
 | 日志直查 | Overfull hbox 0 / vbox 0、Float too large 0、Missing character 0、Underfull vbox 0 |
 | 叠印 | 图内元素 **0 处**；粗横线 0 / 粗竖线 0 |
@@ -30,6 +30,7 @@
 - **继承项**：导读 XAFS 归属已改（`ch00-intro`）；C09-01 覆盖矩阵见
   `sources/ch09_coverage_matrix.md`（§9.6—§9.8 明确删节并记理由，`ch09-c` 假指向已修）；
   C05-02 生成器逐点复验 PASS。**未完成**：85 表逐表核原书页面图像、旧凭据轮换——都需要人工/账户。
+- **发布**：v0.6.2-pre（release id=43 @ `52a4b90`，附件 4004860 B，SHA-256 `A9917235AC7CC184E7EDB96FF458431B0261C85A5B126A70ABDCB852FD980E2D`，两条公开地址回验字节一致）。
 - 本轮无视觉能力：U01/U02 只做了矢量与文字层探针，观感复核仍建议人工打开 `build/main.pdf`。
 
 **源头**：《现代催化研究方法新编》上、下册扫描 PDF（附件，见 §7）。
