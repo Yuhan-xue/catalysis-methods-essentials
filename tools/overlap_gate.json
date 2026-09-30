@@ -5,7 +5,7 @@
  "block_text": false,
  "pdf": "C:\\Users\\53150\\Documents\\git\\chemical\\.cindy-worktrees\\sturdy-hawking\\build\\main.pdf",
  "pages": 314,
- "generated_at": "2026-09-30T19:51:14+08:00",
+ "generated_at": "2026-10-01T00:04:31+08:00",
  "status": "PASS",
  "exit_code": 0,
  "blocking": {},
@@ -2262,6 +2262,6 @@
  },
  "out": "build/r4/overlap_all.txt",
  "json": "C:\\Users\\53150\\Documents\\git\\chemical\\.cindy-worktrees\\sturdy-hawking\\tools\\overlap_gate.json",
- "pdf_bytes": 4018344,
- "pdf_mtime": "2026-09-30T19:50:47+08:00"
+ "pdf_bytes": 4019202,
+ "pdf_mtime": "2026-10-01T00:04:08+08:00"
 }
