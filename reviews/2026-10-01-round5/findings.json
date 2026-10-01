@@ -1,0 +1,56 @@
+[
+  {
+    "id": "R5-C01",
+    "priority": "P1",
+    "title": "TPD 升温速率与指前因子混用了分钟和秒",
+    "file": "tools/gen_tpd_table.py",
+    "line": 49,
+    "status": "open",
+    "acceptance": "统一时间单位；用秒制和分制两种独立求解得到相同曲线，并用解析峰温条件交叉检查。重新生成五组坐标、校准峰区采样及图注。仅复跑原 --check 不能关闭本项。"
+  },
+  {
+    "id": "R5-C02",
+    "priority": "P2",
+    "title": "新增原位 NMR 流程把 CP/MAS 峰强直接当成产率",
+    "file": "chapters/parts/ch08-c.tex",
+    "line": 53,
+    "status": "open",
+    "acceptance": "把物种归属和定量分为两个分支；定量明确积分、核数/标记丰度、弛豫与响应校准条件，并链接到本章定量纪律。用两种物种响应不同的例子验证不能直接从 CP 强度比读产率。"
+  },
+  {
+    "id": "R5-C03",
+    "priority": "P2",
+    "title": "TPD 图注把较宽的二级峰写成更窄",
+    "file": "chapters/parts/ch05-a.tex",
+    "line": 671,
+    "status": "open",
+    "acceptance": "按最终自洽参数重算两级峰的峰温、峰高与 FWHM；将“更窄”改为有数值依据的描述。统一正脱附速率的负号约定，验证覆盖度递减且正速率积分等于初始覆盖度减残余。"
+  },
+  {
+    "id": "R5-C04",
+    "priority": "P3",
+    "title": "双同位素标记的氘元素符号缺失",
+    "file": "chapters/parts/ch08-c.tex",
+    "line": 103,
+    "status": "open",
+    "acceptance": "核对拟指的核素；若是氘，改为 ²H，并确认所述双标记方案的出处或标注为建议实验。编译后从 PDF 文本与图像同时确认元素符号存在。"
+  },
+  {
+    "id": "R5-U01",
+    "priority": "P2",
+    "title": "TPD 双面板图例覆盖且纵轴重复显示倍率",
+    "file": "chapters/parts/ch05-a.tex",
+    "line": 213,
+    "status": "open",
+    "acceptance": "选择一套纵轴缩放规则，显式控制 scaled ticks；分开两组图例或使用有面板标识的统一图例。按 PDF 100% 和 200% 查看，要求每条图例独立可辨、只有一套倍率，随机坐标可从刻度还原。"
+  },
+  {
+    "id": "R5-U02",
+    "priority": "P2",
+    "title": "新增 8.5 节标题留在页尾而正文全部翻页",
+    "file": "chapters/parts/ch08-c.tex",
+    "line": 6,
+    "status": "open",
+    "acceptance": "将标题、来源及首段至少两行作为分页整体；避免把整节设置成不可分页的大盒。验收 p.186–188 的标题连续性、页尾留白与新增 overfull。"
+  }
+]

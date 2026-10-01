@@ -1,0 +1,91 @@
+{
+  "baseline": "69c3d182618083bb47dd7230a62fe0e5c10076a3",
+  "source_sha256": {
+    "chapters/parts/ch05-a.tex": "767cadbc9915393f291dd0557932f170fc49cf47a0ddafa8444722984e998516",
+    "chapters/parts/ch08-a.tex": "a126f3dacf08a94258d5d775eb07f45aa9edc801704c718ec608b8860f06ff39",
+    "chapters/parts/ch08-c.tex": "fd6525968b10463bf64276cdef8f667f24b872561f795cc1d01a61387f2e8a21",
+    "tools/gen_tpd_table.py": "eecd3e8917897c1ebea4eaf4683831bbc9ac5d4e37e316809fd6394056ca3d49"
+  },
+  "pdf": {
+    "pages": 314,
+    "bookmarks": 144,
+    "sha256": "29efd150057dab90153394d9a0e93644fe346761e9a15eaea3bfd3277b74e839"
+  },
+  "independent_TPD": [
+    {
+      "beta_K_min": 5.0,
+      "legacy_Tp_K": 555.9268284396381,
+      "SI_Tp_K": 484.6224727248753,
+      "shift_K": 71.30435571476283
+    },
+    {
+      "beta_K_min": 10.0,
+      "legacy_Tp_K": 570.0451678237717,
+      "SI_Tp_K": 495.4200263731179,
+      "shift_K": 74.62514145065387
+    },
+    {
+      "beta_K_min": 20.0,
+      "legacy_Tp_K": 584.8710019131441,
+      "SI_Tp_K": 506.6931837897653,
+      "shift_K": 78.17781812337881
+    }
+  ],
+  "A_s_inverse_for_Tp570_at_10Kmin": 734509984.6414536,
+  "legacy_model_widths": [
+    {
+      "order": 1,
+      "Tp_K": 570.0451671064652,
+      "FWHM_K": 52.306587560142816
+    },
+    {
+      "order": 2,
+      "Tp_K": 568.6228309772895,
+      "FWHM_K": 73.49107320081794
+    }
+  ],
+  "commands": [
+    {
+      "command": "python tools/gen_tpd_table.py --check",
+      "exit_code": 0,
+      "stdout": "TPD check: PASS (a) beta=5 n=1   rel_max=4.795e-06 (83 pts)\nTPD check: PASS (a) beta=10 n=1  rel_max=4.044e-06 (83 pts)\nTPD check: PASS (a) beta=20 n=1  rel_max=3.716e-06 (83 pts)\nTPD check: PASS (b) n=1          rel_max=4.044e-06 (83 pts)\nTPD check: PASS (b) n=2          rel_max=4.553e-06 (83 pts)\nTPD check: PASS  worst_rel=4.795e-06  rtol=1.0e-05\n",
+      "stderr": ""
+    },
+    {
+      "command": "python tools/recompute_ch03b_dtg.py",
+      "exit_code": 0,
+      "stdout": "ch03b TG/DTG generator: PASS\n  params: E=180000 J/mol A=22322211465969.742188 /min T0=300 K T_ref=673 K\n  TG  beta=2.5   n= 82 max_dx=0.00e+00 max_dy=4.97e-05 (tol 2e-04)\n  TG  beta=5.0   n= 81 max_dx=0.00e+00 max_dy=4.94e-05 (tol 2e-04)\n  TG  beta=10.0  n= 82 max_dx=0.00e+00 max_dy=4.95e-05 (tol 2e-04)\n  TG  beta=20.0  n= 82 max_dx=0.00e+00 max_dy=1.02e-04 (tol 2e-04)\n  DTG beta=2.5   n= 82 max_dx=0.00e+00 max_dy=4.89e-06 (tol 1e-05)\n  DTG beta=5.0   n= 81 max_dx=0.00e+00 max_dy=4.75e-06 (tol 1e-05)\n  DTG beta=10.0  n= 82 max_dx=0.00e+00 max_dy=4.79e-06 (tol 1e-05)\n  DTG beta=20.0  n= 82 max_dx=0.00e+00 max_dy=4.97e-06 (tol 1e-05)\n  total points: 654\n",
+      "stderr": ""
+    },
+    {
+      "command": "python tools/pdf_probe.py --pdf build/main.pdf --out <WORKSPACE>\\catalysis-round5-check\\pdf-probe.json",
+      "exit_code": 0,
+      "stdout": "PDF            : build\\main.pdf\n页数 / 书签数  : 314 / 144\nR2-U01 书签落页 : PASS（检查 144 条，跳过 0 条，不符 0 条）\nR2-U02 后置页眉 : PASS（命中 0 处；扫描自 p.307，最后一个编号章「12 扫描探针显微镜与纳米光谱技术」在 p.284）\nR3-W03 必要书签 : PASS（清单 <WORKSPACE>\\catalysis-review\\tools\\pdf_required_bookmarks.txt；必要 15 项，命中 15，缺失 0，跳过 0）\n\n后置区块书签目标页：跨方法综合应用=307、证据链的基本结构=307、证据强度分级=307、验证矩阵：什么方法能约束什么=307、综合案例一：负载型金属催化剂的分散度与活性位=307、综合案例二：分子筛的酸性、积炭与失活=308、写结论时的三条硬规则=308、符号、缩写与索引=309、缩写与英文全称=309、主要符号=311、术语索引=312、勘误与待核对状态=314\n\n",
+      "stderr": ""
+    },
+    {
+      "command": "python tools/fig_probe_eis.py --pdf build/main.pdf",
+      "exit_code": 0,
+      "stdout": "fig 11-5 render probe: PASS\npdf=main.pdf page=273 frame_a=[138.8, 246.5, 269.7, 377.5] frame_b=[329.6, 249.4, 494.5, 374.6]\nP1 CPE visible bbox 105.84 x 70.33 pt ratio=0.6645 (model 105.68 x 70.34 pt ratio=0.6656)\nP2 markers n=2 tol=3.0pt d=0.03pt d=0.01pt\nP3 text blocks=10 crossings=0 letters_missing=[]\n",
+      "stderr": ""
+    },
+    {
+      "command": "python tools/fig_probe_eis.py --selftest",
+      "exit_code": 0,
+      "stdout": "SELFTEST PASS dashes_shorter_than_old_threshold\nSELFTEST PASS dashed_curve_classified_as_data  (data=1 deco=0)\nSELFTEST PASS dashed_curve_crossing_detected  (crossings=1)\nSELFTEST PASS sampling_density_invariant\nSELFTEST PASS solid_detected_like_dashed\nSELFTEST PASS subsampled_still_data\nSELFTEST PASS tick_is_decoration\nSELFTEST PASS tick_not_flagged\nSELFTEST PASS frame_border_excluded\nselftest: PASS\n",
+      "stderr": ""
+    },
+    {
+      "command": "python tools/check_src.py",
+      "exit_code": 0,
+      "stdout": "wrote build/check_src.txt\nchecked 85 tables: PASS 85, REVIEW 0, FAIL 0\n",
+      "stderr": ""
+    },
+    {
+      "command": "python tools/check_table_content.py --csv <WORKSPACE>\\catalysis-round5-check\\table-content.csv",
+      "exit_code": 0,
+      "stdout": "table content cross-check (OCR text layer, NOT pixel verification)\n  tables scanned: 85\n  FOUND        13\n  INDEX_OK     1\n  NO_TABLE_NO  54\n  NON_SOURCE   17\n  csv: ..\\catalysis-round5-check\\table-content.csv\n",
+      "stderr": ""
+    }
+  ]
+}
