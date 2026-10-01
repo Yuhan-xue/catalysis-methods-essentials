@@ -41,11 +41,16 @@ pwsh -NoProfile -ExecutionPolicy Bypass -File tools/check_chapter.ps1 -Chap ch11
 python tools/pdf_probe.py --pdf build/main.pdf          # 书签落页 / 后置页眉 / 必要书签
 python tools/fig_probe_eis.py --pdf build/main.pdf      # 图 11-5 矢量层
 python tools/fig_probe_eis.py --selftest                # 探针自检
+python tools/fig_probe_tpd.py --pdf build/main.pdf      # 图 5-1 图例/倍率/刻度/负号
+python tools/fig_probe_tpd.py --selftest                # 探针自检
+python tools/check_heading_orphan.py --pdf build/main.pdf   # 标题不孤悬（§8.5）
 python tools/check_src.py                               # 85 张表来源标注
 python tools/check_table_content.py                     # 85 张表来源内容（OCR 文本层）
 python tools/build_coverage_map.py                      # 原书节覆盖落点
 python tools/recompute_ch03b_dtg.py                     # TG/DTG 坐标复算
 python tools/gen_tpd_table.py --check                   # TPD 坐标逐点复验
+python tools/gen_tpd_table.py --verify                  # TPD 单位/闭式/守恒独立复算
+python tools/check_cp_quant_demo.py                     # CP/MAS 强度≠产率反例
 ```
 
 ## 四、目录结构
@@ -84,8 +89,8 @@ main.tex             主文件    HANDOFF.md 交接    STYLE_GUIDE.md / WRITER_B
 - 门禁与检查：`check_includes.py`（重复 `\input`）、`check_src.py`（表来源）、
   `check_terms.py`（术语）、`overlap_check.py`（版面重叠，`--gate` 接入构建）。
 - 内容核对（不依赖像素）：`check_table_content.py`、`build_coverage_map.py`、
-  `recompute_ch03b_dtg.py`、`gen_tpd_table.py --check`。
-- 阅读/导航探针：`pdf_probe.py`、`fig_probe_eis.py`。
+  `recompute_ch03b_dtg.py`、`gen_tpd_table.py --check/--verify`、`check_cp_quant_demo.py`。
+- 阅读/导航探针：`pdf_probe.py`、`fig_probe_eis.py`、`fig_probe_tpd.py`、`check_heading_orphan.py`。
 - 其余一次性分析脚本在 `tools/` 下，按需查阅；生成的中间产物（`overlap_*.txt` 等）已不入库。
 
 ## 八、诚实纪律（本项目最重要的一条）
