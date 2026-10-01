@@ -1,6 +1,6 @@
 # 交接文档 · 《现代催化研究方法精要》
 
-> 最后更新：2026-10-01（R4 第四轮评审修复 + todo 收尾后）。本文是**新会话无缝接手**的浓缩版；
+> 最后更新：2026-10-01（R5 第五轮评审六项收口后）。本文是**新会话无缝接手**的浓缩版；
 > 写作契约见 [STYLE_GUIDE.md](STYLE_GUIDE.md) / [WRITER_BRIEF.md](WRITER_BRIEF.md)，
 > 历轮评审见 `reviews/`。
 
@@ -11,9 +11,9 @@
 | 成品 | 《现代催化研究方法精要：原理、读图与方法选择》 |
 | 页数 | **314**（R4 后；R3 315、R2 313、P0 310、基线 `feb8739` 309。中途曾因 `\samepage` 惩罚参数泄漏涨到 345 页，见 §6） |
 | 分片 | **37**（`chapters/parts/`） |
-| 最新提交 | `081a846`（todo：覆盖映射 + 85 表 OCR 核对 + ch11 显式引用）→ 之后是 HANDOFF/文档提交 |
-| 线上 pre | **v0.6.4-pre**（release id=46，tag @ `081a846`；4021273 B，SHA-256 `6511DA75…874A`；314 页 / 144 书签） |
-| 上一版 pre | v0.6.3-pre（id=44 @ `675066a`）、v0.6.2-pre（id=43 @ `52a4b90`） |
+| 最新提交 | `c092a14`（R5 第五轮评审 6 项收口） |
+| 线上 pre | **v0.6.5-pre**（release id=52，tag @ `c092a14`；4028589 B，SHA-256 `D0736A5C…A6E9D`；314 页 / 144 书签） |
+| 上一版 pre | v0.6.4-pre（id=46 @ `081a846`）、v0.6.3-pre（id=44 @ `675066a`） |
 | 构建门禁 | errors / overfull>5pt / missing glyphs / undefined refs / dup labels / **dup includes** / **overlap** —— 全 0；`-Release` 下静态检查**没跑成（unavailable）判失败** |
 | 叠印 | 图内元素确认相撞 **0**；候选 91（按类别报告，不按总数阻断） |
 | 源头 | 《现代催化研究方法新编》上、下册扫描 PDF（附件，不在仓库） |
@@ -22,6 +22,11 @@
 8 项 P2 全部处理（拉曼角度因子、CPE 有效电容、Warburg 定量、DTG 峰高、图 11-5 避线、缩写表列宽、
 图形探针路径级分类、TG 生成器入库）；继承队列补写 §8.5 原位 MAS NMR、建第 8/9 章覆盖矩阵、
 导读 XAFS 归属、C05-02 逐点复验、85 表 OCR 文本层核对、原书节覆盖映射。
+
+**R5 收口要点**（逐项证据见 `reviews/2026-10-01-round5/CLOSURE.md`）：6 项全部处理
+（TPD 单位自洽 + 图注重算 + 图例/倍率 + 坐标再生、§8.5 标题不孤悬、原位 NMR 归属/定量分家、²H）。
+新增探针 `tools/fig_probe_tpd.py`、`tools/check_heading_orphan.py`、`tools/check_cp_quant_demo.py`；
+`gen_tpd_table.py` 增 `--verify`（秒/分双解 + 闭式 + 解析峰温 + 守恒）与 `--patch`（回写整块 tikz）。
 
 ## 2 立刻能跑的命令
 
@@ -36,7 +41,11 @@ python tools/check_terms.py                                              # 术�
 python tools/overlap_check.py --gate --pdf build/main.pdf                # 版面重叠门禁
 python tools/pdf_probe.py --pdf build/main.pdf                           # 书签落页/后置页眉/必要书签
 python tools/fig_probe_eis.py --pdf build/main.pdf ; python tools/fig_probe_eis.py --selftest
+python tools/fig_probe_tpd.py --pdf build/main.pdf ; python tools/fig_probe_tpd.py --selftest
+python tools/check_heading_orphan.py --pdf build/main.pdf                # §8.5 标题不孤悬
+python tools/check_cp_quant_demo.py                                      # CP 强度≠产率反例
 python tools/recompute_ch03b_dtg.py ; python tools/gen_tpd_table.py --check
+python tools/gen_tpd_table.py --verify                                   # TPD 单位/闭式/守恒
 ```
 
 ## 3 环境事实（不要重新摸索）
@@ -79,8 +88,9 @@ python tools/recompute_ch03b_dtg.py ; python tools/gen_tpd_table.py --check
 
 - ✅ P0：85 张表来源标注（`check_src.py` 全 PASS）。
 - ✅ 工程门禁：dup includes、overlap gate、静态检查三态、发布入口均接入 `build.ps1 -Release`。
-- ⏳ **公式逐式核对原页面图像**：部分完成（台账 `sources/formula_verify.md`）。
-- ⏳ **85 张表像素级核图**：已做 OCR 文本层交叉核对（`sources/table_content_check.md`，0 MISS）；像素级未做（需图像通道/人工）。
+- ⏳ **公式逐式核对原页面图像**：部分完成（台账 `sources/formula_verify.md`）；R5 未新增逐式核对。
+- ⏳ **85 张表像素级核图**：已做 OCR 文本层交叉核对（`sources/table_content_check.md`；R5 复跑为 13 FOUND / 1 INDEX_OK / 54 NO_TABLE_NO / 17 NON_SOURCE，**不是通过率**）；像素级未做（需图像通道/人工）。
+- ⏳ **§8.5 三类装置的转速/温度/压力**仍带 `\tocheck`（未对照原页面图像），R5 未移除标记。
 - ⏳ **旧凭据轮换**：需账户管理者确认（`reviews/2026-09-30-round2/TODO.md` 的 R2-W01）；历史提交里的旧值仍视为已泄露。
 - ✅ 覆盖映射：`sources/coverage_map.md`（二级节 79/81，未映射的 2 个为「结束语」）、`ch08_coverage_note.md`、`ch09_coverage_matrix.md`。
 
@@ -104,6 +114,17 @@ python tools/recompute_ch03b_dtg.py ; python tools/gen_tpd_table.py --check
 **方法类**：修「全局布局」前先量页数与每页字数；探针必须先在**已知有缺陷的基线**上复现缺陷才算有灵敏度；
 子代理/工具的结论要独立复核（本项目多次出现「声称做了实际没做」「观测对、归因错」）；
 删短语前先 grep 全书；写原子化（先落骨架再读源文件）。
+
+**宿主环境类**：同机其它项目可能起失控进程——曾遇 `mechanics-textbook` 的
+`verify_symbolic_all.py` 把 `glob('verify_symbolic_*.py')` 里的自己再当子进程运行，无限自派生
+7472 个 `python.exe` 占 17.5 GB；表现为 `xdvipdfmx: Out of memory`、`latexmk exit 12`、
+overlap 门禁 UNUSABLE。**先查可用内存与 python.exe 进程数再重跑构建，不要改源码**；
+结束失控树要按根 PID 取其后代集合（`taskkill /T` 在数千层深的链上会超时）。
+
+**TPD 图（图 5-1）参数纪律**：`beta` 一律 K/min、`A` 一律 s⁻¹（当前 7.35e8 s⁻¹ = 4.40706e10 min⁻¹，
+由 Tp=570.000 K 解析峰温条件标定）；改参数后跑 `python tools/gen_tpd_table.py --patch` 回写整块
+`tikzpicture`，再跑 `--check`、`--verify`（含图注数字一致性）与 `fig_probe_tpd.py`。
+图例是**每面板一列纵排**、`scaled y ticks=false`（只保留 ylabel 的 10⁻³ K⁻¹）——别再改回并排。
 
 ## 7 发布流程（已实测）
 

@@ -95,8 +95,10 @@ python tools/fig_probe_tpd.py --pdf build/_baseline_v064.pdf                # ex
 python tools/check_heading_orphan.py --pdf build/_baseline_v064.pdf          # exit 1（p.186 仅 1 行）
 ```
 
-发布流程按 HANDOFF §7 执行：tag `v0.6.5-pre` → 建 release → 上传附件 → 从下载地址回验 SHA-256。
-本轮 `_relpayload.json` 与回验记录在 `build/`（不入库）。
+发布流程按 HANDOFF §7 执行：tag `v0.6.5-pre`（@ `c092a14`）→ 建 release（**id=52**）→ 上传附件
+（asset id=70，`/attachments/2ec2b99d-19c1-47af-b0aa-724f7cfa8505`）→ 从公开下载地址回验：
+`/releases/download/v0.6.5-pre/…` 与 `/attachments/…` 均 HTTP 200，下载件 SHA-256 与本地一致
+（`d0736a5c…a6e9d`）。本轮 `_relpayload.json` 与回验记录在 `build/`（不入库）。
 
 ## 4 残余风险与未覆盖（继承队列）
 
