@@ -67,6 +67,17 @@ python tools/cmp_release_pdf.py build\main.pdf <线上附件.pdf>             # 
 | 仓库 | Gitea 私有：`http://zsyq.hxlab.tech:3000/yuhanxue/catalysis-methods-essentials`（main） |
 | 认证 | **不要把口令写进仓库**：用**仓库外** `~/.netrc`（收紧 ACL），git 与 curl 都读它；remote URL 不嵌凭据 |
 
+**图像通道（2026-10-02 打通，别再把「看不到图」当既成事实）**：`read_image` 到底能不能看到像素，取决于
+profile `~/.dsh/profiles/desktop/cordis.patch.yml` 里三个 provider 的 `api:` ——必须是 **`openai-completions`**。
+pi-ai 的 responses 适配器把「工具结果里的图」塞进 `function_call_output.output`，本地网关
+`https://api.llm.ustc.edu.cn` 会**静默丢弃**该位置的 `input_image`；completions 适配器改成把图放进一条
+后随 user 消息（`Attached image(s) from tool result:`），网关正常处理。受控实测（脚本在 `build/vision_selftest/`，
+`build/` 不入库）：同一张图塞 `function_call_output` → 答错、`input_tokens` 偏少（367 < 581）；放进 user
+消息 → 答对。该配置**按请求热读**，改完不必重启。
+**自检**：`read_image` 若只回 `Image "…" (sha256:…); request preview WxHpx.` 而看不到内容 ⇒ 通道断了，
+**不要声称核对过**；通道可用时用 `python tools/vpage.py up|down <页> <out.png> [--top/--bottom/--left/--right]`
+渲染**原书页面**逐式核对。
+
 **三条会反复咬人的陷阱**：
 1. **中文不要经控制台管道**：`python -c` 打印中文或 `| Out-File` 会抛 `UnicodeEncodeError` 并中断，使后续写文件**根本没执行**。一律「写脚本文件 → 结果写 UTF-8 文件 → 再读」。
 2. **构建产物字节哈希每次都变**（PDF 含 `/CreationDate` 与 `/ID`）；比内容请比文本层/页数/书签。
@@ -97,9 +108,9 @@ python tools/cmp_release_pdf.py build\main.pdf <线上附件.pdf>             # 
 
 - ✅ P0：85 张表来源标注（`check_src.py` 全 PASS）。
 - ✅ 工程门禁：dup includes、overlap gate、静态检查三态、发布入口均接入 `build.ps1 -Release`。
-- ⏳ **公式逐式核对原页面图像**：部分完成（台账 `sources/formula_verify.md`）；R5 未新增逐式核对。
-- ⏳ **85 张表像素级核图**：已做 OCR 文本层交叉核对（`sources/table_content_check.md`；R5 复跑为 13 FOUND / 1 INDEX_OK / 54 NO_TABLE_NO / 17 NON_SOURCE，**不是通过率**）；像素级未做（需图像通道/人工）。
-- ⏳ **§8.5 三类装置的转速/温度/压力**仍带 `\tocheck`（未对照原页面图像），R5 未移除标记。
+- ⏳ **公式逐式核对原页面图像**：部分完成（台账 `sources/formula_verify.md`）；R5 未新增逐式核对。**图像通道 2026-10-02 打通（见 §3），本项现在可做——但仍未做。**
+- ⏳ **85 张表像素级核图**：已做 OCR 文本层交叉核对（`sources/table_content_check.md`；R5 复跑为 13 FOUND / 1 INDEX_OK / 54 NO_TABLE_NO / 17 NON_SOURCE，**不是通过率**）；像素级未做（需图像通道/人工）。**图像通道 2026-10-02 打通，本项现在可做——但仍未做。**
+- ⏳ **§8.5 三类装置的转速/温度/压力**仍带 `\tocheck`（未对照原页面图像），R5 未移除标记。**图像通道已可用，可逐条核对后再撤标记。**
 - ✅ **旧凭据处理与历史清理**：R2-W01（2026-10-02）——`deepseek` 旧口令失效；`yuhanxue` 口令按所有者要求恢复原值；历史重写并强推、release 元数据同步；
   记录与映射表见 `reviews/2026-10-02-history-cleanup/`；服务端对象库彻底 prune 仍待管理员执行。
 - ✅ 覆盖映射：`sources/coverage_map.md`（二级节 79/81，未映射的 2 个为「结束语」）、`ch08_coverage_note.md`、`ch09_coverage_matrix.md`。

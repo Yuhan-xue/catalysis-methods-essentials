@@ -16,11 +16,16 @@
 
 ### 0.1 关于「看图核对公式」
 
-**维护会话没有视觉能力**：无法看图核对公式，**不要声称核对过**。OCR 文本层对**散文**可靠、
-对**公式**必然失真（上下标、希腊字母、正负号、积分限、分式会烂掉）。**以 OCR 上下文 + 学科
-标准形式重建**（Bragg/Scherrer/BET/Langmuir/Arrhenius/Fick/Butler–Volmer/Tafel/Nernst/
-Langmuir–Hinshelwood/Eyring 等标准形式可可靠重建）；风险在**本书的符号约定与常数取值**，
-符号一律以 OCR 正文定义为准。
+**图像通道自 2026-10-02 起可用**（此前会话确实没有；历史评审里写的「无视觉」是当时事实，**不要改写**
+那些记录，也不要再拿它当现在的借口）。可用条件、自检方法与原书页面渲染工具见 `HANDOFF.md` §3「图像通道」：
+profile 里三个 provider 的 `api:` 必须是 `openai-completions`；`read_image` 若只回
+`Image "…" (sha256:…); request preview WxHpx.` 而无内容 ⇒ 通道断了，**不要声称核对过**。
+
+即便通道可用，OCR 文本层对**散文**可靠、对**公式**必然失真（上下标、希腊字母、正负号、积分限、
+分式会烂掉），所以**默认路径仍是「OCR 上下文 + 学科标准形式」重建**（Bragg/Scherrer/BET/Langmuir/
+Arrhenius/Fick/Butler–Volmer/Tafel/Nernst/Langmuir–Hinshelwood/Eyring 等标准形式可可靠重建）；
+风险在**本书的符号约定与常数取值**，符号一律以 OCR 正文定义为准。通道可用时，逐式看原页面
+（`python tools/vpage.py up|down <页> <out.png>`）**优先于**重建。
 
 每个公式申报核对状态，二选一：
 
