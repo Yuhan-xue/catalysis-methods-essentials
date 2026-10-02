@@ -9,11 +9,11 @@
 | 项 | 值 |
 |---|---|
 | 成品 | 《现代催化研究方法精要：原理、读图与方法选择》 |
-| 页数 | **314**（R4 后；R3 315、R2 313、P0 310、基线 `feb8739` 309。中途曾因 `\samepage` 惩罚参数泄漏涨到 345 页，见 §6） |
+| 页数 | **314**（R4 后；R3 315、R2 313、P0 310、基线 `74e4015` 309。中途曾因 `\samepage` 惩罚参数泄漏涨到 345 页，见 §6） |
 | 分片 | **37**（`chapters/parts/`） |
-| 最新提交 | `c092a14`（R5 第五轮评审 6 项收口） |
-| 线上 pre | **v0.6.5-pre**（release id=52，tag @ `c092a14`；4028589 B，SHA-256 `D0736A5C…A6E9D`；314 页 / 144 书签） |
-| 上一版 pre | v0.6.4-pre（id=46 @ `081a846`）、v0.6.3-pre（id=44 @ `675066a`） |
+| 最新提交 | `00ef814`（R5 收口 + CLOSURE/HANDOFF；对应发布提交 `5c1f080`） |
+| 线上 pre | **v0.6.5-pre**（release id=52，tag @ `5c1f080`；4028589 B，SHA-256 `D0736A5C…A6E9D`；314 页 / 144 书签） |
+| 上一版 pre | v0.6.4-pre（id=46 @ `9e6809c`）、v0.6.3-pre（id=44 @ `b457f93`） |
 | 构建门禁 | errors / overfull>5pt / missing glyphs / undefined refs / dup labels / **dup includes** / **overlap** —— 全 0；`-Release` 下静态检查**没跑成（unavailable）判失败** |
 | 叠印 | 图内元素确认相撞 **0**；候选 91（按类别报告，不按总数阻断） |
 | 源头 | 《现代催化研究方法新编》上、下册扫描 PDF（附件，不在仓库） |
@@ -27,6 +27,11 @@
 （TPD 单位自洽 + 图注重算 + 图例/倍率 + 坐标再生、§8.5 标题不孤悬、原位 NMR 归属/定量分家、²H）。
 新增探针 `tools/fig_probe_tpd.py`、`tools/check_heading_orphan.py`、`tools/check_cp_quant_demo.py`；
 `gen_tpd_table.py` 增 `--verify`（秒/分双解 + 闭式 + 解析峰温 + 守恒）与 `--patch`（回写整块 tikz）。
+
+**2026-10-02 安全清理**（R2-W01 关闭）：两处历史明文口令已轮换（旧值 API 401、新值 200，新值存仓库外受限文件与 `~/.netrc`）；
+历史已用 `git filter-repo` 清理并强推，`main`（旧 `f94789c` → 新 `00ef814`）与 `v0.6.0-pre`…`v0.6.5-pre` 六个 tag 的哈希已变，
+12 个 release 元数据已同步。2026-10-02 之前的文档哈希请用 `reviews/2026-10-02-history-cleanup/commit-map.txt` 换算；
+残余风险（服务端 `git gc --prune=now` 待管理员执行、其他克隆需重同步）见同目录 README。
 
 ## 2 立刻能跑的命令
 
@@ -91,7 +96,8 @@ python tools/gen_tpd_table.py --verify                                   # TPD �
 - ⏳ **公式逐式核对原页面图像**：部分完成（台账 `sources/formula_verify.md`）；R5 未新增逐式核对。
 - ⏳ **85 张表像素级核图**：已做 OCR 文本层交叉核对（`sources/table_content_check.md`；R5 复跑为 13 FOUND / 1 INDEX_OK / 54 NO_TABLE_NO / 17 NON_SOURCE，**不是通过率**）；像素级未做（需图像通道/人工）。
 - ⏳ **§8.5 三类装置的转速/温度/压力**仍带 `\tocheck`（未对照原页面图像），R5 未移除标记。
-- ⏳ **旧凭据轮换**：需账户管理者确认（`reviews/2026-09-30-round2/TODO.md` 的 R2-W01）；历史提交里的旧值仍视为已泄露。
+- ✅ **旧凭据轮换与历史清理**：R2-W01 已关闭（2026-10-02）——两处旧口令失效、历史重写并强推、release 元数据同步；
+  记录与映射表见 `reviews/2026-10-02-history-cleanup/`；服务端对象库彻底 prune 仍待管理员执行（旧值已失效）。
 - ✅ 覆盖映射：`sources/coverage_map.md`（二级节 79/81，未映射的 2 个为「结束语」）、`ch08_coverage_note.md`、`ch09_coverage_matrix.md`。
 
 ## 6 已知坑（高频项；完整版见 STYLE_GUIDE / WRITER_BRIEF）
