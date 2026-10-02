@@ -151,9 +151,13 @@ K$\alpha$ 波长通常取二者的加权平均值，权重由强度比决定，�
 +\tfrac{1}{3}\lambda(\mathrm{K}\alpha_2).
 \label{eq:ka-weight}
 \end{equation}
-\src{S1 §4.2.1，书内 p.234 / PDF p.253}\tocheck{未对照原页面图像：式~\eqref{eq:ka-weight}
-的加权系数与强度比 $I(\mathrm{K}\alpha_2)/I(\mathrm{K}\alpha_1)=1/2$ 均为按 OCR 正文
-「$=2/3\lambda(\text{凡}1)+1/3\lambda(\dots)$」重建；请核对原页面的系数写法。}
+式~\eqref{eq:ka-weight} 已逐字核对：原书即写作
+$\lambda(\mathrm{K}\alpha)=2/3\lambda(\mathrm{K}\alpha_1)+1/3\lambda(\mathrm{K}\alpha_2)$，
+并同时给出强度比 $I(\mathrm{K}\alpha_1):I(\mathrm{K}\alpha_2)=2:1$（即上文的
+$I(\mathrm{K}\alpha_2)/I(\mathrm{K}\alpha_1)=1/2$）与
+$\lambda(\mathrm{K}\alpha_1)<\lambda(\mathrm{K}\alpha_2)$；$2/3$ 与 $1/3$ 正是由该强度比归一化
+得到的权重，原书称之为加权平均值
+\src{S1 §4.2.1，书内 p.234 / PDF p.253}。
 
 \begin{measure}
 铜靶 K$\alpha$ 的常用波长：$\lambda(\mathrm{K}\alpha_1)=\qty{1.5406}{\angstrom}$，
@@ -206,14 +210,14 @@ $\mu_{\mathrm{m}}$ 称\textbf{质量吸收系数}，单位 $\unit{cm^2.g^{-1}}$�
 PDF p.254—255}
 
 \begin{example}[CuO 对 Cu K$\alpha$ 的质量吸收系数]
-已知 Cu K$\alpha$ 下 $\mu_{\mathrm{m}}(\mathrm{Cu})=\qty{52.0}{cm^2.g^{-1}}$（OCR 作
-「5$\dots$」，取标准表值），$\mu_{\mathrm{m}}(\mathrm{O})=\qty{11.5}{cm^2.g^{-1}}$；
-CuO 摩尔质量 $\qty{79.6}{g.mol^{-1}}$，其中 O 的质量分数约 $0.20$。按
-式~\eqref{eq:massadd}：$\mu_{\mathrm{m}}(\mathrm{CuO})=52.0\times0.80
-+11.5\times0.20\approx\qty{43.9}{cm^2.g^{-1}}$。
-\tocheck{未对照原页面图像：OCR 中 Cu 的 $\mu_{\mathrm{m}}$ 数值残缺（「$\mu_m(\mathrm{Cu})=5\dots$」），
-本例的 $52.0$ 为标准表值而非原书取值，原书结果亦作 $\approx\qty{43.7}{cm^2.g^{-1}}$，
-与本文重算的 $43.9$ 差在四舍五入；报告数据时请以原书或《国际晶体学表》C 卷为准。}
+原书算例已逐字核对：已知 Cu K$\alpha$ 下 $\mu_{\mathrm{m}}(\mathrm{Cu})
+=\qty{51.8}{cm^2.g^{-1}}$，$\mu_{\mathrm{m}}(\mathrm{O})=\qty{11.5}{cm^2.g^{-1}}$；
+CuO 摩尔质量 $\qty{79.6}{g.mol^{-1}}$，其中 Cu 的质量分数为 $0.80$、O 的质量分数为
+$0.20$。按式~\eqref{eq:massadd}：$\mu_{\mathrm{m}}(\mathrm{CuO})
+=51.8\times0.80+11.5\times0.20=\qty{43.7}{cm^2.g^{-1}}$（与本文重算一致）。原书并说明
+各元素的质量吸收系数可在《国际晶体学表》C 卷第 230—235 页的 Table 4.2.4.3
+“Mass attenuation coefficient”中查得
+\src{S1 §4.2.2 算例，书内 p.236 / PDF p.255}。
 \end{example}
 
 \subsubsection{K吸收、二次荧光与X 射线的单色化}
@@ -419,10 +423,15 @@ d_{hkl}=\frac{a}{\sqrt{h^{2}+k^{2}+l^{2}}}.
 \end{equation}
 式~\eqref{eq:cubic-sin2} 是立方晶系指标化与晶胞参数精修的出发点：$\sin^{2}\theta$ 与
 $(h^{2}+k^{2}+l^{2})$ 成正比，比例系数含 $a$。
-\tocheck{未对照原页面图像：式~\eqref{eq:cubic-d} 与式~\eqref{eq:cubic-sin2} 系按学科标准
-形式重建。分片 a 的 OCR 文本中未出现这两个式子（它们应出现于指标化/晶胞参数部分，可能在
-4.4 及以后，或原书以文字表述），请核对本书是否采用 $1/d^{2}$ 的写法以及是否把衍射级数
-$n$ 并入指数。}
+式~\eqref{eq:cubic-d} 已逐字核对：原书 §4.4.1（书内 p.244 / PDF p.263）对立方、四方、
+正交、六方四个晶系并列印出 $1/d^{2}$ 形式，立方系即
+$\frac{1}{d^{2}}=\frac{h^{2}+k^{2}+l^{2}}{a^{2}}$；§4.6.1（书内 p.265 / PDF p.284）再次
+印出该式，并令 $Q_{hkl}\equiv1/d_{hkl}^{2}$、以
+$Q_{i}/Q_{j}=(h_{i}^{2}+k_{i}^{2}+l_{i}^{2})/(h_{j}^{2}+k_{j}^{2}+l_{j}^{2})$ 的比值关系做
+指标化。式~\eqref{eq:cubic-sin2} 原书未直接印出，它由式~\eqref{eq:cubic-d} 代入 Bragg
+方程即得（本轮写法）；原书指标化走的是 $Q$ 值比例这条路线。两式均按原书约定把衍射级数
+$n$ 并入指数（原书 §4.1 已声明衍射指标 $(nh\,nk\,nl)$ 中的 $n$ 为衍射级数，晶面指数本身
+互质）。\src{S1 §4.4.1 与 §4.6.1，书内 p.244、p.265 / PDF p.263、p.284}
 
 \textbf{Ewald 反射球}（图~\ref{fig:bragg-ewald}a、b）。以晶体所在点 $A$ 为球心、
 $1/\lambda$ 为半径作球。$O$ 为倒易格子原点，$\overrightarrow{AO}$ 即入射方向
@@ -563,20 +572,27 @@ F(hkl)=\sum_{j=1}^{N} f_j\,
 % 0.96 / 0.96 / 0.61 pt²（墨迹盒重叠 1.7×6.5、1.3×5.2 pt）。
 % 去掉 `\!` 后两字母各按自身边距相接，不再相交。LP 是缩写，本不需要收紧。
 \begin{equation}
-I(hkl)\propto\left|F(hkl)\right|^{2}\cdot LP\cdot A(\theta)\cdot
-\exp\!\left(-2M\right),
+I(hkl)\propto\left|F(hkl)\right|^{2}\cdot LP\cdot D\cdot\Delta V\cdot j,
 \label{eq:intensity}
 \end{equation}
 式~\eqref{eq:sf} 中 $f_j$ 是第 $j$ 个原子的\textbf{原子散射因子}，$(x_j,y_j,z_j)$ 是其
 分数坐标，$N$ 为晶胞内原子数，$\varphi_j$ 为该原子的相位；$|F(hkl)|^{2}$ 决定该衍射的
 \textbf{本征强度}。
-式~\eqref{eq:intensity} 中 $LP$ 为 Lorentz--偏振因子、$A(\theta)$ 为吸收因子、
-$\exp(-2M)$ 为温度因子（Debye--Waller 因子）。量纲检查：$f_j$ 以「一个电子的散射
-振幅」为单位，$\varphi_j$ 为纯数（$h,k,l$ 与分数坐标均无量纲），故 $F$ 与 $I$ 均为
-相对量，实际工作中以相对强度报告。\tocheck{未对照原页面图像：式~\eqref{eq:sf} 与
-式~\eqref{eq:intensity} 是按学科标准形式重建的（分片 a 的 OCR 文本未给出结构因子式，
-它们应出现在分片 b/c 的强度与精修部分）。本书是否把温度因子写成 $\exp(-2M)$、是否把
-$LP$ 与 $A(\theta)$ 合并为单一校正项，请核对原页面。}
+式~\eqref{eq:intensity} 中 $LP$ 为 Lorentz--偏振因子，$D$ 为温度因子，$\Delta V$ 为参与
+衍射的样品体积，$j$ 为多重度因子。量纲检查：$f_j$ 以「一个电子的散射振幅」为单位，
+$\varphi_j$ 为纯数（$h,k,l$ 与分数坐标均无量纲），故 $F$ 与 $I$ 均为相对量，实际工作中
+以相对强度报告。
+两式已逐字核对：原书 §4.4.3（书内 p.249—250 / PDF p.268—269）先给二原子式
+$F_{hkl}=f_A+f_B\exp[\mathrm{i}2\pi(hx+ky+lz)]$，再给一般式
+$F_{hkl}=\sum_{i}^{n}f_i\exp[2\pi\mathrm{i}(hx_i+ky_i+lz_i)]$，相位式亦作
+$\varphi=(\Delta/\lambda)\times2\pi=2\pi(hx+ky+lz)$，与式~\eqref{eq:sf}、
+\eqref{eq:phase} 一致。强度式按原书 §4.4.2（书内 p.245—246 / PDF p.264—265）校正为
+$I_{hkl}=K'PL|F_{hkl}|^{2}D\Delta Vj$：原书把 $P$ 与 $L$ 分写
+（$P=(1+\cos^{2}2\theta)/2$，$L=1/(2\sin^{2}\theta\cos\theta)$，合称 $PL$ 因子），温度因子
+写作 $D=\exp(-B\sin^{2}\theta/\lambda^{2})$（$B=8\pi^{2}U$，$U=\langle u^{2}\rangle$），
+\textbf{不设独立的吸收因子 $A(\theta)$}——吸收并入体积因子 $\Delta V$（平行板样品
+$\Delta V=A_0/2\mu$，与 $\theta$ 无关）。本节原写的 $A(\theta)\cdot\exp(-2M)$ 已按原书订正。
+\src{S1 §4.4.2、§4.4.3，书内 p.245—246、p.249—250 / PDF p.264—265、p.268—269}
 
 \begin{keycond}
 \textbf{结构因子与系统消光的关键条件}：（1）式~\eqref{eq:sf} 求和\textbf{只对晶胞内
@@ -699,10 +715,12 @@ XRD 的能力边界集中在表~\ref{tab:xrd-limits}：它给的是\textbf{长�
 穿透深度大，衍射「重心」位于样品表面之下，等效于高度偏差。（3）\textbf{K$\alpha_2$
 未剥离}：在低角区 K$\alpha_1$ 与 K$\alpha_2$ 重叠成不对称峰，此时若用峰顶读
 $2\theta$，得到的是混合波长对应的位置，报告的 $d$ 值会随分峰方式而变。
-\tocheck{未对照原页面图像：样品高度偏差的量化关系（偏移量 $\propto\cos\theta$、
-在 $2\theta=180^{\circ}$ 处为零、低角负偏移/高角正偏移的符号约定）系按聚焦几何的
-标准结论写出；分片 a 的 OCR 文本未给出该式，也未确认本书在何处（可能在 4.4 及以后的
-仪器与误差部分）讨论，请核对原书的正负号与表达式。}
+样品高度偏差的量化关系（偏移量 $\propto\cos\theta$、在 $2\theta=180^{\circ}$ 处为零、
+低角与高角偏移方向相反）系按聚焦几何的标准结论写出的表述：已核原书分片 a 的范围
+（§4.2—§4.3，书内 p.234—243 / PDF p.253—262），原书该段止于聚焦法的优缺点与衍射仪
+$\theta$--$2\theta$ 联动扫描几何（书内 p.243 / PDF p.262），\textbf{未给出}此量化式，
+故此处为改编补充。原书对样品位移引起的 $\Delta(2\theta)$ 另有表达式，载于 §4.7（分片 c
+的范围），其形式与取值见分片 c 对应处。
 \end{pitfall}
 
 \begin{measure}

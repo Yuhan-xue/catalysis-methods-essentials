@@ -82,9 +82,14 @@ $\gamma=\qty{8.85}{mN.m^{-1}}$、$V_{\mathrm{L}}=\qty{34.7}{cm^3.mol^{-1}}$、
 $\cos\theta=1$，则 $2\gamma V_{\mathrm{L}}/(RT)=\qty{0.955}{nm}$，即
 $r_k/\unit{nm}=0.955\big/\ln(p_0/p)$；代入 $\ppzero=0.5$ 得 $r_k\approx\qty{1.38}{nm}$，
 同点 $t\approx\qty{0.68}{nm}$，故 $r_p\approx\qty{2.06}{nm}$、$D_p\approx\qty{4.1}{nm}$。
-该算例用于校核常数取值，不是实验值。\tocheck{未对照原页面图像：原书在 Kelvin 公式处给出的
-常数取值与量纲约定（$r_k$ 以 nm 或 Å、是否已含 $\cos\theta$）OCR 未保留，上列常数系按
-标准物理量自行计算。}
+该算例用于校核常数取值，不是实验值。原书 Kelvin 公式记作
+$\gamma\tilde{V}\left(\frac{1}{r_1}+\frac{1}{r_2}\right)=-RT\ln\frac{p}{p_0}$，$\tilde{V}=M/\rho$
+〔式~(1-20)〕，毛细管内凹液面为球面时化为
+$\ln\frac{p}{p_0}=-\frac{2\gamma M}{RT\rho}\cdot\frac{1}{r}$〔式~(1-21)〕，与本式一致
+（$V_{\mathrm{L}}=M/\rho$，且原书设完全浸润、接触角 $0^{\circ}$）；原书表~1-4 给出
+$77.35\,\unit{K}$ 氮吸附的 $r$--$\ppzero$ 对应关系，以 $r_k/\unit{nm}=0.955/\ln(p_0/p)$
+反算 $r\le\qty{100}{nm}$ 的各点吻合在 $1\%$ 以内，常数取值与量纲约定据此确认
+\src{S1 式(1-20)、式(1-21) 与表 1-4，书内 p.23--24 / PDF p.42--43}。
 \end{keycond}
 
 \subsubsection{BJH 法：中孔分布的记账框架}
@@ -138,21 +143,23 @@ $2r_jt_k$（$t_k/r_j=0.04$ 时高估 $2\%$）。本书保留精确的环形写�
 
 \textbf{递推的物理含义}：相对压力升高时，孔壁液膜继续增厚，毛细凝聚同时向更大的孔推进，
 两个过程都在消耗吸附量，必须逐级扣除，不能把吸附量增量全部记到新凝聚的那组孔上——这
-正是 BJH 手工推算冗长繁琐的原因。石油化工行业标准 SH/T 0572—1993《孔尺寸分布计算法
-（氮脱附等温线计算法）》给出这套递推的具体算法，商品吸附仪均内置相应程序；孔宽与相对
-压力的对应关系即
+正是 BJH 手工推算冗长繁琐的原因。石油化工行业标准 SH/T 0572—1993（2004）《催化剂孔径分布
+计算法（氮脱附等温线计算法）》给出这套递推的具体算法，商品吸附仪均内置相应程序；孔宽与
+相对压力的对应关系即
 
 \begin{equation}\label{eq:bjh-dp}
 D_p=2\left(r_k+t\right),\qquad \ppzero=0.95\;\Longleftrightarrow\;D_p\approx\qty{50}{nm}
 \end{equation}
 
-\tocheck{未对照原页面图像：原书式(1-36)的符号体系（$V(x_k)$、$r_i$、$t_k$ 的下标约定与
-求和上下限）OCR 完全失真，式~\eqref{eq:bjh-balance} 按 BJH 原始记账方式重写。其中
-\textbf{第 (1) 项「已充满孔计全孔体积 $\pi r_i^{2}\ell_i$」不是从 OCR 判读出来的，而是由
-该式自身的物理含义推定的}——已凝聚的孔内是充满的液体，写成环形面积
-$\pi[r_i^{2}-(r_i-t_k)^{2}]$ 会让「充满的孔」在 $t_k\to0$ 时体积归零，与该式的定义自相
-矛盾（本节已就该式加数值自检）。原书该项的确切写法仍需查原页（书内 p.46 / PDF p.65）核对；
-SH/T 0572 的标准年份与完整题名亦未在图像上确认。}
+原书式(1-36) 写作
+$V_{\mathrm{ads}}(x_k)=\sum_{i=1}^{k}\Delta V_i\left[r_i\le r_k(x_k)\right]
++\sum_{j=k+1}^{n}\Delta S_j t_j\left[r_j\ge r_k(x_k)\right]$：$\Delta V_i$ 为半径 $r_i\le r_k$
+的孔内吸附量，$\Delta S_j$ 为半径 $r_j\ge r_k$ 的孔壁表面积（$=2\pi r_j\ell_j$），$t_j$ 为
+孔壁液膜厚度。式~\eqref{eq:bjh-balance} 与之等价而更精确：第 (2) 项用精确环形面积
+$\pi[r_j^{2}-(r_j-t_j)^{2}]=\Delta S_jt_j-\pi t_j^{2}\ell_j$，比原书的薄膜近似少算
+$\pi t_j^{2}\ell_j$（$t_j/r_j=0.04$ 时约 $2\%$）；第 (1) 项计全孔体积，与原书的 $\Delta V_i$
+一致。标准题名为《催化剂孔径分布计算法（氮脱附等温线计算法）》
+\src{S1 式(1-36) 与所列标准，书内 p.46 / PDF p.65}。
 
 \begin{keycond}
 \textbf{BJH 的三个硬边界。}（1）\textbf{不适用于微孔}：$\ppzero<0.2$ 的吸附量变化由微孔
@@ -187,8 +194,11 @@ t=t_{\mathrm{m}}\left[\frac{-5}{\ln\left(\ppzero\right)}\right]^{1/3}
 
 $t_{\mathrm{m}}$ 为氮的单分子层平均厚度，取 $\qty{0.354}{nm}$；式~\eqref{eq:halsey}
 在 $\ppzero\to1$ 时发散，只能用于毛细凝聚显著之前的区间。
-\tocheck{未对照原页面图像：原书式(1-37) 的指数与常数（$-5$、$1/3$）在 OCR 中失真，
-此处按 Halsey 方程标准形式重建；$t_{\mathrm{m}}=\qty{0.354}{nm}$ 取自 OCR 正文。}吸附量与厚度成正比：
+原书式(1-37) 实为定义式 $t=\dfrac{t_{\mathrm{m}}}{V_{\mathrm{m}}}V=f(\ppzero)$，
+式(1-38) 为 $V=\dfrac{V_{\mathrm{m}}}{t_{\mathrm{m}}}t$（即本稿式~\eqref{eq:vt}）；
+Halsey 显式式是本改编本为给出 $t$ 曲线的具体函数形式而补入的标准表达式，\textbf{不是原书
+式(1-37)}；$t_{\mathrm{m}}=\qty{0.354}{nm}$ 亦在原页得到确认
+\src{S1 式(1-37)、式(1-38)，书内 p.51 / PDF p.70}。吸附量与厚度成正比：
 
 \begin{equation}\label{eq:vt}
 V=\frac{V_{\mathrm{m}}}{t_{\mathrm{m}}}\,t
@@ -202,8 +212,9 @@ $\unit{cm^3.g^{-1}}/\unit{nm}=10^{7}\,\unit{cm^2.g^{-1}}$，而 $\qty{1}{cm^3}$ 
 \unit{cm^2}$，两者一致，故有换算
 $S/(\unit{m^2.g^{-1}})\approx10^{3}\times\dfrac{V_{\text{液}}/(\unit{cm^3.g^{-1}})}
 {t/(\unit{nm})}$；用标准状况体积表示时等价于 $S\approx1.54\,V_{\mathrm{STP}}/t$。
-\tocheck{未对照原页面图像：原书在 $V$--$t$ 斜率处只写「此斜率即为样品的表面积」，未标明
-体积单位与 $10^{3}$ 这一换算因子；上列因子按液氮密度自行推导。}
+原书在 $V$--$t$ 斜率处只写「若吸附量以表面凝聚的液氮体积为单位，则此斜率即为样品的表面
+积」，未标出体积单位与 $10^{3}$ 这一换算因子的来历；上列因子按液氮密度导出，与原书表述
+不矛盾\src{S1 §1.2.2 3)a，书内 p.52 / PDF p.71}。
 \end{principle}
 
 \textbf{多孔吸附剂的 $V$--$t$ 曲线形状与判读。}与过原点直线相比共有四种典型偏离方式：
@@ -231,14 +242,16 @@ $V$、孔壁面积 $S$ 与厚度 $t$ 满足 $V=S\,t$；在弯曲段某点 $t_i$ 
 \begin{equation}\label{eq:mp-dv}
 \Delta V_i=\Delta S_i\,\bar{t}_i,\qquad
 \Delta S_i=S_{i-1}-S_i,\qquad
-\bar{t}_i=\tfrac12\left(t_i+t_{i+1}\right)
+\bar{t}_i=\tfrac12\left(t_{i-1}+t_i\right)
 \end{equation}
 
 由 $\Delta V_i$ 对该组孔宽（平板模型取 $D_{p,i}\approx2t_i$）作图即得微孔孔尺寸分布。
 量纲检查：$\Delta S_i$ 为 $\unit{m^2.g^{-1}}$、$\bar{t}_i$ 为 $\unit{nm}$，乘积为
 $\unit{nm.m^2.g^{-1}}=10^{-7}\,\unit{cm^3.g^{-1}}$，与孔容单位一致。
-\tocheck{未对照原页面图像：原书式(1-42)--(1-44) 的下标约定（$\bar t_i$ 取相邻均值还是端点
-值）与「板间距 $=t_{i+1}$ 还是 $=2t_i$」在 OCR 中无法判读，此处按 MP 法通用约定重写。}
+原书式(1-42)--(1-44) 即 $\Delta V_i=\Delta S_i\times\bar{t}_i$、
+$\Delta S_i=S_{i-1}-S_i$、$\bar{t}_i=\frac{1}{2}\left(t_{i-1}+t_i\right)$（取相邻均值），
+且正文注明「此时吸附层厚度 $t_{i+1}$ 相应的是新被充满的微孔板间距」
+\src{S1 式(1-42)--(1-44)，书内 p.56 / PDF p.75}。
 两个使用要点：其一，低 $t$ 段过原点直线的斜率给出\textbf{总表面积}，大 $t$ 段直线外推的
 \textbf{截距给出微孔总孔容}、斜率给出\textbf{外表面积}；该分析\textbf{隐含平板狭缝孔
 假设，不适用于圆柱形微孔}，且微孔材料的总表面积本身物理意义有限。其二，MP 法同样按 BET
@@ -263,16 +276,17 @@ a_s=\frac{n\!\left(\ppzero\right)}{n_{0.4}}
 
 对同一类吸附剂建立统一的 $\alpha_s$ 曲线（$\alpha_s$ 对 $\ppzero$ 的标准数据表），再把
 多孔样品各相对压力下的 $n$ 对 $a_s$ 作图得 $V$--$\alpha_s$ 图，判读方式与 $V$--$t$ 图
-完全平行。\tocheck{未对照原页面图像：原书式(1-39) 的完整形式（分子分母记号，以及横轴是
-$\ppzero$ 还是归一化后的 $(p/p_0)/0.4$）OCR 失真。}
+完全平行。原书式(1-39) 为
+$\alpha_s=\dfrac{n}{n_{0.4}}=\dfrac{V}{V_{0.4}}=f\!\left(\ppzero\right)$，横轴是
+$\ppzero$，与上式一致\src{S1 式(1-39)，书内 p.53 / PDF p.72}。
 
 \textbf{$n$ 方法}进一步认为吸附层厚度（以层数 $n=V/V_{\mathrm{m}}$ 表示）不仅取决于
 相对压力，还取决于吸附质与吸附剂相互作用的强度；由于 BET 公式中的 $C$ 值恰好反映这一
-强度，故按 $C$ 值分级（例如 $C>300$、$300>C>100$、$100>C>40$、$40>C>30$ 等）分别建立
+强度，故按 $C$ 值分级（原书分五档：$C>300$、$300>C>100$、$100>C>40$、$40>C>30$、
+$30>C>20$；式(1-40) 即 $n=\dfrac{V}{V_{\mathrm{m}}}=f\!\left(\ppzero,C\right)$）分别建立
 $n$ 标准等温线。多孔样品作图时须先按自身 $C$ 值\textbf{选择合适的那一条}曲线；按 $C$ 值
 分类的做法，实质是把 $t$ 方法「存在一条与吸附剂无关的标准等温线」的假设放宽为「同一
-相互作用强度等级内存在一条标准等温线」\src{S1 §1.2.2 3)b，书内 p.53--54 / PDF p.72--73}。\tocheck{未对照原页面图像：原书
-式(1-40) 的写法与 $C$ 值分级的完整档位（OCR 只保留 4 档，末档被截断）未能确认。}
+相互作用强度等级内存在一条标准等温线」\src{S1 式(1-40) 与 §1.2.2 3)b，书内 p.53--54 / PDF p.72--73}。
 
 \subsubsection{DFT/NLDFT：把分布写成积分方程}
 
@@ -293,6 +307,8 @@ $n$ 标准等温线。多孔样品作图时须先按自身 $C$ 值\textbf{选择
 平均场近似（MFT）处理，相斥部分按非均匀硬球流体处理、多采用 Tarazona 的平滑密度近似；
 $V_{\mathrm{ext}}(r)$ 为流体分子距孔壁 $r$ 处受到的壁面作用势，与所选孔形（裂隙、圆柱形
 或球形）和孔宽有关；$\mu$ 为流体分子的化学势。热力学平衡时巨势对局部密度的导数为零，
+即原书式(1-46)
+$\left[\delta\Omega[\rho(r)]/\delta\rho(r)\right]_{\rho=\rho_{\mathrm{eq}}}=0$，
 迭代求解即得平衡密度分布 $\rho_{\mathrm{eq}}(r)$，进而算出吸附热与吸附等温线。由实验
 等温线求分布时，先用统计力学方法计算该吸附质／吸附剂体系在\textbf{各单一孔宽 $D$} 上的
 模型等温线 $N(\ppzero,D)$ 构成一套 \textbf{kernel}，再把实验等温线写成各孔贡献的积分
@@ -303,9 +319,10 @@ N\!\left(\ppzero,D\right)f(D)\,\mathrm{d}D
 \end{equation}
 
 数值求解这一\textbf{积分吸附方程}（integral adsorption equation），即得孔尺寸分布函数
-$f(D)$。\tocheck{未对照原页面图像：原书式(1-45)--(1-47) 的记号（巨势泛函的确切写法、
-$V_{\mathrm{ext}}$ 的自变量、kernel 与积分限符号）在 OCR 中残缺，此处按 NLDFT 标准表述
-重写，未逐符号核对。}
+$f(D)$。原书式(1-45)、式(1-47) 与上文式~\eqref{eq:nldft-pot}、式~\eqref{eq:gae} 形式一致：
+巨势泛函的写法、壁面势的自变量 $r$、积分吸附方程的结构都逐符号对上，差别只在符号习惯——
+原书把孔宽记作 $W$（kernel $N(\ppzero,W)$、分布函数 $f(W)$），本书前文一律用 $D$
+\src{S1 式(1-45)--(1-47)，书内 p.56--57 / PDF p.75--76}。
 
 \begin{keycond}
 \textbf{NLDFT 的成立条件与已知偏差。}（1）\textbf{kernel 必须与实验体系一致}：其数值
@@ -342,19 +359,20 @@ $135^{\circ}$--$150^{\circ}$，通常取平均值 $140^{\circ}$，$\cos140^{\cir
 $p>0$，且\textbf{压入的孔半径与所受外压力成反比}。代入常用取值写成便于使用的形式
 
 \begin{equation}\label{eq:washburn-num}
-r/\unit{nm}=\frac{750}{p/\unit{MPa}}
+r/\unit{nm}=\frac{735}{p/\unit{MPa}}
 \end{equation}
 
 量纲检查：$2\gamma|\cos\theta|$ 为 $\unit{N.m^{-1}}$，除以 $p$（$\unit{Pa}=\unit{N.m^{-2}}$）
 得 $\unit{m}$，与 $r$ 一致。汞填充孔的顺序是\textbf{先外部后内部、先大孔后中孔再小孔}；
 测不同外压下进入孔内的汞量，即得相应孔宽的孔容。
-\tocheck{未对照原页面图像：原书式(1-48)、(1-49) 的符号与常数取值（$\gamma$ 取 0.480 还是
-0.485 N/m、$r$ 与 $p$ 的单位约定）OCR 失真；按 $\gamma=\qty{0.480}{N.m^{-1}}$、
-$\theta=140^{\circ}$ 算得常数约 735，常用值 750 对应 $\gamma=\qty{0.485}{N.m^{-1}}$。}
+原书式(1-48)、式(1-49) 已逐字核对：$\gamma=\qty{0.48}{N.m^{-1}}$，汞与各类物质的接触角
+为 $135^{\circ}$--$150^{\circ}$、常取平均值 $140^{\circ}$，化简后的数值式即
+$r/\unit{nm}=735/(p/\unit{MPa})$（$r$ 以 nm、$p$ 以 MPa 为单位），与上式一致
+\src{S1 式(1-48)、式(1-49)，书内 p.58 / PDF p.77}。
 \end{principle}
 
 可测孔宽上下限由最低与最高填充压力决定：目前压汞仪使用压强最大 $200$--$400\,\unit{MPa}$，
-可测孔半径范围约 $3\,\unit{nm}$ 至 $100$\,µm；由式~\eqref{eq:washburn-num} 可
+可测孔半径范围约 $3\,\unit{nm}$ 至 $1000$\,µm；由式~\eqref{eq:washburn-num} 可
 自行校核——$p=\qty{200}{MPa}$ 对应 $r\approx\qty{3.7}{nm}$，与下限一致。压汞法原则上可测
 直径大于 $3\,\unit{nm}$ 的开孔系统，但\textbf{一般只用于大孔}，中孔与微孔的分析用气体
 吸附法。数据处理与气体吸附法同构：把进汞曲线（$V$--$p$）的压力坐标换算为孔尺寸即得积分
