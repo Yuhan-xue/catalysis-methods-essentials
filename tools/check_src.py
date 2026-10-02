@@ -72,7 +72,13 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LEDGER = os.path.join(ROOT, 'sources', 'figure_table_list.csv')
 
 # Handoff commit. Deliberately not HEAD -- see module docstring.
-BASELINE = os.environ.get('P0_BASELINE', 'feb8739')
+# 2026-10-02: the credential-scrub rewrite (`git filter-repo` over the whole
+# history) re-hashed every commit from that point on, so the handoff commit
+# `feb8739` is now `74e4015`.  An unresolvable ref here is not a manuscript
+# defect: it silently empties the trusted page pairs and the run degrades into
+# ~80 bogus FAILs (that is exactly what happened before this line was pinned).
+# Old->new mapping: reviews/2026-10-02-history-cleanup/commit-map.txt
+BASELINE = os.environ.get('P0_BASELINE', '74e4015')
 
 # Dashes occur in three shapes across the manuscript: em dash (most, 327 sites),
 # TeX's `--` (131 sites) and the odd full-width/minus sign. All must be accepted;
@@ -485,6 +491,18 @@ def main(argv):
         else:
             only.add(a)
 
+    # The trusted page pairs and the per-shard offset sets are read from
+    # BASELINE; if that ref does not resolve, every offset check loses its
+    # reference and the run degrades into ~80 bogus FAILs.  Say that once,
+    # loudly, instead of blaming the manuscript.
+    if subprocess.call(['git', 'rev-parse', '--verify', '--quiet',
+                        BASELINE + '^{commit}'], cwd=ROOT,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL) != 0:
+        print('FAIL baseline ref %r does not resolve -- history rewritten? '
+              'pin it with P0_BASELINE=<ref>; old->new map in '
+              'reviews/2026-10-02-history-cleanup/commit-map.txt' % BASELINE)
+        return 1
+
     with io.open(LEDGER, encoding='utf-8-sig', newline='') as fh:
         rows = [r for r in csv.DictReader(fh)]
     if rows and None in rows[0]:      # stray columns beyond the header
@@ -707,7 +725,12 @@ def main(argv):
     ledger_only = tex_cov['ledger_only']
     n_tex_scanned = tex_cov['scanned']
     n_tex_checked = len(tex_cov['checked'])
-    if not only and n_tex_checked != checked:
+    # `only` (single shard) and `--unlabeled` both narrow *targets* to a subset
+    # of the corpus while the .tex census always counts every table, so the two
+    # numbers are not comparable in those modes.  (Before this guard,
+    # `--unlabeled` on a fully annotated tree -- 0 targets -- exited 1 with a
+    # bogus "85 != 0" accounting FAIL.)
+    if not only and not unlabeled and n_tex_checked != checked:
         accounting_bad.append(
             u'.tex 已检查表数 %d ≠ 台账已检查行数 %d（清点口径与检查口径不一致）'
             % (n_tex_checked, checked))

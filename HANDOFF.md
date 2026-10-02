@@ -32,6 +32,8 @@
 历史已用 `git filter-repo` 清理并强推，`main`（旧 `f94789c` → 新 `00ef814`）与 `v0.6.0-pre`…`v0.6.5-pre` 六个 tag 的哈希已变，
 12 个 release 元数据已同步。2026-10-02 之前的文档哈希请用 `reviews/2026-10-02-history-cleanup/commit-map.txt` 换算；
 残余风险（服务端 `git gc --prune=now` 待管理员执行、其他克隆需重同步）见同目录 README。
+工具侧同因：`tools/check_src.py` 的默认基线 ref 也随重写失效（`feb8739` → `74e4015`，见 `commit-map.txt` 末行），
+已重新固定；并新增「ref 不可解析时立即显式报错退出 1」，不再退化成八十余条误报 FAIL。
 
 ## 2 立刻能跑的命令
 
