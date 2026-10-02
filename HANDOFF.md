@@ -28,7 +28,8 @@
 新增探针 `tools/fig_probe_tpd.py`、`tools/check_heading_orphan.py`、`tools/check_cp_quant_demo.py`；
 `gen_tpd_table.py` 增 `--verify`（秒/分双解 + 闭式 + 解析峰温 + 守恒）与 `--patch`（回写整块 tikz）。
 
-**2026-10-02 安全清理**（R2-W01 关闭）：两处历史明文口令已轮换（旧值 API 401、新值 200，新值存仓库外受限文件与 `~/.netrc`）；
+**2026-10-02 安全清理**（R2-W01）：历史明文口令已处理——`deepseek` 已轮换（旧值 API 401，新值存 `~/.netrc`）；
+`yuhanxue` 的轮换已应账号所有者要求**恢复为原值**（该值曾泄露，风险由所有者承担；当前值在仓库外受限文件）。
 历史已用 `git filter-repo` 清理并强推，`main`（旧 `f94789c` → 新 `00ef814`）与 `v0.6.0-pre`…`v0.6.5-pre` 六个 tag 的哈希已变，
 12 个 release 元数据已同步。2026-10-02 之前的文档哈希请用 `reviews/2026-10-02-history-cleanup/commit-map.txt` 换算；
 残余风险（服务端 `git gc --prune=now` 待管理员执行、其他克隆需重同步）见同目录 README。
@@ -99,8 +100,8 @@ python tools/cmp_release_pdf.py build\main.pdf <线上附件.pdf>             # 
 - ⏳ **公式逐式核对原页面图像**：部分完成（台账 `sources/formula_verify.md`）；R5 未新增逐式核对。
 - ⏳ **85 张表像素级核图**：已做 OCR 文本层交叉核对（`sources/table_content_check.md`；R5 复跑为 13 FOUND / 1 INDEX_OK / 54 NO_TABLE_NO / 17 NON_SOURCE，**不是通过率**）；像素级未做（需图像通道/人工）。
 - ⏳ **§8.5 三类装置的转速/温度/压力**仍带 `\tocheck`（未对照原页面图像），R5 未移除标记。
-- ✅ **旧凭据轮换与历史清理**：R2-W01 已关闭（2026-10-02）——两处旧口令失效、历史重写并强推、release 元数据同步；
-  记录与映射表见 `reviews/2026-10-02-history-cleanup/`；服务端对象库彻底 prune 仍待管理员执行（旧值已失效）。
+- ✅ **旧凭据处理与历史清理**：R2-W01（2026-10-02）——`deepseek` 旧口令失效；`yuhanxue` 口令按所有者要求恢复原值；历史重写并强推、release 元数据同步；
+  记录与映射表见 `reviews/2026-10-02-history-cleanup/`；服务端对象库彻底 prune 仍待管理员执行。
 - ✅ 覆盖映射：`sources/coverage_map.md`（二级节 79/81，未映射的 2 个为「结束语」）、`ch08_coverage_note.md`、`ch09_coverage_matrix.md`。
 
 ## 6 已知坑（高频项；完整版见 STYLE_GUIDE / WRITER_BRIEF）

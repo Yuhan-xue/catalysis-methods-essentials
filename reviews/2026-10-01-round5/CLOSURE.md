@@ -107,6 +107,6 @@ python tools/check_heading_orphan.py --pdf build/_baseline_v064.pdf          # e
 | 85 张表**像素级**核图 | 未完成 | 本轮只做了 OCR 文本层交叉核对（54 NO_TABLE_NO 等，不是通过率）；逐单元格核图仍需图像通道/人工 |
 | 公式逐式原页核对 | 部分 | 台账 `sources/formula_verify.md` 未变；本轮未新增逐式核对 |
 | 原书装置数值/谱图归属逐字核对 | 未完成 | §8.5 三类装置的转速/温度/压力仍带 `\tocheck`（未对照原页面图像），本轮未移除标记 |
-| 旧凭据轮换与历史清理 | **已完成**（2026-10-02） | R2-W01 关闭：两处旧口令轮换（旧 401 / 新 200）、`git filter-repo` 重写历史并强推、12 个 release 元数据同步；证据与映射见 `reviews/2026-10-02-history-cleanup/`；服务端 `git gc --prune=now` 待管理员执行（旧值已失效） |
+| 旧凭据处理与历史清理 | **已完成/部分回退**（2026-10-02） | R2-W01：`deepseek` 旧口令轮换（旧 401）、`git filter-repo` 重写历史并强推、12 个 release 元数据同步；**`yuhanxue` 口令按账号所有者要求恢复原值**（风险自担）；证据与映射见 `reviews/2026-10-02-history-cleanup/`；服务端 `git gc --prune=now` 待管理员执行 |
 | R5 评审自带 `recheck_review.py` 的复跑 | 说明 | 该脚本内置的是**修复前**的 A=4.39753e10 模型（用于取证）；修复后其数值是历史模型值，不能用它判修复对错。新回归夹具是 `gen_tpd_table.py --verify` 与 `fig_probe_tpd.py` |
 | 全书逐页/逐式验收 | 未做 | 本轮只覆盖被指出的 6 项与相关页（p.110、p.186–188、p.273、p.309）；抽样通过不构成全书正确性证明 |

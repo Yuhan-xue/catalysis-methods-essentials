@@ -23,8 +23,8 @@
 - 逐片台账见 `sources/assignments.md`（`done` 只等于「文件存在」）；内容核验状态见
   `reviews/2026-09-30-round4/CLOSURE.md` 与 `HANDOFF.md` §1/§5。
 - **仍未完成**：85 张表逐表**像素级**核图、公式逐式核对原页面图像（需人工/图像通道）。
-- **安全清理**：2026-10-02 已轮换历史泄漏口令并重写历史；记录与哈希映射见
-  `reviews/2026-10-02-history-cleanup/`（服务端 `git gc --prune=now` 待管理员执行，旧值已失效）。
+- **安全清理**：2026-10-02 已轮换/处理历史泄漏口令并重写历史（`yuhanxue` 口令按所有者要求恢复原值）；记录与哈希映射见
+  `reviews/2026-10-02-history-cleanup/`（服务端 `git gc --prune=now` 待管理员执行）。
 - ⚠️ **字节哈希每次构建都会变**（PDF 内含 `/CreationDate` 与 `/ID`）。判断内容有没有变，
   请比**文本层逐页**、页数与书签落页（`tools/pdf_probe.py`），不要只比字节哈希。
 

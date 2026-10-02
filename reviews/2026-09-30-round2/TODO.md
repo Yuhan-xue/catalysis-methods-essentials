@@ -50,3 +50,4 @@
   轮换后的口令只存放在仓库外的受限文件与 `~/.netrc`（本记录不复制口令值）。
   逐项证据、映射表与残余风险见 [../2026-10-02-history-cleanup/README.md](../2026-10-02-history-cleanup/README.md)。
 - 原始问题条目与评审证据保持原样，未改写。
+- **2026-10-02 追加**：应账号所有者要求，`yuhanxue` 的口令已恢复为原值；因此 R2-W01 中「`yuhanxue` 旧值失效」一项随之回退，其余（`deepseek` 轮换、历史清理与强推）保持完成。现状与风险见 [../2026-10-02-history-cleanup/README.md](../2026-10-02-history-cleanup/README.md)。
