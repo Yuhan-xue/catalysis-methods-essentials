@@ -11,7 +11,7 @@
 | 成品 | 《现代催化研究方法精要：原理、读图与方法选择》 |
 | 页数 | **314**（R4 后；R3 315、R2 313、P0 310、基线 `74e4015` 309。中途曾因 `\samepage` 惩罚参数泄漏涨到 345 页，见 §6） |
 | 分片 | **37**（`chapters/parts/`） |
-| 最新提交 | `00ef814`（R5 收口 + CLOSURE/HANDOFF；对应发布提交 `5c1f080`） |
+| 最新提交 | `e0602f4`（同步后修 `check_src.py` 基线 ref；上一轮收口 `00ef814`，对应发布提交 `5c1f080`） |
 | 线上 pre | **v0.6.5-pre**（release id=52，tag @ `5c1f080`；4028589 B，SHA-256 `D0736A5C…A6E9D`；314 页 / 144 书签） |
 | 上一版 pre | v0.6.4-pre（id=46 @ `9e6809c`）、v0.6.3-pre（id=44 @ `b457f93`） |
 | 构建门禁 | errors / overfull>5pt / missing glyphs / undefined refs / dup labels / **dup includes** / **overlap** —— 全 0；`-Release` 下静态检查**没跑成（unavailable）判失败** |
@@ -53,6 +53,7 @@ python tools/check_heading_orphan.py --pdf build/main.pdf                # §8.5
 python tools/check_cp_quant_demo.py                                      # CP 强度≠产率反例
 python tools/recompute_ch03b_dtg.py ; python tools/gen_tpd_table.py --check
 python tools/gen_tpd_table.py --verify                                   # TPD 单位/闭式/守恒
+python tools/cmp_release_pdf.py build\main.pdf <线上附件.pdf>             # 内容级比对（忽略 /ID 与 /CreationDate）
 ```
 
 ## 3 环境事实（不要重新摸索）
