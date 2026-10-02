@@ -28,6 +28,7 @@
   - 12 个 release 的 `target_commitish` 与正文里的旧哈希已通过 API 更新为清理后提交；附件未动。
   - 本地两个工作树同步到新历史；`git reflog expire --expire=now --all` + `git gc --prune=now`。
 - 映射表：[commit-map.txt](commit-map.txt)（old→new；用于解析 2026-10-02 以前文档中的旧哈希）。
+- 替换后的占位词为 `ROTATED-2026-10-02`（共 7 处）。
 
 ## 4 验证证据
 
@@ -36,6 +37,7 @@
 | 旧口令登录 | 两账户均 **401** |
 | 新口令登录 | 两账户均 **200**；deepseek 的 `git ls-remote` 正常 |
 | 重写后对象库扫描 | 旧口令串 **0** 处；替换标记 7 处；HEAD 树哈希不变（`39588d39…`） |
+| 远端克隆结构扫描 | `://user:pass@` 0 处、netrc 口令行 0 处；`curl … -u` 的 2 处命中经复核为**替换占位词本身**（`deepseek:ROTATED-2026-10-02`），不是凭据 |
 | 发布附件 | `v0.6.5-pre` 下载 HTTP 200，SHA-256 仍为 `d0736a5c…a6e9d` |
 | 页面 | tag 页、新提交页、releases 页均 200；release 页指向新提交 `5c1f080` |
 | 本机残留 | 6 个 `.git/config` 的嵌入凭据 URL 已去凭据（改用 `~/.netrc`）；`.bak-creds-2026-10-02` 备份已删 |
