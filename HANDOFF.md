@@ -109,7 +109,7 @@ pi-ai 的 responses 适配器把「工具结果里的图」塞进 `function_call
 - ✅ P0：85 张表来源标注（`check_src.py` 全 PASS）。
 - ✅ 工程门禁：dup includes、overlap gate、静态检查三态、发布入口均接入 `build.ps1 -Release`。
 - ⏳ **公式逐式核对原页面图像**：**八个分片已逐条读图核对**（ch01-b、ch02-a、ch04-a、ch07-a、ch08-c §8.5、ch09-a、ch10-a、ch12-a），台账 `sources/pixel_verify.md`（96 张页面图像 + SHA-256 清单 `build/verify/pages_sha256.txt`）；**全库其余约 250 处 `\tocheck` 未处理**（见 `sources/pixel_verify.md` 第五节）。
-- ⏳ **85 张表像素级核图**：已做 OCR 文本层交叉核对（`sources/table_content_check.md`；R5 复跑为 13 FOUND / 1 INDEX_OK / 54 NO_TABLE_NO / 17 NON_SOURCE，**不是通过率**）；像素级未做（需图像通道/人工）。**图像通道 2026-10-02 打通，本项现在可做——但仍未做。**
+- ⏳ **85 张表像素级核图**：OCR 文本层交叉核对见 `sources/table_content_check.md`（R5 复跑为 13 FOUND / 1 INDEX_OK / 54 NO_TABLE_NO / 17 NON_SOURCE，**不是通过率**）。**14 张有真实来源编号的表已逐格像素核对完毕**，报告 `sources/table_pixel_verify.md`（13 条记录 / 14 张表：表 1-1、1-10、2-1、3-1、4-2、4-7、4-8、6-1、6-3、7-12（两处）、7-19＋7-20、10-3、11-1；裁决分布：已核对一致 1、已核对并修正 10、改编补充 2），据此修正 11 个分片；其中「电泳法」整行缺失、表 6-1 列序错位、表 6-3 漏行、表 4-8 缺两行、表 3-1 来源标注张冠李戴等为实质错误。**其余约 71 张（54 NO_TABLE_NO + 17 NON_SOURCE，即据正文归纳或非源表）未做像素核对。**
 - ✅ **§8.5 三类装置的转速/温度/压力**：`chapters/parts/ch08-c.tex` 的 `\tocheck` 已删（读图核对 `down042_250.png`／`down043_250.png` = 书内 p.550—551）；另把「常压下可升温到」改为原书的「正常流动压力下可升温至 423 K、转速达 3 kHz」。§8.5.2 读图实例仍未通读，见台账第五节。
 - ✅ **旧凭据处理与历史清理**：R2-W01（2026-10-02）——`deepseek` 旧口令失效；`yuhanxue` 口令按所有者要求恢复原值；历史重写并强推、release 元数据同步；
   记录与映射表见 `reviews/2026-10-02-history-cleanup/`；服务端对象库彻底 prune 仍待管理员执行。
@@ -179,7 +179,7 @@ curl.exe -sL "http://zsyq.hxlab.tech:3000/yuhanxue/catalysis-methods-essentials/
 | `sources/coverage.csv`、`coverage_map.md` | 原书节覆盖与引用落点 |
 | `sources/page_map_{up,down}.csv`、`page_map.md` | PDF 页 ↔ 书内页映射 |
 | `sources/figure_table_list.csv` | 图表来源台账（派生，勿手改） |
-| `sources/formula_verify.md`、`pixel_verify.md`、`errata.md`、`terminology_decisions.md` | 公式核对／**像素级核对台账（逐条：源页／PNG／逐字印法／判决）**／勘误／术语裁定 |
+| `sources/formula_verify.md`、`pixel_verify.md`、`table_pixel_verify.md`、`errata.md`、`terminology_decisions.md` | 公式核对／**像素级核对台账（逐条：源页／PNG／逐字印法／判决）**／**真实来源表像素级核对台账（14 张表）**／勘误／术语裁定 |
 | `sources/ch08_coverage_note.md`、`ch09_coverage_matrix.md`、`table_content_check.md` | 各章覆盖与表内容核对 |
 | `sources/assignments.md` | 分片派单与「科学核验状态」 |
 | `reviews/*/` | 历轮评审（TODO / CLOSURE / findings / 复核脚本） |

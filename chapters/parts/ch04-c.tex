@@ -513,9 +513,11 @@ $\rightarrow$（vi）检查结构参数的物理合理性（键长键角、占�
   \caption{多晶衍射图拟合常用的峰形函数（对应原书表 4-8）。第三列为半峰宽随衍射角变化的
     参数化，$U,V,W$ 与 $X,Y,F$ 都是拟合参数。\textbf{选择判据}：以拟合差谱的残差是否有
     结构为准，不以单个 $R$ 因子最小为准。\src{据上册 §4.8 与表 4-8，
-    书内 p.278—284 / PDF p.297—303 整理。}}
+    书内 p.278—284 / PDF p.297—303 整理；表头、六行函数式与系数已逐格对照原页面图像，
+    modified Lorentzian 两行原书印有系数 $a$、$b$，一并照录（原书半峰宽记作 $H$，
+    本表记作 $\Gamma$）。}}
   \label{tab:ch04c-profile}
-  \begin{tabular}{@{}lll@{}}
+  \begin{tabularx}{\columnwidth}{@{}lXX@{}}
     \toprule
     函数类型 & 表达式（示意） & 半峰宽 $\Gamma$ 的参数化 \\
     \midrule
@@ -523,10 +525,18 @@ $\rightarrow$（vi）检查结构参数的物理合理性（键长键角、占�
       & $\Gamma^{2}=U\mathrm{tg}^{2}\theta+V\mathrm{tg}\,\theta+W$ \\
     Lorentzian & $L(x)=\dfrac{\Gamma/2}{\pi\left(x^{2}+\Gamma^{2}/4\right)}$
       & $\Gamma=X\mathrm{tg}\,\theta+(Y+F)/\cos\theta$ \\
+    Modified Lorentzian（Ⅰ） & $ML(x)=\dfrac{a_{\mathrm{ML}}}{\left(1+b_{\mathrm{ML}}x^{2}\right)^{2}}$，
+      $a_{\mathrm{ML}}=\dfrac{4\sqrt{\sqrt{2}-1}}{\pi\Gamma}$，
+      $b_{\mathrm{ML}}=\dfrac{4\sqrt{\sqrt{2}-1}}{\Gamma^{2}}$
+      & $\Gamma=X\mathrm{tg}\,\theta+(Y+F)/\cos\theta$ \\
+    Modified Lorentzian（Ⅱ） & $IL(x)=\dfrac{a_{\mathrm{IL}}}{\left(1+b_{\mathrm{IL}}x^{2}\right)^{2/3}}$，
+      $a_{\mathrm{IL}}=\dfrac{\sqrt{2^{2/3}-1}}{\pi\Gamma}$，
+      $b_{\mathrm{IL}}=\dfrac{4\sqrt{2^{2/3}-1}}{\Gamma^{2}}$
+      & $\Gamma=X\mathrm{tg}\,\theta+(Y+F)/\cos\theta$ \\
     Voigt & $q(x)=G(x)*L(x)$（卷积） & —— \\
     pseudo-Voigt & $q(x)=\eta L(x)+(1-\eta)G(x)$ & $\eta$ 为 Lorentz 成分的权重 \\
     \bottomrule
-  \end{tabular}
+  \end{tabularx}
 \end{table}
 
 \begin{pitfall}
@@ -536,10 +546,16 @@ $\rightarrow$（vi）检查结构参数的物理合理性（键长键角、占�
 异性应变时，只用这一组参数拟合会把二者混在一起。\\
 （2）pseudo-Voigt 的 $\eta$ 与 $\Gamma$ 之间有强相关：$\Gamma$ 变大与 $\eta$ 变小在一定范围内
 可以给出几乎相同的曲线，因此单独报告 $\eta$ 或 $\Gamma$ 的物理含义有限。\\
-（3）原书中 modified Lorentzian 的表达式与半峰宽参数化在本页 ocr 中不可辨，本表未列出，
-以免给出错误的公式形式。\tocheck{未对照原页面图像：modified Lorentzian 的函数式与
-$\Gamma$ 参数化未能从 ocr 重建；Lorentzian 一行中 $(Y+F)/\cos\theta$ 的括号内容（原书此处
-似为两项之和）亦存疑。}
+（3）原书表 4-8 另列 modified Lorentzian（Ⅰ）（Ⅱ）两行，都给出系数 $a$、$b$ 的显式写法，
+本表已照录。但按同表 Gaussian、Lorentzian 两行通用的归一化约定 $a=2\sqrt{b}/\pi$ 反推，
+（Ⅰ）行的 $b$ 不应再带外层根号（自洽值 $4(\sqrt{2}-1)/\Gamma^{2}$），（Ⅱ）行的 $a$ 则应带
+系数 $4$（自洽值 $4\sqrt{2^{2/3}-1}/(\pi\Gamma)$）；原书所印两行的 $a$、$b$ 与外层指数之间
+不自洽，本节照录原书印法，不代改公式。\\
+（4）原书该表第三列的表头逐字印作「半峰宽 $H^{2}$」，但 Lorentzian 与两行 modified
+Lorentzian 印出的都是 $X\tan\theta+[Y+F]/\cos\theta$——对 $\tan\theta$ 是一次式，不是平方；
+只有 Gaussian 一行真正是二次式。原书第三列的括号确为两项之和，本节按线性形式记，不以表头
+的平方号为准。\src{据上册 表 4-8，书内 p.280 / PDF p.299；六行函数式、系数与表头已逐格
+对照原页面图像。}
 \end{pitfall}
 
 \subsubsection{峰形拟合：Pawley 方法与 LeBail 方法}
