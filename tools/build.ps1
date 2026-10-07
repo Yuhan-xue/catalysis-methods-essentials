@@ -1,4 +1,4 @@
-﻿# ================================================================
+# ================================================================
 #  tools/build.ps1 —— 全书构建（唯一入口）
 #
 #  用法： pwsh -NoProfile -ExecutionPolicy Bypass -File tools/build.ps1
@@ -18,6 +18,11 @@
 #  第八项「版面重叠」由 tools/overlap_check.py --gate 判定：只拦**确认缺陷**类
 #  （两个描边图形相撞），文字轮廓、数学上下标、合法嵌套框等按类别报告为「候选」，
 #  不按总数一刀切阻断（理由与分类见该脚本 docstring）。
+#
+#  第九项「表格来源标注」由 tools/check_src.py 判定（同为静态检查，与编译无关）：
+#  每张表必须带 \src{}，页码对必须自洽（书内-PDF 偏移一致），引了原书表号则该表号
+#  必须出现在 OCR 表索引里；台账里有表而正文没有、或正文有表而台账没有，都算
+#  「未检查」。报告落在 build/check_src.txt（gitignored）。
 #
 #  静态检查的状态：ok（查过，无问题）/ FAIL（查过，有问题）/
 #  unavailable（**没检查**：python 不可用、脚本缺失、工具自报不可用、调用异常）。
@@ -156,6 +161,19 @@ if (Test-Path $ovStat) {
     $ovLine = ([IO.File]::ReadAllText($ovStat, [Text.Encoding]::UTF8) -split "`r?`n")[0].Trim()
 }
 
+# 第九项门禁：表格来源标注（check_src.py）。纯源码静态检查，与编译无关：
+# 每张表必须带 \src{}，页码对必须自洽（书内-PDF 偏移一致），引了原书表号则该表号
+# 必须出现在 OCR 表索引里；台账里有表而正文没有、或正文有表而台账没有，都算未检查。
+# 退出码 2 = 工具自报无法检查，按 R2-W04「未检查 ≠ 通过」处理。
+# check_src.py 无 --out 参数，报告路径固定为 build/check_src.txt（见该脚本 :60/:795）。
+$csScript = Join-Path $PSScriptRoot 'check_src.py'
+$cs = Invoke-PyCheck -Name '表格来源标注检查' -Script $csScript
+$csState = switch ($cs.State) {
+    'ok'    { 'ok' }
+    'FAIL'  { "FAIL（check_src.py 退出码 $($cs.Code)；明细见 build/check_src.txt）" }
+    default { "skipped（$($cs.Detail)）" }
+}
+
 Write-Host "==== build ====" -ForegroundColor Cyan
 Write-Host ("mode          : {0}" -f $(if ($Release) { 'release（发布验收）' } else { 'draft（草稿）' }))
 Write-Host ("latexmk exit  : {0}" -f $code)
@@ -167,8 +185,10 @@ Write-Host ("undefined refs: {0}" -f $undef.Count)
 Write-Host ("dup labels    : {0}" -f $duplab.Count)
 $incColor = Get-GateColor $inc -ReleaseMode:$Release
 $ovColor  = Get-GateColor $ov  -ReleaseMode:$Release
+$csColor  = Get-GateColor $cs  -ReleaseMode:$Release
 Write-Host ("dup includes  : {0}" -f $incState) -ForegroundColor $incColor
 Write-Host ("overlap       : {0}" -f $ovState) -ForegroundColor $ovColor
+Write-Host ("table \src    : {0}" -f $csState) -ForegroundColor $csColor
 if ($ovLine) { Write-Host ("  {0}" -f $ovLine) -ForegroundColor $ovColor }
 if ($errs.Count) { $errs | Select-Object -First 12 | ForEach-Object { Write-Host "  ERR  $($_.Value)" -ForegroundColor Red } }
 if ($ovf.Count)  { $ovf  | Select-Object -First 8  | ForEach-Object { Write-Host "  OVER $($_.Value)" -ForegroundColor Yellow } }
@@ -194,6 +214,7 @@ if ($code -ne 0)        { $fail += "latexmk 退出码 $code" }
 if ($errs.Count)        { $fail += "$($errs.Count) 个编译错误" }
 if ($miss.Count)        { $fail += "$($miss.Count) 处缺字" }
 if ($inc.State -eq 'FAIL') { $fail += "存在重复引入（见上方 check_includes.py 输出）" }
+if ($cs.State -eq 'FAIL')  { $fail += "表格来源标注不合格（明细见 build/check_src.txt）" }
 if ($Release) {
     if ($ovf.Count)     { $fail += "$($ovf.Count) 处 overfull >5pt" }
     if ($undef.Count)   { $fail += "$($undef.Count) 处未定义引用" }
@@ -207,6 +228,9 @@ if ($Release) {
     }
     if ($ov.State -eq 'unavailable') {
         $fail += "版面重叠检查**未执行**（$($ov.Detail)）—— 未检查 ≠ 通过"
+    }
+    if ($cs.State -eq 'unavailable') {
+        $fail += "表格来源标注检查**未执行**（$($cs.Detail)）—— 未检查 ≠ 通过"
     }
 }
 if ($fail.Count) {
