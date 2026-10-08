@@ -28,6 +28,8 @@ r"""Rebuild sources/figure_table_list.csv —— 全书图表来源台账（企�
 --------
 * ``review_status`` 一律「未核对页面图像」—— 本脚本看不到页面图像，
   不声称核对过。措辞与 ``\tocheck`` 的既有「待核对」口径一致。
+  实际的逐表读图结论另立台账 ``sources/table_status.md``（本列不据其改写，
+  口径为人工核图：``tools/check_src.py`` 要求单元格内写全页面/核验者/时间/结论）。
 * ``source_location`` 取不到就留空、``source_class`` 记「未标注」，不猜。
 * ``source_location`` 只从**浮动体环境体内**取。正文散文里的 ``\src{}``
   不属于该浮动体，混进来会造出假来源（例：ch09-a 图前的 ``\src``）。

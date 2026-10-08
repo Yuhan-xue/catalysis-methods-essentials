@@ -30,5 +30,10 @@
 - 「有落点」只说明书里引用过该节号／在该节号处落点，**不代表该节内容已逐页核对**。
 - 三级节未映射数偏大属正常：本书是**精要**改编，原书的案例小节、同类小标题常被合并；
   需要时按未映射清单逐条确认「合并到哪一节」或「为什么不展开」。
-- 逐表核图仍未完成（无页面图像通道）：见 `sources/table_content_check.md`（OCR 文本层交叉核对）
-  与 `sources/figure_table_list.csv` 的 `review_status`。
+- 逐表核图见 `sources/table_status.md`：85 张表中 14 张已逐格对照源书原页面图像、8 张所在分片
+  留有注明「已对照原页面图像」的核对说明、12 张为自述非源表的改编补充，其余 51 张**尚未核对
+  页面图像**。
+- `sources/table_content_check.md`（OCR 文本层交叉核对）与 `sources/figure_table_list.csv` 的
+  `review_status` 只覆盖**转写与页码层**，不等于表内容已核对；`review_status` 由
+  `tools/build_figlist.py` 无条件写「未核对页面图像」，不因上面的读图结论改写（口径 =
+  人工核图，`tools/check_src.py` 要求单元格内写全页面/核验者/时间/结论）。
