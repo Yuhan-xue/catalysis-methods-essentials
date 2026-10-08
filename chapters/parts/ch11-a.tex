@@ -194,8 +194,9 @@ $F=\qty{96486.7}{C.mol^{-1}}$ \src{书内 p.811—812 / PDF p.299—300}。
 量纲检查：$[RT/(nF)]=\mathrm{J.mol^{-1}}/\mathrm{C.mol^{-1}}=\mathrm{V}$，与 $E$ 一致。
 两个常见误用：把本体浓度直接代入活度（高离子强度下 $a$ 可比 $C$ 低很多）；在有大电流
 通过时用电势反解表面活度（此时表面活度已被传质改写，需换用 \equref{eq:eta-conc}）。
-\tocheck{未对照原页面图像：书中 $F$ 取 96486.7 C/mol，是较老取值（现用 96485.33 C/mol），
-本分片按原书照录；若全书统一约定用新值需在此处改写。}
+\emph{核对说明}：已对照原页面图像（书内 p.812 / PDF p.300）逐字核对——原书正文印「$F$ 为
+法拉第常量，96486.7 C/mol」，$R$ 印于同页；本分片照录原书。该 $F$ 值为较老取值（现行值
+\qty{96485.33}{C.mol^{-1}}），全书若统一改用新值需在此处一并改写。
 \end{keycond}
 
 Nernst 方程也是离子选择性电极的本质思想：若保持 $\alpha$ 相中物质 $i$ 的活度不变，
@@ -276,12 +277,18 @@ i=FAk^0\left[C_{\mathrm{O}}\exp\!\left(-\frac{\alpha F(E-E^{0'})}{RT}\right)
 是处理电极电流与电势关系的基本手段。\textbf{参考点不能混用}：式~\eqref{eq:bv-first}
 用 $E-E^{0'}$ 才与 $k^0$ 匹配；若把它写成 $E-E_{\mathrm{eq}}$，则在
 $C_{\mathrm{O}}^*\neq C_{\mathrm{R}}^*$ 时 $\eta=0$（平衡态）会给出非零电流。
-\tocheck{未对照原页面图像：原书式（11-17）把 $E-E^{0}$ 与 $\eta$ 写在同一组式子里
-（正文只写「采用平衡电势作为电势参考点」，OCR 中该参考电势的符号不可辨），而原书式
-（11-20）—（11-24）使用的 $k^0$ 定义在标准电势处，二者只在
-$C_{\mathrm{O}}^*=C_{\mathrm{R}}^*$ 时相等；本稿按可自洽的 $E-E^{0'}$ 写出标准速率常数
-形式，下文再用 Nernst 关系换算为 $\eta$ 与 $i_0$ 的形式。原书该参考电势的写法未对照
-原页面图像。}
+\emph{核对说明}：已对照原页面图像（书内 p.816 / PDF p.304）逐字核对——原书式（11-17）
+是\textbf{活化能}式（阳极、阴极两个 $\Delta G$ 分别含 $(1-\alpha)F$ 与 $\alpha F$ 项），
+其中确实把 $E-E^{\Theta}$ 与 $\eta$ 写在\textbf{同一等式链}上，即原书直接取
+$\eta\equiv E-E^{\Theta}$；正文自述「$\eta$ 称为过电位（又称超电势），是电极电势与平衡值
+的差值」。原书标准速率常数印作 $k^{\Theta}$（上标为 $\Theta$，不是 $k^{0}$），其成立条件
+是「电极反应处于平衡状态，溶液中 $C_{\mathrm{O}}=C_{\mathrm{R}}$……过电位 $\eta$ 为
+$0$」，即已隐含 $E_{\mathrm{eq}}=E^{\Theta}$，故 $E^{\Theta}$ 与 $E^{0'}$ 只在
+$C_{\mathrm{O}}^*=C_{\mathrm{R}}^*$ 时重合。原书式（11-22）本身印作
+$i=FAk^{\Theta}\{\,C_{\mathrm{O}}\exp(-\alpha F\eta/RT)-C_{\mathrm{R}}\exp[(1-\alpha)F\eta/RT]\,\}$，
+用的正是 $\eta$。本稿沿用自洽的 $E-E^{0'}$ 写法，与之等价。另记：原书逆反应速率常数在
+式（11-18）（11-19）印作 $k_{\mathrm{d}}$，同页正文又印作 $k_{\mathrm{b}}$（原书符号自身
+不统一）。
 
 \paragraph{交换电流密度与传递系数} 平衡时净电流为零、表面浓度等于本体浓度
 $C_{\mathrm{O}}^*$、$C_{\mathrm{R}}^*$。把 $E=E_{\mathrm{eq}}$ 代入
@@ -375,8 +382,11 @@ $b=-2.303RT/(\alpha F)$，\qty{25}{\celsius} 下 $|b|=\qty{59}{\mV.dec^{-1}}/\al
 \textbf{斜率错一点、截距就错一个数量级}；$\alpha$ 与 $j_0$ 通过 \equref{eq:i0} 耦合，
 只有当 $C_{\mathrm{O}}^*=C_{\mathrm{R}}^*$ 时 $j_0=FAk^0C^*$ 才是干净的本征量；
 由阴极支和阳极支分别外推得到的截距应给出同一个 $j_0$，不重合说明有附加过程。
-\tocheck{未对照原页面图像：原书式（11-30）写作 $b=-RT/(\alpha F)$（自然对数形式），
-本分片按原书保留自然对数并补注了常用对数的换算；若本章他处统一采用 $\lg$，需改符号。}
+\emph{核对说明}：已对照原页面图像（书内 p.818 / PDF p.306）逐字核对——原书式（11-29）印作
+$\eta=\dfrac{RT}{\alpha F}\ln i_0-\dfrac{RT}{\alpha F}\ln i$，式（11-30）印作
+$a=\dfrac{RT}{\alpha F}\ln i_0$、$b=-\dfrac{RT}{\alpha F}$，全式\textbf{确用自然对数 $\ln$}，
+且 $b$ 不带 $2.303$ 换算系数；本分片照原书采用自然对数，另补注常用对数换算属于本改编本的
+附加说明。
 \end{keycond}
 
 \begin{figure}[tbp]
@@ -468,12 +478,13 @@ $i_{\mathrm{t}}$：
 电极表面的传质情况，\textbf{不含任何动力学信息}——这一点在后面每一种方法里都会再出现。
 量纲检查：$[nFAD C^*/\delta]=(\mathrm{C.mol^{-1}})\mathrm{cm^2}
 (\mathrm{cm^2.s^{-1}})(\mathrm{mol.cm^{-3}})/\mathrm{cm}=\mathrm{C.s^{-1}}=\mathrm{A}$。
-\tocheck{未对照原页面图像：原书式（11-32）（11-33）写作
-$i/nFA=-D_{\mathrm{O}}(C_{\mathrm{O}}^*-C_{\mathrm{O}})/\delta_{\mathrm{O}}$
-（OCR 中负号可辨），即扩散部分取「还原为负」的取向，与原书式（11-16）的「还原为正」
-相反；本稿统一为还原为正，并写明 $x$ 的取向与 $i=-nFA N_{\mathrm{O}}$。其后原书式
-（11-36）—（11-40）只含比值 $i_{\mathrm{t}}/(i_{\mathrm{t}}-i)$，在两套取向下的数值完全
-相同，故未改动；原页面图像未对照。}
+\emph{核对说明}：已对照原页面图像（书内 p.819 / PDF p.307）逐字核对——原书式（11-32）印作
+$i/(nFA)=-D_{\mathrm{O}}(C_{\mathrm{O}}^*-C_{\mathrm{O}})/\delta_{\mathrm{O}}$，式（11-33）
+印作 $i_{\mathrm{t}}/(nFA)=-D_{\mathrm{O}}C_{\mathrm{O}}^*/\delta_{\mathrm{O}}$，负号
+\textbf{确实印出}，即扩散部分取「还原为负」的取向；而同书式（11-22）在 $\eta<0$
+（阴极）时给出 $i>0$，属「还原为正」——两处取向\textbf{原书自身不一致}。本稿统一为
+还原为正，并写明 $x$ 的取向与 $i=-nFA N_{\mathrm{O}}$。其后原书式（11-36）—（11-40）
+只含比值 $i_{\mathrm{t}}/(i_{\mathrm{t}}-i)$，在两套取向下的数值完全相同，故未改动。
 
 \paragraph{浓差过电位的分解} 表面浓度对电极电势的影响可拆成热力学与动力学两部分。
 由 Nernst 方程，本体浓度与表面浓度对应的电势差为
@@ -514,10 +525,14 @@ Nernst 扩散层模型 + 高过电位下略去 Butler--Volmer 的阳极项}。�
 $[RT/(\alpha nF)]=\mathrm{V}$，$[\ln(\cdot)]$ 无量纲，成立。两个极限行为要记牢：
 $i\to 0$ 时 $\eta_{\mathrm{conc}}\to 0$（传质不构成限制）；$i\to i_{\mathrm{t}}$ 时
 $\eta_{\mathrm{conc}}\to\infty$（浓差极化发散，电流被钉在平台值上）。
-\tocheck{未对照原页面图像：原书式（11-40）OCR 为
-$\eta_{\mathrm{conc}}=\eta_1+\eta_2=-\frac{RT}{nF}(1+\frac{1}{\alpha})(\frac{i_{\mathrm{t}}}{i_{\mathrm{t}}-i})$，
-疑漏对数号（否则量纲为 V 而右端无量纲），本分片按 \equref{eq:eta1}、\equref{eq:eta2}
-的标准形式补回 $\ln$，系数 $(1+1/\alpha)$ 沿用原书。}
+\emph{核对说明}：已对照原页面图像（书内 p.819 / PDF p.307）逐字核对——原书式（11-40）
+\textbf{本身就印作}
+$\eta_{\mathrm{conc}}=\eta_1+\eta_2=-\frac{RT}{nF}\bigl(1+\frac{1}{\alpha}\bigr)
+\bigl(\frac{i_{\mathrm{t}}}{i_{\mathrm{t}}-i}\bigr)$，\textbf{原书没有印 $\ln$}（不是 OCR
+漏识）；同页式（11-39）印作 $\eta_2=-\frac{RT}{\alpha nF}\ln\frac{C_{\mathrm{O}}^*}{C_{\mathrm{O}}}
+=-\frac{RT}{\alpha nF}\ln(\frac{i_{\mathrm{t}}}{i_{\mathrm{t}}-i})$，是带 $\ln$ 的。故原书
+式（11-40）左端量纲为 V 而右端无量纲，属\textbf{原书自身漏排}。本分片按
+\equref{eq:eta1}、\equref{eq:eta2} 的标准形式补回 $\ln$，系数 $(1+1/\alpha)$ 沿用原书。
 \end{keycond}
 
 图~\ref{fig:series} 把本小节与「电极反应动力学」（§~\ref{sec:ch11-kinetics}）的关系画成一张图：电荷转移与传质是\textbf{串联}的
@@ -716,28 +731,32 @@ i_{\mathrm{ss}}=nFAm_0C_{\mathrm{O}}^*
 \label{eq:iss-ch11}
 \end{equation}
 
-\src{原书式 11-55，书内 p.825 / PDF p.313}。\tocheck{未对照原页面图像：式中 $m_0$ 在原书
-未在前文定义，按上下文应为传质系数（$\mathrm{cm.s^{-1}}$），其与 $D_{\mathrm{O}}$ 及
-电极几何的关系（半球形 $m_0=2D/r_0$、球形 $4D/r_0$、嵌盘 $4D/(\pi r_0)$ 等）书中未给，
-本分片不代为指定。}
+\src{原书式 11-55，书内 p.825 / PDF p.313}。\emph{核对说明}：已对照原页面图像（书内
+p.825 / PDF p.313）逐字核对——原书式（11-55）确印作
+$i_{\mathrm{ss}}=nFAm_0C_{\mathrm{O}}^*$，且该页\textbf{未给出 $m_0$ 的定义}。按上下文
+$m_0$ 应为传质系数（$\mathrm{cm.s^{-1}}$）；其与 $D_{\mathrm{O}}$ 及电极几何的关系
+（半球形 $m_0=2D/r_0$、球形 $4D/r_0$、嵌盘 $4D/(\pi r_0)$ 等）书中未给，本分片不代为指定。
 
 \paragraph{取样电流伏安法的响应与信息边界} 对可逆电极反应，平板电极（满足半无限线性
 扩散）对\textbf{任意}单电势阶跃的电流响应为
 
 \begin{equation}
 i(t)=\frac{nFAD_{\mathrm{O}}^{1/2}C_{\mathrm{O}}^*}
-{\pi^{1/2}t^{1/2}\,(1+\theta)}
+{\pi^{1/2}t^{1/2}\,(1+\xi\theta)}
 \label{eq:sampled-rev}
 \end{equation}
 
 它是可逆体系对电势阶跃的一般响应式，极限扩散（$\theta\to0$）时即还原为 Cottrell 方程
 \src{原书式 11-56，书内 p.825 / PDF p.313}。此外，\textbf{电极形状并不是关键}，只要满足
 「扩散层厚度小于电极曲率半径」即可。超微球形电极上述模型的稳态区响应为
-$i=\dfrac{nFAD_{\mathrm{O}}C_{\mathrm{O}}^*}{(1+\xi_2\theta)r_0}$
+$i=\dfrac{nFAD_{\mathrm{O}}C_{\mathrm{O}}^*}{(1+\xi^{2}\theta)r_0}$
 \src{原书式 11-57，书内 p.825 / PDF p.313}。
-\tocheck{未对照原页面图像：原书式（11-56）（11-57）中的符号 $\theta$、$\xi_2$ 在原书未在
-本分片可见范围内定义，OCR 亦可能把 $\theta$/$\vartheta$ 或下标记错。本分片保留原符号
-并只使用其定性结论（$\theta\to0$ 退化为 Cottrell），未据此做数值计算。}
+\emph{核对说明}：已对照原页面图像（书内 p.825 / PDF p.313，并以 400 dpi 局部放大复核）
+——原书式（11-56）分母印作 $(1+\xi\theta)$，式（11-57）印作 $(1+\xi^{2}\theta)r^{0}$
+（$\xi$ 带平方上标；$r$ 的 $0$ 印为上标，按电极半径 $r_0$ 理解）。本分片原稿在式（11-56）
+中漏掉了 $\xi$、在式（11-57）中把 $\xi^{2}$ 误记为 $\xi_2$，现依原页面图像改正。原书在
+该书页\textbf{未定义} $\theta$ 与 $\xi$（正文只说明 $\theta\to0$ 时退化为 Cottrell 方程），
+故本分片仍只使用其定性结论，未据此做数值计算。
 
 可逆体系下取样电流伏安法能给出与不能给出的信息很不相同：
 
@@ -751,10 +770,22 @@ $i=\dfrac{nFAD_{\mathrm{O}}C_{\mathrm{O}}^*}{(1+\xi_2\theta)r_0}$
 
 对准可逆与不可逆反应，平板电极的响应形如
 $i=FA\left(k_{\mathrm{f}}C_{\mathrm{O}}^*-k_{\mathrm{b}}C_{\mathrm{R}}^*\right)
-\exp(H^2t)\,\mathrm{erfc}(Ht^{1/2})$，球形电极的稳态响应另含
-$D_{\mathrm{O}}$、$r_0$ 与速率常数之比 \src{原书式 11-58、11-59，书内 p.825 / PDF p.313}。
-\tocheck{未对照原页面图像：原书式（11-58）中 $H$ 的定义、原书式（11-59）中括号内的
-$(\delta+1)$ 结构均无法从 OCR 复原，本分片只用其定性形式与下述结论，未代入数值。}
+\exp(H^2t)\,\mathrm{erfc}(Ht^{1/2})$
+\src{原书式 11-58，书内 p.825 / PDF p.313}；球形电极的稳态响应为
+
+\begin{equation}
+i=\frac{nFAD_{\mathrm{O}}\left(C_{\mathrm{O}}^*-\theta C_{\mathrm{R}}^*\right)}{r_0 s}
+\left[\frac{\delta+1}{\left[\dfrac{\delta+1}{k}\right]+(1+\xi^{2}r\theta)}\right]
+\label{eq:sampled-sphere-irr}
+\end{equation}
+
+\src{原书式 11-59，书内 p.825 / PDF p.313}。
+\emph{核对说明}：已对照原页面图像（书内 p.825 / PDF p.313，并以 400 dpi 局部放大复核）
+——式（11-59）方括号内的 $(\delta+1)$ 结构在原页面图像上\textbf{清晰可辨}（原标记所称
+「无法从 OCR 复原」只适用于 OCR 文本层，不适用于页面图像），故此处按原页逐字转写为上式，
+其中前一分式的分母印作 $r_0 s$。但式（11-59）中的 $s$、式（11-58）中 $H$ 的定义以及
+$\delta$、$k$ 等符号在该书页\textbf{均未给出}，本分片不代为指定，也只使用其定性形式与
+下述结论，未代入数值。
 其信息边界为：准可逆与不可逆波的\textbf{极限电流平台仍完全受扩散控制}，故仍可用于求
 $C^*$、$n$、$A$、$D$、$r_0$ 等任何对 $i_{\mathrm{d}}$ 有贡献的参数；准可逆波有时可
 给出形式电势的近似值，而不可逆波因半波电势偏离形式电势\textbf{无法求得热力学信息}；
@@ -855,10 +886,15 @@ $\Delta E_{\mathrm{p}}=|E_{\mathrm{pa}}-E_{\mathrm{pc}}|\approx 2.303RT/(nF)$，
 向更负（阴极）或更正（阳极）方向移动，约每十倍 $v$ 移动 $30/(\alpha n)$ mV。
 \textbf{判据的成立条件是反应物与产物都溶于溶液且无后续化学反应}；若产物发生吸附或
 偶联化学反应，$i_{\mathrm{pa}}/i_{\mathrm{pc}}$ 会显著偏离 1，此时不能直接判为不可逆。
-\tocheck{未对照原页面图像：分片 a 的源文本（图 11-9、11-10 说明）未展开 CV 的定量判据
-公式，本节判据按电化学标准形式重建；若本书 11.2.2 后有专门的判据小节，应由后一分片
-或统一核验时对齐符号（是否用 $D^{1/2}$、是否含 $n^{3/2}$、是否讨论 $\Delta E_{\mathrm{p}}$
-的严格表值）。}
+\emph{核对说明}：已对照原页面图像（书内 p.827—828 / PDF p.315—316）逐页核对并通查源
+OCR 全文——源书 §11.2.2 对图 11-9（线性扫描/循环伏安曲线）、图 11-10（单晶 \ce{Pt} 在
+\ce{H2SO4} 中的循环伏安曲线）、图 11-11（多晶 \ce{Pt} 的循环伏安曲线）只作\textbf{定性}
+描述（氢氧火焰退火、自 OCP 起向低电势扫描、氢/氧吸脱附峰的归属、由 $Q_{\mathrm{H}}$ 数
+出吸附氢原子数等），\textbf{未给出}本节所列的定量可逆性判据（$\Delta E_{\mathrm{p}}\approx
+2.303RT/(nF)$、$i_{\mathrm{p}}\propto v^{1/2}$、$i_{\mathrm{pa}}/i_{\mathrm{pc}}\approx1$
+以及约 $30/(\alpha n)$ mV 每十倍 $v$ 等），故本节判据系按电化学标准形式重建。若本书
+11.2.2 之后另有专门的判据小节，应在统一核验时对齐符号（是否用 $D^{1/2}$、是否含
+$n^{3/2}$、是否讨论 $\Delta E_{\mathrm{p}}$ 的严格表值）。
 \end{keycond}
 
 \begin{pitfall}
