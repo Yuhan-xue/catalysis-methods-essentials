@@ -1,5 +1,12 @@
 # 公式核对登记表（formula verification register）
 
+> **状态：已被取代，仅作历史记录保留（2026-10-08）。**
+> 本表下一节的前提「本环境的子代理没有视觉能力」**已被推翻**：视觉通道的根因是网关在
+> responses-API 的 `function_call_output` 内静默丢弃 `input_image`，把 provider 改为
+> `api: openai-completions` 后页面图像即可直接读取（证据见 `build/vision_selftest/`）。
+> 此后全书各分片已逐条读取原页面图像、核销全部 `\tocheck` 标记，结论就地记于正文的
+> 「核对说明」；本书正文不再引用本表。分片级台账见 `pixel_verify.md`。
+
 ## 为什么需要这张表
 
 **本环境的子代理没有视觉能力**：`read_image` 只回传元数据（尺寸、哈希），不交付像素。
