@@ -191,7 +191,8 @@ P_{\mathrm{sc}}=E_0\,\frac{\mathrm{d}\sigma}{\mathrm{d}\Omega}\,\Delta\Omega ,
 \label{eq:dipole-dcs}
 \end{equation}
 其中 $K\equiv\left.(\mathrm{d}\sigma/\mathrm{d}\Omega)\right|_{\theta=90^\circ}$ 是与方向
-无关的\emph{参考方向系数}（偶极垂直方向的微分截面），它对应源书式中的前因子 $\sigma$；
+无关的\emph{参考方向系数}（偶极垂直方向的微分截面），它对应原书式中的前因子
+$k'_{\omega}\omega_{\mathrm{s}}^{4}p^{2}$；
 $\Delta\Omega$ 是接收端张开的\emph{接收立体角}（\unit{sr}），由接收面积
 $A_{\mathrm{rec}}$ 与样品到接收端的距离 $R$ 决定，$\Delta\Omega\approx A_{\mathrm{rec}}/R^2$。
 把式~\eqref{eq:dipole-dcs} 代回式~\eqref{eq:classical-intensity}，\textbf{偶极的角分布
@@ -237,16 +238,21 @@ $I/I_0=(\mathrm{d}\sigma/\mathrm{d}\Omega)\,\Delta\Omega\,\sin^2\theta$，右端
 定量比较实验时须另行补齐。与量子理论一节「与入射光强度成正比、与距离平方成反比」两条
 一致——后者说的是固定接收面积的情形，即上述第 3 条。
 
-\begin{tocheck}
-未对照原页面图像：源书该处印作「$I=I_0\sigma\sin^2\theta$」，前因子 $\sigma$ 的完整表达式
-（OCR 残片作「$\sigma\sim$ 某式」）以及它是否含 $\nu_0^4$、是否写成
-$\sigma=\frac{8\pi^3\nu_0^4}{3c^4}\alpha^2$ 之类的具体形式无法确认；本行只保留角度因子与
-入射强度的依赖为确定内容。本稿把该式改写为辐照度口径的
-式~\eqref{eq:classical-intensity}（$P_{\mathrm{sc}}=E_0\,(\mathrm{d}\sigma/\mathrm{d}\Omega)
-\,\Delta\Omega$，$E_0=P_0/A_{\mathrm{beam}}$），并把源书前因子 $\sigma$ 认作偶极垂直方向的
-参考系数 $K$，角因子 $\sin^2\theta$ 只经式~\eqref{eq:dipole-dcs} 的微分散面出现一次，
-不再在功率式中重复相乘；改写只做口径统一，不引入新的实验常数，文中四条缩放推论可自行代入核对。
-\end{tocheck}
+\emph{核对说明}：已对照原页面图像（书内 p.347 / PDF p.366）。原书在「振动的感生电偶极
+引起的散射强度为」下印的是\textbf{完整式}
+$I=k'_{\omega}\,\omega_{\mathrm{s}}^{4}p^{2}\sin^{2}\theta$，并给出前因子的显式定义
+$k'_{\omega}=\dfrac{1}{32\pi^{2}\varepsilon_{0}c_{0}^{3}}$（$\varepsilon_{0}$、$c_{0}$
+分别为真空介电常数与真空中的光速，书内 p.347 原印）。可见原书该式\textbf{本来就含频率
+四次方}（$\omega_{\mathrm{s}}^{4}$，$\omega_{\mathrm{s}}$ 为散射角频率）与感生偶极矩平方
+$p^{2}$，前因子是写成显式的常数而非未定系数；此前源 OCR 残片作
+「$I=I_{0}\sigma\sin^{2}\theta$」（OCR 层失真），据此产生的「$\sigma$ 是否含 $\nu_{0}^{4}$
+无法确认」一疑现予撤销。本稿把原书前因子 $k'_{\omega}\omega_{\mathrm{s}}^{4}p^{2}$
+整体认作偶极垂直方向的参考方向系数 $K$ 并改写为辐照度口径的
+式~\eqref{eq:classical-intensity}（$P_{\mathrm{sc}}=E_{0}\,(\mathrm{d}\sigma/\mathrm{d}\Omega)
+\,\Delta\Omega$，$E_{0}=P_{0}/A_{\mathrm{beam}}$），角因子 $\sin^{2}\theta$ 只经
+式~\eqref{eq:dipole-dcs} 的微分散面出现一次，不再在功率式中重复相乘；该改写只做口径统一，
+$\nu_{0}^{4}$ 依赖仍以原书的 $\omega_{\mathrm{s}}^{4}$ 为依据保留，文中四条缩放推论可自行
+代入核对。
 
 经典理论能解释拉曼与瑞利散射的频率，但\textbf{不能解释斯托克斯线与反斯托克斯线强度为
 什么差几个数量级}——因为它把分子当成经典振子，而两类过程的初始布居数不同，这是纯量子
@@ -330,13 +336,17 @@ $hc\Delta\tilde\nu/k_{\mathrm{B}}T\approx4.8$，指数因子约 \num{8e-3}，即
 比斯托克斯线弱两个数量级以上。
 \end{principle}
 
-\begin{tocheck}
-未对照原页面图像：式~\eqref{eq:stokes-ratio} 是按标准形式重建的，\textbf{原书未给出这条
-强度比公式}。存疑点有三：(1) 前因子 $\left[(\nu_0+\nu_{\mathrm{m}})/(\nu_0-\nu_{\mathrm{m}})\right]^4$
-在多数教材里被略去而只留 Boltzmann 因子，本书采用哪种写法无法确认；(2) 指数是否写成
-$\exp(-h\nu_{\mathrm{m}}/k_{\mathrm{B}}T)$ 的纯频率形式（OCR 仅存「玻尔兹曼分布」「常温下」
-等字样）；(3) 引用的数值算例为本分片作者依标准常数补算，非原书数据，不得当作原书结果引用。
-\end{tocheck}
+\emph{核对说明}：已对照原页面图像（书内 p.348 / PDF p.367，书内 p.350 / PDF p.369）。
+式~\eqref{eq:stokes-ratio} 是按标准形式重建的，\textbf{原书未印出这条强度比公式}：原书在
+该处只有定性表述，即「在常温下，根据玻尔兹曼分布统计，处于基态的分子占绝大多数，所以
+通常斯托克斯线比反斯托克斯线强得多」（书内 p.348 原印）。原书量子理论一节另给反斯托克斯
+强度式 $I^{\mathrm{AS}}_{\rho\sigma}=(k^{2}/R^{2})(\omega_{0}+\omega_{fi})^{4}
+I^{i}_{\sigma_{0}}(\bar{\alpha}_{\rho\sigma})^{2}_{fi}$ 并明言「拉曼散射与入射频率的四次方
+约成正比，与距离平方成反比，与极化率的导数的平方成正比，与入射强度成正比」（书内 p.350
+原印），本式前因子的频率四次方即据此保留；指数取
+$\exp(-h\nu_{\mathrm{m}}/k_{\mathrm{B}}T)$ 这一纯频率形式是标准写法，原书未印。
+\textbf{数值算例}（$hc\Delta\tilde\nu/k_{\mathrm{B}}T\approx4.8$、约 \num{8e-3}）系本分片
+依标准常数补算，属改编补充，不作为原书数据引用。
 
 对拉曼散射强度，量子理论给出与经典结论一致的四条依赖关系：\textbf{与散射频率的四次方
 约成正比、与距离平方成反比、与极化率导数的平方成正比、与入射光强度成正比}
