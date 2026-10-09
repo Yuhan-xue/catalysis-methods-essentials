@@ -70,3 +70,7 @@ tools/term_fix_log.txt
 tools/qa_report.txt
 tools/blackblock_report.txt
 tools/*.bak
+
+# GraphFlow tool artifacts (local only)
+.graphflow/
+graphflow-out/

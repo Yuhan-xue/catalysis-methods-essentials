@@ -1,0 +1,125 @@
+{
+  "baseline": "71f5ebc5158bb87632f82c93903d7ede3afb3281",
+  "findings": [
+    {
+      "id": "R6-C01",
+      "priority": "P2",
+      "status": "open",
+      "category": "content",
+      "title": "Rayleigh 六次方依赖写反",
+      "file": "chapters/parts/ch01-c.tex",
+      "line_start": 382,
+      "line_end": 383,
+      "pdf_pages": [
+        22
+      ],
+      "report": "01-content.md",
+      "evidence": [
+        "verification.json"
+      ]
+    },
+    {
+      "id": "R6-C02",
+      "priority": "P2",
+      "status": "open",
+      "category": "content",
+      "title": "ELS 迁移率被直接用于唯一反演粒径",
+      "file": "chapters/parts/ch01-c.tex",
+      "line_start": 226,
+      "line_end": 226,
+      "pdf_pages": [
+        20,
+        23
+      ],
+      "report": "01-content.md",
+      "evidence": [
+        "verification.json"
+      ],
+      "additional_ranges": [
+        {
+          "file": "chapters/parts/ch01-c.tex",
+          "line_start": 429,
+          "line_end": 431
+        }
+      ]
+    },
+    {
+      "id": "R6-C03",
+      "priority": "P2",
+      "status": "open",
+      "category": "content",
+      "title": "DLS 强度权重与体积转换混淆",
+      "file": "chapters/parts/ch01-c.tex",
+      "line_start": 225,
+      "line_end": 225,
+      "pdf_pages": [
+        20,
+        23
+      ],
+      "report": "01-content.md",
+      "evidence": [
+        "verification.json"
+      ],
+      "additional_ranges": [
+        {
+          "file": "chapters/parts/ch01-c.tex",
+          "line_start": 424,
+          "line_end": 426
+        }
+      ]
+    },
+    {
+      "id": "R6-U01",
+      "priority": "P2",
+      "status": "open",
+      "category": "reading",
+      "title": "逐行核对说明先于浮动表出现",
+      "file": "chapters/parts/ch09-a.tex",
+      "line_start": 431,
+      "line_end": 479,
+      "pdf_pages": [
+        218,
+        219
+      ],
+      "report": "02-ui-reading.md",
+      "evidence": [
+        "evidence/p218.jpg",
+        "evidence/p219.jpg"
+      ]
+    },
+    {
+      "id": "R6-U02",
+      "priority": "P2",
+      "status": "open",
+      "category": "reading",
+      "title": "谱带区间列混入负载量和相对位移",
+      "file": "chapters/parts/ch06-c.tex",
+      "line_start": 861,
+      "line_end": 869,
+      "pdf_pages": [
+        161,
+        162
+      ],
+      "report": "02-ui-reading.md",
+      "evidence": [
+        "evidence/p161.jpg",
+        "evidence/p162.jpg"
+      ]
+    },
+    {
+      "id": "R6-W01",
+      "priority": "P2",
+      "status": "open",
+      "category": "workflow",
+      "title": "PDF 比对器漏检三类可见改变",
+      "file": "tools/cmp_release_pdf.py",
+      "line_start": 73,
+      "line_end": 93,
+      "pdf_pages": [],
+      "report": "03-workflow.md",
+      "evidence": [
+        "verification.json"
+      ]
+    }
+  ]
+}

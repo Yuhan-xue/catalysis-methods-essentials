@@ -1,0 +1,155 @@
+{
+  "baseline": "71f5ebc5158bb87632f82c93903d7ede3afb3281",
+  "pdf": {
+    "pages": 340,
+    "bookmarks": 144,
+    "sha256": "2c4c9020abe39bfce9be83e5cd94e0afcb129b6874117f536671ea55564a20c1"
+  },
+  "source_sha256": {
+    "chapters/parts/ch01-c.tex": "e8fe9cc4d746c01fba6897c9f30a3179332a8013a54eb00e263c80b1f36ec4c6",
+    "chapters/parts/ch09-a.tex": "77b15c95ba1a6a09881a63d7f235ed40d11973c61823a8f7b3690a7142535c0a",
+    "tools/cmp_release_pdf.py": "3b079adca91c2abcc0471d31cf8b33d7e97d84e92c72cff9c6bd30f9d91ee16c",
+    "sources/table_status.md": "c61948fbb529ec3a577989af9fafea5437ffa322a3fdaaea1a324b0ab6381e56"
+  },
+  "physics": {
+    "rayleigh": {
+      "diameters_nm": [
+        10,
+        20
+      ],
+      "equal_number_intensity_ratio": 64,
+      "inverse_claim_ratio": 0.015625
+    },
+    "weighting": {
+      "diameters_nm": [
+        10,
+        20
+      ],
+      "equal_number_ratio": [
+        1,
+        1
+      ],
+      "volume_ratio": [
+        1,
+        8
+      ],
+      "intensity_ratio": [
+        1,
+        64
+      ],
+      "large_particle_volume_fraction": 0.8888888888888888,
+      "large_particle_intensity_fraction": 0.9846153846153847
+    },
+    "smoluchowski": {
+      "assumptions": "thin double layer, same zeta=25 mV, epsilon_r=78.5, eta=1 mPa s, T=298.15 K",
+      "diameter_nm": [
+        100.0,
+        200.0
+      ],
+      "mobility_m2_V_s": [
+        1.7376343582620002e-08,
+        1.7376343582620002e-08
+      ],
+      "diffusion_m2_s": [
+        4.3676413498912424e-12,
+        2.1838206749456212e-12
+      ]
+    }
+  },
+  "comparator": {
+    "metadata_only": {
+      "command": "python tools/cmp_release_pdf.py $OUT\\comparator-fixtures\\base.pdf $OUT\\comparator-fixtures\\metadata_only.pdf",
+      "exit_code": 0,
+      "stdout": "warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.\nbase.pdf               pages=1    bookmarks=1    bytes=11774\nmetadata_only.pdf      pages=1    bookmarks=1    bytes=11774\nok   text layer identical on all 1 pages\nok   drawing counts identical on all 1 pages\nRESULT: IDENTICAL CONTENT\n\n",
+      "stderr": "",
+      "rendered_bytes_changed": 0,
+      "raster_sha256": "b51f972ae4e6a71f60afda9add13ebafc0e0c46a382012f4ef3f8d682179f4f7"
+    },
+    "geometry_changed": {
+      "command": "python tools/cmp_release_pdf.py $OUT\\comparator-fixtures\\base.pdf $OUT\\comparator-fixtures\\geometry_changed.pdf",
+      "exit_code": 0,
+      "stdout": "warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.\nbase.pdf               pages=1    bookmarks=1    bytes=11774\ngeometry_changed.pdf   pages=1    bookmarks=1    bytes=11773\nok   text layer identical on all 1 pages\nok   drawing counts identical on all 1 pages\nRESULT: IDENTICAL CONTENT\n\n",
+      "stderr": "",
+      "rendered_bytes_changed": 2720,
+      "raster_sha256": "ccfccd9085f3955d1983d7a6167fa114aebaca05bd8beb3f1264b00237122b34"
+    },
+    "raster_changed": {
+      "command": "python tools/cmp_release_pdf.py $OUT\\comparator-fixtures\\base.pdf $OUT\\comparator-fixtures\\raster_changed.pdf",
+      "exit_code": 0,
+      "stdout": "warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.\nbase.pdf               pages=1    bookmarks=1    bytes=11774\nraster_changed.pdf     pages=1    bookmarks=1    bytes=11774\nok   text layer identical on all 1 pages\nok   drawing counts identical on all 1 pages\nRESULT: IDENTICAL CONTENT\n\n",
+      "stderr": "",
+      "rendered_bytes_changed": 7200,
+      "raster_sha256": "960b55ada97fe00c1bc6c1a49911cba60b60c26138f4c7f8f6301f5215068074"
+    },
+    "text_moved": {
+      "command": "python tools/cmp_release_pdf.py $OUT\\comparator-fixtures\\base.pdf $OUT\\comparator-fixtures\\text_moved.pdf",
+      "exit_code": 0,
+      "stdout": "warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.\nbase.pdf               pages=1    bookmarks=1    bytes=11774\ntext_moved.pdf         pages=1    bookmarks=1    bytes=11773\nok   text layer identical on all 1 pages\nok   drawing counts identical on all 1 pages\nRESULT: IDENTICAL CONTENT\n\n",
+      "stderr": "",
+      "rendered_bytes_changed": 4212,
+      "raster_sha256": "ab9070e5da545bec12351de552a19bc887b353cc45a742cd222d7ea016f5d21e"
+    }
+  },
+  "commands": [
+    {
+      "command": "python tools/gen_tpd_table.py --verify",
+      "exit_code": 0,
+      "stdout": "TPD verify: independent checks (units / closed form / peak condition / conservation)\nTPD verify: PASS two time units (s / min) agree, worst_rel=3.180e-11\nTPD verify: PASS closed-form quadrature vs ODE, worst_rel=3.093e-10\nTPD verify: PASS analytic peak condition vs numerical peak, worst_dT=2.598e-06 K\nTPD verify: PASS theta non-increasing (max dtheta=0.000e+00), rate positive until tail underflow, area == theta0 - theta(1500) (worst_rel=1.110e-15)\nTPD verify: PASS half-max crossings inside 2 K fine zone \nTPD caption: PASS (calibration numbers and sign convention match generator)\nTPD verify: PASS\n",
+      "stderr": ""
+    },
+    {
+      "command": "python tools/gen_tpd_table.py --check",
+      "exit_code": 0,
+      "stdout": "TPD check: PASS (a) beta=5 n=1   rel_max=4.193e-06 (99 pts)\nTPD check: PASS (a) beta=10 n=1  rel_max=4.797e-06 (99 pts)\nTPD check: PASS (a) beta=20 n=1  rel_max=3.988e-06 (99 pts)\nTPD check: PASS (b) n=1          rel_max=4.797e-06 (99 pts)\nTPD check: PASS (b) n=2          rel_max=4.058e-06 (99 pts)\nTPD check: PASS  worst_rel=4.797e-06  rtol=1.0e-05\n",
+      "stderr": ""
+    },
+    {
+      "command": "python tools/fig_probe_tpd.py --pdf build/main.pdf",
+      "exit_code": 0,
+      "stdout": "fig_probe_tpd: PASS P1_legends \nfig_probe_tpd: PASS P2_multiplier \nfig_probe_tpd: PASS P3_ticks \nfig_probe_tpd: PASS P4_ylabel \nfig_probe_tpd: PASS (page 122)\n",
+      "stderr": ""
+    },
+    {
+      "command": "python tools/fig_probe_tpd.py --selftest",
+      "exit_code": 0,
+      "stdout": "SELFTEST PASS legend_cluster / multiplier / ticks_linear / ylabel_sign / row_grouping\nselftest: PASS\n",
+      "stderr": ""
+    },
+    {
+      "command": "python tools/check_heading_orphan.py --pdf build/main.pdf",
+      "exit_code": 0,
+      "stdout": "heading_orphan: PASS  page=205  heading_y=73.6  follow_lines=53 (min 3)\n  tail: 给出几乎相同的化学位移；区分靠的是标记碳的归属，不是峰位 | 温度同时改变转化速率与路径占比，比较不同温度的原位谱时必\n  prev page last body line y=481.4  'p.547—550 / PDF p.39—42］'\n",
+      "stderr": ""
+    },
+    {
+      "command": "python tools/check_cp_quant_demo.py",
+      "exit_code": 0,
+      "stdout": "CP/MAS intensity ratio with equal nuclear counts (N1=N2=1):\n  t/ms   eta1     eta2     S1/S2   naive yield read\n    0.5   0.9933   0.0952   10.44   10.44\n    1.0   1.0000   0.1813    5.52    5.52\n    2.0   1.0000   0.3297    3.03    3.03\n    5.0   1.0000   0.6321    1.58    1.58\n   10.0   1.0000   0.8647    1.16    1.16\n  (t -> inf: both eta -> 1, but T1rho decay differs by species and\n   limits usable contact time; the textbook discipline is single-pulse.)\ncp_quant_demo: PASS  worst yield-ratio bias = 9.44x (true 1.00)\n",
+      "stderr": ""
+    },
+    {
+      "command": "python tools/pdf_probe.py --pdf build/main.pdf",
+      "exit_code": 0,
+      "stdout": "PDF            : build\\main.pdf\n页数 / 书签数  : 340 / 144\nR2-U01 书签落页 : PASS（检查 144 条，跳过 0 条，不符 0 条）\nR2-U02 后置页眉 : PASS（命中 0 处；扫描自 p.333，最后一个编号章「12 扫描探针显微镜与纳米光谱技术」在 p.309）\nR3-W03 必要书签 : PASS（清单 $ROOT\\tools\\pdf_required_bookmarks.txt；必要 15 项，命中 15，缺失 0，跳过 0）\n\n后置区块书签目标页：跨方法综合应用=333、证据链的基本结构=333、证据强度分级=333、验证矩阵：什么方法能约束什么=333、综合案例一：负载型金属催化剂的分散度与活性位=333、综合案例二：分子筛的酸性、积炭与失活=334、写结论时的三条硬规则=334、符号、缩写与索引=335、缩写与英文全称=335、主要符号=337、术语索引=338、勘误与核对状态=340\n\n",
+      "stderr": ""
+    },
+    {
+      "command": "python tools/fig_probe_eis.py --pdf build/main.pdf",
+      "exit_code": 0,
+      "stdout": "fig 11-5 render probe: PASS\npdf=main.pdf page=298 frame_a=[124.6, 246.5, 255.5, 377.5] frame_b=[315.4, 249.4, 480.3, 374.6]\nP1 CPE visible bbox 105.84 x 70.33 pt ratio=0.6645 (model 105.68 x 70.34 pt ratio=0.6656)\nP2 markers n=2 tol=3.0pt d=0.03pt d=0.01pt\nP3 text blocks=10 crossings=0 letters_missing=[]\n",
+      "stderr": ""
+    },
+    {
+      "command": "python tools/check_src.py",
+      "exit_code": 0,
+      "stdout": "wrote build/check_src.txt\nchecked 85 tables: PASS 85, REVIEW 0, FAIL 0\n",
+      "stderr": ""
+    },
+    {
+      "command": "python tools/check_table_content.py --csv $OUT\\table-content.csv",
+      "exit_code": 0,
+      "stdout": "table content cross-check (OCR text layer, NOT pixel verification)\n  tables scanned: 85\n  FOUND        14\n  INDEX_OK     1\n  NO_TABLE_NO  54\n  NON_SOURCE   16\n  csv: ..\\catalysis-round6-check\\table-content.csv\n",
+      "stderr": ""
+    }
+  ]
+}
