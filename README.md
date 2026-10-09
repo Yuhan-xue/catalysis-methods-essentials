@@ -18,12 +18,15 @@
 ## 二、当前状态（未完成）
 
 - 12 章全部到位；正文分片 **37 / 37**；后置索引（缩写/符号/术语/勘误）齐备。
-- 最新发布 **v0.6.4-pre**：**314 页 / 144 条书签**，release 门禁全 0
-  （errors / overfull>5pt / missing glyphs / undefined refs / dup labels / dup includes / overlap）。
+- 最新发布 **v1.0.0**（首个非 `-pre` 正式版）：**340 页 / 145 条书签**，release 门禁全 0
+  （errors / overfull>5pt / missing glyphs / undefined refs / dup labels / dup includes / overlap）；
+  上一版 pre 为 v0.6.5-pre（314 页 / 144 书签）。
 - 逐片台账见 `sources/assignments.md`（`done` 只等于「文件存在」）；内容核验状态见
   `reviews/2026-09-30-round4/CLOSURE.md` 与 `HANDOFF.md` §1/§5。
-- **仍未完成**：85 张表逐表**像素级**核图、公式逐式核对原页面图像。**图像通道 2026-10-02 已打通**
-  （`HANDOFF.md` §3）——这两项现在**可做**，但都**还没做**，不要当成已完成。
+- **已做（台账级）**：85 张表收口为 T1 = 14 张逐格读图 / T2 = 59 张就地核对说明 / T3 = 12 张自述改编补充 /
+  T4 = 0，全书 `\tocheck` 与公式逐式标记核销；记录见 `reviews/2026-10-09-round6/CLOSURE.md`。
+- **仍未完成**：全书逐页／逐式与逐单元格验收（只做了抽样与问题页复核）。**T2 的 59 张不等于每一格都逐格比对过**，
+  各表就地说明里声明的未逐页核对页面也仍未读——不要把「T4 = 0」或 OCR 文本层检查当成科学核验完成。
 - **安全清理**：2026-10-02 已轮换/处理历史泄漏口令并重写历史（`yuhanxue` 口令按所有者要求恢复原值）；记录与哈希映射见
   `reviews/2026-10-02-history-cleanup/`（服务端 `git gc --prune=now` 待管理员执行）。
 - ⚠️ **字节哈希每次构建都会变**（PDF 内含 `/CreationDate` 与 `/ID`）。判断内容有没有变，
