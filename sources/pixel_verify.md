@@ -189,8 +189,8 @@
 5. **全库其余 `\tocheck`**：`chapters/parts/` 下约 250 处（ch02-b/c、ch04-b/c、
    ch05-a、ch07-b/c、ch08-a/b/c、ch09-d、ch10-b/c、ch11-a—e、ch12-b/c 等），未处理。
 6. **85 张表的像素级核对**：公式核对轮次结束时尚未开始，此后已分批推进；当前逐表状态见
-   `sources/table_status.md`（14 张逐格读图核对、55 张就地留有「已对照原页面图像」核对说明、
-   12 张改编补充、4 张尚未核对）。起始优先级为 14 张有真实来源表号的表
+   `sources/table_status.md`（14 张逐格读图核对、57 张就地留有「已对照原页面图像」核对说明、
+   12 张改编补充、2 张尚未核对）。起始优先级为 14 张有真实来源表号的表
    （`sources/table_content_check.md`：FOUND 13 + INDEX_OK 1，其中 `INDEX_OK` 唯一项为
    `chapters/parts/ch04-b.tex:178` 的 `tab:ch04b-multiplicity`，引「S1 表~4-7，书内 p.247」）。
 
