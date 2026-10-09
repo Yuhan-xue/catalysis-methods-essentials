@@ -1,0 +1,16 @@
+root          : $ROOT
+latexmk       : C:\texlive\2026\bin\windows\latexmk.exe
+==== build ====
+mode          : release（发布验收）
+latexmk exit  : 0
+pages         : 340
+errors        : 0
+overfull >5pt : 0
+missing glyphs: 0
+undefined refs: 0
+dup labels    : 0
+dup includes  : ok
+overlap       : ok
+table \src    : ok
+  overlap gate: PASS blocking=0 candidates=109
+PASS
