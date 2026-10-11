@@ -1,6 +1,7 @@
 # 交接文档 · 《现代催化研究方法精要》
 
-> 最后更新：2026-10-09（85 张表像素级核对收尾，`\tocheck` 全库清零）。本文是**新会话无缝接手**的浓缩版；
+> 最后更新：2026-10-11（补建**全书逐页验收台账** `sources/page_acceptance.md`：340 页结构审计 + 35 页目视）；
+> 上一版 2026-10-09（85 张表像素级核对收尾，`\tocheck` 全库清零）。本文是**新会话无缝接手**的浓缩版；
 > 写作契约见 [STYLE_GUIDE.md](STYLE_GUIDE.md) / [WRITER_BRIEF.md](WRITER_BRIEF.md)，
 > 历轮评审见 `reviews/`。
 
@@ -16,6 +17,7 @@
 | 上一版 pre | v0.6.5-pre（id=52 @ `5c1f080`；314 页 / 144 书签）、v0.6.4-pre（id=46 @ `9e6809c`）、v0.6.3-pre（id=44 @ `b457f93`） |
 | 构建门禁 | errors / overfull>5pt / missing glyphs / undefined refs / dup labels / **dup includes** / **overlap** —— 全 0；`-Release` 下静态检查**没跑成（unavailable）判失败** |
 | 叠印 | 图内元素确认相撞 **0**；候选 109（按类别报告，不按总数阻断） |
+| 逐页验收 | **已建立台账**（2026-10-11）：`sources/page_acceptance.md` —— 340 页**逐页结构审计**（`tools/page_audit.py`：版心越界／孤悬标题／真叠印／缺字／页眉页码缺失／页尾留白／页内空白带／墨迹出界）＋ **35 页接触印相表目视复核**（`tools/pagesheet.py`）；判定 PASS 255 / INFO 75 / WARN 10 / FLAG 0。10 处页内空白带（25—62mm）由 `\raggedbottom`（`style/preamble.tex:388`）＋浮动体底部放置共同造成，**本轮刻意不改**：改浮动体会重排页码、作废已发布版本的页码引用。备注源文件 `sources/page_acceptance_notes.txt`，复跑 `python tools/page_acceptance.py`。**注意：结构审计≠内容校对**，未标记页未逐页读图 |
 | 源头 | 《现代催化研究方法新编》上、下册扫描 PDF（附件，不在仓库） |
 
 **R4 收口要点**（逐项证据见 `reviews/2026-09-30-round4/CLOSURE.md`）：
