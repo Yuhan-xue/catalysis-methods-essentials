@@ -126,7 +126,8 @@ def read_notes(path):
     for key in ("title", "counts_title", "table_title", "col_page",
                 "col_verdict", "col_evidence", "col_note", "open_title",
                 "open_empty", "DEFAULT_PASS", "DEFAULT_INFO", "DEFAULT_WARN",
-                "DEFAULT_FLAG", "gen_note", "override_down", "auto_open"):
+                "DEFAULT_FLAG", "gen_note", "override_down", "auto_open",
+                "sweep_clause_full", "sweep_clause_part"):
         if key not in labels:
             raise SystemExit("ERR missing label %s" % key)
     while head and not head[-1].strip():
@@ -262,9 +263,10 @@ def main(argv=None):
         date = datetime.date.today().isoformat()
 
     # Contact-sheet sweep: batches of 20 pages at 40dpi, read page by page.
-    # Batches 1-6 cover p1-p120; the rest of the book is covered only by the
-    # focused list below, so SWEEP_END must move with the batches actually read.
-    SWEEP_END = 200
+    # Batches 1-17 cover p1-p340, i.e. the whole book; SWEEP_END must move with
+    # the batches actually read, otherwise the coverage claim silently inflates.
+    SWEEP_END = 340
+    BATCH = 20
     sweep = set(range(1, SWEEP_END + 1))
     focused = set([6, 8, 64, 93, 104, 110, 164, 230, 245, 324])
     focused |= set([1, 4, 28, 31, 68, 81, 169, 184, 185, 189, 212, 213,
@@ -297,10 +299,21 @@ def main(argv=None):
     for verdict in verdicts.values():
         counts[verdict] += 1
 
-    head = head_text.replace("{date}", date).replace("{pages}", str(pages))
+    # The coverage sentence has two honest shapes: while part of the book is
+    # still unread it must name the blind spot; once the sweep reaches the last
+    # page there is no blind spot left, and claiming one would understate the
+    # work. Pick the clause first, then fill the numbers inside it.
+    if focused_tail > 0:
+        clause = labels["sweep_clause_part"]
+    else:
+        clause = labels["sweep_clause_full"]
+    head = head_text.replace("{sweep_clause}", clause)
+    head = head.replace("{date}", date).replace("{pages}", str(pages))
     head = head.replace("{visual}", str(len(visual)))
+    head = head.replace("{sweep_last}", str(SWEEP_END))
     head = head.replace("{sweep}", str(SWEEP_END))
     head = head.replace("{sweep_next}", str(SWEEP_END + 1))
+    head = head.replace("{batches}", str((SWEEP_END + BATCH - 1) // BATCH))
     head = head.replace("{focused_tail}", str(focused_tail))
     problem = check_pdf_cfg(head_text, pages, args.pdf)
 
