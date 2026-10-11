@@ -27,8 +27,10 @@
   T4 = 0，全书 `\tocheck` 与公式逐式标记核销；记录见 `reviews/2026-10-09-round6/CLOSURE.md`。
 - **已做（版面）**：全书 **340 页逐页结构审计**（`tools/page_audit.py`：版心越界／孤悬标题／真叠印／缺字／
   页眉页码缺失／页尾留白／页内空白带／墨迹出界）+ **340 页接触印相表目视复核**（`tools/pagesheet.py`：全书
-  17 批 × 20 页 40dpi 扫读，逐格看版面），另两项不依赖读图的逐页核对（`tools/check_folio.py` 页脚/页眉、
-  `tools/check_toc.py` 目录页码 61/61），
+  17 批 × 20 页 40dpi 扫读，逐格看版面），另五项不依赖读图的逐页/全书核对（`tools/check_folio.py` 页脚/页眉、
+  `tools/check_toc.py` 目录页码 61/61、`tools/check_bookmarks.py` 书签落点 145/145、
+  `tools/check_duppages.py` 重复页 0 组 / 近似重复 0 对、`tools/check_numbers.py` 编号探针——编号由 LaTeX
+  计数器生成、构造上连续，该探针的 9 处 `UNSEEN` 是提取盲区不是跳号），
   台账 `sources/page_acceptance.md`（PASS 255 / INFO 75 / WARN 10 / FLAG 0）。10 处页内空白带（25—62mm）
   为 `\raggedbottom` 与浮动体底部放置共同所致，**本轮刻意不改**（改浮动体会重排页码，作废已发布版本的页码引用），
   成因与处置见台账末节。

@@ -31,12 +31,20 @@ sweep_clause_part=第 1—{sweep_last} 页整批扫读（每批 20 页，40dpi �
 
 **另两项逐页核对（不依赖读图）。** 页脚数字与页序：340 页中 339 页页码正确，唯一无页码的是第 1 页扉页；页眉 18 种、每种只出现在一种奇偶性上（奇=章名、偶=书名），无奇偶混用。目录：61 条目录项的印刷页码全部落在其标题文字实际所在的页上（61/61，0 处不符、0 处找不到）。
 
+**另三项文本层核对（不看图，纯文字层）。**
+- 重复页：`tools/check_duppages.py` 逐页取正文文字——{pages} 页正文全部非空（0 页空正文），完全相同的页 0 组、近似重复页（Jaccard > 0.60）0 对；即全书无重复页，也无同一分片被 `\input` 两次。
+- 书签落点：`tools/check_bookmarks.py` 把 145 个书签逐条回到目标页搜其标题文字——145/145 命中（0 处不符、0 处找不到）。其中 3 条章级书签的列表编号不与页面印刷的「第 N 章」相邻（如书签「2 透射电子显微镜」对页面的「第2章 透射电子显微镜」），去掉前导编号后再匹配即命中，报告里计为 `fallback=3`。
+- 编号连续性：`tools/check_numbers.py` 只认行首题注。**结论以源码为准**：`chapters/` 中没有任何硬编码的图/表编号、没有 `\tag`、没有对这三个计数器的 `\addtocounter`/`\setcounter`，编号全部由 LaTeX 计数器生成，**构造上连续、不可能跳号**。该探针因此只用于发现「题注行没被看见」的位置：38 个族中 9 族有未在行首看到的编号，输出已相应标为 `UNSEEN`（而非 GAP），并在此说明这不是编号缺陷。40dpi 与文字层都读不出公式数值与错字，本台账不主张这两项。
+
 **复跑。**
 ```
 python tools/page_audit.py
 python tools/page_acceptance.py
 python tools/check_folio.py
 python tools/check_toc.py
+python tools/check_bookmarks.py
+python tools/check_duppages.py
+python tools/check_numbers.py
 python tools/pagesheet.py build/sheets/gap01.png 6 8 64 93 104 110 164 230 245 324 --dpi 46 --cols 5 --rows 2
 ```
 #ROWS
@@ -86,3 +94,5 @@ python tools/pagesheet.py build/sheets/gap01.png 6 8 64 93 104 110 164 230 245 3
 - 不主张「结构审计通过 = 版面完美」：`PASS` 只表示未命中本工具定义的缺陷类别。
 - 不主张零缺陷：文本型 overfull 交给 `-Release` 门禁（本次 0 处），字形缺失（0 处）、真叠印（0 处）、越界（0 处）已单独核过。
 - 不主张 85 张表、全部公式已逐格/逐式核对——那两本账见 `sources/table_status.md` 与 `sources/pixel_verify.md`。
+- 不主张编号连续性是这三项检查「查出来」的：编号由 LaTeX 计数器生成，**构造上**就连续（`chapters/` 无硬编码编号、无 `\tag`、无计数器重置）；`tools/check_numbers.py` 的 9 处 `UNSEEN` 是行首匹配提取不到题注行留下的盲区，不是跳号。
+- 不主张书签那条检查能识破「标题文字对、但落到错误页」以外的书签问题：它只比对标题文字是否在该页出现，够不着层级、顺序与锚点语义。
