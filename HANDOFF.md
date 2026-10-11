@@ -1,6 +1,6 @@
 # 交接文档 · 《现代催化研究方法精要》
 
-> 最后更新：2026-10-11（补建**全书逐页验收台账** `sources/page_acceptance.md`：340 页结构审计 + 35 页目视）；
+> 最后更新：2026-10-11（补建**全书逐页验收台账** `sources/page_acceptance.md`：340 页结构审计 + 107 页目视）；
 > 上一版 2026-10-09（85 张表像素级核对收尾，`\tocheck` 全库清零）。本文是**新会话无缝接手**的浓缩版；
 > 写作契约见 [STYLE_GUIDE.md](STYLE_GUIDE.md) / [WRITER_BRIEF.md](WRITER_BRIEF.md)，
 > 历轮评审见 `reviews/`。
@@ -17,7 +17,7 @@
 | 上一版 pre | v0.6.5-pre（id=52 @ `5c1f080`；314 页 / 144 书签）、v0.6.4-pre（id=46 @ `9e6809c`）、v0.6.3-pre（id=44 @ `b457f93`） |
 | 构建门禁 | errors / overfull>5pt / missing glyphs / undefined refs / dup labels / **dup includes** / **overlap** —— 全 0；`-Release` 下静态检查**没跑成（unavailable）判失败** |
 | 叠印 | 图内元素确认相撞 **0**；候选 109（按类别报告，不按总数阻断） |
-| 逐页验收 | **已建立台账**（2026-10-11）：`sources/page_acceptance.md` —— 340 页**逐页结构审计**（`tools/page_audit.py`：版心越界／孤悬标题／真叠印／缺字／页眉页码缺失／页尾留白／页内空白带／墨迹出界）＋ **35 页接触印相表目视复核**（`tools/pagesheet.py`）；判定 PASS 255 / INFO 75 / WARN 10 / FLAG 0。10 处页内空白带（25—62mm）由 `\raggedbottom`（`style/preamble.tex:388`）＋浮动体底部放置共同造成，**本轮刻意不改**：改浮动体会重排页码、作废已发布版本的页码引用。备注源文件 `sources/page_acceptance_notes.txt`，复跑 `python tools/page_acceptance.py`。**注意：结构审计≠内容校对**，未标记页未逐页读图 |
+| 逐页验收 | **已建立台账**（2026-10-11）：`sources/page_acceptance.md` —— 340 页**逐页结构审计**（`tools/page_audit.py`：版心越界／孤悬标题／真叠印／缺字／页眉页码缺失／页尾留白／页内空白带／墨迹出界）＋ **107 页接触印相表目视复核**（`tools/pagesheet.py`：第 1—80 页整批 40dpi 扫读 + 第 81 页以后 27 个重点页）；另两项不依赖读图的逐页核对：`tools/check_folio.py`（页脚 339/340 正确、页眉 18 种无奇偶混用）、`tools/check_toc.py`（目录 61/61 页码落在标题实际页）。判定 PASS 255 / INFO 75 / WARN 10 / FLAG 0。10 处页内空白带（25—62mm）由 `\raggedbottom`（`style/preamble.tex:388`）＋浮动体底部放置共同造成，**本轮刻意不改**：改浮动体会重排页码、作废已发布版本的页码引用。备注源文件 `sources/page_acceptance_notes.txt`，复跑 `python tools/page_acceptance.py`。**注意：结构审计≠内容校对**，第 81—340 页未列入重点页的部分仍未逐页读图 |
 | 源头 | 《现代催化研究方法新编》上、下册扫描 PDF（附件，不在仓库） |
 
 **R4 收口要点**（逐项证据见 `reviews/2026-09-30-round4/CLOSURE.md`）：
@@ -80,10 +80,11 @@ pi-ai 的 responses 适配器把「工具结果里的图」塞进 `function_call
 **不要声称核对过**；通道可用时用 `python tools/vpage.py up|down <页> <out.png> [--top/--bottom/--left/--right]`
 渲染**原书页面**逐式核对。
 
-**三条会反复咬人的陷阱**：
+**四条会反复咬人的陷阱**：
 1. **中文不要经控制台管道**：`python -c` 打印中文或 `| Out-File` 会抛 `UnicodeEncodeError` 并中断，使后续写文件**根本没执行**。一律「写脚本文件 → 结果写 UTF-8 文件 → 再读」。
 2. **构建产物字节哈希每次都变**（PDF 含 `/CreationDate` 与 `/ID`）；比内容请比文本层/页数/书签。
 3. **缺字静默丢**：Fandol 无字形时 TeX 不报错、字符消失——已把缺字数设为构建失败条件。
+4. **临时探针脚本不要把「输出路径」放在 argv 里**：`build/_folio.py` 早先按 `argv[1]=out, argv[2]=pdf` 取参，而运行器 `build/_runutf8.py` 只把 PDF 当 `argv[1]` 传进去，结果脚本把**自己的报告**写进了 `build/main.pdf`（一个 340 页、4.2 MB 的制品被覆盖成 998 字节）。现在探针一律「只从 argv 取输入，结果走 stdout」，由 `_runutf8.py` 落盘；万一 `build/main.pdf` 再被写坏，用 `build/_dl_final.pdf`（与已发布 v1.0.0 制品同哈希 `A5969A14…069C46`）拷回即可。
 
 ## 4 版式与写作契约（摘要）
 

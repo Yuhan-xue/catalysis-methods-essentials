@@ -261,10 +261,16 @@ def main(argv=None):
         import datetime
         date = datetime.date.today().isoformat()
 
-    visual = sorted(set([6, 8, 64, 93, 104, 110, 164, 230, 245, 324])
-                    | set([1, 4, 28, 31, 68, 81, 169, 184, 185, 189, 212, 213,
-                           256, 265, 266, 292, 297, 335, 336, 338, 340])
-                    | set([118, 160]) | set([192, 200]))
+    # Contact-sheet sweep: batches of 20 pages at 40dpi, read page by page.
+    # Batches 1-4 cover p1-p80; the rest of the book is covered only by the
+    # focused list below, so SWEEP_END must move with the batches actually read.
+    SWEEP_END = 80
+    sweep = set(range(1, SWEEP_END + 1))
+    focused = set([6, 8, 64, 93, 104, 110, 164, 230, 245, 324])
+    focused |= set([1, 4, 28, 31, 68, 81, 169, 184, 185, 189, 212, 213,
+                    256, 265, 266, 292, 297, 335, 336, 338, 340])
+    focused |= set([118, 160]) | set([192, 200])
+    visual = sorted(sweep | focused)
 
     verdicts = {}
     evidence = {}
