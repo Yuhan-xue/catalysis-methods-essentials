@@ -73,4 +73,5 @@ tools/*.bak
 
 # GraphFlow tool artifacts (local only)
 .graphflow/
+.graphflow-cache/
 graphflow-out/

@@ -321,14 +321,18 @@ def build(args):
     else:
         chk.append(("note-pages", True, "%d" % len(note_map)))
 
-    # --- cross-check (d): the annotated pages are exactly the non-CLEAN ones
+    # --- cross-check (d): every non-CLEAN page carries a judgement.
+    # The notes are allowed to cover MORE pages than the scan flagged: once the
+    # page images are read, every read page gets a row (including clean ones),
+    # and that is the progress this ledger is meant to record. What must never
+    # happen is a flagged page with no recorded judgement.
     flagged = set(r["page"] for r in recs if r["verdict"] != "CLEAN")
-    if flagged != set(note_map):
+    if flagged - set(note_map):
         chk.append(("note-coverage", False,
-                    "flagged=%s notes=%s"
-                    % (sorted(flagged - set(note_map)), sorted(set(note_map) - flagged))))
+                    "flagged without judgement: %s" % sorted(flagged - set(note_map))))
     else:
-        chk.append(("note-coverage", True, "%d flagged" % len(flagged)))
+        chk.append(("note-coverage", True,
+                    "%d flagged, %d noted" % (len(flagged), len(note_map))))
 
     # --- (e) is checked on the rendered text at the end.
 
