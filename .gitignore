@@ -75,3 +75,6 @@ tools/*.bak
 .graphflow/
 .graphflow-cache/
 graphflow-out/
+
+# DSH task-progress events (local only)
+.dsh-progress/
