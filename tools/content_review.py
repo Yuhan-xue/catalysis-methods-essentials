@@ -385,11 +385,21 @@ def build(args):
         "\n".join(sec["#HEAD"]), "\n".join(sec["#TAIL"]))
     out = sub(body)
 
-    leftover = sorted(set(PH.findall(out)))
+    # Placeholders are a CLOSED vocabulary (the mapping keys): only an
+    # unsubstituted *known* placeholder is a failure.  Any other {...} token is
+    # just LaTeX, e.g. the notes may legitimately write $S_{\mathrm{total}}$ or
+    # $\Delta S_jt-\pi t^2\ell$ -- a bare r"\{[a-z_]+\}" scan would flag
+    # "{total}" and fail a perfectly good ledger.
+    known = set(mapping)
+    leftover = sorted(k for k in known if ("{" + k + "}") in out)
+    unknown = sorted(set(PH.findall(out)) - set("{" + k + "}" for k in known))
     if leftover:
         chk.append(("placeholders", False, ", ".join(leftover)))
     else:
         chk.append(("placeholders", True, "none"))
+    if unknown:
+        print("INFO braces that are not placeholders (LaTeX, ignored): %s"
+              % ", ".join(unknown[:10]))
 
     for name, ok, detail in chk:
         print("CHECK %-14s %s  %s" % (name, "ok  " if ok else "FAIL", detail))
