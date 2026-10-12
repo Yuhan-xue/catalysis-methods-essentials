@@ -1,7 +1,8 @@
 # 交接文档 · 《现代催化研究方法精要》
 
 > 最后更新：2026-10-12（逐页**内容级**校对启动：机筛 13 类铺满 340 页文字层（CLEAN 332 / INFO 7 / WARN 1），
-> 读图 4/340 页；首批查出「诊释→诠释」实质错字 1 处并修复，台账 `sources/content_review.md`、勘误 A10）；
+> 读图 18/340 页，已修 7 处机筛看不见的问题（诊释→诠释、上表指向、`\pedset/\supp` 重复印字、式 (1-9) 假等价、
+> MP 量纲差 10⁴、GB/T 题名、压汞范围自校核）；逐式复核台账 `sources/formula_review.md` 建立（`ch01-b` 首批）；
 > 上一版 2026-10-11（逐页验收台账补齐三项文本层核对：书签落点 145/145、重复页 0、编号探针——340 页结构审计 + 340 页目视）；
 > 上一版 2026-10-09（85 张表像素级核对收尾，`\tocheck` 全库清零）。本文是**新会话无缝接手**的浓缩版；
 > 写作契约见 [STYLE_GUIDE.md](STYLE_GUIDE.md) / [WRITER_BRIEF.md](WRITER_BRIEF.md)，
@@ -20,8 +21,9 @@
 | 构建门禁 | errors / overfull>5pt / missing glyphs / undefined refs / dup labels / **dup includes** / **overlap** —— 全 0；`-Release` 下静态检查**没跑成（unavailable）判失败** |
 | 叠印 | 图内元素确认相撞 **0**；候选 109（按类别报告，不按总数阻断） |
 | 逐页验收 | **已建立台账**（2026-10-11）：`sources/page_acceptance.md` —— 340 页**逐页结构审计**（`tools/page_audit.py`：版心越界／孤悬标题／真叠印／缺字／页眉页码缺失／页尾留白／页内空白带／墨迹出界）＋ **340 页接触印相表目视复核**（`tools/pagesheet.py`：全书 17 批 × 20 页 40dpi 扫读，逐格看版面）；另两项不依赖读图的逐页核对：`tools/check_folio.py`（页脚 339/340 正确、页眉 18 种无奇偶混用）、`tools/check_toc.py`（目录 61/61 页码落在标题实际页）；再加三项全书文本层核对：`tools/check_bookmarks.py`（145 个书签全部落在其标题所在页，3 条去掉前导编号后命中）、`tools/check_duppages.py`（340 页正文无空页，完全相同 0 组、近似重复 0 对）、`tools/check_numbers.py`（只认行首题注的探针；编号由 LaTeX 计数器生成、`chapters/` 无硬编码编号／无 `\tag`／无计数器重置，构造上连续，9 处 `UNSEEN` 是提取盲区不是跳号）。判定 PASS 255 / INFO 75 / WARN 10 / FLAG 0。10 处页内空白带（25—62mm）由 `\raggedbottom`（`style/preamble.tex:388`）＋浮动体底部放置共同造成，**本轮刻意不改**：改浮动体会重排页码、作废已发布版本的页码引用。备注源文件 `sources/page_acceptance_notes.txt`，复跑 `python tools/page_acceptance.py`。**注意：结构审计≠内容校对**，全书版面已逐页看过，但看的是版面，不是内容 |
+| 逐式复核 | **台账已建**（2026-10-13）：`sources/formula_review.md` —— 按公式逐条对照原书页面图像（`tools/vpage.py`；OCR 只用于定位，判决一律以图像为据，小字裁 300 dpi 复核），判决词汇沿用 `pixel_verify.md`。首批 `ch01-b` 式 (1-7)—(1-17)：式 (1-7)(1-8) 沿用早前像素级结论；本轮读图核过式 (1-11)（源式 1-38）与式 (1-17)（源式 1-49）；式 (1-16) 形式一致（源书对 $r$ 解出、本稿对 $p$ 解出，移项等价）；式 (1-10) 确认改编补充（源页只有定义式，无 Halsey 显式）。余式 (1-9)(1-12)—(1-15) 共 5 式待核。`ch10-b` 首部注释自述其公式未对照原页面图像，是下一批线索；`ch09-d` 的灵敏度因子表亦自述未逐值照抄 |
 | 源头 | 《现代催化研究方法新编》上、下册扫描 PDF（附件，不在仓库） |
-| 内容校对 | **机筛铺满 + 读图刚起步**（2026-10-12）：`tools/content_scan.py` 逐页读 `build/main.pdf` 文字层报 13 类可疑点，340 页 CLEAN 332 / INFO 7 / WARN 1；8 个命中页已逐条文字层判读（全是词边界巧合或数学符号）。逐页读图 **4/340 页**（第 1、2、3、20 页，`tools/vbook.py` 165 dpi 整页），首批即查出机筛看不见的实质错字：§7.7 标题与目录印「红外光谱**诊**释」，原书书内 p.443（上册 PDF p.462）实印「**诠**释」，已改 `chapters/parts/ch07-b.tex` 三处并重建复核（`sources/errata.md` A10）。台账 `sources/content_review.md`（由 `tools/content_review.py` 从 `build/content_scan.csv` ＋ `sources/content_review_notes.txt` 生成，勿手改 md；源码基线固定在 notes 的 `baseline_commit=e9587f1`，不随提交漂移），复跑 `python tools/content_scan.py && python tools/content_review.py`。**机筛 `CLEAN` ≠ 那页没有错**：两个合法字的错别字（戌／戊、己／已、末／未、「诊释／诠释」）、数字错一位、公式推导错、图表数值与原书不符，文字层里都是「正常字符」，机筛一个都看不见 |
+| 内容校对 | **机筛铺满 + 读图进行中**（2026-10-13）：`tools/content_scan.py` 逐页读 `build/main.pdf` 文字层报 13 类可疑点，340 页 CLEAN 332 / INFO 7 / WARN 1；8 个命中页已逐条文字层判读（全是词边界巧合或数学符号）。逐页读图 **18/340 页**（第 1—17 页＋第 20 页，`tools/vbook.py` 165 dpi 整页），流程为读图 → 对照源书核数 → 改源码 → 重建 → 读图复核 → 更新台账 → 提交；已修 7 处：诊释→诠释（`errata.md` A10）、「上表」指向相反、`\pedset/\supp` 重复印字、式 (1-9) 假等价（乙类 B11）、MP 量纲差 10⁴（甲类 A11）、GB/T 21650 题名、压汞可测范围自校核。台账 `sources/content_review.md`（由 `tools/content_review.py` 从 `build/content_scan.csv` ＋ `sources/content_review_notes.txt` 生成，勿手改 md；源码基线固定在 notes 的 `baseline_commit=e9587f1`，不随提交漂移），复跑 `python tools/content_scan.py && python tools/content_review.py`。**机筛 `CLEAN` ≠ 那页没有错**：两个合法字的错别字（戌／戊、己／已、末／未、「诊释／诠释」）、数字错一位、公式推导错、图表数值与原书不符，文字层里都是「正常字符」，机筛一个都看不见 |
 
 **R4 收口要点**（逐项证据见 `reviews/2026-09-30-round4/CLOSURE.md`）：
 8 项 P2 全部处理（拉曼角度因子、CPE 有效电容、Warburg 定量、DTG 峰高、图 11-5 避线、缩写表列宽、
@@ -187,6 +189,6 @@ curl.exe -sL "http://zsyq.hxlab.tech:3000/yuhanxue/catalysis-methods-essentials/
 | `sources/figure_table_list.csv` | 图表来源台账（派生，勿手改） |
 | `sources/formula_verify.md`、`pixel_verify.md`、`table_pixel_verify.md`、`errata.md`、`terminology_decisions.md` | 公式核对／**像素级核对台账（逐条：源页／PNG／逐字印法／判决）**／**真实来源表像素级核对台账（14 张表）**／勘误／术语裁定 |
 | `sources/ch08_coverage_note.md`、`ch09_coverage_matrix.md`、`table_content_check.md` | 各章覆盖与表内容核对 |
-| `sources/page_acceptance.md`、`content_review.md` | 逐页**版面**验收（结构审计＋目视）／逐页**内容**机筛与读图进度（生成物，勿手改） |
+| `sources/page_acceptance.md`、`content_review.md`、`formula_review.md` | 逐页**版面**验收（结构审计＋目视）／逐页**内容**机筛与读图进度（生成物，勿手改）／**逐式复核**（按公式逐条对照原书页面图像） |
 | `sources/assignments.md` | 分片派单与「科学核验状态」 |
 | `reviews/*/` | 历轮评审（TODO / CLOSURE / findings / 复核脚本） |
