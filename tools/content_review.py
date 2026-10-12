@@ -54,7 +54,7 @@ SECTIONS = ("#LABELS", "#DET", "#HEAD", "#PAGES", "#BATCH", "#TAIL")
 # Labels the generator itself needs.  sec1..sec7 are deliberately absent: the
 # section headings are already written into the #HEAD / #TAIL prose.
 REQ_LABELS = (
-    "title", "subtitle", "gen_note",
+    "title", "subtitle", "gen_note", "baseline_commit",
     "col_page", "col_scan", "col_hits", "col_hits_raw", "col_read", "col_note",
     "col_level", "col_det", "col_det_hits", "col_det_pages", "col_what",
     "col_batch", "col_date", "col_scope", "col_did",
@@ -355,7 +355,11 @@ def build(args):
     mapping = {
         "pages": str(len(recs)),
         "csv": args.csv.replace("\\", "/"),
-        "commit": args.commit or head_commit(ROOT),
+        # The baseline is pinned in the notes file, NOT taken from HEAD: the
+        # ledger records which source revision the scan and the page judgements
+        # describe.  Reading HEAD would make every commit invalidate the ledger
+        # it just committed and start an endless regenerate/commit loop.
+        "commit": args.commit or lab["baseline_commit"],
         "date": args.date,
         "gen_note": lab["gen_note"],
         "clean": str(tally.get("CLEAN", 0)),
