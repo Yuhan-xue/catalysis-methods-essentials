@@ -1,6 +1,8 @@
 # 交接文档 · 《现代催化研究方法精要》
 
-> 最后更新：2026-10-11（逐页验收台账补齐三项文本层核对：书签落点 145/145、重复页 0、编号探针——340 页结构审计 + 340 页目视）；
+> 最后更新：2026-10-12（新增**逐页内容级**机筛与台账：`tools/content_scan.py` 13 类检测器铺满 340 页文字层
+> （CLEAN 332 / INFO 7 / WARN 1），台账 `sources/content_review.md`；读图进度 0/340 页）；
+> 上一版 2026-10-11（逐页验收台账补齐三项文本层核对：书签落点 145/145、重复页 0、编号探针——340 页结构审计 + 340 页目视）；
 > 上一版 2026-10-09（85 张表像素级核对收尾，`\tocheck` 全库清零）。本文是**新会话无缝接手**的浓缩版；
 > 写作契约见 [STYLE_GUIDE.md](STYLE_GUIDE.md) / [WRITER_BRIEF.md](WRITER_BRIEF.md)，
 > 历轮评审见 `reviews/`。
@@ -19,6 +21,7 @@
 | 叠印 | 图内元素确认相撞 **0**；候选 109（按类别报告，不按总数阻断） |
 | 逐页验收 | **已建立台账**（2026-10-11）：`sources/page_acceptance.md` —— 340 页**逐页结构审计**（`tools/page_audit.py`：版心越界／孤悬标题／真叠印／缺字／页眉页码缺失／页尾留白／页内空白带／墨迹出界）＋ **340 页接触印相表目视复核**（`tools/pagesheet.py`：全书 17 批 × 20 页 40dpi 扫读，逐格看版面）；另两项不依赖读图的逐页核对：`tools/check_folio.py`（页脚 339/340 正确、页眉 18 种无奇偶混用）、`tools/check_toc.py`（目录 61/61 页码落在标题实际页）；再加三项全书文本层核对：`tools/check_bookmarks.py`（145 个书签全部落在其标题所在页，3 条去掉前导编号后命中）、`tools/check_duppages.py`（340 页正文无空页，完全相同 0 组、近似重复 0 对）、`tools/check_numbers.py`（只认行首题注的探针；编号由 LaTeX 计数器生成、`chapters/` 无硬编码编号／无 `\tag`／无计数器重置，构造上连续，9 处 `UNSEEN` 是提取盲区不是跳号）。判定 PASS 255 / INFO 75 / WARN 10 / FLAG 0。10 处页内空白带（25—62mm）由 `\raggedbottom`（`style/preamble.tex:388`）＋浮动体底部放置共同造成，**本轮刻意不改**：改浮动体会重排页码、作废已发布版本的页码引用。备注源文件 `sources/page_acceptance_notes.txt`，复跑 `python tools/page_acceptance.py`。**注意：结构审计≠内容校对**，全书版面已逐页看过，但看的是版面，不是内容 |
 | 源头 | 《现代催化研究方法新编》上、下册扫描 PDF（附件，不在仓库） |
+| 内容校对 | **只做到机筛**（2026-10-12）：`tools/content_scan.py` 逐页读 `build/main.pdf` 文字层报 13 类可疑点，340 页 CLEAN 332 / INFO 7 / WARN 1；8 个命中页已逐条文字层判读（全是词边界巧合或数学符号），**页面图像一页未读**。台账 `sources/content_review.md`（由 `tools/content_review.py` 从 `build/content_scan.csv` ＋ `sources/content_review_notes.txt` 生成，勿手改 md），复跑 `python tools/content_scan.py && python tools/content_review.py`。**机筛 `CLEAN` ≠ 那页没有错**：两个合法字的错别字（戌／戊、己／已、末／未）、数字错一位、公式推导错、图表数值与原书不符，文字层里都是「正常字符」，机筛一个都看不见。读图进度 **0/340 页** |
 
 **R4 收口要点**（逐项证据见 `reviews/2026-09-30-round4/CLOSURE.md`）：
 8 项 P2 全部处理（拉曼角度因子、CPE 有效电容、Warburg 定量、DTG 峰高、图 11-5 避线、缩写表列宽、
@@ -184,5 +187,6 @@ curl.exe -sL "http://zsyq.hxlab.tech:3000/yuhanxue/catalysis-methods-essentials/
 | `sources/figure_table_list.csv` | 图表来源台账（派生，勿手改） |
 | `sources/formula_verify.md`、`pixel_verify.md`、`table_pixel_verify.md`、`errata.md`、`terminology_decisions.md` | 公式核对／**像素级核对台账（逐条：源页／PNG／逐字印法／判决）**／**真实来源表像素级核对台账（14 张表）**／勘误／术语裁定 |
 | `sources/ch08_coverage_note.md`、`ch09_coverage_matrix.md`、`table_content_check.md` | 各章覆盖与表内容核对 |
+| `sources/page_acceptance.md`、`content_review.md` | 逐页**版面**验收（结构审计＋目视）／逐页**内容**机筛与读图进度（生成物，勿手改） |
 | `sources/assignments.md` | 分片派单与「科学核验状态」 |
 | `reviews/*/` | 历轮评审（TODO / CLOSURE / findings / 复核脚本） |
