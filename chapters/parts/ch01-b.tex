@@ -148,8 +148,17 @@ $2r_jt_k$（$t_k/r_j=0.04$ 时高估 $2\%$）。本书保留精确的环形写�
 相对压力的对应关系即
 
 \begin{equation}\label{eq:bjh-dp}
-D_p=2\left(r_k+t\right),\qquad \ppzero=0.95\;\Longleftrightarrow\;D_p\approx\qty{50}{nm}
+D_p=2\left(r_k+t\right)
 \end{equation}
+
+孔宽与相对压力的对应关系即式~\eqref{eq:bjh-dp}。原书同处给出两个数：Kelvin
+方程计算毛细凝聚孔尺寸的可靠上限 $\ppzero=0.95$，以及「BJH 法计算中孔孔宽的上限是
+50 nm」\src{S1，书内 p.47 / PDF p.66}。\emph{核对说明}（已对照原页面图像）：这两个数
+\textbf{不是同一个对应关系}——按本节常数（$r_k/\unit{nm}=0.955/\ln(p_0/p)$ 与 Halsey
+膜厚式~\eqref{eq:halsey}），$\ppzero=0.95$ 给出 $r_k\approx\qty{18.6}{nm}$、
+$t\approx\qty{1.6}{nm}$，即 $D_p\approx\qty{40}{nm}$；而 $D_p=\qty{50}{nm}$ 对应
+$\ppzero\approx0.96$。原书书内 p.47 把两者并列（本节前文引 p.44 亦有同类表述），
+本版\textbf{照录原书的两个数字}、不代为改动，差异记入勘误（乙类）。
 
 原书式(1-36) 写作
 $V_{\mathrm{ads}}(x_k)=\sum_{i=1}^{k}\Delta V_i\left[r_i\le r_k(x_k)\right]
@@ -164,8 +173,9 @@ $\pi t_j^{2}\ell_j$（$t_j/r_j=0.04$ 时约 $2\%$）；第 (1) 项计全孔体�
 \begin{keycond}
 \textbf{BJH 的三个硬边界。}（1）\textbf{不适用于微孔}：$\ppzero<0.2$ 的吸附量变化由微孔
 填充贡献，Kelvin 方程在此无物理意义，强行计算会得到虚假峰。（2）\textbf{孔宽有上下限}：
-由式~\eqref{eq:bjh-dp}，$77\,\unit{K}$ 氮吸附下 BJH 计算中孔孔宽的\textbf{上限约
-$\qty{50}{nm}$}，用脱附支计算时可靠\textbf{下限为 $\qtyrange{5}{6}{nm}$}；两端之外应改用
+按原书口径，$77\,\unit{K}$ 氮吸附下 BJH 计算中孔孔宽的\textbf{上限约
+$\qty{50}{nm}$}（见上文核对说明：按本节常数，$\ppzero=0.95$ 只到
+$D_p\approx\qty{40}{nm}$，$\qty{50}{nm}$ 对应 $\ppzero\approx0.96$），用脱附支计算时可靠\textbf{下限为 $\qtyrange{5}{6}{nm}$}；两端之外应改用
 压汞法（大孔端）或微孔方法（小孔端）。（3）\textbf{孔宽小于临界宽度 $D_{\mathrm{ch}}$ 时
 没有回滞环}：此时等温线为完全可逆的 IV(b) 型，但仍可由毛细凝聚造成台阶。孔宽约
 $\qty{4}{nm}$ 的 MCM-41 在 $77\,\unit{K}$ 氮吸附下即为无回滞环的 IV(b) 型，台阶跃升位于
@@ -525,7 +535,7 @@ BET 表面积和中孔孔尺寸分布最常用的体系，但\textbf{不一定�
 （1）\textbf{定孔容}。纯微孔吸附剂的孔容对应 I 型等温线的平台吸附量；中微孔混合吸附剂的
 微孔填充在 $\ppzero=0.01$--$0.15$ 之间完成，但此时总吸附量还含外表面上的亚单层吸附量；
 IV 型等温线表明含中孔，高 $\ppzero$ 段的终止平台吸附量即中孔与更大孔的总孔容，若平台
-不易分辨，总孔容通常取 $\ppzero=0.95$ 处的吸附量，对应孔宽上限 $\qty{50}{nm}$。孔容
+不易分辨，总孔容通常取 $\ppzero=0.95$ 处的吸附量，对应孔宽上限 $\qty{50}{nm}$（原书口径；按本节常数该压力对应 $D_p\approx\qty{40}{nm}$，见本节核对说明）。孔容
 除以样品质量得比孔容。
 （2）\textbf{选模型}。微孔段用 D-R／HK／SF／MP／NLDFT，中孔段用 BJH／BdB／$t$ 图／
 NLDFT，大孔段用压汞法；先由等温线类型与回滞环类型缩小范围。
