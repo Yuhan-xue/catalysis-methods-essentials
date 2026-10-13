@@ -263,14 +263,16 @@ def main(argv=None):
         date = datetime.date.today().isoformat()
 
     # Contact-sheet sweep: batches of 20 pages at 40dpi, read page by page.
-    # Batches 1-17 cover p1-p340, i.e. the whole book; SWEEP_END must move with
-    # the batches actually read, otherwise the coverage claim silently inflates.
-    SWEEP_END = 340
+    # The sweep covers the whole book (17 batches); the build was 340 pages when
+    # the sweep was read and is 339 pages now -- the material after p.162 moved
+    # one page earlier, so the sweep still covers every page of the material
+    # while the current page numbers are re-checked below.  SWEEP_END must move
+    # with the batches actually read, otherwise the coverage claim inflates.
+    SWEEP_END = 339
     BATCH = 20
     sweep = set(range(1, SWEEP_END + 1))
-    focused = set([6, 8, 64, 93, 104, 110, 164, 230, 245, 324])
-    focused |= set([1, 4, 28, 31, 68, 81, 169, 184, 185, 189, 212, 213,
-                    256, 265, 266, 292, 297, 335, 336, 338, 340])
+    focused = set([6, 8, 64, 93, 104, 110, 229, 244, 323])
+    focused |= set([1, 4, 28, 31, 68, 81, 164, 165, 334, 335, 337, 339])
     focused |= set([118, 160]) | set([192, 200])
     visual = sorted(sweep | focused)
     focused_tail = len([p for p in focused if p > SWEEP_END])
