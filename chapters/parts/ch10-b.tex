@@ -4,8 +4,10 @@
 %  源：S2（下册）第 10 章，书内 p.769—792 / PDF p.258—281
 %  覆盖：10.3 动力学模型的建立与检验；10.4 多相催化中的传递过程
 %  说明：分片 a 写 10.1—10.2，分片 c 写 10.5—10.6。本分片不含 \chapterstart。
-%        所有公式按「OCR 上下文 + 学科标准形式」重建，未对照原页面图像；
-%        存疑处一律就地标注，逐条读图核验后改写为「核对说明」。
+%        全部编号公式已于 2026-10-13 逐式对照原页面图像复核（书内 p.769、p.770—771、
+%        p.773—774、p.776、p.778、p.792—793 / PDF p.258、p.259—260、p.262—263、p.265、
+%        p.267、p.281—282）；逐式判决见 sources/formula_review.md 的 ch10-b 一节。
+%        存疑处一律就地标注为「核对说明」。
 % ================================================================
 
 \subsection{动力学模型的建立与检验}
@@ -395,7 +397,9 @@ j_D=\frac{\rho k_G}{G}\,Sc^{2/3}=\frac{Sh}{Re\,Sc^{1/3}},\qquad
 Sc=\frac{\mu}{\rho D},\quad Sh=\frac{k_Gd_p}{D},\quad Re=\frac{Gd_p}{\mu}
 \label{eq:ch10-jd}
 \end{equation}
-式中 $\rho$ 为流体密度，$G$ 为质量流速，$d_p$ 为颗粒直径，$D$ 为分子扩散系数。固定床在
+式中 $\rho$ 为流体密度，$G$ 为质量流速，$d_p$ 为颗粒直径，$D$ 为分子扩散系数；原书同一式
+把 $Sc$ 写作 $\nu/D$（$\nu$ 为运动黏度，$\nu=\mu/\rho$），与本稿的 $\mu/(\rho D)$ 等价
+（书内 p.770 / PDF p.259）。固定床在
 $Re=0.8$—$2130$、$Sc=0.6$—$1300$ 范围内（气体、液体都适用）：
 \begin{equation}
 j_D=\frac{0.725}{Re^{0.41}-0.15}
@@ -407,7 +411,9 @@ j_D=\frac{0.725}{Re^{0.41}-0.15}
 \ln\frac{1}{1-X}=\frac{0.725\,a\,z}{(Re^{0.41}-0.15)\,Sc^{2/3}}
 \label{eq:ch10-extconv}
 \end{equation}
-式中 $a$ 为单位体积床层颗粒的表面积，$z$ 为床层高度。$ad_p$ 乘积不随颗粒直径变化，
+式中 $a$ 为单位体积床层颗粒的表面积，$z$ 为床层高度。原书式（10-103）在分子与分母
+\textbf{各印一个 $d_p$}（$0.725ad_pz/[d_p(Re^{0.41}-0.15)Sc^{2/3}]$），两者约去后即本式
+（书内 p.771 / PDF p.260，读图逐字确认）。$ad_p$ 乘积不随颗粒直径变化，
 在孔隙率 $\varepsilon\approx0.4$ 的典型催化床层中 $ad_p\approx3.6$（球形颗粒
 $a=6(1-\varepsilon)/d_p$）。
 对流传热的对应关系为
@@ -546,11 +552,15 @@ r_0=\frac{4}{3}\pi R^{3}S_vk_Sc_S
 \emph{核对说明}：已对照原页面图像（书内 p.774 / PDF p.263）。原书式（10-115）印
 $r=4\pi R\varphi_SD_ec_S\left(\frac{1}{\tanh\varphi_S}-\frac{1}{\varphi_S}\right)$，
 首因子为 $4\pi R\varphi_SD_ec_S$，与本分片一致（OCR 文本层的残缺使首因子只剩一个 $S$）；
-同页式（10-116）印 $r_0=\frac{4}{3}\pi R^3S_vk_sc_S$，式（10-117）印球形
-$\eta=\frac{3}{\varphi_S}\left(\frac{1}{\tanh\varphi_S}-\frac{1}{\varphi_S}\right)$
-与平板 $\eta=\frac{\tanh\varphi_L}{\varphi_L}$，式（10-118）印
-$\varphi_S^2=\frac{R^2S_vk_S}{D_e}$；判据「$\varphi<0.4$，则 $\eta\approx1$；
+同页式（10-116）印 $r_0=\frac{4}{3}\pi R^3S_vk_sc_S$。\textbf{编号归属}：原书式（10-117）
+是 $\eta$ 的\textbf{文字定义}（「有内扩散存在时的催化剂颗粒反应速率／无内扩散存在时的
+催化剂颗粒反应速率」），而式~\eqref{eq:ch10-eta} 对应的两条显式——球形
+$\eta=\frac{r}{r_0}=\frac{3}{\varphi_S}\left(\frac{1}{\tanh\varphi_S}-\frac{1}{\varphi_S}\right)$、
+平板 $\eta=\frac{\tanh\varphi_L}{\varphi_L}$——在原书\textbf{未编号}，紧接其后；式（10-118）
+印 $\varphi_S^2=\frac{R^2S_vk_S}{D_e}$；判据「$\varphi<0.4$，则 $\eta\approx1$；
 $0.4<\varphi<3$，则 $\eta<1$；$3<\varphi$，则 $\eta\approx1/\varphi$」亦逐字相符。
+同页顶部另有未编号的 $\varphi_S=R\sqrt{S_vk_S/D_e}$、$\varphi_L=L\sqrt{S_vk_S/D_e}$
+两式，与式~\eqref{eq:ch10-thiele} 逐字同形。
 
 Thiele 模数的物理意义可由式~\eqref{eq:ch10-thiele} 平方后看出：对球形颗粒
 $\varphi_S^2=R^2S_vk_S/D_e=\bigl(RS_vk_Sc^m\bigr)\big/\bigl(D_ec/R\bigr)
