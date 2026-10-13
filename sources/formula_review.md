@@ -51,10 +51,10 @@
 | (1-9) $D_p=2(r_k+t)$ | 源书同处给 $r_p=r_k+t$，书内 p.24 / PDF p.43 | `未覆盖` | 待读图；本式是与 B11 修订同批改写的表述，需连源页一并核 |
 | (1-10) Halsey 显式 | 源 (1-37) 只给定义式 $t=\frac{t_m}{V_m}V=f(p/p_0)$ | `改编补充` | 上册 PDF p.70（书内 p.51）读图：原页只有式 (1-37) 定义式与 $t_m=\qty{0.354}{nm}$，**没有** Halsey 显式；本稿已在正文声明该式为改编补充，与源页相符 |
 | (1-11) $V=\frac{V_m}{t_m}t$ | 源 (1-38)，书内 p.51 / PDF p.70 | `已核对一致` | 原页逐字印 $V=\dfrac{V_m}{t_m}t$，式号 (1-38)；同页「$V_m$ 为单层饱和吸附量；$t_m$ 为氮的单分子层平均厚度（0.354 nm）」与本稿一致 |
-| (1-12) MP 三式 | 源 (1-42)—(1-44)，书内 p.56 / PDF p.75 | `未覆盖` | 待读图 |
+| (1-12) MP 三式 | 源 (1-42)—(1-44)，书内 p.56 / PDF p.75 | `已核对一致` | 原页逐字印 $\Delta V_i=\Delta S_i\times\bar t_i$、$\Delta S_i=S_{i-1}-S_i$、$\bar t_i=\frac12(t_{i-1}+t_i)$，式号 (1-42)—(1-44)；同页「第 $i$ 组微孔的孔容 $\Delta V_i$」「此时吸附层厚度 $t_{i+1}$ 相应的是新被充满的微孔板间距」「按 BET 公式 $C$ 值的不同划分吸附质与吸附剂相互作用的强弱，按不同 $C$ 值范围选择合适的 $t$ 曲线」「也可采用与微孔吸附剂化学性质相同的非孔性吸附剂作基准物，建立 $t=f(p/p_0,A)$」与本稿一致 |
 | (1-13) $\alpha_s$ | 源 (1-39)，书内 p.53 / PDF p.72 | `未覆盖` | 待读图 |
-| (1-14) 巨势泛函 | 源 (1-45)—(1-47)，书内 p.56—57 / PDF p.75—76 | `未覆盖` | 待读图 |
-| (1-15) 积分吸附方程 | 同上 | `未覆盖` | 待读图 |
+| (1-14) 巨势泛函 | 源 (1-45)，书内 p.56 / PDF p.75 | `已核对一致` | 原页逐字印 $\Omega[\rho(r)]=F[\rho(r)]+\int\rho(r)[V_{\mathrm{ext}}(r)-\mu]\mathrm{d}r$，式号 (1-45)。同页：$F$ 含理想气体自由能与过剩自由能两项、过剩项又分相吸与相斥、$V_{\mathrm{ext}}(r)$ 与孔形（裂隙、圆柱形或球形）和孔宽有关、$\mu$ 为流体分子化学势——均与本稿一致。**叙述压缩（非缺陷，记此备查）**：原页写「相吸部分采用平均场近似（MFT），按照 Weeks-Chandler-Anderson 的方法进行处理」，本稿压缩为「van der Waals 型平均场近似（MFT）」、未提 WCA；公式形式不受影响 |
+| (1-15) 积分吸附方程 | 源 (1-47)，书内 p.57 / PDF p.76 | `形式一致但符号不同` | 原页逐字印 $N(p/p_0)=\int_{W_{\min}}^{W_{\max}}N(p/p_0,W)f(W)\mathrm{d}W$，式号 (1-47)，并称其为「积分吸附方程（integral adsorption equation, IAE）」与「通用吸附等温线（general adsorption isotherm, GAI）方程」；积分变量原书用孔宽 $W$（kernel 记 $N(p/p_0,W)$、分布函数记 $f(W)$），本稿用 $D$。本稿正文已注明这一符号差别（`chapters/parts/ch01-b.tex:336-337`）。同页另有式 (1-46) $\left[\frac{\delta\Omega[\rho(r)]}{\delta\rho(r)}\right]_{\rho=\rho_{\mathrm{eq}}}=0$（巨势对局部密度导数为零的热力学平衡条件）与「式 (1-47) 也称 GAI 方程」「NLD…」等论述，本稿把 (1-46) 以文字写在式 (1-14) 之后、未单独编号，内容一致 |
 | (1-16) Washburn | 源 (1-48)，书内 p.58 / PDF p.77 | `形式一致但符号不同` | 原页印 $r=\dfrac{-2\gamma\cos\theta}{p}$（对 $r$ 解出）；本稿写成 $p=-\dfrac{2\gamma\cos\theta}{r}$（对 $p$ 解出）。移项等价；同页「$\gamma=\qty{0.48}{N/m}$、$\theta$ 为 $135^\circ\sim150^\circ$、通常取平均值 $140^\circ$」与本稿一致 |
 | (1-17) 数值式 | 源 (1-49)，书内 p.58 / PDF p.77 | `已核对一致` | 原页逐字印 $r=\dfrac{735}{p}$，并注「$r$ 以 nm 为单位；$p$ 以 MPa 为单位」；本稿写作 $r/\mathrm{nm}=735/(p/\mathrm{MPa})$，同一约定 |
 
@@ -74,7 +74,11 @@
 ## 四、复跑
 
 ```
+python tools/vpage.py up   43 build/frev/up043.png --dpi 200   # 书内 p.24：式 (1-9) 同处的 $r_p=r_k+t$
 python tools/vpage.py up   70 build/frev/up070.png --dpi 200   # 书内 p.51：式 (1-37)(1-38)
+python tools/vpage.py up   72 build/frev/up072.png --dpi 200   # 书内 p.53：式 (1-39) $\alpha_s$
+python tools/vpage.py up   75 build/frev/up075.png --dpi 200   # 书内 p.56：式 (1-42)—(1-45)
+python tools/vpage.py up   76 build/frev/up076.png --dpi 200   # 书内 p.57：式 (1-46)(1-47)
 python tools/vpage.py up   77 build/frev/up077.png --dpi 200   # 书内 p.58：式 (1-48)(1-49) 与两项国标题名
 ```
 
