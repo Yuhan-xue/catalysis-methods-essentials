@@ -83,10 +83,10 @@ $D_{50}$、$D_{97}$、边界粒径与分布宽度指标），以及\textbf{所�
 是关于颗粒体系\textbf{平均粒径}及\textbf{粒度分布}的总体信息。因此对颗粒体系而言，
 「颗粒度」同时具有平均粒径大小和粒度分布双重含义。
 
-\textbf{平均粒径的通式。}设粒度频率分布函数为 $f=q(x,n)$，$x$ 为粒径；$n=0$ 为个数分布
-函数，$n=2$ 为面积分布函数，$n=3$ 为体积或质量分布函数，则
+\textbf{平均粒径的通式。}设第 $n$ 基准的粒度频率分布函数为 $q(x,n)$，$x$ 为粒径；$n=0$ 为
+个数分布函数，$n=2$ 为面积分布函数，$n=3$ 为体积或质量分布函数，则第 $n$ 基准上的平均粒径为
 \begin{equation}\label{eq:ch01c-dn}
-\bar{D}(n)=\frac{\int_{0}^{\infty}x^{n}f(x)\,\mathrm{d}x}{\int_{0}^{\infty}f(x)\,\mathrm{d}x}
+\bar{D}(n)=\frac{\int_{0}^{\infty}x\,q(x,n)\,\mathrm{d}x}{\int_{0}^{\infty}q(x,n)\,\mathrm{d}x}
 \end{equation}
 但更多情况下只能得到粒度\textbf{区间}分布的数据而非分布函数，这时平均粒径按下式计算：
 \begin{equation}\label{eq:ch01c-dpq}
@@ -99,10 +99,19 @@ d_{i}=\sqrt{D_{i}D_{i+1}}
 \end{equation}
 $D_i$ 为该区间的下限粒径数值，$D_{i+1}$ 为上限粒径数值。
 
+\textbf{这三式的原书对应式。}此处已对照原页面图像（书内 p.63 / PDF p.82）：原书式 (1-51) 印
+$\bar{x}(n)=\frac{\int q(x,n)x\,\mathrm{d}x}{\int q(x,n)\,\mathrm{d}x}$（本稿把符号写成
+$\bar{D}(n)$、把分布函数记作 $q(x,n)$，原书印作 $f(n)=q(x,n)$）、式 (1-52) 印
+$D[p,q]=\left[\sum_{i}n_{i}d_{i}^{p}\big/\sum_{i}n_{i}d_{i}^{q}\right]^{1/(p-q)}$、式 (1-53) 印
+$d_{i}=\sqrt{D_{i}\times D_{i+1}}$，后两式与本稿式~\eqref{eq:ch01c-dpq}、式~\eqref{eq:ch01c-di}
+逐项同形。\textbf{要留意被积函数}：$\bar{D}(n)$ 是\textbf{第 $n$ 基准分布上}的平均粒径，积分里是
+$x\,q(x,n)$，不是 $x^{n}f(x)$——后者只在 $n=1$ 时量纲才对（$n\neq1$ 时
+$\int x^{n}f\,\mathrm{d}x\big/\int f\,\mathrm{d}x$ 的量纲是长度的 $n$ 次方）。
+
 常用的几个特例是：个数平均粒径 $D[1,0]$（算术平均粒径）、个数表面积平均粒径
 $D[2,0]$、个数体积平均粒径 $D[3,0]$、\textbf{表面积平均粒径} $D[3,2]$（Sauter 平均粒径）
-与\textbf{体积（质量）平均粒径} $D[4,3]$（de Brouckere 平均粒径）。由
-式~\eqref{eq:ch01c-dn} 可见它们与 $\bar{D}(n)$ 的关系是
+与\textbf{体积（质量）平均粒径} $D[4,3]$（de Brouckere 平均粒径）。按
+式~\eqref{eq:ch01c-dn} 的基准定义，它们正是第 $n$ 基准分布上的平均粒径：
 \begin{equation}\label{eq:ch01c-d32a}
 D[3,2]=\bar{D}(2),\qquad D[4,3]=\bar{D}(3)
 \end{equation}
@@ -327,6 +336,17 @@ u_{r}=\frac{(\rho-\rho_{0})\,\omega^{2}r\,d^{2}}{18\eta}
 \begin{equation}\label{eq:ch01c-dt-c}
 d=\left[\frac{18\eta\,\ln\left(r_{2}/r_{1}\right)}{(\rho-\rho_{0})\,\omega^{2}t}\right]^{1/2}
 \end{equation}
+
+\emph{核对说明}：已对照原页面图像（书内 p.67—69 / PDF p.86—88）。原书式 (1-56) 印
+$d=\left[\frac{18\eta_{0}}{(\rho-\rho_{0})g}u\right]^{1/2}$、式 (1-57) 印
+$d=\left[\frac{18\eta_{0}H}{(\rho-\rho_{0})gt}\right]^{1/2}$（书内 p.68 / PDF p.87）、式 (1-58) 印
+$d=\left[\frac{18\eta_{0}}{(\rho-\rho_{0})\omega^{2}r}u_{r}\right]^{1/2}$（同页）、式 (1-59) 印
+$d=\left[\frac{18\eta_{0}\ln(r_{2}/r_{1})}{(\rho-\rho_{0})\omega^{2}t}\right]^{1/2}$（书内 p.69 / PDF p.88）。
+原书一律印成 $d$ 关于 $u$、$H$、$u_r$ 的\textbf{反函数}，并把流体黏度记作 $\eta_0$；本稿改印
+$u=\dots$、$u_r=\dots$ 的正函数、黏度记 $\eta$（正文已声明），两者互为代数变形：
+式~\eqref{eq:ch01c-dt-g} 与源 (1-57)、式~\eqref{eq:ch01c-dt-c} 与源 (1-59) 逐项同形；
+式~\eqref{eq:ch01c-stokes}、式~\eqref{eq:ch01c-centrif} 是源 (1-56)、(1-58) 解出 $u$、$u_r$ 后的形式。
+原书同处的 $Re=du\rho_{0}/\eta_{0}<1$（严格地 $Re<0.2$，可放宽至 $Re<2$）与本稿逐字相符。
 
 直接测量颗粒的沉降速度很困难，但通过测量颗粒体系沉降过程的\textbf{浓度变化}可以间接求得
 沉降速度。依据浓度测定方法，常见的沉降测定法有移液管法、沉降天平法、沉降管法、比重计法、
@@ -1067,5 +1087,7 @@ PDF p.97--99}
 \end{crosscheck}
 
 \srcnote{S1（上册）§1.2.2 3)（续）—§1.2.5，书内 p.61--80 / PDF p.80--99。本节涉及的
-ASTM／HG 标准编号与仪器量程取自原书表 1--10 与正文；原 PDF 为 OCR 文本层，公式与表格数字
-均按 OCR 上下文与学科标准形式重建，存疑处已在正文用「待核对」标出。}
+ASTM／HG 标准编号与仪器量程取自原书表 1--10 与正文。本节\textbf{全部 22 个编号公式已于
+2026-10-13 逐式对照原页面图像复核}（书内 p.63、p.67--69、p.73--77、p.79 / PDF p.82、
+p.86--88、p.92--96、p.98），逐式判决见 \texttt{sources/formula\_review.md} 的 ch01-c 一节；
+凡 OCR 文本层有损伤处（如原书式 (1-51) 的被积函数、式 (1-60) 后的变量说明）一律以页面图像为准。}
