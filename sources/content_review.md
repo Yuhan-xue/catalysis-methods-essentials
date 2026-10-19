@@ -5,7 +5,7 @@
 - 制品：`build/main.pdf`（339 页）
 - 机筛数据：`build/content_scan.csv`（由 `tools/content_scan.py` 逐页读文字层生成）
 - 源码基线（机筛与页面判读所依据的源码提交，固定值，不随台账自身提交变动）：`7cbab68`
-- 生成日期：2026-10-13
+- 生成日期：2026-10-19
 - 本文件由 `tools/content_review.py` 从 `build/content_scan.csv` 与 `sources/content_review_notes.txt` 生成；要改内容请改 notes，不要直接改本文件。
 
 ## 一、方法与边界
