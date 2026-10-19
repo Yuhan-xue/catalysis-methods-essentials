@@ -46,6 +46,24 @@ TABLE_DONE = {'逐格一致', '逐格修正', '逐格差异·原书自身', '改
 PAGE_DONE_PREFIX = '已读'
 
 report = []
+GEN_DATE = ''
+
+
+def head_date():
+    """Use the HEAD commit date as the ledger's generation date.
+
+    This keeps repeated runs byte-identical (the alternative, today's date,
+    would rewrite one line every midnight and make the idempotency check noisy).
+    """
+    try:
+        out = subprocess.run(['git', 'log', '-1', '--format=%cs'], cwd=ROOT,
+                             capture_output=True, text=True, check=True)
+        d = out.stdout.strip()
+        if re.match(r'^\d{4}-\d{2}-\d{2}$', d):
+            return d
+    except Exception:
+        pass
+    return datetime.date.today().isoformat()
 
 
 def log(msg):
@@ -171,7 +189,7 @@ def merge_pages():
 
     # regenerate the human-readable report
     cmd = [sys.executable, os.path.join(ROOT, 'tools', 'content_review.py'),
-           '--notes', PAGES_SRC, '--out', CONTENT_REVIEW]
+           '--notes', PAGES_SRC, '--out', CONTENT_REVIEW, '--date', GEN_DATE]
     try:
         subprocess.run(cmd, cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
         log('content_review.md regenerated (%d notes rows)' % len(merged))
@@ -225,7 +243,7 @@ def merge_formulas():
     out.append('本文件由 `tools/review_ledger.py formulas` 从磁盘可核验事实生成：')
     out.append('`build/work_formulas.tsv`（`tools/review_worklist.py` 生成的 372 个编号式清单，')
     out.append('含分片、源码行、成品页、源书页范围与提示页）＋ `sources/logs/formulas_*.tsv`')
-    out.append('（逐式判决，附源书 PDF 页与并排式子）。生成时间 %s。' % datetime.date.today().isoformat())
+    out.append('（逐式判决，附源书 PDF 页与并排式子）。生成时间 %s。' % GEN_DATE)
     out.append('')
     out.append('**方法**：每个式先用 `tools/vbook.py` 渲染成品页面图像，读出发行式与编号；')
     out.append('再用 `tools/vpage.py` 渲染源书对应页（上册 `书内页 = PDF页 − 19`，下册 `+507`，')
@@ -337,7 +355,7 @@ def merge_tables():
     out.append('')
     out.append('本文件由 `tools/review_ledger.py tables` 从磁盘可核验事实生成：')
     out.append('`build/work_tables.tsv`（85 张表清单）＋ `sources/logs/tables_*.tsv`（逐表判决）')
-    out.append('＋ `sources/logs/cells_*.tsv`（不一致格的逐格记录）。生成时间 %s。' % datetime.date.today().isoformat())
+    out.append('＋ `sources/logs/cells_*.tsv`（不一致格的逐格记录）。生成时间 %s。' % GEN_DATE)
     out.append('')
     out.append('**方法**：每个表先渲染成品页面图像（跨页分两张），再渲染源书对应页图像，')
     out.append('**逐单元格**对照行标签、列头、数字、精度、上标、负号、单位、表注；')
@@ -416,6 +434,8 @@ def merge_tables():
 
 
 def main(argv):
+    global GEN_DATE
+    GEN_DATE = head_date()
     stages = [a for a in argv[1:] if not a.startswith('--')]
     strict = '--strict' in argv[1:]
     if not stages:
