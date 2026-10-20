@@ -1,0 +1,27 @@
+tab:ch04b-extinction	表头	1	类型	原书按点阵与微观对称元素分述，无汇总表	差异	表头改编
+tab:ch04b-extinction	表头	2	出现（衍射）条件	同上	差异	表头改编
+tab:ch04b-extinction	表头	3	系统消光	同上	差异	表头改编
+tab:ch04b-extinction	简单格子 P	1	无附加条件	「简单格子（P）无螺旋轴、滑移面等微观对称元素时，衍射谱无任何系统消光」书内 p.253 结论（1）	一致	源书该结论另附「无微观对称元素」条件，本表已写入同格
+tab:ch04b-extinction	简单格子 P	2	无消光，全部 hkl 出现	同上	一致	
+tab:ch04b-extinction	体心 I	1	h+k+l=2n	体心格子结构因子 F=∑f[1+exp(πi(h+k+l))]，h+k+l 奇数时为零 书内 p.251—252	一致	逐式推导对上
+tab:ch04b-extinction	体心 I	2	h+k+l 为奇数	同上	一致	
+tab:ch04b-extinction	面心 F	1	h,k,l 全奇或全偶	面心四套等同点代入，F=∑f[1+cosπ(h+k)+cosπ(k+l)+cosπ(h+l)]，奇偶混杂时为零 书内 p.252	一致	逐式推导对上
+tab:ch04b-extinction	面心 F	2	h,k,l 奇偶混杂	同上	一致	
+tab:ch04b-extinction	底心 C	1	h+k=2n	原书 p.252 只给结论「底心格子的倒易格子仍是底心格子」，未逐式展开；本表按同一方法补出	差异	改编补出（表注已声明）
+tab:ch04b-extinction	底心 C	2	h+k 为奇数	同上	差异	改编补出
+tab:ch04b-extinction	b 滑移面 ⊥c	1	hk0 中 k=2n	滑移面取 (x, y+½, −z)，F_hk0 含 [1+cosπk]，k 奇数时为零 书内 p.252—253	一致	逐式推导对上（原书取原子对 (x,y+½,−z)）
+tab:ch04b-extinction	b 滑移面 ⊥c	2	hk0 中 k 为奇数	同上	一致	
+tab:ch04b-extinction	a 滑移面 ⊥b	1	h0l 中 h=2n	书内 p.253 结论（3）：垂直于 b 的 a 滑移面使 (h0l) 中 h=2n+1 消失	一致	逐字对上
+tab:ch04b-extinction	a 滑移面 ⊥b	2	h0l 中 h 为奇数	同上	一致	
+tab:ch04b-extinction	21 螺旋轴 ∥b	1	0k0 中 k=2n	21 取 (−x, y+½, −z)，F_0k0 含 [1+cosπk]，k 奇数时为零 书内 p.253	一致	逐式推导对上
+tab:ch04b-extinction	21 螺旋轴 ∥b	2	0k0 中 k 为奇数	同上	一致	
+tab:ch04b-extinction	41 螺旋轴 ∥c	1	00l 中 l=4n	书内 p.253 结论（3）：平行于 c 的 41 螺旋轴使 00l 中仅 l=4n 存在	一致	逐字对上
+tab:ch04b-extinction	41 螺旋轴 ∥c	2	00l 中 l≠4n	同上	一致	
+tab:ch04b-extinction	行标题	1	简单格子 P	书内 p.253 结论（1）	一致	
+tab:ch04b-extinction	行标题	2	体心 I	书内 p.251—252	一致	
+tab:ch04b-extinction	行标题	3	面心 F	书内 p.252	一致	
+tab:ch04b-extinction	行标题	4	底心 C	书内 p.252（仅结论）	一致	
+tab:ch04b-extinction	行标题	5	b 滑移面 ⊥c	书内 p.252—253	一致	
+tab:ch04b-extinction	行标题	6	a 滑移面 ⊥b	书内 p.253 结论（3）	一致	
+tab:ch04b-extinction	行标题	7	21 螺旋轴 ∥b	书内 p.253	一致	
+tab:ch04b-extinction	行标题	8	41 螺旋轴 ∥c	书内 p.253 结论（3）	一致	
