@@ -51,10 +51,10 @@ tab:ch10-modelfam	未覆盖
 tab:ch10-diffmech	未覆盖				
 tab:ch10-criteria	未覆盖				
 tab:ch10-transient	未覆盖				
-tab:methods	未覆盖				
-tab:chrono-diagnostics	未覆盖				
-tab:bulk-vs-kinetics	未覆盖				
-tab:ch11c-insitu-methods	未覆盖				
+tab:methods	改编补充自洽	down p.819—832 / PDF 307—320	12	0	源书无此表（题注声明「据 §11.2—§11.2.3 归纳」）：第 1 行「表面浓度强制为零」见书内 p.822，「Q–t^{1/2} 截距分离 C_d 与吸附量」见 p.826（式 11-60、11-61）；第 2 行「可逆波给 E°′、ΔG、平衡常数，不可逆波给动力学不给热力学」见 p.826 原文；第 4 行 DPV 差分降背景、断续极谱不适用静止电极见 p.831—832。第 3 行峰电流∝v^{1/2} 与极化曲线给 Tafel/j0 超出题注所引范围，系改编本据 §11.1 补入，题注已写「归纳」，不作错格。cells 文件 4 行。图 build/_tb_p276.png
+tab:chrono-diagnostics	改编补充自洽	down p.833—839 / PDF 321—327	32	0	源书无此表：59/n mV 与 |E_τ/4−E_3τ/4|=47.9/n mV 见书内 p.836；2.3RT/αF 与 33.8/α mV 见 p.837；η–√t 截距 1/i₀（11-74）、双电层项（11-76）、双脉冲 i₀ 与 C_d（11-77、11-78）、c⁰∝i√τ（p.838 √τ=nFAc*√(πD)/2i）逐条对上；源书符号 k^Θ 本表记 k0。cells 文件 8 行。图 build/_tb_p279.png、build/_src_dn326_fb.png、build/_src_dn327_fb.png
+tab:bulk-vs-kinetics	改编补充自洽	down p.839—852 / PDF 327—340	21	0	源书无此表（题注与正文均声明改编）：整体电解列「总电量/沉积物质量、N 与 F、电流效率 100%、分钟—小时、只给总量」见书内 p.839—841（「以分钟和小时计的实验时间」、电重量法不需 100% 而电量法测总电量、法拉第定律总量恒等式）；动力学列按 §11.1—§11.4 正文归纳；「误差主源」「互补用法」两行为归纳，题注已说明。cells 文件 7 行。图 build/_tb_p283.png、build/_src_dn327_fb.png、build/_src_dn328_fb.png
+tab:ch11c-insitu-methods	改编补充自洽	down p.866—879 / PDF 354—367	20	0	源书无此表，按 §11.6.1—§11.6.4 逐行核：红外窗口透明不溶与薄层 1~100 nm 见书内 p.867；拉曼薄层 0.1~1 mm 见 p.871；DEMS 响应 <1 s 与 K 须在电化学条件下标定见 p.874；倏逝波激发与单粒子信息见 p.878；SIMS 非原位 UHV 与注入层假象见 p.875。第 4 行为改编本补入的非原位对照（题注已声明）。cells 文件 5 行。图 build/_tb_p306.png、build/_tb_dn355.png、build/_tb_dn359.png、build/_tb_dn362.png、build/_tb_dn366.png
 tab:afm-modes	未覆盖				
 tab:nano-three	未覆盖				
 tab:nano-methods	未覆盖				

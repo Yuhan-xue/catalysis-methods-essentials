@@ -13,3 +13,4 @@ page	file	line	old	new	reason
 85	chapters/parts/ch04-a.tex	370	简单单斜以 $b$ 为唯性轴时	简单单斜以 $b$ 为唯一轴时	同上，核对说明内的同一术语一并改正。
 228	chapters/parts/ch09-d.tex	151	本节源文件中无对应 OCR 文本，三种背景方法的适用范围与风险按学科标准形式归纳，待回查原书。	源书列 shirley、smart、sickafus、tougaard 四种本底	表9-5 题注原称源文件无对应文本、待回查；经查源书 §9.2.9 第5条确有四类本底与图9-80 对比，删去「待回查」并写明回查结论
 228	chapters/parts/ch09-d.tex	212	列出 PETH、PHMS、PPS、PES、PSS	列出 PETHS、PHMS	源书表9-37 首个聚合物印作 PETHS，核对说明误写 PETH，按原书订正
+6	chapters/ch00-intro.tex	66	比表面积、孔容与孔径分布	比表面积、孔容与孔尺寸分布	术语统一：孔尺寸分布（sources/terminology_decisions.md）；源书 up p.41 原文亦作孔尺寸分布
