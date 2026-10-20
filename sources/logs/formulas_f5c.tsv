@@ -10,3 +10,16 @@ eq:orr-paths	改编补充	down p.342	源书 p.342 只说明 RRDE 可测中间体
 eq:ume	已核对一致	down p.343	源书 p.343（书内 p.855）式 (11-112)—(11-114) 印 R_u=(1/(4πσr0))·x/(x+r0)、iR_u=jπr0²/(4πσr0)=jr0/(4σ)、R_uC_d=r0C_d^0/(4σ)；本版逐项同形。图 build/_d343.png、build/_m_f5cprod.png。
 eq:eis-d-sine	已核对一致	down p.344	源书 p.344（书内 p.856）式 (11-115) 印 e=E sinωt；本版同式。图 build/_d344.png、build/_m_f5cprod.png。
 eq:eis-d-phase	已核对一致	down p.345	源书 p.345（书内 p.857）式 (11-116) 印 i=I sin(ωt+φ)（「电流滞后于电压，可以表示为」后紧接此式）；本版照印 +φ，未改为 −φ。图 build/_d345.png、build/_m_f5cprod.png。
+eq:eis-d-cap	已核对一致	down p.346	源书 p.346（书内 p.858）式 (11-117)(11-118) 印 i=ωCEcos(ωt)、i=(E/X_C)sin(ωt+π/2)；本版逐项同形。图 build/_d346.png、build/_m_f5cprod2.png。
+eq:eis-d-capohm	形式一致但符号不同	down p.346	本版 Ė=−jX_Cİ；源书 p.346 式 (11-119) 印 E=−jX_C I（未加相量点号），数学内容一致，仅本版用点号标相量。图 build/_d346.png、build/_m_f5cprod2.png。
+eq:eis-d-series	形式一致但符号不同	down p.346	本版合并为 Ė=Ė_R+Ė_C=İ(R−jX_C)=İZ；源书 p.346 式 (11-120)—(11-122) 分三行印 E=E_R+E_C、E=I(R−jX_C)、E=IZ，逐项同形，本版加点号并合写。图 build/_d346.png、build/_m_f5cprod2.png。
+eq:eis-d-zdef	原书自身问题	down p.346	源书 p.346 式 (11-123) 印 Z(ω)=Z_Re+Z_Im（虚部不带 j），其下正文印 Z_Re=R、Z_Im=X_C=1/ωC；但同页式 (11-121) 又印 E=I(R−jX_C)，源书自身的 Z_Im=+X_C 与 −jX_C 相差一个符号。本版改印 Z(ω)=Z_Re+jZ_Im、Z_Re=R、Z_Im=−X_C=−1/(ωC) 以与 (11-121) 自洽（已在 ch11-d.tex 就地注明原书矛盾）。图 build/_d346.png、build/_m_f5cprod2.png。
+eq:eis-d-zmod	形式一致但符号不同	down p.346	本版 |Z|²=R²+X_C²=(Z_Re)²+(Z_Im)²、tanφ=−Z_Im/Z_Re=X_C/R=1/(ωRC)；源书 p.346 式 (11-124)(11-125) 印同一 |Z|² 与 tanφ=Z_Im/Z_Re=X_C/R=1/ωRC，因本版取 Z_Im=−X_C，故相角式加负号，数值仍为 X_C/R。图 build/_d346.png、build/_m_f5cprod2.png。
+eq:eis-d-parallel	改编补充	down p.347	源书 p.347 只有文字「并联阻抗的总阻抗是单个阻抗值倒数之和」，未印编号式；本版按正确含义补写 Y并=1/Z并=Σ1/Z_i、Z并=(Σ1/Z_i)^{-1}（已在 ch11-d.tex 说明原书措辞可有两解及取法）。图 build/_d347.png、build/_m_f5cprod2.png。
+eq:eis-d-cdl	形式一致但符号不同	down p.348	源书 p.348（书内 p.860）在正文内印 C_dl=1/(ωR_ct)，其中 ω 为半圆顶点对应的角频率，未加下标；本版写 C_dl=1/(ω_max R_ct)，并补 ω_max=2πf_max=1/(R_ctC_dl)，属记号明确化。图 build/_d348.png、build/_m_f5cprod2.png。
+eq:eis-d-fdiff	改编补充	down p.349	源书 p.349（书内 p.861）只给「低频区一条 45°的直线」这一图形结论，未印 f_low≳D/(2πδ²)；本版按半无限扩散特征长度 δ~√(2D/ω) 补出该操作判据（已在 ch11-d.tex 注明）。图 build/_d349.png、build/_m_f5cprod2.png。
+eq:eis-d-randles	改编补充	down p.350	源书 p.350（书内 p.862）图 11-41 画出 Randles 拓扑（RΩ 串联 [C_dl 并联 (R_ct 串联 Z_W)]），但未写解析式；本版按标准形式补出 Z=RΩ+[1/(R_ct+Z_W)+jωC_dl]^{-1}。图 build/_d350.png、build/_m_f5cprod2.png。
+eq:eis-d-rc	改编补充	down p.350	源书 p.350 图 11-41 只标 C_dl=1/(ωR_ct) 与半圆几何，未印 RΩ+R_ctC_dl 并联网络的 Z'、−Z'' 显式；本版按标准形式补出 Z'=RΩ+R_ct/[1+(ωR_ctC_dl)²]、−Z''=ωR_ct²C_dl/[1+(ωR_ctC_dl)²]。图 build/_d350.png、build/_m_f5cprod2.png。
+eq:eis-d-warburg	改编补充	down p.347-350	源书 p.347—350 只给 Warburg 阻抗在 Nyquist 图相角 45°、Bode 图斜率 −1/2、φ=−45° 的图形结论，未印 Z_W=σω^{-1/2}(1−j)、Z'_W=−Z''_W=σω^{-1/2} 与 σ 的定义式；本版按标准形式补出（相角按本书 φ≡−arg Z 记为 +45°，与源书 Bode 的 −45° 反号，已在 ch11-d.tex 说明）。图 build/_d347.png、build/_d350.png、build/_m_f5cprod2.png。
+eq:eis-d-cpe	改编补充	down p.350	源书 p.350 未出现常相位元件（CPE），无 Z_CPE=1/[Q(jω)^n]、0<n≤1、φ_CPE=nπ/2 的对应式；本版按标准形式补出并说明 n 的物理含义。图 build/_d350.png、build/_m_f5cprod2.png。
+eq:eis-d-cpeceff	改编补充	down p.350	源书 p.350 无 CPE 及其有效电容换算式；本版按标准形式补出 C_eff=(Q R_ct^{1−n})^{1/n}，并在正文说明取法有不同约定。图 build/_d350.png、build/_m_f5cprod2.png。

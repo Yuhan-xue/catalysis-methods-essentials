@@ -78,3 +78,7 @@ graphflow-out/
 
 # DSH task-progress events (local only)
 .dsh-progress/
+
+# DSH ops tool transient locks
+.dsh-ops-*.lock
+
