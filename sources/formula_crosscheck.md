@@ -3,7 +3,7 @@
 本文件由 `tools/review_ledger.py formulas` 从磁盘可核验事实生成：
 `build/work_formulas.tsv`（`tools/review_worklist.py` 生成的 372 个编号式清单，
 含分片、源码行、成品页、源书页范围与提示页）＋ `sources/logs/formulas_*.tsv`
-（逐式判决，附源书 PDF 页与并排式子）。生成时间 2026-10-20。
+（逐式判决，附源书 PDF 页与并排式子）。生成时间 2026-10-21。
 
 **方法**：每个式先用 `tools/vbook.py` 渲染成品页面图像，读出发行式与编号；
 再用 `tools/vpage.py` 渲染源书对应页（上册 `书内页 = PDF页 − 19`，下册 `+507`，
@@ -12,16 +12,14 @@ OCR 文本只用于定位，不作证据。判决词表与「什么算一致」�
 
 | 结论 | 式数 |
 | --- | --- |
-| 已核对一致 | 188 |
+| 已核对一致 | 197 |
 | 已核对并修正 | 0 |
-| 形式一致但符号不同 | 80 |
-| 原书自身问题 | 17 |
+| 形式一致但符号不同 | 83 |
+| 原书自身问题 | 18 |
 | 改编补充 | 74 |
 | 未找到 | 0 |
-| 未覆盖 | 13 |
+| 未覆盖 | 0 |
 | **合计** | **372** |
-
-> 尚有 13 式未取得终判（`未覆盖`／`未找到`），本台账**不得**用于宣称第二项验收完成。
 
 ## 一、逐式判决
 
@@ -432,7 +430,7 @@ OCR 文本只用于定位，不作证据。判决词表与「什么算一致」�
 | `eq:osc-ode` | 10-60 | 263 | down p.779-792 | 286 | 已核对一致 | down p.797 | 版面 (10-60) $dc_i/dt=F_i(c_j,p_k)$（build/_f4/p263.png）；源书 (10-138) 书内 p.797 / PDF p.286（build/_f4/d286.png）同式。逐符号一致。 |
 | `eq:osc-ode-diff` | 10-61 | 263 | down p.779-792 | 286 | 已核对一致 | down p.797 | 版面 (10-61) $\partial c_i/\partial t=F_i(c_j,p_k)+D_i\frac{\partial^2c_i}{\partial r^2}$（build/_f4/p263.png）；源书 (10-139) 书内 p.797 / PDF p.286（build/_f4/d286.png）同式，式后「$D_i$ 为普适扩散系数；$r$ 为空间坐标」。逐项一致。 |
 
-### ch11-a（18/31 式有终判）
+### ch11-a（31/31 式有终判）
 
 | 式 | 编号 | 成品页 | 源书 | 提示PDF页 | 结论 | 源书页 | 说明 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -448,19 +446,19 @@ OCR 文本只用于定位，不作证据。判决词表与「什么算一致」�
 | `eq:bv-first` | 11-10 | 268 | down p.807-833 | 304 | 形式一致但符号不同 | down p.304 | 版面 (11-10) i=FAk⁰[C_O exp(−αF(E−E⁰')/RT)−C_R exp((1−α)F(E−E⁰')/RT)]；源书书内 p.816 式 (11-22) 印 i=FAk^Θ{C_O exp(−αFη/RT)−C_R exp[(1−α)Fη/RT]}，本版 k^Θ→k⁰、η→E−E⁰'（等价，正文已就地说明）。图 build/_eq_p268.png / build/_src_dn304_fb.png |
 | `eq:i0` | 11-11 | 269 | down p.807-833 | 305 | 形式一致但符号不同 | down p.305 | 版面 (11-11) i₀=FAk⁰C_O*^{(1−α)}C_R*^{α}、j₀=i₀/A；源书书内 p.817 式 (11-25) 印 i₀=FAk^ΘC_O*^{(1−α)}C_R*^{α}（k^Θ→本版 k⁰；j₀=i₀/A 为本版补写的换算项，源书 (11-24) 另给中间式 i₀=FAk^ΘC_O*exp(−αFη/RT)）。图 build/_eq_p269.png / build/_src_dn305_fb.png |
 | `eq:bv` | 11-12 | 269 | down p.807-833 | 305 | 已核对一致 | down p.305 | 版面 (11-12) i=i₀[C_O/C_O* exp(−αFη/RT)−C_R/C_R* exp((1−α)Fη/RT)]；源书书内 p.817 式 (11-26) 逐字同形（含两个表面浓度归一因子）。图 build/_eq_p269.png / build/_src_dn305_fb.png |
-| `eq:bv-linear` | 11-13 | 269 | down p.807-833 | 305 | 未覆盖 | — |  |
-| `eq:bv-cathodic` | 11-14 | 269 | down p.807-833 | 305 | 未覆盖 | — |  |
-| `eq:tafel` | 11-15 | 269 | down p.807-833 | 305 | 未覆盖 | — |  |
-| `eq:fick1` | 11-16 | 270 | down p.807-833 | 306 | 未覆盖 | — |  |
-| `eq:diff-layer` | 11-17 | 270 | down p.807-833 | 307 | 未覆盖 | — |  |
-| `eq:il` | 11-18 | 270 | down p.807-833 | 307 | 未覆盖 | — |  |
-| `eq:eta1` | 11-19 | 271 | down p.807-833 | 307 | 未覆盖 | — |  |
-| `eq:eta2` | 11-20 | 271 | down p.807-833 | 307 | 未覆盖 | — |  |
-| `eq:eta-conc` | 11-21 | 271 | down p.807-833 | 307 | 未覆盖 | — |  |
-| `eq:fick2` | 11-22 | 272 | down p.807-833 | 310 | 未覆盖 | — |  |
-| `eq:cottrell` | 11-23 | 272 | down p.807-833 | 310 | 未覆盖 | — |  |
-| `eq:conc-profile` | 11-24 | 272 | down p.807-833 | 311 | 未覆盖 | — |  |
-| `eq:fick2-sph` | 11-25 | 272 | down p.807-833 | 312 | 未覆盖 | — |  |
+| `eq:bv-linear` | 11-13 | 269 | down p.807-833 | 305 | 已核对一致 | down PDF 306（书内 p.818） | 版面 (11-13) i=−i₀Fη/(RT)，另给 j=−(F/RT)j₀η；源书 (11-27) 印 i=−i₀Fη/(RT)，逐字同形，j 形式只是除以面积 A 的换算。查明用图 build/_src_306.png（vpage.py down --dpi 220） |
+| `eq:bv-cathodic` | 11-14 | 269 | down p.807-833 | 305 | 已核对一致 | down PDF 306（书内 p.818） | 版面 (11-14) i=i₀exp(−αFη/RT)；源书 (11-28) 同形（其前文给出忽略阳极项的不等式 exp(−αFη/RT)≫exp[(1−α)Fη/RT]）。查明用图 build/_src_306.png（vpage.py down --dpi 220） |
+| `eq:tafel` | 11-15 | 269 | down p.807-833 | 305 | 已核对一致 | down PDF 306（书内 p.818） | 版面 (11-15) η=(RT/αF)ln i₀−(RT/αF)ln i，并给 a=(RT/αF)ln i₀、b=−RT/(αF)；源书 (11-29)(11-30) 同形。查明用图 build/_src_306.png（vpage.py down --dpi 220） |
+| `eq:fick1` | 11-16 | 270 | down p.807-833 | 306 | 形式一致但符号不同 | down PDF 306（书内 p.818） | 版面 (11-16) N_O=−D_O(∂C_O/∂x)；源书 (11-31) 印 N_O=D_O(∂C_O/∂x)（无负号）。差异来自通量正向取法：本版取「向电极、沿 +x」为正故带负号，正文就地说明，形式与量纲一致。查明用图 build/_src_306.png（vpage.py down --dpi 220） |
+| `eq:diff-layer` | 11-17 | 270 | down p.807-833 | 307 | 形式一致但符号不同 | down PDF 307（书内 p.819） | 版面 (11-17) i/(nFA)=D_O(C*O−C_O)/δ_O；源书 (11-32) 印 −D_O(C*O−C_O)/δ_O。同为 i 与 N_O 正向约定不同所致，本版核对说明已交代（还原电流取正）。查明用图 build/_src_307.png（vpage.py down --dpi 220） |
+| `eq:il` | 11-18 | 270 | down p.807-833 | 307 | 形式一致但符号不同 | down PDF 307（书内 p.819） | 版面 (11-18) i_t/(nFA)=D_O C*O/δ_O；源书 (11-33) 印 −D_O C*O/δ_O，仍是同一符号约定，绝对值与量纲一致。查明用图 build/_src_307.png（vpage.py down --dpi 220） |
+| `eq:eta1` | 11-19 | 271 | down p.807-833 | 307 | 已核对一致 | down PDF 307（书内 p.819） | 版面 (11-19) η₁=−(RT/nF)ln[i_t/(i_t−i)]；源书 (11-36) 同形（其前 (11-34)(11-35) 的 Nernst 展开 η₁=(RT/nF)ln(C_O/C*O) 亦一致）。查明用图 build/_src_307.png（vpage.py down --dpi 220） |
+| `eq:eta2` | 11-20 | 271 | down p.807-833 | 307 | 已核对一致 | down PDF 307（书内 p.819） | 版面 (11-20) η₂=−RT/(αnF)ln(C*O/C_O)=−RT/(αnF)ln[i_t/(i_t−i)]；源书 (11-39) 同形。查明用图 build/_src_307.png（vpage.py down --dpi 220） |
+| `eq:eta-conc` | 11-21 | 271 | down p.807-833 | 307 | 原书自身问题 | down PDF 307（书内 p.819） | 版面 (11-21) η_conc=η₁+η₂=−RT/(nF)(1+1/α)ln[i_t/(i_t−i)]；源书 (11-40) 印作 −RT/(nF)(1+1/α)[i_t/(i_t−i)]，缺 ln 号（左端量纲 V、右端无量纲），同页 (11-39) 是带 ln 的，可证为原书漏排。本版补回 ln、系数 (1+1/α) 照录，已在核对说明注明。查明用图 build/_src_307.png（vpage.py down --dpi 220） |
+| `eq:fick2` | 11-22 | 272 | down p.807-833 | 310 | 已核对一致 | down PDF 310（书内 p.822） | 版面 (11-22) ∂C_O/∂t=D_O ∂²C_O/∂x²；源书 (11-41) 同形，且边界条件 (11-42) C_O(x,t)=C*O、(11-43) lim C_O=C*O、(11-44) C_O(x,t)=0 (t>0) 逐条对应。查明用图 build/_src_310.png（vpage.py down --dpi 220） |
+| `eq:cottrell` | 11-23 | 272 | down p.807-833 | 310 | 已核对一致 | down PDF 310（书内 p.822） | 版面 (11-23) i(t)=i_d(t)=nFAD_O^{1/2}C*O/(πt)^{1/2}；源书 (11-45) 同形（源书在同一行把 i 与 i_d 并写）。查明用图 build/_src_310.png（vpage.py down --dpi 220） |
+| `eq:conc-profile` | 11-24 | 272 | down p.807-833 | 311 | 已核对一致 | down PDF 311（书内 p.823） | 版面 (11-24) C_O(x,t)=C*O[1−erfc(x/(2(D_Ot)^{1/2}))]=C*O erf(x/(2(D_Ot)^{1/2}))；源书 (11-46)(11-47) 两个等价写法均同形。查明用图 build/_src_311.png（vpage.py down --dpi 220） |
+| `eq:fick2-sph` | 11-25 | 272 | down p.807-833 | 312 | 已核对一致 | down PDF 312（书内 p.824） | 版面 (11-25) ∂C_O(r,t)/∂t=D_O[∂²C_O/∂r²+(2/r)∂C_O/∂r]；源书 (11-48) 同形。连带的边界条件 (11-49)—(11-51) 与解 (11-52) i_d=nFAD_OC*O[1/(πD_Ot)^{1/2}+1/r₀]、(11-53) i_d(球形)=i_d(线性)+nFAD_OC*O/r₀ 也已核对，本版 (11-26) 一致。查明用图 build/_src_312.png（vpage.py down --dpi 220） |
 | `eq:spherical` | 11-26 | 272 | down p.807-833 | 312 | 已核对一致 | down p.312 | 版面 (11-26) i_d(t)=nFAD_O C_O*[1/(πD_O t)^{1/2}+1/r0]=i_d(线性)+nFAD_O C_O*/r0；源书书内 p.824 分两式印 (11-52) i_d(t)=nFAD_O C_O*[1/(πD_O t)^{1/2}+1/r0] 与 (11-53) i_d(球形)=i_d(线性)+nFAD_O C_O*/r0，本版合为一式。图 build/_eq_p272.png / build/_src_dn312_fb.png |
 | `eq:iss-ch11` | 11-27 | 273 | down p.807-833 | 313 | 已核对一致 | down p.313 | 版面 (11-27) i_ss=nFAm_0C_O*；源书书内 p.825 式 (11-55) 逐字同形（该页未定义 m_0）。图 build/_eq_p273.png / build/_src_dn313_fb.png |
 | `eq:sampled-rev` | 11-28 | 273 | down p.807-833 | 313 | 已核对一致 | down p.313 | 版面 (11-28) i(t)=nFAD_O^{1/2}C_O*/(π^{1/2}t^{1/2}(1+ξθ))；源书书内 p.825 式 (11-56) 逐字同形（分母确为 1+ξθ）。图 build/_eq_p273.png / build/_src_dn313_fb.png |
@@ -566,24 +564,6 @@ OCR 文本只用于定位，不作证据。判决词表与「什么算一致」�
 | `eq:demod` | 12-18 | 322 | down p.926-942 | 412-428 | 改编补充 | down p.936 | 版面 (12-18) $S_n=\frac{\Omega}{\pi}\int_0^{2\pi/\Omega}I(z(t))\cos(n\Omega t)\,dt$、$z(t)=\bar z+A\cos\Omega t$（build/_f5d/p322.png）；源书 §12.6.3 书内 p.936 / PDF p.422 只述「调制—解调以剔除未受调制的背景信号（直流部分）」，未印锁相解调式；本版按锁相原理补出。 |
 | `eq:ters-ef` | 12-19 | 324 | down p.926-942 | 415 | 改编补充 | down p.929 | 版面 (12-19) $\mathrm{EF}\approx\left\|\frac{E_{\mathrm{loc}}(\omega_{\mathrm L})}{E_0}\right\|^2\left\|\frac{E_{\mathrm{loc}}(\omega_{\mathrm S})}{E_0}\right\|^2\approx\left\|\frac{E_{\mathrm{loc}}}{E_0}\right\|^4$（build/_f5d/p324.png）；源书 §12.6.2 书内 p.929 / PDF p.415（build/_f5d/d415.png）只作文字说「理论预测该电磁场的增强效率在 $10^3$~$10^9$」，未印增强因子式；本版按 $\|E\|^4$ 关系补出。 |
 | `eq:afmir` | 12-20 | 328 | down p.926-942 | 427 | 改编补充 | down p.941 | 版面 (12-20) $A_{\mathrm{cant}}(\lambda)\propto\mu_{\mathrm{abs}}(\lambda)I(\lambda)\chi_{\mathrm{th}}$（build/_f5d/p328.png）；源书 §12.6.4 书内 p.941 / PDF p.427 只作文字说明（ch12-c.tex:625 已注明），未印该式；本版按 AFM-IR 信号与吸收系数、光强、热膨胀系数成正比的原理补出。 |
-
-## 二、未取得终判的式（13）
-
-| 式 | 编号 | 成品页 | 分片 | 状态 |
-| --- | --- | --- | --- | --- |
-| `eq:bv-linear` | 11-13 | 269 | ch11-a | 未覆盖 |
-| `eq:bv-cathodic` | 11-14 | 269 | ch11-a | 未覆盖 |
-| `eq:tafel` | 11-15 | 269 | ch11-a | 未覆盖 |
-| `eq:fick1` | 11-16 | 270 | ch11-a | 未覆盖 |
-| `eq:diff-layer` | 11-17 | 270 | ch11-a | 未覆盖 |
-| `eq:il` | 11-18 | 270 | ch11-a | 未覆盖 |
-| `eq:eta1` | 11-19 | 271 | ch11-a | 未覆盖 |
-| `eq:eta2` | 11-20 | 271 | ch11-a | 未覆盖 |
-| `eq:eta-conc` | 11-21 | 271 | ch11-a | 未覆盖 |
-| `eq:fick2` | 11-22 | 272 | ch11-a | 未覆盖 |
-| `eq:cottrell` | 11-23 | 272 | ch11-a | 未覆盖 |
-| `eq:conc-profile` | 11-24 | 272 | ch11-a | 未覆盖 |
-| `eq:fick2-sph` | 11-25 | 272 | ch11-a | 未覆盖 |
 
 ## 三、本台账不主张的东西
 

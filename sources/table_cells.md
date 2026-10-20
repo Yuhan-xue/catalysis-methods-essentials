@@ -2,7 +2,7 @@
 
 本文件由 `tools/review_ledger.py tables` 从磁盘可核验事实生成：
 `build/work_tables.tsv`（85 张表清单）＋ `sources/logs/tables_*.tsv`（逐表判决）
-＋ `sources/logs/cells_*.tsv`（不一致格的逐格记录）。生成时间 2026-10-20。
+＋ `sources/logs/cells_*.tsv`（不一致格的逐格记录）。生成时间 2026-10-21。
 
 **方法**：每个表先渲染成品页面图像（跨页分两张），再渲染源书对应页图像，
 **逐单元格**对照行标签、列头、数字、精度、上标、负号、单位、表注；
