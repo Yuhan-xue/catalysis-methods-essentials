@@ -107,6 +107,14 @@ v1.0.0 的 p339+p340 在现稿合并为一页（相似度 0.985），**不是丢
 `mode release`、339 页、错误 0、overfull>5pt 0、缺字 0、未定义引用 0、重标号 0、PASS。
 即现稿已具备发布资格，差的只是把交付件换成这一版（见 §5 第 3 条）。
 
+**其余检查器**（`python tools/qa_suite.py`，11 项全部 exit=0，汇总写 `build/qa_suite.txt`）：
+编号连续（`check_numbers`：全由 LaTeX 计数器生成，无硬编码/重置）、目录 61 条 0 处不符
+（`check_toc`）、书签 145 条 0 处不符（3 条回退匹配，`check_bookmarks`）、无重复页
+（`check_duppages`：339 页均有正文，重复组 0）、页脚 bad=0（仅封面 1 页无页码，`check_folio`）、
+包含检查 OK（`check_includes`）、版面重叠 PASS blocking=0（`overlap_check`）、
+85 张表 `\src` 来源标注 PASS 85（`check_src`）、内容扫描仅 INFO（`content_scan`）。
+其中 `check_terms` 报 8 组 21 对「竞争术语」，属术语统一清单而非缺陷，明细在 `tools/term_audit.txt`。
+
 ## 5 已完成事项与后续建议
 
 三项验收均已达成（①339/339、②372/372、③59/59），门禁全绿。后续建议：

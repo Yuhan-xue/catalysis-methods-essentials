@@ -6,99 +6,99 @@ tab:physis-chemis,chapters/parts/ch01-a.tex:27,1-1,up,5-5,FOUND,up p.5,"显著�
 
 
                表１一１      物理吸附与化学吸附的基本"
-tab:isotherm-read,chapters/parts/ch01-a.tex:103,,,,NON_SOURCE,,
-tab:pore-class,chapters/parts/ch01-b.tex:441,,,,NON_SOURCE,,
-tab:ch01c-methods,chapters/parts/ch01-c.tex:193,1-10,up,64-65,FOUND,up p.64,"ＥＴ）法等（表１一１０）。要选择合适的测定方法，首先，考虑
+tab:isotherm-read,chapters/parts/ch01-a.tex:106,1-3,up,20-22,FOUND,up p.21,的基本信息（表        １一３）。吸附等温线的低相对压力段的
+tab:pore-class,chapters/parts/ch01-b.tex:474,,,,NON_SOURCE,,
+tab:ch01c-methods,chapters/parts/ch01-c.tex:210,1-10,up,64-65,FOUND,up p.64,"ＥＴ）法等（表１一１０）。要选择合适的测定方法，首先，考虑
 颗粒材料的物化性质；其次，其测量上下限要能够"
-tab:ch01c-density,chapters/parts/ch01-c.tex:774,,,,NON_SOURCE,,
-tab:ch01c-strength,chapters/parts/ch01-c.tex:961,,,,NON_SOURCE,,
+tab:ch01c-density,chapters/parts/ch01-c.tex:821,,,,NON_SOURCE,,
+tab:ch01c-strength,chapters/parts/ch01-c.tex:1009,,,,NON_SOURCE,,
 tab:tem-parts,chapters/parts/ch02-a.tex:125,,,,NO_TABLE_NO,,
-tab:extinction-ch02,chapters/parts/ch02-a.tex:305,2-1,up,99-99,FOUND,up p.99,"表２一１   几种常见晶体结构的消光规律，其中Ｆ是结构因子
+tab:extinction-ch02,chapters/parts/ch02-a.tex:317,2-1,up,99-99,FOUND,up p.99,"表２一１   几种常见晶体结构的消光规律，其中Ｆ是结构因子
   晶体类型"
-tab:pattern-read,chapters/parts/ch02-a.tex:361,,,,NO_TABLE_NO,,
-tab:contrast,chapters/parts/ch02-a.tex:404,,,,NO_TABLE_NO,,
-tab:ring-index,chapters/parts/ch02-a.tex:499,,,,NO_TABLE_NO,,
-tab:ch02b-eds-eels,chapters/parts/ch02-b.tex:429,,,,NO_TABLE_NO,,
-tab:ch02b-bimetal,chapters/parts/ch02-b.tex:985,,,,NO_TABLE_NO,,
-tab:ch02b-smsi,chapters/parts/ch02-b.tex:1042,,,,NO_TABLE_NO,,
-tab:ch02c-pt,chapters/parts/ch02-c.tex:309,,,,NO_TABLE_NO,,
-tab:ch02c-newold,chapters/parts/ch02-c.tex:366,,,,NO_TABLE_NO,,
-tab:ch02c-situ,chapters/parts/ch02-c.tex:385,,,,NO_TABLE_NO,,
-tab:ch02c-gaps,chapters/parts/ch02-c.tex:466,,,,NO_TABLE_NO,,
+tab:pattern-read,chapters/parts/ch02-a.tex:377,,,,NO_TABLE_NO,,
+tab:contrast,chapters/parts/ch02-a.tex:430,,,,NO_TABLE_NO,,
+tab:ring-index,chapters/parts/ch02-a.tex:539,,,,NO_TABLE_NO,,
+tab:ch02b-eds-eels,chapters/parts/ch02-b.tex:444,,,,NO_TABLE_NO,,
+tab:ch02b-bimetal,chapters/parts/ch02-b.tex:1038,,,,NO_TABLE_NO,,
+tab:ch02b-smsi,chapters/parts/ch02-b.tex:1108,,,,NO_TABLE_NO,,
+tab:ch02c-pt,chapters/parts/ch02-c.tex:311,,,,NO_TABLE_NO,,
+tab:ch02c-newold,chapters/parts/ch02-c.tex:380,,,,NO_TABLE_NO,,
+tab:ch02c-situ,chapters/parts/ch02-c.tex:409,,,,NO_TABLE_NO,,
+tab:ch02c-gaps,chapters/parts/ch02-c.tex:514,,,,NO_TABLE_NO,,
 tab:ch03-three,chapters/parts/ch03-a.tex:38,3-1,up,171-177,FOUND,up p.171,"表３一１    热分析技术分类
 
        热分析方法           简称"
-tab:ch03b-hyphenated,chapters/parts/ch03-b.tex:82,,,,NON_SOURCE,,
-tab:ch03b-conditions,chapters/parts/ch03-b.tex:474,,,,NON_SOURCE,,
+tab:ch03b-hyphenated,chapters/parts/ch03-b.tex:86,,,,NON_SOURCE,,
+tab:ch03b-conditions,chapters/parts/ch03-b.tex:485,,,,NON_SOURCE,,
 tab:crystal-systems,chapters/parts/ch04-a.tex:70,4-2,up,226-227,FOUND,up p.226,"对称元素列于表４一２中。
 
                        表４一２    晶系划分、晶胞"
-tab:recip-simple,chapters/parts/ch04-a.tex:343,,,,NO_TABLE_NO,,
-tab:extinction-ch04,chapters/parts/ch04-a.tex:590,,,,NON_SOURCE,,
-tab:xrd-limits,chapters/parts/ch04-a.tex:676,,,,NO_TABLE_NO,,
-tab:ch04b-Qtable,chapters/parts/ch04-b.tex:43,,,,NO_TABLE_NO,,
-tab:ch04b-multiplicity,chapters/parts/ch04-b.tex:178,4-7,up,247-247,INDEX_OK,index p.247,
-tab:ch04b-extinction,chapters/parts/ch04-b.tex:424,,,,NO_TABLE_NO,,
-tab:ch04b-quantmethods,chapters/parts/ch04-b.tex:631,,,,NO_TABLE_NO,,
-tab:ch04b-FOM,chapters/parts/ch04-b.tex:896,,,,NO_TABLE_NO,,
-tab:ch04c-scherrer,chapters/parts/ch04-c.tex:166,,,,NON_SOURCE,,
-tab:ch04c-boundary,chapters/parts/ch04-c.tex:364,,,,NO_TABLE_NO,,
-tab:ch04c-profile,chapters/parts/ch04-c.tex:511,4-8,up,278-284,FOUND,up p.280,"表性函数口见表４一８。
+tab:recip-simple,chapters/parts/ch04-a.tex:347,,,,NO_TABLE_NO,,
+tab:extinction-ch04,chapters/parts/ch04-a.tex:622,,,,NON_SOURCE,,
+tab:xrd-limits,chapters/parts/ch04-a.tex:708,,,,NO_TABLE_NO,,
+tab:ch04b-Qtable,chapters/parts/ch04-b.tex:49,,,,NO_TABLE_NO,,
+tab:ch04b-multiplicity,chapters/parts/ch04-b.tex:211,4-7,up,247-247,INDEX_OK,index p.247,
+tab:ch04b-extinction,chapters/parts/ch04-b.tex:484,,,,NO_TABLE_NO,,
+tab:ch04b-quantmethods,chapters/parts/ch04-b.tex:709,,,,NO_TABLE_NO,,
+tab:ch04b-FOM,chapters/parts/ch04-b.tex:1001,,,,NO_TABLE_NO,,
+tab:ch04c-scherrer,chapters/parts/ch04-c.tex:167,,,,NON_SOURCE,,
+tab:ch04c-boundary,chapters/parts/ch04-c.tex:371,,,,NO_TABLE_NO,,
+tab:ch04c-profile,chapters/parts/ch04-c.tex:547,4-8,up,278-284,FOUND,up p.280,"表性函数口见表４一８。
 
 
                      表４一８         多晶衍射"
-tab:ch04c-fitmethods,chapters/parts/ch04-c.tex:567,,,,NO_TABLE_NO,,
-tab:ch04c-rfactor,chapters/parts/ch04-c.tex:632,,,,NO_TABLE_NO,,
-tab:ch05-tpd,chapters/parts/ch05-a.tex:135,,,,NO_TABLE_NO,,
-tab:ch05-redhead,chapters/parts/ch05-a.tex:807,,,,NO_TABLE_NO,,
-tab:ch05b-tpr-shift,chapters/parts/ch05-b.tex:421,,,,NO_TABLE_NO,,
+tab:ch04c-fitmethods,chapters/parts/ch04-c.tex:619,,,,NO_TABLE_NO,,
+tab:ch04c-rfactor,chapters/parts/ch04-c.tex:707,,,,NO_TABLE_NO,,
+tab:ch05-tpd,chapters/parts/ch05-a.tex:155,,,,NO_TABLE_NO,,
+tab:ch05-redhead,chapters/parts/ch05-a.tex:846,,,,NO_TABLE_NO,,
+tab:ch05b-tpr-shift,chapters/parts/ch05-b.tex:410,,,,NO_TABLE_NO,,
 tab:raman-ir,chapters/parts/ch06-a.tex:94,,,,NO_TABLE_NO,,
-tab:fluor-suppress,chapters/parts/ch06-a.tex:382,,,,NO_TABLE_NO,,
-tab:raman-parts,chapters/parts/ch06-a.tex:428,,,,NO_TABLE_NO,,
-tab:insitu-window,chapters/parts/ch06-b.tex:111,,,,NO_TABLE_NO,,
-tab:raman-routes,chapters/parts/ch06-b.tex:346,,,,NO_TABLE_NO,,
-tab:mo-lines,chapters/parts/ch06-b.tex:469,,,,NON_SOURCE,,
-tab:uv-apps,chapters/parts/ch06-b.tex:668,,,,NO_TABLE_NO,,
-tab:zeolite-ring,chapters/parts/ch06-c.tex:376,6-1,up,364-364,FOUND,up p.364,表６－１     一些常规分子筛的１七，｝一Ｔ振动频率和其相应的环数团ｌ
-tab:pyridine,chapters/parts/ch06-c.tex:633,6-3,up,370-371,FOUND,up p.370,进行了关联。表                     ６一３   列出了毗陡吸附在
-tab:raman-bands-c,chapters/parts/ch06-c.tex:833,,,,NO_TABLE_NO,,
-tab:modes,chapters/parts/ch07-a.tex:132,,,,NO_TABLE_NO,,
+tab:fluor-suppress,chapters/parts/ch06-a.tex:406,,,,NO_TABLE_NO,,
+tab:raman-parts,chapters/parts/ch06-a.tex:464,,,,NO_TABLE_NO,,
+tab:insitu-window,chapters/parts/ch06-b.tex:114,,,,NO_TABLE_NO,,
+tab:raman-routes,chapters/parts/ch06-b.tex:368,,,,NO_TABLE_NO,,
+tab:mo-lines,chapters/parts/ch06-b.tex:514,,,,NON_SOURCE,,
+tab:uv-apps,chapters/parts/ch06-b.tex:727,,,,NO_TABLE_NO,,
+tab:zeolite-ring,chapters/parts/ch06-c.tex:377,6-1,up,364-364,FOUND,up p.364,表６－１     一些常规分子筛的１七，｝一Ｔ振动频率和其相应的环数团ｌ
+tab:pyridine,chapters/parts/ch06-c.tex:637,6-3,up,370-371,FOUND,up p.370,进行了关联。表                     ６一３   列出了毗陡吸附在
+tab:raman-bands-c,chapters/parts/ch06-c.tex:843,,,,NO_TABLE_NO,,
+tab:modes,chapters/parts/ch07-a.tex:144,,,,NO_TABLE_NO,,
 tab:ch07b-probes,chapters/parts/ch07-b.tex:67,7-12,up,443-447; 469-469; 474-478,FOUND,up p.475,其谱带归属见表                ７一１２，          即    ＣＳＨＳＮ
-tab:ch07b-py,chapters/parts/ch07-b.tex:716,7-12,up,475-475,FOUND,up p.475,其谱带归属见表                ７一１２，          即    ＣＳＨＳＮ
-tab:ch07c-probe,chapters/parts/ch07-c.tex:235,,,,NO_TABLE_NO,,
-tab:ch07c-criteria,chapters/parts/ch07-c.tex:399,,,,NO_TABLE_NO,,
-tab:ch07c-formate,chapters/parts/ch07-c.tex:682,7-19,up,505-511,FOUND,up p.504,"图７一９４和表７一１９的谱带归属看同文献结果相似在催化剂表面形成了：Ｚｎｏ
+tab:ch07b-py,chapters/parts/ch07-b.tex:763,7-12,up,475-475,FOUND,up p.475,其谱带归属见表                ７一１２，          即    ＣＳＨＳＮ
+tab:ch07c-probe,chapters/parts/ch07-c.tex:254,,,,NO_TABLE_NO,,
+tab:ch07c-criteria,chapters/parts/ch07-c.tex:425,,,,NO_TABLE_NO,,
+tab:ch07c-formate,chapters/parts/ch07-c.tex:720,7-19,up,505-511,FOUND,up p.504,"图７一９４和表７一１９的谱带归属看同文献结果相似在催化剂表面形成了：Ｚｎｏ
 （Ｈ一Ｃ００一Ｚｎ）、Ｃｕ"
 tab:narrow-map,chapters/parts/ch08-a.tex:41,,,,NO_TABLE_NO,,
-tab:nuclei,chapters/parts/ch08-a.tex:314,,,,NO_TABLE_NO,,
-tab:probes,chapters/parts/ch08-b.tex:305,,,,NO_TABLE_NO,,
-tab:c13-assign,chapters/parts/ch08-c.tex:199,,,,NO_TABLE_NO,,
-tab:nuclei-coke,chapters/parts/ch08-c.tex:425,,,,NO_TABLE_NO,,
-tab:xpsparts,chapters/parts/ch09-a.tex:389,,,,NO_TABLE_NO,,
+tab:nuclei,chapters/parts/ch08-a.tex:333,,,,NO_TABLE_NO,,
+tab:probes,chapters/parts/ch08-b.tex:309,,,,NO_TABLE_NO,,
+tab:c13-assign,chapters/parts/ch08-c.tex:201,,,,NO_TABLE_NO,,
+tab:nuclei-coke,chapters/parts/ch08-c.tex:452,,,,NO_TABLE_NO,,
+tab:xpsparts,chapters/parts/ch09-a.tex:393,,,,NO_TABLE_NO,,
 tab:satellite,chapters/parts/ch09-b.tex:174,,,,NO_TABLE_NO,,
 tab:ups-xps,chapters/parts/ch09-c.tex:62,,,,NO_TABLE_NO,,
-tab:surface-compare,chapters/parts/ch09-c.tex:197,,,,NO_TABLE_NO,,
+tab:surface-compare,chapters/parts/ch09-c.tex:207,,,,NO_TABLE_NO,,
 tab:ch09-bg,chapters/parts/ch09-d.tex:149,,,,NON_SOURCE,,
 tab:ch09-so,chapters/parts/ch09-d.tex:190,,,,NON_SOURCE,,
 tab:ch09-problems,chapters/parts/ch09-d.tex:292,,,,NON_SOURCE,,
-tab:power-vs-hyp,chapters/parts/ch10-a.tex:765,,,,NO_TABLE_NO,,
-tab:ch10-modelfam,chapters/parts/ch10-b.tex:73,,,,NO_TABLE_NO,,
-tab:ch10-window,chapters/parts/ch10-b.tex:148,,,,NON_SOURCE,,
-tab:ch10-resid-diag,chapters/parts/ch10-b.tex:232,,,,NON_SOURCE,,
-tab:ch10-diffmech,chapters/parts/ch10-b.tex:463,,,,NO_TABLE_NO,,
-tab:ch10-criteria,chapters/parts/ch10-b.tex:877,,,,NO_TABLE_NO,,
+tab:power-vs-hyp,chapters/parts/ch10-a.tex:784,,,,NO_TABLE_NO,,
+tab:ch10-modelfam,chapters/parts/ch10-b.tex:77,,,,NO_TABLE_NO,,
+tab:ch10-window,chapters/parts/ch10-b.tex:165,,,,NON_SOURCE,,
+tab:ch10-resid-diag,chapters/parts/ch10-b.tex:249,,,,NON_SOURCE,,
+tab:ch10-diffmech,chapters/parts/ch10-b.tex:485,,,,NO_TABLE_NO,,
+tab:ch10-criteria,chapters/parts/ch10-b.tex:917,,,,NO_TABLE_NO,,
 tab:ch10-reactor,chapters/parts/ch10-c.tex:134,10-3,down,779-784,FOUND,down p.784,"出返混程度。表 10-3
 中实验室常用的无梯度反应器性能的比较。
 
            表 10-3"
-tab:ch10-transient,chapters/parts/ch10-c.tex:976,,,,NO_TABLE_NO,,
-tab:methods,chapters/parts/ch11-a.tex:945,,,,NO_TABLE_NO,,
-tab:chrono-diagnostics,chapters/parts/ch11-b.tex:199,,,,NO_TABLE_NO,,
-tab:bulk-vs-kinetics,chapters/parts/ch11-b.tex:498,,,,NO_TABLE_NO,,
+tab:ch10-transient,chapters/parts/ch10-c.tex:1012,,,,NO_TABLE_NO,,
+tab:methods,chapters/parts/ch11-a.tex:981,,,,NO_TABLE_NO,,
+tab:chrono-diagnostics,chapters/parts/ch11-b.tex:223,,,,NO_TABLE_NO,,
+tab:bulk-vs-kinetics,chapters/parts/ch11-b.tex:555,,,,NO_TABLE_NO,,
 tab:ch11c-insitu-methods,chapters/parts/ch11-c.tex:179,,,,NO_TABLE_NO,,
-tab:eis-d-elements,chapters/parts/ch11-d.tex:229,11-1,down,860-860,FOUND,down p.860,"用等效元件如表 11-1 所示。
+tab:eis-d-elements,chapters/parts/ch11-d.tex:223,11-1,down,860-860,FOUND,down p.860,"用等效元件如表 11-1 所示。
 
                     表 11-1 等效电路中的常"
-tab:afm-modes,chapters/parts/ch12-b.tex:223,,,,NO_TABLE_NO,,
-tab:nano-three,chapters/parts/ch12-c.tex:657,,,,NO_TABLE_NO,,
-tab:nano-methods,chapters/parts/ch12-c.tex:700,,,,NO_TABLE_NO,,
+tab:afm-modes,chapters/parts/ch12-b.tex:224,,,,NO_TABLE_NO,,
+tab:nano-three,chapters/parts/ch12-c.tex:679,,,,NO_TABLE_NO,,
+tab:nano-methods,chapters/parts/ch12-c.tex:724,,,,NO_TABLE_NO,,
