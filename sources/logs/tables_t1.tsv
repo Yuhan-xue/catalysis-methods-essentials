@@ -21,3 +21,5 @@ tab:nuclei	改编补充自洽	down p.531-539（PDF 23-31）	13	0	源书无对应
 tab:probes	改编补充自洽	down p.542-544（PDF 34-36）	37	0	源书无对应表；p.542 正文覆盖丙酮-2-13C、吡啶-d5、乙烯/CO/乙烷、全氟丁胺四行（数值逐字相符），TMP/15N-吡啶/13CO/1H 分档四行源书 p.543—544 未逐页核对（cells 标差异）。图 build/_src_t1_p34.png；cells_probes.tsv。
 tab:c13-assign	改编补充自洽	down p.555-556（PDF 47-48）	8	0	源书无对应表；p.555 正文六条位移与归属逐句相符（10–40/125–145/150/13–25/130–170/13.5、24、33）。图 build/_src_t1_p47.png；cells_c13-assign.tsv。
 tab:nuclei-coke	改编补充自洽	down p.555-562（PDF 47-54）	25	0	源书无对应表；p.555 仅覆盖 13C 一行部分格，29Si/27Al/1H/129Xe 四行源书 pp.556—562 未逐页核对（cells 标差异）。图 build/_src_t1_p47.png；cells_nuclei-coke.tsv。
+tab:ch05-tpd	改编补充自洽	上册 p.311—312 / PDF p.330—331	15	0	源书 p.311 以①②③④⑤列举「从 TPD 谱图可获得的定量信息」，本表五行转写之；「不能给出／需外部证据」整栏与「反应性」两行为改编归纳，无源表可逐格对。
+tab:ch05-redhead	改编补充自洽	上册 p.313—316 / PDF p.332—335	15	0	前两条前提逐字对应 p.313 的 Cvetanović–Amenomiya 四假设①②，并核对式(5-39)—(5-41) 原文；后两条与整栏「被违反时的表现」为归纳；Ed 对 ln A 的灵敏度由「约差 10%」改为 4.606RTm（500 K 约 19 kJ/mol）。

@@ -1,0 +1,12 @@
+label	row	col	artifact	source	action	note
+tab:ch05-redhead	表头	1	前提	—	差异	栏名改编
+tab:ch05-redhead	表头	2	要求	—	差异	栏名改编
+tab:ch05-redhead	表头	3	被违反时的表现	—	差异	栏名改编；源书未列此栏
+tab:ch05-redhead	一级脱附	2	$n=1$，$\theta^{m}$ 项消失	「②脱附为一级脱附过程」	一致	源书 p.313 / PDF 332 四条简化假设之②；「θm 项消失」为改编本按式(5-37) 的改写说明
+tab:ch05-redhead	一级脱附	3	二级脱附下 $E_{\mathrm{d}}$ 随初始覆盖度变化	—	差异	归纳
+tab:ch05-redhead	不再吸附	2	原书简化假设①，正文式(5-39)—(5-41) 已略去再吸附项 $k_{\mathrm{a}}C(1-\theta)$	「①脱附过程不发生再吸附」	一致	源书 p.313 假设①；式(5-39)—(5-41) 原文为 N=−dθ/dt=k_dθ−k_aC(1−θ)、−V_m dθ/dt=V_mk_dθ−k_aC(1−θ)、FC=V_s[V_mk_dθ−k_aC(1−θ)]
+tab:ch05-redhead	不再吸附	3	峰温偏高、拖尾，$E_{\mathrm{d}}$ 系统性偏大	—	差异	归纳
+tab:ch05-redhead	指前因子已知	2	需假定 $A$（常见 $10^{13}\ \mathrm{s^{-1}}$ 量级）	—	差异	改编补充：源书未给 A 的量级；本稿取 TPD 惯例值
+tab:ch05-redhead	指前因子已知	3	$E_{\mathrm{d}}$ 与 $\ln A$ 强耦合：$A$ 差 2 个量级则 $E_{\mathrm{d}}$ 差 $4.606RT_{\mathrm{m}}$（$T_{\mathrm{m}}=500$ K 时约 19 kJ/mol）	—	差异	改编补充；由 Redhead 式 $E_{\mathrm{d}}=RT_{\mathrm{m}}[\ln(AT_{\mathrm{m}}/\beta)-3.64]$ 对 $\ln A$ 求差得 $\Delta E_{\mathrm{d}}=R T_{\mathrm{m}}\ln 100=4.606RT_{\mathrm{m}}$（原稿曾写「约差 10%」，本轮改为给绝对量，避免随 $E_{\mathrm{d}}$ 水平漂移）
+tab:ch05-redhead	升温速率已知且恒定	2	$\beta$ 线性、并在报告中给出	—	差异	归纳；源书 §5.3.1 只述「温度与时间呈直线变化」
+tab:ch05-redhead	升温速率已知且恒定	3	峰位漂移，变升温速率法斜率失效	—	差异	归纳
