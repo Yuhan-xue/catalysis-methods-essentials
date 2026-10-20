@@ -19,3 +19,11 @@
 28	chapters/parts/ch01-c.tex	827	表中「典型值」一列及「常见误用」列	表中「典型数量级」一列及「常见误用」列	与表头一致；文字层：build/_txt_p18-32.txt
 23	chapters/parts/ch01-c.tex	369	离心沉降为 0.1—10 µm。光透过法的悬浮液	离心沉降为 0.1—10 µm（\emph{核对说明}：源书正文作 0.1—10 μm，源书表 1-10 作 0.1–300 μm，两处口径不一致，本版照录正文、不改数）。光透过法的悬浮液	Lead 裁决：照录原书数、补核对说明；源书正文 p.88 与表1-10 p.83—84 自身不一致；图：build/_p23_pa.png、build/_src_up83_pa.png、build/_src_up84_pa.png
 27	chapters/parts/ch01-c.tex	645	以不同的体积除质量即得三种密度：	以不同的体积除质量即得三种密度（图~\ref{fig:ch01c-volume}）：	Lead 裁决：补图1-5 正文引用；label 见 ch01-c.tex:740；文字层：build/_txt_p18-32.txt
+34	chapters/parts/ch02-a.tex	242	「电子束损伤小」和「采集快」是一对	「电子束损伤大」和「采集快」是一对	同段前句（ch02-a.tex:240）明言电子对样品的辐照损伤远大于 X 射线，「损伤小」与之自相矛盾；源书同一误判段以电子束损伤大为前提。文字层：build/_txt_p33-46.txt。
+37	chapters/parts/ch02-a.tex	564	但同样的相容性在面心立方指认下也成立，故 (3) 只有	但消光规律只能排除、不能确证，故 (3) 只有	表2-2（p35）明载面心立方允许 111/311（全奇/全偶），源 OCR sources/parts/ch02-a.txt:685 亦载 FCC 规则；原句称 111/311 未出现「在面心立方指认下也成立」，与表2-2 矛盾。文字层：build/_txt_p33-46.txt。
+40	chapters/parts/ch02-b.tex	55	相机长大时探头收集角小，只有近轴衍射电子贡献成像；相机长小时收集角区间变大	相机长度大时探头收集角小，只有近轴衍射电子贡献成像；相机长度小时收集角区间变大	同段（ch02-b.tex:54）刚定义「相机长度（camera length）」，「相机长」漏「度」。文字层：build/_txt_p33-46.txt。
+42	chapters/parts/ch02-b.tex	261	式中 $A$ 标识元素、$J$ 标识某一壳层；$\varepsilon_A$ 为谱仪对该特征峰的	式中 $A$ 标识元素；$\varepsilon_A$ 为谱仪对该特征峰的	式(2-14) 及正文无 J；J 仅见于源书符号对照的核对说明（ch02-b.tex:294 附近），主文悬空。文字层：build/_txt_p33-46.txt。
+44	chapters/parts/ch02-b.tex	381	与散射截面成反比：	及散射截面成正比：	式(2-19) IA=NAσAI 明示与 σA 成正比；源书正文「与散射截面成反比」与其式(2-33) 自相矛盾，本版按公式改正，并同步改核对说明（:399）。文字层：build/_txt_p33-46.txt。
+44	chapters/parts/ch02-b.tex	399	正文表述「当样品很薄时，该强度与样品中的原子数量成正比，与散射截面成反比」与本段一致。	原书正文作「当样品很薄时，该强度与样品中的原子数量成正比，与散射截面成反比」，与式（2-33）的正比关系不符，本版按公式改正为「成正比」。	配合 :381 的正比改正，把原书矛盾表述记为核对说明，不再写「与本段一致」。文字层：build/_txt_p33-46.txt。
+44	chapters/parts/ch02-b.tex	424	通常用 \textsc{sigma}k（用于 K 层）和 \textsc{sigma}l	通常用 \textsc{sigmak}（用于 K 层）和 \textsc{sigmal}	程序名为 SIGMAK/SIGMAL；同页核对说明（ch02-b.tex:486）印 SIGMAK/SIGMAL，原文 textsc{sigma}+k 渲染成 SIGMAk，大小写不一致。文字层：build/_txt_p33-46.txt。
+44	chapters/parts/ch02-b.tex	487	按式（2-36）算出的成分比	按式(2-21) 算出的成分比	正文对应式为式(2-21)（部分截面），式（2-36）为源书编号/误引；同段上文刚用式(2-21)。文字层：build/_txt_p33-46.txt。
