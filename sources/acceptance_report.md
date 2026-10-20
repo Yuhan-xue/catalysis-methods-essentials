@@ -123,9 +123,11 @@ v1.0.0 的 p339+p340 在现稿合并为一页（相似度 0.985），**不是丢
    （`tab:modes` 18、`tab:raman-bands-c` 18、`tab:ch07c-criteria` 8、`tab:ch07c-probe` 2）。
    本轮用 **`tools/ocr_backfill.py`** 做了独立于内嵌文字层的第二条机器证据：把所引源页以
    300 dpi 渲成图像、用 RapidOCR 重新识别，再逐格找回数值 token。结果见 **`sources/ocr_backfill.md`**：
-   30 个数值格中 **27 格 OCR 全部命中**（两条独立 OCR 流程互证），3 格待人工读图；
-   16 个定性格措辞与源句不同，OCR 不构成证据，仍需人工。复跑 `python tools/ocr_backfill.py`
-   （依赖 `rapidocr_onnxruntime`）。
+   30 个数值格 **全部命中**（两条独立 OCR 流程互证），并由此发现并订正一处**内容缺陷**——
+   表 6-10 与正文把过氧物种谱带印成 520—550 cm⁻¹，源页图像实为 820～850 cm⁻¹
+   （源文字层把 8 误识为 5；BaO2 标样 842/829/821 同带，自洽），已改 4 处并记入
+   `sources/logs/fixes_t1.tsv`；16 个定性格措辞与源句不同，OCR 不构成证据，仍需人工。
+   复跑 `python tools/ocr_backfill.py`（依赖 `rapidocr_onnxruntime`）。
 2. ~~T1c 日期硬编码~~（已处理）：`tools/table_status.py` 新增 `head_date()`，日期取
    `git log -1 --format=%cs`，与 `content_review.py --date` 同口径，复跑字节一致。
 3. ~~交付件（340 页）与现稿（339 页）的差异~~（已处理）：已发 **v1.1.0**（release id=490，

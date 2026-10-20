@@ -40,7 +40,7 @@ SRC = {
 
 # a few rows cite a section range whose numbers sit just outside the summary
 # range; scan the neighbouring pages before declaring a miss
-EXTRA = {'tab:raman-bands-c': list(range(383, 391))}
+EXTRA = {'tab:raman-bands-c': list(range(383, 393))}
 
 DASHES = dict.fromkeys(map(ord, '\u2010\u2011\u2012\u2013\u2014\u2015\u2212\uff0d'), '-')
 FW = {ord(f): ord(t) for f, t in zip('０１２３４５６７８９．％', '0123456789.%')}
@@ -133,6 +133,19 @@ def parse_summary():
     return out
 
 
+def book_refs(note):
+    """Book-page citations inside a cell note -> PDF pages (up volume: +19)."""
+    out = []
+    for m in re.finditer(r'p\.\s*(\d{3})(?:\s*[—\-–~]\s*(\d{3}))?', note):
+        a = int(m.group(1))
+        b = int(m.group(2)) if m.group(2) else a
+        for book in range(a, b + 1):
+            pdf = book + 19          # up volume: PDF = 书内 + 19
+            if pdf not in out:
+                out.append(pdf)
+    return out
+
+
 def parse_cells():
     """[(table, row, col, content, pages_text, verdict, note)]"""
     txt = io.open(IN_MD, encoding='utf-8').read().split('\n')
@@ -163,7 +176,7 @@ def main():
     summary = parse_summary()
     results = []
     for table, row, col, content, pages_text, verdict, note in rows:
-        pages = pdf_pages(pages_text) or summary.get(table, [])
+        pages = pdf_pages(pages_text) or book_refs(note) or summary.get(table, [])
         # numbers live in the note column for most rows; strip page and section
         # citations first, otherwise they pollute the token list
         text_for_tokens = content + ' ' + note
