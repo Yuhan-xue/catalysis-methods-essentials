@@ -119,11 +119,15 @@ v1.0.0 的 p339+p340 在现稿合并为一页（相似度 0.985），**不是丢
 
 三项验收均已达成（①339/339、②372/372、③59/59），门禁全绿。后续建议：
 
-1. **表证据等级残余**：本轮对部分表用「源文字层数值扫描」补核（上册 OCR 失真处仍以页面图像为准）。
-   全部以文字层为证据的格已提取成清单 **`sources/textlayer_backfill.md`**（46 格 / 4 张表：
-   `tab:modes` 18、`tab:raman-bands-c` 18、`tab:ch07c-criteria` 8、`tab:ch07c-probe` 2），
-   逐格给出源页与判定，重新生成命令 `python tools/tlbackfill.py`。这不是未核项，而是
-   可选的证据升级：若要统一到纯图像口径，按该清单逐表渲图复核后改写 cells 备注即可。
+1. **表证据等级残余（已部分升级）**：以文字层为证据的 46 格清单见 **`sources/textlayer_backfill.md`**
+   （`tab:modes` 18、`tab:raman-bands-c` 18、`tab:ch07c-criteria` 8、`tab:ch07c-probe` 2）。
+   本轮用 **`tools/ocr_backfill.py`** 做了独立于内嵌文字层的第二条机器证据：把所引源页以
+   300 dpi 渲成图像、用 RapidOCR 重新识别，再逐格找回数值 token。结果见 **`sources/ocr_backfill.md`**：
+   30 个数值格中 **27 格 OCR 全部命中**（两条独立 OCR 流程互证），3 格待人工读图；
+   16 个定性格措辞与源句不同，OCR 不构成证据，仍需人工。复跑 `python tools/ocr_backfill.py`
+   （依赖 `rapidocr_onnxruntime`）。
 2. ~~T1c 日期硬编码~~（已处理）：`tools/table_status.py` 新增 `head_date()`，日期取
    `git log -1 --format=%cs`，与 `content_review.py --date` 同口径，复跑字节一致。
-3. 交付件（340 页）与现稿（339 页）的差异见 §4；下一次 release 时以现稿重建件替换。
+3. ~~交付件（340 页）与现稿（339 页）的差异~~（已处理）：已发 **v1.1.0**（release id=490，
+   tag @ `6049d99`，339 页 / 4253928 B / SHA-256 `AADE64CF…0E3C67`），双路下载 200，
+   且 `tools/cmp_release_pdf.py` 判定线上件与本地构建件 **IDENTICAL CONTENT**。

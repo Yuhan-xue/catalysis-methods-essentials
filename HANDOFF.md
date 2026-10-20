@@ -81,7 +81,7 @@ python tools/cmp_release_pdf.py build\main.pdf <线上附件.pdf>             # 
 | 项 | 值 |
 |---|---|
 | TeX | TeX Live 2026（`C:\texlive\2026\bin\windows\`，`build.ps1` 动态解析，勿硬编码）；**XeLaTeX**（ctexart + fandol），latexmk 驱动 |
-| Python | 3.14，含 pymupdf / Pillow / numpy / scipy / fontTools |
+| Python | 3.14，含 pymupdf / Pillow / numpy / scipy / fontTools；另装 `rapidocr_onnxruntime`（2026-10-21，用于 `tools/ocr_backfill.py` 的页面 OCR 复核） |
 | Shell | Windows PowerShell（控制台 GBK） |
 | 仓库 | Gitea 私有：`http://zsyq.hxlab.tech:3000/yuhanxue/catalysis-methods-essentials`（main） |
 | 认证 | **不要把口令写进仓库**：用**仓库外** `~/.netrc`（收紧 ACL），git 与 curl 都读它；remote URL 不嵌凭据 |
