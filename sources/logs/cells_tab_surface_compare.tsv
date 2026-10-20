@@ -1,0 +1,26 @@
+label	row	col	artifact	source	action	note
+tab:surface-compare	方法	方法	方法	表头	一	表头一栏为改编本自设的栏目划分，源书无同表
+tab:surface-compare	XPS	方法	XPS	p.662—693 §9.2—§9.4 全节	一致	源书 §9.2 XPS 为独立一节
+tab:surface-compare	UPS	方法	UPS	p.672 前后 §9.2.6 的价带谱/紫外光电子能谱内容	一致	源书正文以「价带谱」讨论 UPS
+tab:surface-compare	AES	方法	AES	p.683—686 §9.4 俄歇电子能谱	一致	
+tab:surface-compare	ISS	方法	ISS	p.686—693 §9.5 离子散射谱	一致	
+tab:surface-compare	测信号-XPS	探测信号	光电子（内层）	p.662 起「光电子」；§9.2 芯能级讨论	一致	
+tab:surface-compare	测信号-UPS	探测信号	光电子（价带）	p.672 前后价带谱一节；源书「价带谱是价电子态密度…加权后的分布」	一致	
+tab:surface-compare	测信号-AES	探测信号	俄歇电子	p.683 §9.4 俄歇电子	一致	
+tab:surface-compare	测信号-ISS	探测信号	散射离子	p.686 §9.5「从基质表面原子…散射的谱峰」	一致	
+tab:surface-compare	激发-XPS	激发源	X 射线	p.591 Mg/Al 双阳极与单色化 Al Kα	一致	
+tab:surface-compare	激发-UPS	激发源	真空紫外	p.588 附「用于UPS：紫外光源」	一致	
+tab:surface-compare	激发-AES	激发源	电子束	p.588 附「用于AES：电子枪」；p.676 激发源一节	一致	
+tab:surface-compare	激发-ISS	激发源	惰性气体离子	p.686「Smith 使用He、Ne 和Ar 作为离子源，离子能量在0.5～3.0 keV」	一致	
+tab:surface-compare	深度-XPS	信息深度	约0.5–10 nm	p.630 §9.2.8「这峰下面积又与每种元素在表层厚度10 nm 以内的含量有关」	一致	源书给上限 10 nm，下限 0.5 nm 与具体能级有关，属量级表述
+tab:surface-compare	深度-UPS	信息深度	约1–3 nm（约10 原子层）	源书未给 UPS 信息深度的数值区间	差异	按学科标准量级补出，改编本声明为归纳
+tab:surface-compare	深度-AES	信息深度	约0.5–2 nm（2–10 原子层）	源书未给 AES 信息深度的数值区间	差异	同上
+tab:surface-compare	深度-ISS	信息深度	最外层原子	p.692—693 影子效应一节「若表面第二层原子恰好处在最表层原子的下面，则ISS 谱峰中将看不到第二层原子的…」	一致	
+tab:surface-compare	信息-XPS	主要信息	元素组成、化学态、半定量	p.634 定性分析、p.630 §9.2.8 半定量	一致	
+tab:surface-compare	信息-UPS	主要信息	功函数、价带结构、吸附分子轨道	p.630 前后价带谱与吸附分子轨道讨论	一致	
+tab:surface-compare	信息-AES	主要信息	轻元素与微区成分、深度剖析	p.685「其采样区域小，空间分辨率高，特别适合微电子器件的分析」；p.684 轻/重元素俄歇跃迁	一致	
+tab:surface-compare	信息-ISS	主要信息	表面最外层组成与排列	p.686「低能离子散射不仅能分析表面的化学组成，还能进行表面结构分析」	一致	
+tab:surface-compare	局限-XPS	主要局限	空间分辨较低；荷电与污染影响大；分峰非唯一	p.633「这曲线拟合仅仅是XPS 数据谱线的后期处理，人为的随意性极大」；p.645 前后「没有唯一的校正绝缘样品表面荷电的方法」	一致	「空间分辨较低」为相对于 AES/SAM 的归纳，源书未逐字给出
+tab:surface-compare	局限-UPS	主要局限	需极洁净表面；绝缘粉末不适用；谱解释难	p.630「要从价带谱的结构来分析材料的能带结构，需要对材料的能带结构进行一定的理论模型计算」	一致	「需极洁净表面」「绝缘粉末不适用」为归纳，源书未逐字给出
+tab:surface-compare	局限-AES	主要局限	重元素谱线重叠；仅导电/半导电样品；束损伤	p.684「俄歇谱线重叠…较重的元素有较多数量的跃迁，易发生谱线干扰」「AES 技术对样品有要求，通常仅分析固体导电与半导电样品」	一致	「束损伤」为归纳，源书在电离损伤处提及
+tab:surface-compare	局限-ISS	主要局限	仅最外层；离子损伤与择优溅射；定量难	p.692「由于离子中和，能量低于5 keV 时，静电分析器收集的散射离子只是总产额的一小部分。因此，散射产物的利用率很低」	一致	「择优溅射」在源书末逐字出现，保留为归纳；「定量难」由散射产物利用率低与影子效应推得
