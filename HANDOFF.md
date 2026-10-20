@@ -26,7 +26,7 @@
 | 页数 | **339**（2026-10-13 为 `ch07-a` 补入核对说明后重建，中后部整体前移一页；已发布 v1.0.0 制品为 **340**，两套页码引用各自有效）。340 的来历：像素核对收尾后，2026-10-09；R5 315、R4 314、R3 315、R2 313、P0 310、基线 `74e4015` 309。相对 R5 的 +25 页全部来自 16 个批次为 85 张表就地补记的核对说明与表内修正，小字号 `\srcsize` 排版；release 门禁全 0、PASS。中途曾因 `\samepage` 惩罚参数泄漏涨到 345 页，见 §6） |
 | 分片 | **37**（`chapters/parts/`） |
 | 最新提交 | 见 `git log -1`（第六轮评审收口：修复 `b3fe3d5`、CLOSURE `8929cb6`（`v1.0.0` 标签所指）、合并远端评审工作区 `eaca20e`） |
-| 线上正式版 | **v1.1.0**（release id=490，tag @ `6049d99`；4253928 B，SHA-256 `AADE64CF…0E3C67`；339 页 / 145 书签；附件 id=692）——三项内容级验收完成版，`/releases/download/v1.1.0/catalysis-methods-essentials-v1.1.0.pdf` 与 `/attachments/7ff1daad-c5d9-40ce-beb9-35231ed43a85` 均 HTTP 200，下载件哈希与本地一致 |
+| 线上正式版 | **v1.1.0**（release id=490，tag @ `6049d99`；4253928 B，SHA-256 `AADE64CF…0E3C67`；339 页 / 145 书签；附件 id=692）——三项内容级验收完成版，`/releases/download/v1.1.0/catalysis-methods-essentials-v1.1.0.pdf` 与 `/attachments/7ff1daad-c5d9-40ce-beb9-35231ed43a85` 均 HTTP 200，下载件哈希与本地一致；`python tools/cmp_release_pdf.py build\main.pdf <下载件>` → **IDENTICAL CONTENT**（339 页 / 145 书签 / 文字层 / 矢量 / 栅格逐页全同，仅 /ID 与 /CreationDate 略） |
 | 上一版正式版 | v1.0.0（release id=70，tag @ `8929cb6`；4233857 B，SHA-256 `A5969A14…8069C46`；340 页 / 145 书签；附件 id=105）——首个非 `-pre` 版本 |
 | 上一版 pre | v0.6.5-pre（id=52 @ `5c1f080`；314 页 / 144 书签）、v0.6.4-pre（id=46 @ `9e6809c`）、v0.6.3-pre（id=44 @ `b457f93`） |
 | 构建门禁 | errors / overfull>5pt / missing glyphs / undefined refs / dup labels / **dup includes** / **overlap** —— 全 0；`-Release` 下静态检查**没跑成（unavailable）判失败** |
