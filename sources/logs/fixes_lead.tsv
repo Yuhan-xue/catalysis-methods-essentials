@@ -15,3 +15,4 @@ page	file	line	old	new	reason
 228	chapters/parts/ch09-d.tex	212	列出 PETH、PHMS、PPS、PES、PSS	列出 PETHS、PHMS	源书表9-37 首个聚合物印作 PETHS，核对说明误写 PETH，按原书订正
 6	chapters/ch00-intro.tex	66	比表面积、孔容与孔径分布	比表面积、孔容与孔尺寸分布	术语统一：孔尺寸分布（sources/terminology_decisions.md）；源书 up p.41 原文亦作孔尺寸分布
 137	chapters/parts/ch06-a.tex	477	常用 \qty{180}{\degree} 背散射、\qty{150}{\degree} 与 \qty{90}{\degree} 散射	另有 \qty{180}{\degree} 背散射（图 6-4a、b）	表6-3 逐格核对发现：源书 §6.2.3 正文只给 60°~90°，图 6-4 只画 180° 背散射与 90° 散射，「150° 收集」于原书无据，删去并改写为源书口径（书内 p.353—354 / PDF 372—373）
+139	chapters/parts/ch06-b.tex	127	四氟乙烯池与内衬	聚四氟乙烯池与内衬	表6-4 逐格核对发现：源书图 6-29(c) 标注为「聚四氟乙烯池」「聚四氟乙烯线反应釜」(PTFE)，正文原写「四氟乙烯」(TFE，单体) 不准确，全文统一为聚四氟乙烯（书内 p.388—389 / PDF p.407—408）
