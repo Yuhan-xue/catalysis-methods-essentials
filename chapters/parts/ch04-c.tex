@@ -148,7 +148,7 @@ pseudo-Voigt）做最小二乘拟合后取半峰宽，弱峰与重叠峰尤其�
 
 \begin{example}[读图实例：同一个半峰宽，可能对应完全不同的样品]
 \begin{obs}
-图~\figref{fig:ch04c-profile} 中两条曲线：（a）实线，Lorentz 型，$\beta=0.40°$；
+\figref{fig:ch04c-profile} 中两条曲线：（a）实线，Lorentz 型，$\beta=0.40°$；
 （b）虚线，Gauss 型，$\beta=0.40°$。在 $2\theta-2\theta_{\mathrm{B}}=\pm0.2°$ 处两线重合于
 $0.5$；在 $\pm0.4°$ 处实线约 $0.20$、虚线约 $0.06$；在 $\pm0.6°$ 处实线约 $0.10$、虚线约
 $0.002$；在 $\pm0.8°$ 处实线仍有约 $0.06$，虚线已低于 $10^{-4}$。
@@ -166,7 +166,7 @@ $0.002$；在 $\pm0.8°$ 处实线仍有约 $0.06$，虚线已低于 $10^{-4}$�
 
 \begin{table}[tbp]
   \centering
-  \caption{Scherrer 方程给出的半峰宽与晶粒尺寸的对应（按式~\equref{eq:ch04c-scherrer} 计算，
+  \caption{Scherrer 方程给出的半峰宽与晶粒尺寸的对应（按\equref{eq:ch04c-scherrer} 计算，
     $K=0.89$，Cu $K\alpha_{1}$ 即 $\lambda=1.5406$ Å，取 $2\theta=30°$）。\textbf{读法}：
     尺寸大于约 $100$ nm 时，尺寸宽化已降到 $0.1°$ 以下，与仪器宽化同量级甚至更小，
     \textbf{再谈''用半峰宽算尺寸''已无意义}；尺寸小于约 $2$ nm 时半峰宽达 $4°$ 以上，
@@ -192,7 +192,7 @@ $0.002$；在 $\pm0.8°$ 处实线仍有约 $0.06$，虚线已低于 $10^{-4}$�
 \textbf{从一张峰到一个小数}：
 实测峰（步进扫描数据）$\rightarrow$ 扣背景 $\rightarrow$ 剥离 $K\alpha_{2}$（若双线分离）
 $\rightarrow$ 峰形函数拟合得总半峰宽 $B$ $\rightarrow$ 由标样或基本参数法得仪器宽化 $b$
-$\rightarrow$ 解卷积得样品宽化 $\beta$ $\rightarrow$ 由式~\equref{eq:ch04c-scherrer} 得
+$\rightarrow$ 解卷积得样品宽化 $\beta$ $\rightarrow$ 由\equref{eq:ch04c-scherrer} 得
 $D_{hkl}$ $\rightarrow$ 用多条不同角度的峰检验 $\beta\cos\theta$ 是否随 $\sin\theta$ 变化
 （判断是否含微应变）。任何一步没做，后面得到的数都不叫``晶粒大小''。
 \end{dataflow}
@@ -275,7 +275,7 @@ $I(\alpha_{1})$ 的起点，然后逐点向右递推，得到纯 $K\alpha_{1}$ �
 \textbf{适用边界（原书明确指出）}：从起始角到峰最大值之后约一半的位置，递推结果较好；再往后，
 $I_{i}(\alpha_{1})$ 与 $\tfrac{1}{2}I_{i-3}(\alpha_{1})$ 已接近，两者相减的误差被放大，曲线
 出现起伏，\textbf{分离出的 $\alpha_{1}$ 曲线在后半段准确性较差}。另有一个更基本的前提：
-式~\equref{eq:ch04c-rachinger} 只在该角度上双线确实分离（$\Delta(2\theta)$ 与半峰宽可比或更大）
+\equref{eq:ch04c-rachinger} 只在该角度上双线确实分离（$\Delta(2\theta)$ 与半峰宽可比或更大）
 时才有意义；纳米样品低角峰宽化严重、双线根本不分离，此时强行剥离只会制造假的起伏。
 \end{measure}
 
@@ -312,7 +312,7 @@ D'=\frac{K\lambda}{B\cos\theta}\approx\frac{K\lambda}{2\beta\cos\theta}=\frac{D}
 或存在择优取向，此时应改用更完整的全谱模型（如 Rietveld 中的各向异性宽化模型）而不是硬划
 直线。此处已对照原页面图像（书内 p.278 / PDF p.297）：原书 §4.7 末尾只以一句话指出
 ``如果存在晶格畸变，则需要分离畸变和晶粒大小的效应''，并未给出 Williamson--Hall 关系式；
-本段及其式~\equref{eq:ch04c-WH} 是按标准文献形式补充的，用于说明 Scherrer 公式与应变宽化的
+本段及其\equref{eq:ch04c-WH} 是按标准文献形式补充的，用于说明 Scherrer 公式与应变宽化的
 分工。式中 $4\varepsilon\sin\theta$ 的系数（有的文献写作 $2\varepsilon\sin\theta$）取决于
 $\varepsilon$ 与积分宽度的定义，引用时须与本处定义一致。
 \end{principle}
@@ -356,7 +356,7 @@ $\varepsilon$ 与积分宽度的定义，引用时须与本处定义一致。
         at (axis cs:1.45,8.6) {斜率 $=\varepsilon$};
     \end{axis}
   \end{tikzpicture}
-  \caption{用 Williamson--Hall 图分离尺寸与微应变（模型计算，按式~\equref{eq:ch04c-WH}，
+  \caption{用 Williamson--Hall 图分离尺寸与微应变（模型计算，按\equref{eq:ch04c-WH}，
     $K=0.89$，$\lambda=1.5406$ Å）。\textbf{看什么}：三个样品的横轴量都是
     $4\sin\theta$、纵轴量都是 $\beta\cos\theta$。（i）样品 1 只有尺寸贡献，是一条水平线，
     高度即 $K\lambda/D$；（ii）样品 2 的晶粒与样品 1 相同而多了 $0.1\%$ 的微应变，截距不变、
@@ -378,7 +378,7 @@ $\varepsilon$ 与积分宽度的定义，引用时须与本处定义一致。
     \toprule
     操作或前提 & 后果与判别 \\
     \midrule
-    用未扣仪器宽化的 $B$ 直接代入 & 尺寸系统偏小，晶粒越大偏得越多（式~\equref{eq:ch04c-halving}）；
+    用未扣仪器宽化的 $B$ 直接代入 & 尺寸系统偏小，晶粒越大偏得越多（\equref{eq:ch04c-halving}）；
     换仪器或换狭缝重测，结果会变 \\
     存在微应变而只做 Scherrer & 把应变宽化记在尺寸上，算出``尺寸''显著小于 TEM 观察值；
     用 WH 图看 $\beta\cos\theta$ 是否随 $\sin\theta$ 上升即可识别 \\
@@ -410,11 +410,11 @@ WH 方法）、第 3 行「体积加权平均值」与「差出数倍」（原�
 
 \begin{pitfall}
 \textbf{Scherrer 结果的四种典型误判}，都可先用一条内部判据自查：\\
-（1）\textbf{算出负尺寸或荒谬小的尺寸}。式~\equref{eq:ch04c-subtract} 的 $\beta=\sqrt{B^{2}-b^{2}}$
+（1）\textbf{算出负尺寸或荒谬小的尺寸}。\equref{eq:ch04c-subtract} 的 $\beta=\sqrt{B^{2}-b^{2}}$
 在 $b>B$ 时无解；用 Lorentz 型相减时 $\beta=B-b$ 可能为负。这不是样品``负晶粒''，而是
 \textbf{仪器宽化被高估或标样选错}（标样本身有宽化、或不在同一角度）。正确处理：换标样、
 改用工作曲线或基本参数法。\\
-（2）\textbf{得到的尺寸远小于 TEM 观察值}。常见三种原因：未扣仪器宽化（式~\equref{eq:ch04c-halving}，
+（2）\textbf{得到的尺寸远小于 TEM 观察值}。常见三种原因：未扣仪器宽化（\equref{eq:ch04c-halving}，
 因子约 $2$）；把微应变当成尺寸（应变可轻松贡献 $0.1°$—$0.5°$，等价于把尺寸压到几纳米）；
 样品本身是多晶团聚体，TEM 量的是颗粒而衍射量的是相干散射柱长。三者可用``换仪器''、
 ``WH 图''、``不同 $hkl$ 的 $D$ 是否一致''分别排除。\\
@@ -536,7 +536,7 @@ $\rightarrow$（vi）检查结构参数的物理合理性（键长键角、占�
 \subsubsection{峰形函数与最小二乘全图拟合}
 
 \begin{principle}
-峰形函数的选择非常重要，表~\tabref{tab:ch04c-profile} 列出常用的几类。对某衍射峰，取布拉格
+峰形函数的选择非常重要，\tabref{tab:ch04c-profile} 列出常用的几类。对某衍射峰，取布拉格
 角处的 $2\theta=0$ 向两边展开：Gauss 函数图形变化较缓、拖尾效应小；Lorentz（Cauchy）函数
 图形变化较快、拖尾效应大（原书图 4-24 即两个函数的对比）。对于粉末中子衍射，峰形接近 Gauss
 函数；对于 X 射线衍射，实际峰形介于二者之间，是 Gauss 与 Lorentz 函数的``组合''，按权重加和
@@ -576,7 +576,7 @@ $\rightarrow$（vi）检查结构参数的物理合理性（键长键角、占�
 \end{table}
 
 \begin{pitfall}
-\textbf{表~\tabref{tab:ch04c-profile} 与 $\Gamma$ 参数化的使用边界}：\\
+\textbf{\tabref{tab:ch04c-profile} 与 $\Gamma$ 参数化的使用边界}：\\
 （1）$\Gamma^{2}=U\mathrm{tg}^{2}\theta+V\mathrm{tg}\,\theta+W$ 是 Caglioti 型参数化，它把半峰宽
 写成角度的光滑函数，因此\textbf{隐含``所有峰的宽化机制相同''}；当样品同时有尺寸宽化与各向
 异性应变时，只用这一组参数拟合会把二者混在一起。\\
@@ -700,7 +700,7 @@ $R_{\mathrm{exp}}$ 三式的分母与指数，以及 $w_{i}=1/\sigma_{i}^{2}$、
 均与本节一致（原书记实测值为 $Y_{i}$、计算值为 $Y_{i,c}$，本节作 $Y_{io}$、$Y_{ic}$，符号
 不同而形式相同）。原书除 $\mathrm{GOF}=R_{\mathrm{wp}}/R_{\mathrm{exp}}$ 外，还印有展开式
 $\mathrm{GOF}=R_{\mathrm{wp}}/R_{\mathrm{exp}}=[\sum_{i}w_{i}(Y_{i}-Y_{i,c})^{2}/(N-P)]^{1/2}$，
-本节已按同一写法并入式~\equref{eq:ch04c-gof}；式中的 $\chi^{2}=(\mathrm{GOF})^{2}$ 是通行
+本节已按同一写法并入\equref{eq:ch04c-gof}；式中的 $\chi^{2}=(\mathrm{GOF})^{2}$ 是通行
 约定的补写，与原书该展开式互为等价。
 \end{principle}
 
@@ -745,7 +745,7 @@ $R$ 因子小于 $10\%$，有时可达约 $20\%$；致密无机化合物数据�
 都参与拟合，它们可以把 $R_{\mathrm{wp}}$ 压得很低，而结构本身可能完全错误。判断模型正确性
 必须回到结构化学：键长键角是否合理、配位环境是否成立、占位度总和是否与化学分析一致、
 温度因子是否非负且量级合理。\\
-（2）\textbf{强度过高反而使 GOF 变差}。由式~\equref{eq:ch04c-rwp} 与式~\equref{eq:ch04c-rpexp}，
+（2）\textbf{强度过高反而使 GOF 变差}。由\equref{eq:ch04c-rwp} 与\equref{eq:ch04c-rpexp}，
 当 $w_{i}=1/Y_{io}$ 时 $\sum_{i}w_{i}Y_{io}^{2}=\sum_{i}Y_{io}$，故
 $R_{\mathrm{exp}}\propto\left[(N-P)/\sum_{i}Y_{io}\right]^{1/2}$ 随总计数增大而减小，而
 $R_{\mathrm{wp}}$ 的改善有限，于是 GOF 增大。这正解释了``有些数据强度低、图谱看起来不太好，
@@ -818,7 +818,7 @@ $R$ 因子的下界；代入结构后 $R$ 只略有升高且峰位不变，是�
 \end{principle}
 
 \begin{pitfall}
-\textbf{关系式的灵敏度随 $a$ 急剧变化，必须报告晶胞参数的误差}。对式~\equref{eq:ch04c-sial}
+\textbf{关系式的灵敏度随 $a$ 急剧变化，必须报告晶胞参数的误差}。对\equref{eq:ch04c-sial}
 求微分得
 \begin{equation}
 \frac{\mathrm{d}(\mathrm{Si}/\mathrm{Al})}{\mathrm{d}a}
@@ -829,7 +829,7 @@ $R$ 因子的下界；代入结构后 $R$ 只略有升高且峰位不变，是�
 $a=24.4$ Å 处已达约 $-38$ Å$^{-1}$。也就是说，晶胞参数 $0.001$ Å 的误差在低硅铝比端只对应
 $\pm0.004$ 的硅铝比误差，在高硅铝比端却可以放大到 $\pm0.04$ 甚至更大。\textbf{高硅铝比
 （脱铝严重）的样品，用一条经验式反推硅铝比是不可靠的}，应当用化学分析或核磁独立测定。
-此处已对照原页面图像（书内 p.286 / PDF p.305）：式~\equref{eq:ch04c-sial} 的系数
+此处已对照原页面图像（书内 p.286 / PDF p.305）：\equref{eq:ch04c-sial} 的系数
 $25.858$ 与 $24.191$ 已逐位核对无误，原书左端记作原子比 $n_{\mathrm{Si}}/n_{\mathrm{Al}}$；
 原书给出该式后只说可以通过晶胞参数的变化推测骨架硅铝比，未作灵敏度讨论，故式~
 \equref{eq:ch04c-sialsens} 及其数值（$-3.7$、$-17.5$、$-38$ Å$^{-1}$）是本项目按该式
@@ -873,11 +873,11 @@ w_{\mathrm{M}}=\frac{I_{\mathrm{M}(220)}}{K\,I_{\mathrm{C}(110)}+I_{\mathrm{M}(2
 刚玉 $110$（$2\theta\approx37.8°$）两个峰的强度 $I_{\mathrm{M}(220)}$ 与
 $I_{\mathrm{C}(110)}$。设从图上量得（示意取值）$I_{\mathrm{M}(220)}=1.60$、
 $I_{\mathrm{C}(110)}=1.00$（同一纵轴标尺下的峰面积即积分强度）。已知 $K=0.79$。
-作为反证用的一点：若两峰强度相等（$I_{\mathrm{M}}=I_{\mathrm{C}}$），按式~\equref{eq:ch04c-rir}
+作为反证用的一点：若两峰强度相等（$I_{\mathrm{M}}=I_{\mathrm{C}}$），按\equref{eq:ch04c-rir}
 应得 $w_{\mathrm{M}}=1/(0.79+1)=55.9\%$——与 $K<1$ 的含义一致：等质量混合时莫来石峰比刚玉峰弱。
 \end{obs}
 \begin{infer}
-代入式~\equref{eq:ch04c-rir}：
+代入\equref{eq:ch04c-rir}：
 $w_{\mathrm{M}}=1.60/(0.79\times1.00+1.60)=1.60/2.39\approx67\%$，即莫来石约占三分之二
 （质量分数），其余为刚玉。这一推断成立的前提是：两相都是结晶良好的纯相、无第三相、无择优
 取向、所用强度是\textbf{积分强度}而非峰高，且 $K$ 是在同一台仪器、同一实验条件下用纯样品
@@ -921,7 +921,7 @@ $G(x)=\dfrac{k}{k^{2}+x^{2}}$ 模拟不同晶粒大小引起的宽化，改变�
 \end{obs}
 \begin{infer}
 取 $\lambda=1.5406$ Å、$2\theta=31.70°$（故 $\theta=15.85°$、$\cos\theta=0.9619$），
-$\beta=0.0026$ rad，代入式~\equref{eq:ch04c-scherrer}（$K=0.89$）：
+$\beta=0.0026$ rad，代入\equref{eq:ch04c-scherrer}（$K=0.89$）：
 \begin{equation}
 D_{100}=\frac{0.89\times1.5406}{0.0026\times0.9619}\ \text{Å}
 =\frac{1.3711}{0.002501}\ \text{Å}\approx548\ \text{Å}\approx55\ \text{nm},
@@ -929,7 +929,7 @@ D_{100}=\frac{0.89\times1.5406}{0.0026\times0.9619}\ \text{Å}
 \end{equation}
 即纳米 ZnO 颗粒在垂直于 $(100)$ 方向的平均厚度约 $55$ nm，与原书给出的 $55$ nm 一致。
 \textbf{这一步的关键不是算术，而是代入的是 $\beta$ 而不是 $B$}：若把实测的 $B=0.300°$ 直接
-代入，得到的是约 $27$ nm，恰好是正确值的一半（式~\equref{eq:ch04c-halving} 的定量体现）。
+代入，得到的是约 $27$ nm，恰好是正确值的一半（\equref{eq:ch04c-halving} 的定量体现）。
 \end{infer}
 \textbf{两条可复核的旁证}：
 （i）$B=0.300°$ 与 $\beta=0.150°$ 的读数说明该工作曲线在此处等价于 Cauchy 型的线性相加
@@ -1195,8 +1195,8 @@ Debye／PDF 结果的回查：（1）与 HRTEM 直接对照——层数、层间
 原书；Williamson--Hall 关系、$R$ 因子的标准定义式、占位度与温度因子的相关性、Scherrer 结果
 的误判清单与回查清单为本项目按学科标准形式补充。本节所有存疑之处均已逐条对照原页面图像核对，
 结论以``此处已对照原页面图像（书内 p.X / PDF p.Y）：……''的形式就近记在正文中，正文里已不再
-保留未核标记。图~\figref{fig:ch04c-profile} 与图~\figref{fig:ch04c-WH} 为模型计算图，
-非原书插图。原书表 4-8（峰形函数）已重建为表~\tabref{tab:ch04c-profile}；原书表 4-9、4-10、
+保留未核标记。\figref{fig:ch04c-profile} 与\figref{fig:ch04c-WH} 为模型计算图，
+非原书插图。原书表 4-8（峰形函数）已重建为\tabref{tab:ch04c-profile}；原书表 4-9、4-10、
 4-11 的数值在 ocr 中大面积损坏，已对照书内 p.291—292 / PDF p.310—311 的页面图像核实其结论
 （骨架元素结构参数煅烧前后变化不大、煅烧后晶胞体积随掺硼量收缩、吸附量与选择性比），但未逐格
 转录为表格。本章 4.7 节参考了董成教授在第 10 届粉末衍射学术会议

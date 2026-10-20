@@ -1,0 +1,21 @@
+eq:ch05-kd	改编补充	up p.330	源书 (5-37) 印 N=−V_m dθ/dt=A θ^n exp[−E_d(θ)/RT]（含频率因子 A 与 E_d），未单列速率常数式；本版 k_d=A exp(−E_d/RT) 系把该因子拆出并取 E_d 为常量，属教学化改写。图 build/_m_ch05a1.png、build/_src330.png。
+eq:ch05-pulse	形式一致但符号不同	up p.332	本版 V_吸=V0/A0[(A0−A1)+(A0−A2)+(A0−A3)+⋯]；源书 (5-38) 印 V=V0/A0[(A0−A1)+(A0−A2)+(A0−A3)+⋯]，逐项同形，仅吸附量记号 V→V_吸。图 build/_cmp_test.png。
+eq:ch05-peak	改编补充	up p.334	源书 (5-52)—(5-54) 只按一级脱附印 (k_d)_M=βE_d/RT_M² 与 (k_d)_M=A exp(−E_d/RT_M)=βE_d/RT_M²；本版 n 阶通式 E_d/(RT_m²)=(A/β)nθ_m^{n−1}exp(−E_d/(RT_m)) 中的 nθ_m^{n−1} 因子为改编本所加。图 build/_m_ch05a2.png。
+eq:ch05-redhead	形式一致但符号不同	up p.334	本版 E_d/(RT_m²)=(A/β)exp(−E_d/(RT_m))；源书 (5-54) 印 (k_d)_M=A exp(−E_d/RT_M)=βE_d/RT_M²，移项等价，下标 M→m。图 build/_m_ch05a2.png。
+eq:ch05-tpr	形式一致但符号不同	up p.336	源书 (5-56) 印 dα/dt=K[G]^p[S]^q、(5-57) K=A exp(−E/RT)、(5-58) β=dT/dt；本版合并为 r=dα/dt=k f(α)、k=A exp(−E_a/RT)、β=dT/dt（K→k、E→E_a，浓度项并入 f(α)）。图 build/_m_ch05a3.png。
+eq:ch05-tpr-peak	形式一致但符号不同	up p.338	源书 (5-71) 印 E/RT_M²=[A[G]_M^p q[S]_M^{q−1}/β]exp(−E/RT)、(5-72) 印 2lnT_M−lnβ+p ln[G]_M+(q−1)ln[S]_M=E/RT_M+常数；本版同 (5-72)，T_M→T_m、E→E_a。图 build/_m_ch05a3.png。
+eq:ch05-tpr-peak-q1	形式一致但符号不同	up p.338	本版 2lnT_m−lnβ+p ln[G]_M=E_a/(RT_m)+常数；源书 (5-73) 同式，T_M→T_m、E→E_a。图 build/_m_ch05a4.png。
+eq:ch05b-area	改编补充	up p.331-332	源书 p.331—332 只印脉冲标定式 (5-38) V=V0/A0[(A0−A1)+⋯] 与峰面积定性说明，无 n_des/m=(F/(k_Aβm))∫A(T)dT 积分式；本版为按定义的改写。图 build/_m_ch05a4.png。
+eq:ch05b-redhead	形式一致但符号不同	up p.334	源书 (5-54) 印 (k_d)_M=A exp(−E_d/RT_M)=βE_d/RT_M²（本版箭头左式，A↔ν、M↔p），(5-55) 印精确式 2lnT_M−lnβ=E_d/RT_M+ln(E_d/AR)；本版右端 −3.64 为 Redhead 近似，源书无此常数。图 build/_m_ch05a5.png。
+eq:ch05b-sens	改编补充	up p.334	源书 p.334 只印 (5-54)(5-55)，无 ∂T_p/∂lnβ 与 δE_d=RT_pδlnν 两条灵敏度式；本版由式 (5-9) 微分补出。图 build/_m_ch05a5.png。
+eq:raman-shift	改编补充	up p.365	源书 p.365 只用文字定义「瑞利线与斯托克斯线频率的差值称为拉曼位移」，未印 Δν̃=(ν0−νs)/c=νm/c；本版为公式化改写。图 build/_m_ch06a.png。
+eq:incident-field	已核对一致	up p.365	源书 p.365 原印 E=E0cos2πν0t；本版同式，仅逗号排版差异。图 build/_m_ch06a.png。
+eq:induced-dipole	已核对一致	up p.366	源书 p.366 原印 p=αE 与 p=αE0cos2πν0t；本版同两式，仅用粗体表张量/矢量。图 build/_m_ch06a.png。
+eq:alpha-expansion	改编补充	up p.366	源书 p.366 只印一阶展开 α=α0+(∂α/∂q)_0 q+⋯，q=q0cos2πνm t 仅在 prose 中给出；本版补二阶项 (1/2)(∂²α/∂q²)_0 q² 并把 q(t) 并入展示式。图 build/_m_ch06a.png。
+eq:three-terms	形式一致但符号不同	up p.366	源书 p.366 把三项合写为 P=α0E0cos2πν0t+(1/2)(∂α/∂q)_0 q0E0[cos2π(ν0−νm)t+cos2π(ν0+νm)t]+⋯；本版拆成 p_瑞利、p_反斯托克斯、p_斯托克斯 三行并加中文下标，P→p。图 build/_m_ch06b.png。
+eq:classical-intensity	改编补充	up p.366	源书 p.366 印 I=k'_ω ω_s^4 p² sin²θ（k'_ω=1/(32π²ε0c0³)）；本版改用辐照度/微分散面口径 P_sc=E0(dσ/dΩ)ΔΩ、E0=P0/A_beam，源书无此式。图 build/_m_ch06b.png。
+eq:dipole-dcs	形式一致但符号不同	up p.366	本版 dσ/dΩ=K sin²θ（K=(dσ/dΩ)|θ=90°）；源书 p.366 的 I=k'_ωω_s^4p²sin²θ 与之对应，k'_ωω_s^4p²↔K、I↔dσ/dΩ，属口径改名。图 build/_m_ch06b.png。
+eq:classical-intensity-ratio	改编补充	up p.366	源书 p.366 无 P_sc/P0=(dσ/dΩ)(ΔΩ/A_beam)=K sin²θ ΔΩ/A_beam 这条比值式；本版为量纲自洽改写。图 build/_m_ch06b.png。
+eq:stokes-ratio	改编补充	up p.367	源书 p.367 只有定性句「常温下…斯托克斯线比反斯托克斯线强得多」，未印 I_as/I_s 强度比式；本版按标准形式补出（书内 p.350/PDF p.369 另给反斯托克斯强度式，非此比值）。图 build/_m_ch06c.png。
+eq:resonance-cross	已核对一致	up p.395	源书 p.395（书内 p.376）原印 σ∝1/(hν0−hνm)(hν0+hνm)；本版同式，仅分母加括号排版差异。图 build/_m_ch06c.png。
+eq:sers-two	改编补充	up p.397	源书 p.397（书内 p.378）只在 prose 中写「P=αE 中的 E 增大」「P=αE 中的 α 增大」，未印带两种机制标注的编号式；本版把 P=αE 提出并加注。图 build/_m_ch06c.png。

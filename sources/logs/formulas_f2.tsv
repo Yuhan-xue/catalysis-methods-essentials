@@ -1,0 +1,77 @@
+eq:bragg-ch04	已核对一致	up p.263	版面 (4-10) 2d_hkl sinθ=nλ (n=1,2,3,…)；源书书内 p.244（PDF p.263）印 2d sinθ=nλ。图 build/_eq_p86.png / build/_src_up263_fb.png
+eq:ch03-alpha	改编补充	up p.194-195	版面 (3-1) α=(m0−mt)/(m0−m∞)；源书 §3.1（书内 p.175 / PDF p.194）只逐条定义 Δm、dm/dt、Ti、Tp，无转化率式，α 只在 §3.3 变量说明出现（书内 p.180 / PDF p.199）。图 build/_eq_p69.png / build/_src_up194_fb.png
+eq:ch03-arrh	改编补充	up p.199-200	版面 (3-6) k(T)=A exp(−Ea/RT)；源书 §3.3（书内 p.180–181）只把 k(T) 称「速率常数的温度关系式」，未印 Arrhenius 形式。图 build/_eq_p71.png / build/_src_up199_fb.png
+eq:ch03-dsc	改编补充	up p.197	版面 (3-3) ΔH=(1/m)∫[dQ/dt−(dQ/dt)base]dt；源书 §3.2.3「2. 差示扫描量热曲线」（书内 p.178 / PDF p.197）只印 dH/dt=f(T)或 f(t)，无峰面积-热焓换算式。图 build/_eq_p70.png / build/_src_up197_fb.png
+eq:ch03-dta	改编补充	up p.195-196	版面 (3-2) ΔH=(K/m)∫ΔT dt；源书 §3.2.2（书内 p.176–177 / PDF p.195–196）只定义基线/峰/峰宽/峰高/峰面积/外推始点/峰温，全节无 K、m 与积分式。图 build/_eq_p70.png / build/_src_up195_fb.png
+eq:ch03-integral	改编补充	up p.199-200	版面 (3-7) g(α)=∫0^α dα/f(α)=(A/β)∫0^T exp(−Ea/RT)dT；源书同节（书内 p.181 / PDF p.200）只印 Ozawa–Flynn–Wall、Kissinger、Freeman–Carroll 三式，无 g(α) 积分式。图 build/_eq_p71.png / build/_src_up200_fb.png
+eq:ch03-mtdsc	形式一致但符号不同	up p.198	版面 (3-4) T(t)=T0+βt+AT sin(ωt)、dQ/dt=Cp dT/dt+f(T,t)；源书书内 p.179（PDF p.198）印 dH/dt=Cp dT/dt+f(T,t)（本版 dQ/dt ↔ 源书 dH/dt）；正弦温度程序式源书未印，只有文字与图 3-8。图 build/_eq_p70.png / build/_src_up198_fb.png
+eq:ch03-rate	已核对一致	up p.199	版面 (3-5) dα/dt=k(T)f(α) ⟺ dα/dT=(1/β)k(T)f(α)；源书书内 p.180（PDF p.199）印 dα/dT=(1/β)k(T)f(α)（未编号），本版右半逐字同形，左半为等价时间形式。图 build/_eq_p71.png / build/_src_up199_fb.png
+eq:ch03b-dT	改编补充	up p.220	版面 (3-9) ΔT≈βτ；源书 §3.5 开篇与 §3.5.1（书内 p.201 / PDF p.220）只定性写 TG-IR 原理，未提死体积与滞后，无此式（仅图 3-31 标注升温速率 5 K/min）。图 build/_eq_p74.png / build/_src_up220_fb.png
+eq:ch03b-dTp	改编补充	up p.200	版面 (3-11) ΔTp≈(RTp²/E)ln(β2/β1)；源书书内 p.181（PDF p.200）只有三法作图步骤，无峰温对升温速率敏感度式。图 build/_eq_p75.png / build/_src_up200_fb.png
+eq:ch03b-dtg-area	改编补充	up p.195	版面 (3-12) ∫[−d(m%)/dT]dT=20∫dα/dT dT=20 个百分点；源书第 3 章只在 §3.2.2（书内 p.176 / PDF p.195）给峰面积定义句，全章无 TG/DTG 积分恒等式。图 build/_eq_p76.png / build/_src_up195_fb.png
+eq:ch03b-kissinger	形式一致但符号不同	up p.200	版面 (3-10) d[ln(β/Tp²)]/d(1/Tp)=−E/R；源书书内 p.181（PDF p.200）印 d(ln(φ/Tp²))/d(1/Tp)=−E/R，本版 β ↔ 源书 φ（升温速率符号统一）。图 build/_eq_p75.png / build/_src_up200_fb.png
+eq:ch03b-tau	改编补充	up p.220	版面 (3-8) τ≈V/Q；源书 §3.5 与 §3.5.1（书内 p.201 / PDF p.220）只定性写「分解产物直接进入红外光谱仪」，未提死体积/传输线滞后，无此式。图 build/_eq_p74.png / build/_src_up220_fb.png
+eq:ch04b-DW	已核对一致	up p.265	版面 (4-22) D=exp(−B sin²θ/λ²)、B=8π²U、U=⟨u²⟩；源书书内 p.246（PDF p.265）逐字同形，并注「指数中系数是 B 不是 2B」。图 build/_eq_p91.png / build/_src_up265_fb.png
+eq:ch04b-F	已核对一致	up p.269	版面 (4-26) F_hkl=Σ_{j=1}^{n} fj exp[2πi(hxj+kyj+lzj)]；源书书内 p.250（PDF p.269）印 F_hkl=Σ_i^n fi exp[2πi(hxi+kyi+lzi)]（i→j，同一求和）。图 build/_eq_p94.png / build/_src_up269_fb.png
+eq:ch04b-F-extinct	已核对一致	up p.270	版面 (4-29) F_hkl=Σ_j fj exp[2πi(hxj+kyj+lzj)]{1+e^{πi(h+k)}+e^{πi(h+l)}+e^{πi(k+l)}}；源书书内 p.251（PDF p.270）面心格子印同式。图 build/_eq_p94.png / build/_src_up270_fb.png
+eq:ch04b-FN	已核对一致	up p.288	版面 (4-41) F_N=(1/|Δ2θ|)(N_obs/N_poss)；源书书内 p.269（PDF p.288）印 F_N=(1/|Δ2θ|)(N/N_预测)，N_obs=N、N_poss=N_预测。图 build/_eq_p101.png / build/_src_up288_fb.png
+eq:ch04b-FT	已核对一致	up p.269	版面 (4-27) F_hkl=∫_{V_c}ρ(x,y,z)exp[2πi(hx+ky+lz)]dV；源书书内 p.250（PDF p.269）印 ∫_V ρ(x,y,z)exp[...]dV（V 即晶胞体积，本版写 V_c）。图 build/_eq_p94.png / build/_src_up269_fb.png
+eq:ch04b-HL	已核对一致	up p.285	版面 (4-38) q_hkl≡sin²θ_hkl=(λ²/4)(h²/a²+k²/b²+l²/c²)=Ah²+Bk²+Cl²、A=λ²/4a²、B=λ²/4b²、C=λ²/4c²；源书书内 p.266（PDF p.285）逐项同形。图 build/_eq_p100.png / build/_src_up285_fb.png
+eq:ch04b-I-extinct	已核对一致	up p.270	版面 (4-28) F_hkl=Σ_j fj exp[2πi(hxj+kyj+lzj)]{1+exp[πi(h+k+l)]}；源书书内 p.251（PDF p.270）体心格子印同式。图 build/_eq_p94.png / build/_src_up270_fb.png
+eq:ch04b-Ii-V	已核对一致	up p.278	版面 (4-30) I_i=K_i v_i/μ_t；源书书内 p.259（PDF p.278）逐字同形（μ_t 为混体系总线吸收系数）。图 build/_eq_p96.png / build/_src_up278_fb.png
+eq:ch04b-Ii-w	形式一致但符号不同	up p.279	版面 (4-31) μ_m=Σ_i w_i μ_{m,i}、I_i=k_i w_i/μ_m、k_i=K_i/ρ_i；源书书内 p.260（PDF p.279）印 μ_mtρ_t=μ_t=Σv_iμ_i、I_i=K_i w_i/(ρ_i μ_mt)；本版把 K_i/ρ_i 记 k_i、μ_mt 记 μ_m（μ_m 质量加权式见书内 p.236）。图 build/_eq_p97.png / build/_src_up279_fb.png
+eq:ch04b-M20	已核对一致	up p.287	版面 (4-40) M20=Q20/(2|ΔQ|N20)；源书书内 p.268（PDF p.287）印 M20=Q20/(2ε̄N20)、ε̄=(1/20)Σ_{i=1}^{20}|ΔQi|，本版 |ΔQ| 即 ε̄。图 build/_eq_p101.png / build/_src_up287_fb.png
+eq:ch04b-PL	已核对一致	up p.264	版面 (4-21) P=(1+cos²2θ)/2、L=1/(2sin²θcosθ)、PL=(1+cos²2θ)/(4sin²θcosθ)；源书书内 p.245（PDF p.264）逐字同形，分母确为 4sin²θcosθ。图 build/_eq_p91.png / build/_src_up264_fb.png
+eq:ch04b-Q	改编补充	up p.263-264	版面 (4-18) Q≡1/d_hkl²=|H|²；源书书内 p.244–245（PDF p.263–264）未印 Q 通式，只逐晶系给 1/d² 表达式并给 H=ha*+kb*+lc*，以 Q 标记统一是改编本的组织方式。图 build/_eq_p89.png / build/_src_up263_fb.png、build/_src_up264_fb.png
+eq:ch04b-RIR	已核对一致	up p.282	版面 (4-34) I_i/I_f=(K_i/K_f)(w_i/w_f)；源书书内 p.263（PDF p.282）逐字同形。图 build/_eq_p97.png / build/_src_up282_fb.png
+eq:ch04b-bragg	已核对一致	up p.263	版面 (4-17) 2d_hkl sinθ=λ；源书书内 p.244（PDF p.263）印 2d sinθ=nλ；本版按 §4.4.1 已声明的约定把衍射级数 n 并入衍射指标（取 n=1），两式在该口径下一致。图 build/_eq_p89.png / build/_src_up263_fb.png
+eq:ch04b-cubicratio	形式一致但符号不同	up p.284	版面 (4-37) Q_i/Q_1=(h_i²+k_i²+l_i²)/(h_1²+k_1²+l_1²)；源书书内 p.265（PDF p.284）印 Q_i/Q_j=(h_i²+k_i²+l_i²)/(h_j²+k_j²+l_j²)，本版取其 j=1 的特例。图 build/_eq_p99.png / build/_src_up284_fb.png
+eq:ch04b-dicvol	已核对一致	up p.287	版面 (4-39) Q⁻(hkl)=(h²+k²+l²)/[a0+(n+1)p]²、Q⁺(hkl)=(h²+k²+l²)/[a0+np]²；源书书内 p.268（PDF p.287）逐字同形。图 build/_eq_p101.png / build/_src_up287_fb.png
+eq:ch04b-external	已核对一致	up p.279	版面 (4-32) w_i=I_i/I_i⁰；源书书内 p.260（PDF p.279）印同式（I_i⁰=(K_i/ρ_i)(1/μ_mi)）。图 build/_eq_p97.png / build/_src_up279_fb.png
+eq:ch04b-f	已核对一致	up p.267	版面 (4-23) f=E_a/E_e；源书书内 p.248（PDF p.267）逐字同形（E_a 为原子散射振幅、E_e 为自由电子散射振幅）。图 build/_eq_p92.png / build/_src_up267_fb.png
+eq:ch04b-fint	形式一致但符号不同	up p.267	版面 (4-24) f=∫_0^∞4πr²ρ(r)sin(4πr sinθ/λ)/(4πr sinθ/λ)dr；源书书内 p.248（PDF p.267）印 f=(4π/e)∫_0^∞r²ρ(r)(sin kr)/(kr)dr、k=4πsinθ/λ；源书多 1/e（其 ρ 取电子云密度），本版 ρ 取电子数密度，归一约定不同。图 build/_eq_p92.png / build/_src_up267_fb.png
+eq:ch04b-flushing	已核对一致	up p.282	版面 (4-35) w_i=(I_i/K_i)/Σ_{j=1}^{n}(I_j/K_j)；源书书内 p.263（PDF p.282）印 w_i=(K_i/I_i Σ_{j=1}^{n}I_j/K_j)^{-1}，与本版等价。图 build/_eq_p97.png / build/_src_up282_fb.png
+eq:ch04b-fpoly	已核对一致	up p.267	版面 (4-25) f=Σ_{i=1}^{4}ai exp[−bi(sinθ/λ)²]+c；源书书内 p.248（PDF p.267）印 f=Σai exp(−bi sin²θ/λ²)+c，同一式。图 build/_eq_p94.png / build/_src_up267_fb.png
+eq:ch04b-indexbase	形式一致但符号不同	up p.283	版面 (4-36) Q_hkl=f(h,k,l;a,b,c,α,β,γ)；源书书内 p.264（PDF p.283）印 d_hkl=f(h,k,l,a,b,c,α,β,γ)，本版以 Q_hkl 作自变量（源书用 d_hkl）。图 build/_eq_p99.png / build/_src_up283_fb.png
+eq:ch04b-intensity	已核对一致	up p.264	版面 (4-20) I_hkl=K|F_hkl|²·P·L·j·D·ΔV、K=I0(e⁴/m²c⁴)(λ³/8πR²Vc²)；源书书内 p.245（PDF p.264）印展开式 I0(e⁴/m²c⁴)(λ³/8πR²Vc²)((1+cos²2θ)/2)(1/(sin²θcosθ))|F|²DΔVj 与简化式 K'·P·L·|F|²DΔVj，本版 K 与源书 K' 同义（角度因子与常数分列）。图 build/_eq_p91.png / build/_src_up264_fb.png
+eq:ch04b-internal	形式一致但符号不同	up p.280	版面 (4-33) I_i/I_s=K w_i'/w_s'、w_i=w_i'/w0=w_i'/(1−w_s')；源书书内 p.261（PDF p.280）印 I_i/I_s=(K_i w_i'/ρ_i μ_mt')/(K_s w_s/ρ_s μ_mt')=K w_i'/w_s，本版给 s 相质量分数加撇并把 w_i'=w_i×w0 反解为 w_i。图 build/_eq_p97.png / build/_src_up280_fb.png
+eq:ch04b-triclinic	形式一致但符号不同	up p.264	版面 (4-19) Q=(1/V²)(S11h²+S22k²+S33l²+2S12hk+2S13hl+2S23kl)；源书书内 p.245（PDF p.264）三斜式印 1/d²=h²a*²+k²b*²+l²c*²+2hka*b*cosγ*+2klb*c*cosα*+2hla*c*cosβ*（倒易点阵常数），本版改用 Sij 与直接晶胞常数。图 build/_eq_p90.png / build/_src_up264_fb.png
+eq:ch04c-WH	改编补充	up p.297	版面 (4-54) β_hkl=Kλ/(Dcosθ)+4ε tgθ ⟺ βcosθ=Kλ/D+4ε sinθ；源书 §4.7 末尾（书内 p.278 / PDF p.297）只有一句「如果存在晶格畸变，则需要分离畸变和晶粒大小的效应」，未印 WH 关系式。图 build/_eq_p106.png / build/_src_up297_fb.png
+eq:ch04c-approx	已核对一致	up p.290	版面 (4-43) (p/2)·2d[sin(θ+δ)−sinθ]=λ/2 ⟹ Dδcosθ=λ/2；源书书内 p.271（PDF p.290）分步印 (p/2)2d sin(θ+δ)=(p/2)nλ+λ/2 与 (p/2)2d sinθ=(p/2)nλ，相减即本版式（D 记 D_hkl）。图 build/_eq_p103.png / build/_src_up290_fb.png
+eq:ch04c-conv	改编补充	up p.293	版面 (4-48) h(x)=∫g(x')f(x−x')dx'；源书书内 p.274（PDF p.293）只用文字说「衍射谱可以看成仪器因子 g(x) 与晶粒因子 f(x) 的卷积」，未印卷积积分式。图 build/_eq_p104.png / build/_src_up293_fb.png
+eq:ch04c-debye	原书自身问题	up p.314	版面 (4-65) |F(hkl)|²=Σ_iΣ_j f_i f_j sin(Q r_ij)/(Q r_ij)、Q=4πsinθ/λ；源书书内 p.295（PDF p.314）印 |F(hkl)|²=Σ_j f_j²+Σ_iΣ_{j≠i} f_i f_j*·2sin(2πr_ij)/(2πr_ij)，偏角只有 r_ij、缺 sinθ/λ 因子，量纲不成立，本版按 Q=4πsinθ/λ 写（自项 i=j 即源书 Σf_j² 项）。图 build/_eq_p116.png / build/_src_up314_fb.png
+eq:ch04c-delta	已核对一致	up p.289	版面 (4-42) 2d sinθ=nλ、2d sin(θ+δ)=nλ+Δl；源书书内 p.270（PDF p.289）逐字同形。图 build/_eq_p103.png / build/_src_up289_fb.png
+eq:ch04c-dphi	已核对一致	up p.291	版面 (4-44) Δl=2d sin(θ+δ)−nλ=2δdcosθ、Δφ=2πΔl/λ=4πdδcosθ/λ；源书书内 p.272（PDF p.291）把 Δl 定义为总光程差 2d sin(θ+δ)=nλ+2δdcosθ、Δφ₀=2πΔl/λ=2nπ+4πdδcosθ/λ，取周期后得同一 Δφ₀=4πdδcosθ/λ。图 build/_eq_p103.png / build/_src_up291_fb.png
+eq:ch04c-doublet	已核对一致	up p.294	版面 (4-50) Δ(2θ)=2Δλ/λ·tgθ；源书书内 p.275（PDF p.294）印 Δ(2θ)=2Δλ/λ_Kα·tgθ（本版分母写 Kα 加权平均 λ）。图 build/_eq_p105.png / build/_src_up294_fb.png
+eq:ch04c-doubletnum	原书自身问题	up p.295	版面 (4-51) Δ(2θ)/°≈0.28 tgθ；源书书内 p.276（PDF p.295）印 Δ(2θ)=2Δλ/λ_Kα·tgθ=0.2246tgθ，按其同页自身数据复算 2×0.38/154.18=4.93×10⁻³ rad=0.2824°（即 0.28 tgθ），印刷系数 0.2246 与自身数据不符，本版按复算值写并记原书笔误。图 build/_eq_p105.png / build/_src_up295_fb.png
+eq:ch04c-gof	已核对一致	up p.301	版面 (4-60) GOF=R_wp/R_exp=[Σ_i w_i(Y_io−Y_ic)²/(N−P)]^{1/2}、χ²=(R_wp/R_exp)²；源书书内 p.282（PDF p.301）印 GOF=R_wp/R_exp 与展开式（本版另补 χ² 等价关系，源书未印）。图 build/_eq_p111.png / build/_src_up301_fb.png
+eq:ch04c-halving	改编补充	up p.297	版面 (4-53) D'=Kλ/(Bcosθ)≈Kλ/(2βcosθ)=D/2（Lorentz 型极限 B=b+β、b≈β）；源书 §4.7 末（书内 p.278 / PDF p.297）只给适宜范围 2~20 nm 与注意事项，未印此推导。图 build/_eq_p106.png / build/_src_up297_fb.png
+eq:ch04c-ihkl	已核对一致	up p.300	版面 (4-55) I_hkl=K·P·L·|F_hkl|²·D·ΔV·J；源书书内 p.281（PDF p.300）逐字同形。图 build/_eq_p108.png / build/_src_up300_fb.png
+eq:ch04c-rachinger	已核对一致	up p.296	版面 (4-52) I_i(α1)=I_i−½I_{i−3}(α1)、i=4,5,6,…；源书书内 p.277（PDF p.296）印 I_i(α1)=I_i−1/2I_{i−3}(α1) 及 I4、I5、I6 各步。图 build/_eq_p105.png / build/_src_up296_fb.png
+eq:ch04c-rietconv	已核对一致	up p.300	版面 (4-56) Y_c,j=I_hkl⊗Ω_j；源书书内 p.281（PDF p.300）印 Y_c,j=I_hkl⊗Ω（本版给 Ω 加下标 j 与 Y_c,j 对应）。图 build/_eq_p108.png / build/_src_up300_fb.png
+eq:ch04c-rietveld	形式一致但符号不同	up p.300	版面 (4-57) Y_ic=A(2θi)Σ_n S_nΣ_h I_n,hklΩ_n(2θi−2θB)+Y_ib(2θi)；源书书内 p.281（PDF p.300）印 Y_i,c=A(2θi)Σ_n S_nΣ_h I_n,hklΩ_n(2θi−2θB)+Y_b(2θi)，本版按本节惯例把 Y_i,c、Y_b 写作 Y_ic、Y_ib。图 build/_eq_p108.png / build/_src_up300_fb.png
+eq:ch04c-rir	已核对一致	up p.306	版面 (4-63) w_M=I_M(220)/(K I_C(110)+I_M(220))×100%=I_M(220)/(0.79I_C(110)+I_M(220))×100%；源书书内 p.287（PDF p.306）印 w_M=I_M(220)/(0.79I_C(110)+I_M(220))×100%，并给 I_M/I_C=K w_M/w_C、w_M+w_C=1。图 build/_eq_p113.png / build/_src_up306_fb.png
+eq:ch04c-rpexp	形式一致但符号不同	up p.301	版面 (4-59) R_p=Σ_i|Y_io−Y_ic|/Σ_i Y_io、R_exp=[(N−P)/Σ_i w_i Y_io²]^{1/2}；源书书内 p.282（PDF p.301）印 R_p=Σ|Y_i−Y_i,c|/Σ|Y_i|、R_exp=[(N−P)/Σ w_i Y_i²]^{1/2}（本版 Y_i→Y_io、Y_i,c→Y_ic）。图 build/_eq_p111.png / build/_src_up301_fb.png
+eq:ch04c-rwp	形式一致但符号不同	up p.301	版面 (4-58) R_wp=[Σ_i w_i(Y_io−Y_ic)²/Σ_i w_i Y_io²]^{1/2}、w_i=1/σi²=1/Y_io；源书书内 p.282（PDF p.301）印 R_wp=[Σ_{i=1}^{n}w_i(Y_i−Y_i,c)²/Σ w_i Y_i²]^{1/2}、w_i=1/σi²、σi=√Y_i（本版 Y_i→Y_io、Y_i,c→Y_ic）。图 build/_eq_p111.png / build/_src_up301_fb.png
+eq:ch04c-scherrer	已核对一致	up p.292	版面 (4-47) β_hkl=(4×1.40/2π)(λ/(D_hkl cosθ))、D_hkl=Kλ/(β_hkl cosθ)、K=(4×1.40)/2π=0.891≈0.89；源书书内 p.273（PDF p.292）印 β_hkl=4δ 与 β_hkl=0.89λ/(D_hkl cosθ)，本版把 K=4×1.40/2π 显式写出并给反解式。图 build/_eq_p103.png / build/_src_up292_fb.png
+eq:ch04c-sial	已核对一致	up p.305	版面 (4-61) n_Si/n_Al=(25.858−a)/(a−24.191)；源书书内 p.286（PDF p.305）逐字同形。图 build/_eq_p113.png / build/_src_up305_fb.png
+eq:ch04c-sialsens	改编补充	up p.305	版面 (4-62) d(Si/Al)/da=−1.667/(a−24.191)²；源书书内 p.286（PDF p.305）只给 (4-61) 与「可以通过晶胞参数变化推测硅铝比」，未作灵敏度讨论、无微分式。图 build/_eq_p113.png / build/_src_up305_fb.png
+eq:ch04c-subtract	改编补充	up p.293	版面 (4-49) Gauss 型 B²=b²+β² ⟹ β=√(B²−b²)；Lorentz 型 B=b+β ⟹ β=B−b；源书书内 p.274（PDF p.293）只说「可以忽略仪器因素，或者简单地减去仪器引起的半峰宽」，未印这两式。图 build/_eq_p104.png / build/_src_up293_fb.png
+eq:ch04c-sum	已核对一致	up p.291-292	版面 (4-45) E=E0Σ_{k=0}^{p−1}e^{ikΔφ}=E0 sin(pΔφ/2)/sin(Δφ/2)·e^{i(p−1)Δφ/2}、I∝[sin(pΔφ/2)/(p sin(Δφ/2))]²；源书书内 p.272（PDF p.291）印 E=E0[sin(pΔφ0/2)/sin(Δφ0/2)]（无相位因子）、p.273（PDF p.292）印 I/Imax=sin²(Φ/2)/(Φ/2)²（小角近似），本版补相位因子并写精确归一化，小角下与源书同。图 build/_eq_p103.png / build/_src_up291_fb.png、build/_src_up292_fb.png
+eq:ch04c-u	已核对一致	up p.292	版面 (4-46) u=pΔφ/2=2πDδcosθ/λ=1.40 ⟹ Dδcosθ=1.40λ/2π；源书书内 p.273（PDF p.292）印 Φ=pΔφ0=4πδpd cosθ/λ=2×1.40、Φ/2=1.40（本版 u 即 Φ/2）。图 build/_eq_p103.png / build/_src_up292_fb.png
+eq:ch04c-znod	已核对一致	up p.308	版面 (4-64) D_100=0.89×1.5406/(0.0026×0.9619) Å=1.3711/0.002501 Å≈548 Å≈55 nm；源书书内 p.289（PDF p.308）给 Ω(x)=1/(1+k²x²)、k²=4/β² 与 β_hkl=0.89λ/(D_hkl cosθ)，按 λ=1.5406 Å、2θ=31.7° 得 D_100=55 nm，与本节数值一致（中间量 548 Å 为本版补算）。图 build/_eq_p114.png / build/_src_up308_fb.png
+eq:cubic-d	已核对一致	up p.263	版面 (4-11) 1/d_hkl²=(h²+k²+l²)/a² ⟹ d_hkl=a/√(h²+k²+l²)；源书书内 p.244（PDF p.263）立方系印 1/d²=(h²+k²+l²)/a²，本版 d 加下标 hkl 并解出 d（等价改写，源书未印后半）。图 build/_eq_p86.png / build/_src_up263_fb.png
+eq:cubic-sin2	改编补充	up p.263-264	版面 (4-12) sin²θ=λ²(h²+k²+l²)/(4a²)；源书 §4.4.1（书内 p.244–245 / PDF p.263–264）只列立方/四方/正交/六方/单斜/三斜的 1/d² 形式，未见 sin²θ 工作公式，本式由 (4-11) 代入 Bragg 方程得出。图 build/_eq_p86.png / build/_src_up263_fb.png、build/_src_up264_fb.png
+eq:ewald-geom	已核对一致	up p.259	版面 (4-13) OB=2(1/λ)sinθ ⟺ OB=1/d_hkl=|H_hkl|；源书书内 p.240（PDF p.259）印 BO=2OC=2(1/λ)sinθ，即 2(1/BO)sinθ=λ，与 2d_hkl sinθ=λ 比较得 BO=1/d_hkl=|H|。图 build/_eq_p86.png / build/_src_up259_fb.png
+eq:intensity	已核对一致	up p.264	版面 (4-16) I(hkl)∝|F(hkl)|²·LP·D·ΔV·j；源书书内 p.245（PDF p.264）简化式 I_hkl=K'·P·L·|F_hkl|²·D·ΔV·j（P、L 同量，本版按源书「合称 PL 因子」写 LP，比例号吸收 K'）。图 build/_eq_p87.png / build/_src_up264_fb.png
+eq:ka-weight	已核对一致	up p.253	版面 (4-2) λ(Kα)=2/3λ(Kα1)+1/3λ(Kα2)；源书书内 p.234（PDF p.253）逐字同形，并给 I(Kα1):I(Kα2)=2:1。图 build/_eq_p84.png / build/_src_up253_fb.png
+eq:lambert	已核对一致	up p.254	版面 (4-3) I=I0 e^{−μx}；源书书内 p.235（PDF p.254）印同式（未编号）。图 build/_eq_p84.png / build/_src_up254_fb.png
+eq:laue	已核对一致	up p.260	版面 (4-9) a·Δs=hλ、b·Δs=kλ、c·Δs=lλ；源书书内 p.241（PDF p.260）印 a·(S−S0)=hλ、b·(S−S0)=kλ、c·(S−S0)=lλ（Δs≡s−s0）。图 build/_eq_p86.png / build/_src_up260_fb.png
+eq:laue-vec	已核对一致	up p.259	版面 (4-8) (s−s0)/λ=H_hkl=ha*+kb*+lc*；源书书内 p.240（PDF p.259）印 S/λ−S0/λ=H_hkl=ha*+kb*+lc*。图 build/_eq_p86.png / build/_src_up259_fb.png
+eq:massabs	原书自身问题	up p.254	版面 (4-4) I=I0 e^{−(μ/ρ)ρx}、μm=μ/ρ；源书书内 p.235（PDF p.254）印 I=I0 e^{(μ/ρ)ρx}=I0 e^{−μmρx}，中间式漏负号（与本页末式及 (4-3) 自相矛盾），本版按末式写正确形式。图 build/_eq_p84.png / build/_src_up254_band.png
+eq:massadd	已核对一致	up p.255	版面 (4-5) μm=Σ_i wi μm,i；源书书内 p.236（PDF p.255）印 μm=Σ_{i=1}^{n} wi μmi（本版省略上下限、加逗号下标，同一式）。图 build/_eq_p84.png / build/_src_up255_fb.png
+eq:phase	已核对一致	up p.268	版面 (4-15) φj=2π(hxj+kyj+lzj)；源书书内 p.249（PDF p.268）印 φ=(Δ/λ)×2π=2π(hx+ky+lz)。图 build/_eq_p87.png / build/_src_up268_fb.png
+eq:recipdef	已核对一致	up p.257	版面 (4-6) a*·a=1、a*·b=0、a*·c=0；源书书内 p.238（PDF p.257）同式，另列出 b*、c* 两行（本版用 a→b→c 循环说明代替）。图 build/_eq_p85.png / build/_src_up257_fb.png
+eq:recipvec	已核对一致	up p.257	版面 (4-7) a*=(b×c)/V、b*=(c×a)/V、c*=(a×b)/V；源书书内 p.238（PDF p.257）逐字同形，并给 V=a·(b×c)=b·(c×a)=c·(a×b)。图 build/_eq_p85.png / build/_src_up257_fb.png
+eq:sf	已核对一致	up p.268-269	版面 (4-14) F(hkl)=Σ_{j=1}^{N} fj exp[2πi(hxj+kyj+lzj)]=Σ fj e^{iφj}；源书书内 p.250（PDF p.269）印 F_hkl=Σ_i^n fi exp[2πi(hxi+kyi+lzi)]（i→j、n→N，同一求和）。图 build/_eq_p87.png / build/_src_up269_fb.png
+eq:transgroup	已核对一致	up p.242	版面 (4-1) T=ma+nb+pc、m,n,p=0,±1,±2,…；源书书内 p.223（PDF p.242）逐字同形（工作清单 hint_pdf 244 是对称元素表，非此式）。图 build/_eq_p82.png / build/_src_up242_fb.png

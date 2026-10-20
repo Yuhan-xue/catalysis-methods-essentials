@@ -1,0 +1,21 @@
+6	chapters/ch00-intro.tex	66	比表面积、孔容与孔径分布	比表面积、孔容与孔尺寸分布	术语统一：sources/terminology_decisions.md 定为「孔尺寸分布」，与第1章标题及正文一致；源书 up p.41（书内 p.22）原文亦作「孔尺寸分布」；图：build/_src_up41_pa.png
+10	chapters/parts/ch01-a.tex	279	不可当作真实表面积极使用	不可当作真实表面积使用	衍字「极」：同段语义为等效 BET 表面积不可当作真实表面积使用，据上下文与源书对照；图：build/_p10_pa.png
+12	chapters/parts/ch01-b.tex	180	孔宽小于临界宽度 $D_{\mathrm{ch}}$ 时	孔宽小于临界宽度时	D_ch 全书仅此一处使用且未定义（ch90 符号表未收；源书 OCR ch01-b.txt:219 亦在「如前所述」后直接使用，定义未随改编保留）；删未定义符号，语义由下句 4 nm MCM-41 例说明；图：build/_p12_pa.png；源 OCR：sources/parts/ch01-b.txt:219
+17	chapters/parts/ch01-b.tex	619	量纲自检见相应 \texttt{keycond} 与正文。	量纲自检见相应「关键条件」与正文。	LaTeX 环境名 keycond 泄漏进正文（印刷为等宽 keycond），应改为读者可识别的「关键条件」；图：build/_p17_bot.png
+17	chapters/parts/ch01-c.tex	22	液的配置浓度。	液的配制浓度。	「配制浓度」为配制（浸渍液）的正确用词，「配置」系同音误写；图：build/_p17_mid.png
+18	chapters/parts/ch01-c.tex	57	条等模状）时	条等形状）时	错字：模状→形状；图：build/_p18_pa.png
+19	chapters/parts/ch01-c.tex	173	累计粒度分布数达到 97\%	累积粒度分布数达到 97\%	同段 D50 用「累积」，术语统一；文字层：build/_txt_p18-32.txt
+20	chapters/parts/ch01-c.tex	184	指标」下确只列平均粒径	指标」下确实只列平均粒径	漏字「实」；文字层：build/_txt_p18-32.txt
+21	chapters/parts/ch01-c.tex	239	约 0.1 — 10 nm	约 1 — 10 nm	源书表1-10 化学吸附法 0.001~0.01 μm=1~10 nm；0.1 nm 小于原子尺度；源图：build/_src_up84_pa.png
+21	chapters/parts/ch01-c.tex	242	原书表 1-10 为 9 行 4 列（方法／原理、等效粒径和	原书表 1-10 为 11 行 5 列（方法／原理／等效粒径和	源书表1-10 表头 5 列、数据 11 行（p.83 九行+p.84 两行）；源图：build/_src_up83h_pa.png、_src_up84_pa.png
+21	chapters/parts/ch01-c.tex	244	未保留「工具或仪器」列；	未保留「原理」与「工具或仪器」两列；	源书 5 列中本表未保留「原理」「工具或仪器」两列；源图：build/_src_up83h_pa.png
+21	chapters/parts/ch01-c.tex	247	X 射线衍射线宽化法与化学吸附法两行为本表所增，不在原表之内	X 射线衍射线宽化法与化学吸附法两行原表亦有（书内 p.65 续表）	源书 p.65 续表确有 XRD(0.005~0.05 μm) 与化学吸附(0.001~0.01 μm) 两行；源图：build/_src_up84_pa.png
+21	chapters/parts/ch01-c.tex	248	书内 p.64 / PDF p.83	书内 p.64—65 / PDF p.83—84	表跨书内 p.64—65 两页；源图：build/_src_up83_pa.png、_src_up84_pa.png
+25	chapters/parts/ch01-c.tex	610	相差不到两倍	相差超过两倍	逻辑：二次颗粒远大于一次颗粒（XRD 晶粒）才指示严重团聚，或 XRD 峰宽主要来自微应变；原文「不到」使两个推断都不成立；文字层：build/_txt_p18-32.txt
+28	chapters/parts/ch01-c.tex	798	ASTM D3766—05（2013）	ASTM D3766—08（2013）	与前文 ch01-c.tex:631 的 D3766—08（2013）统一；文字层：build/_txt_p18-32.txt
+28	chapters/parts/ch01-c.tex	823	三种密度：定义、测定方法、典型值与常见误用。读者应重点看第二列与第四列：	三种密度与理论密度：定义、测定方法、典型数量级与常见误用。读者应重点看第二列与第五列：	表含骨架/颗粒/堆积/理论四行；表 5 列，误用列在第五列；文字层：build/_txt_p18-32.txt
+28	chapters/parts/ch01-c.tex	824	第四列是把它用错时最常出现的方式。	第五列是把它用错时最常出现的方式。	同上，列序改正；文字层：build/_txt_p18-32.txt
+28	chapters/parts/ch01-c.tex	825	「典型值」一列为数量级参考	「典型数量级」一列为数量级参考	与表头「典型数量级」一致；文字层：build/_txt_p18-32.txt
+28	chapters/parts/ch01-c.tex	827	表中「典型值」一列及「常见误用」列	表中「典型数量级」一列及「常见误用」列	与表头一致；文字层：build/_txt_p18-32.txt
+23	chapters/parts/ch01-c.tex	369	离心沉降为 0.1—10 µm。光透过法的悬浮液	离心沉降为 0.1—10 µm（\emph{核对说明}：源书正文作 0.1—10 μm，源书表 1-10 作 0.1–300 μm，两处口径不一致，本版照录正文、不改数）。光透过法的悬浮液	Lead 裁决：照录原书数、补核对说明；源书正文 p.88 与表1-10 p.83—84 自身不一致；图：build/_p23_pa.png、build/_src_up83_pa.png、build/_src_up84_pa.png
+27	chapters/parts/ch01-c.tex	645	以不同的体积除质量即得三种密度：	以不同的体积除质量即得三种密度（图~\ref{fig:ch01c-volume}）：	Lead 裁决：补图1-5 正文引用；label 见 ch01-c.tex:740；文字层：build/_txt_p18-32.txt

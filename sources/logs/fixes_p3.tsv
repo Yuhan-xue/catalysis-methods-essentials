@@ -1,0 +1,10 @@
+178	chapters/parts/ch07-b.tex	982	甲烷的 $v_{1}$ 对称伸缩振动	甲烷的 $\nu_{1}$ 对称伸缩振动	甲烷 ν1 对称伸缩应用希腊 nu；源书表7-18 作 ν1（build/_src_u504_pc.png），同章 900 行亦用 \nu
+178	chapters/parts/ch07-b.tex	1010	$v_{1}$ 在 $2917\;\mathrm{cm^{-1}}$ 处（Raman）并无红外活性	$\nu_{1}$ 在 $2917\;\mathrm{cm^{-1}}$ 处（Raman）并无红外活性	同上，ν1 符号误作拉丁 v；源书表7-18 ν1 2917/2875（build/_src_u504_pc.png）
+178	chapters/parts/ch07-b.tex	1058	$v_{1}$ 由 Raman 活性变为红外活性只证明吸附降低了对称性	$\nu_{1}$ 由 Raman 活性变为红外活性只证明吸附降低了对称性	同上，全章仅此 3 处 $v_{1}$ 与 \nu 体系不一致（build/_src_u504_pc.png）
+179	chapters/parts/ch07-b.tex	1086	较大比表面的	较大比表面积的	sources/terminology_decisions.md 定为「比表面积」；同页其余处已用比表面积（同类待统一处另有 ch07-a.tex:530「高比表面氧化物」、ch07-a.tex:557「比表面」，不在本页范围）
+179	chapters/parts/ch07-b.tex	1114	\begin{srcnote}	% \begin{srcnote} 误用：仓库无 srcnote 环境	style/macros.tex:65 只定义带参命令 \srcnote；当前排版把 § 单独印成一行小字、来源短注按正文排出（见 build/_p179_pc.png）。为免改 8pt 小字块后 p179 后整体前移约 4 行，采用最小修复：删去环境标记、保留 \S 7.3 内联；若 Lead 接受重排，可改回 \srcnote{…} 并补 \end 处理
+179	chapters/parts/ch07-b.tex	1128	\end{srcnote}	% \end{srcnote} 误用（同上）	同上：\end{srcnote} 展开为 \csname endsrcnote\endcsname=\relax，静默失效；删除后该来源短注作为 10pt 段落「§ 7.3 据原书 §7.3（…）」正常排版（build/_p179_pc.png）
+181	chapters/parts/ch07-c.tex	205	桥式吸附（桥式带位在 OCR 中不可辨）	桥式吸附（桥式带位 1788 cm−1）	表7-4 已改作「桥式 1788」、p182 核对说明称「草稿原记桥式带位未辨，已补」，此处未同步；源书 p.494 印「Co/Al2O3 上吸附呈现线式(2057 cm−1)和桥式(1788 cm−1)」（build/_src_u513_pc.png）
+181	chapters/parts/ch07-c.tex	209	出现吸附态 NO 的 $1557$ 与 $1791\;\mathrm{cm^{-1}}$ 带	出现吸附态 NO 的 $1857$ 与 $1791\;\mathrm{cm^{-1}}$ 带	表7-4 与 p182 核对说明均作 1857（「草稿原误作 1557，已改」）；源书 p.494 印「1857 cm−1、1791 cm−1」（build/_src_u513_pc.png）
+181	chapters/parts/ch07-c.tex	236	按「电子密度升高、$v_{\mathrm{CO}}$ 红移」的判读	按「电子密度升高、$\nu_{\mathrm{CO}}$ 红移」的判读	同章谱带符号均用 \nu（ch07-c.tex:728、735、755 等），此处误用拉丁 v，与同章谱带符号体系不一致（build/_p181_pc.png）
+182	chapters/parts/ch07-c.tex	295	Ru--\ce{Al2O3} 时，Ru 的加入	Ru--Co--Mo/\ce{Al2O3} 时，Ru 的加入	源书 p.495 研究的是硫化态 Ru–Mo/Al2O3 与 Ru–Co–Mo/Al2O3 中 Ru 的助剂效应（build/_src_u514_pc.png），第二样品非 Ru–Al2O3

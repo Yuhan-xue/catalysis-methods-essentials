@@ -129,7 +129,7 @@ TG-DSC-MS；混合物复杂到 MS 无法区分时再上 GC/MS。}
 且碎片化使母体信号分流到多个通道。未做响应因子标定时，MS 只能给出
 「有／无」与「先后顺序」，不能给出摩尔比。
 
-\textbf{把 TG 峰与 MS 峰的温差不当作滞后处理。} 式 \equref{eq:ch03b-dT} 表明
+\textbf{把 TG 峰与 MS 峰的温差不当作滞后处理。} \equref{eq:ch03b-dT} 表明
 这个温差随升温速率线性增长，它的存在是接口的必然结果，不是材料的两步反应。
 判别方法：把升温速率降到原来的四分之一重测，若温差按比例缩小而失重步数不变，
 则是滞后。
@@ -164,7 +164,7 @@ XRD、元素分析或程序升温还原等独立证据。
   曲线的峰顶；它\emph{不是}转化率走到一半的温度——对单步一级失重，峰温处的
   转化率由 $E/(R\,T_{\mathrm p})$ 决定，在 $E\approx\qty{180}{kJ.mol^{-1}}$、
   $T_{\mathrm p}\approx\qty{673}{K}$ 时 $\alpha(T_{\mathrm p})\approx0.61$，
-  明显高于一半（图~\ref{fig:ch03b-rate} 与式~\equref{eq:ch03b-kissinger}）；
+  明显高于一半（图~\ref{fig:ch03b-rate} 与\equref{eq:ch03b-kissinger}）；
   \item \textbf{峰形}（宽度、对称性、肩峰）介于两者之间，它同时携带
   动力学信息与传热传质信息，是分辨重叠步骤的主要依据，也是最容易被
   误读的量。
@@ -181,9 +181,9 @@ XRD、元素分析或程序升温还原等独立证据。
 \end{equation}
 式中 $T_{\mathrm p}$ 为微商型曲线（DTG、DTA、DSC）的峰温，$\beta$ 为升温速率，
 $E$ 为活化能，$R$ 为摩尔气体常数。\src{上册 §3.3，书内 p.181 / PDF p.200}
-此处已对照原页面图像（书内 p.181 / PDF p.200）：原书「2）Kissinger 方法」印为「由 4 条以上微商型热分析曲线（如 DTA、DTG 等）的峰值温度 $T_{\mathrm p}$ 与升温速率 $\varphi$ 的关系，根据公式 $\mathrm{d}(\ln(\varphi/T_{\mathrm p}^{2}))/\mathrm{d}(1/T_{\mathrm p})=-E/R$，通过作图法由斜率求得活化能 $E$」。源 OCR 的乱码「d(Iln(势/TPZ\ ...\ d(l/几)=一刀尺」即此式的误识；本节式~\equref{eq:ch03b-kissinger} 与原书逐字一致，仅把原书用于升温速率的符号 $\varphi$ 统一写作 $\beta$（与本节其余各处一致），并省略了原书「由 4 条以上曲线作图」这一实验要求。原书同页另印 Ozawa--Flynn--Wall 式 $\mathrm{d}(\lg\varphi)/\mathrm{d}(1/T)=-0.4567E/R$ 与 Freeman--Carroll 式 $\Delta\lg(\mathrm{d}\alpha/\mathrm{d}T)/\Delta\lg(1-\alpha)=(E/4.575)\,[\Delta(1/T)/\Delta\lg(1-\alpha)]$，本节未展开这两法。
+此处已对照原页面图像（书内 p.181 / PDF p.200）：原书「2）Kissinger 方法」印为「由 4 条以上微商型热分析曲线（如 DTA、DTG 等）的峰值温度 $T_{\mathrm p}$ 与升温速率 $\varphi$ 的关系，根据公式 $\mathrm{d}(\ln(\varphi/T_{\mathrm p}^{2}))/\mathrm{d}(1/T_{\mathrm p})=-E/R$，通过作图法由斜率求得活化能 $E$」。源 OCR 的乱码「d(Iln(势/TPZ\ ...\ d(l/几)=一刀尺」即此式的误识；本节\equref{eq:ch03b-kissinger} 与原书逐字一致，仅把原书用于升温速率的符号 $\varphi$ 统一写作 $\beta$（与本节其余各处一致），并省略了原书「由 4 条以上曲线作图」这一实验要求。原书同页另印 Ozawa--Flynn--Wall 式 $\mathrm{d}(\lg\varphi)/\mathrm{d}(1/T)=-0.4567E/R$ 与 Freeman--Carroll 式 $\Delta\lg(\mathrm{d}\alpha/\mathrm{d}T)/\Delta\lg(1-\alpha)=(E/4.575)\,[\Delta(1/T)/\Delta\lg(1-\alpha)]$，本节未展开这两法。
 
-由式 \equref{eq:ch03b-kissinger} 可估出峰温对升温速率的敏感度：
+由\equref{eq:ch03b-kissinger} 可估出峰温对升温速率的敏感度：
 \begin{equation}
 \Delta T_{\mathrm p} \approx \frac{R\,T_{\mathrm p}^{2}}{E}\,\ln\frac{\beta_2}{\beta_1}.
 \label{eq:ch03b-dTp}
@@ -192,8 +192,8 @@ $E$ 为活化能，$R$ 为摩尔气体常数。\src{上册 §3.3，书内 p.181 
 升温速率每翻一倍，峰温上移约 15 K；速率变化八倍，峰温可移动 40 K 以上。
 此处已对照原页面图像（书内 p.181 / PDF p.200）：原书 §3.3 只印出 Ozawa--Flynn--Wall、
 Kissinger、Freeman--Carroll 三式的作图求 $E$ 步骤，\textbf{未给出}峰温对升温速率敏感度的
-显式式~\equref{eq:ch03b-dTp}，也未给出「速率翻倍峰温上移约 15\,K、变化八倍移动 40\,K 以上」
-这两个数值；该式由式~\equref{eq:ch03b-kissinger} 作微分近似得出，数值为按
+显式\equref{eq:ch03b-dTp}，也未给出「速率翻倍峰温上移约 15\,K、变化八倍移动 40\,K 以上」
+这两个数值；该式由\equref{eq:ch03b-kissinger} 作微分近似得出，数值为按
 $T_{\mathrm p}\approx673$\,K、$E\approx180$\,kJ\,mol$^{-1}$ 量级估算的本改编本补出。
 
 与此同时，峰面积不受 $\beta$ 影响：一个过程无论走得多快，只要始态与终态相同，
@@ -212,7 +212,7 @@ TG 曲线写作 $m\%=100-20\alpha(T)$（$\alpha$ 为归一化转化率，由 $0$
 $100\%$ 而不是 $20$ 个百分点；两种口径都合法，但纵轴名称、峰高数值与积分
 面积必须同时说明取自哪一种。图 \ref{fig:ch03b-rate} 把这个对比画成了可直接
 用来训练读图习惯的形式。
-\emph{核对说明}：已对照原页面图像并通查源 OCR 全文——式 \equref{eq:ch03b-dtg-area}
+\emph{核对说明}：已对照原页面图像并通查源 OCR 全文——\equref{eq:ch03b-dtg-area}
 是按标准 TG/DTG 关系补出的恒等式（$\alpha$ 由 $0$ 增到 $1$ 时积分必为 $1$），
 源 OCR 未给出该式，图 \ref{fig:ch03b-rate} 的曲线为模型曲线，不是源书数据。
 原书对「峰面积」只在
@@ -440,7 +440,7 @@ $\alpha<2\times10^{-4}$，因此两条平台在图上仍读作 100\% 与 80\%。
 四条曲线的起始平台都在 100\%，终止平台都在 80\%，转变段的中心依次右移；
 (b) 面板中，DTG 峰顶的位置依次为 659.6、673.0、686.9、701.4 K（即 386.4、
 399.9、413.8、428.3 \degC），八倍速率之间峰温移动 41.8 K；把这四组峰温按
-式~\equref{eq:ch03b-kissinger} 作
+\equref{eq:ch03b-kissinger} 作
 $\ln(\beta/T_{\mathrm p}^{2})$--$1/T_{\mathrm p}$ 图，回算得到的 $E$ 就是
 生成曲线时设定的 \qty{180}{kJ.mol^{-1}}；
 (c) 峰的最大高度（纵轴为实际质量导数 $-\mathrm{d}m/\mathrm{d}T$）依次为
@@ -460,7 +460,7 @@ $\ln(\beta_2/\beta_1)$ 近似线性」推断：峰温位移来自动力学，不
 不能由本图推断的内容：不能推断该过程的活化能具体是多少——图
 \ref{fig:ch03b-rate} 的 $E=\qty{180}{kJ.mol^{-1}}$ 是生成曲线时\emph{设定}的
 参数，上一条回算只是自洽性检验，不是对真实样品的测量；真实体系必须用实测
-峰温按式~\equref{eq:ch03b-kissinger} 拟合才能得到 $E$；
+峰温按\equref{eq:ch03b-kissinger} 拟合才能得到 $E$；
 不能推断样品的热稳定性温度（峰温不是稳定性判据）；也不能排除存在两个
 活化能相近、峰位重叠的步骤。
 \end{infer}
@@ -475,7 +475,7 @@ $\ln(\beta_2/\beta_1)$ 近似线性」推断：峰温位移来自动力学，不
 ② 定位。用 DTG 峰顶定 $T_{\mathrm p}$，用平台差定失重量 $\Delta m$，
 用 DTG 的起始偏离点与回折点定温度区间。
 
-③ 判别位移来源。把 $T_{\mathrm p}$ 按式 \equref{eq:ch03b-kissinger} 作
+③ 判别位移来源。把 $T_{\mathrm p}$ 按\equref{eq:ch03b-kissinger} 作
 $\ln(\beta/T_{\mathrm p}^{2})$ 对 $1/T_{\mathrm p}$ 的图：若成直线，
 位移全部来自动力学；若明显偏离直线，说明发生了传热控制或反应路径改变。
 
@@ -495,7 +495,7 @@ Arrhenius 动力学估算，非源书实验数据。}}
 \toprule
 实验因素（作用机制） & 对峰温 $T_{\mathrm p}$ & 对峰形 & 对峰面积／失重量 \\
 \midrule
-升温速率 $\beta$ 增大（动力学控制，式 \equref{eq:ch03b-kissinger}） &
+升温速率 $\beta$ 增大（动力学控制，\equref{eq:ch03b-kissinger}） &
 显著上移，八倍速率可移 40 K 以上 &
 整体向高温展宽，相邻峰更易重叠 &
 基本不变 \\
@@ -540,7 +540,7 @@ p.209—210）、坩埚与 DSC 基线（§3.6.4—§3.6.5，p.210—211）四类
 
 
 \begin{pitfall}
-\textbf{把峰温当材料常数。} 由式 \equref{eq:ch03b-dTp}，\qty{5}{K.min^{-1}}
+\textbf{把峰温当材料常数。} 由\equref{eq:ch03b-dTp}，\qty{5}{K.min^{-1}}
 下测得的 \qty{420}{\celsius} 与 \qty{20}{K.min^{-1}} 下测得的
 \qty{455}{\celsius} 完全可以是同一种材料。跨文献比较峰温之前，必须先确认
 升温速率相同。
@@ -565,7 +565,7 @@ $0.968$ 增到 $6.870$ \%·min$^{-1}$，只增 $7.10$ 倍而非 $8$ 倍。图 \r
 三项回查按顺序做：① 空白基线回查——空坩埚曲线在同一温度区间应当平坦，
 若不平坦，先修基线；② 样品量回查——样品量减半后重测，峰温应下移或不变，
 若显著上移则原曲线受传热控制；③ 升温速率回查——用两个以上速率重测，
-按式 \equref{eq:ch03b-kissinger} 作图，直线性本身就是数据自洽的证据。
+按\equref{eq:ch03b-kissinger} 作图，直线性本身就是数据自洽的证据。
 三项都通过后，才允许把峰温写进结论，并且必须与升温速率一起写。
 \end{crosscheck}
 
@@ -667,8 +667,8 @@ XRD 给出固相物相、尾气分析给出逸出物组成。对积炭一类问�
 
 \begin{principle}
 五类误判有一个共同的根源：把\textbf{峰温}当成了材料的固有属性。
-峰温由动力学与传热共同决定（式 \equref{eq:ch03b-kissinger}、
-式 \equref{eq:ch03b-dTp}），只有峰面积与失重量属于守恒量。凡是从峰位
+峰温由动力学与传热共同决定（\equref{eq:ch03b-kissinger}、
+\equref{eq:ch03b-dTp}），只有峰面积与失重量属于守恒量。凡是从峰位
 出发的结论，都需要额外证据；凡是从峰面积出发的结论，只需要确认基线正确
 与过程单一。
 \end{principle}
@@ -679,7 +679,7 @@ XRD 给出固相物相、尾气分析给出逸出物组成。对积炭一类问�
 （\qty{5}{K.min^{-1}} 对 \qty{10}{K.min^{-1}}），或样品量相差一倍。
 
 \emph{回查}：固定升温速率重测；或对每个样品各取四个升温速率，
-按式 \equref{eq:ch03b-kissinger} 求 $E$，用 $E$ 而不是 $T_{\mathrm p}$
+按\equref{eq:ch03b-kissinger} 求 $E$，用 $E$ 而不是 $T_{\mathrm p}$
 比较稳定性。本书中 12-钨硅酸负载到 HEMT 沸石后分解放热峰由
 \qty{522.12}{\celsius} 移到 \qty{559.13}{\celsius}，
 结论是「二者之间发生了相互作用」，这一比较之所以成立，
@@ -803,7 +803,7 @@ XRD 指出「分解后是否形成了需要的物相」。二者缺一，
 使其分解需要更高的温度。
 
 \textbf{边界。} 这一推断成立的前提是两次测试的升温速率相同。
-若升温速率不同，按式 \equref{eq:ch03b-dTp}，八倍速率差即可造成 40 K 以上的
+若升温速率不同，按\equref{eq:ch03b-dTp}，八倍速率差即可造成 40 K 以上的
 峰温位移，恰好覆盖本例中 37 K 的位移量，结论就会完全反转。
 因此这类比较必须在实验部分明确写出升温速率，并在图中标注。已对照原页面图像
 确认该实验的升温速率在源书中未给出，此处不能替它补齐。

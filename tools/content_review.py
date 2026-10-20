@@ -58,10 +58,10 @@ REQ_LABELS = (
     "col_page", "col_scan", "col_hits", "col_hits_raw", "col_read", "col_note",
     "col_level", "col_det", "col_det_hits", "col_det_pages", "col_what",
     "col_batch", "col_date", "col_scope", "col_did",
-    "read_no", "read_scan", "read_yes", "read_fix",
+    "read_no", "read_scan", "read_yes", "read_fix", "read_pend",
     "none_mark",
 )
-STATUS_KEYS = ("read_no", "read_scan", "read_yes", "read_fix")
+STATUS_KEYS = ("read_no", "read_scan", "read_yes", "read_fix", "read_pend")
 
 LEVELS = ("WARN", "INFO")
 PH = re.compile(r"\{[a-z_]+\}")

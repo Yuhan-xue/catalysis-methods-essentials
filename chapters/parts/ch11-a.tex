@@ -329,7 +329,7 @@ $E_{\mathrm{eq}}=E^{0'}$，两式逐项相同。自检：$\eta=0$ 时 \equref{eq
 零，故任意本体浓度比下都有 $i=0$。
 
 \begin{keycond}
-\equref{eq:bv} 的成立条件有三条：\textbf{（i）单步骤、单电子的基元反应}——本段式
+\equref{eq:bv} 的成立条件有三条：\textbf{（i）单步骤、单电子的基元反应}——本段
 \equref{eq:dg-eta}—\equref{eq:bv-first} 按单电子写出（$F$ 不乘 $n$，与原书式
 11-17—11-30 一致，式~\eqref{eq:current-basic} 中的 $n$ 在此取 $1$）；若推广到 $n$ 电子
 一步基元反应，各式中的 $F$ 须\textbf{同步}换成 $nF$，包括 Tafel 斜率
@@ -406,9 +406,9 @@ $a=\dfrac{RT}{\alpha F}\ln i_0$、$b=-\dfrac{RT}{\alpha F}$，全式\textbf{确�
 \addplot[mainline,black,domain=-0.30:0,samples=80]{ln(1e-6) - 0.5*38.92*x};
 \addplot[mainline,black,domain=0:0.30,samples=80]{ln(1e-6) + 0.5*38.92*x};
 \addlegendentry{$\alpha=0.5$, $j_0=\qty{e-6}{\A\per\square\cm}$}
-\addplot[mainline,black,dashed,domain=-0.30:0,samples=80]{ln(1e-8) - 0.5*38.92*x};
-\addplot[mainline,black,dashed,domain=0:0.30,samples=80]{ln(1e-8) + 0.5*38.92*x};
-\addlegendentry{$\alpha=0.5$, $j_0=\qty{e-8}{\A\per\square\cm}$}
+\addplot[mainline,black,dashed,domain=-0.30:0,samples=80,forget plot]{ln(1e-8) - 0.5*38.92*x};
+\addplot[mainline,black,dashed,domain=0:0.30,samples=80,forget plot]{ln(1e-8) + 0.5*38.92*x};
+\addlegendimage{mainline,black,dashed}\addlegendimage{mainline,black,dashed}\addlegendentry{$\alpha=0.5$, $j_0=\qty{e-8}{\A\per\square\cm}$}
 \addplot[mainline,black,dashdotted,domain=-0.30:0,samples=80]{ln(1e-6) - 0.25*38.92*x};
 \addplot[mainline,black,dashdotted,domain=0:0.30,samples=80]{ln(1e-6) + 0.75*38.92*x};
 \addlegendentry{$\alpha=0.25$, $j_0=\qty{e-6}{\A\per\square\cm}$}

@@ -1,0 +1,14 @@
+89	chapters/parts/ch04-a.tex	741	pitfall 处	「误判与边界」处	LaTeX 环境名 pitfall 原样印入正文，该块版面标题为「误判与边界」；依据 build/_p89_pb.png 正文第4段
+90	chapters/parts/ch04-b.tex	100	式~\equref{eq:ch04b-triclinic}	\equref{eq:ch04b-triclinic}	\equref 宏自带「式\,」（style/preamble.tex:426），版面印成「式 式(4-19)」；依据 build/_p90_crop4.png；全书同类「式~\equref」34 处、「式 \equref」24 处，建议全库统一删去多余的「式~／式 」
+90	chapters/parts/ch04-b.tex	114	由式~\equref{eq:ch04b-bragg}	由\equref{eq:ch04b-bragg}	同上，版面「由式 式(4-17)」；依据 build/_p90_crop5.png
+90	chapters/parts/ch04-b.tex	115	由式~\equref{eq:ch04b-Q}	由\equref{eq:ch04b-Q}	同上，版面「由式 式(4-18)」；依据 build/_p90_crop5.png
+90	chapters/parts/ch04-b.tex	110	$0.05\%$	$0.08\%$	同句给出 1.5406/1.5418 Å，复算 Δλ/λ=0.0012/1.5406=7.8e-4，即约 0.08%，非 0.05%；依据 build/_p90_crop5.png
+91	chapters/parts/ch04-b.tex	230	表~\tabref{tab:ch04b-multiplicity}	\tabref{tab:ch04b-multiplicity}	\tabref 宏自带「表\,」，版面印成「表表4-6」；依据 build/_p91_pb.png；全书同类「表~\tabref」5 处、「表 \tabref」3 处、「图~\figref」3 处、「图 \figref」1 处，建议一并删除冗余前缀
+93	chapters/parts/ch04-b.tex	264	DWf(\x,\B) = exp(-2*\B*sin(\x/2)^2/2.3734);	DWf(\x,\B) = exp(-\B*sin(\x/2)^2/2.3734);	图4-4 的 D 曲线用了 2B，与式(4-22) 的 exp(−B sin²θ/λ²)（及 p91 核对说明「原书印 B 不是 2B」）矛盾；改后 2θ=160° 时 B=1→0.665、B=3→0.294，图注需同步改；依据 build/_p93_pb.png、式(4-22) 见 build/_p91_pb.png
+93	chapters/parts/ch04-b.tex	298	降到约 $0.44$	降到约 $0.66$	按式(4-22) 在 2θ=160°、B=1 Å² 时 D=exp(−0.4086)=0.665；原 0.44 系按 2B 计算；依据 build/_p93_pb.png
+93	chapters/parts/ch04-b.tex	299	$0.086$	$0.29$	同上，B=3 Å² 时 D=exp(−1.226)=0.294，原 0.086 系按 2B；依据 build/_p93_pb.png
+94	chapters/parts/ch04-b.tex	397	及 "Point atom"——	及「Point atom」——	直引号 " 在版面排成两个右引号 ”Point atom”，应改中文引号；依据 build/_p94_pb.png
+126	chapters/parts/ch05-b.tex	251	\ce{NH3}-TPD.	\ce{NH3}-TPD。	半角句点混入中文，版面印成「NH3-TPD. 未改性样品」；依据 build/_p126_t.png、build/_p126_crop1.png
+132	chapters/parts/ch06-a.tex	29	（见 \S 的「数据到结论」）	（见§6.2.1 的「数据到结论」）	\S 后缺节号，版面印成「（见§ 的「数据到结论」）」；本分片唯一「数据到结论」块在 ch06-a.tex:391（§6.2.1），内容即「定量比较必须声明扣基线」；依据 build/_p132_t.png
+191	chapters/parts/ch08-a.tex	152	两者等价，原印法备查）。	两者相差常数 2、并不等价；本处按标准式取之，原印法备查）。	原书印 3(cos²θ−1) 与标准 3cos²θ−1 相差常数 2、并非等价；源书 page 图像 build/_src_down21.png（书内p.529）确认原印 3(cos²θ−1)；已就地改；成品页图 build/_p191_t.png
+196	chapters/parts/ch08-b.tex	60	\term{CAVERN}{}{原位处理装样装置}把催化剂平铺在床层上	原位处理装样装置 CAVERN 把催化剂平铺在床层上	\term 宏印成「#3（#2，#1）」，第二参数为空导致版面「（，CAVERN）」；已就地改；成品页图 build/_p196_t.png

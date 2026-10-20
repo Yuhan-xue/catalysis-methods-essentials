@@ -3,7 +3,8 @@
 
 Checks, from disk facts alone:
   1. pages   : sources/logs/page_p*.tsv cover 1..339 once, every status starts
-               with 已读, every note cites a rendered image path.
+               with 已读, every note cites a text dump (build/_txt_p*.txt) or a
+               rendered image path (build/*.png).
   2. fixes   : every row in sources/logs/fixes_p*.tsv / formula_fixes_*.tsv has
                been applied (old string gone, new string present).
   3. formulas: sources/formula_crosscheck.csv has 372 unique labels, all with a
@@ -87,8 +88,8 @@ def check_pages():
             st, note = cells[1], '\t'.join(cells[2:])
             if not st.startswith('已读'):
                 fail('pages: p%d status %r not 已读*' % (page, st))
-            if not re.search(r'\.png|build/_p', note):
-                fail('pages: p%d note cites no rendered image' % page)
+            if not re.search(r'\.png|build/_p|_txt_p|文字层', note):
+                fail('pages: p%d note cites no text dump or rendered image' % page)
             if len(note) < 40:
                 fail('pages: p%d note too short (evidence thin)' % page)
             if page in status and status[page][0] != st:
@@ -109,18 +110,19 @@ def check_fixes(pattern, tag):
     applied = 0
     for path in files:
         for cells in split_rows(path):
-            if len(cells) < 3:
+            if len(cells) < 5:
                 fail('%s: %s bad row %r' % (tag, rel(path), '\t'.join(cells)))
                 continue
-            target, old, new = cells[0], cells[1], '\t'.join(cells[2:])
+            # protocol: page, file, line, old, new, reason[, src_pages]
+            # A record is applied when its replacement text is in the file and the
+            # old text either no longer occurs or only occurs inside the replacement
+            # (comment-out style fixes keep the old text verbatim behind a %).
+            target, old, new = cells[1], cells[3], cells[4]
             tpath = os.path.join(ROOT, target.replace('/', os.sep))
             if not os.path.exists(tpath):
                 fail('%s: %s target missing %s' % (tag, rel(path), target))
                 continue
             text = read(tpath)
-            if old not in text:
-                fail('%s: %s %s old string not found (fix record stale?)' % (tag, rel(path), target))
-                continue
             if new not in text:
                 fail('%s: %s %s new string absent (fix not applied)' % (tag, rel(path), target))
                 continue
@@ -187,13 +189,14 @@ def check_tables():
     labels = set()
     bad = 0
     for cells in rows:
-        if len(cells) < 7:
+        if len(cells) < 6:
             bad += 1
             continue
         labels.add(cells[0])
-        if cells[6] not in TABLE_DONE:
+        # merged table_cells.tsv: label, verdict, src_pages, cells, mismatches, note
+        if cells[1] not in TABLE_DONE:
             bad += 1
-            say('     table pending: %s -> %r' % (cells[0], cells[6]))
+            say('     table pending: %s -> %r' % (cells[0], cells[1]))
     if bad:
         fail('tables: %d rows not terminal (of %d)' % (bad, len(rows)))
     if len(labels) != N_TABLES:

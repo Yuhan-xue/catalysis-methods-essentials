@@ -97,7 +97,7 @@ $V=abc\sqrt{1-\cos^{2}\alpha-\cos^{2}\beta-\cos^{2}\gamma+2\cos\alpha\cos\beta\c
 $1/d^{2}=h^{2}a^{*2}+k^{2}b^{*2}+l^{2}c^{*2}+2hka^{*}b^{*}\cos\gamma^{*}+2klb^{*}c^{*}\cos\alpha^{*}
 +2hla^{*}c^{*}\cos\beta^{*}$，单斜式印为
 $1/d^{2}=h^{2}a^{*2}+k^{2}b^{*2}+l^{2}c^{*2}+2hla^{*}c^{*}\cos\beta^{*}$，均用\textbf{倒易点阵常数}
-表达。式~\equref{eq:ch04b-triclinic} 的 $S_{ij}$ 记号是本项目为可读性引入的约定（等价于倒易度量
+表达。\equref{eq:ch04b-triclinic} 的 $S_{ij}$ 记号是本项目为可读性引入的约定（等价于倒易度量
 张量分量写法），与原书符号不同但数学内容一致。
 
 \begin{measure}
@@ -107,12 +107,12 @@ $1/d^{2}=h^{2}a^{*2}+k^{2}b^{*2}+l^{2}c^{*2}+2hla^{*}c^{*}\cos\beta^{*}$，均�
 未剥离时 $d$ 系统偏大）；（ii）校正仪器零点与样品位移（样品表面偏离测角仪圆心，$d$ 的系统误差
 近似正比于 $\cos\theta$，低角度最敏感）；（iii）用内标物（如 \ce{SiO2} 石英、\ce{CaF2}、Si）
 把实测 $d$ 归算到标准值上。波长取 $K\alpha_{1}$ 单线时 Cu 靶为 $1.5406$ Å，取 $K\alpha$ 加权
-平均值时为 $1.5418$ Å；两者混用会引入约 $0.05\%$ 的系统偏差。
+平均值时为 $1.5418$ Å；两者混用会引入约 $0.08\%$ 的系统偏差。
 \end{measure}
 
 \begin{dataflow}
-$2\theta$（已剥离 $K\alpha_{2}$、已做位移与内标校正）$\rightarrow$ 由式~\equref{eq:ch04b-bragg} 得
-$d_{hkl}$ $\rightarrow$ 由式~\equref{eq:ch04b-Q} 得 $Q$ $\rightarrow$ 对每个可能的指标 $(hkl)$
+$2\theta$（已剥离 $K\alpha_{2}$、已做位移与内标校正）$\rightarrow$ 由\equref{eq:ch04b-bragg} 得
+$d_{hkl}$ $\rightarrow$ 由\equref{eq:ch04b-Q} 得 $Q$ $\rightarrow$ 对每个可能的指标 $(hkl)$
 写出一个线性方程 $\rightarrow$ 最小二乘解出晶胞参数 $\rightarrow$ 高角度线权重更大（$\Delta d/d$
 随 $\theta$ 增大而减小），故晶胞参数精修应优先采用高角线并作外推。
 \end{dataflow}
@@ -227,7 +227,7 @@ $\Delta V=A_{0}/(2\mu_{l})$（$A_{0}$ 为入射线垂直截面积），故强度
   \end{tabular}
 \end{table}
 
-表~\tabref{tab:ch04b-multiplicity} 的用法是：多晶谱上某峰的实测强度，等于该 $Q$ 值下所有
+\tabref{tab:ch04b-multiplicity} 的用法是：多晶谱上某峰的实测强度，等于该 $Q$ 值下所有
 “$h,k,l$ 置换等价”晶面的 $\left|F\right|^{2}$ 之和乘以其余因子。例如正交晶系的 $hkl$
 （$h,k,l$ 互不相等且均不为零）有 8 个等价晶面，若它们 $\left|F\right|^{2}$ 相等，则实测强度
 是单个 $\left|F\right|^{2}$ 的 8 倍。
@@ -261,7 +261,7 @@ $I_{002}/I_{100}$：(a) 为 $12.5$，(b) 为 $1.8$。两种制样下全部峰的
   \begin{tikzpicture}
     \tikzset{declare function={
         PLf(\x) = (1+cos(\x)^2)/(4*sin(\x/2)^2*cos(\x/2));
-        DWf(\x,\B) = exp(-2*\B*sin(\x/2)^2/2.3734);
+        DWf(\x,\B) = exp(-\B*sin(\x/2)^2/2.3734);
       }}
     \begin{axis}[
         width=\onecolwidth, height=64mm,
@@ -291,12 +291,12 @@ $I_{002}/I_{100}$：(a) 为 $12.5$，(b) 为 $1.8$。两种制样下全部峰的
       \addlegendentry{$PL\cdot D$（$B=1$ Å$^2$）}
     \end{axis}
   \end{tikzpicture}
-  \caption{两个必须做的角度修正因子随 $2\theta$ 的变化（模型计算，按式~\equref{eq:ch04b-PL}
-    与式~\equref{eq:ch04b-DW}，Cu $K\alpha$，$\lambda=1.5406$ Å）。\textbf{看什么}：$PL$ 因子
+  \caption{两个必须做的角度修正因子随 $2\theta$ 的变化（模型计算，按\equref{eq:ch04b-PL}
+    与\equref{eq:ch04b-DW}，Cu $K\alpha$，$\lambda=1.5406$ Å）。\textbf{看什么}：$PL$ 因子
     在低角极大、随角度迅速跌落（$2\theta=10°$ 处约 65，$2\theta=160°$ 处约 2.8，正好落在原书
     PL 因子图纵轴 0—80 的量程内，可作为公式重建的旁证）；温度因子在低角几乎为 1，在高角明显
-    衰减，$B$ 越大衰减越强（$2\theta=160°$ 时 $B=1$ Å$^2$ 降到约 $0.44$，$B=3$ Å$^2$ 降到约
-    $0.086$）。\textbf{结论}：把两条曲线相乘后，强度的角度依赖比任何单项都剧烈，因此低角与高角
+    衰减，$B$ 越大衰减越强（$2\theta=160°$ 时 $B=1$ Å$^2$ 降到约 $0.66$，$B=3$ Å$^2$ 降到约
+    $0.29$）。\textbf{结论}：把两条曲线相乘后，强度的角度依赖比任何单项都剧烈，因此低角与高角
     的实测强度不能直接互比，必须先做 $PL$ 与 $D$ 修正。\textbf{局限}：纵轴为对数，曲线是相对值；
     $B$ 的取值是示意（无机晶体常 $B<1$ Å$^2$，含 C、H、O、N 的有机物可到 $2$—$5$ Å$^2$）。
     \figsrc{模型计算图，非原书插图；$PL$ 的形式与原书第 246 页 PL 因子图一致。}}
@@ -394,7 +394,7 @@ f\!\left(\frac{\sin\theta}{\lambda}\right)=\sum_{i=1}^{4}a_{i}\exp\!\left[-b_{i}
 p.248 / PDF p.267；原书另注该多项式由 HFS（Hartree-Fock-Slater，自洽场）法与 TFD
 （Thomas-Fermi-Dirac 统计）法理论计算并结合实验数据得出，$9$ 个参数与原子或离子的电子云
 分布有关；同页图 4-15 给出核外电子数均为 $10$ 的原子或离子——Si$^{4+}$、Al$^{3+}$、
-Mg$^{2+}$、Na$^{+}$、Ne、F$^{-}$ 及 "Point atom"——的 $f$ 随 $\sin\theta/\lambda$ 的变化）。
+Mg$^{2+}$、Na$^{+}$、Ne、F$^{-}$ 及「Point atom」——的 $f$ 随 $\sin\theta/\lambda$ 的变化）。
 
 由 $f$ 出发给出三条读数规律：原子散射因子随衍射角增大而减小，这是高角衍射峰减弱的重要因素；
 核外电子数相等的原子实，核电荷越大、核对电子吸引越强、电子云越接近点状，$f$ 越大；同一原子
@@ -439,7 +439,7 @@ $\rho(x,y,z)=\frac{1}{V}\sum_{h}\sum_{k}\sum_{l}F_{hkl}\exp[-2\pi i(hx+ky+lz)]$�
 
 在 §4.3 的衍射几何讨论中，衍射条件由倒易格子点与 Ewald 反射球相交给出。若正空间格子为复格子，
 倒易格子点会系统消失；晶体中存在螺旋轴与滑移面等微观对称元素时，也会引起衍射的系统缺失。
-用式~\equref{eq:ch04b-F} 直接计算即可得到全部消光规律。
+用\equref{eq:ch04b-F} 直接计算即可得到全部消光规律。
 
 \paragraph{体心格子}晶胞中任一原子位于 $(x,y,z)$ 时，必有同种原子位于
 $(x+\tfrac12,y+\tfrac12,z+\tfrac12)$。代入结构因子并提取公因子：
@@ -543,8 +543,8 @@ $k=2n$，四行均见书内 p.251—253 的结构因子逐式推导；垂直于 
 
 \begin{principle}
 物相定性的依据有两条。第一，任何一种结晶固体都有自己独立的一套衍射图谱，峰位与强度完全
-取决于其内部结构：由式~\equref{eq:ch04b-Q}，晶胞参数不同则 $d$ 不同、衍射角不同；由
-式~\equref{eq:ch04b-F}，各峰强度由晶胞中原子分布方式决定。因此每种晶态物质的衍射图谱与其
+取决于其内部结构：由\equref{eq:ch04b-Q}，晶胞参数不同则 $d$ 不同、衍射角不同；由
+\equref{eq:ch04b-F}，各峰强度由晶胞中原子分布方式决定。因此每种晶态物质的衍射图谱与其
 结构之间存在一一对应关系。第二，物质不会因为与其他物质混合而改变自己的衍射行为——混合物中
 各物相的衍射互不干扰，混合物的图谱是各组成物相图谱的简单叠加。这两条合起来就是“用图谱
 鉴别晶态物质”的全部依据。
@@ -611,7 +611,7 @@ $1$ Å、$3.5$ Å、$8$ Å；本节此前只写“更高角度允许 $\pm0.25$ �
 \end{probout}
 
 \begin{principle}
-由式~\equref{eq:ch04b-intensity}，对选定 $hkl$ 的衍射峰，$\left|F_{hkl}\right|^{2}$、$j$、$D$
+由\equref{eq:ch04b-intensity}，对选定 $hkl$ 的衍射峰，$\left|F_{hkl}\right|^{2}$、$j$、$D$
 以及与角度相关的 $P$、$L$ 都是确定值，强度仅是样品受照射有效体积 $\Delta V$ 的函数，可把确定
 的项合并为常数：$I=K\Delta V$。采用 Bragg--Brentano 衍射仪、平板样品时
 $\Delta V=A_{0}/(2\mu_{l})$，故 $I=KA_{0}/(2\mu_{l})$，其中 $\mu_{l}$ 为线吸收系数，
@@ -630,7 +630,7 @@ I_{i}=\frac{K_{i}v_{i}}{\mu_{l}} .
 I_{i}=\frac{k_{i}w_{i}}{\mu_{m}},\qquad k_{i}=\frac{K_{i}}{\rho_{i}} .
 \label{eq:ch04b-Ii-w}
 \end{equation}
-式~\equref{eq:ch04b-Ii-w} 是 X 射线相定量分析最基本的公式，以下各种方法都从它出发；各方法的
+\equref{eq:ch04b-Ii-w} 是 X 射线相定量分析最基本的公式，以下各种方法都从它出发；各方法的
 差别只在于如何计算或消去常数 $k_{i}$ 与总质量吸收系数 $\mu_{m}$。
 （此处已对照原页面图像（书内 p.259—260 / PDF p.278—279）：原书由单相式 $I=K\Delta V$ 与
 Bragg-Brentano 有效体积 $\Delta V=A_{0}/(2\mu)$ 得 $I_{i}=K_{i}v_{i}/\mu_{t}$（$\mu_{t}$ 为总线
@@ -701,7 +701,7 @@ w_{i}=\frac{I_{i}/K_{i}}{\sum_{j=1}^{n}I_{j}/K_{j}} .
 $I_{1}/I_{i}=(K_{1}/K_{i})(w_{1}/w_{i})$（$i=1,2,\cdots,n$）出发，指出 $i=1$ 的方程是恒等式、非独立
 方程；改写为 $w_{i}=(I_{i}/K_{i})(K_{1}/I_{1})w_{1}$ 后代入归一化方程 $\sum_{i}w_{i}=1$，得
 $w_{1}=\left(\frac{K_{1}}{I_{1}}\sum_{i=1}^{n}\frac{I_{i}}{K_{i}}\right)^{-1}$，对体系中任意一相 $i$ 即
-$w_{i}=\left(\frac{K_{i}}{I_{i}}\sum_{j=1}^{n}\frac{I_{j}}{K_{j}}\right)^{-1}$，与式~\equref{eq:ch04b-flushing}
+$w_{i}=\left(\frac{K_{i}}{I_{i}}\sum_{j=1}^{n}\frac{I_{j}}{K_{j}}\right)^{-1}$，与\equref{eq:ch04b-flushing}
 互为倒数写法、代数等价。原书同页明确「原理上，自动冲洗绝热法与参比强度法相同」，各组分「均有已知的
 参比强度 $K_{i}$ 值」，故 $K_{i}$ 即参比强度；「当样品中有无定形物质存在时，就不能应用这个公式来计算」
 与本段末句一致。）
@@ -759,7 +759,7 @@ $w_i=((K_i/I_i)\sum_j I_j/K_j)^{-1}$ 求各相含量，要求各组分均可结�
 \begin{pitfall}
 \textbf{定量误差主要来自三处。}\\
 \textbf{（1）择优取向（最常被低估的一项）。}层状、针状、片状晶粒在压片时趋于定向排列，使
-反射面平行于样品面的衍射峰被增强、垂直的被减弱（图~\figref{fig:ch04b-texture}）。由于各相的
+反射面平行于样品面的衍射峰被增强、垂直的被减弱（\figref{fig:ch04b-texture}）。由于各相的
 取向程度不同，相与相之间的强度比不再正比于含量比，误差可达数十个百分点。抑制办法：减小粒度、
 侧装或轻压、加冲淡剂（如与样品吸收系数接近的稀释剂）、必要时用取向函数在 Rietveld 精修中校正。\\
 \textbf{（2）微吸收。}颗粒尺寸与吸收系数不匹配时，X 射线在单个颗粒内被吸收，颗粒内部的散射
@@ -837,7 +837,7 @@ $\dots$）使全部比值接近整数并进一步化简——这一步是立方�
 亚倍／倍数假解”的地方；
 （4）根据比值关系判断格子类型，确定各衍射峰的指标 $hkl$；
 （5）由布拉格方程计算各峰的 $d$ 值，进而计算晶胞参数 $a$。
-\textbf{判据}：第（4）步得到的格子类型必须与该相已知的消光规律（表~\tabref{tab:ch04b-extinction}）
+\textbf{判据}：第（4）步得到的格子类型必须与该相已知的消光规律（\tabref{tab:ch04b-extinction}）
 一致；第（5）步中各条线单独算出的 $a$ 应当在误差范围内一致，若 $a$ 随角度系统漂移，说明峰位
 未做位移校正或指标化有误。
 \end{keycond}
@@ -955,7 +955,7 @@ $0.5/2^{6}=0.0078$ Å 之内。DICVOL 的优点是正空间穷举搜索原则上
 （此处已对照原页面图像（书内 p.268 / PDF p.287）：原书即印
 $Q_{-}(hkl)=(h^{2}+k^{2}+l^{2})/[a_{0}+(n+1)p]^{2}$ 与
 $Q_{+}(hkl)=(h^{2}+k^{2}+l^{2})/[a_{0}+np]^{2}$，判别式印为
-$Q_{-,hkl}\le Q_{\mathrm{obs}}\le Q_{+,hkl}$；式~\equref{eq:ch04b-dicvol} 与原书逐字一致，
+$Q_{-,hkl}\le Q_{\mathrm{obs}}\le Q_{+,hkl}$；\equref{eq:ch04b-dicvol} 与原书逐字一致，
 $n$ 与 $n+1$ 的对应关系就是原书的印法。）
 
 \subsubsection{指标化结果的判断：品质因子}
