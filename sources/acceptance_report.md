@@ -111,6 +111,6 @@ v1.0.0 的 p339+p340 在现稿合并为一页（相似度 0.985），**不是丢
    `tab:modes` 18、`tab:raman-bands-c` 18、`tab:ch07c-criteria` 8、`tab:ch07c-probe` 2），
    逐格给出源页与判定，重新生成命令 `python tools/tlbackfill.py`。这不是未核项，而是
    可选的证据升级：若要统一到纯图像口径，按该清单逐表渲图复核后改写 cells 备注即可。
-2. `sources/table_status.md` 的 T1c 标题日期仍是「2026-10-19」，建议由 `table_status.py`
-   改用 `git log -1 --format=%cs` 生成（与 `content_review.py --date` 口径一致）。
+2. ~~T1c 日期硬编码~~（已处理）：`tools/table_status.py` 新增 `head_date()`，日期取
+   `git log -1 --format=%cs`，与 `content_review.py --date` 同口径，复跑字节一致。
 3. 交付件（340 页）与现稿（339 页）的差异见 §4；下一次 release 时以现稿重建件替换。
