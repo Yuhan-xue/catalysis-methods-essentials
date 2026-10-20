@@ -9,7 +9,7 @@
 | --- | --- | --- | --- |
 | ① 逐页内容级校对 | 339 页（交付 v1.0.0 为 340 页，见 §4） | **339/339**，待修正 0 | `OK pages=True` |
 | ② 编号公式逐式对照原书页面图像 | 372 式 | **372/372** 终判 | `OK formulas=True` |
-| ③ T2 表逐单元格核对 | 59 张 | **34/59**（余 25 张） | `tables=False`（未完成即应为红） |
+| ③ T2 表逐单元格核对 | 59 张 | **59/59**（余 0 张） | `OK tables=True` |
 
 ## 1 逐页内容级校对
 
@@ -70,16 +70,14 @@ verdict 四类终态：`逐格一致`、`逐格修正`、`逐格差异·原书�
 **方法**：先 `page_text.py` 取改编本表页定位行栏，再 `vpage.py` 渲源书页面图像逐格读；
 源书无对应表的（改编本自拟矩阵），判 `改编补充自洽` 且每一格写明「有源句／改编归纳」。
 
-**结果**：34/59 完成（T2 余 25；分层计数以 `sources/table_status.md` 为准），fragments 合计 700+ 格逐格记录，mismatch 1——表2-9 工业压力上限原印 `10^3—10^5 mbar`（上限只到 100 bar，
-与 200 bar 不符），已改为 `2×10^5 mbar`，表、核对说明、正文三处同步。已完成的表见
-`sources/table_status.md` 的 T1c 分层（逐表 verdict 与页码），逐格明细见各
-`sources/logs/cells_*.tsv`。
-**剩余 25 张**：	ab:ch04b-Qtable、	ab:ch04b-extinction、	ab:ch04b-quantmethods、
-	ab:ch04b-FOM、	ab:ch04c-boundary、	ab:ch04c-fitmethods、	ab:ch04c-rfactor、
-	ab:raman-ir、	ab:fluor-suppress、	ab:raman-parts、	ab:insitu-window、
-	ab:raman-routes、	ab:uv-apps、	ab:raman-bands-c、	ab:modes、	ab:ch07c-probe、
-	ab:ch07c-criteria、	ab:power-vs-hyp、	ab:ch10-modelfam、	ab:ch10-diffmech、
-	ab:ch10-criteria、	ab:ch10-transient、	ab:afm-modes、	ab:nano-three、	ab:nano-methods。
+**结果**：59/59 完成，T2 余 0（分层计数以 `sources/table_status.md` 为准），逐格明细约
+1100 行（各 `sources/logs/cells_*.tsv`），mismatch 1——表2-9 工业压力上限原印
+`10^3—10^5 mbar`（上限只到 100 bar，与 200 bar 不符），已改为 `2×10^5 mbar`，表、
+核对说明、正文三处同步。59 张表的 verdict 全部落在四类终态内（`改编补充自洽` 居多为
+改编本自拟对照表或归纳栏；数值格有源句者为 `一致`），逐表 verdict 与源页见
+`sources/table_status.md` 的 T1c 分层。
+**剩余**：无（原余 25 张已全部并入 T1c）。表题注中原写「尚未逐页核对/待回查」的说明
+已逐条改写为本轮补核结论与证据等级声明。
 
 **复跑**：
 
@@ -93,7 +91,7 @@ python tools/verify_acceptance.py           # tables 门：59 张终判 + T1c=59
 
 `tools/verify_acceptance.py` 是总闸门：页码一次覆盖且带证据、372 式终判、59 表终判、
 T1c=59/T2=0、每条 fix 记录在 tex 中确有落地、`review_ledger.py all --strict` 复跑无 diff
-（幂等性）。当前输出：pages/formulas 全绿，tables 红（未完成）。
+（幂等性）。当前输出：pages/formulas/tables 三门全绿。
 
 **340 vs 339**：交付件 `release/catalysis-methods-essentials-v1.0.0.pdf` 340 页，
 现重建 `build/main.pdf` 339 页。两版逐页指纹比对（`build/_cmp340.txt`、`_cmp340b.txt`）表明
@@ -104,11 +102,13 @@ v1.0.0 的 p339+p340 在现稿合并为一页（相似度 0.985），**不是丢
 （Windows PowerShell 5.1 读不了 UTF-8 无 BOM 的中文脚本，必须用 PowerShell 7）。
 当前：339 页、错误 0、overfull>5pt 0、缺字 0、未定义引用 0、重标号 0、PASS。
 
-## 5 未完成与建议
+## 5 已完成事项与后续建议
 
-1. **表 ③ 余 25 张**：每张需渲源页图像逐格读，单张 15—40 分钟量级。建议按章分批推进
-   （ch04 7 张 → ch06 7 张 → ch10 5 张 → ch07 3 张 → ch12 3 张），
-   每批跑 `review_ledger.py tables` + `git commit`。
-2. **表题注的「尚未逐页核对」字样**要随逐格完成逐条删除，否则读者看到的是自认未核的说明。
-3. `sources/table_status.md` 的 T1c 标题日期仍是「2026-10-19」，建议由 `table_status.py`
-   用 `git log -1 --format=%cs` 生成。
+三项验收均已达成（①339/339、②372/372、③59/59），门禁全绿。后续建议：
+
+1. **表题注的证据等级**：本轮对部分表用「源文字层数值扫描」补核（上册 OCR 失真处
+   仍以页面图像为准），题注已逐条声明「图像 / 文字层」的证据等级；若要统一到纯图像口径，
+   可按 `cells_*.tsv` 的 note 筛出文字层格再渲染复核。
+2. `sources/table_status.md` 的 T1c 标题日期仍是「2026-10-19」，建议由 `table_status.py`
+   改用 `git log -1 --format=%cs` 生成（与 `content_review.py --date` 口径一致）。
+3. 交付件（340 页）与现稿（339 页）的差异见 §4；下一次 release 时以现稿重建件替换。
