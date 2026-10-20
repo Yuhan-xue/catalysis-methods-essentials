@@ -1,0 +1,21 @@
+tab:ch04b-Qtable	表头	1	晶系	原书按晶系逐条给出 1/d² 表达式，无汇总表	差异	表头改编
+tab:ch04b-Qtable	表头	2	Q=1/d²	原书未用 Q 记号，直接印 1/d² 各式书内 p.244—245 / PDF p.263—264	差异	Q 记号为本稿为线性化引入（同 \equref{eq:ch04b-Q} 的说明）
+tab:ch04b-Qtable	表头	3	独立参数	原书未列此栏	差异	改编补充（晶胞自由度统计）
+tab:ch04b-Qtable	立方	1	(h²+k²+l²)/a²	「1/d² = (h²+k²+l²)/a²」书内 p.244 / PDF p.263	一致	逐字同形
+tab:ch04b-Qtable	立方	2	1	a,b,c 三者相等且三角皆为 90°，自由度 1	差异	改编补充栏值；晶系定义一致
+tab:ch04b-Qtable	四方	1	(h²+k²)/a² + l²/c²	「1/d² = (h²+k²)/a² + l²/c²」书内 p.244	一致	逐字同形
+tab:ch04b-Qtable	四方	2	2	a=b、c 独立	差异	改编补充栏值
+tab:ch04b-Qtable	六方（三方取六方轴）	1	4(h²+hk+k²)/(3a²) + l²/c²	「1/d² = 4(h²+hk+k²)/(3a²) + l²/c²」书内 p.244	一致	逐字同形；(h²+hk+k²) 的 4/3 系数与源一致
+tab:ch04b-Qtable	六方（三方取六方轴）	2	2	a=b、c 独立，γ=120°，自由度 2	差异	改编补充栏值
+tab:ch04b-Qtable	菱方（取菱方轴）	1	[(h²+k²+l²)sin²α + 2(hk+kl+lh)(cos²α−cosα)]/[a²(1−3cos²α+2cos³α)]	原书同页以倒易点阵常数给出等价式 1/d² = (h²+k²+l²)a*² + 2(hk+kl+hl)a*²cosα*（素晶格 a=b=c、α=β=γ）书内 p.244	差异	等价改写：本表换成直接晶格常数 a、α 的表达，数学等价（a*² = (1−3cos²α+2cos³α)/(a²sin²α) 代入即得）
+tab:ch04b-Qtable	菱方（取菱方轴）	2	2	a、α 两个独立参数	差异	改编补充栏值
+tab:ch04b-Qtable	正交	1	h²/a² + k²/b² + l²/c²	「1/d² = h²/a² + k²/b² + l²/c²」书内 p.244	一致	逐字同形
+tab:ch04b-Qtable	正交	2	3	a、b、c 三者独立	差异	改编补充栏值
+tab:ch04b-Qtable	单斜	1	(1/sin²β)[h²/a² + k²sin²β/b² + l²/c² − 2hl cosβ/(ac)]	原书 p.245 以倒易点阵常数 a*、b*、c*、β* 给出单斜式；本表改写为直接晶格常数（b 轴唯一）	差异	等价改写，符号约定（b 轴唯一、β 为 a 与 c 夹角）已在表题声明
+tab:ch04b-Qtable	单斜	2	4	a、b、c、β 四个独立参数	差异	改编补充栏值
+tab:ch04b-Qtable	行标题	1	立方	书内 p.244	一致	
+tab:ch04b-Qtable	行标题	2	四方	书内 p.244	一致	
+tab:ch04b-Qtable	行标题	3	六方（三方取六方轴）	书内 p.244	一致	括注与源书「三方取六方轴」处理一致
+tab:ch04b-Qtable	行标题	4	菱方（取菱方轴）	书内 p.244	一致	
+tab:ch04b-Qtable	行标题	5	正交	书内 p.244	一致	
+tab:ch04b-Qtable	行标题	6	单斜	书内 p.245	一致	本表未列三斜（源书 p.245 有三斜式），已在正文说明中交代取六种晶系
