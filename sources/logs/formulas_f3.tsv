@@ -19,3 +19,21 @@ eq:classical-intensity-ratio	改编补充	up p.366	源书 p.366 无 P_sc/P0=(dσ
 eq:stokes-ratio	改编补充	up p.367	源书 p.367 只有定性句「常温下…斯托克斯线比反斯托克斯线强得多」，未印 I_as/I_s 强度比式；本版按标准形式补出（书内 p.350/PDF p.369 另给反斯托克斯强度式，非此比值）。图 build/_m_ch06c.png。
 eq:resonance-cross	已核对一致	up p.395	源书 p.395（书内 p.376）原印 σ∝1/(hν0−hνm)(hν0+hνm)；本版同式，仅分母加括号排版差异。图 build/_m_ch06c.png。
 eq:sers-two	改编补充	up p.397	源书 p.397（书内 p.378）只在 prose 中写「P=αE 中的 E 增大」「P=αE 中的 α 增大」，未印带两种机制标注的编号式；本版把 P=αE 提出并加注。图 build/_m_ch06c.png。
+eq:art	已核对一致	up p.436	源书 p.436（书内 p.417）原印 A+R+T=1；本版同式。图 build/_src436.png、build/_m_ch07prod1.png。
+eq:beer	改编补充	up p.436	源书 p.436 只印 A+R+T=1 与三项贡献说明，无 Beer–Lambert 式（全章 OCR 无「比尔/朗伯/吸光系数」）；本版 A=lg(I0/I)=εcl 为改编补充。图 build/_src436.png、build/_m_ch07prod1.png。
+eq:interferogram	形式一致但符号不同	up p.443	本版 I(δ)=1/2∫0∞B(ν̃)[1+cos(2πν̃δ)]dν̃；源书 p.443（书内 p.424）印 I'(δ)=∫0∞0.5I(ν)[1+cos(2πνδ)]dν，0.5 在积分号内、I(ν)→B(ν̃)、ν→ν̃，等价。图 build/_src443.png、build/_m_ch07prod1.png。
+eq:km	已核对一致	up p.446	源书 p.446（书内 p.427）原印 K/S=(1−R∞)²/(2R∞)；本版同式。图 build/_src446.png、build/_m_ch07prod1.png。
+eq:crit	已核对一致	up p.451	源书 p.451（书内 p.432）在正文内印 sinθc=n2/n1；本版单列并补 (n1>n2)，形式一致。图 build/_src451.png、build/_m_ch07prod1.png。
+eq:dpen	原书自身问题	up p.451	源书 p.451 印 d_p=λ1/(2πn1√(sin²θ−(n2/n1)²)) 并定义 λ1 为「反射介质中的波长」；若 λ1=λ0/n1 则分母不应再有 n1，原书符号定义自相矛盾。本版改印 d_p=λ0/(2π√(n1²sin²θ−n2²))（λ0 为真空波长），按倏逝场 1/e 定义消除该矛盾。图 build/_src451.png、build/_m_ch07prod1.png。
+eq:nref	已核对一致	up p.452	源书 p.452（书内 p.433）原印 N=(l/d)cotθ；本版同式。图 build/_src452_n.png、build/_m_ch07prod1.png。
+eq:ch07b-beer	改编补充	up p.463	源书 p.463（书内 p.444）只以文字说「强度定数量、定量建立在朗伯—比尔定律之上」，未印 A=εcl（全册 OCR 无「比尔/朗伯/吸光系数」）；本版式 (7-8) 为改编补充。图 build/_src463.png、build/_m_ch07prod2.png。
+eq:ch07b-co-abs	形式一致但符号不同	up p.470	本版 A_CO=K_CO S_CO(Pt) x_s；源书 p.470（书内 p.451）印 A_CO=K_CO·S_CO(Pt)_s，括号外下标 s 即表面分数，本版把表面分数改写为 x_s。图 build/_src470.png、build/_m_ch07prod2.png。
+eq:ch07b-no-abs	形式一致但符号不同	up p.470	本版 A_NO=K_NO S_NO(Ru)(1−x_s)；源书 p.470 印 A_NO=K_NO·S_NO(Ru)_s，本版把表面分数改写为 1−x_s（归一化写法）。图 build/_src470.png、build/_m_ch07prod2.png。
+eq:ch07b-ratio	改编补充	up p.470	源书 p.470 只写 A_CO/A_NO∝Pt_b/Ru_b（对体相组成作图成直线），未印本版这条显式比值式；本版由 (7-9)(7-10) 相除得出，属改编补充。图 build/_src470.png、build/_m_ch07prod2.png。
+eq:ch07b-morse-levels	形式一致但符号不同	up p.489	本版 G(v)=ωe(v+1/2)−ωe xe(v+1/2)²；源书 p.489（书内 p.470）式 (7-1) 印 W_x=W_e(n+1/2)−W_eX(n+1/2)²，W_x→G(v)、W_e→ωe、X→x_e、n→v。图 build/_src489.png、build/_m_ch07prod2.png。
+eq:ch07b-morse	形式一致但符号不同	up p.489	本版 U(r)=D[e^{−β(r−re)}−1]²；源书 p.489（书内 p.470）式 (7-2) 印 U(r)=D[e^{−β(γ−γ0)}−1]²，γ→r、γ0→re（源书把 γ 称平均距离、γ0 称瞬间距离）。图 build/_src489.png、build/_m_ch07prod2.png。
+eq:ch07b-morse-params	形式一致但符号不同	up p.489	本版 β=2.48×10⁷(ωe xe μ)^0.5、D=ωe/(4xe)；源书 p.489 印 β=2.48×10⁷(W_eX_eμ)^0.5、D=W_e/(4X)，W_e→ωe、X_e/X→x_e（源书 β 用 X_e、D 用 X，下标不统一，本版统一为 x_e）。图 build/_src489.png、build/_m_ch07prod2.png。
+eq:ch07b-D0	原书自身问题	up p.490	源书 p.490（书内 p.471）式 (7-3) 印 D0=W_e/(4X)−W_e/2，同页稍后又印「又 D0=W_e/4X」（无 −W_e/2），源书自身两版并存。本版 D0=ωe²/(4ωe xe)=ωe/(4xe) 取后者（亦与本版式 7-8 的 D_eff 推导一致），未取 (7-3) 的零点能项。图 build/_src490.png、build/_src490_d0.png、build/_m_ch07prod2.png。
+eq:ch07b-combination	形式一致但符号不同	up p.491	本版 (v+δ)=v_OH+δ_OH−X12（并另列 (2v+δ)=v_OH+δ_OH−2X12）；源书 p.491（书内 p.472）式 (7-10) 印 ν^{OH}_{ν+δ}=ν^{OH}_{0→1}+δ^{OH}_{0→1}−X12、式 (7-11) 印 ν^{OH}_{2ν+δ}=ν^{OH}_{0→1}+δ^{OH}_{0→1}−2X12，逐项同形，仅记号简化。图 build/_src491_d.png、build/_m_ch07prod3.png。
+eq:ch07c-km	改编补充	up p.512	源书 p.512（书内 p.493）已转入 WO3/Al2O3 与 §7.5.4，未讨论 Kubelka–Munk 变换（源 OCR 全文无 Kubelka/Munk），无对应编号式；本版 F(R∞)=(1−R∞)²/(2R∞)=K/S 为学科标准形式补入。图 build/_src512.png、build/_m_ch07prod3.png。
+eq:ch07c-isotope	改编补充	up p.518	源书 p.518（书内 p.499）只印 DCOOD 同位素位移数据（ν_OH^s=2650、ν_CD^s=2200、β_CD=1029 cm⁻¹ 等），未印 ν̃=1/(2πc)√(k/μ)、μ 与 ν̃(XD)/ν̃(XH) 比式；本版按谐振近似补出。图 build/_src518.png、build/_m_ch07prod3.png。

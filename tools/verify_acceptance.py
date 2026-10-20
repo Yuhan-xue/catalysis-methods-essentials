@@ -178,6 +178,19 @@ def check_formulas():
         ok('formulas: %d/%d terminal with source pages, md present' % (len(body), N_FORMULAS))
 
 
+def t2_labels():
+    """The 59 T2 table labels, from the worklist's two table groups."""
+    out = set()
+    for name in ('tables_t1.tsv', 'tables_t2.tsv'):
+        p = os.path.join(ROOT, 'build', 'work_groups', name)
+        if not os.path.exists(p):
+            continue
+        for cells in split_rows(p, header_startswith='id'):
+            if cells[0].startswith('tab:'):
+                out.add(cells[0])
+    return out
+
+
 def check_tables():
     path = os.path.join(ROOT, 'sources', 'table_cells.tsv')
     md = os.path.join(ROOT, 'sources', 'table_cells.md')
@@ -185,22 +198,26 @@ def check_tables():
     if not os.path.exists(path):
         fail('tables: sources/table_cells.tsv missing')
         return
+    want = t2_labels()
+    if len(want) != N_TABLES:
+        fail('tables: worklist exposes %d T2 labels, expected %d' % (len(want), N_TABLES))
+        return
     rows = split_rows(path, header_startswith='label')
-    labels = set()
-    bad = 0
+    verdict = {}
     for cells in rows:
         if len(cells) < 6:
-            bad += 1
             continue
-        labels.add(cells[0])
         # merged table_cells.tsv: label, verdict, src_pages, cells, mismatches, note
-        if cells[1] not in TABLE_DONE:
-            bad += 1
-            say('     table pending: %s -> %r' % (cells[0], cells[1]))
-    if bad:
-        fail('tables: %d rows not terminal (of %d)' % (bad, len(rows)))
-    if len(labels) != N_TABLES:
-        fail('tables: %d unique labels, expected %d' % (len(labels), N_TABLES))
+        if cells[0] in want:
+            verdict[cells[0]] = cells[1]
+    missing = sorted(want - set(verdict))
+    pending = sorted(l for l, v in verdict.items() if v not in TABLE_DONE)
+    if missing:
+        fail('tables: %d T2 labels absent from table_cells.tsv (e.g. %s)'
+             % (len(missing), ','.join(missing[:4])))
+    if pending:
+        fail('tables: %d/%d T2 tables not terminal (e.g. %s -> %r)'
+             % (len(pending), len(want), pending[0], verdict[pending[0]]))
     if not os.path.exists(md):
         fail('tables: sources/table_cells.md missing')
     if os.path.exists(status_md):
@@ -213,8 +230,9 @@ def check_tables():
                  % (counts.get('T1c'), counts.get('T2'), N_TABLES))
     else:
         fail('tables: sources/table_status.md missing')
-    if not bad and len(labels) == N_TABLES:
-        ok('tables: %d/%d terminal, table_status T1c=%d T2=0' % (len(labels), N_TABLES, N_TABLES))
+    if not missing and not pending:
+        ok('tables: %d/%d T2 tables terminal, table_status T1c=%d T2=0'
+           % (len(want), N_TABLES, N_TABLES))
 
 
 def check_replay():
