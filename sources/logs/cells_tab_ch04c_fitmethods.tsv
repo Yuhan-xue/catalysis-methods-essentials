@@ -1,0 +1,18 @@
+tab:ch04c-fitmethods	表头	1	比较项	原书分述 Pawley 与 LeBail 两法，无对照表	差异	表头改编
+tab:ch04c-fitmethods	表头	2	Pawley 方法	书内 p.283 / PDF p.302	差异	表头改编
+tab:ch04c-fitmethods	表头	3	LeBail 方法	书内 p.283—284	差异	表头改编（本表按通行拼写 LeBail，原书印作「Le Beil」，仅记差异不改）
+tab:ch04c-fitmethods	拟合参数	1	N+10+m（含每个 hkl 的强度）	Pawley 拟合 N 个衍射指标强度 + 晶胞参数 6 + 零点 1 + 峰宽 3 + 峰形 m = N+10+m 书内 p.283	一致	逐项相加对上
+tab:ch04c-fitmethods	拟合参数	2	10+m（强度不参与拟合）	LeBail 仍取其中 10+m 个参数，强度不纳入拟合 书内 p.283—284	一致	
+tab:ch04c-fitmethods	强度来源	1	最小二乘直接给出，并给出误差	「强度由最小二乘直接给出，并示出误差」书内 p.283	一致	
+tab:ch04c-fitmethods	强度来源	2	赋值—计算—赋值循环，迭代收敛	「赋值—计算—赋值」循环，先赋初值作计算值，按计算值分配观察值，再设为新计算值，循环至收敛 书内 p.284	一致	三步循环逐字对上
+tab:ch04c-fitmethods	收敛速度	1	参数多、计算量大，较慢	Pawley 参数量大、计算量大 书内 p.284	一致	
+tab:ch04c-fitmethods	收敛速度	2	每步参数少，运行快，但迭代步数多	每步只修正晶胞与峰形参数、运行很快，但起始强度任意赋值需相当多迭代步，总时间大大缩短 书内 p.284	一致	「但迭代步数多」与原书「需相当多迭代步骤」同义
+tab:ch04c-fitmethods	适用性	1	重叠峰的强度分配可能不尽合理	原书原话：峰重叠严重时按强度相等硬性限定、尚可分开时软性约束，分配可能不尽合理 书内 p.283	一致	
+tab:ch04c-fitmethods	适用性	2	对任意重叠数目都适用	「对任意数目的重叠峰都适用」书内 p.284	一致	逐字同义
+tab:ch04c-fitmethods	R 因子的意义	1	反映强度分配的好坏	峰形拟合的计算强度与结构无关，R 因子可尽量减小；Pawley 的 R 反映强度分配质量 书内 p.284	差异	「反映强度分配好坏」为改编归纳，源书只给「R 可尽量减小」的一般性说明
+tab:ch04c-fitmethods	R 因子的意义	2	原则上趋于 0，不能与结构精修的 R 相比	「由于拟合中把实验值赋作计算值，原则上 R 因子应趋于 0」；含结构参数的 Rietveld 精修 R 不可能更低 书内 p.284	一致	逐字对上
+tab:ch04c-fitmethods	行标题	1	拟合参数	书内 p.283	一致	
+tab:ch04c-fitmethods	行标题	2	强度来源	书内 p.283—284	一致	
+tab:ch04c-fitmethods	行标题	3	收敛速度	书内 p.284	一致	
+tab:ch04c-fitmethods	行标题	4	适用性	书内 p.283—284	一致	
+tab:ch04c-fitmethods	行标题	5	R 因子的意义	书内 p.284	一致	

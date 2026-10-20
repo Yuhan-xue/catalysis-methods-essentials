@@ -1,0 +1,15 @@
+tab:ch04c-rfactor	表头	1	因子	原书分述 Rwp、Rp、Rexp、GOF，无汇总表	差异	表头改编
+tab:ch04c-rfactor	表头	2	反映什么	同上	差异	表头改编
+tab:ch04c-rfactor	表头	3	读数与判据	同上	差异	表头改编
+tab:ch04c-rfactor	Rwp	1	按计数统计加权的剩余差方；wi=1/Yio，量值上由强峰主导	定义式 Rwp=[Σwi(Yio−Yic)²/ΣwiYio²]^½、wi=1/σi²=1/Yio 书内 p.282 / PDF p.301（本稿 eq:ch04c-rwp 已逐式核图）	差异	定义一致；「由强峰主导」为改编推论（分母按 Yo² 加权），源书未直说
+tab:ch04c-rfactor	Rwp	2	常规精修 <10%；数据好、结构合理时可到 5% 以下；多孔含无序物种可到约 20%	「精修后通常 R 因子 <10%，有时也会出现约 20% 的较大值；致密无机化合物可很小，多孔结构如沸石因孔道溶剂或无序物种 R 较大」书内 p.284	一致	三档读数与原文一致；「5% 以下」对应原文「可以很小」，属具体化
+tab:ch04c-rfactor	Rp	1	未加权的绝对偏差，弱峰与强峰同等看待	定义式 Rp=Σ|Yio−Yic|/ΣYio 书内 p.282	一致	定义一致；「同等看待」为对未加权性质的说明
+tab:ch04c-rfactor	Rp	2	与 Rwp 一起看：两者相差过大说明拟合被少数强峰或个别坏点主导	原书并列给出 Rwp 与 Rp，未给两者对比的判据	差异	改编补充
+tab:ch04c-rfactor	Rexp	1	由计数统计与自由度数决定的下限	定义式 Rexp=[(N−P)/ΣwiYio²]^½，N 为数据点数、P 为精修参数数 书内 p.282	一致	逐式对上
+tab:ch04c-rfactor	Rexp	2	计数越高它越小；Rwp 与它同量级才说明模型真的解释了数据	Rexp 的平方反比于 ΣwiYio²（∝ 计数），故计数越高越小	差异	「同量级才算解释数据」为改编判据（GOF≈1 的等价说法）
+tab:ch04c-rfactor	GOF = Rwp/Rexp	1	拟合是否优于统计期望	GOF=Rwp/Rexp=[Σwi(Yio−Yic)²/(N−P)]^½ 书内 p.282（本稿 eq:ch04c-gof 已并入该展开式）	一致	定义式对上
+tab:ch04c-rfactor	GOF = Rwp/Rexp	2	接近 1 满意；≥1.5 要考虑参数或模型；<1 往往意味着权重被高估或参数过多	「GOF 接近 1 表示拟合令人满意；若为 1.5 或更高，参数或理论模型的选择可能需要重新考虑」书内 p.282	差异	前两句逐字对上（一致部分）；「<1 意味着权重被高估或参数过多」为改编补充
+tab:ch04c-rfactor	行标题	1	Rwp	书内 p.282	一致	
+tab:ch04c-rfactor	行标题	2	Rp	书内 p.282	一致	
+tab:ch04c-rfactor	行标题	3	Rexp	书内 p.282	一致	
+tab:ch04c-rfactor	行标题	4	GOF = Rwp/Rexp	书内 p.282	一致	
