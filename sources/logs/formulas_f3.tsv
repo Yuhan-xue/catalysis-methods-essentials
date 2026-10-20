@@ -37,3 +37,16 @@ eq:ch07b-D0	原书自身问题	up p.490	源书 p.490（书内 p.471）式 (7-3) 
 eq:ch07b-combination	形式一致但符号不同	up p.491	本版 (v+δ)=v_OH+δ_OH−X12（并另列 (2v+δ)=v_OH+δ_OH−2X12）；源书 p.491（书内 p.472）式 (7-10) 印 ν^{OH}_{ν+δ}=ν^{OH}_{0→1}+δ^{OH}_{0→1}−X12、式 (7-11) 印 ν^{OH}_{2ν+δ}=ν^{OH}_{0→1}+δ^{OH}_{0→1}−2X12，逐项同形，仅记号简化。图 build/_src491_d.png、build/_m_ch07prod3.png。
 eq:ch07c-km	改编补充	up p.512	源书 p.512（书内 p.493）已转入 WO3/Al2O3 与 §7.5.4，未讨论 Kubelka–Munk 变换（源 OCR 全文无 Kubelka/Munk），无对应编号式；本版 F(R∞)=(1−R∞)²/(2R∞)=K/S 为学科标准形式补入。图 build/_src512.png、build/_m_ch07prod3.png。
 eq:ch07c-isotope	改编补充	up p.518	源书 p.518（书内 p.499）只印 DCOOD 同位素位移数据（ν_OH^s=2650、ν_CD^s=2200、β_CD=1029 cm⁻¹ 等），未印 ν̃=1/(2πc)√(k/μ)、μ 与 ν̃(XD)/ν̃(XH) 比式；本版按谐振近似补出。图 build/_src518.png、build/_m_ch07prod3.png。
+eq:csatensor	已核对一致	down p.21	源书 p.21（书内 p.529）在正文内印 δiso=1/3(δ11+δ22+δ33)、Δδ=δ33−1/2(δ11+δ22)、η=(δ22−δ11)/(δ33−δiso)；本版三式逐项同形，仅改为分行编号。图 build/_d21.png、build/_m_ch08prod.png。
+eq:sigma1	原书自身问题	down p.21	源书 p.21 式 (8-1) 印 σrot=σiso+1/2(3cos²β−1)·(δ/2)[3(cos²θ−1)+η sin²θ cos2φ]；方括号首项按标准式应为 3cos²θ−1，源书印 3(cos²θ−1)，两者相差常数 2、并不等价。本版按标准式印 3cos²θ−1（已在 ch08-a.tex 就地注明原印法备查），整体形式与源书一致。图 build/_d21.png、build/_m_ch08prod.png。
+eq:magic	已核对一致	down p.22	源书 p.22（书内 p.530）在正文内印「β=54.7°时 cos²β=1/3，(3cos²β−1)=0」；本版单列 3cos²β−1=0 ⇒ cos²β=1/3 ⇒ β=arccos(1/√3)=54.7356°，与源书同义（源书给 54.7°，本版给更精确值）。图 build/_d22.png、build/_m_ch08prod.png。
+eq:dipolar	改编补充	down p.19-22	源书 p.19—22（书内 p.527—530）只定性讨论偶极-偶极增宽「其大小取决于核的磁矩和核间距」，未印 b12=−(μ0/4π)γ1γ2ℏ/r³ 与 ωD(θ)=b12(3cos²θ−1)/2；本版按标准形式补出。图 build/_d19.png、build/_d22.png、build/_m_ch08prod.png。
+eq:hh	已核对一致	down p.22	源书 p.22（书内 p.530）在 CP/MAS 段内印 γS B1S=γI B1I（S 稀核、I 丰核，I=1/2）；本版同式并补 (I,S 均为 I=1/2)。图 build/_d22.png、build/_m_ch08prod.png。
+eq:hhquad	已核对一致	down p.22	源书 p.22 在四极核 CP 段内印 ν1A=(I+1/2)ν1B（A 为 I=1/2 核、B 为四极核）；本版同式。图 build/_d22.png、build/_m_ch08prod.png。
+eq:zeolite	已核对一致	down p.23	源书 p.23（书内 p.531）原印 M^{x+}_{y/x}[(AlO2)_y(SiO2)_{1−y}]·nH2O；本版逐项同形。图 build/_d23.png、build/_m_ch08prod.png。
+eq:sial	已核对一致	down p.24	源书 p.24（书内 p.532）式 (8-2) 印 Si/Al=Σ_{n=0}^{4}I_{Si(nAl)}/Σ_{n=0}^{4}0.25nI_{Si(nAl)}；本版同式（仅把「Si/Al值」写作 Si/Al）。图 build/_d24.png、build/_m_ch08prod.png。
+eq:brunner-iso	已核对一致	down p.33	源书 p.33（书内 p.541）式 (8-3) 印 δH(ppm)=57.1−0.0147νOH(cm⁻¹)（孤立 OH）；本版逐字同形。图 build/_d33.png、build/_m_ch08prod.png。
+eq:brunner-hb	已核对一致	down p.33	源书 p.33 式 (8-4) 印 δH(ppm)=37.9−0.0092νOH(cm⁻¹)（存在氢键的 OH）；本版逐字同形。图 build/_d33.png、build/_m_ch08prod.png。
+eq:ernst	改编补充	down p.36	源书 p.543—544（down p.36）只写「固体 NMR 在定量方面优于红外光谱」等定性表述，未印 S∝N sinα(1−e^{−D1/T1})/(1−cosα e^{−D1/T1})；本版按 NMR 定量通用关系补出（已在 ch08-b.tex 标为教学补充）。图 build/_d36.png、build/_m_ch08prod.png。
+eq:xe-shift	已核对一致	down p.38	源书 p.38（书内 p.546）式 (8-5) 印 δ=δ0+δE+δM+δXe-Xe+δS+δSAS；本版逐项同形（Xe-Xe 下标用 \text{-} 排版）。图 build/_d38.png、build/_m_ch08prod.png。
+eq:fraissard	形式一致但符号不同	down p.39	源书 p.39（书内 p.547）在正文内印 1/δS=(1+l̄/a)/δa（l̄ 为带平均横线的平均自由程）；本版写 1/δS=(1+l/a)/δa，仅 l̄→l。图 build/_d39.png、build/_m_ch08prod.png。

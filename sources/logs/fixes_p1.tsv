@@ -27,3 +27,5 @@
 44	chapters/parts/ch02-b.tex	399	正文表述「当样品很薄时，该强度与样品中的原子数量成正比，与散射截面成反比」与本段一致。	原书正文作「当样品很薄时，该强度与样品中的原子数量成正比，与散射截面成反比」，与式（2-33）的正比关系不符，本版按公式改正为「成正比」。	配合 :381 的正比改正，把原书矛盾表述记为核对说明，不再写「与本段一致」。文字层：build/_txt_p33-46.txt。
 44	chapters/parts/ch02-b.tex	424	通常用 \textsc{sigma}k（用于 K 层）和 \textsc{sigma}l	通常用 \textsc{sigmak}（用于 K 层）和 \textsc{sigmal}	程序名为 SIGMAK/SIGMAL；同页核对说明（ch02-b.tex:486）印 SIGMAK/SIGMAL，原文 textsc{sigma}+k 渲染成 SIGMAk，大小写不一致。文字层：build/_txt_p33-46.txt。
 44	chapters/parts/ch02-b.tex	487	按式（2-36）算出的成分比	按式(2-21) 算出的成分比	正文对应式为式(2-21)（部分截面），式（2-36）为源书编号/误引；同段上文刚用式(2-21)。文字层：build/_txt_p33-46.txt。
+49	chapters/parts/ch02-b.tex	890	由乙烷、乙酸和氧	由乙烯、乙酸和氧	VAM 工业路线为乙烯+乙酸+O2；源 OCR sources/parts/ch02-b.txt:765 亦作乙烷，属源书自身错误，按化学事实改正。文字层：build/_txt_p47-60.txt。
+59	chapters/parts/ch02-c.tex	164	立方体的四个顶角中有三个（源文表述为「上面 4 个顶角」之外的另一个顶角）的模式能量与其余顶角不同	立方体的八个顶角中有一个（位于「上面 4 个顶角」之外）的模式能量与其余顶角不同	立方体有 8 个顶角；源 OCR sources/parts/ch02-c.txt:269 作「个顶角基元能量并不同于上面４个顶角」，原句「四个顶角中有三个…与其余顶角不同」自相矛盾，改为一个顶角不同。文字层：build/_txt_p47-60.txt。

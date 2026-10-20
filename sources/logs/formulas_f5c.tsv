@@ -1,0 +1,12 @@
+eq:levich	已核对一致	down p.337	源书 p.337（书内 p.849）式 (11-92) 印 i_lc=0.62nFAD_O^{2/3}ω^{1/2}ν^{−1/6}C_O^*；本版逐项同形，仅把 i_lc 记为 i_{l,c}。图 build/_d337.png、build/_m_f5cprod.png。
+eq:delta0	已核对一致	down p.338	源书 p.338（书内 p.850）式 (11-94)(11-95) 印 m0=D_O/δ0=0.62D_O^{2/3}ω^{1/2}ν^{−1/6}、δ0=1.61D_O^{1/3}ω^{−1/2}ν^{1/6}；本版逐项同形。图 build/_d338.png、build/_m_f5cprod.png。
+eq:levich-general	已核对一致	down p.338	源书 p.338 式 (11-96) 印 i=0.62nFAD_O^{2/3}ω^{1/2}ν^{−1/6}[C_O^*−C_O(y=0)]，式 (11-97) 印 i=i_lc[(C_O^*−C_O(y=0))/C_O^*]；本版把后一式写成 i_lc[1−C_O(y=0)/C_O^*]，代数等价。图 build/_d338.png、build/_m_f5cprod.png。
+eq:kl	已核对一致	down p.338	源书 p.338 式 (11-102) 印 1/i=1/i_K+1/i_lc=1/i_K+1/[0.62nFAD_O^{2/3}ω^{1/2}ν^{−1/6}C_O^*]；本版逐项同形。图 build/_d338.png、build/_m_f5cprod.png。
+eq:rde-resistance	已核对一致	down p.339	源书 p.339（书内 p.851）式 (11-103)—(11-105) 印 i=4κr1(ΔE)、RΩ=1/(4κr1)、ρ=RΩ/RE；本版三式逐项同形。图 build/_d339.png、build/_m_f5cprod.png。
+eq:ring-limit	已核对一致	down p.341	源书 p.341（书内 p.853）式 (11-107) 印 i_R,l,c=0.62nFπ(r3³−r2³)^{2/3}D_O^{2/3}ω^{1/2}ν^{−1/6}C_O^*；本版逐项同形。图 build/_d341.png、build/_m_f5cprod.png。
+eq:rrde-collection	改编补充	down p.341-342	源书 p.341—342 在收集实验段只印稳态对流-扩散方程 (11-108) 与环电流积分式 (11-109)，未印 N=−i_R/i_D、n=4i_D/(i_D+i_R/N)、x(H2O2)=200(i_R/N)/(i_D+i_R/N)% 三式；本版按标准 RRDE 分析式补入（已在 ch11-b.tex 就地说明）。图 build/_d341.png、build/_d342.png、build/_m_f5cprod.png。
+eq:rrde-shield	已核对一致	down p.342	源书 p.342（书内 p.854）式 (11-110)(11-111) 印 i_R,l=i_R,l^0−Ni_D、i_R,l=i_R,l^0(1−Nβ^{−2/3})（i_D=i_D,l）；本版逐项同形。源书未定义 β，本版照录并在正文注明。图 build/_d342.png、build/_m_f5cprod.png。
+eq:orr-paths	改编补充	down p.342	源书 p.342 只说明 RRDE 可测中间体与产物分布，未印 O2+4H+ +4e−→2H2O（直接 4 电子）与 O2+2H+ +2e−→H2O2（2 电子）两条路径式；本版按标准 ORR 路径补入（正文已标为分析补充）。图 build/_d342.png、build/_m_f5cprod.png。
+eq:ume	已核对一致	down p.343	源书 p.343（书内 p.855）式 (11-112)—(11-114) 印 R_u=(1/(4πσr0))·x/(x+r0)、iR_u=jπr0²/(4πσr0)=jr0/(4σ)、R_uC_d=r0C_d^0/(4σ)；本版逐项同形。图 build/_d343.png、build/_m_f5cprod.png。
+eq:eis-d-sine	已核对一致	down p.344	源书 p.344（书内 p.856）式 (11-115) 印 e=E sinωt；本版同式。图 build/_d344.png、build/_m_f5cprod.png。
+eq:eis-d-phase	已核对一致	down p.345	源书 p.345（书内 p.857）式 (11-116) 印 i=I sin(ωt+φ)（「电流滞后于电压，可以表示为」后紧接此式）；本版照印 +φ，未改为 −φ。图 build/_d345.png、build/_m_f5cprod.png。
