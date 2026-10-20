@@ -9,7 +9,7 @@
 | --- | --- | --- | --- |
 | ① 逐页内容级校对 | 339 页（交付 v1.0.0 为 340 页，见 §4） | **339/339**，待修正 0 | `OK pages=True` |
 | ② 编号公式逐式对照原书页面图像 | 372 式 | **372/372** 终判 | `OK formulas=True` |
-| ③ T2 表逐单元格核对 | 59 张 | **30/59**（余 29 张） | `tables=False`（未完成即应为红） |
+| ③ T2 表逐单元格核对 | 59 张 | **34/59**（余 25 张） | `tables=False`（未完成即应为红） |
 
 ## 1 逐页内容级校对
 
@@ -70,18 +70,16 @@ verdict 四类终态：`逐格一致`、`逐格修正`、`逐格差异·原书�
 **方法**：先 `page_text.py` 取改编本表页定位行栏，再 `vpage.py` 渲源书页面图像逐格读；
 源书无对应表的（改编本自拟矩阵），判 `改编补充自洽` 且每一格写明「有源句／改编归纳」。
 
-**结果**：30/59 完成（T2 余 29；分层计数以 `sources/table_status.md` 为准），fragments 合计
-577 格逐格记录，mismatch 1——表2-9 工业压力上限原印 `10^3—10^5 mbar`（上限只到 100 bar，
+**结果**：34/59 完成（T2 余 25；分层计数以 `sources/table_status.md` 为准），fragments 合计 700+ 格逐格记录，mismatch 1——表2-9 工业压力上限原印 `10^3—10^5 mbar`（上限只到 100 bar，
 与 200 bar 不符），已改为 `2×10^5 mbar`，表、核对说明、正文三处同步。已完成的表见
 `sources/table_status.md` 的 T1c 分层（逐表 verdict 与页码），逐格明细见各
 `sources/logs/cells_*.tsv`。
-**剩余 29 张**：`tab:ch03b-conditions`、`tab:ch04b-Qtable`、`tab:ch04b-extinction`、
-`tab:ch04b-quantmethods`、`tab:ch04b-FOM`、`tab:ch04c-boundary`、`tab:ch04c-fitmethods`、
-`tab:ch04c-rfactor`、`tab:ch05-tpd`、`tab:ch05-redhead`、`tab:ch05b-tpr-shift`、
-`tab:raman-ir`、`tab:fluor-suppress`、`tab:raman-parts`、`tab:insitu-window`、
-`tab:raman-routes`、`tab:uv-apps`、`tab:raman-bands-c`、`tab:modes`、`tab:ch07c-probe`、
-`tab:ch07c-criteria`、`tab:power-vs-hyp`、`tab:ch10-modelfam`、`tab:ch10-diffmech`、
-`tab:ch10-criteria`、`tab:ch10-transient`、`tab:afm-modes`、`tab:nano-three`、`tab:nano-methods`。
+**剩余 25 张**：	ab:ch04b-Qtable、	ab:ch04b-extinction、	ab:ch04b-quantmethods、
+	ab:ch04b-FOM、	ab:ch04c-boundary、	ab:ch04c-fitmethods、	ab:ch04c-rfactor、
+	ab:raman-ir、	ab:fluor-suppress、	ab:raman-parts、	ab:insitu-window、
+	ab:raman-routes、	ab:uv-apps、	ab:raman-bands-c、	ab:modes、	ab:ch07c-probe、
+	ab:ch07c-criteria、	ab:power-vs-hyp、	ab:ch10-modelfam、	ab:ch10-diffmech、
+	ab:ch10-criteria、	ab:ch10-transient、	ab:afm-modes、	ab:nano-three、	ab:nano-methods。
 
 **复跑**：
 
@@ -108,8 +106,8 @@ v1.0.0 的 p339+p340 在现稿合并为一页（相似度 0.985），**不是丢
 
 ## 5 未完成与建议
 
-1. **表 ③ 余 29 张**：每张需渲源页图像逐格读，单张 15—40 分钟量级。建议按章分批推进
-   （ch04 7 张 → ch06 7 张 → ch10 5 张 → ch05 3 张 → ch07 3 张 → ch12 3 张 → ch03 1 张），
+1. **表 ③ 余 25 张**：每张需渲源页图像逐格读，单张 15—40 分钟量级。建议按章分批推进
+   （ch04 7 张 → ch06 7 张 → ch10 5 张 → ch07 3 张 → ch12 3 张），
    每批跑 `review_ledger.py tables` + `git commit`。
 2. **表题注的「尚未逐页核对」字样**要随逐格完成逐条删除，否则读者看到的是自认未核的说明。
 3. `sources/table_status.md` 的 T1c 标题日期仍是「2026-10-19」，建议由 `table_status.py`
