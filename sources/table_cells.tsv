@@ -16,7 +16,7 @@ tab:recip-simple	改编补充自洽	上册 p.238—239 / PDF p.257—258	15	0	�
 tab:xrd-limits	改编补充自洽	上册 p.221—222 / PDF p.240—241	14	0	「能可靠给出」五行逐句有原文（p.221 峰位/强度/峰形，p.222 系统消光、原子位置与分布、物相组成与含量、Rietveld 精修与从头确定）；「不能给出」整栏与峰位误差整行为改编归纳，无源表可对。
 tab:ch04b-Qtable	未覆盖				
 tab:ch04b-extinction	未覆盖				
-tab:ch04b-quantmethods	未覆盖				
+tab:ch04b-quantmethods	改编补充自洽	上 p.259—263 / PDF p.278—282	12	0	四类相定量方法逐格对照 §4.5.2：外标法/内标法前提、标样与曲线、误差来源 12 格中 8 格逐字对上源书，4 格（两处「压样用力/仪器漂移/K_i 误差传递/重叠峰」具体化、内标法误差栏三例、非晶相后两项）为改编归纳已在表注声明；四法名称、刚玉(113)、1:1、卡片 K_i、Σw_i=1 归一化均与原文一致。逐格明细 sources/logs/cells_tab_ch04b_quantmethods.tsv
 tab:ch04b-FOM	未覆盖				
 tab:ch04c-boundary	未覆盖				
 tab:ch04c-fitmethods	未覆盖				
