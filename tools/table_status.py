@@ -22,6 +22,7 @@ import io
 import os
 import re
 import csv
+import subprocess
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSV_PATH = os.path.join(ROOT, 'sources', 'figure_table_list.csv')
@@ -35,6 +36,22 @@ VERDICTS = ('已核对一致', '已核对并修正', '形式一致但符号不�
 CELL_DONE = {'逐格一致', '逐格修正', '逐格差异·原书自身', '改编补充自洽'}
 PAGE_RE = re.compile(r'书内\s*p?\.?\s*(\d+)\s*[—\-–~]\s*(\d+)')
 PAGE_RE1 = re.compile(r'书内\s*p?\.?\s*(\d+)')
+
+
+def head_date():
+    """HEAD 提交日（YYYY-MM-DD）。台账里的日期必须与提交绑定，复跑才可能字节一致。"""
+    try:
+        d = subprocess.check_output(['git', 'log', '-1', '--format=%cs'],
+                                    cwd=ROOT).decode('utf-8', 'replace').strip()
+        if re.match(r'^\d{4}-\d{2}-\d{2}$', d):
+            return d
+    except Exception:
+        pass
+    import datetime
+    return datetime.date.today().isoformat()
+
+
+GEN_DATE = head_date()
 
 
 def read_text(path):
@@ -210,7 +227,7 @@ print('T1=%d T1c=%d T2=%d T3=%d T4=%d' % (
 
 HEAD = {
     'T1': '一、既有逐格读图核对（%d 张）',
-    'T1c': '二、2026-10-19 逐单元格核对（%d 张）',
+    'T1c': '二、' + GEN_DATE + ' 逐单元格核对（%d 张）',
     'T2': '三、仅就地核对说明，未逐格比对（%d 张）',
     'T3': '四、改编补充：自述非源书表且未逐格核（%d 张）',
     'T4': '五、未核对页面图像（%d 张）',
@@ -232,7 +249,7 @@ out.append('')
 out.append('| 层级 | 含义 | 张数 |')
 out.append('| --- | --- | --- |')
 out.append('| T1 | 既有逐格读图核对（`table_pixel_verify.md` 有结论） | %d |' % cnt.get('T1', 0))
-out.append('| T1c | 2026-10-19 逐单元格核对（`table_cells.tsv` 有终判） | %d |' % cnt.get('T1c', 0))
+out.append('| T1c | %s 逐单元格核对（`table_cells.tsv` 有终判） | %d |' % (GEN_DATE, cnt.get('T1c', 0)))
 out.append('| T2 | 仅就地核对说明，注明已对照原页面图像，未逐格比对 | %d |' % cnt.get('T2', 0))
 out.append('| T3 | 改编补充（自述非源书表，尚未逐格核内部自洽） | %d |' % cnt.get('T3', 0))
 out.append('| T4 | 未核对页面图像 | %d |' % cnt.get('T4', 0))
