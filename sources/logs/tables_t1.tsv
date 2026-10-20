@@ -16,3 +16,8 @@ tab:ch02c-situ	改编补充自洽	up p.151-160（书内 151—160）	16	0	源书
 tab:ch02c-gaps	改编补充自洽	up p.160-162（书内 160—162）	25	0	源书无汇总表；1–2/4–5 个粒子、<100、<2 nm、20 mbar、1–2 atm、200 bar、100 kV、1 nm 均有据（p.160—162）；束损伤行为据 §2.5/§2.8 归纳；200 bar 为一般范围（源文未给）。cells：cells_ch02c-gaps.tsv；源图 build/_src_up179/180/181.png。
 tab:recip-simple	改编补充自洽	上册 p.238—239 / PDF p.257—258	15	0	六种晶系十五项参数逐项对上源书 p.239 的六条列举；含γ*=60°（原表曾误印「均为90°」，已据原文改正）。栏名与「复格子」提示框为改编。
 tab:xrd-limits	改编补充自洽	上册 p.221—222 / PDF p.240—241	14	0	「能可靠给出」五行逐句有原文（p.221 峰位/强度/峰形，p.222 系统消光、原子位置与分布、物相组成与含量、Rietveld 精修与从头确定）；「不能给出」整栏与峰位误差整行为改编归纳，无源表可对。
+tab:narrow-map	改编补充自洽	down p.527-531（PDF 19-23）	13	0	源书无对应表（p.527 为 §8.1 增宽来源五条的正文叙述；p.531 给 1H/19F 100 kHz 与 MAS 空间部分/去偶自旋部分）；本表 5 行×3 列逐格核：同核偶极两格有据，CSA/四极/J/T2 各格标「差异·未逐页核对」。图 build/_src_t1_p19.png、build/_src_t1_p23.png；cells_narrow-map.tsv。
+tab:nuclei	改编补充自洽	down p.531-539（PDF 23-31）	13	0	源书无对应表；29Si 一行与 p.531 逐字相符（I=1/2、4.6%、500 ppm、120 ppm）；27Al/17O/31P/Ti 四行源书 pp.24—31 未逐页核对（cells 标差异）。图 build/_src_t1_p23.png；cells_nuclei.tsv。
+tab:probes	改编补充自洽	down p.542-544（PDF 34-36）	37	0	源书无对应表；p.542 正文覆盖丙酮-2-13C、吡啶-d5、乙烯/CO/乙烷、全氟丁胺四行（数值逐字相符），TMP/15N-吡啶/13CO/1H 分档四行源书 p.543—544 未逐页核对（cells 标差异）。图 build/_src_t1_p34.png；cells_probes.tsv。
+tab:c13-assign	改编补充自洽	down p.555-556（PDF 47-48）	8	0	源书无对应表；p.555 正文六条位移与归属逐句相符（10–40/125–145/150/13–25/130–170/13.5、24、33）。图 build/_src_t1_p47.png；cells_c13-assign.tsv。
+tab:nuclei-coke	改编补充自洽	down p.555-562（PDF 47-54）	25	0	源书无对应表；p.555 仅覆盖 13C 一行部分格，29Si/27Al/1H/129Xe 四行源书 pp.556—562 未逐页核对（cells 标差异）。图 build/_src_t1_p47.png；cells_nuclei-coke.tsv。

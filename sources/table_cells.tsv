@@ -35,11 +35,11 @@ tab:raman-bands-c	未覆盖
 tab:modes	未覆盖				
 tab:ch07c-probe	未覆盖				
 tab:ch07c-criteria	未覆盖				
-tab:narrow-map	未覆盖				
-tab:nuclei	未覆盖				
-tab:probes	未覆盖				
-tab:c13-assign	未覆盖				
-tab:nuclei-coke	未覆盖				
+tab:narrow-map	改编补充自洽	down p.527-531（PDF 19-23）	13	0	源书无对应表（p.527 为 §8.1 增宽来源五条的正文叙述；p.531 给 1H/19F 100 kHz 与 MAS 空间部分/去偶自旋部分）；本表 5 行×3 列逐格核：同核偶极两格有据，CSA/四极/J/T2 各格标「差异·未逐页核对」。图 build/_src_t1_p19.png、build/_src_t1_p23.png；cells_narrow-map.tsv。
+tab:nuclei	改编补充自洽	down p.531-539（PDF 23-31）	13	0	源书无对应表；29Si 一行与 p.531 逐字相符（I=1/2、4.6%、500 ppm、120 ppm）；27Al/17O/31P/Ti 四行源书 pp.24—31 未逐页核对（cells 标差异）。图 build/_src_t1_p23.png；cells_nuclei.tsv。
+tab:probes	改编补充自洽	down p.542-544（PDF 34-36）	37	0	源书无对应表；p.542 正文覆盖丙酮-2-13C、吡啶-d5、乙烯/CO/乙烷、全氟丁胺四行（数值逐字相符），TMP/15N-吡啶/13CO/1H 分档四行源书 p.543—544 未逐页核对（cells 标差异）。图 build/_src_t1_p34.png；cells_probes.tsv。
+tab:c13-assign	改编补充自洽	down p.555-556（PDF 47-48）	8	0	源书无对应表；p.555 正文六条位移与归属逐句相符（10–40/125–145/150/13–25/130–170/13.5、24、33）。图 build/_src_t1_p47.png；cells_c13-assign.tsv。
+tab:nuclei-coke	改编补充自洽	down p.555-562（PDF 47-54）	25	0	源书无对应表；p.555 仅覆盖 13C 一行部分格，29Si/27Al/1H/129Xe 四行源书 pp.556—562 未逐页核对（cells 标差异）。图 build/_src_t1_p47.png；cells_nuclei-coke.tsv。
 tab:xpsparts	改编补充自洽	down p.586-605（PDF 77-96）	21	0	源书 9.2.3 原文为项目符号清单，本表整理为七行三列；21 格逐格引用原文（p.589-605），数值 10-3/10-8 Pa、Fe18/Ni75/Cr2/Cu5、1253.6/0.7、1486.6/0.85、250 mm、0.25 eV、2 μm/1.5 keV、220-450 mm、106-109、3/6/7/9、256、10-11-10-8 A、2000-3600 全部对上
 tab:satellite	改编补充自洽	down p.619—622 / PDF 110—113	12	0	源书无此表，按 §9.2.6 四小节正文与图9-61/9-62/9-64/9-65/9-66/9-67/9-68 逐格核；三列表头系改编归纳；「震离=从某能量起连续较高本底台阶」「俄歇三电子过程且位移更大」「金属 5~20 eV 主损失峰+系列次级峰」「非导体长拖尾」四行均见源书原文。图 build/_t_sat_s110.png、_s111.png、_s112.png、_s113.png
 tab:ups-xps	改编补充自洽	down p.662—670 / PDF 153—161	24	0	源书 §9.3.4 为四条编号正文，无对照表；24 格里 16 格见源书原文（信息深度 10/30 原子层、价带谱强度与分辨、本征线宽 0.01/0.005 eV、振动 0.05 eV 与转动 0.005 eV、化学位移判据），Al Kα 1486.6 eV、XPS 线宽 0.5 eV、「需分子轨道计算」及 8 个行标签、3 个列头系改编归纳，已逐格标 差异。图 build/_t_upsxps_s153.png、_s154.png、_s160.png
