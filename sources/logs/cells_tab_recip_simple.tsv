@@ -1,0 +1,16 @@
+label	row	col	artifact	source	action	note
+tab:recip-simple	表头	1	晶系	晶系	差异	栏名改编；源书 p.239 为按晶系分行列举的正文，无表栏
+tab:recip-simple	表头	2	倒格子基矢长度	—	差异	栏名改编，把源书每行的 a*、b*、c* 拆成一栏
+tab:recip-simple	表头	3	倒格子夹角	—	差异	栏名改编，把源书每行末的夹角从句并入一栏
+tab:recip-simple	简单立方	2	$a^{*}=1/a$	「简单立方：a*=1/a」	一致	源书 p.239 第 1 条
+tab:recip-simple	简单立方	3	均为 $90^\circ$	「夹角均为 90°」	一致	同上
+tab:recip-simple	简单四方	2	$a^{*}=b^{*}=1/a$，$c^{*}=1/c$	「a*=1/a，c*=1/c」	一致	源书 p.239 第 2 条；未另写 b*，四方 b=a 故 b*=1/a
+tab:recip-simple	简单四方	3	均为 $90^\circ$	「夹角均为 90°」	一致	同上
+tab:recip-simple	六方与简单三方	2	$a^{*}=b^{*}=1/(a\sin 120^\circ)$，$c^{*}=1/c$	「a*=1/(a sin120°)，c*=1/c」	一致	源书 p.239 第 3 条
+tab:recip-simple	六方与简单三方	3	$\gamma^{*}=60^\circ$（其余 $90^\circ$）	「γ*=60°」	一致	源书 p.239；原表曾印作「均为 90°」，本轮据原文复核为 γ*=60°，与 p.238 末的 cos γ* 通式代入 γ=120° 自洽
+tab:recip-simple	简单正交	2	$a^{*}=1/a$，$b^{*}=1/b$，$c^{*}=1/c$	「a*=1/a，b*=1/b，c*=1/c」	一致	源书 p.239 第 4 条
+tab:recip-simple	简单正交	3	均为 $90^\circ$	「夹角均为 90°」	一致	同上
+tab:recip-simple	简单单斜	1	以 $b$ 为唯一轴	「以 b 为唯一轴，α=γ=90°，β 为斜角」	一致	源书 p.239 第 5 条；「唯一轴」原印作「唯性轴」，本轮已订正
+tab:recip-simple	简单单斜	2	$a^{*}=1/(a\sin\beta)$，$b^{*}=1/b$，$c^{*}=1/(c\sin\beta)$	「a*=1/(a sinβ)，b*=1/b，c*=1/(c sinβ)」	一致	源书 p.239 第 5 条
+tab:recip-simple	简单单斜	3	$\alpha^{*}=\gamma^{*}=90^\circ$，$\beta^{*}=180^\circ-\beta$	「α*=γ*=90°；β*=180°-β」	一致	同上
+tab:recip-simple	注	1	复格子转换更复杂	「复格子转换稍微复杂一些，可以通过几何作图给出，也可以借助素晶格与复晶格之间的相互转换来实现，此不赘述」	一致	源书 p.239；本表所附提示框末句「更常用的做法是不换格子，而在结构因子里体现带心平移」为改编本按 §4.3 后半思路所加
