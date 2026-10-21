@@ -111,8 +111,10 @@ def main():
         blk_raw = block(text, label)
         src = re.search(r'\\src\{(.{0,400})', blk_raw, re.S)
         cite = re.sub(r'\s+', ' ', src.group(1)) if src else ''
-        # page citations inside the table body are not data: drop them first
-        blk = re.sub(r'(?:书内|PDF)\s*p?\.?\s*\d+(?:\s*[—\-–~]\s*\d+)?', ' ', blk_raw)
+        # page citations inside the table body are not data: drop them first,
+        # and strip TeX comments (the column-width note carries mm values)
+        blk = re.sub(r'(?<!\\)%.*', ' ', blk_raw)
+        blk = re.sub(r'(?:书内|PDF)\s*p?\.?\s*\d+(?:\s*[—\-–~]\s*\d+)?', ' ', blk)
         blk = re.sub(r'(?<![\w.])p\.\s*\d+(?:\s*[—\-–~]\s*\d+)?', ' ', blk)
         tks = oda.tokens(blk) if blk else []
         pages = resolve_pages(cite, chapters.get(label))
@@ -151,11 +153,10 @@ def main():
     w('- **计算或模型生成，预期不命中**：`tab:ring-index`（d/n 由 λ 与 θ 算出）、\n'
       '  `tab:ch04c-scherrer`（由 λ、β、θ 换算的示例值）、`tab:ch10-window`（题注已自述为\n'
       '  按 L-H 模型生成的教学设定数据）。这三张表的未命中格不构成证据缺口。\n')
-    w('- **表内编号噪声**：`tab:selector` 的 01/02/…/09、`tab:ch02b-smsi` 的 02 等是表内\n'
-      '  方法或示例编号，不是需要回查的数据值。\n')
-    w('- **仍需人工确认**：`tab:selector` 的阈值与量级判断（该表归纳自全书，`\\src` 只指\n'
-      '  向 §1.1.2 三页，故命中率天然偏低）；`tab:ring-index`、`tab:ch01c-density` 的少量\n'
-      '  换算值。这些属「改写口径」而非「抄错数字」，如需定论要逐条追到具体正文。\n')
+    w('- **表内编号噪声**：`tab:selector` 的 14 个 token 全部是 `\\chapref` 的章号与 §1.1.2 的节号，\n'
+      '  该表是纯定性选型矩阵、本就不含数据值；`tab:ch02b-smsi` 的 02 等同理。\n')
+    w('- **仍需人工确认**：`tab:ring-index`、`tab:ch01c-density` 的少量换算值（如 0.71、3.0、1.6），\n'
+      '  它们由公式算出而非照抄，属「改写口径」而非「抄错数字」；如要定论需逐条追到具体正文。\n')
     w('- **完全无源页**：`tab:evidence-level`（0 个数值）、`tab:matrix`（归纳自本书章节，\n'
       '  不引外部源页）、`tab:ch09-problems`（题注自述本节无对应 OCR 文本）。\n')
 
