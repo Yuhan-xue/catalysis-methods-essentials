@@ -80,11 +80,14 @@ def main():
             problems.append((label, '台账路径不存在：%s' % path))
         else:
             block, idx = block_of(text, label)
-            # 1) references outside the block
+            # 1) references outside the block. NOTE: \tabref/\figref are defined in
+            # style/preamble.tex as `表~\ref{#1}`, so a plain search for `\ref{...}`
+            # would miss every \tabref{...} call and report false "dangling" tables.
+            pat = re.compile(r'\\(?:tab)?ref\{%s\}' % re.escape(label))
             for other_path, other in files.items():
-                n = len(re.findall(r'\\ref\{%s\}' % re.escape(label), other))
+                n = len(pat.findall(other))
                 if other_path == path and block:
-                    n -= len(re.findall(r'\\ref\{%s\}' % re.escape(label), block))
+                    n -= len(pat.findall(block))
                 refs += n
             # 2) caption declaration
             if block:
@@ -112,15 +115,22 @@ def main():
             w('- `%s`：%s\n' % (label, why))
 
     w('\n## 结论与建议\n\n')
-    w('四项机械检查里，前三项（题注声明改编、`\\src` 出处、台账行号落在表块内）**12/12 通过**；\n'
-      '唯一一类问题是 **%d 张表在正文里没有任何 `\\tabref` 引用**。这类「悬空表」LaTeX 不会报警\n'
-      '（没有 `\\ref` 就没有未定义引用），读者只能靠目录翻到，属于可用性缺陷而非数据错误。\n\n'
+    w('前三项（题注声明改编、`\\src` 出处、台账行号落在表块内）**12/12 通过**；\n'
+      '唯一一类问题是 **%d 张表在正文里没有任何 `\\tabref`／`\\ref` 引用**。这类「悬空表」\n'
+      'LaTeX 不会报警（没有 `\\ref` 就没有未定义引用），读者只能靠目录翻到，属于可用性缺陷而非数据错误。\n\n'
       % len(problems))
-    w('**本轮不修改正文**，原因是一次插入 6 处引用会改变行数，可能触发重排；而本书的三项验收\n'
-      '证据（`sources/logs/page_p*.tsv`、`sources/content_review.md`）都是**按页码**记账的，\n'
-      '页码一变，339 页的逐页台账与已发布 v1.1.3 的页码引用会同时失效。\n'
-      '因此这 6 处建议放进下一个 minor 版本（v1.2.0）一起做：补引用 → 重建 → 按新页码重刷\n'
-      '逐页台账（`tools/page_acceptance.py` 与 `sources/logs/page_p*.tsv` 可机刷），一次性发布。\n')
+    w('### 一个必须记下的坑\n\n'
+      '`\\tabref` 在 `style/preamble.tex:426` 定义为 `\\newcommand{\\tabref}[1]{表~\\ref{#1}}`，\n'
+      '所以正文里所有引用**都不会以字面 `\\ref{...}` 出现**。第一版审计脚本只搜 `\\ref{...}`，\n'
+      '因此把 6 张「其实有引用」的表误判为悬空；改为同时匹配 `\\ref` 与 `\\tabref` 后，\n'
+      '真正悬空的只剩本文件列出的这几张。任何「统计 LaTeX 引用」的脚本都要按宏展开后的写法匹配。\n\n')
+    w('### 实测：补引用会重排\n\n'
+      '2026-10-21 在临时分支上给这 %d 处补了引用句并重建，结果 **339 页 → 340 页（+1）**，\n'
+      '其余门禁仍全绿。页码一变，按页记账的验收证据（`sources/logs/page_p*.tsv`、\n'
+      '`sources/content_review.md`）与已发布 v1.1.3 的页码引用同时失效。因此**本轮回退，不在本版改动**。\n\n'
+      % len(problems))
+    w('建议放到下一个 minor 版本一起做：补引用 → 重建 → 用 `tools/page_acceptance.py` 重刷逐页台账\n'
+      '（`page_p*.tsv` 的行按新页码重排，必要时重读移位页）→ 一次性发布 v1.2.0。\n')
     out.close()
     print('tables=%d problems=%d' % (len(rows), len(problems)))
     return 0
