@@ -1,0 +1,232 @@
+# -*- coding: utf-8 -*-
+"""Book-wide digit audit of table cells against *page-image* OCR.
+
+Motivation: the up-volume PDF's embedded text layer is a corrupted publisher OCR
+(it turned 820 into 520 and produced a real content defect in the artifact). Every
+table cell that carries numbers should therefore be cross-checked against the
+rendered page, not only against the text layer.
+
+Scope: cells whose cited source pages fall in the up volume (book page <= 500,
+PDF = book + 19). Down-volume cells are counted but not scanned here.
+
+Outputs:
+  sources/ocr_digit_audit.md   report (summary + cells with misses)
+  build/ocr_digit_audit.tsv    label,row,col,pdf_pages,tokens,hits,misses,verdict
+
+Usage: python tools/ocr_digit_audit.py [--limit N]
+"""
+import glob
+import io
+import os
+import re
+import sys
+import time
+
+import pymupdf
+from rapidocr_onnxruntime import RapidOCR
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+LOGS = os.path.join(ROOT, 'sources', 'logs')
+OUT_MD = os.path.join(ROOT, 'sources', 'ocr_digit_audit.md')
+OUT_TSV = os.path.join(ROOT, 'build', 'ocr_digit_audit.tsv')
+CACHE = os.path.join(ROOT, 'build', '_ocr')
+
+SRC_UP = (r'C:\Users\53150\.dsh\attachments\v1\files\9f'
+          r'\9f97a9804d81e20c13ef2a42d2ed7e9964fe1bca5f3c3dba338d1b6d6f8159f7'
+          r'\现代催化研究方法新编 上 (辛勤，罗孟飞，徐杰 主编) (z-library.sk, 1lib.sk, z-lib.sk).pdf')
+
+NUM = re.compile(r'\d+(?:\.\d+)?')
+BOOK_PAGE = re.compile(r'(?:p\.|书内\s*p?\.?)\s*(\d{3})(?:\s*[—\-–~]\s*(\d{3}))?')
+PDF_PAGE = re.compile(r'PDF\s*p?\.?\s*(\d{3})(?:\s*[—\-–~]\s*(\d{3}))?')
+
+DASHES = dict.fromkeys(map(ord, '\u2010\u2011\u2012\u2013\u2014\u2015\u2212\uff0d'), '-')
+FW = {ord(f): ord(t) for f, t in zip('０１２３４５６７８９．％', '0123456789.%')}
+
+
+def norm(s):
+    s = s.translate(DASHES).translate(FW)
+    s = s.replace('～', '~').replace('∼', '~')
+    return re.sub(r'\s+', '', s)
+
+
+def tokens(text):
+    out = []
+    for t in NUM.findall(text):
+        if len(t.replace('.', '')) < 2:      # lone digits are not evidence
+            continue
+        if t not in out:
+            out.append(t)
+    return out
+
+
+def load_chapters():
+    """label -> chapter number, from sources/figure_table_list.csv."""
+    out = {}
+    path = os.path.join(ROOT, 'sources', 'figure_table_list.csv')
+    for i, line in enumerate(io.open(path, encoding='utf-8')):
+        if i == 0:
+            continue
+        cols = line.split(',')
+        if len(cols) < 4:
+            continue
+        label = cols[0].strip().strip('"')
+        try:
+            out[label] = int(cols[3])
+        except ValueError:
+            continue
+    return out
+
+
+def pages_for(src_col, note, chapter=None):
+    """cite text -> up-volume PDF pages (book+19) plus, for ch01-07, explicit PDF refs"""
+    cite = src_col + ' ' + note
+    pages = []
+    for m in BOOK_PAGE.finditer(cite):
+        a = int(m.group(1))
+        b = int(m.group(2)) if m.group(2) else a
+        for book in range(a, min(b, a + 6) + 1):
+            if book <= 500:
+                pdf = book + 19
+                if pdf not in pages:
+                    pages.append(pdf)
+    if chapter is not None and chapter <= 7:
+        for m in PDF_PAGE.finditer(cite):
+            a = int(m.group(1))
+            b = int(m.group(2)) if m.group(2) else a
+            for pdf in range(a, min(b, a + 6) + 1):
+                if pdf not in pages:
+                    pages.append(pdf)
+    return pages
+
+
+def ocr_page(doc, pdf_page, ocr):
+    cache = os.path.join(CACHE, 'up_%d.txt' % pdf_page)
+    if os.path.exists(cache):
+        return io.open(cache, encoding='utf-8').read()
+    png = os.path.join(CACHE, 'up_%d.png' % pdf_page)
+    doc[pdf_page - 1].get_pixmap(dpi=300).save(png)
+    t0 = time.time()
+    res, _ = ocr(png)
+    lines = sorted([(int(min(float(p[1]) for p in box)), text) for box, text, _s in (res or [])])
+    out = '\n'.join(t for _y, t in lines)
+    io.open(cache, 'w', encoding='utf-8', newline='\n').write(out)
+    print('ocr p.%d %d lines %.0fs' % (pdf_page, len(lines), time.time() - t0))
+    return out
+
+
+def main():
+    limit = None
+    if '--limit' in sys.argv:
+        limit = int(sys.argv[sys.argv.index('--limit') + 1])
+
+    chapters = load_chapters()
+    rows = []
+    for f in sorted(glob.glob(os.path.join(LOGS, 'cells_*.tsv'))):
+        for line in io.open(f, encoding='utf-8'):
+            cols = line.rstrip('\n').split('\t')
+            if len(cols) < 7:
+                continue
+            label, row, col, artifact, source, action, note = cols[:7]
+            toks = tokens(artifact)
+            if not toks:
+                continue
+            pages = pages_for(source, note, chapters.get(label))
+            rows.append((label, row, col, artifact, pages, toks, note))
+    print('numeric cells', len(rows))
+    if limit:
+        rows = rows[:limit]
+
+    need = []
+    for _l, _r, _c, _a, pages, _t, _n in rows:
+        for p in pages:
+            if p not in need:
+                need.append(p)
+    need.sort()
+    print('pages to scan', len(need))
+
+    doc = pymupdf.open(SRC_UP)
+    ocr = RapidOCR()
+    text = {}
+    for p in need:
+        text[p] = norm(ocr_page(doc, p, ocr))
+
+    out_rows = []
+    for label, row, col, artifact, pages, toks, note in rows:
+        hay = '\n'.join(text[p] for p in pages if p in text)
+        hits = [t for t in toks if t in hay]
+        miss = [t for t in toks if t not in hits]
+        if not pages:
+            verdict = '无源页可扫'
+        elif not miss:
+            verdict = '全部命中'
+        elif hits:
+            verdict = '部分命中'
+        else:
+            verdict = '全部未命中'
+        out_rows.append((label, row, col, ','.join(map(str, pages)),
+                         ' '.join(toks), ' '.join(hits), ' '.join(miss), verdict))
+
+    with io.open(OUT_TSV, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('label\trow\tcol\tpdf_pages\ttokens\thits\tmisses\tverdict\n')
+        for r in out_rows:
+            f.write('\t'.join(r) + '\n')
+
+    ok = sum(1 for r in out_rows if r[7] == '全部命中')
+    part = sum(1 for r in out_rows if r[7] == '部分命中')
+    none = sum(1 for r in out_rows if r[7] == '全部未命中')
+    nopage = sum(1 for r in out_rows if r[7] == '无源页可扫')
+
+    md = ['# 表格数值的页面 OCR 普查（上册，独立于内嵌文字层）', '',
+          '起因：上册源 PDF 的内嵌文字层是失真的出版方 OCR——它把 820 误识为 520，'
+          '已经导致改编本表 6-10 的过氧谱带错误（见 `sources/logs/fixes_t1.tsv`）。'
+          '因此含数值的表格单元格不应只对文字层负责。', '',
+          '本文件由 `tools/ocr_digit_audit.py` 生成：把每个含数值单元格所引上册源页'
+          '（书内 ≤ 500，PDF = 书内 + 19）以 300 dpi 渲图、RapidOCR 独立识别，'
+          '再逐格在整页 OCR 文本里找回该格的每个数值 token。', '',
+          '口径说明：命中=该数值在整页 OCR 中出现过（不要求同一行）；'
+          '「未命中」只表示**需要人工看一眼**，不等于错——上下标、坐标轴刻度、'
+          '跨页表述都会造成未命中。', '',
+          '| 结论 | 格数 |', '|---|---|',
+          '| 全部命中 | %d |' % ok,
+          '| 部分命中 | %d |' % part,
+          '| 全部未命中 | %d |' % none,
+          '| 无源页可扫 | %d |' % nopage,
+          '| **合计（含数值单元格）** | **%d** |' % len(out_rows), '',
+          '## 需要人工看一眼的格（部分命中 / 全部未命中）', '']
+
+    problems = [r for r in out_rows if r[7] in ('部分命中', '全部未命中')]
+    if problems:
+        md += ['| 表 | 行 | 列 | 改编本内容 | 源 PDF 页 | 未命中 token | 结论 |',
+               '|---|---|---|---|---|---|---|']
+        for (label, row, col, pages, toks, hits, miss, verdict) in problems[:120]:
+            content = next((a for (l, r, c, a, _p, _t, _n) in rows
+                            if (l, r, c) == (label, row, col)), '')
+            md.append('| %s | %s | %s | %s | %s | %s | %s |' %
+                      (label, row, col, content[:40], pages, miss, verdict))
+    else:
+        md.append('（无）')
+    md.append('')
+    md += ['## 人工分诊（2026-10-21，对上述问题格逐条处置）', '',
+           '- `tab:xrd-limits` 的 220/223/225/227/232：这些是**引用页码**（p.220、p.223—225…），'
+           'token 提取把页码当成了数值，误报。',
+           '- `tab:ch04b-extinction` 的「41」：指「4₁ 螺旋轴 ∥c」的排版，非数值，误报。',
+           '- `tab:ch04c-rfactor` 的「20」：三档读数「约 20%」在源页写作汉字「二十」，'
+           'OCR 无阿拉伯数字，误报。',
+           '- `ch06b-molines` 的「11」：改编本模型算出的荧光/拉曼强度比，非源书数值，不适用本审计。',
+           '- `tab:raman-routes` 的 532/1064：源页 p.397 的激发线数值，OCR 未在该页检出（可能在'
+           '页边或图注），**待人工看一眼**。',
+           '- `ch02c-gaps` 的「100」、`ch02c-newold` 的 0.24/0.13：所引页 OCR 未检出，'
+           '**待人工看一眼**（不据此判缺陷）。', '',
+           '已由本审计促成的修正（不在上表）：MoO3/γ-Al2O3 一行原写「约 910（疑为 901）、1802、'
+           '约 2700」，与正文和源页（910、1802、2720）不一致，已统一；表 6-10 过氧谱带的'
+           '520→820 订正见 `sources/logs/fixes_t1.tsv`。', '']
+
+    io.open(OUT_MD, 'w', encoding='utf-8', newline='\n').write('\n'.join(md) + '\n')
+
+    print('ok=%d partial=%d none=%d nopage=%d' % (ok, part, none, nopage))
+    print('wrote', OUT_MD)
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())
