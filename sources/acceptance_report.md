@@ -119,14 +119,17 @@ v1.0.0 的 p339+p340 在现稿合并为一页（相似度 0.985），**不是丢
 
 三项验收均已达成（①339/339、②372/372、③59/59），门禁全绿。后续建议：
 
-1. **表证据等级残余（已部分升级）**：以文字层为证据的 46 格清单见 **`sources/textlayer_backfill.md`**
-   （`tab:modes` 18、`tab:raman-bands-c` 18、`tab:ch07c-criteria` 8、`tab:ch07c-probe` 2）。
+1. **表证据等级残余（已清零）**：曾以文字层为唯一证据的 46 格清单见 **`sources/textlayer_backfill.md`**
+   （`tab:modes` 18、`tab:raman-bands-c` 18、`tab:ch07c-criteria` 8、`tab:ch07c-probe` 2）；
+   现按第二条通道分档为 **30 数值双证 + 16 图像复核 + 0 仍需人工**。
    本轮用 **`tools/ocr_backfill.py`** 做了独立于内嵌文字层的第二条机器证据：把所引源页以
    300 dpi 渲成图像、用 RapidOCR 重新识别，再逐格找回数值 token。结果见 **`sources/ocr_backfill.md`**：
    30 个数值格 **全部命中**（两条独立 OCR 流程互证），并由此发现并订正一处**内容缺陷**——
    表 6-10 与正文把过氧物种谱带印成 520—550 cm⁻¹，源页图像实为 820～850 cm⁻¹
    （源文字层把 8 误识为 5；BaO2 标样 842/829/821 同带，自洽），已改 4 处并记入
-   `sources/logs/fixes_t1.tsv`；16 个定性格措辞与源句不同，OCR 不构成证据，仍需人工。
+   `sources/logs/fixes_t1.tsv`。剩 16 个定性格后来也逐页读图核对完毕，见
+   **`sources/evidence_upgrade.md`**：15 格一致或属译名选择，1 格旧备注失实已订正
+   （`tab:modes` 漫反射行原写「Kubelka—Munk 在源文字层未检索到」，而 p.427 页面图像明确印有该函数）。
    复跑 `python tools/ocr_backfill.py`（依赖 `rapidocr_onnxruntime`）。
    后续把同一方法扩成**全书普查**：**`tools/ocr_digit_audit.py`** 扫 59 个 cells 文件里的
    144 个含数值格（84 格可定位源页：上册 49、下册 35），结果 **65 全中 / 5 部分 / 14 未命中 /
