@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """Draw sources/acceptance_dashboard.png from the acceptance ledgers."""
 import io
 import os
@@ -141,9 +141,11 @@ for i, (num, desc) in enumerate(rows):
     ax.text(0.0, y, num, fontsize=22, color=ACCENT, weight='bold', va='center')
     ax.text(0.34, y, desc, fontsize=10, color=MUTED, va='center')
 
+fig.text(0.05, 0.062, '注：v1.0.0 交付件为 340 页，现稿 339 页 —— 末两页合并成一页，不是缺页（见报告 §2）',
+         fontsize=9.5, color=MUTED)
 fig.text(0.05, 0.028, '复跑：python tools/acceptance_all.py   →   RESULT PASS（台账逐字节复现）',
          fontsize=10.5, color=MUTED)
-fig.text(0.965, 0.028, 'HEAD 61d1582', fontsize=10.5, color=MUTED, ha='right')
+fig.text(0.965, 0.028, 'HEAD 976f821', fontsize=10.5, color=MUTED, ha='right')
 
 fig.savefig(OUT, facecolor=BG)
 print('wrote %s' % OUT)
