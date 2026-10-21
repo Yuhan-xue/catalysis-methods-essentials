@@ -167,3 +167,13 @@ SHA-256 `8D4A8B8D…32F19`），把它的末三页文字层导出（`build/_relt
 「交付 PDF 自身的表述」，四层同口径、可复跑、可抽查。任何一处被改动，都会在
 `python tools/verify_acceptance.py` 或本章的抽查点之一暴露出来。
 
+一条命令复跑全部证据：
+
+```
+python tools/acceptance_all.py           # 台账重算 + 总闸门 + 11 项版面/引用检查
+python tools/acceptance_all.py --build   # 追加重建（tools/build.ps1 -Release）
+```
+
+2026-10-21 实测输出：`ledgers exit=0 / gate exit=0 / qa_suite exit=0 → RESULT PASS`
+（明细见 `build/acceptance_all.txt`）。
+
