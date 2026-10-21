@@ -34,6 +34,12 @@ CACHE = os.path.join(ROOT, 'build', '_ocr')
 SRC_UP = (r'C:\Users\53150\.dsh\attachments\v1\files\9f'
           r'\9f97a9804d81e20c13ef2a42d2ed7e9964fe1bca5f3c3dba338d1b6d6f8159f7'
           r'\现代催化研究方法新编 上 (辛勤，罗孟飞，徐杰 主编) (z-library.sk, 1lib.sk, z-lib.sk).pdf')
+SRC_DOWN = (r'C:\Users\53150\.dsh\attachments\v1\files\a1'
+            r'\a1b8bc6b3dc73c6fdec8445f6d111b9113f551727f34eb01b16150141558f62c'
+            r'\现代催化研究方法新编(下册) (辛勤, 罗孟飞, 徐杰) (z-library.sk, 1lib.sk, z-lib.sk).pdf')
+
+# down volume: 书内 = PDF + offset, verified against printed folios
+DOWN_OFFSET = {8: 508, 9: 509, 10: 511, 11: 512, 12: 514}
 
 NUM = re.compile(r'\d+(?:\.\d+)?')
 BOOK_PAGE = re.compile(r'(?:p\.|书内\s*p?\.?)\s*(\d{3})(?:\s*[—\-–~]\s*(\d{3}))?')
@@ -47,6 +53,14 @@ def norm(s):
     s = s.translate(DASHES).translate(FW)
     s = s.replace('～', '~').replace('∼', '~')
     return re.sub(r'\s+', '', s)
+
+
+def token_pattern(t):
+    """Regex that tolerates OCR dropping the decimal point / separator, but does
+    not match inside a longer number."""
+    parts = [re.escape(x) for x in t.split('.')]
+    body = r'[.,·]?\s?'.join(parts)
+    return r'(?<!\d)' + body + r'(?!\d)'
 
 
 def tokens(text):
@@ -78,39 +92,49 @@ def load_chapters():
 
 
 def pages_for(src_col, note, chapter=None):
-    """cite text -> up-volume PDF pages (book+19) plus, for ch01-07, explicit PDF refs"""
+    """cite text -> [(vol, pdf_page)] for the volume that owns the chapter."""
     cite = src_col + ' ' + note
-    pages = []
+    out = []
+    down = chapter is not None and chapter >= 8
+    off = DOWN_OFFSET.get(chapter or 0)
     for m in BOOK_PAGE.finditer(cite):
         a = int(m.group(1))
         b = int(m.group(2)) if m.group(2) else a
         for book in range(a, min(b, a + 6) + 1):
-            if book <= 500:
-                pdf = book + 19
-                if pdf not in pages:
-                    pages.append(pdf)
-    if chapter is not None and chapter <= 7:
+            if down and off:
+                pdf = book - off
+                if pdf <= 0:
+                    continue
+                item = ('down', pdf)
+            else:
+                if book > 500:
+                    continue
+                item = ('up', book + 19)
+            if item not in out:
+                out.append(item)
+    if not down:
         for m in PDF_PAGE.finditer(cite):
             a = int(m.group(1))
             b = int(m.group(2)) if m.group(2) else a
             for pdf in range(a, min(b, a + 6) + 1):
-                if pdf not in pages:
-                    pages.append(pdf)
-    return pages
+                item = ('up', pdf)
+                if item not in out:
+                    out.append(item)
+    return out
 
 
-def ocr_page(doc, pdf_page, ocr):
-    cache = os.path.join(CACHE, 'up_%d.txt' % pdf_page)
+def ocr_page(doc, vol, pdf_page, ocr):
+    cache = os.path.join(CACHE, '%s_%d.txt' % (vol, pdf_page))
     if os.path.exists(cache):
         return io.open(cache, encoding='utf-8').read()
-    png = os.path.join(CACHE, 'up_%d.png' % pdf_page)
+    png = os.path.join(CACHE, '%s_%d.png' % (vol, pdf_page))
     doc[pdf_page - 1].get_pixmap(dpi=300).save(png)
     t0 = time.time()
     res, _ = ocr(png)
     lines = sorted([(int(min(float(p[1]) for p in box)), text) for box, text, _s in (res or [])])
     out = '\n'.join(t for _y, t in lines)
     io.open(cache, 'w', encoding='utf-8', newline='\n').write(out)
-    print('ocr p.%d %d lines %.0fs' % (pdf_page, len(lines), time.time() - t0))
+    print('ocr %s p.%d %d lines %.0fs' % (vol, pdf_page, len(lines), time.time() - t0))
     return out
 
 
@@ -137,34 +161,41 @@ def main():
         rows = rows[:limit]
 
     need = []
-    for _l, _r, _c, _a, pages, _t, _n in rows:
-        for p in pages:
-            if p not in need:
-                need.append(p)
+    for row in rows:
+        for item in row[4]:
+            if item not in need:
+                need.append(item)
     need.sort()
     print('pages to scan', len(need))
 
-    doc = pymupdf.open(SRC_UP)
+    docs = {'up': pymupdf.open(SRC_UP), 'down': pymupdf.open(SRC_DOWN)}
     ocr = RapidOCR()
     text = {}
-    for p in need:
-        text[p] = norm(ocr_page(doc, p, ocr))
+    for vol, p in need:
+        text[(vol, p)] = norm(ocr_page(docs[vol], vol, p, ocr))
 
     out_rows = []
     for label, row, col, artifact, pages, toks, note in rows:
-        hay = '\n'.join(text[p] for p in pages if p in text)
-        hits = [t for t in toks if t in hay]
+        hay = '\n'.join(text[item] for item in pages if item in text)
+        hits, hits_loose = [], []
+        for t in toks:
+            if t in hay:
+                hits.append(t)
+            elif re.search(token_pattern(t), hay):
+                hits.append(t)
+                hits_loose.append(t)
         miss = [t for t in toks if t not in hits]
         if not pages:
             verdict = '无源页可扫'
         elif not miss:
-            verdict = '全部命中'
+            verdict = '全部命中' if not hits_loose else '全部命中（去小数点）'
         elif hits:
             verdict = '部分命中'
         else:
             verdict = '全部未命中'
-        out_rows.append((label, row, col, ','.join(map(str, pages)),
-                         ' '.join(toks), ' '.join(hits), ' '.join(miss), verdict))
+        cite = ','.join('%s%d' % (vol[0], p) for vol, p in pages)
+        out_rows.append((label, row, col, cite, ' '.join(toks),
+                         ' '.join(hits), ' '.join(miss), verdict))
 
     with io.open(OUT_TSV, 'w', encoding='utf-8', newline='\n') as f:
         f.write('label\trow\tcol\tpdf_pages\ttokens\thits\tmisses\tverdict\n')
@@ -180,8 +211,9 @@ def main():
           '起因：上册源 PDF 的内嵌文字层是失真的出版方 OCR——它把 820 误识为 520，'
           '已经导致改编本表 6-10 的过氧谱带错误（见 `sources/logs/fixes_t1.tsv`）。'
           '因此含数值的表格单元格不应只对文字层负责。', '',
-          '本文件由 `tools/ocr_digit_audit.py` 生成：把每个含数值单元格所引上册源页'
-          '（书内 ≤ 500，PDF = 书内 + 19）以 300 dpi 渲图、RapidOCR 独立识别，'
+          '本文件由 `tools/ocr_digit_audit.py` 生成：把每个含数值单元格所引源页'
+          '（上册：PDF = 书内 + 19；下册：PDF = 书内 − 章节偏移，ch08 508／ch09 509／'
+          'ch10 511／ch11 512／ch12 514）以 300 dpi 渲图、RapidOCR 独立识别，'
           '再逐格在整页 OCR 文本里找回该格的每个数值 token。', '',
           '口径说明：命中=该数值在整页 OCR 中出现过（不要求同一行）；'
           '「未命中」只表示**需要人工看一眼**，不等于错——上下标、坐标轴刻度、'
@@ -207,16 +239,23 @@ def main():
         md.append('（无）')
     md.append('')
     md += ['## 人工分诊（2026-10-21，对上述问题格逐条处置）', '',
+           '**误报（审计口径造成，非缺陷）**', '',
            '- `tab:xrd-limits` 的 220/223/225/227/232：这些是**引用页码**（p.220、p.223—225…），'
-           'token 提取把页码当成了数值，误报。',
-           '- `tab:ch04b-extinction` 的「41」：指「4₁ 螺旋轴 ∥c」的排版，非数值，误报。',
-           '- `tab:ch04c-rfactor` 的「20」：三档读数「约 20%」在源页写作汉字「二十」，'
-           'OCR 无阿拉伯数字，误报。',
-           '- `ch06b-molines` 的「11」：改编本模型算出的荧光/拉曼强度比，非源书数值，不适用本审计。',
-           '- `tab:raman-routes` 的 532/1064：源页 p.397 的激发线数值，OCR 未在该页检出（可能在'
-           '页边或图注），**待人工看一眼**。',
+           'token 提取把页码当成了数值。',
+           '- `tab:ch04b-extinction` 的「41」：指「4₁ 螺旋轴 ∥c」的排版，非数值。',
+           '- `tab:ch04c-rfactor` 的「20」：三档读数「约 20%」在源页写作汉字「二十」。',
+           '- `ch06b-molines` 的「11」：改编本模型算出的荧光/拉曼强度比，非源书数值。', '',
+           '**改编补充（源书无此数字，本就不该命中）**', '',
+           '- `tab:ch09-so` 的 P 2p / Cl 2p / Ti 2p / Cu 2p / Ni 2p / Mo 3d / Pd 3d / Pt 4f / Au 4f '
+           '九行：源表 9-37（书内 p.712）只列硫元素在聚合物中的 S 2p 数据，这九行是改编本补的'
+           '通用量级，cells 备注已声明「通用文献量级」。',
+           '- `tab:ch09-bg` 的 Shirley / Tougaard 两格、`tab:ups-xps` 的 21.22 eV 与 0.5 eV：'
+           '改编归纳或表外表述，源页无对应数字。', '',
+           '**待人工看一眼**', '',
+           '- `tab:raman-routes` 的 532/1064：源页 p.397 的激发线数值，OCR 未在该页检出'
+           '（可能在页边或图注）。',
            '- `ch02c-gaps` 的「100」、`ch02c-newold` 的 0.24/0.13：所引页 OCR 未检出，'
-           '**待人工看一眼**（不据此判缺陷）。', '',
+           '不据此判缺陷，但该格的引用页宜再核一次。', '',
            '已由本审计促成的修正（不在上表）：MoO3/γ-Al2O3 一行原写「约 910（疑为 901）、1802、'
            '约 2700」，与正文和源页（910、1802、2720）不一致，已统一；表 6-10 过氧谱带的'
            '520→820 订正见 `sources/logs/fixes_t1.tsv`。', '']
