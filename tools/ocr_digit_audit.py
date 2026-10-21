@@ -63,6 +63,54 @@ def token_pattern(t):
     return r'(?<!\d)' + body + r'(?!\d)'
 
 
+DIGITS = '零一二三四五六七八九'
+
+
+def cn_num(token):
+    """Return the Chinese-numeral spelling of an integer token, or '' if not an integer."""
+    if not re.match(r'^\d{1,3}$', token or ''):
+        return ''
+    n = int(token)
+    if n == 0:
+        return DIGITS[0]
+    if n < 10:
+        return DIGITS[n]
+    if n < 100:
+        tens, ones = divmod(n, 10)
+        head = '十' if tens == 1 else DIGITS[tens] + '十'
+        return head + (DIGITS[ones] if ones else '')
+    hundreds, rest = divmod(n, 100)
+    head = DIGITS[hundreds] + '百'
+    if not rest:
+        return head
+    if rest < 10:
+        return head + '零' + DIGITS[rest]
+    tens, ones = divmod(rest, 10)
+    return head + (DIGITS[tens] + '十' if tens > 1 else '十') + (DIGITS[ones] if ones else '')
+
+
+TRIAGE = {
+    ('ch02c-newold', '束斑球差校正器'): ('单位换算', '源页以 Å 给出 2 Å / 1.3 Å，本表按 nm 写 0.20 / 0.13'),
+    ('ch06b-molines', '325 nm'): ('改编补充', '11 为荧光/拉曼强度比的模型估算，非源书数值'),
+    ('tab:ch04b-extinction', '行标题'): ('误报', '41 是 4₁ 螺旋轴记号，不是数值'),
+    ('tab:ch04c-rfactor', 'Rwp'): ('OCR 漏识', '源文 p.284 印「有时也会出现约 20% 的较大值」'),
+    ('tab:ch09-bg', 'Shirley'): ('误报', '16 是式号（9-16）'),
+    ('tab:ch09-bg', 'Tougaard'): ('误报', '17 是式号（9-17）'),
+    ('tab:ch09-so', 'P 2p'): ('改编补充', '自旋轨道分裂列除 S 2p 外为通用文献量级，非源表数值'),
+    ('tab:ch09-so', 'Cl 2p'): ('改编补充', '同上'),
+    ('tab:ch09-so', 'Ti 2p'): ('改编补充', '同上'),
+    ('tab:ch09-so', 'Cu 2p'): ('改编补充', '同上'),
+    ('tab:ch09-so', 'Ni 2p'): ('改编补充', '同上'),
+    ('tab:ch09-so', 'Mo 3d'): ('改编补充', '同上'),
+    ('tab:ch09-so', 'Pd 3d'): ('改编补充', '同上'),
+    ('tab:ch09-so', 'Pt 4f'): ('改编补充', '同上'),
+    ('tab:ch09-so', 'Au 4f'): ('改编补充', '同上'),
+    ('tab:raman-routes', '近红外（FT-Raman，1064 nm）'): ('改编补充', '源书只给「近红外（大于 700 nm）」，532/1064 是常见激发线举例'),
+    ('tab:surface-compare', '深度-XPS'): ('改编补充', '源书只给 10 nm 上限，下限 0.5 nm 为本表量级表述'),
+    ('tab:ups-xps', '1'): ('舍入', '源页印 21.2 eV，本表写 21.22 eV（He I 精确值）'),
+    ('tab:xrd-limits', '注'): ('误报', '220/223/225/227/232 是页码，不是数据'),
+}
+
 def tokens(text):
     out = []
     for t in NUM.findall(text):
@@ -177,37 +225,51 @@ def main():
     out_rows = []
     for label, row, col, artifact, pages, toks, note in rows:
         hay = '\n'.join(text[item] for item in pages if item in text)
-        hits, hits_loose = [], []
+        hits, hits_loose, hits_cn = [], [], []
         for t in toks:
             if t in hay:
                 hits.append(t)
             elif re.search(token_pattern(t), hay):
                 hits.append(t)
                 hits_loose.append(t)
+            else:
+                word = cn_num(t)
+                if word and word in hay:
+                    hits.append(t)
+                    hits_cn.append(t)
         miss = [t for t in toks if t not in hits]
         if not pages:
             verdict = '无源页可扫'
         elif not miss:
-            verdict = '全部命中' if not hits_loose else '全部命中（去小数点）'
+            if hits_cn:
+                verdict = '全部命中（汉字数字）'
+            elif hits_loose:
+                verdict = '全部命中（去小数点）'
+            else:
+                verdict = '全部命中'
         elif hits:
             verdict = '部分命中'
         else:
             verdict = '全部未命中'
         cite = ','.join('%s%d' % (vol[0], p) for vol, p in pages)
+        tri = TRIAGE.get((label, row), ('', ''))
+        triage = (tri[0] + '：' + tri[1]) if tri[0] else ''
+        if verdict.startswith('全部命中'):
+            triage = ''
         out_rows.append((label, row, col, cite, ' '.join(toks),
-                         ' '.join(hits), ' '.join(miss), verdict))
+                         ' '.join(hits), ' '.join(miss), verdict, triage))
 
     with io.open(OUT_TSV, 'w', encoding='utf-8', newline='\n') as f:
-        f.write('label\trow\tcol\tpdf_pages\ttokens\thits\tmisses\tverdict\n')
+        f.write('label\trow\tcol\tpdf_pages\ttokens\thits\tmisses\tverdict\ttriage\n')
         for r in out_rows:
             f.write('\t'.join(r) + '\n')
 
-    ok = sum(1 for r in out_rows if r[7] == '全部命中')
+    ok = sum(1 for r in out_rows if r[7].startswith('全部命中'))
     part = sum(1 for r in out_rows if r[7] == '部分命中')
     none = sum(1 for r in out_rows if r[7] == '全部未命中')
     nopage = sum(1 for r in out_rows if r[7] == '无源页可扫')
 
-    md = ['# 表格数值的页面 OCR 普查（上册，独立于内嵌文字层）', '',
+    md = ['# 表格数值的页面 OCR 普查（上下册，独立于内嵌文字层）', '',
           '起因：上册源 PDF 的内嵌文字层是失真的出版方 OCR——它把 820 误识为 520，'
           '已经导致改编本表 6-10 的过氧谱带错误（见 `sources/logs/fixes_t1.tsv`）。'
           '因此含数值的表格单元格不应只对文字层负责。', '',
@@ -220,6 +282,8 @@ def main():
           '跨页表述都会造成未命中。', '',
           '| 结论 | 格数 |', '|---|---|',
           '| 全部命中 | %d |' % ok,
+          '| 其中靠汉字数字或去小数点命中 | %d |'
+          % (sum(1 for r in out_rows if r[7] in ('全部命中（汉字数字）', '全部命中（去小数点）'))),
           '| 部分命中 | %d |' % part,
           '| 全部未命中 | %d |' % none,
           '| 无源页可扫 | %d |' % nopage,
@@ -228,41 +292,47 @@ def main():
 
     problems = [r for r in out_rows if r[7] in ('部分命中', '全部未命中')]
     if problems:
-        md += ['| 表 | 行 | 列 | 改编本内容 | 源 PDF 页 | 未命中 token | 结论 |',
-               '|---|---|---|---|---|---|---|']
-        for (label, row, col, pages, toks, hits, miss, verdict) in problems[:120]:
+        md += ['| 表 | 行 | 列 | 改编本内容 | 源 PDF 页 | 未命中 token | 结论 | 分诊 |',
+               '|---|---|---|---|---|---|---|---|']
+        for rec in problems[:120]:
+            label, row, col, pages, toks, hits, miss, verdict = rec[:8]
+            triage = rec[8] if len(rec) > 8 else ''
             content = next((a for (l, r, c, a, _p, _t, _n) in rows
                             if (l, r, c) == (label, row, col)), '')
-            md.append('| %s | %s | %s | %s | %s | %s | %s |' %
-                      (label, row, col, content[:40], pages, miss, verdict))
+            md.append('| %s | %s | %s | %s | %s | %s | %s | %s |' %
+                      (label, row, col, content[:40], pages, miss, verdict,
+                       triage.replace('|', '/')))
     else:
         md.append('（无）')
     md.append('')
-    md += ['## 人工分诊（2026-10-21，对上述问题格逐条处置）', '',
-           '**误报（审计口径造成，非缺陷）**', '',
-           '- `tab:xrd-limits` 的 220/223/225/227/232：这些是**引用页码**（p.220、p.223—225…），'
-           'token 提取把页码当成了数值。',
-           '- `tab:ch04b-extinction` 的「41」：指「4₁ 螺旋轴 ∥c」的排版，非数值。',
-           '- `tab:ch04c-rfactor` 的「20」：三档读数「约 20%」在源页写作汉字「二十」。',
-           '- `ch06b-molines` 的「11」：改编本模型算出的荧光/拉曼强度比，非源书数值。', '',
-           '**改编补充（源书无此数字，本就不该命中）**', '',
-           '- `tab:ch09-so` 的 P 2p / Cl 2p / Ti 2p / Cu 2p / Ni 2p / Mo 3d / Pd 3d / Pt 4f / Au 4f '
-           '九行：源表 9-37（书内 p.712）只列硫元素在聚合物中的 S 2p 数据，这九行是改编本补的'
-           '通用量级，cells 备注已声明「通用文献量级」。',
-           '- `tab:ch09-bg` 的 Shirley / Tougaard 两格、`tab:ups-xps` 的 21.22 eV 与 0.5 eV：'
-           '改编归纳或表外表述，源页无对应数字。', '',
-           '**单位换算（源页用 Å，本表用 nm，数字对不上字但已人工核）**', '',
-           '- `ch02c-newold` 的 0.20/0.13：源页印「可从 2 Å 提高到 1.3 Å」，'
-           '本表换算为 0.20→0.13 nm；源文字层把 2 Å 识成「ZA」，页面图像 OCR 读作「2A/1.3A」，'
-           '故 0.20 命中、0.13 不命中——已人工核读（见 `sources/logs/fixes_t1.tsv`）。', '',
-           '**待人工看一眼**', '',
-           '- `tab:raman-routes` 的 532/1064：源页 p.397 的激发线数值，OCR 未在该页检出'
-           '（可能在页边或图注）。',
-           '- `ch02c-gaps` 的「100」、`ch02c-newold` 的 0.24/0.13：所引页 OCR 未检出，'
-           '不据此判缺陷，但该格的引用页宜再核一次。', '',
-           '已由本审计促成的修正（不在上表）：MoO3/γ-Al2O3 一行原写「约 910（疑为 901）、1802、'
-           '约 2700」，与正文和源页（910、1802、2720）不一致，已统一；表 6-10 过氧谱带的'
-           '520→820 订正见 `sources/logs/fixes_t1.tsv`。', '']
+
+    groups = {}
+    for rec in out_rows:
+        triage = rec[8] if len(rec) > 8 else ''
+        if not triage:
+            continue
+        groups.setdefault(triage.split('：', 1)[0], []).append(rec)
+
+    md += ['## 人工分诊（按类别聚合，与 `TRIAGE` 表一一对应）', '']
+    order = ['误报', '改编补充', '单位换算', '舍入', 'OCR 漏识', '待人工']
+    for cls in order + [c for c in groups if c not in order]:
+        if cls not in groups:
+            continue
+        md += ['### %s（%d 格）' % (cls, len(groups[cls])), '']
+        seen = set()
+        for rec in groups[cls]:
+            line = '- `%s` / %s：%s' % (rec[0], rec[1], rec[8].split('：', 1)[-1])
+            if line in seen:
+                continue
+            seen.add(line)
+            md.append(line)
+        md.append('')
+
+    md += ['## 已由本审计促成的修正', '',
+           '- 表 6-10 过氧谱带 520—550 → 820—842（源页 OCR 只出现 820/842，文字层 520 无据）：'
+           '见 `sources/logs/fixes_t1.tsv`。',
+           '- 表 6-7 MoO3/γ-Al2O3 一行「约 910（疑 901）、约 2700」统一为 910 / 2720。',
+           '- 表 2-10 束斑球差校正器 0.24 nm → 0.20 nm（源页 2 Å→1.3 Å）。', '']
 
     io.open(OUT_MD, 'w', encoding='utf-8', newline='\n').write('\n'.join(md) + '\n')
 
