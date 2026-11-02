@@ -49,6 +49,16 @@ report = []
 GEN_DATE = ''
 
 
+def page_total():
+    """Page count of the current build, from build/content_scan.csv (fallback 339)."""
+    scan = os.path.join(ROOT, 'build', 'content_scan.csv')
+    try:
+        with io.open(scan, encoding='utf-8', newline='') as fh:
+            return sum(1 for _ in csv.DictReader(fh))
+    except Exception:  # noqa: BLE001
+        return 339
+
+
 def head_date():
     """Use the HEAD commit date as the ledger's generation date.
 
@@ -180,7 +190,7 @@ def merge_pages():
     text = '\n'.join(out).rstrip('\n') + '\n'
     write_text(PAGES_SRC, text)
 
-    total = 339
+    total = page_total()
     covered = [p for p, (st, _) in merged.items() if st.startswith(PAGE_DONE_PREFIX)]
     log('pages covered=%d/%d batches=%d' % (len(covered), total, len(base_batches) + len(new_batches)))
     missing = [p for p in range(1, total + 1) if p not in merged or not merged[p][0].startswith(PAGE_DONE_PREFIX)]

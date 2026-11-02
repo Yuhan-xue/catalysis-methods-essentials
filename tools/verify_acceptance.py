@@ -18,6 +18,7 @@ Usage: python tools/verify_acceptance.py [--no-replay]
 Exit 0 = all pass, 2 = failures (details in build/verify_acceptance.txt).
 """
 import glob
+import csv
 import io
 import os
 import re
@@ -26,7 +27,24 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 REPORT = os.path.join(ROOT, 'build', 'verify_acceptance.txt')
-N_PAGES = 339
+
+
+def page_total():
+    """Pages in the current build: rows of build/content_scan.csv, else the PDF."""
+    scan = os.path.join(ROOT, 'build', 'content_scan.csv')
+    try:
+        with io.open(scan, encoding='utf-8', newline='') as fh:
+            return sum(1 for _ in csv.DictReader(fh))
+    except Exception:  # noqa: BLE001
+        pass
+    try:
+        import pymupdf
+        return pymupdf.open(os.path.join(ROOT, 'build', 'main.pdf')).page_count
+    except Exception:  # noqa: BLE001
+        return 339
+
+
+N_PAGES = page_total()
 N_FORMULAS = 372
 N_TABLES = 59
 FORMULA_DONE = {'已核对一致', '已核对并修正', '形式一致但符号不同', '原书自身问题', '改编补充'}

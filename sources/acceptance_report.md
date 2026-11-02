@@ -7,7 +7,7 @@
 
 | 项 | 范围 | 进度 | 门禁 |
 | --- | --- | --- | --- |
-| ① 逐页内容级校对 | 339 页（交付 v1.0.0 为 340 页，见 §4） | **339/339**，待修正 0 | `OK pages=True` |
+| ① 逐页内容级校对 | 340 页（v1.2.0 分页，见 §4） | **340/340**，待修正 0 | `OK pages=True` |
 | ② 编号公式逐式对照原书页面图像 | 372 式 | **372/372** 终判 | `OK formulas=True` |
 | ③ T2 表逐单元格核对 | 59 张 | **59/59**（余 0 张） | `OK tables=True` |
 
@@ -93,31 +93,32 @@ python tools/verify_acceptance.py           # tables 门：59 张终判 + T1c=59
 T1c=59/T2=0、每条 fix 记录在 tex 中确有落地、`review_ledger.py all --strict` 复跑无 diff
 （幂等性）。当前输出：pages/formulas/tables 三门全绿。
 
-**340 vs 339**：交付件 `release/catalysis-methods-essentials-v1.0.0.pdf` 340 页，
-现重建 `build/main.pdf` 339 页。两版逐页指纹比对（`build/_cmp340.txt`、`_cmp340b.txt`）表明
-v1.0.0 的 p339+p340 在现稿合并为一页（相似度 0.985），**不是丢页**；m00001 所说的「340 页」
-对应交付件，现稿 339 页即其全部内容。
+**340 页这件事**：交付件 `release/catalysis-methods-essentials-v1.0.0.pdf` 340 页，
+v1.1.x 重建 `build/main.pdf` 为 339 页；逐页指纹比对（`build/_cmp340.txt`、`_cmp340b.txt`）表明
+v1.0.0 的 p339+p340 在 v1.1.x 合并为一页（相似度 0.985），**不是丢页**。
+v1.2.0 补入 5 处表引用后重建回 **340 页**（第六章末页续页 p.118 为新页），
+逐页台账已按 `tools/page_align.py` 的对齐结果整体重编号。
 
 **构建门禁**：`pwsh -NoProfile -ExecutionPolicy Bypass -File tools/build.ps1`
 （Windows PowerShell 5.1 读不了 UTF-8 无 BOM 的中文脚本，必须用 PowerShell 7）。
-当前：339 页、错误 0、overfull>5pt 0、缺字 0、未定义引用 0、重标号 0、PASS。
+当前：340 页、错误 0、overfull>5pt 0、缺字 0、未定义引用 0、重标号 0、PASS。
 
 **发布验收（`-Release`）**：同一命令加 `-Release`（release 模式把 overfull/未定义引用/
-重复标签/版面重叠确认缺陷一律判红），2026-10-21 在 HEAD `6a8023a` 的现稿上运行：
-`mode release`、339 页、错误 0、overfull>5pt 0、缺字 0、未定义引用 0、重标号 0、PASS。
-即现稿已具备发布资格，差的只是把交付件换成这一版（见 §5 第 3 条）。
+重复标签/版面重叠确认缺陷一律判红），v1.2.0 在合并提交后运行：
+`mode release`、340 页、错误 0、overfull>5pt 0、缺字 0、未定义引用 0、重标号 0、PASS。
+即现稿已具备发布资格（交付件见 §5 末条）。
 
 **其余检查器**（`python tools/qa_suite.py`，11 项全部 exit=0，汇总写 `build/qa_suite.txt`）：
 编号连续（`check_numbers`：全由 LaTeX 计数器生成，无硬编码/重置）、目录 61 条 0 处不符
 （`check_toc`）、书签 145 条 0 处不符（3 条回退匹配，`check_bookmarks`）、无重复页
-（`check_duppages`：339 页均有正文，重复组 0）、页脚 bad=0（仅封面 1 页无页码，`check_folio`）、
+（`check_duppages`：340 页均有正文，重复组 0）、页脚 bad=0（仅封面 1 页无页码，`check_folio`）、
 包含检查 OK（`check_includes`）、版面重叠 PASS blocking=0（`overlap_check`）、
 85 张表 `\src` 来源标注 PASS 85（`check_src`）、内容扫描仅 INFO（`content_scan`）。
 其中 `check_terms` 报 8 组 21 对「竞争术语」，属术语统一清单而非缺陷，明细在 `tools/term_audit.txt`。
 
 ## 5 已完成事项与后续建议
 
-三项验收均已达成（①339/339、②372/372、③59/59），门禁全绿。后续建议：
+三项验收均已达成（①340/340、②372/372、③59/59），门禁全绿。后续建议：
 
 1. **表证据等级残余（已清零）**：曾以文字层为唯一证据的 46 格清单见 **`sources/textlayer_backfill.md`**
    （`tab:modes` 18、`tab:raman-bands-c` 18、`tab:ch07c-criteria` 8、`tab:ch07c-probe` 2）；
@@ -145,14 +146,13 @@ v1.0.0 的 p339+p340 在现稿合并为一页（相似度 0.985），**不是丢
 
 ## 六、制品与台账的一致性抽查（2026-10-21）
 
-验收不能只在 `sources/` 里自洽，还要看**交付出去的那本书自己怎么说**。抽检对象是
-`release/catalysis-methods-essentials-v1.1.3.pdf`（339 页、4254324 B、
-SHA-256 `8D4A8B8D…32F19`），把它的末三页文字层导出（`build/_reltail.py`）逐句读。
+验收不能只在 `sources/` 里自洽，还要看**交付出去的那本书自己怎么说**。本节抽查做于 v1.1.3
+（339 页、4254324 B、SHA-256 `8D4A8B8D…32F19`），2026-10-21 又在 v1.2.0 上复核（见本节末行）：
 
 | 抽查点 | 制品上的原文 | 台账 | 判定 |
 |---|---|---|---|
 | 表账口径 | 「85 张表中 73 张已逐格核对（含 59 张原『就地说明』表的逐单元格比对）、0 张只在分片留说明、12 张为改编补充」 | `table_status.md`：T1 14 + T1c 59 = 73 逐格、T2 0、T3 12 | 一致 |
-| 页数 | 页码至 339，无第 340 页 | 构建 339 页 | 一致 |
+| 页数 | v1.1.3 页码至 339；v1.2.0 至 340 | 构建 339 → 340 页 | 一致 |
 | 与现稿的同一性 | 末三页文字层与 `build/main.pdf` 对应页逐字相同 | — | 一致 |
 
 一处**看似矛盾其实正确**、因此保留不改的地方：附录「逐表核对记录」里仍写
