@@ -177,3 +177,50 @@ python tools/acceptance_all.py --build   # 追加重建（tools/build.ps1 -Relea
 2026-10-21 实测输出：`ledgers exit=0 / gate exit=0 / qa_suite exit=0 → RESULT PASS`
 （明细见 `build/acceptance_all.txt`）。
 
+
+## 八、插图逐图核对（2026-11-03）
+
+三项验收原本只管「字、式、表」，插图没有台账。本轮补上第四项：**57 张图逐图对照原书**。
+
+本书插图全部是 TikZ 重画（不是扫描件），所以核对的对象不是像素，而是「重画有没有把原书那张图
+说成另一回事」：坐标轴与变量、曲线形状与趋势、标注与单位、图中的数字。每张图的证据是两张渲染图——
+原书页面（`python tools/vpage.py up|down <pdf页> out.png`）与成品页面（`python tools/vbook.py <页> out.png`）——
+有的还叠加 OCR（下册无文字层，用 `rapidocr_onnxruntime` 重新识别）。
+
+台账：`sources/figure_review.md`（`python tools/figure_ledger.py` 生成），逐图明细在
+`sources/logs/figs_ch01.tsv` … `figs_ch12.tsv`（7 列：图号／成品页／源锚点／核对要点／判定／备注）。
+四种终判与表台账同构：
+
+| 判定 | 张数 | 含义 |
+| --- | --- | --- |
+| 逐图一致 | 11 | 原书有对应图，重画在结构、变量、数值上一致 |
+| 逐图修正 | 14 | 发现并改正了图或题注的错误（漏画、方向反、锚点错、标注被裁） |
+| 逐图差异·原书自身 | 0 | — |
+| 改编补充自洽 | 32 | 原书无对应图（或只有文字），本图自绘且题注已声明，不与正文矛盾 |
+
+代表性修正（每条都记在 `sources/logs/fixes_fig.tsv`）：
+
+- **图 12-1／12-2 的源锚点错位**：能级-隧穿结图原注「据原书图 12-1」，而原书图 12-1 是 STM 整机结构，
+  能级图实为图 12-2(e)（书内 p.889—890 / PDF 375—376）；题注已改，并经两名核对者独立读图确认。
+- **图 4-1 K 吸收边方向**：重画时吸收边随能量上升的走向与原书相反，已重画三条曲线。
+- **图 4-3「峰宽」标注被 x 轴裁掉**：改 `anchor=south west`、上移 0.015。
+- **图 11-1 题注冒称原书图 11-2**：原书图 11-2 是电流-过电位曲线，不是界面示意图，改为「据 §11.1.5 正文绘制」。
+- **图 8-x／10-x 若干**：题注「改绘」改为「按原理绘制」，并把原书实际页码写准。
+
+复跑：`python tools/figure_ledger.py --strict`（要求 57/57 终判，否则非零退出）；
+总闸门 `python tools/verify_acceptance.py` 已把该项纳入。
+
+## 九、版面与配图质感（2026-11-03）
+
+原稿通篇黑白：`style/preamble.tex` 只有两个灰阶。本轮建立最小配色系统，只改颜色、不改任何长度，
+因此**分页不变**（重建后仍 340 页，`python tools/page_align.py build/_base339.pdf build/main.pdf`
+仍报 `monotone=True`）：
+
+- **主色** `accent` = `#1F497D`（深蓝）：节号、小节号、图题标签、语义块标目；
+- **暖色** `accentwarm` = `#A04A21`：只给「易错点」类块，起警示作用；
+- **墨色** `inksoft` = `#3A3F45`：方法要点、关键条件、观察等中性块；
+- **浅色** `accentsoft`：交叉核对块，弱化处理。
+
+正文实测出现 `#1F497D` 328 处、`#3A3F45` 103 处、`#A04A21` 44 处、`#ADADAD` 34 处，
+说明着色确实落到 PDF 而不是只写在导言区。配色定义集中在 `style/preamble.tex` 与
+`style/macros.tex` 的 `runinblk`（两参：标目文字、颜色），改一处全书生效。
