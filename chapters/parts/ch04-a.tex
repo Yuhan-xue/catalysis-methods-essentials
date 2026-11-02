@@ -259,18 +259,18 @@ Cu K$\alpha$ 作光源时，含 Co、Mn、Ba、Cu 等元素的样品会出现\te
 \begin{scope}
 \draw[axisline,->] (-0.10,0) -- (3.35,0) node[below,font=\fontsize{8}{9.5}\selectfont]{$\lambda$};
 \draw[axisline,->] (-0.10,0) -- (-0.10,2.30) node[left,font=\fontsize{8}{9.5}\selectfont]{$\mu_{\mathrm{m}}$};
-% 阀前曲线（长波侧，吸收大）
-\draw[mainline] (0.30,1.95) .. controls (0.62,1.30) and (0.86,1.02) .. (1.06,0.86);
-% 吸收边：向上突跃
-\draw[mainline] (1.06,0.86) -- (1.06,1.62);
-% 阀后曲线（短波侧，吸收小）
-\draw[mainline] (1.06,1.62) .. controls (1.60,0.98) and (2.40,0.62) .. (3.10,0.46);
+% 短波侧曲线（吸收大；波长再变短，吸收继续下降）
+\draw[mainline] (0.30,0.50) .. controls (0.62,1.08) and (0.86,1.42) .. (1.06,1.62);
+% 吸收边：向短波侧（左）向上突跃
+\draw[mainline] (1.06,1.62) -- (1.06,0.86);
+% 长波侧曲线（吸收小）
+\draw[mainline] (1.06,0.86) .. controls (1.60,0.92) and (2.40,0.98) .. (3.10,1.04);
 \draw[thinline,dashed] (1.06,0) -- (1.06,1.62);
 \node[below,font=\fontsize{8}{9.5}\selectfont] at (1.10,-0.02) {$\lambda_K$};
 \node[font=\fontsize{8}{9.5}\selectfont,anchor=west] at (1.30,1.90) {K 吸收边};
 % 入射波长位置
-\draw[thinline,dotted] (1.72,0) -- (1.72,1.10);
-\node[font=\fontsize{8}{9.5}\selectfont,anchor=south] at (1.74,1.06) {$\lambda$ 入射};
+\draw[thinline,dotted] (1.72,0) -- (1.72,0.94);
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=south] at (1.74,0.92) {$\lambda$ 入射};
 \node[font=\fontsize{8}{9.5}\selectfont] at (1.75,-0.52) {(a) K 吸收边};
 \end{scope}
 % 右：滤波前 / 滤波后的谱（示意）
@@ -519,39 +519,36 @@ $|\boldsymbol{H}|=2\sin\theta/\lambda$ 可得 $|\boldsymbol{H}|\le2/\lambda$，�
 \end{scope}
 % (b) Ewald 球
 \begin{scope}[xshift=4.05cm,scale=1.02]
-\coordinate (A) at (0,1);
-\coordinate (C) at (0,0);
-\draw[axisline] (C) circle (1.57);
-% 倒易格子点
-\foreach \xx in {0,0.5,1.0,1.5,-0.5,-1.0,-1.5}{
-  \foreach \yy in {1.0,0.5,0,-0.5,-1.0}{
+% A 为晶体（球心），O 为倒易原点（在球面上），B 为落在球面上的倒易格点
+\coordinate (A) at (0,0);
+\coordinate (O) at (0,1.5);
+\coordinate (B) at (0.9,1.2);
+\draw[axisline] (A) circle (1.5);
+% 倒易格子点（间距 0.3，示意）
+\foreach \xx in {-1.5,-1.2,-0.9,-0.6,-0.3,0,0.3,0.6,0.9,1.2,1.5}{
+  \foreach \yy in {-1.5,-1.2,-0.9,-0.6,-0.3,0,0.3,0.6,0.9,1.2,1.5}{
     \pgfmathsetmacro{\rr}{sqrt(\xx*\xx+\yy*\yy)}
-    \pgfmathparse{(\rr>0.18)&&(\rr<1.50)?1:0}
+    \pgfmathparse{(\rr>0.16)&&(\rr<1.46)?1:0}
     \ifnum\pgfmathresult=1
-      \fill[black] (\xx,\yy) circle (0.022);
+      \fill[black] (\xx,\yy) circle (0.018);
     \fi
   }
 }
-\fill (A) circle (0.032);
-\node[font=\fontsize{8}{9.5}\selectfont,anchor=south west] at (0.02,1.02) {$O$（倒易原点）};
-\fill (C) circle (0.026);
-\node[font=\fontsize{8}{9.5}\selectfont,anchor=north east] at (-0.04,-0.02) {$A$（晶体）};
-% 入射 / 衍射方向
-\draw[mainline,-{Stealth[length=4pt]}] (A) -- (C);
-\draw[mainline,-{Stealth[length=4pt]}] (A) -- (0.47,-0.168);
-\draw[thinline,dashed] (A) -- (0.9,-0.322);
-\draw[thinline,dashed] (C) -- (0.47,-0.168);
-\fill (0.47,-0.168) circle (0.034);
-\node[font=\fontsize{8}{9.5}\selectfont,anchor=west] at (0.50,-0.20) {$B$ $(hkl)$};
-\node[font=\fontsize{8}{9.5}\selectfont,anchor=west,rotate=-19] at (0.06,0.16) {$\boldsymbol{s}_0/\lambda$};
-\node[font=\fontsize{8}{9.5}\selectfont,anchor=north,rotate=-19] at (0.24,-0.30) {$\boldsymbol{s}/\lambda$};
-\node[font=\fontsize{8}{9.5}\selectfont,anchor=north] at (-0.14,-0.42) {$1/\lambda$};
-\draw[thinline,accent] (0.36,-0.128) arc[start angle=-19.7,end angle=-90,radius=0.50];
-% 【重叠修正，2026-09-30】$2\theta$ 原在 (0.16,-0.60)，与 rotate=-19 的
-% $\boldsymbol{s}/\lambda$ 标注尾巴相碰：实测 $\lambda$ 墨迹 [363.3,368.7]×[481.9,488.3]
-% 与 $2$ 墨迹 [366.2,370.1]×[484.0,489.3] 相交 2.5×4.3 pt，轮廓交叠 0.417 pt²。
-% 右移 0.12 cm、下移 0.04 cm 至 (0.28,-0.64)。
-\node[font=\fontsize{8}{9.5}\selectfont,anchor=west] at (0.28,-0.64) {$2\theta$};
+\fill (A) circle (0.026);
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=north east] at (-0.05,-0.05) {$A$（晶体）};
+\fill (O) circle (0.030);
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=south west] at (0.03,1.52) {$O$（倒易原点）};
+% 入射与衍射方向均自球心 A 出发
+\draw[mainline,-{Stealth[length=4pt]}] (A) -- (O);
+\draw[mainline,-{Stealth[length=4pt]}] (A) -- (B);
+\draw[thinline,dashed,-{Stealth[length=3pt]}] (O) -- (B);
+\fill (B) circle (0.030);
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=west] at (0.96,1.18) {$B$ $(hkl)$};
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=east] at (-0.07,0.72) {$\boldsymbol{s}_0/\lambda$};
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=west] at (0.50,0.61) {$\boldsymbol{s}/\lambda$};
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=south] at (0.50,1.36) {$H_{hkl}=1/d_{hkl}$};
+\draw[thinline,accent] (0.36,0.48) arc[start angle=53.13,end angle=90,radius=0.60];
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=south west] at (0.21,0.64) {$2\theta$};
 \node[font=\fontsize{8}{9.5}\selectfont,anchor=north] at (0,-1.85) {(b) Ewald 球与倒易格点};
 \end{scope}
 \end{tikzpicture}
@@ -685,7 +682,7 @@ $\rightarrow$ 原子位置、相对含量（定量）；\textbf{峰形（半高�
   {峰强 $\rightarrow$ 结构因子、含量};
 % 峰宽标注
 \draw[thinline,{Stealth[length=3pt]}-{Stealth[length=3pt]}] (45.0,0.17) -- (46.2,0.17);
-\node[font=\fontsize{8}{9.5}\selectfont,anchor=north west,align=left] at (38.0,0.10)
+\node[font=\fontsize{8}{9.5}\selectfont,anchor=south west,align=left] at (38.0,0.015)
   {峰宽 $\rightarrow$ 晶粒尺寸、微应变（须扣仪器宽化）};
 \end{axis}
 \end{tikzpicture}

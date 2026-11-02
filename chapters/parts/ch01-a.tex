@@ -96,7 +96,7 @@ International Union of Pure and Applied Chemistry（国际纯粹与应用化学�
 \end{tikzpicture}
 \caption{IUPAC 六型物理吸附等温线。读者应看三处：低相对压力段有无拐点、中段是否陡升、
 高相对压力段有无平台。实线为吸附支，虚线为脱附支。本图为按各型特征函数计算的示意曲线，
-不代表任何具体样品。\schemamark\figsrc{据 S1（上册）图 1-7，书内 p.19 / PDF p.38 改绘。}}
+不代表任何具体样品。\schemamark\figsrc{据 S1（上册）图 1-7「IUPAC 吸附等温线的分类」，书内 p.20 / PDF p.39 改绘。}}
 \label{fig:iupac}
 \end{figure}
 
@@ -249,7 +249,7 @@ $V_{\mathrm{m}}=210\ \unit{mL.g^{-1}}$ 为按标准常数补算的教学设定�
 \begin{axis}[
   width=\onecolwidth, height=46mm,
   xlabel={$\ppzero$}, ylabel={$\dfrac{\ppzero}{V(1-\ppzero)}$ / $\unit{g.cm^{-3}}$},
-  xmin=0, xmax=0.36, ymin=0, ymax=0.016,
+  xmin=0, xmax=0.36, ymin=0, ymax=0.002,
   legend pos=north west, legend cell align=left]
 % 教学设定：Vm = 210 cm3/g, C = 120  -> 斜率 4.72e-3, 截距 3.97e-5
 \addplot[domain=0.02:0.35,samples=2,mainline,black]{4.72e-3*x+3.97e-5};
@@ -258,10 +258,10 @@ $V_{\mathrm{m}}=210\ \unit{mL.g^{-1}}$ 为按标准常数补算的教学设定�
  (0.200,0.000984)(0.250,0.001220)(0.300,0.001456)(0.350,0.001692)};
 \legend{回归直线,数据点（教学设定）}
 % 0.05–0.35 适用窗口
-\draw[accentsoft,dashed,thinline] (axis cs:0.05,0) -- (axis cs:0.05,0.016);
-\draw[accentsoft,dashed,thinline] (axis cs:0.35,0) -- (axis cs:0.35,0.016);
+\draw[accentsoft,dashed,thinline] (axis cs:0.05,0) -- (axis cs:0.05,0.002);
+\draw[accentsoft,dashed,thinline] (axis cs:0.35,0) -- (axis cs:0.35,0.002);
 \node[anchor=north east,font=\fontsize{8}{9.5}\selectfont,color=accent]
-  at (axis cs:0.345,0.0158) {适用窗口};
+  at (axis cs:0.345,0.00198) {适用窗口};
 \end{axis}
 \end{tikzpicture}
 \caption{BET 直线形式。读者应看三处：数据点是否落在 $0.05$--$0.35$ 窗口内、

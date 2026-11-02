@@ -12,7 +12,10 @@
 \newlength{\rblblw}
 
 % ---- 通用行内标目块 --------------------------------------------------
-\newenvironment{runinblk}[1]{%
+% #1 = 标目文字  #2 = 标目颜色（2026-11-02 质感改版：只改颜色，不改任何长度，
+%      因此不改变断页/断栏；语义分成三族：方法环节=深蓝，误判=暖褐，复核=浅灰，
+%      其余=近黑。见 preamble 的配色说明。）
+\newenvironment{runinblk}[2]{%
   \par\addvspace{3pt}%
   \settowidth{\rblblw}{{\heiti #1}}%
   \begin{list}{}{%
@@ -24,7 +27,7 @@
     \setlength{\parsep}{1.5pt}%
     \setlength{\partopsep}{0pt}%
     \setlength{\itemsep}{1.5pt}%
-    \renewcommand{\makelabel}[1]{{\heiti ##1}\hfill}%
+    \renewcommand{\makelabel}[1]{{\heiti\color{#2}##1}\hfill}%
   }%
   \item[#1]\ignorespaces
 }{%
@@ -32,20 +35,20 @@
 }
 
 % ---- 企划 §4.2 统一方法单元的六个环节 --------------------------------
-\newenvironment{probout}{\begin{runinblk}{问题与输出}}{\end{runinblk}}
-\newenvironment{principle}{\begin{runinblk}{原理与公式}}{\end{runinblk}}
-\newenvironment{measure}{\begin{runinblk}{测量与条件}}{\end{runinblk}}
-\newenvironment{dataflow}{\begin{runinblk}{数据到结论}}{\end{runinblk}}
-\newenvironment{pitfall}{\begin{runinblk}{误判与边界}}{\end{runinblk}}
+\newenvironment{probout}{\begin{runinblk}{问题与输出}{accent}}{\end{runinblk}}
+\newenvironment{principle}{\begin{runinblk}{原理与公式}{accent}}{\end{runinblk}}
+\newenvironment{measure}{\begin{runinblk}{测量与条件}{accent}}{\end{runinblk}}
+\newenvironment{dataflow}{\begin{runinblk}{数据到结论}{accent}}{\end{runinblk}}
+\newenvironment{pitfall}{\begin{runinblk}{误判与边界}{accentwarm}}{\end{runinblk}}
 % 注意：不能命名为 complement —— amssymb 已把 \complement 定义为数学符号 ∁。
-\newenvironment{crosscheck}{\begin{runinblk}{互补与回查}}{\end{runinblk}}
+\newenvironment{crosscheck}{\begin{runinblk}{互补与回查}{accentsoft}}{\end{runinblk}}
 
 % ---- 其他语义块 ------------------------------------------------------
-\newenvironment{keycond}{\begin{runinblk}{关键条件}}{\end{runinblk}}
-\newenvironment{methodsum}{\begin{runinblk}{方法摘要}}{\end{runinblk}}
+\newenvironment{keycond}{\begin{runinblk}{关键条件}{inksoft}}{\end{runinblk}}
+\newenvironment{methodsum}{\begin{runinblk}{方法摘要}{inksoft}}{\end{runinblk}}
 % 把「观察到的现象」与「解释性推断」分开陈述（企划 §4.2）
-\newenvironment{obs}{\begin{runinblk}{观察}}{\end{runinblk}}
-\newenvironment{infer}{\begin{runinblk}{推断}}{\end{runinblk}}
+\newenvironment{obs}{\begin{runinblk}{观察}{inksoft}}{\end{runinblk}}
+\newenvironment{infer}{\begin{runinblk}{推断}{accent}}{\end{runinblk}}
 
 % ---- 例题：按章编号，形如 例题 1-2 -----------------------------------
 \newcounter{exa}[section]

@@ -1,0 +1,21 @@
+125	chapters/parts/ch05-b.tex	97	峰序上移 17 K	峰位上移 17 K	图 5-2 图内注解；全书一律用「峰位」（正文 190 处），「峰序」全库仅此一处，语义应为峰位；核图 build/_fig/fig_ch05-2_zoom.png（300 dpi，p.125）
+10	chapters/parts/ch01-a.tex	252	ymax=0.016	ymax=0.002	y 轴上限约为数据最大值 1.7×10^-3 的 10 倍，回归线与数据点被压在轴底，无法判读「是否成直线、截距为正」；同步改两条窗口虚线 0.016→0.002、标签 y 0.0158→0.00198（同文件 261–264 行）。原书 PDF 37（书内 p.18）无 BET 直线图，本图为教学合成示意。
+192	chapters/parts/ch08-a.tex	208	书内 p.530 / PDF p.22 改绘。	书内 p.530 / PDF p.22 按原理绘制。	原书 §8.1.2（书内529—530）无魔角几何示意图，本图为自绘，题注不宜称「改绘」
+249	chapters/parts/ch10-b.tex	613	时两曲线都在 $0.95$ 以上（内扩散可忽略）；$\varphi>3$ 后两曲线都变成直线且斜率 $-1$，	时两曲线都在 $0.95$ 以上（内扩散可忽略）；$\varphi>3$ 后进入强内扩散区，两曲线渐近为斜率 $-1$ 的直线，	φ=3 处球 η=0.672、板 η=0.332，尚未成直线；改为“渐近”以免读图误判。
+261	chapters/parts/ch10-c.tex	636	$\eta$ 已降到 $0.5$ 以下	$\eta$ 已降到约 $0.5$	Φ=10 时精确 η≈0.53，原文“0.5 以下”不确。
+261	chapters/parts/ch10-c.tex	640	故原书对二级反应另给 $\Phi<0.3$。\modelmark\figsrc{据 S2 §10.5.2 图 10-12 与 §10.5.4	故原书对二级反应另给 $\Phi<0.3$。\textbf{原书图 10-12 的横轴标为 $\Phi$，但曲线数值与 $\eta(\phi)$ 吻合（$\Phi=\eta\phi^2$ 未代入），本图按 $\Phi=\eta\phi^2$ 重算。}\modelmark\figsrc{据 S2 §10.5.2 图 10-12 与 §10.5.4	原书图10-12轴变量错位，需在图注中点明重算依据。
+85	chapters/parts/ch04-a.tex	263	\draw[mainline] (0.30,1.95) .. controls (0.62,1.30) and (0.86,1.02) .. (1.06,0.86);	\draw[mainline] (0.30,0.50) .. controls (0.62,1.08) and (0.86,1.42) .. (1.06,1.62);	K 吸收边画反：短波侧应吸收大、λ_K 处向上突跃（题注与源书 PDF 255 图4-7，build/_fig/fig_mono_src.png）
+85	chapters/parts/ch04-a.tex	265	\draw[mainline] (1.06,0.86) -- (1.06,1.62);	\draw[mainline] (1.06,1.62) -- (1.06,0.86);	吸收边跳变方向同上，改为自高向低（build/_fig/fig_mono_src.png）
+85	chapters/parts/ch04-a.tex	267	\draw[mainline] (1.06,1.62) .. controls (1.60,0.98) and (2.40,0.62) .. (3.10,0.46);	\draw[mainline] (1.06,0.86) .. controls (1.60,0.92) and (2.40,0.98) .. (3.10,1.04);	长波侧应低于短波侧（题注「波长变短吸收总体下降」；build/_fig/fig_mono_src.png）
+85	chapters/parts/ch04-a.tex	272	\draw[thinline,dotted] (1.72,0) -- (1.72,1.10);	\draw[thinline,dotted] (1.72,0) -- (1.72,0.94);	入射波长竖线与重画后的曲线高度同步，避免悬空（build/_p85_pc.png）
+85	chapters/parts/ch04-a.tex	273	\node[font=\fontsize{8}{9.5}\selectfont,anchor=south] at (1.74,1.06) {$\lambda$ 入射};	\node[font=\fontsize{8}{9.5}\selectfont,anchor=south] at (1.74,0.92) {$\lambda$ 入射};	同上，标注随竖线下移（build/_p85_pc.png）
+87	chapters/parts/ch04-a.tex	523	\coordinate (A) at (0,1);	\coordinate (A) at (0,0);	Ewald 球球心 A 应在圆心；原坐标把 A 放在球内（实测距心 29 pt、球半径 45 pt）（源书 PDF 259 图4-9，build/_fig/fig_bragg_src.png）
+87	chapters/parts/ch04-a.tex	526	\draw[axisline] (C) circle (1.57);	\draw[axisline] (A) circle (1.5);	球心改到 A、半径取 1.5 使 |AO|=|AB|=1.5=半径（O、B 落球面）（build/_fig/fig_bragg_src.png）
+87	chapters/parts/ch04-a.tex	542	\draw[mainline,-{Stealth[length=4pt]}] (A) -- (C);	\draw[mainline,-{Stealth[length=4pt]}] (A) -- (O);	入射矢量应自球心 A 指向倒易原点 O（题注「由球心指向该格点」；build/_fig/fig_bragg_src.png）
+87	chapters/parts/ch04-a.tex	543	\draw[mainline,-{Stealth[length=4pt]}] (A) -- (0.47,-0.168);	\draw[mainline,-{Stealth[length=4pt]}] (A) -- (B);	衍射矢量应自 A 指向球面格点 B；原图自 O 画出（build/_fig/fig_bragg_src.png）
+155	chapters/parts/ch06-c.tex	237	伸缩振动（\qty{520}{cm^{-1}}）、一个	伸缩振动（\qty{524}{cm^{-1}}）、弯曲振动（\qty{227}{cm^{-1}}），以及一个	源书 p.360（PDF 379，build/_fig/src379.png）原印：桥式 V—O—V 反对称 674、对称 524、弯曲振动 227；本书表已改 524 而正文仍作 520，属漏改
+155	chapters/parts/ch06-c.tex	238	的晶格振动（\qty{227}{cm^{-1}}）；	的晶格振动（\qty{168}{cm^{-1}}）；	源书 p.360 原印「弯曲振动（227 cm⁻¹）]和一个 V2O5·nH2O 的晶格振动（168 cm⁻¹）」：227 是弯曲、168 才是晶格振动，原句把 227 误作晶格振动并漏 168
+155	chapters/parts/ch06-c.tex	250	0.58*pk(\z,520)+0.24*pk(\z,227)	0.58*pk(\z,524)+0.24*pk(\z,227)+0.30*pk(\z,168)	TikZ 模型随正文订正：对称伸缩 520→524，并补源书 (a) 谱中的 168 晶格振动带（源图 PDF 380，build/_fig/src380_fig.png）
+155	chapters/parts/ch06-c.tex	277	（674／\qty{520}{cm^{-1}}）	（674／\qty{524}{cm^{-1}}）	题注与源书 p.360 对称伸缩 524 对齐（build/_fig/src379.png）
+155	chapters/parts/ch06-c.tex	279	虚线标出载体的 \qty{997}{cm^{-1}} 参考位置，用于提示「载体谱带不可当作活性物种」。	虚线标出晶相钒的 \qty{997}{cm^{-1}} 位置，用于提示「该峰不出现即未成晶相」。	源书 p.359 的 997 cm⁻¹ 是「晶相钒的 V=O 伸缩」尖锐峰（本书 §6.3 核对说明亦引此句），载体弱峰是 1070/920/490（源书 p.360，build/_fig/src379.png），原题注把 997 误作载体峰
+88	chapters/parts/ch04-a.tex	685	\node[font=\fontsize{8}{9.5}\selectfont,anchor=north west,align=left] at (38.0,0.10)	\node[font=\fontsize{8}{9.5}\selectfont,anchor=south west,align=left] at (38.0,0.015)	「峰宽」标注 anchor=north west、y=0.10 使文字向下越过 y=0 被坐标框裁剪、下半截不可读（build/_fig/fig_pattern_crop.png）；改 anchor=south west、y=0.015，文字整体在框内且避开 y=0.17 的双向箭头

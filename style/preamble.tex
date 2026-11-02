@@ -126,7 +126,7 @@
 \usepackage{subcaption}
 \captionsetup{
   font=small,                 % 9 pt（企划 §6.1：图表文字 8.5—9 pt）
-  labelfont=bf,
+  labelfont={bf,color=accent},
   labelsep=quad,
   skip=3pt,
   justification=raggedright,
@@ -190,8 +190,16 @@
   axisline/.style={line width=0.7pt}
 }
 % 灰度安全的色彩：同时用线型/符号编码，不单靠颜色
-\definecolor{accent}{gray}{0.35}
-\definecolor{accentsoft}{gray}{0.68}
+% 【2026-11-02 质感改版】原为两个灰（accent 0.35 / accentsoft 0.68），全书只有灰度，
+% 章线、编号、表头线、图内主曲线在同一灰阶上，读者很难一眼分出层级。
+% 改为「一主一辅」的克制配色：正文仍近黑，结构线用深蓝，强调用暖褐。
+% 选择依据：深蓝与暖褐在灰度转换后相差约 35% 明度，黑白打印仍可分辨；
+% 二者都不刺眼，不破坏「学术书而非画册」的定位。
+\definecolor{accent}{HTML}{1F497D}       % 深蓝：章标题线、节号、表头线、页码
+\definecolor{accentsoft}{gray}{0.68}     % 浅灰：次要分隔、辅助线（保持原值）
+\definecolor{accentwarm}{HTML}{A04A21}   % 暖褐：要点框边、易错提示、强调标记
+\definecolor{inksoft}{HTML}{3A3F45}      % 近黑：正文强调段、图内次曲线
+\definecolor{rulelight}{gray}{0.86}      % 极浅：表格内部细线、分隔
 
 % 全宽（跨栏）非浮动区块：用于章首标题、宽推导、长表
 % 【2026-09-28 改版】原用 cuted 的 strip 环境在双栏里做一个跨栏的章标题带。
@@ -207,17 +215,17 @@
 \usepackage{titlesec}
 \titleformat{\section}[hang]
   {\heiti\fontsize{14}{17}\selectfont}
-  {第\,\thesection\,章}{0.55em}{}
+  {\color{accent}第\,\thesection\,章}{0.55em}{}
 \titlespacing*{\section}{0pt}{7pt}{4pt}
 
 \titleformat{\subsection}[hang]
   {\heiti\fontsize{11}{13.5}\selectfont}
-  {\thesubsection}{0.5em}{}
+  {\color{accent}\thesubsection}{0.5em}{}
 \titlespacing*{\subsection}{0pt}{7pt}{3pt}
 
 \titleformat{\subsubsection}[hang]
   {\heiti\fontsize{10}{12.5}\selectfont}
-  {\thesubsubsection}{0.5em}{}
+  {\color{inksoft}\thesubsubsection}{0.5em}{}
 \titlespacing*{\subsubsection}{0pt}{6pt}{2pt}
 
 % 第四层只作行内粗标，不编号、不进目录
