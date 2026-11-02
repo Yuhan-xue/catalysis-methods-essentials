@@ -39,7 +39,11 @@ PAGE_RE1 = re.compile(r'书内\s*p?\.?\s*(\d+)')
 
 
 def head_date():
-    """HEAD 提交日（YYYY-MM-DD）。台账里的日期必须与提交绑定，复跑才可能字节一致。"""
+    """HEAD 提交日（YYYY-MM-DD），仅用于「本文件生成于」这类会随提交变化的说明。
+
+    注意：不要拿它标注「某一轮核对完成于哪天」——那是事实，跟着提交走会让
+    每次提交都把台账标题改一遍，复跑字节一致就永远不可能成立。
+    """
     try:
         d = subprocess.check_output(['git', 'log', '-1', '--format=%cs'],
                                     cwd=ROOT).decode('utf-8', 'replace').strip()
@@ -51,7 +55,8 @@ def head_date():
     return datetime.date.today().isoformat()
 
 
-GEN_DATE = head_date()
+# 逐单元格核对这一轮的实际完成日（事实常量）。
+GEN_DATE = '2026-10-21'
 
 
 def read_text(path):

@@ -445,7 +445,9 @@ def merge_tables():
 
 def main(argv):
     global GEN_DATE
-    GEN_DATE = head_date()
+    # 台账里的日期是「这一轮核对完成于哪天」的事实，不跟 HEAD 走：
+    # 取 HEAD 提交日会让每次提交都把标题日期改一遍，复跑字节一致永远不成立。
+    GEN_DATE = '2026-10-21'
     stages = [a for a in argv[1:] if not a.startswith('--')]
     strict = '--strict' in argv[1:]
     if not stages:
