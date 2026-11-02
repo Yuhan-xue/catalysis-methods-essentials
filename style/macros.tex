@@ -55,7 +55,7 @@
 \renewcommand{\theexa}{\thesection-\arabic{exa}}
 \newenvironment{example}[1][]{%
   \refstepcounter{exa}%
-  \begin{runinblk}{例题\,\theexa}%
+  \begin{runinblk}{例题\,\theexa}{accent}%
   \ifx\relax#1\relax\else{\heiti #1}。\hspace{0.3em}\fi
   \ignorespaces
 }{%

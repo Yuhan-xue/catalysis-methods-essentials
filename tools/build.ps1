@@ -66,8 +66,12 @@ Push-Location $root
 $args = @('-xelatex', '-interaction=nonstopmode', '-outdir=build')
 if (-not $Quick) { $args += '-g' }
 $args += 'main.tex'
+# latexmk 把进度写到 stderr；在 $ErrorActionPreference='Stop' 下会被当成终止错误，
+# 所以调用期间改为 Continue，调用完再恢复（2026-11-03 修）。
+$ErrorActionPreference = 'Continue'
 & $latexmk @args *> $null
 $code = $LASTEXITCODE
+$ErrorActionPreference = 'Stop'
 Pop-Location
 
 Write-Host ("root          : {0}" -f $root)

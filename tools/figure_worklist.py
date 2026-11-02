@@ -173,6 +173,7 @@ def main(argv):
     for r in rows:
         per_chapter[r['chapter']] = per_chapter.get(r['chapter'], 0) + 1
     seen = {}
+    last_page = 0
     for r in rows:
         r['numlabel'] = '图%d-%d' % (r['chapter'], seen.get(r['chapter'], 0) + 1)
         seen[r['chapter']] = seen.get(r['chapter'], 0) + 1
@@ -201,7 +202,15 @@ def main(argv):
             if not page:
                 hit = [i + 1 for i, t in enumerate(pages) if r['numlabel'] in t]
                 page = hit[0] if hit else 0
+            # 图按文档顺序出现：成品页必须不早于上一张图，否则命中的是正文交叉引用
+            later = [x for x in ([page] if page else []) if x >= last_page]
+            if not later:
+                alt = [i + 1 for i, t in enumerate(pages)
+                       if r['numlabel'] in t and i + 1 >= last_page]
+                page = alt[0] if alt else page
         r['page'] = page
+        if page:
+            last_page = page
 
     with io.open(out_path, 'w', encoding='utf-8', newline='\n') as f:
         f.write('fig_id\tnum\tchapter\tfile\tline\tpage\tcaption\tsrc_hint\tanchor\n')
