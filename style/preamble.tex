@@ -343,15 +343,18 @@
 \fancyhf{}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
+% 页眉横线与页码改用主色（只着色、不改长度，分页不受影响）
+\renewcommand{\headrule}{\hbox to\headwidth{\color{accent}\leaders\hrule height \headrulewidth\hfill}}
 \fancyhead[LE]{\fontsize{8.5}{10}\selectfont 现代催化研究方法精要}
 \fancyhead[RO]{\fontsize{8.5}{10}\selectfont\leftmark}
-\fancyfoot[LE,RO]{\fontsize{9}{10}\selectfont\thepage}
+\fancyfoot[LE,RO]{{\color{accent}\fontsize{9}{10}\selectfont\thepage}}
 \fancypagestyle{plain}{%
   \fancyhf{}%
   \renewcommand{\headrulewidth}{0.4pt}%
+  \renewcommand{\headrule}{\hbox to\headwidth{\color{accent}\leaders\hrule height \headrulewidth\hfill}}%
   \fancyhead[LE]{\fontsize{8.5}{10}\selectfont 现代催化研究方法精要}%
   \fancyhead[RO]{\fontsize{8.5}{10}\selectfont\leftmark}%
-  \fancyfoot[LE,RO]{\fontsize{9}{10}\selectfont\thepage}%
+  \fancyfoot[LE,RO]{{\color{accent}\fontsize{9}{10}\selectfont\thepage}}%
 }
 % 章名写入页眉
 \renewcommand{\sectionmark}[1]{\markboth{第\thesection 章\ #1}{}}
