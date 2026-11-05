@@ -490,14 +490,14 @@ p.101—102）；衍射衬度是中等放大倍数下晶体样品成像的主要
 % 最强环（示意）：用参数曲线画圆
 \addplot[thick, domain=0:360, samples=200, black] ({0.42*cos(x)},{0.42*sin(x)});
 \addplot[thick, domain=0:360, samples=200, black] ({0.60*cos(x)},{0.60*sin(x)});
-\addplot[thick, domain=0:360, samples=200, black] ({0.85*cos(x)},{0.85*sin(x)});
-\addplot[thick, domain=0:360, samples=200, black] ({1.05*cos(x)},{1.05*sin(x)});
+\addplot[thick, domain=0:360, samples=200, black] ({0.69*cos(x)},{0.69*sin(x)});
+\addplot[thick, domain=0:360, samples=200, black] ({0.84*cos(x)},{0.84*sin(x)});
 % 透射斑与少数取向偏离的强斑点（织构/大晶粒）
 \addplot[only marks, mark=*, mark size=2.1pt, black] coordinates {(0,0)};
 \addplot[only marks, mark=*, mark size=1.5pt, black]
   coordinates {(0.42,0) (-0.42,0) (0,0.42) (0,-0.42)
                (0.60,0) (0,0.60) (-0.60,0) (0,-0.60)
-               (0.85,0) (-0.85,0) (0,0.85) (0,-0.85)};
+               (0.69,0) (-0.69,0) (0,0.69) (0,-0.69)};
 % 标尺
 \draw[<->, thick] (-0.42,-1.22) -- (0,-1.22);
 \node[anchor=north, font=\fontsize{8}{9.6}\selectfont] at (-0.21,-1.24) {$r_{1}$};
